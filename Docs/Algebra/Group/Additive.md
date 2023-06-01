@@ -11,7 +11,7 @@ documentation_of: //Src/Algebra/Group/AdditiveGroup.hpp
 
 ## 機能
 
-実装の詳細は[本ライブラリでの群の実装について]({ site.baseurl }}/Docs/Appendix/Group.md)を確認してください。
+実装の詳細は[本ライブラリでの群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html)を確認してください。
 
 <br />
 
