@@ -44,7 +44,7 @@ title: "\u52A0\u6CD5\u7FA4"
 
 ## 機能
 
-実装の詳細は[本ライブラリでの群の実装について](./Docs/Appendix/Group.md)を確認してください。
+実装の詳細は[本ライブラリでの群の実装について]({ site.baseurl }}/Docs/Appendix/Group.md)を確認してください。
 
 <br />
 
