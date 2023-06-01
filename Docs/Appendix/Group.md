@@ -8,7 +8,7 @@
 
 [参考: Wikipedia](https://ja.wikipedia.org/wiki/%E7%BE%A4_(%E6%95%B0%E5%AD%A6))
 
-集合 $S$ と $S$ 上の二項演算 $f:\ S\times S\to S$ の組 (S, f)$ は以下の条件を満たす時群といいます。
+集合 $S$ と $S$ 上の二項演算 $f:\ S\times S\to S$ の組 $(S, f)$ は以下の条件を満たす時、群といいます。
 - 結合則 $(\forall a, b, c\in S)[f(a, f(b, c)) = f(f(a, b), c)]$ を満たす
 - ある要素 $e\in S$ が存在して、 $(\forall a\in S)[f(a, e) = f(e, a) = a]$ を満たす (このような $e$ を $S$ の単位元と呼ぶ)
 - $S$ の全ての要素について逆元が存在する。すなわち $(\forall a\in S)(\exists b\in S)[f(a, b) = f(b, a) = e]$ を満たす。
@@ -30,6 +30,7 @@ class Group {
         
     }
     static constexpr T inverse(const T& v) noexcept {
+    
     }
 };
 ```
@@ -65,4 +66,4 @@ class Group {
 ## 参考
 
 - [代数的構造を乗せるデータ構造の設計について](https://noshi91.hatenablog.com/entry/2020/04/22/212649)
-   - 本ライブラリのデータ構造はこちらのブログの E の実装を参考に設計されています。
+   - 本ライブラリのデータ構造はこちらのブログの E の実装を参考に設計しています。
