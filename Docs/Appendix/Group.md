@@ -13,7 +13,7 @@ title: 本ライブラリでの群の実装について
 集合 $S$ と $S$ 上の二項演算 $f:\ S\times S\to S$ の組 (S, f)$ は以下の条件を満たす時群といいます。
 - 結合則 $(\forall a, b, c\in S)[f(a, f(b, c)) = f(f(a, b), c)]$ を満たす
 - ある要素 $e\in S$ が存在して、 $(\forall a\in S)[f(a, e) = f(e, a) = a]$ を満たす (このような $e$ を $S$ の単位元と呼ぶ)
-- $S$ の全ての要素について逆元が存在する。すなわち $(\forall a\in S)(\exist b\in S)[f(a, b) = f(b, a) = e]$ を満たす。
+- $S$ の全ての要素について逆元が存在する。すなわち $(\forall a\in S)(\exists b\in S)[f(a, b) = f(b, a) = e]$ を満たす。
 
 <br />
 
@@ -26,13 +26,12 @@ template <class T>
 class Group {
     using valueType = T;
     static constexpr T identity() noexcept {
-
+    
     }
     static constexpr T operation(const T& l, const T& r) noexcept {
         
     }
     static constexpr T inverse(const T& v) noexcept {
-
     }
 };
 ```
@@ -47,7 +46,7 @@ class Group {
 
 **identity**
 
-上の説明でいう、単位元を返す関数です。引数をとらず、 `T`型の値を返り値とするメソッドである必要があります。
+上の説明でいう、単位元を返すメソッドです。引数をとらず、 `T`型の値を返り値とするメソッドである必要があります。
 
 <br />
 
