@@ -82,7 +82,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy: []
-  timestamp: '2023-06-01 19:19:31+09:00'
+  timestamp: '1970-01-01 00:00:00+00:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Src/Template/TypeAlias.hpp
