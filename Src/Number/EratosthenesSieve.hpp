@@ -28,10 +28,12 @@ public:
     }
 
     inline bool operator[](u32 i) const {
+        assert(i < tableSize);
         return table[i];
     }
 
     inline bool isPrime(u32 i) const {
+        assert(i < tableSize);
         return table[i];
     }
 
