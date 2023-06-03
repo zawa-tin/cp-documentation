@@ -9,8 +9,8 @@ using namespace zawa;
 
 int main() {
 
-    // std::cin.tie(nullptr);
-    // std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::ios::sync_with_stdio(false);
 
     u32 N, A, B;
     std::cin >> N >> A >> B;
@@ -19,8 +19,8 @@ int main() {
         EratosthenesSieve(N).enumeratePrimes(N);
 
     std::vector<i32> ans{};
-    for (u32 i = 0 ; A * i + B < P.size() ; i++) {
-        ans.push_back(P[A * i + B]);
+    for (u32 i = B ; i < P.size() ; i += A) {
+        ans.push_back(P[i]);
     }
 
     std::cout << P.size() << ' ' << ans.size() << std::endl;
