@@ -1,11 +1,17 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/EratosthenesSieve.hpp
+    title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/enumerate_primes.test.cpp
+    title: Test/LC/enumerate_primes.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,10 +90,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Number/EratosthenesSieve.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/enumerate_primes.test.cpp
   - Test/LC/aplusb.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document

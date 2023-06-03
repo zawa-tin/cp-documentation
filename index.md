@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
+  - name: Src/Number
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/EratosthenesSieve.hpp
+      title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   - name: Src/Template
     pages:
     - icon: ':heavy_check_mark:'
@@ -17,5 +22,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/aplusb.test.cpp
       title: Test/LC/aplusb.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/enumerate_primes.test.cpp
+      title: Test/LC/enumerate_primes.test.cpp
 layout: toppage
 ---
