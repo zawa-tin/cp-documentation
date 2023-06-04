@@ -22,7 +22,7 @@
 ```cpp
 template <class T>
 class Group {
-    using valueType = T;
+    using value_type = T;
     static constexpr T identity() noexcept {
     
     }
@@ -40,6 +40,12 @@ class Group {
 **template引数 T**
 
 上の説明でいう、 $S$ です。例えば $32$ bitで収まる範囲で足し算をしたい時は `int`型や`zawa::i32 (= std::int32_t)`型を引数に入れることになります。
+
+<br />
+
+**value_typeエイリアス**
+
+データ構造等で群を呼び出す時に使います。必ず用意してください。
 
 <br />
 
