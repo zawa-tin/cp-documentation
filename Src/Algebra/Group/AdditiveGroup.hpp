@@ -5,7 +5,7 @@ namespace zawa {
 template <class T>
 class AdditiveGroup {
 public:
-    using valueType = T;
+    using ValueType = T;
     static constexpr T identity() noexcept {
         return T{};
     }
