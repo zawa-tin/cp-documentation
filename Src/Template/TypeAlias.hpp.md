@@ -5,7 +5,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Number/EratosthenesSieve.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/CompressedSequence.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc213_c.test.cpp
+    title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
@@ -92,11 +98,13 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/Number/EratosthenesSieve.hpp
+  - Src/Sequence/CompressedSequence.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
