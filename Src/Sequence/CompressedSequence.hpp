@@ -4,23 +4,23 @@
 
 #include <vector>
 #include <algorithm>
+#include <cassert>
 
 namespace zawa {
 
 template <class T>
 class CompressedSequence {
 private:
-    std::vector<T> arr;
     std::vector<T> comped;
     std::vector<u32> f;
     
 public:
     CompressedSequence() = default;
-    CompressedSequence(const std::vector<T>& arr_) : arr(arr_), comped(arr_), f(arr_.size()) {
+    CompressedSequence(const std::vector<T>& A) : comped(A), f(A.size()) {
         std::sort(comped.begin(), comped.end());
         comped.erase(std::unique(comped.begin(), comped.end()), comped.end());
-        for (u32 i = 0 ; i < arr.size() ; i++) {
-            f[i] = std::lower_bound(comped.begin(), comped.end(), arr[i]) - comped.begin();
+        for (u32 i = 0 ; i < A.size() ; i++) {
+            f[i] = std::lower_bound(comped.begin(), comped.end(), A[i]) - comped.begin();
         }
     }     
 
@@ -33,6 +33,7 @@ public:
     }
 
     inline u32 map(u32 i) const {
+        assert(i < f.size());
         return f[i];
     }
 };
