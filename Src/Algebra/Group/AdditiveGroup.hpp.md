@@ -12,13 +12,13 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa\
-    \ {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using valueType\
+    \ {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using ValueType\
     \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
     \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
     \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
     \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup\
-    \ {\npublic:\n    using valueType = T;\n    static constexpr T identity() noexcept\
+    \ {\npublic:\n    using ValueType = T;\n    static constexpr T identity() noexcept\
     \ {\n        return T{};\n    }\n    static constexpr T operation(const T& l,\
     \ const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr T\
     \ inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
@@ -27,7 +27,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/AdditiveGroup.hpp
   requiredBy: []
-  timestamp: '2023-06-02 02:19:19+09:00'
+  timestamp: '2023-06-04 17:37:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/aplusb.test.cpp
