@@ -7,6 +7,8 @@ documentation_of: "//Src/Number/EratosthenesSieve.hpp"
 
 指定された正整数 $S$ 以下の全ての非負整数が、素数であるか素数でないかを判定し、結果を配列で保持します。
 
+例えば、 $S = 5$ ならば、 $\\{\ \text{false}, \text{false}, \text{true}, \text{true}, \text{false}, \text{true}\ \\}$ です。
+
 ## ライブラリの説明
 
 #### コンストラクタ

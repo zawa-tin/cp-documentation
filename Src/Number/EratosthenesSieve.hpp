@@ -17,6 +17,7 @@ public:
     EratosthenesSieve() = default;
 
     EratosthenesSieve(usize tableSize_) : tableSize{ tableSize_ + 1 }, table(tableSize_ + 1, true) {
+        table.shrink_to_fit();
         assert(tableSize > 0);
         table[0] = table[1] = false;
         for (u64 i = 2 ; i * i < tableSize ; i++) {
