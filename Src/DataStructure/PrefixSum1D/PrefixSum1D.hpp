@@ -33,17 +33,20 @@ public:
     }
 
     T product(u32 l, u32 r) const {
-        assert(l <= r and r < dat.size());
+        assert(l <= r);
+        assert(r < dat.size());
         return Group::operation(Group::inverse(dat[l]), dat[r]);
     }
 
     template <class F>
     T maxRight(u32 l, const F& f) const {
+        assert(l < dat.size());
+        assert(f(Group::identity()));
         u32 itr = std::__lg(dat.size() - l) + 1;
         u32 res = l;
         for (i32 p = itr ; p >= 0 ; p--) {
             u32 r = res + (1 << p);
-            if (r > dat.size()) continue;
+            if (r >= dat.size()) continue;
             if (not f(product(l, r))) continue;
             res = r;
         }
@@ -52,6 +55,8 @@ public:
 
     template <class F>
     T minLeft(u32 r, const F& f) const {
+        assert(r < dat.size());
+        assert(f(Group::identity()));
         u32 itr = std::__lg(r) + 1;
         u32 res = r;
         for (i32 p = itr ; p >= 0 ; p--) {
