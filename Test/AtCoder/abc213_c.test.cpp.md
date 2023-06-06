@@ -29,19 +29,19 @@ data:
     \    std::vector<u32> f;\n    \npublic:\n    CompressedSequence() = default;\n\
     \    CompressedSequence(const std::vector<T>& A) : comped(A), f(A.size()) {\n\
     \        std::sort(comped.begin(), comped.end());\n        comped.erase(std::unique(comped.begin(),\
-    \ comped.end()), comped.end());\n        for (u32 i = 0 ; i < A.size() ; i++)\
-    \ {\n            f[i] = std::lower_bound(comped.begin(), comped.end(), A[i]) -\
-    \ comped.begin();\n        }\n    }     \n\n    inline usize size() const {\n\
-    \        return comped.size();\n    }\n\n    u32 operator[](const T& v) const\
-    \ {\n        return std::lower_bound(comped.begin(), comped.end(), v) - comped.begin();\n\
-    \    }\n\n    inline u32 map(u32 i) const {\n        assert(i < f.size());\n \
-    \       return f[i];\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc213_c.test.cpp\"\
-    \n\n#include <iostream>\n#line 8 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing namespace\
-    \ zawa;\n\ni32 main() {\n    usize H, W, N;\n    std::cin >> H >> W >> N; \n \
-    \   std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n      \
-    \  std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence compY(A), compX(B);\n\
-    \    for (u32 i = 0 ; i < N ; i++) {\n        std::cout << compY.map(i) + 1 <<\
-    \ ' ' << compX.map(i) + 1 << std::endl;\n    }\n}\n"
+    \ comped.end()), comped.end());\n        comped.shrink_to_fit();\n        f.shrink_to_fit();\n\
+    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            f[i] = std::lower_bound(comped.begin(),\
+    \ comped.end(), A[i]) - comped.begin();\n        }\n    }     \n\n    inline usize\
+    \ size() const {\n        return comped.size();\n    }\n\n    u32 operator[](const\
+    \ T& v) const {\n        return std::lower_bound(comped.begin(), comped.end(),\
+    \ v) - comped.begin();\n    }\n\n    inline u32 map(u32 i) const {\n        assert(i\
+    \ < f.size());\n        return f[i];\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 5 \"Test/AtCoder/abc213_c.test.cpp\"\n\n#include <iostream>\n#line 8 \"Test/AtCoder/abc213_c.test.cpp\"\
+    \n\nusing namespace zawa;\n\ni32 main() {\n    usize H, W, N;\n    std::cin >>\
+    \ H >> W >> N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N\
+    \ ; i++) {\n        std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence\
+    \ compY(A), compX(B);\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cout\
+    \ << compY.map(i) + 1 << ' ' << compX.map(i) + 1 << std::endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc213/tasks/abc213_c\"\n\n\
     #include \"../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Template/TypeAlias.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\ni32 main()\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc213_c.test.cpp
   requiredBy: []
-  timestamp: '2023-06-04 21:42:39+09:00'
+  timestamp: '2023-06-07 04:27:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc213_c.test.cpp

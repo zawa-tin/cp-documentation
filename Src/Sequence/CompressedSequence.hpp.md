@@ -25,32 +25,32 @@ data:
     \    std::vector<u32> f;\n    \npublic:\n    CompressedSequence() = default;\n\
     \    CompressedSequence(const std::vector<T>& A) : comped(A), f(A.size()) {\n\
     \        std::sort(comped.begin(), comped.end());\n        comped.erase(std::unique(comped.begin(),\
-    \ comped.end()), comped.end());\n        for (u32 i = 0 ; i < A.size() ; i++)\
-    \ {\n            f[i] = std::lower_bound(comped.begin(), comped.end(), A[i]) -\
-    \ comped.begin();\n        }\n    }     \n\n    inline usize size() const {\n\
-    \        return comped.size();\n    }\n\n    u32 operator[](const T& v) const\
-    \ {\n        return std::lower_bound(comped.begin(), comped.end(), v) - comped.begin();\n\
-    \    }\n\n    inline u32 map(u32 i) const {\n        assert(i < f.size());\n \
-    \       return f[i];\n    }\n};\n\n} // namespace zawa\n"
+    \ comped.end()), comped.end());\n        comped.shrink_to_fit();\n        f.shrink_to_fit();\n\
+    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            f[i] = std::lower_bound(comped.begin(),\
+    \ comped.end(), A[i]) - comped.begin();\n        }\n    }     \n\n    inline usize\
+    \ size() const {\n        return comped.size();\n    }\n\n    u32 operator[](const\
+    \ T& v) const {\n        return std::lower_bound(comped.begin(), comped.end(),\
+    \ v) - comped.begin();\n    }\n\n    inline u32 map(u32 i) const {\n        assert(i\
+    \ < f.size());\n        return f[i];\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <algorithm>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <class\
     \ T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped;\n    std::vector<u32>\
     \ f;\n    \npublic:\n    CompressedSequence() = default;\n    CompressedSequence(const\
     \ std::vector<T>& A) : comped(A), f(A.size()) {\n        std::sort(comped.begin(),\
     \ comped.end());\n        comped.erase(std::unique(comped.begin(), comped.end()),\
-    \ comped.end());\n        for (u32 i = 0 ; i < A.size() ; i++) {\n           \
-    \ f[i] = std::lower_bound(comped.begin(), comped.end(), A[i]) - comped.begin();\n\
-    \        }\n    }     \n\n    inline usize size() const {\n        return comped.size();\n\
-    \    }\n\n    u32 operator[](const T& v) const {\n        return std::lower_bound(comped.begin(),\
-    \ comped.end(), v) - comped.begin();\n    }\n\n    inline u32 map(u32 i) const\
-    \ {\n        assert(i < f.size());\n        return f[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n"
+    \ comped.end());\n        comped.shrink_to_fit();\n        f.shrink_to_fit();\n\
+    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            f[i] = std::lower_bound(comped.begin(),\
+    \ comped.end(), A[i]) - comped.begin();\n        }\n    }     \n\n    inline usize\
+    \ size() const {\n        return comped.size();\n    }\n\n    u32 operator[](const\
+    \ T& v) const {\n        return std::lower_bound(comped.begin(), comped.end(),\
+    \ v) - comped.begin();\n    }\n\n    inline u32 map(u32 i) const {\n        assert(i\
+    \ < f.size());\n        return f[i];\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy: []
-  timestamp: '2023-06-04 21:42:39+09:00'
+  timestamp: '2023-06-07 04:27:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc213_c.test.cpp
