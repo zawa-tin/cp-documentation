@@ -19,6 +19,8 @@ public:
     CompressedSequence(const std::vector<T>& A) : comped(A), f(A.size()) {
         std::sort(comped.begin(), comped.end());
         comped.erase(std::unique(comped.begin(), comped.end()), comped.end());
+        comped.shrink_to_fit();
+        f.shrink_to_fit();
         for (u32 i = 0 ; i < A.size() ; i++) {
             f[i] = std::lower_bound(comped.begin(), comped.end(), A[i]) - comped.begin();
         }
