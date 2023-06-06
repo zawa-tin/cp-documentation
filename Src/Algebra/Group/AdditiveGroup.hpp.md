@@ -1,11 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc023_a.test.cpp
+    title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/static_range_sum.test.cpp
+    title: Test/LC/static_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -26,11 +35,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Src/Algebra/Group/AdditiveGroup.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   timestamp: '2023-06-04 17:37:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"

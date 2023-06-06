@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+    title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - icon: ':heavy_check_mark:'
     path: Src/Number/EratosthenesSieve.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   - icon: ':heavy_check_mark:'
@@ -13,11 +19,17 @@ data:
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc023_a.test.cpp
+    title: AGC023-A Zero-Sum Ranges
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/static_range_sum.test.cpp
+    title: Test/LC/static_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -98,13 +110,17 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/Number/EratosthenesSieve.hpp
+  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/Sequence/CompressedSequence.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/enumerate_primes.test.cpp
+  - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

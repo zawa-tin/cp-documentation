@@ -6,6 +6,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
+  - name: Src/DataStructure/PrefixSum1D
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+      title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+      title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -27,6 +35,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/agc023_a.test.cpp
+      title: AGC023-A Zero-Sum Ranges
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'
@@ -35,5 +46,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_primes.test.cpp
       title: Test/LC/enumerate_primes.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/static_range_sum.test.cpp
+      title: Test/LC/static_range_sum.test.cpp
 layout: toppage
 ---
