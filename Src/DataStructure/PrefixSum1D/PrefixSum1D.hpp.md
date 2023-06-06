@@ -10,6 +10,9 @@ data:
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc172_c.test.cpp
+    title: ABC172-C Tsundoku
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -35,17 +38,19 @@ data:
     \ }\n\n    inline T operator[](u32 i) const {\n        assert(i < dat.size());\n\
     \        return dat[i];\n    }\n\n    inline usize size() const {\n        return\
     \ dat.size();\n    }\n\n    T product(u32 l, u32 r) const {\n        assert(l\
-    \ <= r and r < dat.size());\n        return Group::operation(Group::inverse(dat[l]),\
+    \ <= r);\n        assert(r < dat.size());\n        return Group::operation(Group::inverse(dat[l]),\
     \ dat[r]);\n    }\n\n    template <class F>\n    T maxRight(u32 l, const F& f)\
-    \ const {\n        u32 itr = std::__lg(dat.size() - l) + 1;\n        u32 res =\
-    \ l;\n        for (i32 p = itr ; p >= 0 ; p--) {\n            u32 r = res + (1\
-    \ << p);\n            if (r > dat.size()) continue;\n            if (not f(product(l,\
+    \ const {\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n\
+    \        u32 itr = std::__lg(dat.size() - l) + 1;\n        u32 res = l;\n    \
+    \    for (i32 p = itr ; p >= 0 ; p--) {\n            u32 r = res + (1 << p);\n\
+    \            if (r >= dat.size()) continue;\n            if (not f(product(l,\
     \ r))) continue;\n            res = r;\n        }\n        return res;\n    }\n\
-    \n    template <class F>\n    T minLeft(u32 r, const F& f) const {\n        u32\
-    \ itr = std::__lg(r) + 1;\n        u32 res = r;\n        for (i32 p = itr ; p\
-    \ >= 0 ; p--) {\n            if ((1 << p) > res) continue;\n            u32 l\
-    \ = res - (1 << p);\n            if (not f(product(l, r))) continue;\n       \
-    \     res = l;\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+    \n    template <class F>\n    T minLeft(u32 r, const F& f) const {\n        assert(r\
+    \ < dat.size());\n        assert(f(Group::identity()));\n        u32 itr = std::__lg(r)\
+    \ + 1;\n        u32 res = r;\n        for (i32 p = itr ; p >= 0 ; p--) {\n   \
+    \         if ((1 << p) > res) continue;\n            u32 l = res - (1 << p);\n\
+    \            if (not f(product(l, r))) continue;\n            res = l;\n     \
+    \   }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <class Group>\n\
     class PrefixSum1D {\nprivate:\n    using T = typename Group::ValueType;\n    std::vector<T>\
@@ -55,28 +60,32 @@ data:
     \ A[i]);\n        }\n    }\n\n    inline T operator[](u32 i) const {\n       \
     \ assert(i < dat.size());\n        return dat[i];\n    }\n\n    inline usize size()\
     \ const {\n        return dat.size();\n    }\n\n    T product(u32 l, u32 r) const\
-    \ {\n        assert(l <= r and r < dat.size());\n        return Group::operation(Group::inverse(dat[l]),\
-    \ dat[r]);\n    }\n\n    template <class F>\n    T maxRight(u32 l, const F& f)\
-    \ const {\n        u32 itr = std::__lg(dat.size() - l) + 1;\n        u32 res =\
-    \ l;\n        for (i32 p = itr ; p >= 0 ; p--) {\n            u32 r = res + (1\
-    \ << p);\n            if (r > dat.size()) continue;\n            if (not f(product(l,\
-    \ r))) continue;\n            res = r;\n        }\n        return res;\n    }\n\
-    \n    template <class F>\n    T minLeft(u32 r, const F& f) const {\n        u32\
-    \ itr = std::__lg(r) + 1;\n        u32 res = r;\n        for (i32 p = itr ; p\
-    \ >= 0 ; p--) {\n            if ((1 << p) > res) continue;\n            u32 l\
-    \ = res - (1 << p);\n            if (not f(product(l, r))) continue;\n       \
-    \     res = l;\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+    \ {\n        assert(l <= r);\n        assert(r < dat.size());\n        return\
+    \ Group::operation(Group::inverse(dat[l]), dat[r]);\n    }\n\n    template <class\
+    \ F>\n    T maxRight(u32 l, const F& f) const {\n        assert(l < dat.size());\n\
+    \        assert(f(Group::identity()));\n        u32 itr = std::__lg(dat.size()\
+    \ - l) + 1;\n        u32 res = l;\n        for (i32 p = itr ; p >= 0 ; p--) {\n\
+    \            u32 r = res + (1 << p);\n            if (r >= dat.size()) continue;\n\
+    \            if (not f(product(l, r))) continue;\n            res = r;\n     \
+    \   }\n        return res;\n    }\n\n    template <class F>\n    T minLeft(u32\
+    \ r, const F& f) const {\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n\
+    \        u32 itr = std::__lg(r) + 1;\n        u32 res = r;\n        for (i32 p\
+    \ = itr ; p >= 0 ; p--) {\n            if ((1 << p) > res) continue;\n       \
+    \     u32 l = res - (1 << p);\n            if (not f(product(l, r))) continue;\n\
+    \            res = l;\n        }\n        return res;\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   requiredBy:
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  timestamp: '2023-06-07 03:07:13+09:00'
+  timestamp: '2023-06-07 06:12:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_range_sum.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/LC/static_range_sum.test.cpp
 documentation_of: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
 layout: document
 title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -90,7 +99,7 @@ title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
 
 ## ライブラリの使い方
 
-#### テンプレート引数
+#### テンプレート引数Group
 
 [本ライブラリにおける群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html) をご確認ください。
 
@@ -147,14 +156,35 @@ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を返します。(0-indexedです
 <br />
 
 #### maxRight
+```cpp
+u32 maxRight<F>(u32 l, const F& f) const
+```
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最大の $r$ を返します。
 
-未テストでかつ実装に自信が無いです。verifyが終わったら説明も書きます。
+`f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
+
+**制約:** 
+- $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
+- $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
+- $l\ \le\ N$
 
 <br />
 
 #### minLeft
 
-未テストでかつ実装に自信が無いです。verifyが終わったら説明も書きます。
+未テストでかつ実装に自信が無いです。
+
+```cpp
+u32 minLeft<F>(u32 r, const F& f) const
+```
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最小の $l$ を返します。
+
+`f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
+
+**制約:** 
+- $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
+- $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
+- $l\ \le\ N$
 
 <br />
 

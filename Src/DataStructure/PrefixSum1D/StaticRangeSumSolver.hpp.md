@@ -13,6 +13,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc172_c.test.cpp
+    title: ABC172-C Tsundoku
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -44,21 +47,22 @@ data:
     \ }\n\n    inline T operator[](u32 i) const {\n        assert(i < dat.size());\n\
     \        return dat[i];\n    }\n\n    inline usize size() const {\n        return\
     \ dat.size();\n    }\n\n    T product(u32 l, u32 r) const {\n        assert(l\
-    \ <= r and r < dat.size());\n        return Group::operation(Group::inverse(dat[l]),\
+    \ <= r);\n        assert(r < dat.size());\n        return Group::operation(Group::inverse(dat[l]),\
     \ dat[r]);\n    }\n\n    template <class F>\n    T maxRight(u32 l, const F& f)\
-    \ const {\n        u32 itr = std::__lg(dat.size() - l) + 1;\n        u32 res =\
-    \ l;\n        for (i32 p = itr ; p >= 0 ; p--) {\n            u32 r = res + (1\
-    \ << p);\n            if (r > dat.size()) continue;\n            if (not f(product(l,\
+    \ const {\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n\
+    \        u32 itr = std::__lg(dat.size() - l) + 1;\n        u32 res = l;\n    \
+    \    for (i32 p = itr ; p >= 0 ; p--) {\n            u32 r = res + (1 << p);\n\
+    \            if (r >= dat.size()) continue;\n            if (not f(product(l,\
     \ r))) continue;\n            res = r;\n        }\n        return res;\n    }\n\
-    \n    template <class F>\n    T minLeft(u32 r, const F& f) const {\n        u32\
-    \ itr = std::__lg(r) + 1;\n        u32 res = r;\n        for (i32 p = itr ; p\
-    \ >= 0 ; p--) {\n            if ((1 << p) > res) continue;\n            u32 l\
-    \ = res - (1 << p);\n            if (not f(product(l, r))) continue;\n       \
-    \     res = l;\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\nnamespace\
-    \ zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n    template <class T>\n    using Ruisekiwa = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n};\n"
+    \n    template <class F>\n    T minLeft(u32 r, const F& f) const {\n        assert(r\
+    \ < dat.size());\n        assert(f(Group::identity()));\n        u32 itr = std::__lg(r)\
+    \ + 1;\n        u32 res = r;\n        for (i32 p = itr ; p >= 0 ; p--) {\n   \
+    \         if ((1 << p) > res) continue;\n            u32 l = res - (1 << p);\n\
+    \            if (not f(product(l, r))) continue;\n            res = l;\n     \
+    \   }\n        return res;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \n\nnamespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver\
+    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n    template <class T>\n    using Ruisekiwa\
+    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n};\n"
   code: "#pragma once\n\n#include \"../../Algebra/Group/AdditiveGroup.hpp\"\n#include\
     \ \"./PrefixSum1D.hpp\"\n\nnamespace zawa {\n\n    template <class T>\n    using\
     \ StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\n    template <class\
@@ -70,11 +74,12 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   requiredBy: []
-  timestamp: '2023-06-07 03:07:13+09:00'
+  timestamp: '2023-06-07 06:12:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_range_sum.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/LC/static_range_sum.test.cpp
 documentation_of: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
 layout: document
 title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"

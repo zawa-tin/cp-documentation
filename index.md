@@ -33,6 +33,9 @@ data:
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc172_c.test.cpp
+      title: ABC172-C Tsundoku
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
     - icon: ':heavy_check_mark:'

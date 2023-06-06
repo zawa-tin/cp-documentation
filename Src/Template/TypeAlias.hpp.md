@@ -16,6 +16,9 @@ data:
     title: "\u5EA7\u6A19\u5727\u7E2E"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc172_c.test.cpp
+    title: ABC172-C Tsundoku
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -110,17 +113,18 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/Number/EratosthenesSieve.hpp
+  - Src/Sequence/CompressedSequence.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
-  - Src/Sequence/CompressedSequence.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
-  - Test/AtCoder/agc023_a.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

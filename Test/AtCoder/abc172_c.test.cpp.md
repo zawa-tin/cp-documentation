@@ -20,16 +20,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
+    PROBLEM: https://atcoder.jp/contests/abc172/tasks/abc172_c
     links:
-    - https://judge.yosupo.jp/problem/static_range_sum
-  bundledCode: "#line 1 \"Test/LC/static_range_sum.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/static_range_sum\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    - https://atcoder.jp/contests/abc172/tasks/abc172_c
+  bundledCode: "#line 1 \"Test/AtCoder/abc172_c.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc172/tasks/abc172_c\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using ValueType = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
@@ -61,34 +60,45 @@ data:
     \ zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\n\
     namespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
     \n    template <class T>\n    using Ruisekiwa = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n};\n#line 5 \"Test/LC/static_range_sum.test.cpp\"\n\n#include <cstdio>\n#line\
-    \ 8 \"Test/LC/static_range_sum.test.cpp\"\n\nusing namespace zawa;\n\ni32 main()\
-    \ {\n    u32 N, Q;\n    std::scanf(\"%u%u\", &N, &Q); \n    std::vector<i64> A(N);\n\
-    \    for (auto& a : A) std::scanf(\"%ld\", &a);\n\n    Ruisekiwa<i64> S(A);\n\
-    \    for (u32 _ = 0 ; _ < Q ; _++) {\n        u32 l, r;\n        std::scanf(\"\
-    %u%u\", &l, &r);\n        std::printf(\"%ld\\n\", S.product(l, r));\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
+    \n};\n#line 5 \"Test/AtCoder/abc172_c.test.cpp\"\n\n#include <iostream>\n#line\
+    \ 8 \"Test/AtCoder/abc172_c.test.cpp\"\n#include <algorithm>\n\nusing namespace\
+    \ zawa;\n\ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n\
+    \    usize N, M; std::cin >> N >> M;\n    i64 K; std::cin >> K;\n\n    std::vector<i64>\
+    \ A(N), B(M);\n    for (auto& a : A) std::cin >> a;\n    for (auto& b : B) std::cin\
+    \ >> b;\n\n    Ruisekiwa<i64> SA(A), SB(B);\n\n    u32 ans = 0;\n    for (u32\
+    \ a = 0 ; a <= N ; a++) {\n        if (SA[a] > K) break;\n        auto f = [&](i64\
+    \ v) -> bool {\n            return SA[a] + v <= K;\n        };  \n        u32\
+    \ val = a + SB.maxRight(0, f);\n        ans = std::max(ans, val);\n    }\n\n \
+    \   std::cout << ans << std::endl;\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc172/tasks/abc172_c\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
-    \ \n\n#include <cstdio>\n#include <vector>\n\nusing namespace zawa;\n\ni32 main()\
-    \ {\n    u32 N, Q;\n    std::scanf(\"%u%u\", &N, &Q); \n    std::vector<i64> A(N);\n\
-    \    for (auto& a : A) std::scanf(\"%ld\", &a);\n\n    Ruisekiwa<i64> S(A);\n\
-    \    for (u32 _ = 0 ; _ < Q ; _++) {\n        u32 l, r;\n        std::scanf(\"\
-    %u%u\", &l, &r);\n        std::printf(\"%ld\\n\", S.product(l, r));\n    }\n}\n"
+    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace\
+    \ zawa;\n\ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n\
+    \    usize N, M; std::cin >> N >> M;\n    i64 K; std::cin >> K;\n\n    std::vector<i64>\
+    \ A(N), B(M);\n    for (auto& a : A) std::cin >> a;\n    for (auto& b : B) std::cin\
+    \ >> b;\n\n    Ruisekiwa<i64> SA(A), SB(B);\n\n    u32 ans = 0;\n    for (u32\
+    \ a = 0 ; a <= N ; a++) {\n        if (SA[a] > K) break;\n        auto f = [&](i64\
+    \ v) -> bool {\n            return SA[a] + v <= K;\n        };  \n        u32\
+    \ val = a + SB.maxRight(0, f);\n        ans = std::max(ans, val);\n    }\n\n \
+    \   std::cout << ans << std::endl;\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   isVerificationFile: true
-  path: Test/LC/static_range_sum.test.cpp
+  path: Test/AtCoder/abc172_c.test.cpp
   requiredBy: []
   timestamp: '2023-06-07 06:12:35+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/static_range_sum.test.cpp
+documentation_of: Test/AtCoder/abc172_c.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/LC/static_range_sum.test.cpp
-- /verify/Test/LC/static_range_sum.test.cpp.html
-title: Test/LC/static_range_sum.test.cpp
+title: ABC172-C Tsundoku
 ---
+
+読んだ本の集合が等しいなら本を読んだ合計時間は等しい -> 本を読む順番は考慮しなくて良い。
+
+ここで、 机Aから読む本の冊数を $a$ 冊に固定したとする。机Aから $a$ 冊の本を読むのにかかる時間は $\displaystyle S_{a} = \sum_{i = 1}^{a} A_i$ 分であり、残りの $K - S_{a}$ 分で机Bから何冊よむことができるかを高速に判定できれば良い。
+
+これは $B$ の累積和上で二分探索すれば良い。
