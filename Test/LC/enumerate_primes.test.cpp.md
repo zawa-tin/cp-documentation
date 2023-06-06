@@ -28,16 +28,16 @@ data:
     #include <algorithm>\n\nnamespace zawa {\n\nclass EratosthenesSieve {\nprivate:\n\
     \    usize tableSize;\n    std::vector<bool> table;\n\npublic:\n    EratosthenesSieve()\
     \ = default;\n\n    EratosthenesSieve(usize tableSize_) : tableSize{ tableSize_\
-    \ + 1 }, table(tableSize_ + 1, true) {\n        assert(tableSize > 0);\n     \
-    \   table[0] = table[1] = false;\n        for (u64 i = 2 ; i * i < tableSize ;\
-    \ i++) {\n            if (!table[i]) continue;\n            for (u64 j = i * i\
-    \ ; j < tableSize ; j += i ) {\n                table[j] = false;\n          \
-    \  }\n        }\n    }\n\n    inline bool operator[](u32 i) const {\n        assert(i\
-    \ < tableSize);\n        return table[i];\n    }\n\n    inline bool isPrime(u32\
+    \ + 1 }, table(tableSize_ + 1, true) {\n        table.shrink_to_fit();\n     \
+    \   assert(tableSize > 0);\n        table[0] = table[1] = false;\n        for\
+    \ (u64 i = 2 ; i * i < tableSize ; i++) {\n            if (!table[i]) continue;\n\
+    \            for (u64 j = i * i ; j < tableSize ; j += i ) {\n               \
+    \ table[j] = false;\n            }\n        }\n    }\n\n    inline bool operator[](u32\
     \ i) const {\n        assert(i < tableSize);\n        return table[i];\n    }\n\
-    \n    inline usize size() const {\n        return tableSize - 1;\n    }\n\n  \
-    \  std::vector<u32> enumeratePrimes(u32 N) const {\n        assert(N < tableSize);\n\
-    \        std::vector<u32> primes{};\n        primes.reserve(std::count(table.begin(),\
+    \n    inline bool isPrime(u32 i) const {\n        assert(i < tableSize);\n   \
+    \     return table[i];\n    }\n\n    inline usize size() const {\n        return\
+    \ tableSize - 1;\n    }\n\n    std::vector<u32> enumeratePrimes(u32 N) const {\n\
+    \        assert(N < tableSize);\n        std::vector<u32> primes{};\n        primes.reserve(std::count(table.begin(),\
     \ table.begin() + N + 1, true));\n        for (u32 i = 2 ; i <= N ; i++) {\n \
     \           if (table[i]) {\n                primes.emplace_back(i);\n       \
     \     }\n        }\n        return primes;\n    }\n};\n\n} // namespace zawa\n\
@@ -64,7 +64,7 @@ data:
   isVerificationFile: true
   path: Test/LC/enumerate_primes.test.cpp
   requiredBy: []
-  timestamp: '2023-06-04 03:33:02+09:00'
+  timestamp: '2023-06-06 10:57:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/enumerate_primes.test.cpp
