@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_sum"
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/DataStructure/PrefixSums1D/StaticRangeSumSolver.hpp" 
+#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp" 
 
 #include <cstdio>
 #include <vector>

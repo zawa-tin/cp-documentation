@@ -9,14 +9,14 @@
 namespace zawa {
 
 template <class Group>
-class PrefixSums1D {
+class PrefixSum1D {
 private:
     using T = typename Group::ValueType;
     std::vector<T> dat;
 
 public:
-    PrefixSums1D() = default; 
-    PrefixSums1D(const std::vector<T>& A) : dat(A.size() + 1, Group::identity()) {
+    PrefixSum1D() = default; 
+    PrefixSum1D(const std::vector<T>& A) : dat(A.size() + 1, Group::identity()) {
         dat.shrink_to_fit();
         for (u32 i = 0 ; i < A.size() ; i++) {
             dat[i + 1] = Group::operation(dat[i], A[i]);

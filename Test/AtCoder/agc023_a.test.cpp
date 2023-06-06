@@ -1,7 +1,7 @@
 #define PROBLEM "https://atcoder.jp/contests/agc023/tasks/agc023_a"
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/DataStructure/PrefixSums1D/StaticRangeSumSolver.hpp"
+#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp"
 
 #include <iostream>
 #include <vector>
