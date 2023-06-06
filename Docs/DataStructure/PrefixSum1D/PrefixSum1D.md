@@ -11,7 +11,7 @@ documentation_of: //Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
 
 ## ライブラリの使い方
 
-#### テンプレート引数
+#### テンプレート引数Group
 
 [本ライブラリにおける群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html) をご確認ください。
 
@@ -68,14 +68,35 @@ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を返します。(0-indexedです
 <br />
 
 #### maxRight
+```cpp
+u32 maxRight<F>(u32 l, const F& f) const
+```
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最大の $r$ を返します。
 
-未テストでかつ実装に自信が無いです。verifyが終わったら説明も書きます。
+`f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
+
+**制約:** 
+- $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
+- $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
+- $l\ \le\ N$
 
 <br />
 
 #### minLeft
 
-未テストでかつ実装に自信が無いです。verifyが終わったら説明も書きます。
+未テストでかつ実装に自信が無いです。
+
+```cpp
+u32 minLeft<F>(u32 r, const F& f) const
+```
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最小の $l$ を返します。
+
+`f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
+
+**制約:** 
+- $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
+- $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
+- $l\ \le\ N$
 
 <br />
 
