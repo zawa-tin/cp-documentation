@@ -77,9 +77,9 @@ data:
   timestamp: '2023-06-07 06:12:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/agc023_a.test.cpp
-  - Test/AtCoder/abc172_c.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
 documentation_of: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
 layout: document
 title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"

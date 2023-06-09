@@ -43,10 +43,10 @@ data:
   timestamp: '2023-06-04 17:37:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/agc023_a.test.cpp
-  - Test/AtCoder/abc172_c.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"
