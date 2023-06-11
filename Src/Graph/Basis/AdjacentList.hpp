@@ -23,38 +23,50 @@ class AdjacentList {
 private:
     using E = Edge<CostType>;
 
-    usize N, M;
-    std::vector<std::vector<E>> G;
+    usize n, m;
+    std::vector<E> edges;
+    std::vector<std::vector<E>> g;
 
 public:
     AdjacentList() = default;
-    AdjacentList(usize N) : N{ N }, M{ 0 }, G(N) {}
+    AdjacentList(usize n_) : n{ n_ }, m{}, g(n_) {}
 
     void addDirectedEdge(u32 from, u32 to, const CostType& weight = 1) {
-        G[from].emplace_back(from, to, weight, M++);
+        edges.emplace_back(from, to, weight, m);
+        g[from].emplace_back(from, to, weight, m++);
     }
 
     void addUndirectedEdge(u32 u, u32 v, const CostType& weight = 1) {
-        G[u].emplace_back(u, v, weight, M);
-        G[v].emplace_back(v, u, weight, M++);
+        edges.emplace_back(u, v, weight, m);
+        g[u].emplace_back(u, v, weight, m);
+        g[v].emplace_back(v, u, weight, m++);
     }
 
     inline std::vector<E> operator[](u32 v) {
-        assert(v < N);
-        return G[v];
+        assert(v < n);
+        return g[v];
     }
 
     inline const std::vector<E>& operator[](u32 v) const {
-        assert(v < N);
-        return G[v];
+        assert(v < n);
+        return g[v];
     }
 
     inline usize sizeV() const {
-        return N;
+        return n;
     }
 
     inline usize sizeE() const {
-        return M;
+        return m;
+    }
+
+    inline std::vector<E> enumerateEdges() const {
+        return edges;
+    }
+
+    inline E getEdge(u32 i) const {
+        assert(i < m);
+        return edges[i];
     }
 };
 

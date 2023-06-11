@@ -100,6 +100,29 @@ inline usize sizeE() const
 
 <br />
 
+#### enumerateEdges
+```
+inline std::vector<Edge<CostType>> enumerateEdges() const
+```
+
+今までに追加した辺のリストを`std::vector`で返します。
+- `addUndirectedEdge`で作られた辺と`addDirectedEdge`で作られた辺は区別されていません。
+
+**計算量:** $O(\mid E\mid)$
+
+<br />
+
+#### getEdge
+```
+inline std::vector<E> getEdge(u32 i) const
+```
+
+$i$ 番目に追加した辺を`Edge`構造体で返します。`addUndirectedEdge`で追加された辺と`addDirectedEdge`で追加された辺は区別されません。
+
+**制約:** $0\ \le\ i\ <\ \mid E\mid$
+
+**計算量:** 定数時間
+
 ## Edge構造体について
 
 以下のようなメンバ変数を持つ構造体です。
