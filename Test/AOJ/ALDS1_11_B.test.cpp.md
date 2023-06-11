@@ -29,16 +29,20 @@ data:
     \    Edge(u32 from_, u32 to_, const CostType& weight_, u32 id = -1)\n        :\
     \ from{ from_ }, to{ to_ }, weight{ weight_ }, id{ id } {}\n};\n\ntemplate <class\
     \ CostType>\nclass AdjacentList {\nprivate:\n    using E = Edge<CostType>;\n\n\
-    \    usize N, M;\n    std::vector<std::vector<E>> G;\n\npublic:\n    AdjacentList()\
-    \ = default;\n    AdjacentList(usize N) : N{ N }, M{ 0 }, G(N) {}\n\n    void\
-    \ addDirectedEdge(u32 from, u32 to, const CostType& weight = 1) {\n        G[from].emplace_back(from,\
-    \ to, weight, M++);\n    }\n\n    void addUndirectedEdge(u32 u, u32 v, const CostType&\
-    \ weight = 1) {\n        G[u].emplace_back(u, v, weight, M);\n        G[v].emplace_back(v,\
-    \ u, weight, M++);\n    }\n\n    inline std::vector<E> operator[](u32 v) {\n \
-    \       assert(v < N);\n        return G[v];\n    }\n\n    inline const std::vector<E>&\
-    \ operator[](u32 v) const {\n        assert(v < N);\n        return G[v];\n  \
-    \  }\n\n    inline usize sizeV() const {\n        return N;\n    }\n\n    inline\
-    \ usize sizeE() const {\n        return M;\n    }\n};\n\ntemplate <class CostType>\n\
+    \    usize n, m;\n    std::vector<E> edges;\n    std::vector<std::vector<E>> g;\n\
+    \npublic:\n    AdjacentList() = default;\n    AdjacentList(usize n_) : n{ n_ },\
+    \ m{}, g(n_) {}\n\n    void addDirectedEdge(u32 from, u32 to, const CostType&\
+    \ weight = 1) {\n        edges.emplace_back(from, to, weight, m);\n        g[from].emplace_back(from,\
+    \ to, weight, m++);\n    }\n\n    void addUndirectedEdge(u32 u, u32 v, const CostType&\
+    \ weight = 1) {\n        edges.emplace_back(u, v, weight, m);\n        g[u].emplace_back(u,\
+    \ v, weight, m);\n        g[v].emplace_back(v, u, weight, m++);\n    }\n\n   \
+    \ inline std::vector<E> operator[](u32 v) {\n        assert(v < n);\n        return\
+    \ g[v];\n    }\n\n    inline const std::vector<E>& operator[](u32 v) const {\n\
+    \        assert(v < n);\n        return g[v];\n    }\n\n    inline usize sizeV()\
+    \ const {\n        return n;\n    }\n\n    inline usize sizeE() const {\n    \
+    \    return m;\n    }\n\n    inline std::vector<E> enumerateEdges() const {\n\
+    \        return edges;\n    }\n\n    inline E getEdge(u32 i) const {\n       \
+    \ assert(i < m);\n        return edges[i];\n    }\n};\n\ntemplate <class CostType>\n\
     using Graph = AdjacentList<CostType>;\n\n} // namespace zawa\n#line 5 \"Test/AOJ/ALDS1_11_B.test.cpp\"\
     \n\n#include <iostream>\n#line 9 \"Test/AOJ/ALDS1_11_B.test.cpp\"\n\nusing namespace\
     \ zawa;\n\nint main() {\n    usize N;\n    std::cin >> N;\n    Graph<u16> G(N);\n\
@@ -76,7 +80,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/ALDS1_11_B.test.cpp
   requiredBy: []
-  timestamp: '2023-06-09 17:43:28+09:00'
+  timestamp: '2023-06-11 22:24:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/ALDS1_11_B.test.cpp
