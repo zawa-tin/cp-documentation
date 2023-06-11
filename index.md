@@ -19,6 +19,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Basis/AdjacentList.hpp
       title: "\u30B0\u30E9\u30D5\u306E\u96A3\u63A5\u30EA\u30B9\u30C8"
+  - name: Src/Graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/ConnectedComponents.hpp
+      title: "\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -40,6 +45,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_B.test.cpp
       title: Test/AOJ/ALDS1_11_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ALDS1_11_D.test.cpp
+      title: Test/AOJ/ALDS1_11_D.test.cpp
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
@@ -48,6 +56,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc288_c.test.cpp
+      title: Test/AtCoder/abc288_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc292_d.test.cpp
+      title: Test/AtCoder/abc292_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc293_d.test.cpp
+      title: Test/AtCoder/abc293_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges

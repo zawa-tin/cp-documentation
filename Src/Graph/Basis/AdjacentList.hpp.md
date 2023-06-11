@@ -4,11 +4,26 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/ConnectedComponents.hpp
+    title: "\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_B.test.cpp
     title: Test/AOJ/ALDS1_11_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ALDS1_11_D.test.cpp
+    title: Test/AOJ/ALDS1_11_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc288_c.test.cpp
+    title: Test/AtCoder/abc288_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc292_d.test.cpp
+    title: Test/AtCoder/abc292_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc293_d.test.cpp
+    title: Test/AtCoder/abc293_d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -65,11 +80,16 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Graph/Basis/AdjacentList.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Graph/ConnectedComponents.hpp
   timestamp: '2023-06-11 22:24:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/ALDS1_11_B.test.cpp
+  - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/abc292_d.test.cpp
+  - Test/AtCoder/abc288_c.test.cpp
 documentation_of: Src/Graph/Basis/AdjacentList.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u306E\u96A3\u63A5\u30EA\u30B9\u30C8"
