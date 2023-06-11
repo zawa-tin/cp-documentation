@@ -15,19 +15,17 @@ namespace zawa {
 template <class CostType = u32>
 class ConnectedComponents {
 private:
-    Graph<CostType> G;
+    Graph<CostType> graph;
     std::vector<u32> id;
-    std::vector<bool> cycle;
     usize countComponents;
 
-    std::vector<std::vector<u32>> componentsV;
-    std::vector<std::vector<Edge<u32>>> componentsE;
+    std::vector<std::vector<u32>> componentsV, componentsE;
 
 
 public:
     ConnectedComponents() = default;
-    ConnectedComponents(const Graph<CostType>& G_) 
-        : G(G_), id(G_.sizeV()), cycle(G_.sizeV()), countComponents{}, componentsV{}, componentsE{} {
+    ConnectedComponents(const Graph<CostType>& graph_) 
+        : graph(graph_), id(graph_.sizeV()), countComponents{}, componentsV{}, componentsE{} {
 
         const u32 inf = std::numeric_limits<u32>::max();
 
@@ -42,29 +40,22 @@ public:
                 auto [v, eid] = stk.top();
                 stk.pop();
                 id[v] = countComponents;
-                for (const auto& e : G[v]) {
-                    if (e.id == eid) continue;
-                    if (id[e.to] != inf) {
-                        cycle[countComponents] = true;
-                    }
-                    else {
+                for (const auto& e : graph[v]) {
+                    if (id[e.to] == inf) {
                         stk.push({ e.to, e.id });
                     }
                 }
             }
         };
 
-        for (u32 i = 0 ; i < G.sizeV() ; i++) {
+        for (u32 i = 0 ; i < graph.sizeV() ; i++) {
             if (id[i] < inf) continue;
-            cycle.push_back(false);
             search(i);
             countComponents++;
         }
 
-        cycle.shrink_to_fit();
-
         componentsV.resize(countComponents);
-        for (u32 i = 0 ; i < G.sizeV() ; i++) {
+        for (u32 i = 0 ; i < graph.sizeV() ; i++) {
             componentsV[id[i]].push_back(i);
         }
         componentsV.shrink_to_fit();
@@ -73,11 +64,11 @@ public:
         }
 
         componentsE.resize(countComponents);
-        for (u32 i = 0 ; i < G.sizeV() ; i++) {
-            componentsE[id[i]].push_back(i);
+        for (u32 i = 0 ; i < graph.sizeE() ; i++) {
+            componentsE[id[graph.getEdge(i).from]].push_back(i);
         }
-        components.shrink_to_fit();
-        for (auto& comp : components) {
+        componentsE.shrink_to_fit();
+        for (auto& comp : componentsE) {
             comp.shrink_to_fit();
         }
     }
@@ -86,39 +77,68 @@ public:
         return countComponents;
     }
 
-    inline usize size(u32 i) const {
+    inline usize sizeV(u32 i) const {
         assert(i < countComponents);
-        return components[i].size();
+        return componentsV[i].size();
+    }
+
+    inline usize sizeE(u32 i) const {
+        assert(i < countComponents);
+        return componentsE[i].size();
     }
 
     inline u32 operator[](u32 v) const {
-        assert(v < G.sizeV());
+        assert(v < graph.sizeV());
         return id[v];
     }
 
-    inline u32 getId(u32 v) const {
-        assert(v < G.sizeV());
+    inline u32 getVId(u32 v) const {
+        assert(v < graph.sizeV());
         return id[v];
     }   
 
+    inline u32 getEId(u32 v) const {
+        assert(v < graph.sizeE());
+        return id[graph.getEdge(v).from];
+    }   
+
     inline bool same(u32 u, u32 v) const {
-        assert(u < G.sizeV());
-        assert(v < G.sizeV());
+        assert(u < graph.sizeV());
+        assert(v < graph.sizeV());
         return id[u] == id[v];
+    }
+
+    inline std::vector<std::vector<u32>> enumerateV() const {
+        return componentsV;
+    }
+
+    inline std::vector<u32> enumerateV(u32 i) const {
+        assert(i < countComponents);
+        return componentsV[i];
+    }
+
+    inline std::vector<std::vector<Edge<CostType>>> enumerateE() const {
+        std::vector res(countComponents, std::vector<Edge<CostType>>());
+        for (u32 i = 0 ; i < countComponents ; i++) {
+            for (auto eid : componentsE[i]) {
+                res[i].push_back(graph.getEdge(eid));
+            }
+        }
+        return res;
+    }
+
+    inline std::vector<Edge<CostType>> enumerateE(u32 i) const {
+        assert(i < countComponents);
+        std::vector<CostType> res(componentsE[i].size());
+        for (u32 j = 0 ; j < componentsE[i].size() ; j++) {
+            res[j] = graph.getEdge(componentsE[i][j]);
+        }
+        return res;
     }
 
     inline bool hasCycle(u32 i) const {
         assert(i < countComponents);
-        return cycle[i];
-    }
-
-    inline std::vector<std::vector<u32>> enumerate() const {
-        return components;
-    }
-
-    inline std::vector<u32> enumerate(u32 i) const {
-        assert(i < countComponents);
-        return components[i];
+        return sizeE(i) + 1 > sizeV(i);
     }
 };
 
