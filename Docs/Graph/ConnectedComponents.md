@@ -21,12 +21,12 @@ documentation_of: //Src/Graph/ConnectedComponents.hpp
 #### コンストラクタ
 ```
 (1) ConnectedComponents() = default
-(2) ConnectedComponents(const Graph<CostType& graph_)
+(2) ConnectedComponents(const Graph<CostType& graph)
 ```
 
 (1) デフォルトコンストラクタ
 
-(2) 引数に与えた`graph_`でビルドします。
+(2) 引数に与えた`graph`でビルドします。
 
 具体的には、グラフにある連結成分を以下のように番号付けします。
 - 頂点 $0$ を含む連結成分を $0$ 番とする
@@ -34,7 +34,7 @@ documentation_of: //Src/Graph/ConnectedComponents.hpp
 - $0, 1$ 番の連結成分に含まれていない頂点のうち、番号最小のものを $i_2$ とする。 頂点 $i_2$ を含む連結成分を $2$ 番とする
 - $\vdots$
 
-**制約**: `graph_`が無向グラフであること
+**制約**: `graph`が無向グラフであること
 
 **計算量:** $O(\mid V\mid + \mid E\mid)$
 
@@ -112,7 +112,7 @@ inline u32 getVId(u32 v) const
 inline u32 getEId(u32 v) const
 ```
 
-`graph_`構築時に $v$ 番目に追加された辺が何番目の連結成分に属するかを返します。
+`graph`構築時に $v$ 番目に追加された辺が何番目の連結成分に属するかを返します。
 
 **制約:** $0\ \le v\ \le\ \mid E\mid$
 

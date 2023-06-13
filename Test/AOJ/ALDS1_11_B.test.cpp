@@ -25,7 +25,7 @@ int main() {
 
     for (u32 i = 0 ; i < N ; i++) {
         for (const auto& e : G[i]) 
-            assert(i == e.from);
+            assert(i == e.from());
     }
 
     std::vector<bool> visited(N);
@@ -35,8 +35,8 @@ int main() {
     auto dfs = [&](auto dfs, u32 v) -> void {
         visited[v] = true;
         d[v] = ++time;
-        for (const auto& e : G[v]) if (!visited[e.to])
-            dfs(dfs, e.to);
+        for (const auto& e : G[v]) if (!visited[e.to()])
+            dfs(dfs, e.to());
         f[v] = ++time;
     };
 
