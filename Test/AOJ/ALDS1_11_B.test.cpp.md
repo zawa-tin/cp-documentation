@@ -24,40 +24,44 @@ data:
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Graph/Basis/AdjacentList.hpp\"\
     \n\n#line 4 \"Src/Graph/Basis/AdjacentList.hpp\"\n\n#include <vector>\n#include\
-    \ <cassert>\n\nnamespace zawa {\n\ntemplate <class CostType>\nstruct Edge {\n\
-    \    u32 from, to;\n    CostType weight;\n    u32 id;\n\n    Edge() = default;\n\
-    \    Edge(u32 from_, u32 to_, const CostType& weight_, u32 id = -1)\n        :\
-    \ from{ from_ }, to{ to_ }, weight{ weight_ }, id{ id } {}\n};\n\ntemplate <class\
-    \ CostType>\nclass AdjacentList {\nprivate:\n    using E = Edge<CostType>;\n\n\
-    \    usize n, m;\n    std::vector<E> edges;\n    std::vector<std::vector<E>> g;\n\
-    \npublic:\n    AdjacentList() = default;\n    AdjacentList(usize n_) : n{ n_ },\
-    \ m{}, g(n_) {}\n\n    void addDirectedEdge(u32 from, u32 to, const CostType&\
-    \ weight = 1) {\n        edges.emplace_back(from, to, weight, m);\n        g[from].emplace_back(from,\
-    \ to, weight, m++);\n    }\n\n    void addUndirectedEdge(u32 u, u32 v, const CostType&\
-    \ weight = 1) {\n        edges.emplace_back(u, v, weight, m);\n        g[u].emplace_back(u,\
-    \ v, weight, m);\n        g[v].emplace_back(v, u, weight, m++);\n    }\n\n   \
-    \ inline std::vector<E> operator[](u32 v) {\n        assert(v < n);\n        return\
-    \ g[v];\n    }\n\n    inline const std::vector<E>& operator[](u32 v) const {\n\
-    \        assert(v < n);\n        return g[v];\n    }\n\n    inline usize sizeV()\
-    \ const {\n        return n;\n    }\n\n    inline usize sizeE() const {\n    \
-    \    return m;\n    }\n\n    inline std::vector<E> enumerateEdges() const {\n\
-    \        return edges;\n    }\n\n    inline E getEdge(u32 i) const {\n       \
-    \ assert(i < m);\n        return edges[i];\n    }\n};\n\ntemplate <class CostType>\n\
-    using Graph = AdjacentList<CostType>;\n\n} // namespace zawa\n#line 5 \"Test/AOJ/ALDS1_11_B.test.cpp\"\
-    \n\n#include <iostream>\n#line 9 \"Test/AOJ/ALDS1_11_B.test.cpp\"\n\nusing namespace\
-    \ zawa;\n\nint main() {\n    usize N;\n    std::cin >> N;\n    Graph<u16> G(N);\n\
-    \    for (usize i = 0 ; i < N ; i++) {\n        u32 u, k;\n        std::cin >>\
-    \ u >> k;\n        for (u32 j = 0 ; j < k ; j++) {\n            u32 v;\n     \
-    \       std::cin >> v;\n            G.addDirectedEdge(u - 1, v - 1);\n       \
-    \ }\n    }\n\n    for (u32 i = 0 ; i < N ; i++) {\n        for (const auto& e\
-    \ : G[i]) \n            assert(i == e.from);\n    }\n\n    std::vector<bool> visited(N);\n\
-    \    std::vector<u32> d(N), f(N);\n    u32 time = 0;\n\n    auto dfs = [&](auto\
-    \ dfs, u32 v) -> void {\n        visited[v] = true;\n        d[v] = ++time;\n\
-    \        for (const auto& e : G[v]) if (!visited[e.to])\n            dfs(dfs,\
-    \ e.to);\n        f[v] = ++time;\n    };\n\n    for (u32 i = 0 ; i < N ; i++)\
-    \ if (!visited[i]) \n        dfs(dfs, i);\n\n\n    for (u32 i = 0 ; i < N ; i++)\
-    \ {\n        std::cout << i + 1 << ' ' << d[i] << ' ' << f[i] << std::endl;\n\
-    \    }\n}\n"
+    \ <cassert>\n\nnamespace zawa {\n\ntemplate <class CostType>\nclass Edge {\nprivate:\n\
+    \    u32 from_, to_;\n    CostType weight_;\n    u32 id_;\n\npublic:\n    Edge()\
+    \ = default;\n    Edge(u32 from, u32 to, const CostType& weight, u32 id)\n   \
+    \     : from_{ from }, to_{ to }, weight_{ weight }, id_{ id } {}\n\n    inline\
+    \ u32 from() const noexcept {\n        return from_;\n    }\n\n    inline u32\
+    \ to() const noexcept {\n        return to_;\n    }\n\n    inline CostType weight()\
+    \ const {\n        return weight_;\n    }\n\n    inline u32 id() const noexcept\
+    \ {\n        return id_;\n    }\n\n};\n\ntemplate <class CostType>\nclass AdjacentList\
+    \ {\nprivate:\n    using E = Edge<CostType>;\n\n    usize n_, m_;\n    std::vector<E>\
+    \ edges_;\n    std::vector<std::vector<E>> g_;\n\npublic:\n    AdjacentList()\
+    \ = default;\n    AdjacentList(usize n) : n_{ n }, m_{}, g_(n) {}\n\n    void\
+    \ addDirectedEdge(u32 from, u32 to, const CostType& weight = 1) {\n        edges_.emplace_back(from,\
+    \ to, weight, m_);\n        g_[from].emplace_back(from, to, weight, m_++);\n \
+    \   }\n\n    void addUndirectedEdge(u32 u, u32 v, const CostType& weight = 1)\
+    \ {\n        edges_.emplace_back(u, v, weight, m_);\n        g_[u].emplace_back(u,\
+    \ v, weight, m_);\n        g_[v].emplace_back(v, u, weight, m_++);\n    }\n\n\
+    \    inline std::vector<E> operator[](u32 v) {\n        assert(v < n_);\n    \
+    \    return g_[v];\n    }\n\n    inline const std::vector<E>& operator[](u32 v)\
+    \ const {\n        assert(v < n_);\n        return g_[v];\n    }\n\n    inline\
+    \ usize sizeV() const noexcept {\n        return n_;\n    }\n\n    inline usize\
+    \ sizeE() const noexcept {\n        return m_;\n    }\n\n    inline std::vector<E>\
+    \ enumerateEdges() const {\n        return edges_;\n    }\n\n    inline E getEdge(u32\
+    \ i) const {\n        assert(i < m_);\n        return edges_[i];\n    }\n};\n\n\
+    template <class CostType>\nusing Graph = AdjacentList<CostType>;\n\n} // namespace\
+    \ zawa\n#line 5 \"Test/AOJ/ALDS1_11_B.test.cpp\"\n\n#include <iostream>\n#line\
+    \ 9 \"Test/AOJ/ALDS1_11_B.test.cpp\"\n\nusing namespace zawa;\n\nint main() {\n\
+    \    usize N;\n    std::cin >> N;\n    Graph<u16> G(N);\n    for (usize i = 0\
+    \ ; i < N ; i++) {\n        u32 u, k;\n        std::cin >> u >> k;\n        for\
+    \ (u32 j = 0 ; j < k ; j++) {\n            u32 v;\n            std::cin >> v;\n\
+    \            G.addDirectedEdge(u - 1, v - 1);\n        }\n    }\n\n    for (u32\
+    \ i = 0 ; i < N ; i++) {\n        for (const auto& e : G[i]) \n            assert(i\
+    \ == e.from());\n    }\n\n    std::vector<bool> visited(N);\n    std::vector<u32>\
+    \ d(N), f(N);\n    u32 time = 0;\n\n    auto dfs = [&](auto dfs, u32 v) -> void\
+    \ {\n        visited[v] = true;\n        d[v] = ++time;\n        for (const auto&\
+    \ e : G[v]) if (!visited[e.to()])\n            dfs(dfs, e.to());\n        f[v]\
+    \ = ++time;\n    };\n\n    for (u32 i = 0 ; i < N ; i++) if (!visited[i]) \n \
+    \       dfs(dfs, i);\n\n\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cout\
+    \ << i + 1 << ' ' << d[i] << ' ' << f[i] << std::endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/ALDS1_11_B\"\n\
     \n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Graph/Basis/AdjacentList.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <cassert>\n\nusing namespace\
@@ -66,21 +70,21 @@ data:
     \ u >> k;\n        for (u32 j = 0 ; j < k ; j++) {\n            u32 v;\n     \
     \       std::cin >> v;\n            G.addDirectedEdge(u - 1, v - 1);\n       \
     \ }\n    }\n\n    for (u32 i = 0 ; i < N ; i++) {\n        for (const auto& e\
-    \ : G[i]) \n            assert(i == e.from);\n    }\n\n    std::vector<bool> visited(N);\n\
-    \    std::vector<u32> d(N), f(N);\n    u32 time = 0;\n\n    auto dfs = [&](auto\
-    \ dfs, u32 v) -> void {\n        visited[v] = true;\n        d[v] = ++time;\n\
-    \        for (const auto& e : G[v]) if (!visited[e.to])\n            dfs(dfs,\
-    \ e.to);\n        f[v] = ++time;\n    };\n\n    for (u32 i = 0 ; i < N ; i++)\
-    \ if (!visited[i]) \n        dfs(dfs, i);\n\n\n    for (u32 i = 0 ; i < N ; i++)\
-    \ {\n        std::cout << i + 1 << ' ' << d[i] << ' ' << f[i] << std::endl;\n\
-    \    }\n}\n"
+    \ : G[i]) \n            assert(i == e.from());\n    }\n\n    std::vector<bool>\
+    \ visited(N);\n    std::vector<u32> d(N), f(N);\n    u32 time = 0;\n\n    auto\
+    \ dfs = [&](auto dfs, u32 v) -> void {\n        visited[v] = true;\n        d[v]\
+    \ = ++time;\n        for (const auto& e : G[v]) if (!visited[e.to()])\n      \
+    \      dfs(dfs, e.to());\n        f[v] = ++time;\n    };\n\n    for (u32 i = 0\
+    \ ; i < N ; i++) if (!visited[i]) \n        dfs(dfs, i);\n\n\n    for (u32 i =\
+    \ 0 ; i < N ; i++) {\n        std::cout << i + 1 << ' ' << d[i] << ' ' << f[i]\
+    \ << std::endl;\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Basis/AdjacentList.hpp
   isVerificationFile: true
   path: Test/AOJ/ALDS1_11_B.test.cpp
   requiredBy: []
-  timestamp: '2023-06-11 22:24:39+09:00'
+  timestamp: '2023-06-13 11:49:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/ALDS1_11_B.test.cpp

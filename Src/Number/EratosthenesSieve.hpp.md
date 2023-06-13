@@ -21,44 +21,46 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Number/EratosthenesSieve.hpp\"\n\n#include\
     \ <vector>\n#include <cassert>\n#include <algorithm>\n\nnamespace zawa {\n\nclass\
-    \ EratosthenesSieve {\nprivate:\n    usize tableSize;\n    std::vector<bool> table;\n\
-    \npublic:\n    EratosthenesSieve() = default;\n\n    EratosthenesSieve(usize tableSize_)\
-    \ : tableSize{ tableSize_ + 1 }, table(tableSize_ + 1, true) {\n        table.shrink_to_fit();\n\
-    \        assert(tableSize > 0);\n        table[0] = table[1] = false;\n      \
-    \  for (u64 i = 2 ; i * i < tableSize ; i++) {\n            if (!table[i]) continue;\n\
-    \            for (u64 j = i * i ; j < tableSize ; j += i ) {\n               \
-    \ table[j] = false;\n            }\n        }\n    }\n\n    inline bool operator[](u32\
-    \ i) const {\n        assert(i < tableSize);\n        return table[i];\n    }\n\
-    \n    inline bool isPrime(u32 i) const {\n        assert(i < tableSize);\n   \
-    \     return table[i];\n    }\n\n    inline usize size() const {\n        return\
-    \ tableSize - 1;\n    }\n\n    std::vector<u32> enumeratePrimes(u32 N) const {\n\
-    \        assert(N < tableSize);\n        std::vector<u32> primes{};\n        primes.reserve(std::count(table.begin(),\
-    \ table.begin() + N + 1, true));\n        for (u32 i = 2 ; i <= N ; i++) {\n \
-    \           if (table[i]) {\n                primes.emplace_back(i);\n       \
-    \     }\n        }\n        return primes;\n    }\n};\n\n} // namespace zawa\n"
+    \ EratosthenesSieve {\nprivate:\n    usize tableSize_;\n    std::vector<bool>\
+    \ table_;\n\npublic:\n    EratosthenesSieve() = default;\n\n    EratosthenesSieve(usize\
+    \ tableSize) : tableSize_{ tableSize + 1 }, table_(tableSize + 1, true) {\n  \
+    \      table_.shrink_to_fit();\n        assert(tableSize_ > 0);\n        table_[0]\
+    \ = table_[1] = false;\n        for (u64 i = 2 ; i * i < tableSize_ ; i++) {\n\
+    \            if (!table_[i]) continue;\n            for (u64 j = i * i ; j < tableSize_\
+    \ ; j += i ) {\n                table_[j] = false;\n            }\n        }\n\
+    \    }\n\n    inline bool operator[](u32 i) const {\n        assert(i < tableSize_);\n\
+    \        return table_[i];\n    }\n\n    inline bool isPrime(u32 i) const {\n\
+    \        assert(i < tableSize_);\n        return table_[i];\n    }\n\n    inline\
+    \ usize size() const {\n        return tableSize_ - 1;\n    }\n\n    std::vector<u32>\
+    \ enumeratePrimes(u32 N) const {\n        assert(N < tableSize_);\n        std::vector<u32>\
+    \ primes{};\n        primes.reserve(std::count(table_.begin(), table_.begin()\
+    \ + N + 1, true));\n        for (u32 i = 2 ; i <= N ; i++) {\n            if (table_[i])\
+    \ {\n                primes.emplace_back(i);\n            }\n        }\n     \
+    \   return primes;\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <algorithm>\n\nnamespace zawa {\n\nclass EratosthenesSieve\
-    \ {\nprivate:\n    usize tableSize;\n    std::vector<bool> table;\n\npublic:\n\
-    \    EratosthenesSieve() = default;\n\n    EratosthenesSieve(usize tableSize_)\
-    \ : tableSize{ tableSize_ + 1 }, table(tableSize_ + 1, true) {\n        table.shrink_to_fit();\n\
-    \        assert(tableSize > 0);\n        table[0] = table[1] = false;\n      \
-    \  for (u64 i = 2 ; i * i < tableSize ; i++) {\n            if (!table[i]) continue;\n\
-    \            for (u64 j = i * i ; j < tableSize ; j += i ) {\n               \
-    \ table[j] = false;\n            }\n        }\n    }\n\n    inline bool operator[](u32\
-    \ i) const {\n        assert(i < tableSize);\n        return table[i];\n    }\n\
-    \n    inline bool isPrime(u32 i) const {\n        assert(i < tableSize);\n   \
-    \     return table[i];\n    }\n\n    inline usize size() const {\n        return\
-    \ tableSize - 1;\n    }\n\n    std::vector<u32> enumeratePrimes(u32 N) const {\n\
-    \        assert(N < tableSize);\n        std::vector<u32> primes{};\n        primes.reserve(std::count(table.begin(),\
-    \ table.begin() + N + 1, true));\n        for (u32 i = 2 ; i <= N ; i++) {\n \
-    \           if (table[i]) {\n                primes.emplace_back(i);\n       \
-    \     }\n        }\n        return primes;\n    }\n};\n\n} // namespace zawa\n"
+    \ {\nprivate:\n    usize tableSize_;\n    std::vector<bool> table_;\n\npublic:\n\
+    \    EratosthenesSieve() = default;\n\n    EratosthenesSieve(usize tableSize)\
+    \ : tableSize_{ tableSize + 1 }, table_(tableSize + 1, true) {\n        table_.shrink_to_fit();\n\
+    \        assert(tableSize_ > 0);\n        table_[0] = table_[1] = false;\n   \
+    \     for (u64 i = 2 ; i * i < tableSize_ ; i++) {\n            if (!table_[i])\
+    \ continue;\n            for (u64 j = i * i ; j < tableSize_ ; j += i ) {\n  \
+    \              table_[j] = false;\n            }\n        }\n    }\n\n    inline\
+    \ bool operator[](u32 i) const {\n        assert(i < tableSize_);\n        return\
+    \ table_[i];\n    }\n\n    inline bool isPrime(u32 i) const {\n        assert(i\
+    \ < tableSize_);\n        return table_[i];\n    }\n\n    inline usize size()\
+    \ const {\n        return tableSize_ - 1;\n    }\n\n    std::vector<u32> enumeratePrimes(u32\
+    \ N) const {\n        assert(N < tableSize_);\n        std::vector<u32> primes{};\n\
+    \        primes.reserve(std::count(table_.begin(), table_.begin() + N + 1, true));\n\
+    \        for (u32 i = 2 ; i <= N ; i++) {\n            if (table_[i]) {\n    \
+    \            primes.emplace_back(i);\n            }\n        }\n        return\
+    \ primes;\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Number/EratosthenesSieve.hpp
   requiredBy: []
-  timestamp: '2023-06-06 10:57:42+09:00'
+  timestamp: '2023-06-13 11:55:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/enumerate_primes.test.cpp
@@ -78,11 +80,11 @@ title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
 #### コンストラクタ
 ```
 (1) EratosthenesSieve()
-(2) EratosthenesSieve(usize tableSize_)
+(2) EratosthenesSieve(usize tableSize)
 ```
 
 (1) デフォルトコンストラクタ  
-(2) $S =$ `tableSize_`として配列を構築します。
+(2) $S =$ `tableSize`として配列を構築します。
 
 **計算量:** $O(S\log (\log S))$
 
