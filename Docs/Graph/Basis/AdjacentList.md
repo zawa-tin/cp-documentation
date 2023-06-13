@@ -125,13 +125,19 @@ $i$ 番目に追加した辺を`Edge`構造体で返します。`addUndirectedEd
 
 ## Edge構造体について
 
-以下のようなメンバ変数を持つ構造体です。
+以下のようなメンバを持つクラスです。
 
 ```cpp
-struct Edge {
-    u32 from, to;
-    CostType weight;
-    u32 id;
+class Edge {
+private:
+    u32 from_, to_;
+    CostType weight_;
+    u32 id_;
+public:
+    u32 from() // get from_
+    u32 to() // get to_
+    u32 weight() // get weight_
+    u32 id() // get id_
 };
 ```
 

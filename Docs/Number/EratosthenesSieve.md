@@ -14,11 +14,11 @@ documentation_of: "//Src/Number/EratosthenesSieve.hpp"
 #### コンストラクタ
 ```
 (1) EratosthenesSieve()
-(2) EratosthenesSieve(usize tableSize_)
+(2) EratosthenesSieve(usize tableSize)
 ```
 
 (1) デフォルトコンストラクタ  
-(2) $S =$ `tableSize_`として配列を構築します。
+(2) $S =$ `tableSize`として配列を構築します。
 
 **計算量:** $O(S\log (\log S))$
 
