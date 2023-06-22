@@ -36,29 +36,37 @@ data:
     \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
     \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
     \n\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
-    #include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <class Group>\n\
-    class PrefixSum1D {\nprivate:\n    using T = typename Group::ValueType;\n    std::vector<T>\
-    \ dat;\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
+    #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
+    \nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D {\nprivate:\n\
+    \    using T = typename Group::ValueType;\n    std::vector<T> dat;\n\n    constexpr\
+    \ bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r and r < dat.size());\n\
+    \    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
     \ A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
     \        for (u32 i = 0 ; i < A.size() ; i++) {\n            dat[i + 1] = Group::operation(dat[i],\
     \ A[i]);\n        }\n    }\n\n    inline T operator[](u32 i) const {\n       \
     \ assert(i < dat.size());\n        return dat[i];\n    }\n\n    inline usize size()\
     \ const {\n        return dat.size();\n    }\n\n    T product(u32 l, u32 r) const\
-    \ {\n        assert(l <= r);\n        assert(r < dat.size());\n        return\
-    \ Group::operation(Group::inverse(dat[l]), dat[r]);\n    }\n\n    template <class\
-    \ F>\n    T maxRight(u32 l, const F& f) const {\n        assert(l < dat.size());\n\
-    \        assert(f(Group::identity()));\n        u32 itr = std::__lg(dat.size()\
-    \ - l) + 1;\n        u32 res = l;\n        for (i32 p = itr ; p >= 0 ; p--) {\n\
-    \            u32 r = res + (1 << p);\n            if (r >= dat.size()) continue;\n\
-    \            if (not f(product(l, r))) continue;\n            res = r;\n     \
-    \   }\n        return res;\n    }\n\n    template <class F>\n    T minLeft(u32\
-    \ r, const F& f) const {\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n\
-    \        u32 itr = std::__lg(r) + 1;\n        u32 res = r;\n        for (i32 p\
-    \ = itr ; p >= 0 ; p--) {\n            if ((1 << p) > res) continue;\n       \
-    \     u32 l = res - (1 << p);\n            if (not f(product(l, r))) continue;\n\
-    \            res = l;\n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\n\
-    namespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
+    \ {\n        assert(rangeCheck(l, r));\n        return Group::operation(Group::inverse(dat[l]),\
+    \ dat[r]);\n    }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n  \
+    \      assert(rangeCheck(l, r));\n        T value = Group::operation(v, dat[l]);\n\
+    \        return std::lower_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();\n\
+    \    }\n\n    u32 upperBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
+    \ r));\n        T value = Group::operation(v, dat[l]);\n        return std::upper_bound(dat.begin()\
+    \ + l, dat.begin() + r, value) - dat.begin();\n    }\n\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_same_v<bool,\
+    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
+    );\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n \
+    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(v,\
+    \ Group::inverse(dat[l])));\n        };\n        return std::partition_point(dat.begin()\
+    \ + l, dat.end(), f_) - dat.begin();\n    }\n\n    template <class F>\n    u32\
+    \ minLeft(u32 r, const F& f) const {\n        static_assert(std::is_same_v<bool,\
+    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
+    );\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n \
+    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(Group::inverse(v),\
+    \ dat[r]));\n        };\n        return dat.rend() - std::partition_point(dat.rbegin()\
+    \ + (dat.size() - r - 1), dat.rend(), f_) - 1;\n    }\n};\n\n} // namespace zawa\n\
+    #line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\nnamespace\
+    \ zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
     \n    template <class T>\n    using Ruisekiwa = PrefixSum1D<AdditiveGroup<T>>;\n\
     \n};\n#line 5 \"Test/AtCoder/agc023_a.test.cpp\"\n\n#include <iostream>\n#line\
     \ 8 \"Test/AtCoder/agc023_a.test.cpp\"\n#include <map>\n\nusing namespace zawa;\n\
@@ -83,7 +91,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/agc023_a.test.cpp
   requiredBy: []
-  timestamp: '2023-06-07 06:12:35+09:00'
+  timestamp: '2023-06-23 03:23:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/agc023_a.test.cpp

@@ -20,10 +20,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc172/tasks/abc172_c
+    PROBLEM: https://atcoder.jp/contests/abc229/tasks/abc229_d
     links:
-    - https://atcoder.jp/contests/abc172/tasks/abc172_c
-  bundledCode: "#line 1 \"Test/AtCoder/abc172_c.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc172/tasks/abc172_c\"\
+    - https://atcoder.jp/contests/abc229/tasks/abc229_d
+  bundledCode: "#line 1 \"Test/AtCoder/abc229_d.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -68,54 +68,49 @@ data:
     #line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\nnamespace\
     \ zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
     \n    template <class T>\n    using Ruisekiwa = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n};\n#line 5 \"Test/AtCoder/abc172_c.test.cpp\"\n\n#include <iostream>\n#line\
-    \ 9 \"Test/AtCoder/abc172_c.test.cpp\"\n\nusing namespace zawa;\n\ni32 main()\
-    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n    usize N, M; std::cin\
-    \ >> N >> M;\n    i64 K; std::cin >> K;\n\n    std::vector<i64> A(N), B(M);\n\
-    \    for (auto& a : A) std::cin >> a;\n    for (auto& b : B) std::cin >> b;\n\n\
-    \    A.push_back((i64)1e15);\n    B.push_back((i64)1e15);\n    N++; M++;\n\n \
-    \   Ruisekiwa<i64> SA(A), SB(B);\n\n    u32 ans1{}, ans2{};\n\n    {\n       \
-    \ for (u32 a = 0 ; a <= N ; a++) {\n            if (SA[a] > K) break;\n      \
-    \      u32 v = a + SB.upperBound(0, M, K - SA[a]) - 1;\n            ans1 = std::max(ans1,\
-    \ v);\n        }\n    }\n\n    {\n        for (u32 a = 0 ; a <= N ; a++) {\n \
-    \           if (SA[a] > K) break;\n            auto f = [&](i64 v) -> bool {\n\
-    \                return SA[a] + v <= K;\n            };\n            u32 v = a\
-    \ + SB.maxRight(0, f) - 1;\n            ans2 = std::max(ans2, v);\n        }\n\
-    \    }\n\n    assert(ans1 == ans2);\n\n    std::cout << ans1 << std::endl;\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc172/tasks/abc172_c\"\n\n\
+    \n};\n#line 5 \"Test/AtCoder/abc229_d.test.cpp\"\n\nusing namespace zawa;\n\n\
+    #include <iostream>\n#line 11 \"Test/AtCoder/abc229_d.test.cpp\"\n\nint main()\
+    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n    std::string S;\n\
+    \    std::cin >> S;\n    u32 K;\n    std::cin >> K;\n\n    std::vector<i32> A(S.size());\n\
+    \    for (u32 i = 0 ; i < S.size() ; i++) {\n        A[i] = S[i] == '.';\n   \
+    \ }\n    A.push_back(K + 1);\n\n    Ruisekiwa<i32> pref(A);\n\n    u32 ans = 0;\n\
+    \    for (u32 i = 0 ; i <= S.size() ; i++) {\n        u32 v = pref.upperBound(i,\
+    \ pref.size() - 1, K) - 1;\n        ans = std::max(ans, v - i);\n    }\n\n   \
+    \ std::cout << ans << std::endl;\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <algorithm>\n\nusing namespace\
-    \ zawa;\n\ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n\
-    \    usize N, M; std::cin >> N >> M;\n    i64 K; std::cin >> K;\n\n    std::vector<i64>\
-    \ A(N), B(M);\n    for (auto& a : A) std::cin >> a;\n    for (auto& b : B) std::cin\
-    \ >> b;\n\n    A.push_back((i64)1e15);\n    B.push_back((i64)1e15);\n    N++;\
-    \ M++;\n\n    Ruisekiwa<i64> SA(A), SB(B);\n\n    u32 ans1{}, ans2{};\n\n    {\n\
-    \        for (u32 a = 0 ; a <= N ; a++) {\n            if (SA[a] > K) break;\n\
-    \            u32 v = a + SB.upperBound(0, M, K - SA[a]) - 1;\n            ans1\
-    \ = std::max(ans1, v);\n        }\n    }\n\n    {\n        for (u32 a = 0 ; a\
-    \ <= N ; a++) {\n            if (SA[a] > K) break;\n            auto f = [&](i64\
-    \ v) -> bool {\n                return SA[a] + v <= K;\n            };\n     \
-    \       u32 v = a + SB.maxRight(0, f) - 1;\n            ans2 = std::max(ans2,\
-    \ v);\n        }\n    }\n\n    assert(ans1 == ans2);\n\n    std::cout << ans1\
-    \ << std::endl;\n}\n"
+    \n\nusing namespace zawa;\n\n#include <iostream>\n#include <vector>\n#include\
+    \ <algorithm>\n\nint main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \n    std::string S;\n    std::cin >> S;\n    u32 K;\n    std::cin >> K;\n\n \
+    \   std::vector<i32> A(S.size());\n    for (u32 i = 0 ; i < S.size() ; i++) {\n\
+    \        A[i] = S[i] == '.';\n    }\n    A.push_back(K + 1);\n\n    Ruisekiwa<i32>\
+    \ pref(A);\n\n    u32 ans = 0;\n    for (u32 i = 0 ; i <= S.size() ; i++) {\n\
+    \        u32 v = pref.upperBound(i, pref.size() - 1, K) - 1;\n        ans = std::max(ans,\
+    \ v - i);\n    }\n\n    std::cout << ans << std::endl;\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   isVerificationFile: true
-  path: Test/AtCoder/abc172_c.test.cpp
+  path: Test/AtCoder/abc229_d.test.cpp
   requiredBy: []
   timestamp: '2023-06-23 03:23:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AtCoder/abc172_c.test.cpp
+documentation_of: Test/AtCoder/abc229_d.test.cpp
 layout: document
-title: ABC172-C Tsundoku
+title: ABC229-D Longest X
 ---
 
-読んだ本の集合が等しいなら本を読んだ合計時間は等しい -> 本を読む順番は考慮しなくて良い。
+$S$ において、`l`文字目から`r - 1`文字目すべてを`X`に変えることが可能か？という問題を考える。
 
-ここで、 机Aから読む本の冊数を $a$ 冊に固定したとする。机Aから $a$ 冊の本を読むのにかかる時間は $\displaystyle S_{a} = \sum_{i = 1}^{a} A_i$ 分であり、残りの $K - S_{a}$ 分で机Bから何冊よむことができるかを高速に判定できれば良い。
+これは`l`文字目から`r - 1`文字までに`.`が $K$ 個以内であれば良い。
 
-これは $B$ の累積和上で二分探索すれば良い。
+このような判定問題はあらかじめ`.`の数について累積和をとっておくことで定数時間で可能である。
+
+この上で、 `X`を連続させる区間の左端を固定した上で右端を可能な限り伸ばすことを考える -> 二分探索でそのような右端の最大が $O(\log \mid S\mid)$ で求まる。
+
+よって左端を全探索することで $O(\mid S\mid \log \mid S\mid)$ でこの問題を解くことができた。
+
+(尺取りの方が頭にやさしそう)

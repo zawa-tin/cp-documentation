@@ -97,9 +97,9 @@ data:
   verifiedWith:
   - Test/AOJ/ALDS1_11_B.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
-  - Test/AtCoder/abc288_c.test.cpp
 documentation_of: Src/Graph/Basis/AdjacentList.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u306E\u96A3\u63A5\u30EA\u30B9\u30C8"

@@ -34,6 +34,9 @@ data:
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc229_d.test.cpp
+    title: ABC229-D Longest X
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_c.test.cpp
     title: Test/AtCoder/abc288_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -133,26 +136,27 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Src/Graph/ConnectedComponents.hpp
+  - Src/Graph/Basis/AdjacentList.hpp
   - Src/Number/EratosthenesSieve.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
-  - Src/Graph/ConnectedComponents.hpp
-  - Src/Graph/Basis/AdjacentList.hpp
   - Src/Sequence/CompressedSequence.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/enumerate_primes.test.cpp
   - Test/AOJ/ALDS1_11_B.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
-  - Test/AtCoder/abc172_c.test.cpp
-  - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
-  - Test/AtCoder/abc288_c.test.cpp
+  - Test/AtCoder/abc292_d.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

@@ -10,6 +10,9 @@ data:
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc229_d.test.cpp
+    title: ABC229-D Longest X
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -45,8 +48,9 @@ data:
   verifiedWith:
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
-  - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"

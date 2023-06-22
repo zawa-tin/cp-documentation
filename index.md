@@ -57,6 +57,9 @@ data:
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc229_d.test.cpp
+      title: ABC229-D Longest X
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc288_c.test.cpp
       title: Test/AtCoder/abc288_c.test.cpp
     - icon: ':heavy_check_mark:'
