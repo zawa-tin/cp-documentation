@@ -5,6 +5,8 @@
 #include <cmath>
 #include <vector>
 #include <cassert>
+#include <algorithm>
+#include <type_traits>
 
 namespace zawa {
 
@@ -13,6 +15,10 @@ class PrefixSum1D {
 private:
     using T = typename Group::ValueType;
     std::vector<T> dat;
+
+    constexpr bool rangeCheck(u32 l, u32 r) const {
+        return (l <= r and r < dat.size());
+    }
 
 public:
     PrefixSum1D() = default; 
@@ -33,39 +39,42 @@ public:
     }
 
     T product(u32 l, u32 r) const {
-        assert(l <= r);
-        assert(r < dat.size());
+        assert(rangeCheck(l, r));
         return Group::operation(Group::inverse(dat[l]), dat[r]);
     }
 
-    template <class F>
-    T maxRight(u32 l, const F& f) const {
-        assert(l < dat.size());
-        assert(f(Group::identity()));
-        u32 itr = std::__lg(dat.size() - l) + 1;
-        u32 res = l;
-        for (i32 p = itr ; p >= 0 ; p--) {
-            u32 r = res + (1 << p);
-            if (r >= dat.size()) continue;
-            if (not f(product(l, r))) continue;
-            res = r;
-        }
-        return res;
+    u32 lowerBound(u32 l, u32 r, const T& v) const {
+        assert(rangeCheck(l, r));
+        T value = Group::operation(v, dat[l]);
+        return std::lower_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();
+    }
+
+    u32 upperBound(u32 l, u32 r, const T& v) const {
+        assert(rangeCheck(l, r));
+        T value = Group::operation(v, dat[l]);
+        return std::upper_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();
     }
 
     template <class F>
-    T minLeft(u32 r, const F& f) const {
+    u32 maxRight(u32 l, const F& f) const {
+        static_assert(std::is_same_v<bool, std::invoke_result_t<decltype(f), T>> == true, "result type must be bool");
+        assert(l < dat.size());
+        assert(f(Group::identity()));
+        auto f_ = [&](const T& v) -> bool {
+            return f(Group::operation(v, Group::inverse(dat[l])));
+        };
+        return std::partition_point(dat.begin() + l, dat.end(), f_) - dat.begin();
+    }
+
+    template <class F>
+    u32 minLeft(u32 r, const F& f) const {
+        static_assert(std::is_same_v<bool, std::invoke_result_t<decltype(f), T>> == true, "result type must be bool");
         assert(r < dat.size());
         assert(f(Group::identity()));
-        u32 itr = std::__lg(r) + 1;
-        u32 res = r;
-        for (i32 p = itr ; p >= 0 ; p--) {
-            if ((1 << p) > res) continue;
-            u32 l = res - (1 << p);
-            if (not f(product(l, r))) continue;
-            res = l;
-        }
-        return res;
+        auto f_ = [&](const T& v) -> bool {
+            return f(Group::operation(Group::inverse(v), dat[r]));
+        };
+        return dat.rend() - std::partition_point(dat.rbegin() + (dat.size() - r - 1), dat.rend(), f_) - 1;
     }
 };
 

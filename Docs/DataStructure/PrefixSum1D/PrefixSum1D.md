@@ -67,15 +67,42 @@ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を返します。(0-indexedです
 
 <br />
 
+#### lowerBound
+```
+u32 lowerBound(u32 l, u32 r, const T& v)
+```
+
+$\displaystyle \sum_{i = l}^{r - 1} A_i\ \ge\ v$ となる最左の $r$ を返します。
+
+**制約:** $l\ \le\ r\ \le\ N$
+
+**計算量:** $O(r - l)$
+
+<br />
+
+#### upperBound
+```
+u32 upperBound(u32 l, u32 r, const T& v)
+```
+
+$\displaystyle \sum_{i = l}^{r - 1} A_i\ > v$ となる最左の $r$ を返します。
+
+**制約:** $l\ \le\ r\ \le\ N$
+
+**計算量:** $O(r - l)$
+
+<br />
+
 #### maxRight
 ```cpp
 u32 maxRight<F>(u32 l, const F& f) const
 ```
-$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最大の $r$ を返します。
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{false}$ を満たす最左の $r$ を返します。
 
 `f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
 
 **制約:** 
+- `F`は`T`型の値を引数に取り、`bool`値を返り値とする関数オブジェクトであること
 - $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
 - $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
 - $l\ \le\ N$
@@ -89,11 +116,12 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 ```cpp
 u32 minLeft<F>(u32 r, const F& f) const
 ```
-$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{true}$ を満たす最小の $l$ を返します。
+$S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関数 $f$ に対して、 $\displaystyle f(\sum_{i = l}^{r - 1} A_i) = \text{false}$ を満たす最右の $l$ を返します。
 
 `f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
 
 **制約:** 
+- `F`は`T`型の値を引数に取り、`bool`値を返り値とする関数オブジェクトであること
 - $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
 - $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
 - $l\ \le\ N$
@@ -113,6 +141,8 @@ $\displaystyle \sum_{i = l}^{r - 1} A_i = \sum_{i = 0}^{r - 1} A_i - \sum_{i = 0
 上の例で一つ区間和の例をとると、 $A_1 + A_2 + A_3 = 3 - 2 + 4 = 5, S_{4} - S_{1} = 6 - 1 = 5$ で確かに一致していることがわかります。他の例でも成り立つと思います。
 
 なんか、不定積分と定積分を思い出しますね。似た概念なのかは知りませんが。
+
+累積和は頭が壊れるので嫌ですね。出るなと念を送りながらコンテストに出ていますが、当然のように毎回出てくるので辛いです。
 
 <br />
 
