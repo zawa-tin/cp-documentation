@@ -34,7 +34,7 @@ data:
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
     \n\n#include <cmath>\n#include <vector>\n#include <cassert>\n#include <algorithm>\n\
     #include <type_traits>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
-    \ {\nprivate:\n    using T = typename Group::ValueType;\n    std::vector<T> dat;\n\
+    \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat;\n\
     \n    constexpr bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r\
     \ and r < dat.size());\n    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const\
     \ std::vector<T>& A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
@@ -64,7 +64,7 @@ data:
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
     \nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D {\nprivate:\n\
-    \    using T = typename Group::ValueType;\n    std::vector<T> dat;\n\n    constexpr\
+    \    using T = typename Group::Element;\n    std::vector<T> dat;\n\n    constexpr\
     \ bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r and r < dat.size());\n\
     \    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
     \ A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
@@ -97,7 +97,7 @@ data:
   path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   requiredBy:
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  timestamp: '2023-06-23 03:23:51+09:00'
+  timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/agc023_a.test.cpp
@@ -111,7 +111,7 @@ title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
 
 ## 概要
 
-群 $(S, \oplus)$ の上で列 $A$ 上のクエリ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を処理することができる。ただし、 $A$ に値の変更があってはならない。
+群 $(S, \oplus)$ の上で列 $A$ 上のクエリ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を処理することができます。ただし、 $A$ に値の変更があってはなりません。
 
 <br />
 
@@ -121,7 +121,7 @@ title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
 
 [本ライブラリにおける群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html) をご確認ください。
 
-以下、テンプレート引数の`ValueType`を`T`と略します。
+以下、テンプレート引数の`Group::Element`を`T`と略します。
 
 <br />
 
@@ -217,7 +217,7 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 
 #### minLeft
 
-未テストでかつ実装に自信が無いです。
+**未テストでかつ実装に自信が無いです。**
 
 ```cpp
 u32 minLeft<F>(u32 r, const F& f) const

@@ -30,7 +30,7 @@ data:
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass AdditiveGroup {\npublic:\n    using ValueType = T;\n    static\
+    \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
     \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
     \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
@@ -38,7 +38,7 @@ data:
     \n\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
     \nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D {\nprivate:\n\
-    \    using T = typename Group::ValueType;\n    std::vector<T> dat;\n\n    constexpr\
+    \    using T = typename Group::Element;\n    std::vector<T> dat;\n\n    constexpr\
     \ bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r and r < dat.size());\n\
     \    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
     \ A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc172_c.test.cpp
   requiredBy: []
-  timestamp: '2023-06-23 03:23:51+09:00'
+  timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc172_c.test.cpp
