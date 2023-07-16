@@ -5,7 +5,7 @@ documentation_of: //Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
 
 ## 概要
 
-群 $(S, \oplus)$ の上で列 $A$ 上のクエリ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を処理することができる。ただし、 $A$ に値の変更があってはならない。
+群 $(S, \oplus)$ の上で列 $A$ 上のクエリ $\displaystyle \bigoplus_{i = l}^{r - 1} A_i$ を処理することができます。ただし、 $A$ に値の変更があってはなりません。
 
 <br />
 
@@ -15,7 +15,7 @@ documentation_of: //Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
 
 [本ライブラリにおける群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html) をご確認ください。
 
-以下、テンプレート引数の`ValueType`を`T`と略します。
+以下、テンプレート引数の`Group::Element`を`T`と略します。
 
 <br />
 
@@ -111,7 +111,7 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 
 #### minLeft
 
-未テストでかつ実装に自信が無いです。
+**未テストでかつ実装に自信が無いです。**
 
 ```cpp
 u32 minLeft<F>(u32 r, const F& f) const
