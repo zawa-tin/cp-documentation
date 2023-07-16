@@ -22,7 +22,7 @@
 ```cpp
 template <class T>
 class Group {
-    using ValueType = T;
+    using Element = T;
     static constexpr T identity() noexcept {
     
     }
@@ -43,7 +43,7 @@ class Group {
 
 <br />
 
-**using ValueType = T**
+**using Element = T**
 
 データ構造等で群の型にアクセスする時に使います。必ず用意してください。
 
