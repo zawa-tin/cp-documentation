@@ -1,4 +1,4 @@
-#define PROBLEM "https://atcoder.jp/contests/abc288/tasks/abc292_d"
+#define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_d"
 
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Graph/Components/ConnectedComponents.hpp"
