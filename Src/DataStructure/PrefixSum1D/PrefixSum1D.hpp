@@ -13,7 +13,7 @@ namespace zawa {
 template <class Group>
 class PrefixSum1D {
 private:
-    using T = typename Group::ValueType;
+    using T = typename Group::Element;
     std::vector<T> dat;
 
     constexpr bool rangeCheck(u32 l, u32 r) const {
