@@ -1,6 +1,6 @@
 ---
 title: 無向グラフの連結成分分解
-documentation_of: //Src/Graph/ConnectedComponents.hpp
+documentation_of: //Src/Graph/Components/ConnectedComponents.hpp
 ---
 
 ## 概要
