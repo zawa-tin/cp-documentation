@@ -25,23 +25,25 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include\
     \ <vector>\n#include <algorithm>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped;\n\
-    \    std::vector<u32> f;\n    \npublic:\n    CompressedSequence() = default;\n\
-    \    CompressedSequence(const std::vector<T>& A) : comped(A), f(A.size()) {\n\
-    \        std::sort(comped.begin(), comped.end());\n        comped.erase(std::unique(comped.begin(),\
-    \ comped.end()), comped.end());\n        comped.shrink_to_fit();\n        f.shrink_to_fit();\n\
-    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            f[i] = std::lower_bound(comped.begin(),\
-    \ comped.end(), A[i]) - comped.begin();\n        }\n    }     \n\n    inline usize\
-    \ size() const {\n        return comped.size();\n    }\n\n    u32 operator[](const\
-    \ T& v) const {\n        return std::lower_bound(comped.begin(), comped.end(),\
-    \ v) - comped.begin();\n    }\n\n    inline u32 map(u32 i) const {\n        assert(i\
-    \ < f.size());\n        return f[i];\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 5 \"Test/AtCoder/abc213_c.test.cpp\"\n\n#include <iostream>\n#line 8 \"Test/AtCoder/abc213_c.test.cpp\"\
-    \n\nusing namespace zawa;\n\ni32 main() {\n    usize H, W, N;\n    std::cin >>\
-    \ H >> W >> N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N\
-    \ ; i++) {\n        std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence\
-    \ compY(A), compX(B);\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cout\
-    \ << compY.map(i) + 1 << ' ' << compX.map(i) + 1 << std::endl;\n    }\n}\n"
+    \ <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n\
+    \    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence() = default;\n\
+    \    CompressedSequence(const std::vector<T>& A) : comped_(A), f_(A.size()) {\n\
+    \        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
+    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.shrink_to_fit();\n\
+    \        for (u32 i{} ; i < A.size() ; i++) {\n            f_[i] = std::lower_bound(comped_.begin(),\
+    \ comped_.end(), A[i]) - comped_.begin();\n        }\n    }     \n\n    inline\
+    \ usize size() const noexcept {\n        return comped_.size();\n    }\n\n   \
+    \ u32 operator[](const T& v) const {\n        return std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v) - comped_.begin();\n    }\n\n    inline u32 map(u32 i) const\
+    \ noexcept {\n        assert(i < f_.size());\n        return f_[i];\n    }\n\n\
+    \    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n \
+    \       return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc213_c.test.cpp\"\
+    \n\n#include <iostream>\n#line 8 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing namespace\
+    \ zawa;\n\ni32 main() {\n    usize H, W, N;\n    std::cin >> H >> W >> N; \n \
+    \   std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n      \
+    \  std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence compY(A), compX(B);\n\
+    \    for (u32 i = 0 ; i < N ; i++) {\n        std::cout << compY.map(i) + 1 <<\
+    \ ' ' << compX.map(i) + 1 << std::endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc213/tasks/abc213_c\"\n\n\
     #include \"../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Template/TypeAlias.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\ni32 main()\
@@ -56,7 +58,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc213_c.test.cpp
   requiredBy: []
-  timestamp: '2023-06-07 04:27:59+09:00'
+  timestamp: '2023-07-19 18:46:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc213_c.test.cpp
