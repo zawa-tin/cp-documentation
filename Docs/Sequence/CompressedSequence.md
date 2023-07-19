@@ -34,8 +34,8 @@ documentation_of: //Src/Sequence/CompressedSequence.hpp
 <br />
 
 #### size
-```
-inline usize size() const
+```cpp
+inline usize size() const noexcept
 ```
 $M$ を返します。
 
@@ -45,7 +45,7 @@ $M$ を返します。
 <br />
 
 #### operator[]
-```
+```cpp
 u32 operator[](const T& v) const
 ```
 
@@ -61,8 +61,8 @@ u32 operator[](const T& v) const
 <br />
 
 #### map
-```
-inline u32 map(u32 i) const 
+```cpp
+inline u32 map(u32 i) const noexcept
 ```
 
 引数で与えた非負整数$i$ に対して、 $A_i$ の座標圧縮後の値を返します。
@@ -70,6 +70,19 @@ inline u32 map(u32 i) const
 **制約:** $i\ <\ N$
 
 **計算量:** 定数時間
+
+<br />
+
+#### inverse
+
+```cpp
+inline T inverse(u32 i) const noexcept
+```
+集合 $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ で $i$ 番目に小さい要素を返します。
+
+**制約**: $i\ \le\ <\ \text{size()}$
+
+**計算量**: 定数時間
 
 <br />
 
