@@ -14,6 +14,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - name: Src/Graph/Components
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Components/ConnectedComponents.hpp
+      title: Src/Graph/Components/ConnectedComponents.hpp
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -30,6 +35,11 @@ data:
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   verificationCategories:
+  - name: Test/AOJ
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ALDS1_11_D.test.cpp
+      title: Test/AOJ/ALDS1_11_D.test.cpp
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
@@ -41,6 +51,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc229_d.test.cpp
       title: ABC229-D Longest X
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc288_c.test.cpp
+      title: Test/AtCoder/abc288_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc292_d.test.cpp
+      title: Test/AtCoder/abc292_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc293_d.test.cpp
+      title: Test/AtCoder/abc293_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
