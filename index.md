@@ -18,7 +18,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/ConnectedComponents.hpp
-      title: Src/Graph/Components/ConnectedComponents.hpp
+      title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
