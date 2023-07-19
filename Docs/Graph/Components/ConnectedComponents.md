@@ -34,7 +34,7 @@ void addEdge(u32 u, u32 v)
 - $0\ \le\ u, v\ <\ \mid V\mid$
 - 以前に`build`を呼び出していないこと
 
-**計算量**: 定数時間
+**計算量**: ならし定数時間
 
 <br />
 
@@ -46,12 +46,13 @@ Edge edge(u32 e) const
 
 $e$ 番目に追加された辺を返す。
 
-返り値のEdgeは以下のようなstructである
+返り値のEdgeは以下のようなclassです。
 ```cpp
-struct Edge {
-    u32 u; // 辺の端点
-    u32 v; // もう一方の端点
-    u32 id; // 引数eと等しい
+class Edge {
+public:
+    inline u32 u() const noexcept // 辺の端点の頂点を返す。
+    inline u32 v() const noexcept // uとは別の端点の頂点を返す。
+    inline u32 id() const noexcept // edgeの引数eを返す。
 };
 ```
 
@@ -155,20 +156,20 @@ inline u32 operator[](const u32 v) const noexcept
 
 <br />
 
-#### colorV
+#### indexV
 
 ```cpp
-inline u32 colorV(u32 v) const noexcept
+inline u32 indexV(u32 v) const noexcept
 ```
 
 `operator[]`と同じ
 
 <br />
 
-#### colorE
+#### indexE
 
 ```cpp
-inline u32 colorE(u32 e) const noexcept
+inline u32 indexE(u32 e) const noexcept
 ```
 
 $e$ 番目に追加された辺を含む連結成分の番号を返す。
@@ -178,12 +179,14 @@ $e$ 番目に追加された辺を含む連結成分の番号を返す。
 - `build`を既に呼び出している
 - $0\ \le\ e\ <\ \mid E\mid$
 
+**計算量**: 定数時間
+
 <br />
 
 #### same
 
 ```cpp
-inline u32 same(u32 u, u32 v) const noexcept
+inline bool same(u32 u, u32 v) const noexcept
 ```
 
 頂点 $u, v$ が同じ連結成分に属しているなら`true`、そうで無い時`false`を返す。
@@ -198,7 +201,7 @@ inline u32 same(u32 u, u32 v) const noexcept
 #### vs
 
 ```cpp
-inline std::vector<u32> vs(u32 c) const noexcept
+inline const std::vector<u32>& vs(u32 c) const noexcept
 ```
 
 `c`番目の連結成分が属する頂点の列を返します。返り値の列は頂点番号に対して昇順に並んでいます。
@@ -215,7 +218,7 @@ inline std::vector<u32> vs(u32 c) const noexcept
 #### es
 
 ```cpp
-inline std::vector<u32> es(u32 c) const noexcept
+inline const std::vector<u32>& es(u32 c) const noexcept
 ```
 
 `c`番目の連結成分が属する辺の列を返します。それぞれの辺の追加された番号のみを返します。
@@ -243,6 +246,8 @@ inline bool hasCycle(u32 c) const
 
 - `build`を既に呼び出している
 - `c`は連結成分の数より小さい整数
+
+**計算量**: 定数時間
 
 <br />
 

@@ -14,8 +14,20 @@ namespace zawa {
 class ConnectedComponents {
 public:
     struct Edge {
-        const u32 u, v, id;
-        Edge(u32 u, u32 v, u32 id) : u{ u }, v{ v }, id{ id } {}
+    private:
+        u32 u_, v_, id_;
+    public:
+        Edge(u32 u, u32 v, u32 id) : u_{ u }, v_{ v }, id_{ id } {}
+
+        inline u32 u() const noexcept {
+            return u_;
+        }
+        inline u32 v() const noexcept {
+            return v_;
+        }
+        inline u32 id() const noexcept {
+            return id_;
+        }
     };
 
 private:
@@ -35,10 +47,10 @@ private:
         inline usize m() const noexcept {
             return es_.size();
         }
-        std::vector<u32> vs() const noexcept {
+        const std::vector<u32>& vs() const noexcept {
             return vs_;
         }
-        std::vector<u32> es() const noexcept {
+        const std::vector<u32>& es() const noexcept {
             return es_;
         }
         bool hasCycle() const {
@@ -46,25 +58,25 @@ private:
         }
     };
 
-    constexpr static u32 INVALID{ std::numeric_limits<u32>::max() };
+    constexpr static u32 INVALID_{ std::numeric_limits<u32>::max() };
 
-    std::vector<std::vector<u32>> graph;
-    std::vector<std::pair<u32, u32>> edges;
+    std::vector<std::vector<u32>> graph_;
+    std::vector<std::pair<u32, u32>> edges_;
 
-    std::vector<u32> colV, colE;
-    std::vector<Component> components;
+    std::vector<u32> indexV_, indexE_;
+    std::vector<Component> components_;
 
     bool isBuilt;
 
     void dfs(u32 s) {
-        colV[s] = components.size();
+        indexV_[s] = components_.size();
         std::stack<u32> stk{ { s } };
         while (stk.size()) {
             u32 v{ stk.top() };
             stk.pop();
-            for (auto x : graph[v]) {
-                if (colV[x] == INVALID) {
-                    colV[x] = components.size();
+            for (auto x : graph_[v]) {
+                if (indexV_[x] == INVALID_) {
+                    indexV_[x] = components_.size();
                     stk.push(x);
                 }
             }
@@ -72,59 +84,61 @@ private:
     }
 
     void buildComponents() {
-        std::vector<std::vector<u32>> vs(components.size()), es(components.size());
+        std::vector<std::vector<u32>> vs(components_.size()), es(components_.size());
         for (u32 v{} ; v < n() ; v++) {
-            vs[colV[v]].emplace_back(v);
+            vs[indexV_[v]].emplace_back(v);
         }
         for (u32 e{} ; e < m() ; e++) {
-            es[colE[e]].emplace_back(e);
+            es[indexE_[e]].emplace_back(e);
         }
-        for (u32 i{} ; i < components.size() ; i++) {
-            components[i] = Component(vs[i], es[i]);
+        for (u32 i{} ; i < components_.size() ; i++) {
+            components_[i] = Component(vs[i], es[i]);
         }
+        components_.shrink_to_fit();
     }
 
 public:
     ConnectedComponents() = default;
 
     ConnectedComponents(usize n) 
-        : graph(n), edges{}, colV(n, INVALID), colE{}, components{}, isBuilt{} {
-        graph.shrink_to_fit();
+        : graph_(n), edges_{}, indexV_(n, INVALID_), indexE_{}, components_{}, isBuilt{} {
+        graph_.shrink_to_fit();
     }
     
     void addEdge(u32 u, u32 v) {
         assert(not isBuilt);
-        graph[u].emplace_back(v);
-        graph[v].emplace_back(u);
-        edges.emplace_back(u, v);
+        graph_[u].emplace_back(v);
+        graph_[v].emplace_back(u);
+        edges_.emplace_back(u, v);
     }
 
     inline usize n() const noexcept {
-        return graph.size();
+        return graph_.size();
     }
 
     inline usize m() const noexcept {
-        return edges.size();
+        return edges_.size();
     }
 
     Edge edge(u32 e) const {
         assert(e < m());
-        return Edge{ edges[e].first, edges[e].second, e };
+        return Edge{ edges_[e].first, edges_[e].second, e };
     }
 
     void build() {
         assert(not isBuilt);
-        colV.shrink_to_fit();
+        edges_.shrink_to_fit();
+        indexV_.shrink_to_fit();
         for (u32 v{} ; v < n() ; v++) {
-            if (colV[v] == INVALID) {
+            if (indexV_[v] == INVALID_) {
                 dfs(v);
-                components.emplace_back();
+                components_.emplace_back();
             }
         }
-        colE.resize(m());
-        colE.shrink_to_fit();
+        indexE_.resize(m());
+        indexE_.shrink_to_fit();
         for (u32 e{} ; e < m() ; e++) {
-            colE[e] = colV[edges[e].first];
+            indexE_[e] = indexV_[edges_[e].first];
         }
         buildComponents();
         isBuilt = true;
@@ -133,61 +147,61 @@ public:
     inline u32 operator[](const u32 v) const noexcept {
         assert(isBuilt);
         assert(v < n());
-        return colV[v];
+        return indexV_[v];
     }
 
-    inline u32 colorV(u32 v) const noexcept {
+    inline u32 indexV(u32 v) const noexcept {
         assert(isBuilt);
         assert(v < n());
-        return colV[v];
+        return indexV_[v];
     }
 
-    inline u32 colorE(u32 e) const noexcept {
+    inline u32 indexE(u32 e) const noexcept {
         assert(isBuilt);
         assert(e < m());
-        return colE[e];
+        return indexE_[e];
     }
 
     inline bool same(u32 u, u32 v) const noexcept {
         assert(isBuilt);
         assert(u < n());
         assert(v < n());
-        return colV[u] == colV[v];
+        return indexV_[u] == indexV_[v];
     }
 
     inline usize size() const noexcept {
         assert(isBuilt);
-        return components.size();
+        return components_.size();
     }
 
     inline usize n(u32 c) const noexcept {
         assert(isBuilt);
         assert(c < size());
-        return components[c].n();
+        return components_[c].n();
     }
 
-    inline std::vector<u32> vs(u32 c) const noexcept {
+    inline const std::vector<u32>& vs(u32 c) const noexcept {
         assert(isBuilt);
         assert(c < size());
-        return components[c].vs();
+        return components_[c].vs();
     }
 
     inline usize m(u32 c) const noexcept {
         assert(isBuilt);
         assert(c < size());
-        return components[c].m();
+        return components_[c].m();
     }
 
-    inline std::vector<u32> es(u32 c) const noexcept {
+    inline const std::vector<u32>& es(u32 c) const noexcept {
         assert(isBuilt);
         assert(c < size());
-        return components[c].es();
+        return components_[c].es();
     }
 
     inline bool hasCycle(u32 c) const {
         assert(isBuilt);
         assert(c < size());
-        return components[c].hasCycle();
+        return components_[c].hasCycle();
     }
 
 };
