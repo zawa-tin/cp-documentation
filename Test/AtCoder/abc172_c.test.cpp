@@ -28,8 +28,8 @@ i32 main() {
     u32 ans1{}, ans2{};
 
     {
-        for (u32 a = 0 ; a <= N ; a++) {
-            if (SA[a] > K) break;
+        for (auto a : SA) {
+            if (a > K) break;
             u32 v = a + SB.upperBound(0, M, K - SA[a]) - 1;
             ans1 = std::max(ans1, v);
         }
