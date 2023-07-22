@@ -1,13 +1,10 @@
 {
 "Test/AOJ/ALDS1_11_D.test.cpp": "2023-07-19 15:15:04 +0900",
-"Test/AtCoder/abc172_c.test.cpp": "2023-07-17 03:16:46 +0900",
 "Test/AtCoder/abc213_c.test.cpp": "2023-07-19 18:46:17 +0900",
-"Test/AtCoder/abc229_d.test.cpp": "2023-07-17 03:16:46 +0900",
 "Test/AtCoder/abc288_c.test.cpp": "2023-07-19 15:15:04 +0900",
 "Test/AtCoder/abc292_d.test.cpp": "2023-07-19 15:15:04 +0900",
 "Test/AtCoder/abc293_d.test.cpp": "2023-07-19 15:15:04 +0900",
-"Test/AtCoder/agc023_a.test.cpp": "2023-07-17 03:16:46 +0900",
 "Test/LC/aplusb.test.cpp": "2023-07-17 03:16:46 +0900",
 "Test/LC/enumerate_primes.test.cpp": "2023-06-13 11:55:48 +0900",
-"Test/LC/static_range_sum.test.cpp": "2023-07-17 03:16:46 +0900"
+"Test/LC/static_range_sum.test.cpp": "2023-07-22 13:30:21 +0900"
 }
