@@ -19,9 +19,9 @@ i32 main() {
     Ruisekiwa<i64> S(A);
     std::map<i64, i32> mp{};
     u64 ans = 0;
-    for (u32 i = 0 ; i < S.size() ; i++) {
-        ans += mp[S[i]];
-        mp[S[i]]++;
+    for (const auto v : S) {
+        ans += mp[v];
+        mp[v]++;
     } 
 
     std::cout << ans << std::endl;
