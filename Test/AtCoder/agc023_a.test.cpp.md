@@ -37,52 +37,54 @@ data:
     \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
     \n\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
-    \nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D {\nprivate:\n\
-    \    using T = typename Group::Element;\n    std::vector<T> dat;\n\n    constexpr\
-    \ bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r and r < dat.size());\n\
-    \    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
-    \ A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
-    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            dat[i + 1] = Group::operation(dat[i],\
-    \ A[i]);\n        }\n    }\n\n    inline T operator[](u32 i) const {\n       \
-    \ assert(i < dat.size());\n        return dat[i];\n    }\n\n    inline usize size()\
-    \ const {\n        return dat.size();\n    }\n\n    T product(u32 l, u32 r) const\
-    \ {\n        assert(rangeCheck(l, r));\n        return Group::operation(Group::inverse(dat[l]),\
-    \ dat[r]);\n    }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n  \
-    \      assert(rangeCheck(l, r));\n        T value = Group::operation(v, dat[l]);\n\
-    \        return std::lower_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();\n\
-    \    }\n\n    u32 upperBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
-    \ r));\n        T value = Group::operation(v, dat[l]);\n        return std::upper_bound(dat.begin()\
-    \ + l, dat.begin() + r, value) - dat.begin();\n    }\n\n    template <class F>\n\
-    \    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(v,\
-    \ Group::inverse(dat[l])));\n        };\n        return std::partition_point(dat.begin()\
-    \ + l, dat.end(), f_) - dat.begin();\n    }\n\n    template <class F>\n    u32\
-    \ minLeft(u32 r, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(Group::inverse(v),\
-    \ dat[r]));\n        };\n        return dat.rend() - std::partition_point(dat.rbegin()\
-    \ + (dat.size() - r - 1), dat.rend(), f_) - 1;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\n\nnamespace\
-    \ zawa {\n\n    template <class T>\n    using StaticRangeSumSolver = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n    template <class T>\n    using Ruisekiwa = PrefixSum1D<AdditiveGroup<T>>;\n\
-    \n};\n#line 5 \"Test/AtCoder/agc023_a.test.cpp\"\n\n#include <iostream>\n#line\
-    \ 8 \"Test/AtCoder/agc023_a.test.cpp\"\n#include <map>\n\nusing namespace zawa;\n\
-    \ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n    u32\
-    \ N; std::cin >> N;\n    std::vector<i64> A(N);\n    for (auto& a : A) std::cin\
-    \ >> a;\n\n    Ruisekiwa<i64> S(A);\n    std::map<i64, i32> mp{};\n    u64 ans\
-    \ = 0;\n    for (u32 i = 0 ; i < S.size() ; i++) {\n        ans += mp[S[i]];\n\
-    \        mp[S[i]]++;\n    } \n\n    std::cout << ans << std::endl;\n}\n"
+    #include <functional>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
+    \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat_;\n\
+    \n    constexpr bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r\
+    \ and r < dat_.size());\n    }\n\npublic:\n    PrefixSum1D() = default; \n   \
+    \ PrefixSum1D(const std::vector<T>& A) : dat_(A.size() + 1, Group::identity())\
+    \ {\n        dat_.shrink_to_fit();\n        for (u32 i = 0 ; i < A.size() ; i++)\
+    \ {\n            dat_[i + 1] = Group::operation(dat_[i], A[i]);\n        }\n \
+    \   }\n\n    inline T operator[](u32 i) const {\n        assert(i < dat_.size());\n\
+    \        return dat_[i];\n    }\n\n    inline usize size() const {\n        return\
+    \ dat_.size();\n    }\n\n    T product(u32 l, u32 r) const {\n        assert(rangeCheck(l,\
+    \ r));\n        return Group::operation(Group::inverse(dat_[l]), dat_[r]);\n \
+    \   }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
+    \ r));\n        T value = Group::operation(v, dat_[l]);\n        return std::lower_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    u32 upperBound(u32\
+    \ l, u32 r, const T& v) const {\n        assert(rangeCheck(l, r));\n        T\
+    \ value = Group::operation(v, dat_[l]);\n        return std::upper_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    template <class\
+    \ F>\n    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(l\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(v, Group::inverse(dat_[l])));\n\
+    \        };\n        return std::partition_point(dat_.begin() + l, dat_.end(),\
+    \ f_) - dat_.begin();\n    }\n\n    template <class F>\n    u32 minLeft(u32 r,\
+    \ const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(r\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(Group::inverse(v), dat_[r]));\n\
+    \        };\n        return dat_.rend() - std::partition_point(dat_.rbegin() +\
+    \ (dat_.size() - r - 1), dat_.rend(), f_) - 1;\n    }\n\n    const auto begin()\
+    \ const {\n        return dat_.begin();\n    }\n\n    const auto end() const {\n\
+    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \n\nnamespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver\
+    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n    template <class T>\n    using Ruisekiwa\
+    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n};\n#line 5 \"Test/AtCoder/agc023_a.test.cpp\"\
+    \n\n#include <iostream>\n#line 8 \"Test/AtCoder/agc023_a.test.cpp\"\n#include\
+    \ <map>\n\nusing namespace zawa;\n\ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \n    u32 N; std::cin >> N;\n    std::vector<i64> A(N);\n    for (auto& a : A)\
+    \ std::cin >> a;\n\n    Ruisekiwa<i64> S(A);\n    std::map<i64, i32> mp{};\n \
+    \   u64 ans = 0;\n    for (const auto v : S) {\n        ans += mp[v];\n      \
+    \  mp[v]++;\n    } \n\n    std::cout << ans << std::endl;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/agc023/tasks/agc023_a\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <map>\n\nusing namespace\
     \ zawa;\n\ni32 main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n\
     \    u32 N; std::cin >> N;\n    std::vector<i64> A(N);\n    for (auto& a : A)\
     \ std::cin >> a;\n\n    Ruisekiwa<i64> S(A);\n    std::map<i64, i32> mp{};\n \
-    \   u64 ans = 0;\n    for (u32 i = 0 ; i < S.size() ; i++) {\n        ans += mp[S[i]];\n\
-    \        mp[S[i]]++;\n    } \n\n    std::cout << ans << std::endl;\n}\n"
+    \   u64 ans = 0;\n    for (const auto v : S) {\n        ans += mp[v];\n      \
+    \  mp[v]++;\n    } \n\n    std::cout << ans << std::endl;\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
@@ -91,7 +93,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/agc023_a.test.cpp
   requiredBy: []
-  timestamp: '2023-07-17 03:16:46+09:00'
+  timestamp: '2023-07-22 13:55:49+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/agc023_a.test.cpp

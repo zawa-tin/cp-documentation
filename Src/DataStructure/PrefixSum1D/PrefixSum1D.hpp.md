@@ -33,71 +33,77 @@ data:
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
     \n\n#include <cmath>\n#include <vector>\n#include <cassert>\n#include <algorithm>\n\
-    #include <type_traits>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
-    \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat;\n\
-    \n    constexpr bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r\
-    \ and r < dat.size());\n    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const\
-    \ std::vector<T>& A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
-    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            dat[i + 1] = Group::operation(dat[i],\
-    \ A[i]);\n        }\n    }\n\n    inline T operator[](u32 i) const {\n       \
-    \ assert(i < dat.size());\n        return dat[i];\n    }\n\n    inline usize size()\
-    \ const {\n        return dat.size();\n    }\n\n    T product(u32 l, u32 r) const\
-    \ {\n        assert(rangeCheck(l, r));\n        return Group::operation(Group::inverse(dat[l]),\
-    \ dat[r]);\n    }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n  \
-    \      assert(rangeCheck(l, r));\n        T value = Group::operation(v, dat[l]);\n\
-    \        return std::lower_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();\n\
-    \    }\n\n    u32 upperBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
-    \ r));\n        T value = Group::operation(v, dat[l]);\n        return std::upper_bound(dat.begin()\
-    \ + l, dat.begin() + r, value) - dat.begin();\n    }\n\n    template <class F>\n\
-    \    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(v,\
-    \ Group::inverse(dat[l])));\n        };\n        return std::partition_point(dat.begin()\
-    \ + l, dat.end(), f_) - dat.begin();\n    }\n\n    template <class F>\n    u32\
-    \ minLeft(u32 r, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(Group::inverse(v),\
-    \ dat[r]));\n        };\n        return dat.rend() - std::partition_point(dat.rbegin()\
-    \ + (dat.size() - r - 1), dat.rend(), f_) - 1;\n    }\n};\n\n} // namespace zawa\n"
+    #include <type_traits>\n#include <functional>\n\nnamespace zawa {\n\ntemplate\
+    \ <class Group>\nclass PrefixSum1D {\nprivate:\n    using T = typename Group::Element;\n\
+    \    std::vector<T> dat_;\n\n    constexpr bool rangeCheck(u32 l, u32 r) const\
+    \ {\n        return (l <= r and r < dat_.size());\n    }\n\npublic:\n    PrefixSum1D()\
+    \ = default; \n    PrefixSum1D(const std::vector<T>& A) : dat_(A.size() + 1, Group::identity())\
+    \ {\n        dat_.shrink_to_fit();\n        for (u32 i = 0 ; i < A.size() ; i++)\
+    \ {\n            dat_[i + 1] = Group::operation(dat_[i], A[i]);\n        }\n \
+    \   }\n\n    inline T operator[](u32 i) const {\n        assert(i < dat_.size());\n\
+    \        return dat_[i];\n    }\n\n    inline usize size() const {\n        return\
+    \ dat_.size();\n    }\n\n    T product(u32 l, u32 r) const {\n        assert(rangeCheck(l,\
+    \ r));\n        return Group::operation(Group::inverse(dat_[l]), dat_[r]);\n \
+    \   }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
+    \ r));\n        T value = Group::operation(v, dat_[l]);\n        return std::lower_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    u32 upperBound(u32\
+    \ l, u32 r, const T& v) const {\n        assert(rangeCheck(l, r));\n        T\
+    \ value = Group::operation(v, dat_[l]);\n        return std::upper_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    template <class\
+    \ F>\n    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(l\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(v, Group::inverse(dat_[l])));\n\
+    \        };\n        return std::partition_point(dat_.begin() + l, dat_.end(),\
+    \ f_) - dat_.begin();\n    }\n\n    template <class F>\n    u32 minLeft(u32 r,\
+    \ const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(r\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(Group::inverse(v), dat_[r]));\n\
+    \        };\n        return dat_.rend() - std::partition_point(dat_.rbegin() +\
+    \ (dat_.size() - r - 1), dat_.rend(), f_) - 1;\n    }\n\n    const auto begin()\
+    \ const {\n        return dat_.begin();\n    }\n\n    const auto end() const {\n\
+    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
-    \nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D {\nprivate:\n\
-    \    using T = typename Group::Element;\n    std::vector<T> dat;\n\n    constexpr\
-    \ bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r and r < dat.size());\n\
-    \    }\n\npublic:\n    PrefixSum1D() = default; \n    PrefixSum1D(const std::vector<T>&\
-    \ A) : dat(A.size() + 1, Group::identity()) {\n        dat.shrink_to_fit();\n\
-    \        for (u32 i = 0 ; i < A.size() ; i++) {\n            dat[i + 1] = Group::operation(dat[i],\
-    \ A[i]);\n        }\n    }\n\n    inline T operator[](u32 i) const {\n       \
-    \ assert(i < dat.size());\n        return dat[i];\n    }\n\n    inline usize size()\
-    \ const {\n        return dat.size();\n    }\n\n    T product(u32 l, u32 r) const\
-    \ {\n        assert(rangeCheck(l, r));\n        return Group::operation(Group::inverse(dat[l]),\
-    \ dat[r]);\n    }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n  \
-    \      assert(rangeCheck(l, r));\n        T value = Group::operation(v, dat[l]);\n\
-    \        return std::lower_bound(dat.begin() + l, dat.begin() + r, value) - dat.begin();\n\
-    \    }\n\n    u32 upperBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
-    \ r));\n        T value = Group::operation(v, dat[l]);\n        return std::upper_bound(dat.begin()\
-    \ + l, dat.begin() + r, value) - dat.begin();\n    }\n\n    template <class F>\n\
-    \    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(l < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(v,\
-    \ Group::inverse(dat[l])));\n        };\n        return std::partition_point(dat.begin()\
-    \ + l, dat.end(), f_) - dat.begin();\n    }\n\n    template <class F>\n    u32\
-    \ minLeft(u32 r, const F& f) const {\n        static_assert(std::is_same_v<bool,\
-    \ std::invoke_result_t<decltype(f), T>> == true, \"result type must be bool\"\
-    );\n        assert(r < dat.size());\n        assert(f(Group::identity()));\n \
-    \       auto f_ = [&](const T& v) -> bool {\n            return f(Group::operation(Group::inverse(v),\
-    \ dat[r]));\n        };\n        return dat.rend() - std::partition_point(dat.rbegin()\
-    \ + (dat.size() - r - 1), dat.rend(), f_) - 1;\n    }\n};\n\n} // namespace zawa\n"
+    #include <functional>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
+    \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat_;\n\
+    \n    constexpr bool rangeCheck(u32 l, u32 r) const {\n        return (l <= r\
+    \ and r < dat_.size());\n    }\n\npublic:\n    PrefixSum1D() = default; \n   \
+    \ PrefixSum1D(const std::vector<T>& A) : dat_(A.size() + 1, Group::identity())\
+    \ {\n        dat_.shrink_to_fit();\n        for (u32 i = 0 ; i < A.size() ; i++)\
+    \ {\n            dat_[i + 1] = Group::operation(dat_[i], A[i]);\n        }\n \
+    \   }\n\n    inline T operator[](u32 i) const {\n        assert(i < dat_.size());\n\
+    \        return dat_[i];\n    }\n\n    inline usize size() const {\n        return\
+    \ dat_.size();\n    }\n\n    T product(u32 l, u32 r) const {\n        assert(rangeCheck(l,\
+    \ r));\n        return Group::operation(Group::inverse(dat_[l]), dat_[r]);\n \
+    \   }\n\n    u32 lowerBound(u32 l, u32 r, const T& v) const {\n        assert(rangeCheck(l,\
+    \ r));\n        T value = Group::operation(v, dat_[l]);\n        return std::lower_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    u32 upperBound(u32\
+    \ l, u32 r, const T& v) const {\n        assert(rangeCheck(l, r));\n        T\
+    \ value = Group::operation(v, dat_[l]);\n        return std::upper_bound(dat_.begin()\
+    \ + l, dat_.begin() + r, value) - dat_.begin();\n    }\n\n    template <class\
+    \ F>\n    u32 maxRight(u32 l, const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(l\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(v, Group::inverse(dat_[l])));\n\
+    \        };\n        return std::partition_point(dat_.begin() + l, dat_.end(),\
+    \ f_) - dat_.begin();\n    }\n\n    template <class F>\n    u32 minLeft(u32 r,\
+    \ const F& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n        assert(r\
+    \ < dat_.size());\n        assert(f(Group::identity()));\n        auto f_ = [&](const\
+    \ T& v) -> bool {\n            return f(Group::operation(Group::inverse(v), dat_[r]));\n\
+    \        };\n        return dat_.rend() - std::partition_point(dat_.rbegin() +\
+    \ (dat_.size() - r - 1), dat_.rend(), f_) - 1;\n    }\n\n    const auto begin()\
+    \ const {\n        return dat_.begin();\n    }\n\n    const auto end() const {\n\
+    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   requiredBy:
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  timestamp: '2023-07-17 03:16:46+09:00'
+  timestamp: '2023-07-22 13:55:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/agc023_a.test.cpp
@@ -208,7 +214,7 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 `f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
 
 **制約:** 
-- `F`は`T`型の値を引数に取り、`bool`値を返り値とする関数オブジェクトであること
+- `F`は`T`型の値をひとつ引数に取り、`bool`値を返り値とする関数オブジェクトであること
 - $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
 - $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
 - $l\ \le\ N$
@@ -227,10 +233,34 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 `f`は関数オブジェクトを入れる必要があります。(ラムダ式とか`std::function<bool(T)>`とかを引数に入れることができる)
 
 **制約:** 
-- `F`は`T`型の値を引数に取り、`bool`値を返り値とする関数オブジェクトであること
+- `F`は`T`型の値をひとつ引数に取り、`bool`値を返り値とする関数オブジェクトであること
 - $e =$ `Group::identity()`として $f(e) = \text{true}$ を満たすこと
 - $f$ に副作用が無いこと、あったとしても同じ値を引数に入れたのなら常に同じ結果を返すこと
 - $l\ \le\ N$
+
+<br />
+
+#### begin
+
+```cpp
+const auto begin() const
+```
+
+内部のコンテナの先頭要素の`const_iterator`を返します。
+
+**計算量**: 定数時間
+
+<br />
+
+#### end
+
+```cpp
+const auto end() const
+```
+
+内部のコンテナの末尾の次の要素の`const_iterator`を返します。
+
+**計算量**: 定数時間
 
 <br />
 
@@ -245,8 +275,6 @@ $S \to \\{ \text{true}, \text{false} \\}$ でありかつ単調性を持つ関�
 $\displaystyle \sum_{i = l}^{r - 1} A_i = \sum_{i = 0}^{r - 1} A_i - \sum_{i = 0}^{l - 1} A_i = S_{r} - S_{l}$ が成り立つので、愚直より高速に $\displaystyle \sum_{i = l}^{r - 1} A_i$ を求めることが可能です。
 
 上の例で一つ区間和の例をとると、 $A_1 + A_2 + A_3 = 3 - 2 + 4 = 5, S_{4} - S_{1} = 6 - 1 = 5$ で確かに一致していることがわかります。他の例でも成り立つと思います。
-
-なんか、不定積分と定積分を思い出しますね。似た概念なのかは知りませんが。
 
 累積和は頭が壊れるので嫌ですね。出るなと念を送りながらコンテストに出ていますが、当然のように毎回出てくるので辛いです。
 
