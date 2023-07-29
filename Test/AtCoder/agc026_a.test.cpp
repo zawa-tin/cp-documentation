@@ -1,4 +1,3 @@
-#define IGNORE
 #define PROBLEM "https://atcoder.jp/contests/agc026/tasks/agc026_a"
 
 #include "../../Src/Template/TypeAlias.hpp"
