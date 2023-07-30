@@ -17,6 +17,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':question:'
+    path: Src/Sequence/RunLengthEncoding.hpp
+    title: "\u9023\u9577\u5727\u7E2E"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
@@ -31,6 +34,9 @@ data:
     path: Test/AtCoder/abc229_d.test.cpp
     title: ABC229-D Longest X
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_d.test.cpp
+    title: Test/AtCoder/abc247_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_c.test.cpp
     title: Test/AtCoder/abc288_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -40,8 +46,14 @@ data:
     path: Test/AtCoder/abc293_d.test.cpp
     title: Test/AtCoder/abc293_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc299_c.test.cpp
+    title: Test/AtCoder/abc299_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
+  - icon: ':x:'
+    path: Test/AtCoder/agc026_a.test.cpp
+    title: Test/AtCoder/agc026_a.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
@@ -51,9 +63,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "Src/Template/TypeAlias.hpp"
@@ -135,16 +147,20 @@ data:
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/Sequence/CompressedSequence.hpp
+  - Src/Sequence/RunLengthEncoding.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/agc026_a.test.cpp
+  - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/abc299_c.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
