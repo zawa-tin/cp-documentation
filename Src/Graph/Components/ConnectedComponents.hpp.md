@@ -170,8 +170,8 @@ data:
   timestamp: '2023-07-19 15:15:04+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
 documentation_of: Src/Graph/Components/ConnectedComponents.hpp

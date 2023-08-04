@@ -137,9 +137,9 @@ data:
   timestamp: '2023-07-29 13:13:36+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - Test/AtCoder/abc299_c.test.cpp
   - Test/AtCoder/agc026_a.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
-  - Test/AtCoder/abc299_c.test.cpp
 documentation_of: Src/Sequence/RunLengthEncoding.hpp
 layout: document
 title: "\u9023\u9577\u5727\u7E2E"

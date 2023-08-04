@@ -34,6 +34,12 @@ data:
       title: "\u9023\u9577\u5727\u7E2E"
   - name: Src/Template
     pages:
+    - icon: ':warning:'
+      path: Src/Template/Chmax.hpp
+      title: Chmax
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/Chmin.hpp
+      title: Chmin
     - icon: ':question:'
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -43,6 +49,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/GRL_1_A.test.cpp
+      title: Test/AOJ/GRL_1_A.test.cpp
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
