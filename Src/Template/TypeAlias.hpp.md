@@ -24,6 +24,12 @@ data:
     path: Src/Template/ArrayIO.hpp
     title: "std::array\u306E\u5165\u51FA\u529B"
   - icon: ':heavy_check_mark:'
+    path: Src/Template/Input.hpp
+    title: "\u6A19\u6E96\u5165\u529B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/Output.hpp
+    title: "\u6A19\u6E96\u51FA\u529B"
+  - icon: ':heavy_check_mark:'
     path: Src/Template/PairIO.hpp
     title: "std::pair\u306E\u5165\u51FA\u529B"
   - icon: ':heavy_check_mark:'
@@ -64,8 +70,14 @@ data:
     path: Test/AtCoder/abc292_d.test.cpp
     title: Test/AtCoder/abc292_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc293_b.test.cpp
+    title: Test/AtCoder/abc293_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_d.test.cpp
     title: Test/AtCoder/abc293_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc295_a.test.cpp
+    title: Test/AtCoder/abc295_a.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
@@ -169,7 +181,9 @@ data:
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Template/Output.hpp
   - Src/Template/ArrayIO.hpp
+  - Src/Template/Input.hpp
   - Src/Template/VectorIO.hpp
   - Src/Template/PairIO.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
@@ -179,7 +193,9 @@ data:
   - Test/AtCoder/agc026_a.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/agc023_a.test.cpp

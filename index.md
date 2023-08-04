@@ -44,6 +44,12 @@ data:
       path: Src/Template/Chmin.hpp
       title: Chmin
     - icon: ':heavy_check_mark:'
+      path: Src/Template/Input.hpp
+      title: "\u6A19\u6E96\u5165\u529B"
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/Output.hpp
+      title: "\u6A19\u6E96\u51FA\u529B"
+    - icon: ':heavy_check_mark:'
       path: Src/Template/PairIO.hpp
       title: "std::pair\u306E\u5165\u51FA\u529B"
     - icon: ':question:'
@@ -52,6 +58,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/VectorIO.hpp
       title: "std::vector\u306E\u5165\u51FA\u529B"
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/YesNo.hpp
+      title: "Yes\u304BNo\u3092\u51FA\u529B\u3059\u308B"
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -91,8 +100,14 @@ data:
       path: Test/AtCoder/abc292_d.test.cpp
       title: Test/AtCoder/abc292_d.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc293_b.test.cpp
+      title: Test/AtCoder/abc293_b.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc293_d.test.cpp
       title: Test/AtCoder/abc293_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc295_a.test.cpp
+      title: Test/AtCoder/abc295_a.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc299_c.test.cpp
       title: Test/AtCoder/abc299_c.test.cpp

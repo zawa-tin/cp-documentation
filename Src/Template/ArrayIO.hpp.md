@@ -4,11 +4,23 @@ data:
   - icon: ':question:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/Input.hpp
+    title: "\u6A19\u6E96\u5165\u529B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/Output.hpp
+    title: "\u6A19\u6E96\u51FA\u529B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ITP1_2_C.test.cpp
     title: Test/AOJ/ITP1_2_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc293_b.test.cpp
+    title: Test/AtCoder/abc293_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc295_a.test.cpp
+    title: Test/AtCoder/abc295_a.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -37,10 +49,14 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Template/ArrayIO.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Template/Output.hpp
+  - Src/Template/Input.hpp
   timestamp: '2023-08-05 04:55:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
   - Test/AOJ/ITP1_2_C.test.cpp
 documentation_of: Src/Template/ArrayIO.hpp
 layout: document
