@@ -20,6 +20,12 @@ data:
   - icon: ':question:'
     path: Src/Sequence/RunLengthEncoding.hpp
     title: "\u9023\u9577\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/ArrayIO.hpp
+    title: "std::array\u306E\u5165\u51FA\u529B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/VectorIO.hpp
+    title: "std::vector\u306E\u5165\u51FA\u529B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
@@ -27,6 +33,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_1_A.test.cpp
     title: Test/AOJ/GRL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ITP1_2_C.test.cpp
+    title: Test/AOJ/ITP1_2_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ITP2_4_A.test.cpp
+    title: Test/AOJ/ITP2_4_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
@@ -151,6 +163,8 @@ data:
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Template/ArrayIO.hpp
+  - Src/Template/VectorIO.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
@@ -167,8 +181,10 @@ data:
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AOJ/ITP1_2_C.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

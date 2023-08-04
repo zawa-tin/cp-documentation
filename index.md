@@ -34,6 +34,9 @@ data:
       title: "\u9023\u9577\u5727\u7E2E"
   - name: Src/Template
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/ArrayIO.hpp
+      title: "std::array\u306E\u5165\u51FA\u529B"
     - icon: ':warning:'
       path: Src/Template/Chmax.hpp
       title: Chmax
@@ -43,6 +46,9 @@ data:
     - icon: ':question:'
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/VectorIO.hpp
+      title: "std::vector\u306E\u5165\u51FA\u529B"
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -52,6 +58,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ITP1_2_C.test.cpp
+      title: Test/AOJ/ITP1_2_C.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ITP2_4_A.test.cpp
+      title: Test/AOJ/ITP2_4_A.test.cpp
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
