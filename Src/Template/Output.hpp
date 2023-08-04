@@ -22,8 +22,8 @@ void Cout(const Head& head, const Tail&... tail) {
     std::cout << head;
     if (sizeof...(tail)) {
         std::cout << ' ';
+        Cout(tail...);
     }
-    Cout(tail...);
 }
 
 void Eout() {
@@ -40,8 +40,8 @@ void Eout(const Head& head, const Tail&... tail) {
     std::cerr << head;
     if (sizeof...(tail)) {
         std::cerr << ' ';
+        Eout(tail...);
     }
-    Eout(tail...);
 }
 
 } // namespace zawa
