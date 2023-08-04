@@ -20,5 +20,5 @@ int main() {
         }
     }
     Cout(ans.size()); Cout();
-    Cout(ans);
+    Cout(ans); Cout();
 }
