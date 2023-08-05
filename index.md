@@ -52,6 +52,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/PairIO.hpp
       title: "std::pair\u306E\u5165\u51FA\u529B"
+    - icon: ':heavy_check_mark:'
+      path: Src/Template/SupInf.hpp
+      title: "sup inf\u5909\u6570"
     - icon: ':question:'
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -70,6 +73,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ITP1_1_A.test.cpp
+      title: Test/AOJ/ITP1_1_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ITP1_1_C.test.cpp
       title: Test/AOJ/ITP1_1_C.test.cpp

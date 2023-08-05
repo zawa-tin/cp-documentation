@@ -16,6 +16,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ITP1_1_A.test.cpp
+    title: Test/AOJ/ITP1_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_b.test.cpp
     title: Test/AtCoder/abc293_b.test.cpp
   _isVerificationFailed: false
@@ -81,6 +84,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/Output.hpp
 layout: document
 title: "\u6A19\u6E96\u51FA\u529B"

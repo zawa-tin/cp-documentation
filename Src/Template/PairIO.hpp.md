@@ -13,6 +13,9 @@ data:
     title: "\u6A19\u6E96\u51FA\u529B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ITP1_1_A.test.cpp
+    title: Test/AOJ/ITP1_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ITP1_1_C.test.cpp
     title: Test/AOJ/ITP1_1_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -56,6 +59,7 @@ data:
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
+  - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/PairIO.hpp
 layout: document
 title: "std::pair\u306E\u5165\u51FA\u529B"
