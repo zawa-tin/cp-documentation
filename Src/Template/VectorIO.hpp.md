@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc295_a.test.cpp
     title: Test/AtCoder/abc295_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/many_aplusb.test.cpp
+    title: Test/LC/many_aplusb.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/VectorIO.hpp

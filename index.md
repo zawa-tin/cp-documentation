@@ -44,6 +44,9 @@ data:
       path: Src/Template/Chmin.hpp
       title: Chmin
     - icon: ':heavy_check_mark:'
+      path: Src/Template/IOSetting.hpp
+      title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+    - icon: ':heavy_check_mark:'
       path: Src/Template/Input.hpp
       title: "\u6A19\u6E96\u5165\u529B"
     - icon: ':heavy_check_mark:'
@@ -131,6 +134,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_primes.test.cpp
       title: Test/LC/enumerate_primes.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/many_aplusb.test.cpp
+      title: Test/LC/many_aplusb.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp

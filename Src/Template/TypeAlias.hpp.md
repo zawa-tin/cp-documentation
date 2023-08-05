@@ -24,6 +24,9 @@ data:
     path: Src/Template/ArrayIO.hpp
     title: "std::array\u306E\u5165\u51FA\u529B"
   - icon: ':heavy_check_mark:'
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+  - icon: ':heavy_check_mark:'
     path: Src/Template/Input.hpp
     title: "\u6A19\u6E96\u5165\u529B"
   - icon: ':heavy_check_mark:'
@@ -99,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/many_aplusb.test.cpp
+    title: Test/LC/many_aplusb.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -187,6 +193,7 @@ data:
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Template/IOSetting.hpp
   - Src/Template/Output.hpp
   - Src/Template/ArrayIO.hpp
   - Src/Template/Input.hpp
@@ -208,6 +215,7 @@ data:
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/LC/many_aplusb.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp

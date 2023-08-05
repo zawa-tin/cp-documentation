@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_b.test.cpp
     title: Test/AtCoder/abc293_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/many_aplusb.test.cpp
+    title: Test/LC/many_aplusb.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +87,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/Output.hpp
 layout: document

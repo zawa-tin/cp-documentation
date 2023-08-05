@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc295_a.test.cpp
     title: Test/AtCoder/abc295_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/many_aplusb.test.cpp
+    title: Test/LC/many_aplusb.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -73,6 +76,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/LC/many_aplusb.test.cpp
 documentation_of: Src/Template/Input.hpp
 layout: document
 title: "\u6A19\u6E96\u5165\u529B"
