@@ -13,6 +13,6 @@ int main() {
     u32 T; In(T);
     for (u32 _{} ; _ < T ; _++) {
         u64 A, B; In(A, B);
-        Cout(A + B, '\n');
+        out(A + B);
     }
 }

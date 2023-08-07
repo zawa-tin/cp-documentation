@@ -19,6 +19,6 @@ int main() {
             ans.push_back(i + 1);
         }
     }
-    Cout(ans.size()); Cout();
-    Cout(ans); Cout();
+    out(ans.size());
+    out(ans);
 }

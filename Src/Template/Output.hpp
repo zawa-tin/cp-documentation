@@ -8,39 +8,39 @@
 
 namespace zawa {
 
-void Cout() {
+void out() {
     std::cout << std::endl;
 }
 
 template <class T>
-void Cout(const T& value) {
-    std::cout << value;
+void out(const T& value) {
+    std::cout << value << std::endl;
 }
 
 template <class Head, class... Tail>
-void Cout(const Head& head, const Tail&... tail) {
+void out(const Head& head, const Tail&... tail) {
     std::cout << head;
     if (sizeof...(tail)) {
         std::cout << ' ';
-        Cout(tail...);
     }
+    out(tail...);
 }
 
-void Eout() {
+void eout() {
     std::cerr << std::endl;
 }
 
 template <class T>
-void Eout(const T& value) {
+void eout(const T& value) {
     std::cerr << value;
 }
 
 template <class Head, class... Tail>
-void Eout(const Head& head, const Tail&... tail) {
+void eout(const Head& head, const Tail&... tail) {
     std::cerr << head;
     if (sizeof...(tail)) {
         std::cerr << ' ';
-        Eout(tail...);
+        eout(tail...);
     }
 }
 
