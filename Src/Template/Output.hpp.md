@@ -55,26 +55,26 @@ data:
     \ T1, class T2>\nstd::ostream &operator<<(std::ostream& os, const std::pair<T1,\
     \ T2>& P) {\n    os << '(' << P.first << ',' << P.second << ')';\n    return os;\n\
     }\n\n} // namespace zawa\n#line 6 \"Src/Template/Output.hpp\"\n\n#line 8 \"Src/Template/Output.hpp\"\
-    \n\nnamespace zawa {\n\nvoid Cout() {\n    std::cout << std::endl;\n}\n\ntemplate\
-    \ <class T>\nvoid Cout(const T& value) {\n    std::cout << value;\n}\n\ntemplate\
-    \ <class Head, class... Tail>\nvoid Cout(const Head& head, const Tail&... tail)\
-    \ {\n    std::cout << head;\n    if (sizeof...(tail)) {\n        std::cout <<\
-    \ ' ';\n        Cout(tail...);\n    }\n}\n\nvoid Eout() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <class T>\nvoid Eout(const T& value) {\n    std::cerr << value;\n\
-    }\n\ntemplate <class Head, class... Tail>\nvoid Eout(const Head& head, const Tail&...\
+    \n\nnamespace zawa {\n\nvoid out() {\n    std::cout << std::endl;\n}\n\ntemplate\
+    \ <class T>\nvoid out(const T& value) {\n    std::cout << value << std::endl;\n\
+    }\n\ntemplate <class Head, class... Tail>\nvoid out(const Head& head, const Tail&...\
+    \ tail) {\n    std::cout << head;\n    if (sizeof...(tail)) {\n        std::cout\
+    \ << ' ';\n    }\n    out(tail...);\n}\n\nvoid eout() {\n    std::cerr << std::endl;\n\
+    }\n\ntemplate <class T>\nvoid eout(const T& value) {\n    std::cerr << value;\n\
+    }\n\ntemplate <class Head, class... Tail>\nvoid eout(const Head& head, const Tail&...\
     \ tail) {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr\
-    \ << ' ';\n        Eout(tail...);\n    }\n}\n\n} // namespace zawa\n"
+    \ << ' ';\n        eout(tail...);\n    }\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./ArrayIO.hpp\"\n#include \"./VectorIO.hpp\"\n\
-    #include \"./PairIO.hpp\"\n\n#include <iostream>\n\nnamespace zawa {\n\nvoid Cout()\
-    \ {\n    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid Cout(const T&\
-    \ value) {\n    std::cout << value;\n}\n\ntemplate <class Head, class... Tail>\n\
-    void Cout(const Head& head, const Tail&... tail) {\n    std::cout << head;\n \
-    \   if (sizeof...(tail)) {\n        std::cout << ' ';\n        Cout(tail...);\n\
-    \    }\n}\n\nvoid Eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class\
-    \ T>\nvoid Eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class\
-    \ Head, class... Tail>\nvoid Eout(const Head& head, const Tail&... tail) {\n \
-    \   std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n\
-    \        Eout(tail...);\n    }\n}\n\n} // namespace zawa\n"
+    #include \"./PairIO.hpp\"\n\n#include <iostream>\n\nnamespace zawa {\n\nvoid out()\
+    \ {\n    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value)\
+    \ {\n    std::cout << value << std::endl;\n}\n\ntemplate <class Head, class...\
+    \ Tail>\nvoid out(const Head& head, const Tail&... tail) {\n    std::cout << head;\n\
+    \    if (sizeof...(tail)) {\n        std::cout << ' ';\n    }\n    out(tail...);\n\
+    }\n\nvoid eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid\
+    \ eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class Head,\
+    \ class... Tail>\nvoid eout(const Head& head, const Tail&... tail) {\n    std::cerr\
+    \ << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n        eout(tail...);\n\
+    \    }\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/ArrayIO.hpp
   - Src/Template/TypeAlias.hpp
@@ -83,7 +83,7 @@ data:
   isVerificationFile: false
   path: Src/Template/Output.hpp
   requiredBy: []
-  timestamp: '2023-08-05 06:40:45+09:00'
+  timestamp: '2023-08-07 23:12:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc293_b.test.cpp
@@ -100,28 +100,28 @@ title: "\u6A19\u6E96\u51FA\u529B"
 
 ## ライブラリの使い方
 
-#### Cout
+#### out
 
 ```cpp
-(1) void Cout()
-(2) void Cout(const T& value)
-(3) void Cout(const Head& head, const Tail&... tail)
+(1) void out()
+(2) void out(const T& value)
+(3) void out(const Head& head, const Tail&... tail)
 ```
 
 (1) `std::cout << std::endl`と等価です。
 
-(2) `std::cout << value`と等価です。
+(2) `std::cout << value << std::endl`と等価です。
 
-(3) 引数に入れた変数を空白区切りで出力します。最後に改行が入りません。
+(3) 引数に入れた変数を空白区切りで出力します。最後に改行が入ります。
 
 <br />
 
-#### Eout
+#### eout
 
 ```cpp
-(1) void Eout()
-(2) void Eout(const T& value)
-(3) void Eout(const Head& head, const Tail&... tail)
+(1) void eout()
+(2) void eout(const T& value)
+(3) void eout(const Head& head, const Tail&... tail)
 ```
 
 (1) `std::cerr << std::endl`と等価です。

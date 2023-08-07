@@ -66,25 +66,25 @@ data:
     void In(T& value) {\n    std::cin >> value;\n}\n\ntemplate <class Head, class...\
     \ Tail>\nvoid In(Head& head, Tail&... tail) {\n    In(head);\n    In(tail...);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Template/Output.hpp\"\n\n#line 6 \"Src/Template/Output.hpp\"\
-    \n\n#line 8 \"Src/Template/Output.hpp\"\n\nnamespace zawa {\n\nvoid Cout() {\n\
-    \    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid Cout(const T& value)\
-    \ {\n    std::cout << value;\n}\n\ntemplate <class Head, class... Tail>\nvoid\
-    \ Cout(const Head& head, const Tail&... tail) {\n    std::cout << head;\n    if\
-    \ (sizeof...(tail)) {\n        std::cout << ' ';\n        Cout(tail...);\n   \
-    \ }\n}\n\nvoid Eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\n\
-    void Eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class Head,\
-    \ class... Tail>\nvoid Eout(const Head& head, const Tail&... tail) {\n    std::cerr\
-    \ << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n        Eout(tail...);\n\
+    \n\n#line 8 \"Src/Template/Output.hpp\"\n\nnamespace zawa {\n\nvoid out() {\n\
+    \    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value)\
+    \ {\n    std::cout << value << std::endl;\n}\n\ntemplate <class Head, class...\
+    \ Tail>\nvoid out(const Head& head, const Tail&... tail) {\n    std::cout << head;\n\
+    \    if (sizeof...(tail)) {\n        std::cout << ' ';\n    }\n    out(tail...);\n\
+    }\n\nvoid eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid\
+    \ eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class Head,\
+    \ class... Tail>\nvoid eout(const Head& head, const Tail&... tail) {\n    std::cerr\
+    \ << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n        eout(tail...);\n\
     \    }\n}\n\n} // namespace zawa\n#line 7 \"Test/LC/many_aplusb.test.cpp\"\n\n\
     using namespace zawa;\n\nint main() {\n    SetFastIO();\n    SetPrecision(15);\n\
     \    u32 T; In(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; In(A,\
-    \ B);\n        Cout(A + B, '\\n');\n    }\n}\n"
+    \ B);\n        out(A + B);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\n\n#include\
     \ \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Template/Input.hpp\"\n#include \"../../Src/Template/Output.hpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    SetPrecision(15);\n\
     \    u32 T; In(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; In(A,\
-    \ B);\n        Cout(A + B, '\\n');\n    }\n}\n"
+    \ B);\n        out(A + B);\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Template/IOSetting.hpp
@@ -96,7 +96,7 @@ data:
   isVerificationFile: true
   path: Test/LC/many_aplusb.test.cpp
   requiredBy: []
-  timestamp: '2023-08-05 13:24:43+09:00'
+  timestamp: '2023-08-07 23:12:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/many_aplusb.test.cpp
