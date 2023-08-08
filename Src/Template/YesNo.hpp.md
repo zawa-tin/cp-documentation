@@ -11,27 +11,27 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/Template/YesNo.hpp\"\n\n#include <string>\n\nnamespace\
-    \ zawa {\n\nnamespace internal {\n\nstd::string yes{\"Yes\"};\nstd::string no{\"\
-    No\"};\n\n} // namespace internal\n\nvoid YesNo(bool answer) {\n    std::cout\
-    \ << (answer ? internal::yes : internal::no) << std::endl;\n}\n\nvoid SetYes(const\
-    \ std::string& yes) {\n    internal::yes = yes;\n}\n\nvoid SetNo(const std::string&\
-    \ no) {\n    internal::no = no;\n}\n\nvoid SetAtCoderYesNo() {\n    SetYes(\"\
-    Yes\");\n    SetNo(\"No\");\n}\n\nvoid SetCodeforcesYesNo() {\n    SetYes(\"YES\"\
-    );\n    SetNo(\"NO\");\n}\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include <string>\n\nnamespace zawa {\n\nnamespace internal\
-    \ {\n\nstd::string yes{\"Yes\"};\nstd::string no{\"No\"};\n\n} // namespace internal\n\
-    \nvoid YesNo(bool answer) {\n    std::cout << (answer ? internal::yes : internal::no)\
-    \ << std::endl;\n}\n\nvoid SetYes(const std::string& yes) {\n    internal::yes\
-    \ = yes;\n}\n\nvoid SetNo(const std::string& no) {\n    internal::no = no;\n}\n\
-    \nvoid SetAtCoderYesNo() {\n    SetYes(\"Yes\");\n    SetNo(\"No\");\n}\n\nvoid\
-    \ SetCodeforcesYesNo() {\n    SetYes(\"YES\");\n    SetNo(\"NO\");\n}\n\n} //\
-    \ namespace zawa\n"
+  bundledCode: "#line 2 \"Src/Template/YesNo.hpp\"\n\n#include <string>\n#include\
+    \ <iostream>\n\nnamespace zawa {\n\nnamespace internal {\n\nstd::string yes{\"\
+    Yes\"};\nstd::string no{\"No\"};\n\n} // namespace internal\n\nvoid YesNo(bool\
+    \ answer) {\n    std::cout << (answer ? internal::yes : internal::no) << std::endl;\n\
+    }\n\nvoid SetYes(const std::string& yes) {\n    internal::yes = yes;\n}\n\nvoid\
+    \ SetNo(const std::string& no) {\n    internal::no = no;\n}\n\nvoid SetAtCoderYesNo()\
+    \ {\n    SetYes(\"Yes\");\n    SetNo(\"No\");\n}\n\nvoid SetCodeforcesYesNo()\
+    \ {\n    SetYes(\"YES\");\n    SetNo(\"NO\");\n}\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include <string>\n#include <iostream>\n\nnamespace zawa\
+    \ {\n\nnamespace internal {\n\nstd::string yes{\"Yes\"};\nstd::string no{\"No\"\
+    };\n\n} // namespace internal\n\nvoid YesNo(bool answer) {\n    std::cout << (answer\
+    \ ? internal::yes : internal::no) << std::endl;\n}\n\nvoid SetYes(const std::string&\
+    \ yes) {\n    internal::yes = yes;\n}\n\nvoid SetNo(const std::string& no) {\n\
+    \    internal::no = no;\n}\n\nvoid SetAtCoderYesNo() {\n    SetYes(\"Yes\");\n\
+    \    SetNo(\"No\");\n}\n\nvoid SetCodeforcesYesNo() {\n    SetYes(\"YES\");\n\
+    \    SetNo(\"NO\");\n}\n\n} // namespace zawa\n"
   dependsOn: []
   isVerificationFile: false
   path: Src/Template/YesNo.hpp
   requiredBy: []
-  timestamp: '2023-08-05 06:28:55+09:00'
+  timestamp: '2023-08-08 12:38:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
