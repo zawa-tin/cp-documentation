@@ -6,11 +6,11 @@
 using namespace zawa;
 
 int main() {
-    eout(supi); eout();
-    eout(supl); eout();
-    eout(infi); eout();
-    eout(infl); eout();
+    eout(supi);
+    eout(supl);
+    eout(infi);
+    eout(infl);
     SetSupi(100);
-    eout(supi); eout();
+    eout(supi);
     out("Hello World");
 }
