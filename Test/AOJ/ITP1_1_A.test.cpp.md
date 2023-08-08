@@ -67,18 +67,18 @@ data:
     \ Tail>\nvoid out(const Head& head, const Tail&... tail) {\n    std::cout << head;\n\
     \    if (sizeof...(tail)) {\n        std::cout << ' ';\n    }\n    out(tail...);\n\
     }\n\nvoid eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid\
-    \ eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class Head,\
-    \ class... Tail>\nvoid eout(const Head& head, const Tail&... tail) {\n    std::cerr\
-    \ << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n        eout(tail...);\n\
-    \    }\n}\n\n} // namespace zawa\n#line 5 \"Test/AOJ/ITP1_1_A.test.cpp\"\n\nusing\
-    \ namespace zawa;\n\nint main() {\n    eout(supi); eout();\n    eout(supl); eout();\n\
-    \    eout(infi); eout();\n    eout(infl); eout();\n    SetSupi(100);\n    eout(supi);\
-    \ eout();\n    out(\"Hello World\");\n}\n"
+    \ eout(const T& value) {\n    std::cerr << value << std::endl;\n}\n\ntemplate\
+    \ <class Head, class... Tail>\nvoid eout(const Head& head, const Tail&... tail)\
+    \ {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr <<\
+    \ ' ';\n    }\n    eout(tail...);\n}\n\n} // namespace zawa\n#line 5 \"Test/AOJ/ITP1_1_A.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    eout(supi);\n    eout(supl);\n\
+    \    eout(infi);\n    eout(infl);\n    SetSupi(100);\n    eout(supi);\n    out(\"\
+    Hello World\");\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/SupInf.hpp\"\n#include \"../../Src/Template/Output.hpp\"\
-    \n\nusing namespace zawa;\n\nint main() {\n    eout(supi); eout();\n    eout(supl);\
-    \ eout();\n    eout(infi); eout();\n    eout(infl); eout();\n    SetSupi(100);\n\
-    \    eout(supi); eout();\n    out(\"Hello World\");\n}\n"
+    \n\nusing namespace zawa;\n\nint main() {\n    eout(supi);\n    eout(supl);\n\
+    \    eout(infi);\n    eout(infl);\n    SetSupi(100);\n    eout(supi);\n    out(\"\
+    Hello World\");\n}\n"
   dependsOn:
   - Src/Template/SupInf.hpp
   - Src/Template/TypeAlias.hpp
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/ITP1_1_A.test.cpp
   requiredBy: []
-  timestamp: '2023-08-07 23:12:03+09:00'
+  timestamp: '2023-08-08 12:17:01+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/ITP1_1_A.test.cpp

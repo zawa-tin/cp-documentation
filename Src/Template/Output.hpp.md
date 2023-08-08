@@ -60,10 +60,11 @@ data:
     }\n\ntemplate <class Head, class... Tail>\nvoid out(const Head& head, const Tail&...\
     \ tail) {\n    std::cout << head;\n    if (sizeof...(tail)) {\n        std::cout\
     \ << ' ';\n    }\n    out(tail...);\n}\n\nvoid eout() {\n    std::cerr << std::endl;\n\
-    }\n\ntemplate <class T>\nvoid eout(const T& value) {\n    std::cerr << value;\n\
-    }\n\ntemplate <class Head, class... Tail>\nvoid eout(const Head& head, const Tail&...\
-    \ tail) {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr\
-    \ << ' ';\n        eout(tail...);\n    }\n}\n\n} // namespace zawa\n"
+    }\n\ntemplate <class T>\nvoid eout(const T& value) {\n    std::cerr << value <<\
+    \ std::endl;\n}\n\ntemplate <class Head, class... Tail>\nvoid eout(const Head&\
+    \ head, const Tail&... tail) {\n    std::cerr << head;\n    if (sizeof...(tail))\
+    \ {\n        std::cerr << ' ';\n    }\n    eout(tail...);\n}\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"./ArrayIO.hpp\"\n#include \"./VectorIO.hpp\"\n\
     #include \"./PairIO.hpp\"\n\n#include <iostream>\n\nnamespace zawa {\n\nvoid out()\
     \ {\n    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value)\
@@ -71,10 +72,10 @@ data:
     \ Tail>\nvoid out(const Head& head, const Tail&... tail) {\n    std::cout << head;\n\
     \    if (sizeof...(tail)) {\n        std::cout << ' ';\n    }\n    out(tail...);\n\
     }\n\nvoid eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid\
-    \ eout(const T& value) {\n    std::cerr << value;\n}\n\ntemplate <class Head,\
-    \ class... Tail>\nvoid eout(const Head& head, const Tail&... tail) {\n    std::cerr\
-    \ << head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n        eout(tail...);\n\
-    \    }\n}\n\n} // namespace zawa\n"
+    \ eout(const T& value) {\n    std::cerr << value << std::endl;\n}\n\ntemplate\
+    \ <class Head, class... Tail>\nvoid eout(const Head& head, const Tail&... tail)\
+    \ {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr <<\
+    \ ' ';\n    }\n    eout(tail...);\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/ArrayIO.hpp
   - Src/Template/TypeAlias.hpp
@@ -83,7 +84,7 @@ data:
   isVerificationFile: false
   path: Src/Template/Output.hpp
   requiredBy: []
-  timestamp: '2023-08-07 23:12:03+09:00'
+  timestamp: '2023-08-08 12:17:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc293_b.test.cpp
@@ -126,6 +127,6 @@ title: "\u6A19\u6E96\u51FA\u529B"
 
 (1) `std::cerr << std::endl`と等価です。
 
-(2) `std::cerr << value`と等価です。
+(2) `std::cerr << value << std::endl;`と等価です。
 
-(3) 引数に入れた変数を空白区切りで標準エラー出力します。最後に改行が入りません。
+(3) 引数に入れた変数を空白区切りで標準エラー出力します。最後に改行はいります。
