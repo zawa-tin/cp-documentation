@@ -32,7 +32,7 @@ void eout() {
 
 template <class T>
 void eout(const T& value) {
-    std::cerr << value;
+    std::cerr << value << std::endl;
 }
 
 template <class Head, class... Tail>
@@ -40,8 +40,8 @@ void eout(const Head& head, const Tail&... tail) {
     std::cerr << head;
     if (sizeof...(tail)) {
         std::cerr << ' ';
-        eout(tail...);
     }
+    eout(tail...);
 }
 
 } // namespace zawa
