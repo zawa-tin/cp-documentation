@@ -56,32 +56,32 @@ data:
     \ T1, class T2>\nstd::ostream &operator<<(std::ostream& os, const std::pair<T1,\
     \ T2>& P) {\n    os << '(' << P.first << ',' << P.second << ')';\n    return os;\n\
     }\n\n} // namespace zawa\n#line 6 \"Src/Template/Input.hpp\"\n\n#line 8 \"Src/Template/Input.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid In(T& value) {\n    std::cin\
-    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid In(Head& head, Tail&...\
-    \ tail) {\n    In(head);\n    In(tail...);\n}\n\n} // namespace zawa\n#line 2\
-    \ \"Src/Template/Output.hpp\"\n\n#line 6 \"Src/Template/Output.hpp\"\n\n#line\
-    \ 8 \"Src/Template/Output.hpp\"\n\nnamespace zawa {\n\nvoid out() {\n    std::cout\
-    \ << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value) {\n    std::cout\
-    \ << value << std::endl;\n}\n\ntemplate <class Head, class... Tail>\nvoid out(const\
-    \ Head& head, const Tail&... tail) {\n    std::cout << head;\n    if (sizeof...(tail))\
-    \ {\n        std::cout << ' ';\n    }\n    out(tail...);\n}\n\nvoid eout() {\n\
-    \    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid eout(const T& value)\
-    \ {\n    std::cerr << value << std::endl;\n}\n\ntemplate <class Head, class...\
-    \ Tail>\nvoid eout(const Head& head, const Tail&... tail) {\n    std::cerr <<\
-    \ head;\n    if (sizeof...(tail)) {\n        std::cerr << ' ';\n    }\n    eout(tail...);\n\
-    }\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc293_b.test.cpp\"\n\nusing\
-    \ namespace zawa;\n\nint main() {\n    u32 N; In(N);\n    std::vector<bool> A(N);\n\
-    \    for (u32 i{} ; i < N ; i++) {\n        u32 a; In(a);\n        if (not A[i])\
-    \ A[a - 1] = true;\n    }\n    std::vector<u32> ans;\n    for (u32 i{} ; i < N\
-    \ ; i++) {\n        if (not A[i]) {\n            ans.push_back(i + 1);\n     \
-    \   }\n    }\n    out(ans.size());\n    out(ans);\n}\n"
+    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid input(T& value) {\n    std::cin\
+    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid input(Head& head,\
+    \ Tail&... tail) {\n    input(head);\n    input(tail...);\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Template/Output.hpp\"\n\n#line 6 \"Src/Template/Output.hpp\"\
+    \n\n#line 8 \"Src/Template/Output.hpp\"\n\nnamespace zawa {\n\nvoid out() {\n\
+    \    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value)\
+    \ {\n    std::cout << value << std::endl;\n}\n\ntemplate <class Head, class...\
+    \ Tail>\nvoid out(const Head& head, const Tail&... tail) {\n    std::cout << head;\n\
+    \    if (sizeof...(tail)) {\n        std::cout << ' ';\n    }\n    out(tail...);\n\
+    }\n\nvoid eout() {\n    std::cerr << std::endl;\n}\n\ntemplate <class T>\nvoid\
+    \ eout(const T& value) {\n    std::cerr << value << std::endl;\n}\n\ntemplate\
+    \ <class Head, class... Tail>\nvoid eout(const Head& head, const Tail&... tail)\
+    \ {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr <<\
+    \ ' ';\n    }\n    eout(tail...);\n}\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc293_b.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    u32 N; input(N);\n    std::vector<bool>\
+    \ A(N);\n    for (u32 i{} ; i < N ; i++) {\n        u32 a; input(a);\n       \
+    \ if (not A[i]) A[a - 1] = true;\n    }\n    std::vector<u32> ans;\n    for (u32\
+    \ i{} ; i < N ; i++) {\n        if (not A[i]) {\n            ans.push_back(i +\
+    \ 1);\n        }\n    }\n    out(ans.size());\n    out(ans);\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc293/tasks/abc293_b\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/Input.hpp\"\
     \n#include \"../../Src/Template/Output.hpp\"\n\nusing namespace zawa;\n\nint main()\
-    \ {\n    u32 N; In(N);\n    std::vector<bool> A(N);\n    for (u32 i{} ; i < N\
-    \ ; i++) {\n        u32 a; In(a);\n        if (not A[i]) A[a - 1] = true;\n  \
-    \  }\n    std::vector<u32> ans;\n    for (u32 i{} ; i < N ; i++) {\n        if\
-    \ (not A[i]) {\n            ans.push_back(i + 1);\n        }\n    }\n    out(ans.size());\n\
+    \ {\n    u32 N; input(N);\n    std::vector<bool> A(N);\n    for (u32 i{} ; i <\
+    \ N ; i++) {\n        u32 a; input(a);\n        if (not A[i]) A[a - 1] = true;\n\
+    \    }\n    std::vector<u32> ans;\n    for (u32 i{} ; i < N ; i++) {\n       \
+    \ if (not A[i]) {\n            ans.push_back(i + 1);\n        }\n    }\n    out(ans.size());\n\
     \    out(ans);\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
@@ -93,7 +93,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc293_b.test.cpp
   requiredBy: []
-  timestamp: '2023-08-08 12:17:01+09:00'
+  timestamp: '2023-08-08 12:55:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc293_b.test.cpp

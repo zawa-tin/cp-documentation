@@ -56,10 +56,10 @@ data:
     \ T1, class T2>\nstd::ostream &operator<<(std::ostream& os, const std::pair<T1,\
     \ T2>& P) {\n    os << '(' << P.first << ',' << P.second << ')';\n    return os;\n\
     }\n\n} // namespace zawa\n#line 6 \"Src/Template/Input.hpp\"\n\n#line 8 \"Src/Template/Input.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid In(T& value) {\n    std::cin\
-    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid In(Head& head, Tail&...\
-    \ tail) {\n    In(head);\n    In(tail...);\n}\n\n} // namespace zawa\n#line 2\
-    \ \"Src/Template/YesNo.hpp\"\n\n#include <string>\n#line 5 \"Src/Template/YesNo.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid input(T& value) {\n    std::cin\
+    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid input(Head& head,\
+    \ Tail&... tail) {\n    input(head);\n    input(tail...);\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Template/YesNo.hpp\"\n\n#include <string>\n#line 5 \"Src/Template/YesNo.hpp\"\
     \n\nnamespace zawa {\n\nnamespace internal {\n\nstd::string yes{\"Yes\"};\nstd::string\
     \ no{\"No\"};\n\n} // namespace internal\n\nvoid YesNo(bool answer) {\n    std::cout\
     \ << (answer ? internal::yes : internal::no) << std::endl;\n}\n\nvoid SetYes(const\
@@ -68,17 +68,17 @@ data:
     Yes\");\n    SetNo(\"No\");\n}\n\nvoid SetCodeforcesYesNo() {\n    SetYes(\"YES\"\
     );\n    SetNo(\"NO\");\n}\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc295_a.test.cpp\"\
     \n\nusing namespace zawa;\n\n#include <set>\n#line 11 \"Test/AtCoder/abc295_a.test.cpp\"\
-    \n\nint main() {\n    SetAtCoderYesNo();\n    u32 N; In(N);\n    std::set<std::string>\
+    \n\nint main() {\n    SetAtCoderYesNo();\n    u32 N; input(N);\n    std::set<std::string>\
     \ st{ \"and\", \"not\", \"that\", \"the\", \"you\" };\n    bool ans{};\n    for\
-    \ (u32 _{} ; _ < N ; _++) {\n        std::string w; In(w);\n        ans |= st.count(w);\n\
-    \    }\n    YesNo(ans);\n}\n"
+    \ (u32 _{} ; _ < N ; _++) {\n        std::string w; input(w);\n        ans |=\
+    \ st.count(w);\n    }\n    YesNo(ans);\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc295/tasks/abc295_a\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/Input.hpp\"\
     \n#include \"../../Src/Template/YesNo.hpp\"\n\nusing namespace zawa;\n\n#include\
     \ <set>\n#include <string>\n\nint main() {\n    SetAtCoderYesNo();\n    u32 N;\
-    \ In(N);\n    std::set<std::string> st{ \"and\", \"not\", \"that\", \"the\", \"\
-    you\" };\n    bool ans{};\n    for (u32 _{} ; _ < N ; _++) {\n        std::string\
-    \ w; In(w);\n        ans |= st.count(w);\n    }\n    YesNo(ans);\n}\n"
+    \ input(N);\n    std::set<std::string> st{ \"and\", \"not\", \"that\", \"the\"\
+    , \"you\" };\n    bool ans{};\n    for (u32 _{} ; _ < N ; _++) {\n        std::string\
+    \ w; input(w);\n        ans |= st.count(w);\n    }\n    YesNo(ans);\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Template/Input.hpp
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc295_a.test.cpp
   requiredBy: []
-  timestamp: '2023-08-08 12:38:10+09:00'
+  timestamp: '2023-08-08 12:55:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc295_a.test.cpp

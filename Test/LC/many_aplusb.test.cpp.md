@@ -63,8 +63,8 @@ data:
     \ std::pair<T1, T2>& P) {\n    os << '(' << P.first << ',' << P.second << ')';\n\
     \    return os;\n}\n\n} // namespace zawa\n#line 6 \"Src/Template/Input.hpp\"\n\
     \n#line 8 \"Src/Template/Input.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
-    void In(T& value) {\n    std::cin >> value;\n}\n\ntemplate <class Head, class...\
-    \ Tail>\nvoid In(Head& head, Tail&... tail) {\n    In(head);\n    In(tail...);\n\
+    void input(T& value) {\n    std::cin >> value;\n}\n\ntemplate <class Head, class...\
+    \ Tail>\nvoid input(Head& head, Tail&... tail) {\n    input(head);\n    input(tail...);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Template/Output.hpp\"\n\n#line 6 \"Src/Template/Output.hpp\"\
     \n\n#line 8 \"Src/Template/Output.hpp\"\n\nnamespace zawa {\n\nvoid out() {\n\
     \    std::cout << std::endl;\n}\n\ntemplate <class T>\nvoid out(const T& value)\
@@ -77,13 +77,13 @@ data:
     \ {\n    std::cerr << head;\n    if (sizeof...(tail)) {\n        std::cerr <<\
     \ ' ';\n    }\n    eout(tail...);\n}\n\n} // namespace zawa\n#line 7 \"Test/LC/many_aplusb.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    SetPrecision(15);\n\
-    \    u32 T; In(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; In(A,\
+    \    u32 T; input(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; input(A,\
     \ B);\n        out(A + B);\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/many_aplusb\"\n\n#include\
     \ \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Template/Input.hpp\"\n#include \"../../Src/Template/Output.hpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    SetPrecision(15);\n\
-    \    u32 T; In(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; In(A,\
+    \    u32 T; input(T);\n    for (u32 _{} ; _ < T ; _++) {\n        u64 A, B; input(A,\
     \ B);\n        out(A + B);\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
@@ -96,7 +96,7 @@ data:
   isVerificationFile: true
   path: Test/LC/many_aplusb.test.cpp
   requiredBy: []
-  timestamp: '2023-08-08 12:17:01+09:00'
+  timestamp: '2023-08-08 12:59:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/many_aplusb.test.cpp

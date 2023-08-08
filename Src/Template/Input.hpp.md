@@ -55,14 +55,15 @@ data:
     \ T1, class T2>\nstd::ostream &operator<<(std::ostream& os, const std::pair<T1,\
     \ T2>& P) {\n    os << '(' << P.first << ',' << P.second << ')';\n    return os;\n\
     }\n\n} // namespace zawa\n#line 6 \"Src/Template/Input.hpp\"\n\n#line 8 \"Src/Template/Input.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid In(T& value) {\n    std::cin\
-    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid In(Head& head, Tail&...\
-    \ tail) {\n    In(head);\n    In(tail...);\n}\n\n} // namespace zawa\n"
+    \n\nnamespace zawa {\n\ntemplate <class T>\nvoid input(T& value) {\n    std::cin\
+    \ >> value;\n}\n\ntemplate <class Head, class... Tail>\nvoid input(Head& head,\
+    \ Tail&... tail) {\n    input(head);\n    input(tail...);\n}\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"./ArrayIO.hpp\"\n#include \"./VectorIO.hpp\"\n\
     #include \"./PairIO.hpp\"\n\n#include <iostream>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nvoid In(T& value) {\n    std::cin >> value;\n}\n\ntemplate <class\
-    \ Head, class... Tail>\nvoid In(Head& head, Tail&... tail) {\n    In(head);\n\
-    \    In(tail...);\n}\n\n} // namespace zawa\n"
+    \ <class T>\nvoid input(T& value) {\n    std::cin >> value;\n}\n\ntemplate <class\
+    \ Head, class... Tail>\nvoid input(Head& head, Tail&... tail) {\n    input(head);\n\
+    \    input(tail...);\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/ArrayIO.hpp
   - Src/Template/TypeAlias.hpp
@@ -71,7 +72,7 @@ data:
   isVerificationFile: false
   path: Src/Template/Input.hpp
   requiredBy: []
-  timestamp: '2023-08-05 06:28:55+09:00'
+  timestamp: '2023-08-08 12:55:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
@@ -89,11 +90,12 @@ title: "\u6A19\u6E96\u5165\u529B"
 ## ライブラリの使い方
 
 ```cpp
-void In(T& value)
+void input(T& value)
 ```
 
 ```cpp
-void In(Head& head, Tail&... tail)
+void input(Head& head, Tail&... tail)
 ```
 
 標準入力から受け取った値を順に引数の変数に保管します。
+- `std::array`、`std::vector`、`std::pair`の標準入力にも対応しています。
