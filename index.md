@@ -29,7 +29,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/CompressedSequence.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/RunLengthEncoding.hpp
       title: "\u9023\u9577\u5727\u7E2E"
   - name: Src/Template
@@ -58,7 +58,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/SupInf.hpp
       title: "sup inf\u5909\u6570"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
     - icon: ':heavy_check_mark:'
@@ -123,9 +123,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
-    - icon: ':x:'
-      path: Test/AtCoder/agc026_a.test.cpp
-      title: Test/AtCoder/agc026_a.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'

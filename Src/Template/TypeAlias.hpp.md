@@ -17,7 +17,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RunLengthEncoding.hpp
     title: "\u9023\u9577\u5727\u7E2E"
   - icon: ':heavy_check_mark:'
@@ -93,9 +93,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
-  - icon: ':x:'
-    path: Test/AtCoder/agc026_a.test.cpp
-    title: Test/AtCoder/agc026_a.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
@@ -108,9 +105,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "Src/Template/TypeAlias.hpp"
@@ -201,10 +198,9 @@ data:
   - Src/Template/PairIO.hpp
   - Src/Template/SupInf.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc299_c.test.cpp
-  - Test/AtCoder/agc026_a.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc295_a.test.cpp

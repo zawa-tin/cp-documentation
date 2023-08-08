@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -12,12 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
-  - icon: ':x:'
-    path: Test/AtCoder/agc026_a.test.cpp
-    title: Test/AtCoder/agc026_a.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Sequence/RunLengthEncoding.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -135,10 +132,9 @@ data:
   path: Src/Sequence/RunLengthEncoding.hpp
   requiredBy: []
   timestamp: '2023-07-29 13:13:36+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc299_c.test.cpp
-  - Test/AtCoder/agc026_a.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
 documentation_of: Src/Sequence/RunLengthEncoding.hpp
 layout: document
