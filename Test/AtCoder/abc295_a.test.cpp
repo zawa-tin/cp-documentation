@@ -11,11 +11,11 @@ using namespace zawa;
 
 int main() {
     SetAtCoderYesNo();
-    u32 N; In(N);
+    u32 N; input(N);
     std::set<std::string> st{ "and", "not", "that", "the", "you" };
     bool ans{};
     for (u32 _{} ; _ < N ; _++) {
-        std::string w; In(w);
+        std::string w; input(w);
         ans |= st.count(w);
     }
     YesNo(ans);

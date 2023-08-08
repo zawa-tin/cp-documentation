@@ -10,11 +10,12 @@ documentation_of: //Src/Template/Input.hpp
 ## ライブラリの使い方
 
 ```cpp
-void In(T& value)
+void input(T& value)
 ```
 
 ```cpp
-void In(Head& head, Tail&... tail)
+void input(Head& head, Tail&... tail)
 ```
 
 標準入力から受け取った値を順に引数の変数に保管します。
+- `std::array`、`std::vector`、`std::pair`の標準入力にも対応しています。

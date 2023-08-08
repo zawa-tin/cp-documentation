@@ -9,14 +9,14 @@
 namespace zawa {
 
 template <class T>
-void In(T& value) {
+void input(T& value) {
     std::cin >> value;
 }
 
 template <class Head, class... Tail>
-void In(Head& head, Tail&... tail) {
-    In(head);
-    In(tail...);
+void input(Head& head, Tail&... tail) {
+    input(head);
+    input(tail...);
 }
 
 } // namespace zawa

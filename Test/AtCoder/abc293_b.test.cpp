@@ -7,10 +7,10 @@
 using namespace zawa;
 
 int main() {
-    u32 N; In(N);
+    u32 N; input(N);
     std::vector<bool> A(N);
     for (u32 i{} ; i < N ; i++) {
-        u32 a; In(a);
+        u32 a; input(a);
         if (not A[i]) A[a - 1] = true;
     }
     std::vector<u32> ans;
