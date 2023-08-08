@@ -10,7 +10,7 @@ using namespace zawa;
 int main() {
     SetFastIO();
     SetPrecision(15);
-    u32 T; In(T);
+    u32 T; input(T);
     for (u32 _{} ; _ < T ; _++) {
         u64 A, B; input(A, B);
         out(A + B);
