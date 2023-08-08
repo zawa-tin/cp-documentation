@@ -18,5 +18,6 @@
 "Test/AtCoder/agc023_a.test.cpp": "2023-07-22 13:55:49 +0900",
 "Test/LC/aplusb.test.cpp": "2023-07-17 03:16:46 +0900",
 "Test/LC/enumerate_primes.test.cpp": "2023-06-13 11:55:48 +0900",
+"Test/LC/many_aplusb.test.cpp": "2023-08-08 12:59:06 +0900",
 "Test/LC/static_range_sum.test.cpp": "2023-07-22 13:55:49 +0900"
 }
