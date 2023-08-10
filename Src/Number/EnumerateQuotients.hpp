@@ -81,6 +81,7 @@ public:
     constexpr EnumerateQuotients(Value n, bool floor = true) : seq_{}, n_{ n } {
         templateTypeAssert();
         floor ? floorBuild() : ceilBuild();
+        seq_.shrink_to_fit();
     }
 
     constexpr Value n() const noexcept {
