@@ -75,7 +75,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2957.test.cpp
-      title: Test/AOJ/2957.test.cpp
+      title: AOJ2957 MOD Rush
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp

@@ -8,7 +8,7 @@ data:
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
-    title: Test/AOJ/2957.test.cpp
+    title: AOJ2957 MOD Rush
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc132_f.test.cpp
     title: ABC132-F Small Products
