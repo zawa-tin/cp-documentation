@@ -186,3 +186,12 @@ for (const auto& e : eq) {
 なぜなら $\lfloor \frac{n}{i}\rfloor > \sqrt{n}$ を満たす $i$ は $\sqrt{n}$ 以下であり、かつ $\sqrt{n}$ 以上の $i$ について $\lfloor \frac{n}{i}\rfloor\ \le\ \sqrt{n}$ が成り立つからです。
 
 なので、順にそれを取得しているだけです。
+
+<br />
+
+#### Appendix
+
+- https://nyaannyaan.github.io/library/multiplicative-function/prime-counting-faster.hpp
+- https://twitter.com/yosupot/status/1624735126163980289
+
+$N\ \le\ 10^{12}$ 程度なら、除算は`double`型で行った方が早いという話がある。(`zawa::EnumerateQuotients`では採用していない)
