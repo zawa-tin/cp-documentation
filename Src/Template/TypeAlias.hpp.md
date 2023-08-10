@@ -12,6 +12,9 @@ data:
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
+    path: Src/Number/EnumerateQuotients.hpp
+    title: "\u5546\u5217\u6319"
+  - icon: ':heavy_check_mark:'
     path: Src/Number/EratosthenesSieve.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   - icon: ':heavy_check_mark:'
@@ -43,6 +46,9 @@ data:
     title: "std::vector\u306E\u5165\u51FA\u529B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2957.test.cpp
+    title: Test/AOJ/2957.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -61,6 +67,9 @@ data:
     path: Test/AOJ/ITP2_4_A.test.cpp
     title: Test/AOJ/ITP2_4_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc132_f.test.cpp
+    title: ABC132-F Small Products
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
   - icon: ':heavy_check_mark:'
@@ -69,6 +78,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc229_d.test.cpp
     title: ABC229-D Longest X
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc230_e.test.cpp
+    title: Test/AtCoder/abc230_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_d.test.cpp
     title: Test/AtCoder/abc247_d.test.cpp
@@ -105,6 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+    title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -185,6 +200,7 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/Number/EratosthenesSieve.hpp
+  - Src/Number/EnumerateQuotients.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/Sequence/RunLengthEncoding.hpp
@@ -201,16 +217,19 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc299_c.test.cpp
+  - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
@@ -219,6 +238,7 @@ data:
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AOJ/2957.test.cpp
   - Test/AOJ/ITP1_2_C.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp

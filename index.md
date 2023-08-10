@@ -22,6 +22,9 @@ data:
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Number/EnumerateQuotients.hpp
+      title: "\u5546\u5217\u6319"
+    - icon: ':heavy_check_mark:'
       path: Src/Number/EratosthenesSieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   - name: Src/Sequence
@@ -71,6 +74,9 @@ data:
   - name: Test/AOJ
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2957.test.cpp
+      title: Test/AOJ/2957.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -91,6 +97,9 @@ data:
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc132_f.test.cpp
+      title: ABC132-F Small Products
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc172_c.test.cpp
       title: ABC172-C Tsundoku
     - icon: ':heavy_check_mark:'
@@ -99,6 +108,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc229_d.test.cpp
       title: ABC229-D Longest X
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc230_e.test.cpp
+      title: Test/AtCoder/abc230_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_d.test.cpp
       title: Test/AtCoder/abc247_d.test.cpp
@@ -137,5 +149,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
+  - name: Test/My/Number/EnumerateQuotients
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+      title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
 layout: toppage
 ---
