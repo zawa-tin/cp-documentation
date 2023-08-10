@@ -54,18 +54,19 @@ data:
     \    seq_.emplace_back(1U, n_, n_ + 1);\n    }\n\npublic:\n    constexpr EnumerateQuotients()\
     \ : seq_{}, n_{} {\n        templateTypeAssert();\n    }\n\n    constexpr EnumerateQuotients(Value\
     \ n, bool floor = true) : seq_{}, n_{ n } {\n        templateTypeAssert();\n \
-    \       floor ? floorBuild() : ceilBuild();\n    }\n\n    constexpr Value n()\
-    \ const noexcept {\n        return n_;\n    }\n\n    constexpr Data operator[](u32\
-    \ i) const noexcept {\n        return seq_[i];\n    }\n\n    constexpr Value quotient(u32\
-    \ i) const noexcept {\n        assert(i < seq_.size()); \n        return seq_[i].quotient();\n\
-    \    }\n\n    constexpr Value l(u32 i) const noexcept {\n        assert(i < seq_.size());\
-    \ \n        return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept\
-    \ {\n        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n\
-    \    constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n       \
-    \ assert(i < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\
-    \n    constexpr Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n\
-    \        return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept\
-    \ {\n        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
+    \       floor ? floorBuild() : ceilBuild();\n        seq_.shrink_to_fit();\n \
+    \   }\n\n    constexpr Value n() const noexcept {\n        return n_;\n    }\n\
+    \n    constexpr Data operator[](u32 i) const noexcept {\n        return seq_[i];\n\
+    \    }\n\n    constexpr Value quotient(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size()); \n        return seq_[i].quotient();\n    }\n\n    constexpr\
+    \ Value l(u32 i) const noexcept {\n        assert(i < seq_.size()); \n       \
+    \ return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept {\n\
+    \        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n   \
+    \ constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\n    constexpr\
+    \ Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n      \
+    \  return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept {\n\
+    \        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
     \ begin() const noexcept {\n        return seq_.begin();\n    }\n\n    constexpr\
     \ typename decltype(seq_)::const_iterator end() const noexcept {\n        return\
     \ seq_.end();\n    }\n\n};\n\n} // namespace zawa\n"
@@ -95,18 +96,19 @@ data:
     \    seq_.emplace_back(1U, n_, n_ + 1);\n    }\n\npublic:\n    constexpr EnumerateQuotients()\
     \ : seq_{}, n_{} {\n        templateTypeAssert();\n    }\n\n    constexpr EnumerateQuotients(Value\
     \ n, bool floor = true) : seq_{}, n_{ n } {\n        templateTypeAssert();\n \
-    \       floor ? floorBuild() : ceilBuild();\n    }\n\n    constexpr Value n()\
-    \ const noexcept {\n        return n_;\n    }\n\n    constexpr Data operator[](u32\
-    \ i) const noexcept {\n        return seq_[i];\n    }\n\n    constexpr Value quotient(u32\
-    \ i) const noexcept {\n        assert(i < seq_.size()); \n        return seq_[i].quotient();\n\
-    \    }\n\n    constexpr Value l(u32 i) const noexcept {\n        assert(i < seq_.size());\
-    \ \n        return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept\
-    \ {\n        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n\
-    \    constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n       \
-    \ assert(i < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\
-    \n    constexpr Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n\
-    \        return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept\
-    \ {\n        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
+    \       floor ? floorBuild() : ceilBuild();\n        seq_.shrink_to_fit();\n \
+    \   }\n\n    constexpr Value n() const noexcept {\n        return n_;\n    }\n\
+    \n    constexpr Data operator[](u32 i) const noexcept {\n        return seq_[i];\n\
+    \    }\n\n    constexpr Value quotient(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size()); \n        return seq_[i].quotient();\n    }\n\n    constexpr\
+    \ Value l(u32 i) const noexcept {\n        assert(i < seq_.size()); \n       \
+    \ return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept {\n\
+    \        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n   \
+    \ constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\n    constexpr\
+    \ Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n      \
+    \  return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept {\n\
+    \        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
     \ begin() const noexcept {\n        return seq_.begin();\n    }\n\n    constexpr\
     \ typename decltype(seq_)::const_iterator end() const noexcept {\n        return\
     \ seq_.end();\n    }\n\n};\n\n} // namespace zawa\n"
@@ -115,7 +117,7 @@ data:
   isVerificationFile: false
   path: Src/Number/EnumerateQuotients.hpp
   requiredBy: []
-  timestamp: '2023-08-10 16:50:27+09:00'
+  timestamp: '2023-08-10 17:19:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc230_e.test.cpp
@@ -310,3 +312,12 @@ for (const auto& e : eq) {
 なぜなら $\lfloor \frac{n}{i}\rfloor > \sqrt{n}$ を満たす $i$ は $\sqrt{n}$ 以下であり、かつ $\sqrt{n}$ 以上の $i$ について $\lfloor \frac{n}{i}\rfloor\ \le\ \sqrt{n}$ が成り立つからです。
 
 なので、順にそれを取得しているだけです。
+
+<br />
+
+#### Appendix
+
+- https://nyaannyaan.github.io/library/multiplicative-function/prime-counting-faster.hpp
+- https://twitter.com/yosupot/status/1624735126163980289
+
+$N\ \le\ 10^{12}$ 程度なら、除算は`double`型で行った方が早いという話がある。(`zawa::EnumerateQuotients`では採用していない)

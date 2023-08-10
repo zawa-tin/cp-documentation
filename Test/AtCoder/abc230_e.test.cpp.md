@@ -49,18 +49,19 @@ data:
     \    seq_.emplace_back(1U, n_, n_ + 1);\n    }\n\npublic:\n    constexpr EnumerateQuotients()\
     \ : seq_{}, n_{} {\n        templateTypeAssert();\n    }\n\n    constexpr EnumerateQuotients(Value\
     \ n, bool floor = true) : seq_{}, n_{ n } {\n        templateTypeAssert();\n \
-    \       floor ? floorBuild() : ceilBuild();\n    }\n\n    constexpr Value n()\
-    \ const noexcept {\n        return n_;\n    }\n\n    constexpr Data operator[](u32\
-    \ i) const noexcept {\n        return seq_[i];\n    }\n\n    constexpr Value quotient(u32\
-    \ i) const noexcept {\n        assert(i < seq_.size()); \n        return seq_[i].quotient();\n\
-    \    }\n\n    constexpr Value l(u32 i) const noexcept {\n        assert(i < seq_.size());\
-    \ \n        return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept\
-    \ {\n        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n\
-    \    constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n       \
-    \ assert(i < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\
-    \n    constexpr Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n\
-    \        return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept\
-    \ {\n        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
+    \       floor ? floorBuild() : ceilBuild();\n        seq_.shrink_to_fit();\n \
+    \   }\n\n    constexpr Value n() const noexcept {\n        return n_;\n    }\n\
+    \n    constexpr Data operator[](u32 i) const noexcept {\n        return seq_[i];\n\
+    \    }\n\n    constexpr Value quotient(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size()); \n        return seq_[i].quotient();\n    }\n\n    constexpr\
+    \ Value l(u32 i) const noexcept {\n        assert(i < seq_.size()); \n       \
+    \ return seq_[i].l();\n    }\n\n    constexpr Value r(u32 i) const noexcept {\n\
+    \        assert(i < seq_.size()); \n        return seq_[i].r();\n    }\n\n   \
+    \ constexpr std::pair<Value, Value> range(u32 i) const noexcept {\n        assert(i\
+    \ < seq_.size());\n        return std::move(seq_[i].range());\n    }\n\n    constexpr\
+    \ Value len(u32 i) const noexcept {\n        assert(i < seq_.size());\n      \
+    \  return seq_[i].len();\n    }\n\n    constexpr usize size() const noexcept {\n\
+    \        return seq_.size();\n    }\n\n    constexpr typename decltype(seq_)::const_iterator\
     \ begin() const noexcept {\n        return seq_.begin();\n    }\n\n    constexpr\
     \ typename decltype(seq_)::const_iterator end() const noexcept {\n        return\
     \ seq_.end();\n    }\n\n};\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc230_e.test.cpp\"\
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc230_e.test.cpp
   requiredBy: []
-  timestamp: '2023-08-10 16:50:27+09:00'
+  timestamp: '2023-08-10 17:19:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc230_e.test.cpp
