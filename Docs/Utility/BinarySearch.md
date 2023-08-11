@@ -86,4 +86,4 @@ $m$ を返します。
 名前の通り、二分探索しています。
 
 所謂、めぐる式二分探索を採用しています。
-- [https://twitter.com/meguru_comp/status/697008509376835584]
+- (https://twitter.com/meguru_comp/status/697008509376835584)
