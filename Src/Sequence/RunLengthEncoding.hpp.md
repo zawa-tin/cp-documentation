@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc311_b.test.cpp
+    title: Test/AtCoder/abc311_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -136,6 +139,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc299_c.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
+  - Test/AtCoder/abc311_b.test.cpp
 documentation_of: Src/Sequence/RunLengthEncoding.hpp
 layout: document
 title: "\u9023\u9577\u5727\u7E2E"

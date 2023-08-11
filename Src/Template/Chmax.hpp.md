@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc311_b.test.cpp
+    title: Test/AtCoder/abc311_b.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Template/Chmax.hpp\"\n\nnamespace zawa {\n\ntemplate\
@@ -19,8 +22,9 @@ data:
   path: Src/Template/Chmax.hpp
   requiredBy: []
   timestamp: '2023-08-04 19:12:51+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AtCoder/abc311_b.test.cpp
 documentation_of: Src/Template/Chmax.hpp
 layout: document
 title: Chmax

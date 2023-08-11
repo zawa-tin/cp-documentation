@@ -44,7 +44,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/ArrayIO.hpp
       title: "std::array\u306E\u5165\u51FA\u529B"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Src/Template/Chmax.hpp
       title: Chmax
     - icon: ':heavy_check_mark:'
@@ -156,6 +156,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc299_c.test.cpp
       title: Test/AtCoder/abc299_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc311_b.test.cpp
+      title: Test/AtCoder/abc311_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
