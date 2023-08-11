@@ -1,4 +1,5 @@
 #define PROBLEM "https://atcoder.jp/contests/abc236/tasks/abc236_e"
+#define ERROR 0.001
 
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Template/FloatingNumberAlias.hpp"
