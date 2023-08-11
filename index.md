@@ -27,6 +27,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Number/EratosthenesSieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/IntegerDivision.hpp
+      title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
+        \u3052\u9664\u7B97"
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'
@@ -79,6 +83,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Utility/BinarySearch.hpp
       title: "\u4E8C\u5206\u63A2\u7D22"
+    - icon: ':heavy_check_mark:'
+      path: Src/Utility/FloatingMarkerShift.hpp
+      title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
+        10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\
+        \u3064"
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -111,6 +120,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc172_c.test.cpp
       title: ABC172-C Tsundoku
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc191_d.test.cpp
+      title: Test/AtCoder/abc191_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp

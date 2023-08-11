@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc191_d.test.cpp
+    title: Test/AtCoder/abc191_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   _isVerificationFailed: false
@@ -53,6 +56,7 @@ data:
   timestamp: '2023-08-11 13:12:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document
@@ -142,4 +146,4 @@ $m$ を返します。
 名前の通り、二分探索しています。
 
 所謂、めぐる式二分探索を採用しています。
-- [https://twitter.com/meguru_comp/status/697008509376835584]
+- (https://twitter.com/meguru_comp/status/697008509376835584)

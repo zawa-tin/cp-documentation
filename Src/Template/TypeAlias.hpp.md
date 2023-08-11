@@ -47,6 +47,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Utility/BinarySearch.hpp
     title: "\u4E8C\u5206\u63A2\u7D22"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/FloatingMarkerShift.hpp
+    title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
+      10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
@@ -75,6 +79,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc191_d.test.cpp
+    title: Test/AtCoder/abc191_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
@@ -213,6 +220,7 @@ data:
   - Src/Sequence/CompressedSequence.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/Utility/FloatingMarkerShift.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/Output.hpp
   - Src/Template/ArrayIO.hpp
@@ -223,6 +231,7 @@ data:
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
