@@ -44,6 +44,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/VectorIO.hpp
     title: "std::vector\u306E\u5165\u51FA\u529B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/BinarySearch.hpp
+    title: "\u4E8C\u5206\u63A2\u7D22"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
@@ -81,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc230_e.test.cpp
     title: Test/AtCoder/abc230_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc236_e.test.cpp
+    title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_d.test.cpp
     title: Test/AtCoder/abc247_d.test.cpp
@@ -206,6 +212,7 @@ data:
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Utility/BinarySearch.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/Output.hpp
   - Src/Template/ArrayIO.hpp
@@ -226,6 +233,7 @@ data:
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp

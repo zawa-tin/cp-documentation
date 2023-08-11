@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc236_e.test.cpp
+    title: Test/AtCoder/abc236_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   _isVerificationFailed: false
@@ -35,6 +38,7 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc236_e.test.cpp
   - Test/LC/many_aplusb.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document

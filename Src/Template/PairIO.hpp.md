@@ -19,6 +19,9 @@ data:
     path: Test/AOJ/ITP1_1_C.test.cpp
     title: Test/AOJ/ITP1_1_C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc236_e.test.cpp
+    title: Test/AtCoder/abc236_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_b.test.cpp
     title: Test/AtCoder/abc293_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -61,6 +64,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp

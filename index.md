@@ -47,6 +47,10 @@ data:
       path: Src/Template/Chmin.hpp
       title: Chmin
     - icon: ':heavy_check_mark:'
+      path: Src/Template/FloatingNumberAlias.hpp
+      title: "\u6D6E\u52D5\u5C0F\u6570\u70B9\u6570\u578B\u306E\u30A8\u30A4\u30EA\u30A2\
+        \u30B9"
+    - icon: ':heavy_check_mark:'
       path: Src/Template/IOSetting.hpp
       title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
     - icon: ':heavy_check_mark:'
@@ -70,6 +74,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/YesNo.hpp
       title: "Yes\u304BNo\u3092\u51FA\u529B\u3059\u308B"
+  - name: Src/Utility
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Utility/BinarySearch.hpp
+      title: "\u4E8C\u5206\u63A2\u7D22"
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -111,6 +120,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc230_e.test.cpp
       title: Test/AtCoder/abc230_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc236_e.test.cpp
+      title: Test/AtCoder/abc236_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_d.test.cpp
       title: Test/AtCoder/abc247_d.test.cpp
