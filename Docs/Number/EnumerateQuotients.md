@@ -33,6 +33,7 @@ $n$ の型を指定します。
 
 (2) $n$ に対して商を列挙する。`floor`を`true`にした場合、商の切り捨てが、`false`にした場合は商の切り上げが保持される。
 - 切り上げの方は競プロの問題でverifyしていない(募: verifyに使える問題)
+- デフォルトでは`true`が設定されているため、何もしていされなければ`floor`の方で計算される
 
 **計算量**: $O(\sqrt{n})$
 
@@ -168,6 +169,10 @@ constexpr typename decltype(seq_)::const_iterator end() const noexcept
 
 **計算量**: 定数時間
 
+<br />
+
+#### begin endの役割
+
 ```cpp
 EnumerateQuotients eq(n);
 for (const auto& e : eq) {
@@ -179,7 +184,7 @@ for (const auto& e : eq) {
 
 <br />
 
-#### アルゴリズム
+## アルゴリズム
 
 一般に正整数 $n$ と $i = 1, 2, \dots, n - 1, n$ に対して、 $\lfloor \frac{n}{i}\rfloor$ の種類数は $O(\sqrt{n})$ 個に抑えられます。
 
@@ -191,7 +196,8 @@ for (const auto& e : eq) {
 
 #### Appendix
 
-- https://nyaannyaan.github.io/library/multiplicative-function/prime-counting-faster.hpp
-- https://twitter.com/yosupot/status/1624735126163980289
+- [https://nyaannyaan.github.io/library/multiplicative-function/prime-counting-faster.hpp](https://nyaannyaan.github.io/library/multiplicative-function/prime-counting-faster.hpp
+)
+- [https://twitter.com/yosupot/status/1624735126163980289](https://twitter.com/yosupot/status/1624735126163980289)
 
-$N\ \le\ 10^{12}$ 程度なら、除算は`double`型で行った方が早いという話がある。(`zawa::EnumerateQuotients`では採用していない)
+$N\ \le\ 10^{12}$ 程度なら、除算は`double`型で行った方が(十分な精度を持ちながらも)速いという話がある。(`zawa::EnumerateQuotients`では採用していない)
