@@ -1,11 +1,26 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/EnumerateQuotients.hpp
+    title: "\u5546\u5217\u6319"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2957.test.cpp
+    title: AOJ2957 MOD Rush
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc132_f.test.cpp
+    title: ABC132-F Small Products
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc191_d.test.cpp
     title: Test/AtCoder/abc191_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc230_e.test.cpp
+    title: Test/AtCoder/abc230_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+    title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -37,11 +52,16 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Src/Number/IntegerDivision.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Number/EnumerateQuotients.hpp
   timestamp: '2023-08-11 15:55:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc191_d.test.cpp
+  - Test/AtCoder/abc230_e.test.cpp
+  - Test/AtCoder/abc132_f.test.cpp
+  - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/AOJ/2957.test.cpp
 documentation_of: Src/Number/IntegerDivision.hpp
 layout: document
 title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\u3052\
