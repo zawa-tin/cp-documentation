@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Template/TypeAlias.hpp"
+#include "./IntegerDivision.hpp"
 
 #include <type_traits>
 #include <vector>
@@ -55,8 +56,8 @@ private:
     constexpr void floorBuild() noexcept {
         Value l{1U};
         while (l <= n_) {
-            Value quotient{ n_ / l };
-            Value r{ n_ / quotient + 1 };
+            Value quotient{ DivFloor(n_, l) };
+            Value r{ DivFloor(n_, quotient) + 1 };
             seq_.emplace_back(quotient, l, r);
             l = r;
         } 
@@ -65,12 +66,14 @@ private:
     constexpr void ceilBuild() noexcept {
         Value l{1U};
         while (l < n_) {
-            Value quotient{ (n_ + l - 1) / l };
-            Value r{ (n_ + quotient - 2) / (quotient - 1) };
+            Value quotient{ DivCeil(n_, l) };
+            Value r{ DivCeil(n_, quotient - 1) };
             seq_.emplace_back(quotient, l, r);
             l = r;
         }
-        seq_.emplace_back(1U, n_, n_ + 1);
+        if (n_) {
+            seq_.emplace_back(1U, n_, n_ + 1);
+        }
     }
 
 public:
