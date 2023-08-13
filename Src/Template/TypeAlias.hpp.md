@@ -128,6 +128,9 @@ data:
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/enumerate_quotients.test.cpp
+    title: Test/LC/enumerate_quotients.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -255,6 +258,7 @@ data:
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp

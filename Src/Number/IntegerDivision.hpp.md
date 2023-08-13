@@ -19,6 +19,9 @@ data:
     path: Test/AtCoder/abc230_e.test.cpp
     title: Test/AtCoder/abc230_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/enumerate_quotients.test.cpp
+    title: Test/LC/enumerate_quotients.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   _isVerificationFailed: false
@@ -61,6 +64,7 @@ data:
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
   - Test/AOJ/2957.test.cpp
 documentation_of: Src/Number/IntegerDivision.hpp
 layout: document

@@ -171,6 +171,9 @@ data:
       path: Test/LC/enumerate_primes.test.cpp
       title: Test/LC/enumerate_primes.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/enumerate_quotients.test.cpp
+      title: Test/LC/enumerate_quotients.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
     - icon: ':heavy_check_mark:'

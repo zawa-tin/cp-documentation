@@ -10,6 +10,9 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/enumerate_quotients.test.cpp
+    title: Test/LC/enumerate_quotients.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   _isVerificationFailed: false
@@ -40,6 +43,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc236_e.test.cpp
   - Test/LC/many_aplusb.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
