@@ -122,6 +122,9 @@ data:
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc047_a.test.cpp
+    title: AGC047-A Integer Product
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -247,6 +250,7 @@ data:
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/agc047_a.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
