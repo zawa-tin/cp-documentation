@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_B.test.cpp
+    title: Test/AOJ/DSL_2_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_range_sum.test.cpp
+    title: Test/LC/point_add_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,9 +47,11 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc236_e.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"

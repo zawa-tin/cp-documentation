@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
+  - name: Src/DataStructure/FenwickTree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/FenwickTree/FenwickTree.hpp
+      title: Fenwick Tree
   - name: Src/DataStructure/PrefixSum1D
     pages:
     - icon: ':heavy_check_mark:'
@@ -98,6 +103,9 @@ data:
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_B.test.cpp
+      title: Test/AOJ/DSL_2_B.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -179,6 +187,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_add_range_sum.test.cpp
+      title: Test/LC/point_add_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp

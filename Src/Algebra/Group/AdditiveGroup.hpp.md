@@ -7,6 +7,9 @@ data:
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_B.test.cpp
+    title: Test/AOJ/DSL_2_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
   - icon: ':heavy_check_mark:'
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_range_sum.test.cpp
+    title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -46,11 +52,13 @@ data:
   timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc172_c.test.cpp
-  - Test/AtCoder/agc023_a.test.cpp
-  - Test/AtCoder/abc229_d.test.cpp
-  - Test/LC/static_range_sum.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/static_range_sum.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"

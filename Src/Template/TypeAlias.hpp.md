@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/FenwickTree.hpp
+    title: Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
@@ -58,6 +61,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_B.test.cpp
+    title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_1_A.test.cpp
     title: Test/AOJ/GRL_1_A.test.cpp
@@ -136,6 +142,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_range_sum.test.cpp
+    title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -221,55 +230,58 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
-  - Src/Number/EratosthenesSieve.hpp
-  - Src/Number/EnumerateQuotients.hpp
-  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  - Src/Sequence/RunLengthEncoding.hpp
-  - Src/Sequence/CompressedSequence.hpp
-  - Src/Graph/Components/ConnectedComponents.hpp
-  - Src/Utility/BinarySearch.hpp
-  - Src/Utility/FloatingMarkerShift.hpp
-  - Src/Template/IOSetting.hpp
-  - Src/Template/Output.hpp
-  - Src/Template/ArrayIO.hpp
-  - Src/Template/Input.hpp
-  - Src/Template/VectorIO.hpp
   - Src/Template/PairIO.hpp
   - Src/Template/SupInf.hpp
+  - Src/Template/Input.hpp
+  - Src/Template/Output.hpp
+  - Src/Template/ArrayIO.hpp
+  - Src/Template/IOSetting.hpp
+  - Src/Template/VectorIO.hpp
+  - Src/Utility/FloatingMarkerShift.hpp
+  - Src/Utility/BinarySearch.hpp
+  - Src/Sequence/CompressedSequence.hpp
+  - Src/Sequence/RunLengthEncoding.hpp
+  - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Number/EratosthenesSieve.hpp
+  - Src/Number/EnumerateQuotients.hpp
+  - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc191_d.test.cpp
-  - Test/AtCoder/abc299_c.test.cpp
-  - Test/AtCoder/abc230_e.test.cpp
-  - Test/AtCoder/abc247_d.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
-  - Test/AtCoder/abc295_a.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/enumerate_primes.test.cpp
+  - Test/LC/aplusb.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/static_range_sum.test.cpp
+  - Test/AOJ/2957.test.cpp
+  - Test/AOJ/ITP2_4_A.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/AOJ/GRL_1_A.test.cpp
+  - Test/AOJ/ITP1_2_C.test.cpp
+  - Test/AOJ/ITP1_1_C.test.cpp
+  - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/AtCoder/abc311_b.test.cpp
-  - Test/AtCoder/abc293_d.test.cpp
-  - Test/AtCoder/abc293_b.test.cpp
-  - Test/AtCoder/abc172_c.test.cpp
-  - Test/AtCoder/agc047_a.test.cpp
-  - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
-  - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
-  - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
-  - Test/LC/many_aplusb.test.cpp
-  - Test/LC/enumerate_primes.test.cpp
-  - Test/LC/static_range_sum.test.cpp
-  - Test/LC/aplusb.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
-  - Test/AOJ/ITP1_1_C.test.cpp
-  - Test/AOJ/ITP2_4_A.test.cpp
-  - Test/AOJ/GRL_1_A.test.cpp
-  - Test/AOJ/ALDS1_11_D.test.cpp
-  - Test/AOJ/2957.test.cpp
-  - Test/AOJ/ITP1_2_C.test.cpp
-  - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
+  - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/abc299_c.test.cpp
+  - Test/AtCoder/abc230_e.test.cpp
+  - Test/AtCoder/agc047_a.test.cpp
+  - Test/AtCoder/abc247_d.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc132_f.test.cpp
+  - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

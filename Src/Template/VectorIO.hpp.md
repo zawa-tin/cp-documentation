@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_range_sum.test.cpp
+    title: Test/LC/point_add_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -59,17 +62,18 @@ data:
   isVerificationFile: false
   path: Src/Template/VectorIO.hpp
   requiredBy:
-  - Src/Template/Output.hpp
   - Src/Template/Input.hpp
+  - Src/Template/Output.hpp
   timestamp: '2023-08-05 04:55:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc295_a.test.cpp
-  - Test/AtCoder/abc293_b.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
 documentation_of: Src/Template/VectorIO.hpp
 layout: document
 title: "std::vector\u306E\u5165\u51FA\u529B"

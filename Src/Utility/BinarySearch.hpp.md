@@ -56,8 +56,8 @@ data:
   timestamp: '2023-08-11 13:12:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document
 title: "\u4E8C\u5206\u63A2\u7D22"
