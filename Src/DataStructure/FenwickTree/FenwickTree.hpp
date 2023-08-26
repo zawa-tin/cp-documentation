@@ -105,7 +105,7 @@ public:
 
     template <class Function>
     u32 minLeft(u32 r, const Function& f) const {
-        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "maxRight's argument f must be function bool(T)");
+        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "minLeft's argument f must be function bool(T)");
         assert(r <= n_);
         Value sum{ product(r) };
         u32 l{};
@@ -121,16 +121,15 @@ public:
         return l;
     }
 
+    // debug print
+    friend std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {
+        for (u32 i{} ; i <= ft.size() ; i++) {
+            os << ft.product(0, i) << (i == ft.size() ? "" : " ");
+        }
+        return os;
+    }
 
 };
 
-// debug print
-template <class Group>
-std::ostream &operator<<(std::ostream& os, const FenwickTree<Group>& ft) {
-    for (u32 i{} ; i <= ft.size() ; i++) {
-        os << ft.product(0, i) << (i == ft.size() ? "" : " ");
-    }
-    return os;
-}
 
 } // namespace zawa

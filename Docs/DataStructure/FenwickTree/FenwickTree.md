@@ -164,8 +164,7 @@ u32 minLeft(u32 l, const Function& f) const
 #### operator<<
 
 ```cpp
-template <class Group>
-std::ostream &operator<<(std::ostream& os, const FenwickTree<Group>& ft)
+friend std::ostream& operator<<(std::ostream& os, const FenwickTree& ft)
 ```
 
-$n + 1$ 要素Prefix Productを空白区切りで出力します。
+$n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaystyle \prod_{j = 0}^{i} A_{j}$ を出力します。
