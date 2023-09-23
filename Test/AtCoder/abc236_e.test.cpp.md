@@ -88,14 +88,17 @@ data:
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Utility/BinarySearch.hpp\"\n\n#line 4\
     \ \"Src/Utility/BinarySearch.hpp\"\n\n#include <cmath>\n#include <functional>\n\
-    #include <type_traits>\n\nnamespace zawa {\n\ntemplate <class T, class Function>\n\
-    T BinarySearch(T ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>,\
-    \ \"T must be integral type\");\n    static_assert(std::is_signed_v<T>, \"T must\
-    \ be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
-    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (std::abs(ok\
-    \ - ng) > 1) {\n        T mid{ (ok + ng) >> 1 };\n        (f(mid) ? ok : ng) =\
-    \ mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\nT BinarySearch(T\
-    \ ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
+    #include <type_traits>\n#line 9 \"Src/Utility/BinarySearch.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace internal {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n\
+    \    if (a > b) std::swap(a, b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate\
+    \ <class T>\nT Abs(T a, T b) {\n    return (a >= b ? a - b : b - a);\n}\n\n} //\
+    \ namespace zawa::internal\n\ntemplate <class T, class Function>\nT BinarySearch(T\
+    \ ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>, \"\
+    T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (internal::Abs(ok,\
+    \ ng) > 1) {\n        T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ?\
+    \ ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\n\
+    T BinarySearch(T ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
     \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
     \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
@@ -142,7 +145,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc236_e.test.cpp
   requiredBy: []
-  timestamp: '2023-08-11 13:17:28+09:00'
+  timestamp: '2023-09-24 02:48:01+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc236_e.test.cpp

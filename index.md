@@ -173,6 +173,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc047_a.test.cpp
       title: AGC047-A Integer Product
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc165_c.test.cpp
+      title: Test/AtCoder/arc165_c.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'

@@ -107,9 +107,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/static_range_sum.test.cpp
-  - Test/AtCoder/abc229_d.test.cpp
-  - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
 documentation_of: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
 layout: document
 title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"

@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc165_c.test.cpp
+    title: Test/AtCoder/arc165_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -23,27 +26,33 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Utility/BinarySearch.hpp\"\n\n#include <cmath>\n\
-    #include <functional>\n#include <type_traits>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T, class Function>\nT BinarySearch(T ok, T ng, const Function& f) {\n\
-    \    static_assert(std::is_integral_v<T>, \"T must be integral type\");\n    static_assert(std::is_signed_v<T>,\
-    \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
-    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (std::abs(ok\
-    \ - ng) > 1) {\n        T mid{ (ok + ng) >> 1 };\n        (f(mid) ? ok : ng) =\
-    \ mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\nT BinarySearch(T\
-    \ ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
+    #include <functional>\n#include <type_traits>\n#include <utility>\n\nnamespace\
+    \ zawa {\n\nnamespace internal {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n\
+    \    if (a > b) std::swap(a, b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate\
+    \ <class T>\nT Abs(T a, T b) {\n    return (a >= b ? a - b : b - a);\n}\n\n} //\
+    \ namespace zawa::internal\n\ntemplate <class T, class Function>\nT BinarySearch(T\
+    \ ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>, \"\
+    T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (internal::Abs(ok,\
+    \ ng) > 1) {\n        T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ?\
+    \ ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\n\
+    T BinarySearch(T ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
     \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
     \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
     \ ? ok : ng) = mid;\n    }\n    return ok;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <cmath>\n\
-    #include <functional>\n#include <type_traits>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T, class Function>\nT BinarySearch(T ok, T ng, const Function& f) {\n\
-    \    static_assert(std::is_integral_v<T>, \"T must be integral type\");\n    static_assert(std::is_signed_v<T>,\
-    \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
-    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (std::abs(ok\
-    \ - ng) > 1) {\n        T mid{ (ok + ng) >> 1 };\n        (f(mid) ? ok : ng) =\
-    \ mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\nT BinarySearch(T\
-    \ ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
+    #include <functional>\n#include <type_traits>\n#include <utility>\n\nnamespace\
+    \ zawa {\n\nnamespace internal {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n\
+    \    if (a > b) std::swap(a, b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate\
+    \ <class T>\nT Abs(T a, T b) {\n    return (a >= b ? a - b : b - a);\n}\n\n} //\
+    \ namespace zawa::internal\n\ntemplate <class T, class Function>\nT BinarySearch(T\
+    \ ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>, \"\
+    T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (internal::Abs(ok,\
+    \ ng) > 1) {\n        T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ?\
+    \ ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\n\
+    T BinarySearch(T ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
     \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
     \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
@@ -53,11 +62,12 @@ data:
   isVerificationFile: false
   path: Src/Utility/BinarySearch.hpp
   requiredBy: []
-  timestamp: '2023-08-11 13:12:43+09:00'
+  timestamp: '2023-09-24 02:48:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
+  - Test/AtCoder/arc165_c.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document
 title: "\u4E8C\u5206\u63A2\u7D22"
@@ -91,9 +101,9 @@ T BinarySearch(T ok, T ng, const Functioni& f, u32 upperLimit)
 
 **制約**:
 
-(1) 符号付き**整数**型であること
+(1) **整数**型であること
 
-(2) 符号付き算術型であること
+(2) 算術型であること
 - (2) は浮動小数点数型等も許される。
 
 `Function`
@@ -147,3 +157,7 @@ $m$ を返します。
 
 所謂、めぐる式二分探索を採用しています。
 - (https://twitter.com/meguru_comp/status/697008509376835584)
+
+#### メモ
+
+2023/9/24: (1)においてunsignedな整数型も利用できるように修正しました。オーバーフローする問題を解消しました。

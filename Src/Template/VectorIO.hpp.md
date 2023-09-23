@@ -67,10 +67,10 @@ data:
   timestamp: '2023-08-05 04:55:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp

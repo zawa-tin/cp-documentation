@@ -47,10 +47,10 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/many_aplusb.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
