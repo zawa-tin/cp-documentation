@@ -1,3 +1,4 @@
+#define IGNORE
 #define PROBLEM "https://atcoder.jp/contests/agc005/tasks/agc005_b"
 
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
