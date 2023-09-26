@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_set_range_composite.test.cpp
+    title: Test/LC/point_set_range_composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -51,6 +54,7 @@ data:
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document

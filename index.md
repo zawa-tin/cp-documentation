@@ -6,6 +6,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
+  - name: Src/Algebra/Monoid
+    pages:
+    - icon: ':question:'
+      path: Src/Algebra/Monoid/MinMonoid.hpp
+      title: Src/Algebra/Monoid/MinMonoid.hpp
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -19,6 +24,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - name: Src/DataStructure/SegmentTree
+    pages:
+    - icon: ':question:'
+      path: Src/DataStructure/SegmentTree/SegmentTree.hpp
+      title: Segment Tree
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -74,7 +84,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Template/SupInf.hpp
       title: "sup inf\u5909\u6570"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Src/Template/TypeAlias.hpp
       title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
     - icon: ':heavy_check_mark:'
@@ -102,6 +112,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_A.test.cpp
+      title: Test/AOJ/DSL_2_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_B.test.cpp
       title: Test/AOJ/DSL_2_B.test.cpp
@@ -167,6 +180,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc311_b.test.cpp
       title: Test/AtCoder/abc311_b.test.cpp
+    - icon: ':x:'
+      path: Test/AtCoder/agc005_b.test.cpp
+      title: Test/AtCoder/agc005_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
@@ -193,6 +209,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_range_sum.test.cpp
       title: Test/LC/point_add_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_set_range_composite.test.cpp
+      title: Test/LC/point_set_range_composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp

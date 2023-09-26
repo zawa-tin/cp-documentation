@@ -11,6 +11,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - icon: ':question:'
+    path: Src/DataStructure/SegmentTree/SegmentTree.hpp
+    title: Segment Tree
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
@@ -61,6 +64,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_A.test.cpp
+    title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
@@ -124,6 +130,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc311_b.test.cpp
     title: Test/AtCoder/abc311_b.test.cpp
+  - icon: ':x:'
+    path: Test/AtCoder/agc005_b.test.cpp
+    title: Test/AtCoder/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
@@ -149,14 +158,17 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_set_range_composite.test.cpp
+    title: Test/LC/point_set_range_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: '#line 2 "Src/Template/TypeAlias.hpp"
@@ -238,6 +250,7 @@ data:
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
+  - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
@@ -251,9 +264,10 @@ data:
   - Src/Template/Output.hpp
   - Src/Template/VectorIO.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
@@ -267,7 +281,9 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/enumerate_primes.test.cpp
+  - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/agc023_a.test.cpp

@@ -8,7 +8,7 @@ data:
     path: Src/Number/IntegerDivision.hpp
     title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
       \u3052\u9664\u7B97"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
