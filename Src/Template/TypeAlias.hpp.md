@@ -11,7 +11,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -130,9 +130,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc311_b.test.cpp
     title: Test/AtCoder/abc311_b.test.cpp
-  - icon: ':x:'
-    path: Test/AtCoder/agc005_b.test.cpp
-    title: Test/AtCoder/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
@@ -164,11 +161,17 @@ data:
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/agc005_b.test.cpp
+    title: Test/Manual/agc005_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/agc026_a.test.cpp
+    title: Test/Manual/agc026_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: '#line 2 "Src/Template/TypeAlias.hpp"
@@ -264,7 +267,7 @@ data:
   - Src/Template/Output.hpp
   - Src/Template/VectorIO.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
@@ -283,7 +286,8 @@ data:
   - Test/LC/aplusb.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/enumerate_primes.test.cpp
-  - Test/AtCoder/agc005_b.test.cpp
+  - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/agc026_a.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/agc023_a.test.cpp

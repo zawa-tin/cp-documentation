@@ -1,29 +1,28 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MinMonoid.hpp
     title: Src/Algebra/Monoid/MinMonoid.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    IGNORE: ''
-    IGNORE_IF_GCC: ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/agc005/tasks/agc005_b
-  bundledCode: "#line 1 \"Test/AtCoder/agc005_b.test.cpp\"\n#define IGNORE\n#define\
-    \ PROBLEM \"https://atcoder.jp/contests/agc005/tasks/agc005_b\"\n\n#line 2 \"\
-    Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://atcoder.jp/contests/agc005/submissions/45952065
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/Manual/agc005_b.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -89,38 +88,43 @@ data:
     \    using Element = T;\n    static constexpr T identity() noexcept {\n      \
     \  return std::numeric_limits<T>::max();\n    }\n    static constexpr T operation(T\
     \ a, T b) noexcept {\n        return std::min(a, b);\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 6 \"Test/AtCoder/agc005_b.test.cpp\"\n\nint main() {\n    using\
-    \ namespace zawa;\n    int n; std::cin >> n;\n    std::vector<int> a(n);\n   \
-    \ for (auto& x : a) std::cin >> x;\n    SegmentTree<MinMonoid<int>> seg(a);\n\
-    \    long long ans{};\n    for (int i{} ; i < n ; i++) {\n        auto f{[&](int\
-    \ v) -> bool {\n            return v >= a[i];\n        }};\n        unsigned left{\
-    \ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };\n        ans += (long long)(right\
-    \ - i) * (long long)(i - left + 1) * (long long)a[i];\n    }\n    std::cout <<\
-    \ ans << std::endl;\n}\n"
-  code: "#define IGNORE\n#define PROBLEM \"https://atcoder.jp/contests/agc005/tasks/agc005_b\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\nint main() {\n    using namespace\
+    \ zawa\n#line 5 \"Test/Manual/agc005_b.test.cpp\"\n\n/*\n * AGC005-B Minimum Sum\n\
+    \ * https://atcoder.jp/contests/agc005/submissions/45952065\n */\n\n#include <iostream>\n\
+    #line 13 \"Test/Manual/agc005_b.test.cpp\"\n\nvoid solve() {\n    using namespace\
     \ zawa;\n    int n; std::cin >> n;\n    std::vector<int> a(n);\n    for (auto&\
     \ x : a) std::cin >> x;\n    SegmentTree<MinMonoid<int>> seg(a);\n    long long\
     \ ans{};\n    for (int i{} ; i < n ; i++) {\n        auto f{[&](int v) -> bool\
     \ {\n            return v >= a[i];\n        }};\n        unsigned left{ seg.minLeft(i,\
     \ f) }, right{ seg.maxRight(i, f) };\n        ans += (long long)(right - i) *\
     \ (long long)(i - left + 1) * (long long)a[i];\n    }\n    std::cout << ans <<\
-    \ std::endl;\n}\n"
+    \ std::endl;\n}\n\nint main() {\n    std::cout << \"Hello World\" << std::endl;\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
+    \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\n/*\n * AGC005-B Minimum Sum\n\
+    \ * https://atcoder.jp/contests/agc005/submissions/45952065\n */\n\n#include <iostream>\n\
+    #include <vector>\n\nvoid solve() {\n    using namespace zawa;\n    int n; std::cin\
+    \ >> n;\n    std::vector<int> a(n);\n    for (auto& x : a) std::cin >> x;\n  \
+    \  SegmentTree<MinMonoid<int>> seg(a);\n    long long ans{};\n    for (int i{}\
+    \ ; i < n ; i++) {\n        auto f{[&](int v) -> bool {\n            return v\
+    \ >= a[i];\n        }};\n        unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i,\
+    \ f) };\n        ans += (long long)(right - i) * (long long)(i - left + 1) * (long\
+    \ long)a[i];\n    }\n    std::cout << ans << std::endl;\n}\n\nint main() {\n \
+    \   std::cout << \"Hello World\" << std::endl;\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MinMonoid.hpp
   isVerificationFile: true
-  path: Test/AtCoder/agc005_b.test.cpp
+  path: Test/Manual/agc005_b.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 04:50:46+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2023-09-27 05:21:34+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AtCoder/agc005_b.test.cpp
+documentation_of: Test/Manual/agc005_b.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AtCoder/agc005_b.test.cpp
-- /verify/Test/AtCoder/agc005_b.test.cpp.html
-title: Test/AtCoder/agc005_b.test.cpp
+- /verify/Test/Manual/agc005_b.test.cpp
+- /verify/Test/Manual/agc005_b.test.cpp.html
+title: Test/Manual/agc005_b.test.cpp
 ---

@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []

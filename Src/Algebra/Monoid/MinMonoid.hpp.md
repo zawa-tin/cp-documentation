@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
-  - icon: ':x:'
-    path: Test/AtCoder/agc005_b.test.cpp
-    title: Test/AtCoder/agc005_b.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/agc005_b.test.cpp
+    title: Test/Manual/agc005_b.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n\
@@ -30,10 +30,10 @@ data:
   path: Src/Algebra/Monoid/MinMonoid.hpp
   requiredBy: []
   timestamp: '2023-09-26 08:39:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_A.test.cpp
-  - Test/AtCoder/agc005_b.test.cpp
+  - Test/Manual/agc005_b.test.cpp
 documentation_of: Src/Algebra/Monoid/MinMonoid.hpp
 layout: document
 redirect_from:

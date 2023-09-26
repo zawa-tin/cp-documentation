@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc311_b.test.cpp
     title: Test/AtCoder/abc311_b.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/agc026_a.test.cpp
+    title: Test/Manual/agc026_a.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -137,6 +140,7 @@ data:
   timestamp: '2023-07-29 13:13:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/Manual/agc026_a.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc299_c.test.cpp

@@ -9,7 +9,7 @@ data:
     path: Src/Template/FloatingNumberAlias.hpp
     title: "\u6D6E\u52D5\u5C0F\u6570\u70B9\u6570\u578B\u306E\u30A8\u30A4\u30EA\u30A2\
       \u30B9"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   - icon: ':heavy_check_mark:'

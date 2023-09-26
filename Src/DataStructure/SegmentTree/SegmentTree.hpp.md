@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -9,15 +9,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
-  - icon: ':x:'
-    path: Test/AtCoder/agc005_b.test.cpp
-    title: Test/AtCoder/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
-  _isVerificationFailed: true
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/agc005_b.test.cpp
+    title: Test/Manual/agc005_b.test.cpp
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line\
@@ -145,11 +145,11 @@ data:
   path: Src/DataStructure/SegmentTree/SegmentTree.hpp
   requiredBy: []
   timestamp: '2023-09-26 23:32:20+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
-  - Test/AtCoder/agc005_b.test.cpp
+  - Test/Manual/agc005_b.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree
