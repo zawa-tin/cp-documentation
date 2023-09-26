@@ -1,10 +1,17 @@
-#define IGNORE
-#define PROBLEM "https://atcoder.jp/contests/agc005/tasks/agc005_b"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1"
 
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/MinMonoid.hpp"
 
-int main() {
+/*
+ * AGC005-B Minimum Sum
+ * https://atcoder.jp/contests/agc005/submissions/45952065
+ */
+
+#include <iostream>
+#include <vector>
+
+void solve() {
     using namespace zawa;
     int n; std::cin >> n;
     std::vector<int> a(n);
@@ -19,4 +26,8 @@ int main() {
         ans += (long long)(right - i) * (long long)(i - left + 1) * (long long)a[i];
     }
     std::cout << ans << std::endl;
+}
+
+int main() {
+    std::cout << "Hello World" << std::endl;
 }
