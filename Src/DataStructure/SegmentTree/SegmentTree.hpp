@@ -6,7 +6,7 @@
 #include <cassert>
 #include <functional>
 #include <type_traits>
-#include <iostream>
+#include <ostream>
 
 namespace zawa {
 
@@ -118,9 +118,11 @@ public:
         return res;
     }
 
-    void debug() {
-        for (auto d : dat_) std::cout << d << ' ';
-        std::cout << std::endl;
+    friend std::ostream& operator<<(std::ostream& os, const SegmentTree& st) {
+        for (u32 i{1} ; i < 2 * st.n_ ; i++) {
+            os << st.dat_[i] << (i + 1 == 2 * st.n_ ? "" : " ");
+        }
+        return os;
     }
 };
 
