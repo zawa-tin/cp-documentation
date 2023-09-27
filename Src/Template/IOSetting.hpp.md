@@ -13,6 +13,9 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc276_f.test.cpp
+    title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
@@ -55,6 +58,7 @@ data:
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document

@@ -16,6 +16,9 @@ data:
     path: Test/AtCoder/abc229_d.test.cpp
     title: ABC229-D Longest X
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc276_f.test.cpp
+    title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -56,6 +59,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc229_d.test.cpp

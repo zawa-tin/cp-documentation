@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_f.test.cpp
+    title: Test/AtCoder/abc247_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_b.test.cpp
     title: Test/AtCoder/abc293_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,6 +75,7 @@ data:
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
 documentation_of: Src/Template/VectorIO.hpp

@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_f.test.cpp
+    title: Test/AtCoder/abc247_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_c.test.cpp
     title: Test/AtCoder/abc288_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -172,6 +175,7 @@ data:
   verifiedWith:
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
 documentation_of: Src/Graph/Components/ConnectedComponents.hpp

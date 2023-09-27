@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc276_f.test.cpp
+    title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   _isVerificationFailed: false
@@ -131,6 +134,7 @@ data:
   verifiedWith:
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document
 title: Fenwick Tree
