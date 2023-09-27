@@ -16,7 +16,7 @@ private:
 
     T v_{};
 
-    static void templateTypeAssert() {
+    static constexpr void templateTypeAssert() {
         static_assert(std::is_integral_v<T>, "ModInt template argument must be integral");
         static_assert(mod > 0, "mod must be positive");
     }
@@ -36,11 +36,11 @@ private:
 
 public:
 
-    StaticModInt() {
+    constexpr StaticModInt() {
         templateTypeAssert();
     }
     template <class ArgType>
-    StaticModInt(ArgType v) : v_{ static_cast<T>(((v % mod) + mod) % mod) } {
+    constexpr StaticModInt(ArgType v) : v_{ static_cast<T>(((v % mod) + mod) % mod) } {
         templateTypeAssert();
         static_assert(std::is_integral_v<ArgType>, "ModInt constructor Argument Must Be Integral");
     }
