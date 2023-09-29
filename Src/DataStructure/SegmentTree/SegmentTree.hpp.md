@@ -148,8 +148,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_A.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree

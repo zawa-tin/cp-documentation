@@ -141,9 +141,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/agc026_a.test.cpp
-  - Test/AtCoder/abc247_d.test.cpp
-  - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
+  - Test/AtCoder/abc311_b.test.cpp
+  - Test/AtCoder/abc247_d.test.cpp
 documentation_of: Src/Sequence/RunLengthEncoding.hpp
 layout: document
 title: "\u9023\u9577\u5727\u7E2E"

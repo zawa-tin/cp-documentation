@@ -9,6 +9,9 @@ data:
   - name: Src/Algebra/Monoid
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/AffineMonoid.hpp
+      title: Src/Algebra/Monoid/AffineMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: Src/Algebra/Monoid/MinMonoid.hpp
   - name: Src/DataStructure/FenwickTree

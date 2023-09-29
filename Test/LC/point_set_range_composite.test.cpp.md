@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/AffineMonoid.hpp
+    title: Src/Algebra/Monoid/AffineMonoid.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/ModInt.hpp
+    title: Src/Number/ModInt.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -87,56 +93,97 @@ data:
     \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 6 \"Test/LC/point_set_range_composite.test.cpp\"\n\n#line 8 \"Test/LC/point_set_range_composite.test.cpp\"\
-    \n\nusing namespace zawa;\n\nconstexpr u64 mod{ 998244353 };\n\nstruct Linear\
-    \ {\n    u64 a{1}, b{};\n    constexpr Linear() {}\n    constexpr Linear(u64 a,\
-    \ u64 b) : a{a % mod}, b{b % mod} {}\n    u64 apply(u64 x) const {\n        return\
-    \ ((a * x) % mod + b) % mod;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Linear& v) {\n        os << '(' << v.a << ' ' << v.b << ')';\n   \
-    \     return os;\n    }    \n};\n\nstruct Monoid {\n    using Element = Linear;\n\
-    \    static constexpr Linear identity() {\n        return Linear{};\n    }\n \
-    \   static constexpr Linear operation(const Linear& l, const Linear& r) {\n  \
-    \      return Linear{l.a * r.a, l.b * r.a + r.b};\n    }\n};\n\n#line 37 \"Test/LC/point_set_range_composite.test.cpp\"\
-    \n\nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<Linear>\
+    \ zawa\n#line 2 \"Src/Number/ModInt.hpp\"\n\n#line 4 \"Src/Number/ModInt.hpp\"\
+    \n\n#line 7 \"Src/Number/ModInt.hpp\"\n#include <utility>\n#line 9 \"Src/Number/ModInt.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T, T mod>\nclass StaticModInt {\nprivate:\n\
+    \    using mint = StaticModInt;\n\n    T v_{};\n\n    static constexpr void templateTypeAssert()\
+    \ {\n        static_assert(std::is_integral_v<T>, \"ModInt template argument must\
+    \ be integral\");\n        static_assert(mod > 0, \"mod must be positive\");\n\
+    \    }\n\n    i64 extendGCD(i64 a, i64 b, i64& x, i64& y) const {\n       i64\
+    \ d{a};\n       if (b) {\n           d = extendGCD(b, a % b, y, x);\n        \
+    \   y -= (a / b) * x;\n       }\n       else {\n           x = 1;\n          \
+    \ y = 0;\n       }\n       return d;\n    }\n\npublic:\n\n    constexpr StaticModInt()\
+    \ {\n        templateTypeAssert();\n    }\n    template <class ArgType>\n    constexpr\
+    \ StaticModInt(ArgType v) : v_{ static_cast<T>(((v % mod) + mod) % mod) } {\n\
+    \        templateTypeAssert();\n        static_assert(std::is_integral_v<ArgType>,\
+    \ \"ModInt constructor Argument Must Be Integral\");\n    }\n\n    friend std::istream&\
+    \ operator>>(std::istream& is, mint& value) {\n        is >> value.v_;\n     \
+    \   return is;\n    }\n    friend std::ostream& operator<<(std::ostream& os, const\
+    \ mint& value) {\n        os << value.v_;\n        return os;\n    }\n\n    T\
+    \ v() const {\n        return v_;\n    }\n\n    bool operator==(const mint& rhs)\
+    \ const {\n        return v_ == rhs.v_;\n    }\n\n    mint operator+() const {\n\
+    \        return *this;\n    }\n    mint& operator+=(const mint& rhs) {\n     \
+    \   v_ = (v_ < mod - rhs.v_ ? v_ + rhs.v_ : v_ + rhs.v_ - mod);\n        return\
+    \ *this;\n    }\n    friend mint operator+(const mint& lhs, const mint& rhs) {\n\
+    \        return mint{lhs} += rhs;\n    }\n    mint& operator++() {\n        v_\
+    \ = (v_ + 1 == mod ? 0 : v_ + 1);\n        return *this;\n    }\n    mint operator++(int)\
+    \ {\n        mint res{*this};\n        ++*this;\n        return res;\n    }\n\n\
+    \    mint operator-() const {\n        return mod - v_;\n    }\n    mint& operator-=(const\
+    \ mint& rhs) {\n        v_ = (v_ >= rhs.v_ ? v_ - rhs.v_ : v_ + (mod - rhs.v_));\n\
+    \        return *this;\n    }\n    friend mint operator-(const mint& lhs, const\
+    \ mint& rhs) {\n        return mint{lhs} -= rhs;\n    }\n    mint& operator--()\
+    \ {\n        v_ = (v_ ? v_ - 1 : mod - 1);\n        return *this;\n    }\n   \
+    \ mint operator--(int) {\n        mint res{*this};\n        --*this;\n       \
+    \ return res;\n    }\n\n    mint& operator*=(const mint& rhs) {\n        u64 mult{\
+    \ static_cast<u64>(v_) * static_cast<u64>(rhs.v_) };\n        v_ = static_cast<T>(mult\
+    \ % mod);\n        return *this;\n    }\n    friend mint operator*(const mint&\
+    \ lhs, const mint& rhs) {\n        return mint{lhs} *= rhs;\n    }\n\n    mint\
+    \ inverse() const {\n        i64 res{}, hoge{};\n        assert(extendGCD(static_cast<i64>(v_),\
+    \ static_cast<i64>(mod), res, hoge) == 1);\n        return mint{res};\n    }\n\
+    \    mint& operator/=(const mint& rhs) {\n        return *this *= rhs.inverse();\n\
+    \    }\n    friend mint operator/(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint{lhs} /= rhs;\n    }\n\n    mint pow(u64 k) const {\n        mint\
+    \ res{1}, base{k};\n        while (k) {\n            if (k & 1) res *= base;\n\
+    \            base *= base; \n            k >>= 1;\n        }\n        return res;\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\
+    \n\n#line 4 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <class T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr\
+    \ Affine() {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n\
+    \    T a() const noexcept {\n        return a_;\n    }\n    T b() const noexcept\
+    \ {\n        return b_;\n    }\n    constexpr T transformation(const T& x) {\n\
+    \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
+    \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
+    \ {\n    using Element = Affine<T>;\n    static constexpr Element identity() noexcept\
+    \ {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ Element& l, const Element& r) noexcept {\n        return Element{ l.a() * r.a(),\
+    \ l.b() * r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/LC/point_set_range_composite.test.cpp\"\
+    \n\nusing namespace zawa;\nusing mint = StaticModInt<u32, 998244353>;\nusing Monoid\
+    \ = AffineMonoid<mint>;\n\n#line 15 \"Test/LC/point_set_range_composite.test.cpp\"\
+    \n\nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<Affine<mint>>\
     \ init(n);\n    for (int i{} ; i < n ; i++) {\n        u64 a, b; std::cin >> a\
-    \ >> b;\n        init[i] = Linear{ a, b };\n    }\n    SegmentTree<Monoid> seg(init);\n\
-    \    // seg.debug();\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin\
-    \ >> t;\n        if (t == 0) {\n            int p; std::cin >> p;\n          \
-    \  u64 a, b; std::cin >> a >> b;\n            seg.set(p, Linear{ a, b });\n  \
-    \      }\n        else if (t == 1) {\n            u32 l, r; std::cin >> l >> r;\n\
-    \            u64 x; std::cin >> x;\n            std::cout << seg.product(l, r).apply(x)\
-    \ << std::endl;\n        }\n        else {\n            assert(false);\n     \
-    \   }\n    }\n}\n"
+    \ >> b;\n        init[i] = Affine<mint>{ a, b };\n    }\n    SegmentTree<Monoid>\
+    \ seg(init);\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n\
+    \        if (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n  \
+    \          seg.set(p, { c, d });\n        }\n        else if (t == 1) {\n    \
+    \        int l, r, x; std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
+    \ r).transformation(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include\
-    \ <iostream>\n\nusing namespace zawa;\n\nconstexpr u64 mod{ 998244353 };\n\nstruct\
-    \ Linear {\n    u64 a{1}, b{};\n    constexpr Linear() {}\n    constexpr Linear(u64\
-    \ a, u64 b) : a{a % mod}, b{b % mod} {}\n    u64 apply(u64 x) const {\n      \
-    \  return ((a * x) % mod + b) % mod;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Linear& v) {\n        os << '(' << v.a << ' ' << v.b << ')';\n   \
-    \     return os;\n    }    \n};\n\nstruct Monoid {\n    using Element = Linear;\n\
-    \    static constexpr Linear identity() {\n        return Linear{};\n    }\n \
-    \   static constexpr Linear operation(const Linear& l, const Linear& r) {\n  \
-    \      return Linear{l.a * r.a, l.b * r.a + r.b};\n    }\n};\n\n#include <cassert>\n\
-    \nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<Linear>\
+    \n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include \"\
+    ../../Src/Number/ModInt.hpp\"\n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\
+    \n\nusing namespace zawa;\nusing mint = StaticModInt<u32, 998244353>;\nusing Monoid\
+    \ = AffineMonoid<mint>;\n\n#include <iostream>\n#include <vector>\n\nint main()\
+    \ {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<Affine<mint>>\
     \ init(n);\n    for (int i{} ; i < n ; i++) {\n        u64 a, b; std::cin >> a\
-    \ >> b;\n        init[i] = Linear{ a, b };\n    }\n    SegmentTree<Monoid> seg(init);\n\
-    \    // seg.debug();\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin\
-    \ >> t;\n        if (t == 0) {\n            int p; std::cin >> p;\n          \
-    \  u64 a, b; std::cin >> a >> b;\n            seg.set(p, Linear{ a, b });\n  \
-    \      }\n        else if (t == 1) {\n            u32 l, r; std::cin >> l >> r;\n\
-    \            u64 x; std::cin >> x;\n            std::cout << seg.product(l, r).apply(x)\
-    \ << std::endl;\n        }\n        else {\n            assert(false);\n     \
-    \   }\n    }\n}\n"
+    \ >> b;\n        init[i] = Affine<mint>{ a, b };\n    }\n    SegmentTree<Monoid>\
+    \ seg(init);\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n\
+    \        if (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n  \
+    \          seg.set(p, { c, d });\n        }\n        else if (t == 1) {\n    \
+    \        int l, r, x; std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
+    \ r).transformation(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Template/IOSetting.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Number/ModInt.hpp
+  - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 23:32:20+09:00'
+  timestamp: '2023-09-30 01:51:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_set_range_composite.test.cpp

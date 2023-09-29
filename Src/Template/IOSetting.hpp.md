@@ -54,12 +54,12 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_B.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
-  - Test/LC/many_aplusb.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"

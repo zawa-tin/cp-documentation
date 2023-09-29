@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc307_e.test.cpp
     title: Test/AtCoder/abc307_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_set_range_composite.test.cpp
+    title: Test/LC/point_set_range_composite.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -122,10 +125,11 @@ data:
   timestamp: '2023-09-28 07:12:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc276_f.test.cpp
-  - Test/AtCoder/abc307_e.test.cpp
-  - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc238_c.test.cpp
+  - Test/AtCoder/abc307_e.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc247_f.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/Number/ModInt.hpp
 layout: document
 redirect_from:

@@ -133,8 +133,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_B.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document
 title: Fenwick Tree

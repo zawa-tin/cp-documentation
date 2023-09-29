@@ -72,12 +72,12 @@ data:
   verifiedWith:
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
+  - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/abc247_f.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
-  - Test/AtCoder/abc247_f.test.cpp
-  - Test/AtCoder/abc295_a.test.cpp
-  - Test/AtCoder/abc293_b.test.cpp
 documentation_of: Src/Template/VectorIO.hpp
 layout: document
 title: "std::vector\u306E\u5165\u51FA\u529B"
