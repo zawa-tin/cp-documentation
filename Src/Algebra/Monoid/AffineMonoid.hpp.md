@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_point_get.test.cpp
+    title: Test/LC/range_affine_point_get.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -43,6 +46,7 @@ data:
   timestamp: '2023-09-30 01:51:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/Algebra/Monoid/AffineMonoid.hpp
 layout: document

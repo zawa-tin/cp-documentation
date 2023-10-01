@@ -15,6 +15,9 @@ data:
     path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    title: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -179,6 +182,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_point_get.test.cpp
+    title: Test/LC/range_affine_point_get.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -282,6 +288,7 @@ data:
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/ModInt.hpp
+  - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
@@ -328,6 +335,7 @@ data:
   - Test/AtCoder/abc293_d.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/LC/enumerate_primes.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/enumerate_quotients.test.cpp

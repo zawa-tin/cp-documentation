@@ -36,6 +36,9 @@ data:
       path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
       title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+      title: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
   - name: Src/Graph/Components
@@ -236,6 +239,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_set_range_composite.test.cpp
       title: Test/LC/point_set_range_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_affine_point_get.test.cpp
+      title: Test/LC/range_affine_point_get.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
