@@ -1,6 +1,6 @@
 ---
 title: Dual Segment Tree (非可換対応)
-documentation_of: //Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+documentation_of: //Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 ---
 
 ドキュメントを書く気力が行方不明！
