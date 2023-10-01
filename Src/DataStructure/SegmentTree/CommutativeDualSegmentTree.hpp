@@ -13,7 +13,7 @@ template <class Monoid>
 class CommutativeDualSegmentTree {
 public:
     using Operator = typename Monoid::Element;
-private:
+protected:
 
     static constexpr u32 parent(u32 v) noexcept {
         return v >> 1;
@@ -30,12 +30,13 @@ private:
 
     template <class InputIterator>
     inline void initDat(InputIterator first, InputIterator last) {
-        for (u32 i{} ; i < n_ ; i++) {
-            dat_[i + n_] = *std::next(first, i);
+        for (auto it{ first } ; it != last ; it++) {
+            dat_[n_ + std::distance(first, it)] = *it;
         }
     }
 
     void push(u32 i) {
+        assert(i < n_);
         i += n_;
         u32 height{ 32u - __builtin_clz(i) };
         for (u32 h{ height } ; --h ; ) {
@@ -52,12 +53,12 @@ public:
         : n_{ n }, dat_((n << 1), Monoid::identity()) {}
     CommutativeDualSegmentTree(const std::vector<Operator>& dat) 
         : n_{ dat.size() }, dat_((n_ << 1), Monoid::identity()) {
-        build(dat.begin(), dat.end());
+        initDat(dat.begin(), dat.end());
     }
     template <class InputIterator>
     CommutativeDualSegmentTree(InputIterator first, InputIterator last)
-        : n_{ std::distance(first, last) }, dat_((n_ << 1), Monoid::identity()) {
-        build(first, last);
+        : n_{ static_cast<usize>(std::distance(first, last)) }, dat_((n_ << 1), Monoid::identity()) {
+        initDat(first, last);
     }
 
     void update(u32 l, u32 r, const Operator& v) {
