@@ -7,7 +7,7 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-    title: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp

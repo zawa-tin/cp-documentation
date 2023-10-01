@@ -9,7 +9,7 @@ data:
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-    title: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
     path: Src/Number/ModInt.hpp
     title: Src/Number/ModInt.hpp
