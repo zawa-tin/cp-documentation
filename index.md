@@ -9,6 +9,9 @@ data:
   - name: Src/Algebra/Monoid
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/AdditionMonoid.hpp
+      title: Src/Algebra/Monoid/AdditionMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/AffineMonoid.hpp
       title: Src/Algebra/Monoid/AffineMonoid.hpp
     - icon: ':heavy_check_mark:'
@@ -29,6 +32,9 @@ data:
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - name: Src/DataStructure/SegmentTree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+      title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
@@ -124,6 +130,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_B.test.cpp
       title: Test/AOJ/DSL_2_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_E.test.cpp
+      title: Test/AOJ/DSL_2_E.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp

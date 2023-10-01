@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_E.test.cpp
+    title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -53,6 +56,7 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
