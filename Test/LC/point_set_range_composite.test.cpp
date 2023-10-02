@@ -30,7 +30,7 @@ int main() {
         }
         else if (t == 1) {
             int l, r, x; std::cin >> l >> r >> x;
-            std::cout << seg.product(l, r).transformation(x) << std::endl;
+            std::cout << seg.product(l, r).mapping(x) << std::endl;
         }
         else {
             assert(false);
