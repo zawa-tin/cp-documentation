@@ -159,7 +159,6 @@ public:
         for (u32 d{depth(i)} ; d ; d--) {
             propagate(i >> d);
         }
-        propagateAncestor(i);
         return action(dat_[i]);
     }
 
