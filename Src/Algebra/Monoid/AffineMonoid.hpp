@@ -17,7 +17,7 @@ public:
     T b() const noexcept {
         return b_;
     }
-    constexpr T transformation(const T& x) {
+    constexpr T mapping(const T& x) const {
         return a_ * x + b_;
     }
     friend std::ostream& operator<<(std::ostream& os, const Affine& affine) {

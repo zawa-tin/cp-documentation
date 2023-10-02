@@ -25,7 +25,7 @@ int main() {
         }
         else if (t == 1) {
             int i; std::cin >> i;
-            std::cout << seg[i].transformation(a[i]) << std::endl;
+            std::cout << seg[i].mapping(a[i]) << std::endl;
         }
         else {
             assert(false);
