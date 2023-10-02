@@ -80,10 +80,10 @@ data:
     \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
     \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        propagateAncestor(i);\n        return action(dat_[i]);\n  \
-    \  }\n\n    Value product(u32 L, u32 R) {\n        assert(L < n_);\n        assert(L\
-    \ <= R and R <= n_);\n        L += size();\n        R += size();\n        propagateAncestor(L);\n\
-    \        propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
+    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
+    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
+    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
+    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
     \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
     \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
     \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
@@ -157,10 +157,10 @@ data:
     \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
     \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        propagateAncestor(i);\n        return action(dat_[i]);\n  \
-    \  }\n\n    Value product(u32 L, u32 R) {\n        assert(L < n_);\n        assert(L\
-    \ <= R and R <= n_);\n        L += size();\n        R += size();\n        propagateAncestor(L);\n\
-    \        propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
+    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
+    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
+    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
+    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
     \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
     \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
     \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
@@ -182,7 +182,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-10-03 02:05:53+09:00'
+  timestamp: '2023-10-03 04:25:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_F.test.cpp
