@@ -39,6 +39,9 @@ data:
       path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
       title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+      title: Lazy Segment Tree
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
   - name: Src/Graph/Components
@@ -136,6 +139,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_E.test.cpp
       title: Test/AOJ/DSL_2_E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_F.test.cpp
+      title: Test/AOJ/DSL_2_F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
@@ -242,6 +248,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_affine_point_get.test.cpp
       title: Test/LC/range_affine_point_get.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_affine_range_sum.test.cpp
+      title: Test/LC/range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp

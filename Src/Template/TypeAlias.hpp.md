@@ -18,6 +18,9 @@ data:
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+    title: Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -82,6 +85,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_F.test.cpp
+    title: Test/AOJ/DSL_2_F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_1_A.test.cpp
     title: Test/AOJ/GRL_1_A.test.cpp
@@ -184,6 +190,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_range_sum.test.cpp
+    title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -288,6 +297,7 @@ data:
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/ModInt.hpp
+  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -299,6 +309,7 @@ data:
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
@@ -335,6 +346,7 @@ data:
   - Test/AtCoder/abc293_d.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/LC/enumerate_primes.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/many_aplusb.test.cpp

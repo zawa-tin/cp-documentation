@@ -130,7 +130,7 @@ data:
     \ <class T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr\
     \ Affine() {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n\
     \    T a() const noexcept {\n        return a_;\n    }\n    T b() const noexcept\
-    \ {\n        return b_;\n    }\n    constexpr T transformation(const T& x) {\n\
+    \ {\n        return b_;\n    }\n    constexpr T mapping(const T& x) const {\n\
     \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
     \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
@@ -150,8 +150,8 @@ data:
     \ == 0) {\n            int l, r; std::cin >> l >> r;\n            mint b, c; std::cin\
     \ >> b >> c;\n            seg.update(l, r, Affine{ b, c });\n        }\n     \
     \   else if (t == 1) {\n            int i; std::cin >> i;\n            std::cout\
-    \ << seg[i].transformation(a[i]) << std::endl;\n        }\n        else {\n  \
-    \          assert(false);\n        }\n    }\n}\n"
+    \ << seg[i].mapping(a[i]) << std::endl;\n        }\n        else {\n         \
+    \   assert(false);\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
     \ \"../../Src/Number/ModInt.hpp\"\n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\
@@ -163,8 +163,8 @@ data:
     \        if (t == 0) {\n            int l, r; std::cin >> l >> r;\n          \
     \  mint b, c; std::cin >> b >> c;\n            seg.update(l, r, Affine{ b, c });\n\
     \        }\n        else if (t == 1) {\n            int i; std::cin >> i;\n  \
-    \          std::cout << seg[i].transformation(a[i]) << std::endl;\n        }\n\
-    \        else {\n            assert(false);\n        }\n    }\n}\n"
+    \          std::cout << seg[i].mapping(a[i]) << std::endl;\n        }\n      \
+    \  else {\n            assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -175,7 +175,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_affine_point_get.test.cpp
   requiredBy: []
-  timestamp: '2023-10-02 00:27:19+09:00'
+  timestamp: '2023-10-03 02:05:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_point_get.test.cpp

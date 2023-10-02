@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_range_sum.test.cpp
+    title: Test/LC/range_affine_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -132,6 +135,7 @@ data:
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/Number/ModInt.hpp

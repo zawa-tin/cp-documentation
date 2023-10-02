@@ -140,7 +140,7 @@ data:
     \ <class T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr\
     \ Affine() {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n\
     \    T a() const noexcept {\n        return a_;\n    }\n    T b() const noexcept\
-    \ {\n        return b_;\n    }\n    constexpr T transformation(const T& x) {\n\
+    \ {\n        return b_;\n    }\n    constexpr T mapping(const T& x) const {\n\
     \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
     \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
@@ -157,7 +157,7 @@ data:
     \        if (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n  \
     \          seg.set(p, { c, d });\n        }\n        else if (t == 1) {\n    \
     \        int l, r, x; std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
-    \ r).transformation(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \ r).mapping(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
     \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
@@ -172,7 +172,7 @@ data:
     \        if (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n  \
     \          seg.set(p, { c, d });\n        }\n        else if (t == 1) {\n    \
     \        int l, r, x; std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
-    \ r).transformation(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \ r).mapping(x) << std::endl;\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
@@ -183,7 +183,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2023-09-30 01:51:22+09:00'
+  timestamp: '2023-10-03 02:05:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_set_range_composite.test.cpp

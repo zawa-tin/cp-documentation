@@ -7,6 +7,9 @@ data:
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_F.test.cpp
+    title: Test/AOJ/DSL_2_F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   _isVerificationFailed: false
@@ -32,6 +35,7 @@ data:
   timestamp: '2023-09-26 08:39:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
 documentation_of: Src/Algebra/Monoid/MinMonoid.hpp
