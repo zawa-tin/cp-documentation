@@ -41,6 +41,7 @@
 "Test/LC/range_affine_point_get.test.cpp": "2023-10-03 02:05:53 +0900",
 "Test/LC/range_affine_range_sum.test.cpp": "2023-10-03 04:25:45 +0900",
 "Test/LC/static_range_sum.test.cpp": "2023-07-22 13:55:49 +0900",
+"Test/Manual/CF895-E.test.cpp": "2023-10-05 13:05:22 +0900",
 "Test/Manual/agc005_b.test.cpp": "2023-09-27 05:21:34 +0900",
 "Test/Manual/agc026_a.test.cpp": "2023-09-27 05:17:33 +0900",
 "Test/Manual/practice2_l.test.cpp": "2023-10-05 10:19:49 +0900",
