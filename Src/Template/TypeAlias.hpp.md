@@ -203,6 +203,9 @@ data:
     path: Test/Manual/agc026_a.test.cpp
     title: Test/Manual/agc026_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/practice2_l.test.cpp
+    title: ALPC-L Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   _isVerificationFailed: false
@@ -321,6 +324,7 @@ data:
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/practice2_l.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc236_e.test.cpp

@@ -262,6 +262,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc026_a.test.cpp
       title: Test/Manual/agc026_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/practice2_l.test.cpp
+      title: ALPC-L Lazy Segment Tree
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'
