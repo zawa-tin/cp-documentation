@@ -37,6 +37,9 @@ data:
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/CF895-E.test.cpp
+    title: Test/Manual/CF895-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
   _isVerificationFailed: false
@@ -67,6 +70,7 @@ data:
   verifiedWith:
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp

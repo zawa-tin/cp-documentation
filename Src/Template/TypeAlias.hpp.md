@@ -197,6 +197,9 @@ data:
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/CF895-E.test.cpp
+    title: Test/Manual/CF895-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -324,6 +327,7 @@ data:
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/AtCoder/abc229_d.test.cpp

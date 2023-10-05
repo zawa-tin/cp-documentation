@@ -257,6 +257,9 @@ data:
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/CF895-E.test.cpp
+      title: Test/Manual/CF895-E.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp
     - icon: ':heavy_check_mark:'
