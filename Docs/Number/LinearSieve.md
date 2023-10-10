@@ -83,7 +83,6 @@ $x$ の約数を列挙する。**ソートされていないことに注意**
 
 #### factorize
 
-```cpp
 std::vector<PrimeFactor> factorize(u32 x) const
 
 $x$ を素因数分解したものを返す。
