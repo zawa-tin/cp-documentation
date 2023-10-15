@@ -100,7 +100,7 @@ data:
   - Test/AtCoder/abc177_e.test.cpp
 documentation_of: Src/Number/LinearSieve.hpp
 layout: document
-title: Linear Sieve
+title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
 ---
 
 ## 概要

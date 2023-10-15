@@ -63,7 +63,7 @@ data:
         \u3052\u9664\u7B97"
     - icon: ':heavy_check_mark:'
       path: Src/Number/LinearSieve.hpp
-      title: Linear Sieve
+      title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
       path: Src/Number/ModInt.hpp
       title: Src/Number/ModInt.hpp
