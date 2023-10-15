@@ -1,5 +1,5 @@
 ---
-title: Linear Sieve
+title: 線形篩 (osa-k素因数分解)
 documentation_of: //Src/Number/LinearSieve.hpp
 ---
 
