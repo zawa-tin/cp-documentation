@@ -55,14 +55,14 @@ data:
   timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/aplusb.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/static_range_sum.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
-  - Test/LC/aplusb.test.cpp
-  - Test/LC/static_range_sum.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"

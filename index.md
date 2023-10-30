@@ -44,6 +44,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
+  - name: Src/DataStructure/SparseTable
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SparseTable/SparseTable.hpp
+      title: Sparse Table
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -263,6 +268,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/staticrmq.test.cpp
+      title: Test/LC/staticrmq.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

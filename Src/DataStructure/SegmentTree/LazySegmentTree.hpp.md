@@ -191,10 +191,10 @@ data:
   timestamp: '2023-10-03 04:25:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/range_affine_range_sum.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document
 title: Lazy Segment Tree
