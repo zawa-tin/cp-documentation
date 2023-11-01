@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc288_e.test.cpp
+    title: ABC288-E Wish List
+  - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
   _isVerificationFailed: false
@@ -23,12 +26,12 @@ data:
     \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n\nnamespace zawa\
     \ {\n\ntemplate <class Structure>\nclass SparseTable {\nprivate:\n    using Value\
     \ = typename Structure::Element;\n    std::vector<u32> L;\n    std::vector<std::vector<Value>>\
-    \ dat;\npublic:\n\n    SparseTable(const std::vector<Value>& a) : L(a.size() +\
-    \ 1) {\n        for (u32 i{1} ; i < L.size() ; i++) {\n            L[i] = L[i\
-    \ - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back() + 1);\n\
-    \        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ; i++, len\
-    \ <<= 1) {\n            dat[i] = dat[i - 1];\n            for (u32 j{} ; j + len\
-    \ - 1 < dat[i].size() ; j++) {\n                dat[i][j] = Structure::operation(dat[i\
+    \ dat;\npublic:\n\n    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
+    \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
+    \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
+    \ + 1);\n        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ;\
+    \ i++, len <<= 1) {\n            dat[i] = dat[i - 1];\n            for (u32 j{}\
+    \ ; j + len - 1 < dat[i].size() ; j++) {\n                dat[i][j] = Structure::operation(dat[i\
     \ - 1][j], dat[i - 1][j + (len >> 1)]);\n            }\n        }\n    }\n\n \
     \   Value product(u32 l, u32 r) const {\n        assert(l <= r);\n        assert(l\
     \ < dat[0].size());\n        assert(r <= dat[0].size());\n        u32 now{L[r\
@@ -43,31 +46,32 @@ data:
     #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
     \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
     \    std::vector<u32> L;\n    std::vector<std::vector<Value>> dat;\npublic:\n\n\
-    \    SparseTable(const std::vector<Value>& a) : L(a.size() + 1) {\n        for\
-    \ (u32 i{1} ; i < L.size() ; i++) {\n            L[i] = L[i - 1] + (i >> (L[i\
-    \ - 1] + 1));\n        }\n        dat.resize(L.back() + 1);\n        dat[0] =\
-    \ a;\n        for (u32 i{1}, len{2} ; i < dat.size() ; i++, len <<= 1) {\n   \
-    \         dat[i] = dat[i - 1];\n            for (u32 j{} ; j + len - 1 < dat[i].size()\
-    \ ; j++) {\n                dat[i][j] = Structure::operation(dat[i - 1][j], dat[i\
-    \ - 1][j + (len >> 1)]);\n            }\n        }\n    }\n\n    Value product(u32\
-    \ l, u32 r) const {\n        assert(l <= r);\n        assert(l < dat[0].size());\n\
-    \        assert(r <= dat[0].size());\n        u32 now{L[r - l]};\n        return\
-    \ Structure::operation(dat[now][l], dat[now][r - (1 << now)]);\n    }\n\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const SparseTable<Structure>& spt)\
-    \ {\n        for (u32 i{}, len{1} ; i < spt.dat.size() ; i++, len <<= 1) {\n \
-    \           os << \"length = \" << len << '\\n';\n            for (u32 j{} ; j\
-    \ + len - 1 < spt.dat[i].size() ; j++) {\n                os << spt.dat[i][j]\
-    \ << (j + len == spt.dat[i].size() ? '\\n' : ' ');\n            }\n        }\n\
-    \        return os;\n    }\n};\n\n} // namespace zawa\n"
+    \    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
+    \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
+    \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
+    \ + 1);\n        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ;\
+    \ i++, len <<= 1) {\n            dat[i] = dat[i - 1];\n            for (u32 j{}\
+    \ ; j + len - 1 < dat[i].size() ; j++) {\n                dat[i][j] = Structure::operation(dat[i\
+    \ - 1][j], dat[i - 1][j + (len >> 1)]);\n            }\n        }\n    }\n\n \
+    \   Value product(u32 l, u32 r) const {\n        assert(l <= r);\n        assert(l\
+    \ < dat[0].size());\n        assert(r <= dat[0].size());\n        u32 now{L[r\
+    \ - l]};\n        return Structure::operation(dat[now][l], dat[now][r - (1 <<\
+    \ now)]);\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const\
+    \ SparseTable<Structure>& spt) {\n        for (u32 i{}, len{1} ; i < spt.dat.size()\
+    \ ; i++, len <<= 1) {\n            os << \"length = \" << len << '\\n';\n    \
+    \        for (u32 j{} ; j + len - 1 < spt.dat[i].size() ; j++) {\n           \
+    \     os << spt.dat[i][j] << (j + len == spt.dat[i].size() ? '\\n' : ' ');\n \
+    \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/SparseTable.hpp
   requiredBy: []
-  timestamp: '2023-10-30 13:02:19+09:00'
+  timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/staticrmq.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

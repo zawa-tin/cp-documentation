@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MinMonoid.hpp
-    title: Src/Algebra/Monoid/MinMonoid.hpp
+    title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
@@ -85,20 +85,20 @@ data:
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
     \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include\
     \ <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n\
-    \    using Element = T;\n    static constexpr T identity() noexcept {\n      \
-    \  return std::numeric_limits<T>::max();\n    }\n    static constexpr T operation(T\
-    \ a, T b) noexcept {\n        return std::min(a, b);\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/Manual/agc005_b.test.cpp\"\n\n/*\n * AGC005-B Minimum Sum\n\
-    \ * https://atcoder.jp/contests/agc005/submissions/45952065\n */\n\n#include <iostream>\n\
-    #line 13 \"Test/Manual/agc005_b.test.cpp\"\n\nvoid solve() {\n    using namespace\
-    \ zawa;\n    int n; std::cin >> n;\n    std::vector<int> a(n);\n    for (auto&\
-    \ x : a) std::cin >> x;\n    SegmentTree<MinMonoid<int>> seg(a);\n    long long\
-    \ ans{};\n    for (int i{} ; i < n ; i++) {\n        auto f{[&](int v) -> bool\
-    \ {\n            return v >= a[i];\n        }};\n        unsigned left{ seg.minLeft(i,\
-    \ f) }, right{ seg.maxRight(i, f) };\n        ans += (long long)(right - i) *\
-    \ (long long)(i - left + 1) * (long long)a[i];\n    }\n    std::cout << ans <<\
-    \ std::endl;\n}\n\nint main() {\n    std::cout << \"Hello World\" << std::endl;\n\
-    }\n"
+    \    using Element = T;\n    // CHECK!!!\n    static constexpr Element identity()\
+    \ noexcept {\n        return std::numeric_limits<Element>::max();\n    }\n   \
+    \ static constexpr Element operation(Element a, Element b) noexcept {\n      \
+    \  return std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/Manual/agc005_b.test.cpp\"\
+    \n\n/*\n * AGC005-B Minimum Sum\n * https://atcoder.jp/contests/agc005/submissions/45952065\n\
+    \ */\n\n#include <iostream>\n#line 13 \"Test/Manual/agc005_b.test.cpp\"\n\nvoid\
+    \ solve() {\n    using namespace zawa;\n    int n; std::cin >> n;\n    std::vector<int>\
+    \ a(n);\n    for (auto& x : a) std::cin >> x;\n    SegmentTree<MinMonoid<int>>\
+    \ seg(a);\n    long long ans{};\n    for (int i{} ; i < n ; i++) {\n        auto\
+    \ f{[&](int v) -> bool {\n            return v >= a[i];\n        }};\n       \
+    \ unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };\n        ans\
+    \ += (long long)(right - i) * (long long)(i - left + 1) * (long long)a[i];\n \
+    \   }\n    std::cout << ans << std::endl;\n}\n\nint main() {\n    std::cout <<\
+    \ \"Hello World\" << std::endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\n/*\n * AGC005-B Minimum Sum\n\
@@ -118,7 +118,7 @@ data:
   isVerificationFile: true
   path: Test/Manual/agc005_b.test.cpp
   requiredBy: []
-  timestamp: '2023-09-27 05:21:34+09:00'
+  timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/agc005_b.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MinMonoid.hpp
-    title: Src/Algebra/Monoid/MinMonoid.hpp
+    title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
@@ -33,12 +33,12 @@ data:
     \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n\nnamespace zawa\
     \ {\n\ntemplate <class Structure>\nclass SparseTable {\nprivate:\n    using Value\
     \ = typename Structure::Element;\n    std::vector<u32> L;\n    std::vector<std::vector<Value>>\
-    \ dat;\npublic:\n\n    SparseTable(const std::vector<Value>& a) : L(a.size() +\
-    \ 1) {\n        for (u32 i{1} ; i < L.size() ; i++) {\n            L[i] = L[i\
-    \ - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back() + 1);\n\
-    \        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ; i++, len\
-    \ <<= 1) {\n            dat[i] = dat[i - 1];\n            for (u32 j{} ; j + len\
-    \ - 1 < dat[i].size() ; j++) {\n                dat[i][j] = Structure::operation(dat[i\
+    \ dat;\npublic:\n\n    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
+    \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
+    \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
+    \ + 1);\n        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ;\
+    \ i++, len <<= 1) {\n            dat[i] = dat[i - 1];\n            for (u32 j{}\
+    \ ; j + len - 1 < dat[i].size() ; j++) {\n                dat[i][j] = Structure::operation(dat[i\
     \ - 1][j], dat[i - 1][j + (len >> 1)]);\n            }\n        }\n    }\n\n \
     \   Value product(u32 l, u32 r) const {\n        assert(l <= r);\n        assert(l\
     \ < dat[0].size());\n        assert(r <= dat[0].size());\n        u32 now{L[r\
@@ -51,9 +51,10 @@ data:
     \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n\
     #line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include <algorithm>\n\
     \nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n    using\
-    \ Element = T;\n    static constexpr T identity() noexcept {\n        return std::numeric_limits<T>::max();\n\
-    \    }\n    static constexpr T operation(T a, T b) noexcept {\n        return\
-    \ std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
+    \ Element = T;\n    // CHECK!!!\n    static constexpr Element identity() noexcept\
+    \ {\n        return std::numeric_limits<Element>::max();\n    }\n    static constexpr\
+    \ Element operation(Element a, Element b) noexcept {\n        return std::min(a,\
+    \ b);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
     \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
     \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
@@ -79,7 +80,7 @@ data:
   isVerificationFile: true
   path: Test/LC/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2023-10-30 13:02:19+09:00'
+  timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/staticrmq.test.cpp

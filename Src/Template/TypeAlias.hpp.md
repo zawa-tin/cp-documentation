@@ -152,6 +152,9 @@ data:
     path: Test/AtCoder/abc288_c.test.cpp
     title: Test/AtCoder/abc288_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc288_e.test.cpp
+    title: ABC288-E Wish List
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_d.test.cpp
     title: Test/AtCoder/abc292_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -375,6 +378,7 @@ data:
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
   - Test/AtCoder/abc238_c.test.cpp
   - Test/AtCoder/abc191_d.test.cpp

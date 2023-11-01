@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MinMonoid.hpp
-    title: Src/Algebra/Monoid/MinMonoid.hpp
+    title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
@@ -84,16 +84,16 @@ data:
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
     \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include\
     \ <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n\
-    \    using Element = T;\n    static constexpr T identity() noexcept {\n      \
-    \  return std::numeric_limits<T>::max();\n    }\n    static constexpr T operation(T\
-    \ a, T b) noexcept {\n        return std::min(a, b);\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AOJ/DSL_2_A.test.cpp\"\n\n#include <iostream>\n#line 8\
-    \ \"Test/AOJ/DSL_2_A.test.cpp\"\n\nint main() {\n    using namespace zawa;\n \
-    \   std::cin.tie(nullptr)->sync_with_stdio(false);\n    int n, q; std::cin >>\
-    \ n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<int>(n, (int)((1LL\
-    \ << 31) - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com, x, y; std::cin\
-    \ >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x, y);\n   \
-    \     }\n        else if (com == 1) {\n            std::cout << seg.product(x,\
+    \    using Element = T;\n    // CHECK!!!\n    static constexpr Element identity()\
+    \ noexcept {\n        return std::numeric_limits<Element>::max();\n    }\n   \
+    \ static constexpr Element operation(Element a, Element b) noexcept {\n      \
+    \  return std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AOJ/DSL_2_A.test.cpp\"\
+    \n\n#include <iostream>\n#line 8 \"Test/AOJ/DSL_2_A.test.cpp\"\n\nint main() {\n\
+    \    using namespace zawa;\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \    int n, q; std::cin >> n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<int>(n,\
+    \ (int)((1LL << 31) - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com,\
+    \ x, y; std::cin >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x,\
+    \ y);\n        }\n        else if (com == 1) {\n            std::cout << seg.product(x,\
     \ y + 1) << std::endl;\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A\"\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_2_A.test.cpp
   requiredBy: []
-  timestamp: '2023-09-26 23:32:20+09:00'
+  timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_A.test.cpp

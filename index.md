@@ -15,8 +15,11 @@ data:
       path: Src/Algebra/Monoid/AffineMonoid.hpp
       title: Src/Algebra/Monoid/AffineMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MaxMonoid.hpp
+      title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
-      title: Src/Algebra/Monoid/MinMonoid.hpp
+      title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -209,6 +212,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc288_c.test.cpp
       title: Test/AtCoder/abc288_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc288_e.test.cpp
+      title: ABC288-E Wish List
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc292_d.test.cpp
       title: Test/AtCoder/abc292_d.test.cpp
