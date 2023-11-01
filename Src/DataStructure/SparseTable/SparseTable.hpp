@@ -16,7 +16,8 @@ private:
     std::vector<std::vector<Value>> dat;
 public:
 
-    SparseTable(const std::vector<Value>& a) : L(a.size() + 1) {
+    SparseTable() : L{}, dat{} {}
+    SparseTable(const std::vector<Value>& a) : L(a.size() + 1), dat{} {
         for (u32 i{1} ; i < L.size() ; i++) {
             L[i] = L[i - 1] + (i >> (L[i - 1] + 1));
         }

@@ -6,15 +6,15 @@
 namespace zawa {
 
 template <class T>
-class MinMonoid {
+class MaxMonoid {
 public:
     using Element = T;
     // CHECK!!!
     static constexpr Element identity() noexcept {
-        return std::numeric_limits<Element>::max();
+        return std::numeric_limits<Element>::min();
     }
     static constexpr Element operation(Element a, Element b) noexcept {
-        return std::min(a, b);
+        return std::max(a, b);
     }
 };
 
