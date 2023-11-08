@@ -58,6 +58,9 @@ data:
       path: Src/GeometryR2/Angle.hpp
       title: Src/GeometryR2/Angle.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Circle.hpp
+      title: Src/GeometryR2/Circle.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Line.hpp
       title: Src/GeometryR2/Line.hpp
     - icon: ':heavy_check_mark:'
@@ -173,6 +176,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_C.test.cpp
       title: Test/AOJ/CGL_1_C.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_E.test.cpp
+      title: Test/AOJ/CGL_7_E.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_A.test.cpp
       title: Test/AOJ/DSL_2_A.test.cpp

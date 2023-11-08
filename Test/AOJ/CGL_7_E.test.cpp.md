@@ -5,14 +5,11 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Line.hpp
-    title: Src/GeometryR2/Line.hpp
+    path: Src/GeometryR2/Circle.hpp
+    title: Src/GeometryR2/Circle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
@@ -29,15 +26,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_A
+    ERROR: '0.000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_E
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_A
-  bundledCode: "#line 1 \"Test/AOJ/CGL_1_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_A\"\
-    \n#define ERROR 0.00000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2\
-    \ \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n\
-    using Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\
-    \nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_E
+  bundledCode: "#line 1 \"Test/AOJ/CGL_7_E.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_E\"\
+    \n#define ERROR 0.000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"\
+    Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing\
+    \ Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\n\
+    constexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
     \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
     \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
     \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
@@ -113,64 +110,81 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
-    \ */\n    Line() = default;\n    Line(const Point& p0, const Point& p1) : p0_{p0},\
-    \ p1_{p1} {}\n    // y = ax + b \n    Line(Real a, Real b) : p0_{static_cast<Real>(0),\
-    \ b}, p1_{static_cast<Real>(1), a + b} {}\n\n    /* getter, setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
-    \    bool isValid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
-    \ point, const Line& line) {\n    assert(line.isValid());\n    Real coeff{Dot(line.p1()\
-    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
-    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
-    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Circle.hpp\"\n\n#line 7 \"Src/GeometryR2/Circle.hpp\"\
+    \n#include <utility>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Circle\
+    \ {\nprivate:\n    Point center_{};\n    Real radius_{};\npublic:\n    /* constructor\
+    \ */\n    Circle() = default;\n    Circle(const Point& center, Real radius) :\
+    \ center_{center}, radius_{radius} {\n        assert(!Negative(radius));\n   \
+    \ }\n    Circle(Real x, Real y, Real r) : center_{x, y}, radius_{r} {\n      \
+    \  assert(!Negative(r));\n    }\n\n    /* getter setter */\n    const Point& center()\
+    \ const {\n        return center_;\n    }\n    Point& center() {\n        return\
+    \ center_;\n    }\n    Real radius() const {\n        return radius_;\n    }\n\
+    \    Real& radius() {\n        return radius_;\n    }\n\n    /* operator */\n\
+    \    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \n    /* friend function */\n    friend bool Intersect(const Circle& lhs, const\
+    \ Circle& rhs) {\n        Real centerDist{DistanceSquare(lhs.center(), rhs.center())};\n\
+    \        Real down{std::abs(lhs.radius() - rhs.radius())};\n        down = down\
+    \ * down;\n        if (Smaller(centerDist, down)) return false;\n        Real\
+    \ up{lhs.radius() + rhs.radius()};\n        up = up * up;\n        if (Bigger(centerDist,\
+    \ up)) return false;\n        return true;\n    }\n    friend std::pair<Point,\
+    \ Point> CrossPoint(const Circle& lhs, const Circle& rhs) {\n        assert(lhs.center()\
+    \ != rhs.center());\n        assert(Intersect(lhs, rhs));\n        assert(!Zero(lhs.radius())\
+    \ or !Zero(rhs.radius()));\n        if (Zero(lhs.radius())) return {lhs.center(),\
+    \ lhs.center()};\n        if (Zero(rhs.radius())) return {rhs.center(), rhs.center()};\n\
+    \        Real d{Distance(lhs.center(), rhs.center())};\n        Real cosine{(lhs.radius()*lhs.radius()\
+    \ + d*d - rhs.radius()*rhs.radius())\n            / (static_cast<Real>(2)*lhs.radius()*d)};\n\
+    \        Real rc{lhs.radius()*cosine};\n        Real rs{sqrtl(lhs.radius()*lhs.radius()\
+    \ - rc*rc)};\n        Vector lr{Vector{rhs.center() - lhs.center()}.normalized()};\n\
+    \        Vector h{lhs.center() + lr*rc};\n        std::pair<Point, Point> res;\n\
+    \        res.first = h + lr.rotatedByArc(90) * rs;\n        res.second = h + lr.rotatedByArc(-90)\
+    \ * rs;\n        return res;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 8 \"Test/AOJ/CGL_1_A.test.cpp\"\n\n#line 10 \"\
-    Test/AOJ/CGL_1_A.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryR2;\n\n    SetFastIO();\n    SetPrecision(10);\n    Line line{};\n\
-    \    std::cin >> line.p0() >> line.p1();\n    int q; std::cin >> q;\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        Point p{}; std::cin >> p;\n        Point ans{Projection(p,\
-    \ line)};\n        std::cout << ans.x() << ' ' << ans.y() << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_A\"\
-    \n#define ERROR 0.00000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include\
-    \ \"../../Src/GeometryR2/Line.hpp\"\n#include \"../../Src/GeometryR2/Projection.hpp\"\
-    \n#include \"../../Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\nint\
-    \ main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\n   \
-    \ SetFastIO();\n    SetPrecision(10);\n    Line line{};\n    std::cin >> line.p0()\
-    \ >> line.p1();\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n\
-    \        Point p{}; std::cin >> p;\n        Point ans{Projection(p, line)};\n\
-    \        std::cout << ans.x() << ' ' << ans.y() << '\\n';\n    }\n}\n"
+    }\n\n} // namespace zawa\n#line 7 \"Test/AOJ/CGL_7_E.test.cpp\"\n\nint main()\
+    \ {\n    using namespace zawa;\n    using namespace geometryR2;\n    SetFastIO();\n\
+    \    SetPrecision(10);\n    Real x1, y1, r1; std::cin >> x1 >> y1 >> r1;\n   \
+    \ Real x2, y2, r2; std::cin >> x2 >> y2 >> r2;\n    Circle c1{x1, y1, r1}, c2{x2,\
+    \ y2, r2};\n    auto ans{CrossPoint(c1, c2)};\n    if (ans.first > ans.second)\
+    \ std::swap(ans.first, ans.second);\n    std::cout << ans.first.x() << ' ' <<\
+    \ ans.first.y() << ' ' << ans.second.x() << ' ' << ans.second.y() << '\\n';\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_E\"\
+    \n#define ERROR 0.000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include\
+    \ \"../../Src/GeometryR2/Circle.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
+    \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
+    \    SetFastIO();\n    SetPrecision(10);\n    Real x1, y1, r1; std::cin >> x1\
+    \ >> y1 >> r1;\n    Real x2, y2, r2; std::cin >> x2 >> y2 >> r2;\n    Circle c1{x1,\
+    \ y1, r1}, c2{x2, y2, r2};\n    auto ans{CrossPoint(c1, c2)};\n    if (ans.first\
+    \ > ans.second) std::swap(ans.first, ans.second);\n    std::cout << ans.first.x()\
+    \ << ' ' << ans.first.y() << ' ' << ans.second.x() << ' ' << ans.second.y() <<\
+    \ '\\n';\n}\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
-  - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/Projection.hpp
+  - Src/GeometryR2/Circle.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
-  path: Test/AOJ/CGL_1_A.test.cpp
+  path: Test/AOJ/CGL_7_E.test.cpp
   requiredBy: []
   timestamp: '2023-11-08 20:56:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/CGL_1_A.test.cpp
+documentation_of: Test/AOJ/CGL_7_E.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_1_A.test.cpp
-- /verify/Test/AOJ/CGL_1_A.test.cpp.html
-title: Test/AOJ/CGL_1_A.test.cpp
+- /verify/Test/AOJ/CGL_7_E.test.cpp
+- /verify/Test/AOJ/CGL_7_E.test.cpp.html
+title: Test/AOJ/CGL_7_E.test.cpp
 ---

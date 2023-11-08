@@ -6,6 +6,9 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Circle.hpp
+    title: Src/GeometryR2/Circle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Line.hpp
     title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -30,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_C.test.cpp
     title: Test/AOJ/CGL_1_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_E.test.cpp
+    title: Test/AOJ/CGL_7_E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
@@ -73,11 +79,13 @@ data:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Circle.hpp
   - Src/GeometryR2/Projection.hpp
   timestamp: '2023-11-08 19:27:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc259_b.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_1_C.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp

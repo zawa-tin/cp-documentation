@@ -13,14 +13,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
+    path: Test/AOJ/CGL_7_E.test.cpp
+    title: Test/AOJ/CGL_7_E.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/Circle.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\n\
     constexpr Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr int negative{-1};\n\
     constexpr int zero{};\nconstexpr int positive{1};\n\n} // namespace internal\n\
@@ -99,51 +99,85 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
-    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
-    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
-    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
-    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
-    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
-    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
-    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
-    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
-    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
-    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Real.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
-    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
-    \ = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\
-    \u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
-    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    //\
-    \ (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\
-    \u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\
-    \u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const Point& p0, const\
-    \ Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a,\
-    \ b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (Smaller(a.normSquare(),\
-    \ b.normSquare())) return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n"
+    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n\
+    \    Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
+    \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
+    \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
+    \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
+    \   /* getter setter */\n    const Point& center() const {\n        return center_;\n\
+    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
+    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
+    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
+    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
+    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend bool Intersect(const\
+    \ Circle& lhs, const Circle& rhs) {\n        Real centerDist{DistanceSquare(lhs.center(),\
+    \ rhs.center())};\n        Real down{std::abs(lhs.radius() - rhs.radius())};\n\
+    \        down = down * down;\n        if (Smaller(centerDist, down)) return false;\n\
+    \        Real up{lhs.radius() + rhs.radius()};\n        up = up * up;\n      \
+    \  if (Bigger(centerDist, up)) return false;\n        return true;\n    }\n  \
+    \  friend std::pair<Point, Point> CrossPoint(const Circle& lhs, const Circle&\
+    \ rhs) {\n        assert(lhs.center() != rhs.center());\n        assert(Intersect(lhs,\
+    \ rhs));\n        assert(!Zero(lhs.radius()) or !Zero(rhs.radius()));\n      \
+    \  if (Zero(lhs.radius())) return {lhs.center(), lhs.center()};\n        if (Zero(rhs.radius()))\
+    \ return {rhs.center(), rhs.center()};\n        Real d{Distance(lhs.center(),\
+    \ rhs.center())};\n        Real cosine{(lhs.radius()*lhs.radius() + d*d - rhs.radius()*rhs.radius())\n\
+    \            / (static_cast<Real>(2)*lhs.radius()*d)};\n        Real rc{lhs.radius()*cosine};\n\
+    \        Real rs{sqrtl(lhs.radius()*lhs.radius() - rc*rc)};\n        Vector lr{Vector{rhs.center()\
+    \ - lhs.center()}.normalized()};\n        Vector h{lhs.center() + lr*rc};\n  \
+    \      std::pair<Point, Point> res;\n        res.first = h + lr.rotatedByArc(90)\
+    \ * rs;\n        res.second = h + lr.rotatedByArc(-90) * rs;\n        return res;\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./Real.hpp\"\n#include \"./Point.hpp\"\n\n#include\
+    \ <cassert>\n#include <utility>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
+    \nclass Circle {\nprivate:\n    Point center_{};\n    Real radius_{};\npublic:\n\
+    \    /* constructor */\n    Circle() = default;\n    Circle(const Point& center,\
+    \ Real radius) : center_{center}, radius_{radius} {\n        assert(!Negative(radius));\n\
+    \    }\n    Circle(Real x, Real y, Real r) : center_{x, y}, radius_{r} {\n   \
+    \     assert(!Negative(r));\n    }\n\n    /* getter setter */\n    const Point&\
+    \ center() const {\n        return center_;\n    }\n    Point& center() {\n  \
+    \      return center_;\n    }\n    Real radius() const {\n        return radius_;\n\
+    \    }\n    Real& radius() {\n        return radius_;\n    }\n\n    /* operator\
+    \ */\n    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n   \
+    \     return lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n\
+    \    }\n    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n \
+    \       return lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n\
+    \    }\n\n    /* friend function */\n    friend bool Intersect(const Circle& lhs,\
+    \ const Circle& rhs) {\n        Real centerDist{DistanceSquare(lhs.center(), rhs.center())};\n\
+    \        Real down{std::abs(lhs.radius() - rhs.radius())};\n        down = down\
+    \ * down;\n        if (Smaller(centerDist, down)) return false;\n        Real\
+    \ up{lhs.radius() + rhs.radius()};\n        up = up * up;\n        if (Bigger(centerDist,\
+    \ up)) return false;\n        return true;\n    }\n    friend std::pair<Point,\
+    \ Point> CrossPoint(const Circle& lhs, const Circle& rhs) {\n        assert(lhs.center()\
+    \ != rhs.center());\n        assert(Intersect(lhs, rhs));\n        assert(!Zero(lhs.radius())\
+    \ or !Zero(rhs.radius()));\n        if (Zero(lhs.radius())) return {lhs.center(),\
+    \ lhs.center()};\n        if (Zero(rhs.radius())) return {rhs.center(), rhs.center()};\n\
+    \        Real d{Distance(lhs.center(), rhs.center())};\n        Real cosine{(lhs.radius()*lhs.radius()\
+    \ + d*d - rhs.radius()*rhs.radius())\n            / (static_cast<Real>(2)*lhs.radius()*d)};\n\
+    \        Real rc{lhs.radius()*cosine};\n        Real rs{sqrtl(lhs.radius()*lhs.radius()\
+    \ - rc*rc)};\n        Vector lr{Vector{rhs.center() - lhs.center()}.normalized()};\n\
+    \        Vector h{lhs.center() + lr*rc};\n        std::pair<Point, Point> res;\n\
+    \        res.first = h + lr.rotatedByArc(90) * rs;\n        res.second = h + lr.rotatedByArc(-90)\
+    \ * rs;\n        return res;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Relation.hpp
+  path: Src/GeometryR2/Circle.hpp
   requiredBy: []
   timestamp: '2023-11-08 20:56:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_1_C.test.cpp
-documentation_of: Src/GeometryR2/Relation.hpp
+  - Test/AOJ/CGL_7_E.test.cpp
+documentation_of: Src/GeometryR2/Circle.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Relation.hpp
-- /library/Src/GeometryR2/Relation.hpp.html
-title: Src/GeometryR2/Relation.hpp
+- /library/Src/GeometryR2/Circle.hpp
+- /library/Src/GeometryR2/Circle.hpp.html
+title: Src/GeometryR2/Circle.hpp
 ---
