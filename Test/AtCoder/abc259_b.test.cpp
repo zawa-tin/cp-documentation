@@ -1,4 +1,5 @@
 #define PROBLEM "https://atcoder.jp/contests/abc259/tasks/abc259_b"
+#define ERROR 0.000001
 
 #include "../../Src/GeometryR2/Point.hpp"
 #include "../../Src/Template/IOSetting.hpp"
