@@ -19,10 +19,10 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/practice2/submissions/46222357
+    - https://atcoder.jp/contests/practice2/submissions/47372035
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/practice2_l.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Library Practice Contest - L Lazy Segment Tree\n * https://atcoder.jp/contests/practice2/submissions/46222357\n\
+    \n\n/*\n * AtCoder Library Practice Contest - L Lazy Segment Tree\n * https://atcoder.jp/contests/practice2/submissions/47372035\n\
     \ */\n\n#line 2 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n#line\
     \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
@@ -83,31 +83,31 @@ data:
     \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
     \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
-    \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
-    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
-    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
-    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
-    \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
-    \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
-    \            if (R & 1) {\n                R--;\n                r = VM::operation(action(dat_[R]),\
-    \ r);\n            }\n        }\n        return VM::operation(l, r);\n    }\n\n\
-    \    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree&\
-    \ seg) {\n        usize size{seg.dat_.size()};\n        os << \"Value :\\n\";\n\
-    \        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].v_ <<\
-    \ (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Operator :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].o_\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Action :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << action(seg.dat_[i])\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        return os;\n    }\n\
-    \n/*\n    template <class F>\n    u32 maxRight(u32 l, const F& f) {\n\n    }\n\
-    \n    template <class F>\n    u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"\
-    Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include\
-    \ <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
+    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
+    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
+    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
+    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
+    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
+    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
+    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
+    \                L++;\n            }\n            if (R & 1) {\n             \
+    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
+    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
+    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
+    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
+    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
+    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
+    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
+    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
+    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
+    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
+    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 10 \"Test/Manual/practice2_l.test.cpp\"\n\nstruct\
     \ vDat {\n    long long zero{}, one{}, inv{};\n    vDat() {}\n    vDat(long long\
@@ -133,7 +133,7 @@ data:
     \    }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n    std::cout\
     \ << \"Hello World\" << std::endl;\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Library Practice Contest - L Lazy Segment Tree\n * https://atcoder.jp/contests/practice2/submissions/46222357\n\
+    \n\n/*\n * AtCoder Library Practice Contest - L Lazy Segment Tree\n * https://atcoder.jp/contests/practice2/submissions/47372035\n\
     \ */\n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\
     #include \"../../Src/Template/IOSetting.hpp\"\n\nstruct vDat {\n    long long\
     \ zero{}, one{}, inv{};\n    vDat() {}\n    vDat(long long z, long long o, long\
@@ -165,7 +165,7 @@ data:
   isVerificationFile: true
   path: Test/Manual/practice2_l.test.cpp
   requiredBy: []
-  timestamp: '2023-10-05 10:19:49+09:00'
+  timestamp: '2023-11-08 14:46:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/practice2_l.test.cpp

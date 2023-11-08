@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc322_f.test.cpp
+    title: ABC322-F Vacation Query
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -83,29 +86,28 @@ data:
     \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
     \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
-    \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
-    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
-    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
-    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
-    \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
-    \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
-    \            if (R & 1) {\n                R--;\n                r = VM::operation(action(dat_[R]),\
-    \ r);\n            }\n        }\n        return VM::operation(l, r);\n    }\n\n\
-    \    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree&\
-    \ seg) {\n        usize size{seg.dat_.size()};\n        os << \"Value :\\n\";\n\
-    \        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].v_ <<\
-    \ (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Operator :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].o_\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Action :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << action(seg.dat_[i])\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        return os;\n    }\n\
-    \n/*\n    template <class F>\n    u32 maxRight(u32 l, const F& f) {\n\n    }\n\
-    \n    template <class F>\n    u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n\
-    };\n\n} // namespace zawa\n"
+    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
+    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
+    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
+    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
+    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
+    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
+    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
+    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
+    \                L++;\n            }\n            if (R & 1) {\n             \
+    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
+    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
+    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
+    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
+    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
+    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
+    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
+    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
+    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
+    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <iterator>\n#include <cassert>\n#include <ostream>\n\n#include <iostream>\n\
     \nnamespace zawa {\n\ntemplate <class Structure>\nclass LazySegmentTree {\npublic:\n\
@@ -160,41 +162,41 @@ data:
     \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
     \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
-    \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
-    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
-    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
-    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
-    \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
-    \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
-    \            if (R & 1) {\n                R--;\n                r = VM::operation(action(dat_[R]),\
-    \ r);\n            }\n        }\n        return VM::operation(l, r);\n    }\n\n\
-    \    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree&\
-    \ seg) {\n        usize size{seg.dat_.size()};\n        os << \"Value :\\n\";\n\
-    \        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].v_ <<\
-    \ (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Operator :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].o_\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Action :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << action(seg.dat_[i])\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        return os;\n    }\n\
-    \n/*\n    template <class F>\n    u32 maxRight(u32 l, const F& f) {\n\n    }\n\
-    \n    template <class F>\n    u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n\
-    };\n\n} // namespace zawa\n"
+    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
+    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
+    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
+    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
+    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
+    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
+    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
+    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
+    \                L++;\n            }\n            if (R & 1) {\n             \
+    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
+    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
+    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
+    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
+    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
+    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
+    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
+    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
+    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
+    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-10-03 04:25:45+09:00'
+  timestamp: '2023-11-08 14:46:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_range_sum.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
-  - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
+  - Test/Manual/CF895-E.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document
 title: Lazy Segment Tree
@@ -216,3 +218,7 @@ title: Lazy Segment Tree
 
 `operator[]`と`set`はうまくいっている自信がちょっと無い。verifyを増やさねば
 - `operator[]`は未verify、`set`は`product`や`operation`と混ざるとどうなるか分からん
+
+## 更新情報
+
+2023/11/08: `operator[]`にWarningがでていたのを解消

@@ -145,45 +145,45 @@ data:
     \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
     \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
-    \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
-    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
-    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
-    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
-    \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
-    \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
-    \            if (R & 1) {\n                R--;\n                r = VM::operation(action(dat_[R]),\
-    \ r);\n            }\n        }\n        return VM::operation(l, r);\n    }\n\n\
-    \    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree&\
-    \ seg) {\n        usize size{seg.dat_.size()};\n        os << \"Value :\\n\";\n\
-    \        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].v_ <<\
-    \ (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Operator :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].o_\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Action :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << action(seg.dat_[i])\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        return os;\n    }\n\
-    \n/*\n    template <class F>\n    u32 maxRight(u32 l, const F& f) {\n\n    }\n\
-    \n    template <class F>\n    u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/AdditionMonoid.hpp\"\n\
-    \nnamespace zawa {\n\ntemplate <class T>\nstruct AdditionMonoid {\n    using Element\
-    \ = T;\n    static T identity() noexcept {\n        return T{};\n    }\n    static\
-    \ T operation(const T& a, const T& b) noexcept {\n        return a + b;\n    }\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n\
-    #line 4 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr\
-    \ Affine() {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n\
-    \    T a() const noexcept {\n        return a_;\n    }\n    T b() const noexcept\
-    \ {\n        return b_;\n    }\n    constexpr T mapping(const T& x) const {\n\
-    \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
-    \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
-    \ {\n    using Element = Affine<T>;\n    static constexpr Element identity() noexcept\
-    \ {\n        return Element{};\n    }\n    static constexpr Element operation(const\
-    \ Element& l, const Element& r) noexcept {\n        return Element{ l.a() * r.a(),\
-    \ l.b() * r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n#line 27 \"Test/LC/range_affine_range_sum.test.cpp\"\
+    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
+    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
+    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
+    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
+    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
+    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
+    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
+    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
+    \                L++;\n            }\n            if (R & 1) {\n             \
+    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
+    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
+    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
+    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
+    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
+    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
+    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
+    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
+    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
+    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/Algebra/Monoid/AdditionMonoid.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <class T>\nstruct AdditionMonoid {\n    using Element = T;\n    static T identity()\
+    \ noexcept {\n        return T{};\n    }\n    static T operation(const T& a, const\
+    \ T& b) noexcept {\n        return a + b;\n    }\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#line 4 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nclass Affine {\nprivate:\n    T a_{1},\
+    \ b_{};\npublic:\n    constexpr Affine() {}\n    constexpr Affine(const T& a,\
+    \ const T& b) : a_{a}, b_{b} {}\n    T a() const noexcept {\n        return a_;\n\
+    \    }\n    T b() const noexcept {\n        return b_;\n    }\n    constexpr T\
+    \ mapping(const T& x) const {\n        return a_ * x + b_;\n    }\n    friend\
+    \ std::ostream& operator<<(std::ostream& os, const Affine& affine) {\n       \
+    \ os << '(' << affine.a_ << ',' << affine.b_ << ')';\n        return os;\n   \
+    \ }\n};\n\ntemplate <class T>\nstruct AffineMonoid {\n    using Element = Affine<T>;\n\
+    \    static constexpr Element identity() noexcept {\n        return Element{};\n\
+    \    }\n    static constexpr Element operation(const Element& l, const Element&\
+    \ r) noexcept {\n        return Element{ l.a() * r.a(), l.b() * r.a() + r.b()\
+    \ };\n    }\n};\n\n} // namespace zawa\n#line 27 \"Test/LC/range_affine_range_sum.test.cpp\"\
     \n\nstruct Structure {\n    using ValueMonoid = AdditionMonoid<std::pair<mint,\
     \ mint>>;\n    using OperatorMonoid = AffineMonoid<mint>;\n    static std::pair<mint,\
     \ mint> mapping(const std::pair<mint, mint>& v, const Affine<mint>& o) {\n   \
@@ -230,7 +230,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-10-03 04:25:45+09:00'
+  timestamp: '2023-11-08 14:46:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_range_sum.test.cpp

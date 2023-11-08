@@ -237,6 +237,9 @@ data:
       path: Test/AtCoder/abc311_b.test.cpp
       title: Test/AtCoder/abc311_b.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc322_f.test.cpp
+      title: ABC322-F Vacation Query
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
     - icon: ':heavy_check_mark:'

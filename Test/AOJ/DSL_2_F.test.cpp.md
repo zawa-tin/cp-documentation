@@ -81,51 +81,50 @@ data:
     \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
     \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
     \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    const\
-    \ Value& operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        return action(dat_[i]);\n    }\n\n    Value product(u32 L,\
-    \ u32 R) {\n        assert(L < n_);\n        assert(L <= R and R <= n_);\n   \
-    \     L += size();\n        R += size();\n        propagateAncestor(L);\n    \
-    \    propagateAncestor(R);\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \        Value l{VM::identity()}, r{VM::identity()};\n        for ( ; L < R ;\
-    \ L = parent(L), R = parent(R)) {\n            if (L & 1) {\n                l\
-    \ = VM::operation(l, action(dat_[L]));\n                L++;\n            }\n\
-    \            if (R & 1) {\n                R--;\n                r = VM::operation(action(dat_[R]),\
-    \ r);\n            }\n        }\n        return VM::operation(l, r);\n    }\n\n\
-    \    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree&\
-    \ seg) {\n        usize size{seg.dat_.size()};\n        os << \"Value :\\n\";\n\
-    \        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].v_ <<\
-    \ (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Operator :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << seg.dat_[i].o_\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        os << \"Action :\\\
-    n\";\n        for (u32 i{1} ; i < size ; i++) {\n            os << action(seg.dat_[i])\
-    \ << (i + 1 == size ? \"\\n\" : \" \");\n        }\n        return os;\n    }\n\
-    \n/*\n    template <class F>\n    u32 maxRight(u32 l, const F& f) {\n\n    }\n\
-    \n    template <class F>\n    u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include\
-    \ <limits>\n#include <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass\
-    \ MinMonoid {\npublic:\n    using Element = T;\n    // CHECK!!!\n    static constexpr\
-    \ Element identity() noexcept {\n        return std::numeric_limits<Element>::max();\n\
-    \    }\n    static constexpr Element operation(Element a, Element b) noexcept\
-    \ {\n        return std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 5\
-    \ \"Test/AOJ/DSL_2_F.test.cpp\"\n\nstruct oM {\n    using Element = int;\n   \
-    \ static int identity() {\n        return -1;\n    }\n    static int operation(int\
-    \ a, int b) {\n        return (b == -1 ? a : b);\n    }\n};\n\nstruct Structure\
-    \ {\n    using ValueMonoid = zawa::MinMonoid<int>;\n    using OperatorMonoid =\
-    \ oM;\n    static int mapping(int a, int b) {\n        return (b == -1 ? a : b);\n\
-    \    }\n};\n\n#line 25 \"Test/AOJ/DSL_2_F.test.cpp\"\n\nint main() {\n    using\
-    \ namespace zawa;\n    int n, q; std::cin >> n >> q;\n    LazySegmentTree<Structure>\
-    \ seg(std::vector<int>(n, (1LL << 31) - 1));\n    for (int _{} ; _ < q ; _++)\
-    \ {\n        int t; std::cin >> t;\n        // std::cout << \"query: \";\n   \
-    \     if (t == 0) {\n            int s, t, x; std::cin >> s >> t >> x;\n     \
-    \       t++;\n            // std::cout << \"update \" << '[' << s << ',' << t\
-    \ << ')' << \"-> \" << x << std::endl;\n            seg.operation(s, t, x);\n\
-    \        }\n        else if (t == 1) {\n            int s, t; std::cin >> s >>\
-    \ t;\n            t++;\n            // std::cout << \"prod \" << '[' << s << ','\
-    \ << t << ')' << std::endl;\n            std::cout << seg.product(s, t) << std::endl;\n\
-    \        }\n        else {\n            assert(false);\n        }\n        //\
-    \ std::cout << seg << std::endl;\n    }\n}\n"
+    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
+    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
+    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
+    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
+    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
+    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
+    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
+    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
+    \                L++;\n            }\n            if (R & 1) {\n             \
+    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
+    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
+    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
+    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
+    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
+    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
+    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
+    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
+    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
+    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
+    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include <algorithm>\n\
+    \nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n    using\
+    \ Element = T;\n    // CHECK!!!\n    static constexpr Element identity() noexcept\
+    \ {\n        return std::numeric_limits<Element>::max();\n    }\n    static constexpr\
+    \ Element operation(Element a, Element b) noexcept {\n        return std::min(a,\
+    \ b);\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AOJ/DSL_2_F.test.cpp\"\
+    \n\nstruct oM {\n    using Element = int;\n    static int identity() {\n     \
+    \   return -1;\n    }\n    static int operation(int a, int b) {\n        return\
+    \ (b == -1 ? a : b);\n    }\n};\n\nstruct Structure {\n    using ValueMonoid =\
+    \ zawa::MinMonoid<int>;\n    using OperatorMonoid = oM;\n    static int mapping(int\
+    \ a, int b) {\n        return (b == -1 ? a : b);\n    }\n};\n\n#line 25 \"Test/AOJ/DSL_2_F.test.cpp\"\
+    \n\nint main() {\n    using namespace zawa;\n    int n, q; std::cin >> n >> q;\n\
+    \    LazySegmentTree<Structure> seg(std::vector<int>(n, (1LL << 31) - 1));\n \
+    \   for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        // std::cout\
+    \ << \"query: \";\n        if (t == 0) {\n            int s, t, x; std::cin >>\
+    \ s >> t >> x;\n            t++;\n            // std::cout << \"update \" << '['\
+    \ << s << ',' << t << ')' << \"-> \" << x << std::endl;\n            seg.operation(s,\
+    \ t, x);\n        }\n        else if (t == 1) {\n            int s, t; std::cin\
+    \ >> s >> t;\n            t++;\n            // std::cout << \"prod \" << '[' <<\
+    \ s << ',' << t << ')' << std::endl;\n            std::cout << seg.product(s,\
+    \ t) << std::endl;\n        }\n        else {\n            assert(false);\n  \
+    \      }\n        // std::cout << seg << std::endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\nstruct oM {\n    using Element\
@@ -151,7 +150,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_2_F.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 12:01:29+09:00'
+  timestamp: '2023-11-08 14:46:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_F.test.cpp

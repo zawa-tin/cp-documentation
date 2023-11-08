@@ -19,6 +19,9 @@ data:
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc322_f.test.cpp
+    title: ABC322-F Vacation Query
+  - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
@@ -71,19 +74,20 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/many_aplusb.test.cpp
-  - Test/LC/range_affine_point_get.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
-  - Test/LC/staticrmq.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
-  - Test/Manual/CF895-E.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
   - Test/Manual/practice2_l.test.cpp
+  - Test/Manual/CF895-E.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/staticrmq.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
