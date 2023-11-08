@@ -120,15 +120,18 @@ public:
         *this = rotatedByArc(arc);
     }
     Real argument() const {
-        return (IsNegative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);
+        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);
     }
     Real argumentByArc() const {
         return RadianToArc(argument());
     }
 
     /* friend function */
-    friend Real dot(const Point& lhs, const Point& rhs) {
+    friend Real Dot(const Point& lhs, const Point& rhs) {
         return lhs.x() * rhs.x() + lhs.y() * rhs.y();
+    }
+    friend Real Cross(const Point& lhs, const Point& rhs) {
+        return lhs.x() * rhs.y() - lhs.y() * rhs.x();
     }
     friend Real DistanceSquare(const Point& lhs, const Point& rhs) {
         return Point{lhs - rhs}.normSquare();

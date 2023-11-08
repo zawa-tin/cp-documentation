@@ -21,28 +21,28 @@ constexpr int Sign(Real value) {
     return internal::zero;
 }
 
-constexpr bool IsZero(Real value) {
+constexpr bool Zero(Real value) {
     return Sign(value) == internal::zero;
 }
 
-constexpr bool IsPositive(Real value) {
+constexpr bool Positive(Real value) {
     return Sign(value) == internal::positive;
 }
 
-constexpr bool IsNegative(Real value) {
+constexpr bool Negative(Real value) {
     return Sign(value) == internal::negative;
 }
 
 constexpr bool Equal(Real a, Real b) {
-    return IsZero(a - b);
+    return Zero(a - b);
 }
 
 constexpr bool Smaller(Real a, Real b) {
-    return IsNegative(a - b);
+    return Negative(a - b);
 }
 
 constexpr bool Bigger(Real a, Real b) {
-    return IsPositive(a - b);
+    return Positive(a - b);
 }
 
 } // namespace geometryR2

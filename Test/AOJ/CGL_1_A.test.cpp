@@ -15,7 +15,7 @@ int main() {
     SetFastIO();
     SetPrecision(10);
     Line line{};
-    std::cin >> line.p1() >> line.p2();
+    std::cin >> line.p0() >> line.p1();
     int q; std::cin >> q;
     for (int _{} ; _ < q ; _++) {
         Point p{}; std::cin >> p;
