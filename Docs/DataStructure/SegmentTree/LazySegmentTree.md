@@ -19,3 +19,7 @@ documentation_of: //Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 
 `operator[]`と`set`はうまくいっている自信がちょっと無い。verifyを増やさねば
 - `operator[]`は未verify、`set`は`product`や`operation`と混ざるとどうなるか分からん
+
+## 更新情報
+
+2023/11/08: `operator[]`にWarningがでていたのを解消
