@@ -11,8 +11,8 @@ namespace geometryR2 {
 
 Point Projection(const Point& point, const Line& line) {
     assert(line.isValid());
-    Real coeff{dot(line.p2() - line.p1(), point - line.p1()) / Point{line.p2() - line.p1()}.normSquare()};
-    return coeff * line.p2() + (static_cast<Real>(1) - coeff) * line.p1();
+    Real coeff{Dot(line.p1() - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};
+    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();
 }
 
 } // namespace geometryR2
