@@ -1,0 +1,25 @@
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B"
+#define ERROR 0.00000001
+
+#include "../../Src/GeometryR2/Point.hpp"
+#include "../../Src/GeometryR2/Line.hpp"
+#include "../../Src/GeometryR2/Reflection.hpp"
+#include "../../Src/Template/IOSetting.hpp"
+
+#include <iostream>
+
+int main() {
+    using namespace zawa;
+    using namespace geometryR2;
+
+    SetFastIO();
+    SetPrecision(10);
+    Line line{};
+    std::cin >> line.p1() >> line.p2();
+    int q; std::cin >> q;
+    for (int _{} ; _ < q ; _++) {
+        Point p{}; std::cin >> p;
+        Point ans{Reflection(p, line)};
+        std::cout << ans.x() << ' ' << ans.y() << '\n';
+    }
+}

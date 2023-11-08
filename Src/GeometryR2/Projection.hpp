@@ -9,10 +9,10 @@ namespace zawa {
 
 namespace geometryR2 {
 
-Point Projection(const Point& p, const Line& l) {
-    assert(l.isValid());
-    Real coeff{dot(l.p2() - l.p1(), p - l.p1()) / Point{l.p2() - l.p1()}.normSquare()};
-    return coeff * l.p2() + (static_cast<Real>(1) - coeff) * l.p1();
+Point Projection(const Point& point, const Line& line) {
+    assert(line.isValid());
+    Real coeff{dot(line.p2() - line.p1(), point - line.p1()) / Point{line.p2() - line.p1()}.normSquare()};
+    return coeff * line.p2() + (static_cast<Real>(1) - coeff) * line.p1();
 }
 
 } // namespace geometryR2
