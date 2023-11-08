@@ -72,6 +72,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Reflection.hpp
       title: Src/GeometryR2/Reflection.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Relation.hpp
+      title: Src/GeometryR2/Relation.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -167,6 +170,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_B.test.cpp
       title: Test/AOJ/CGL_1_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_1_C.test.cpp
+      title: Test/AOJ/CGL_1_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_A.test.cpp
       title: Test/AOJ/DSL_2_A.test.cpp

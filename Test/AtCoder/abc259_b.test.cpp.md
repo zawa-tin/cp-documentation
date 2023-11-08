@@ -34,14 +34,14 @@ data:
     constexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
     \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
     \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool IsZero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool IsPositive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool IsNegative(Real\
+    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
+    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
+    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
     \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return IsZero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return IsNegative(a - b);\n}\n\nconstexpr bool Bigger(Real\
-    \ a, Real b) {\n    return IsPositive(a - b);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
+    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
+    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
+    \ Real b) {\n    return Positive(a - b);\n}\n\n} // namespace geometryR2\n \n\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
     \n\n#include <cmath>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr\
     \ Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr\
     \ Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
@@ -89,18 +89,20 @@ data:
     \ rotate(Real radian) {\n        *this = rotated(radian); \n    }\n    Point rotatedByArc(Real\
     \ arc) const {\n        return rotated(ArcToRadian(arc));\n    }\n    void rotateByArc(Real\
     \ arc) {\n        *this = rotatedByArc(arc);\n    }\n    Real argument() const\
-    \ {\n        return (IsNegative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_,\
-    \ x_);\n    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
-    \    }\n\n    /* friend function */\n    friend Real dot(const Point& lhs, const\
+    \ {\n        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);\n\
+    \    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
+    \    }\n\n    /* friend function */\n    friend Real Dot(const Point& lhs, const\
     \ Point& rhs) {\n        return lhs.x() * rhs.x() + lhs.y() * rhs.y();\n    }\n\
-    \    friend Real DistanceSquare(const Point& lhs, const Point& rhs) {\n      \
-    \  return Point{lhs - rhs}.normSquare();\n    }\n    friend Real Distance(const\
-    \ Point& lhs, const Point& rhs) {\n        return Point{lhs - rhs}.norm();\n \
-    \   }\n    friend Real Argument(const Point& lhs, const Point& rhs) {\n      \
-    \  return rhs.argument() - lhs.argument();\n    }\n    friend bool ArgComp(const\
-    \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.argument(), rhs.argument());\n\
-    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \    friend Real Cross(const Point& lhs, const Point& rhs) {\n        return lhs.x()\
+    \ * rhs.y() - lhs.y() * rhs.x();\n    }\n    friend Real DistanceSquare(const\
+    \ Point& lhs, const Point& rhs) {\n        return Point{lhs - rhs}.normSquare();\n\
+    \    }\n    friend Real Distance(const Point& lhs, const Point& rhs) {\n     \
+    \   return Point{lhs - rhs}.norm();\n    }\n    friend Real Argument(const Point&\
+    \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
+    \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
+    \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\n} // namespace\
+    \ geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n\
+    #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -128,7 +130,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc259_b.test.cpp
   requiredBy: []
-  timestamp: '2023-11-08 18:32:02+09:00'
+  timestamp: '2023-11-08 19:27:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc259_b.test.cpp

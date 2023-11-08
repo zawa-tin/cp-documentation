@@ -10,29 +10,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
+    path: Src/GeometryR2/Relation.hpp
+    title: Src/GeometryR2/Relation.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Reflection.hpp
-    title: Src/GeometryR2/Reflection.hpp
-  _extendedVerifiedWith:
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
-    \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C
+  bundledCode: "#line 1 \"Test/AOJ/CGL_1_C.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C\"\
+    \n#define ERROR 0.00000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2\
+    \ \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n\
+    using Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\
+    \nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
     \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
     \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
     \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
@@ -102,45 +104,68 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\n} // namespace\
-    \ geomeryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
-    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
-    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
-    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
-    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
-    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
-    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
-    \ p1_;\n    }\n\n    /* member function */\n    bool isValid() const {\n     \
-    \   return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n \
-    \   /* constructor */\n    Line() = default;\n    Line(const Point& p0, const\
-    \ Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real a, Real\
-    \ b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b} {}\n\n \
-    \   /* getter, setter */\n    const Point& p0() const {\n        return p0_;\n\
-    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
-    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
-    \n    /* member function */\n    bool isValid() const {\n        return p0_ !=\
-    \ p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n\
+    #line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
+    \ -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\
+    \n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\
+    \u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n\
+    \    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\n\
+    RELATION Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point\
+    \ a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
+    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
+    \ // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 7 \"Test/AOJ/CGL_1_C.test.cpp\"\n\n#line 9 \"\
+    Test/AOJ/CGL_1_C.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
+    \ namespace geometryR2;\n\n    SetFastIO();\n    Point p0, p1; std::cin >> p0\
+    \ >> p1;\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n     \
+    \   Point p2; std::cin >> p2;\n        auto ans{Relation(p0, p1, p2)};\n     \
+    \   if (ans == COUNTER_CLOCKWISE) std::cout << \"COUNTER_CLOCKWISE\\n\";\n   \
+    \     else if (ans == CLOCKWISE) std::cout << \"CLOCKWISE\\n\";\n        else\
+    \ if (ans == ONLINE_BACK) std::cout << \"ONLINE_BACK\\n\";\n        else if (ans\
+    \ == ONLINE_FRONT) std::cout << \"ONLINE_FRONT\\n\";\n        else std::cout <<\
+    \ \"ON_SEGMENT\\n\";\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C\"\
+    \n#define ERROR 0.00000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include\
+    \ \"../../Src/GeometryR2/Relation.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
+    \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
+    \ namespace geometryR2;\n\n    SetFastIO();\n    Point p0, p1; std::cin >> p0\
+    \ >> p1;\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n     \
+    \   Point p2; std::cin >> p2;\n        auto ans{Relation(p0, p1, p2)};\n     \
+    \   if (ans == COUNTER_CLOCKWISE) std::cout << \"COUNTER_CLOCKWISE\\n\";\n   \
+    \     else if (ans == CLOCKWISE) std::cout << \"CLOCKWISE\\n\";\n        else\
+    \ if (ans == ONLINE_BACK) std::cout << \"ONLINE_BACK\\n\";\n        else if (ans\
+    \ == ONLINE_FRONT) std::cout << \"ONLINE_FRONT\\n\";\n        else std::cout <<\
+    \ \"ON_SEGMENT\\n\";\n    }\n}\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
-  isVerificationFile: false
-  path: Src/GeometryR2/Line.hpp
-  requiredBy:
-  - Src/GeometryR2/Reflection.hpp
-  - Src/GeometryR2/Projection.hpp
-  timestamp: '2023-11-08 19:27:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-documentation_of: Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Relation.hpp
+  - Src/Template/IOSetting.hpp
+  - Src/Template/TypeAlias.hpp
+  isVerificationFile: true
+  path: Test/AOJ/CGL_1_C.test.cpp
+  requiredBy: []
+  timestamp: '2023-11-08 19:34:21+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AOJ/CGL_1_C.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Line.hpp
-- /library/Src/GeometryR2/Line.hpp.html
-title: Src/GeometryR2/Line.hpp
+- /verify/Test/AOJ/CGL_1_C.test.cpp
+- /verify/Test/AOJ/CGL_1_C.test.cpp.html
+title: Test/AOJ/CGL_1_C.test.cpp
 ---

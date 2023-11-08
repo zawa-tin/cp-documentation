@@ -10,40 +10,31 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Reflection.hpp
-    title: Src/GeometryR2/Reflection.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
+    path: Test/AOJ/CGL_1_C.test.cpp
+    title: Test/AOJ/CGL_1_C.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
-    \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
-    \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
-    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
-    \ Real b) {\n    return Positive(a - b);\n}\n\n} // namespace geometryR2\n \n\
-    } // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
-    \n\n#include <cmath>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr\
+  bundledCode: "#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\n\
+    constexpr Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr int negative{-1};\n\
+    constexpr int zero{};\nconstexpr int positive{1};\n\n} // namespace internal\n\
+    \nconstexpr int Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n\
+    \    if (value > EPS) return internal::positive;\n    return internal::zero;\n\
+    }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
+    }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
+    }\n\nconstexpr bool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
+    \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
+    \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\n} // namespace\
+    \ geometryR2\n \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n\
+    #line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\
+    \n#include <cmath>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr\
     \ Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr\
     \ Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
     }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
@@ -102,45 +93,51 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\n} // namespace\
-    \ geomeryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
-    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
-    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
-    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
-    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
-    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
-    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
-    \ p1_;\n    }\n\n    /* member function */\n    bool isValid() const {\n     \
-    \   return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n \
-    \   /* constructor */\n    Line() = default;\n    Line(const Point& p0, const\
-    \ Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real a, Real\
-    \ b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b} {}\n\n \
-    \   /* getter, setter */\n    const Point& p0() const {\n        return p0_;\n\
-    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
-    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
-    \n    /* member function */\n    bool isValid() const {\n        return p0_ !=\
-    \ p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ geomeryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\n\
+    namespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 -> p1\
+    \ -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
+    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
+    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
+    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
+    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
+    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
+    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
+    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
+    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
+    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
+    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./Real.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
+    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
+    \ = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\
+    \u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    //\
+    \ (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\
+    \u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\
+    \u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
+    \u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const Point& p0, const\
+    \ Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a,\
+    \ b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
+    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (Smaller(a.normSquare(),\
+    \ b.normSquare())) return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Line.hpp
-  requiredBy:
-  - Src/GeometryR2/Reflection.hpp
-  - Src/GeometryR2/Projection.hpp
+  path: Src/GeometryR2/Relation.hpp
+  requiredBy: []
   timestamp: '2023-11-08 19:27:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-documentation_of: Src/GeometryR2/Line.hpp
+  - Test/AOJ/CGL_1_C.test.cpp
+documentation_of: Src/GeometryR2/Relation.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Line.hpp
-- /library/Src/GeometryR2/Line.hpp.html
-title: Src/GeometryR2/Line.hpp
+- /library/Src/GeometryR2/Relation.hpp
+- /library/Src/GeometryR2/Relation.hpp.html
+title: Src/GeometryR2/Relation.hpp
 ---
