@@ -10,28 +10,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
+  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+    path: Src/GeometryR2/Projection.hpp
+    title: Src/GeometryR2/Projection.hpp
+  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Src/Template/TypeAlias.hpp
-    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+    path: Test/AOJ/CGL_1_A.test.cpp
+    title: Test/AOJ/CGL_1_A.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.000001'
-    PROBLEM: https://atcoder.jp/contests/abc259/tasks/abc259_b
-    links:
-    - https://atcoder.jp/contests/abc259/tasks/abc259_b
-  bundledCode: "#line 1 \"Test/AtCoder/abc259_b.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc259/tasks/abc259_b\"\
-    \n#define ERROR 0.000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing\
-    \ Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\n\
-    constexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
+    links: []
+  bundledCode: "#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
+    \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
     \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
     \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
     \    return internal::zero;\n}\n\nconstexpr bool IsZero(Real value) {\n    return\
@@ -99,42 +94,43 @@ data:
     \   }\n    friend Real Argument(const Point& lhs, const Point& rhs) {\n      \
     \  return rhs.argument() - lhs.argument();\n    }\n    friend bool ArgComp(const\
     \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.argument(), rhs.argument());\n\
-    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
-    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc259_b.test.cpp\"\n\n#line\
-    \ 8 \"Test/AtCoder/abc259_b.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
-    \    using namespace geometryR2;\n    Point p; std::cin >> p;\n    int d; std::cin\
-    \ >> d;\n    p.rotateByArc(d);\n    SetPrecision(10);\n    std::cout << p.x()\
-    \ << ' ' << p.y() << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc259/tasks/abc259_b\"\n#define\
-    \ ERROR 0.000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryR2;\n    Point p; std::cin >> p;\n    int d; std::cin >> d;\n\
-    \    p.rotateByArc(d);\n    SetPrecision(10);\n    std::cout << p.x() << ' ' <<\
-    \ p.y() << '\\n';\n}\n"
+    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Line.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n   \
+    \ Point p1_{}, p2_{};\npublic:\n    /* constructor */\n    Line() = default;\n\
+    \    Line(const Point& p1, const Point& p2) : p1_{p1}, p2_{p2} {}\n    // y =\
+    \ ax + b \n    Line(Real a, Real b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1),\
+    \ a + b} {}\n\n    /* getter, setter */\n    const Point& p1() const {\n     \
+    \   return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n    const\
+    \ Point& p2() const {\n        return p2_;\n    }\n    Point& p2() {\n       \
+    \ return p2_;\n    }\n\n    /* member function */\n    bool isValid() const {\n\
+    \        return p1_ != p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n"
+  code: "#pragma once\n\n#include \"./Point.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nclass Line {\nprivate:\n    Point p1_{}, p2_{};\npublic:\n \
+    \   /* constructor */\n    Line() = default;\n    Line(const Point& p1, const\
+    \ Point& p2) : p1_{p1}, p2_{p2} {}\n    // y = ax + b \n    Line(Real a, Real\
+    \ b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1), a + b} {}\n\n \
+    \   /* getter, setter */\n    const Point& p1() const {\n        return p1_;\n\
+    \    }\n    Point& p1() {\n        return p1_;\n    }\n    const Point& p2() const\
+    \ {\n        return p2_;\n    }\n    Point& p2() {\n        return p2_;\n    }\n\
+    \n    /* member function */\n    bool isValid() const {\n        return p1_ !=\
+    \ p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
-  - Src/Template/IOSetting.hpp
-  - Src/Template/TypeAlias.hpp
-  isVerificationFile: true
-  path: Test/AtCoder/abc259_b.test.cpp
-  requiredBy: []
+  isVerificationFile: false
+  path: Src/GeometryR2/Line.hpp
+  requiredBy:
+  - Src/GeometryR2/Projection.hpp
   timestamp: '2023-11-08 18:32:02+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/AtCoder/abc259_b.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AOJ/CGL_1_A.test.cpp
+documentation_of: Src/GeometryR2/Line.hpp
 layout: document
 redirect_from:
-- /verify/Test/AtCoder/abc259_b.test.cpp
-- /verify/Test/AtCoder/abc259_b.test.cpp.html
-title: Test/AtCoder/abc259_b.test.cpp
+- /library/Src/GeometryR2/Line.hpp
+- /library/Src/GeometryR2/Line.hpp.html
+title: Src/GeometryR2/Line.hpp
 ---

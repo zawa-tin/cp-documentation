@@ -6,9 +6,18 @@ data:
     title: Src/GeometryR2/Real.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Projection.hpp
+    title: Src/GeometryR2/Projection.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_A.test.cpp
+    title: Test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
@@ -47,10 +56,13 @@ data:
   path: Src/GeometryR2/Angle.hpp
   requiredBy:
   - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Projection.hpp
   timestamp: '2023-11-08 17:47:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc259_b.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
 documentation_of: Src/GeometryR2/Angle.hpp
 layout: document
 redirect_from:
