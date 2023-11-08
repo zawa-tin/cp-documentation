@@ -5,6 +5,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <cassert>
 
 namespace zawa {
 
@@ -66,6 +67,18 @@ public:
     friend Point operator*(const Point& p, Real k) {
         return Point{p} *= k;
     }
+    Point& operator/=(Real k) {
+        assert(!Zero(k));
+        x_ /= k;
+        y_ /= k;
+        return *this;
+    }
+    friend Point operator/(Real k, const Point& p) {
+        return Point{p} /= k;
+    }
+    friend Point operator/(const Point& p, Real k) {
+        return Point{p} /= k;
+    }
     friend bool operator==(const Point& lhs, const Point& rhs) {
         return Equal(lhs.x(), rhs.x()) and Equal(lhs.y(), rhs.y());
     }
@@ -103,6 +116,14 @@ public:
     }
     Real norm() const {
         return sqrtl(normSquare());
+    }
+    void normalize() {
+        (*this) /= norm(); 
+    }
+    Point normalized() const {
+        Point res{*this};
+        res.normalize();
+        return res;
     }
     Point rotated(Real radian) const {
         return Point{
@@ -146,6 +167,8 @@ public:
         return Smaller(lhs.argument(), rhs.argument());
     }
 };
+
+using Vector = Point;
 
 } // namespace geomeryR2
 
