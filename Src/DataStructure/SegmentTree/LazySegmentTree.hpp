@@ -153,7 +153,7 @@ public:
         }
     }
 
-    const Value& operator[](u32 i) {
+    Value operator[](u32 i) {
         assert(i < n_);
         i += size();
         for (u32 d{depth(i)} ; d ; d--) {

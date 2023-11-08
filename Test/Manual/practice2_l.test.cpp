@@ -2,7 +2,7 @@
 
 /*
  * AtCoder Library Practice Contest - L Lazy Segment Tree
- * https://atcoder.jp/contests/practice2/submissions/46222357
+ * https://atcoder.jp/contests/practice2/submissions/47372035
  */
 
 #include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
