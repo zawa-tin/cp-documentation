@@ -55,6 +55,17 @@ public:
     Point operator-() const {
         return Point{} - *this;
     }
+    Point& operator*=(Real k) {
+        x_ *= k;
+        y_ *= k;
+        return *this;
+    }
+    friend Point operator*(Real k, const Point& p) {
+        return Point{p} *= k;
+    }
+    friend Point operator*(const Point& p, Real k) {
+        return Point{p} *= k;
+    }
     friend bool operator==(const Point& lhs, const Point& rhs) {
         return Equal(lhs.x(), rhs.x()) and Equal(lhs.y(), rhs.y());
     }
@@ -116,6 +127,9 @@ public:
     }
 
     /* friend function */
+    friend Real dot(const Point& lhs, const Point& rhs) {
+        return lhs.x() * rhs.x() + lhs.y() * rhs.y();
+    }
     friend Real DistanceSquare(const Point& lhs, const Point& rhs) {
         return Point{lhs - rhs}.normSquare();
     }
