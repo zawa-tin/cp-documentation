@@ -117,17 +117,18 @@ data:
     \    bool isValid() const {\n        return p1_ != p2_;\n    }\n};\n\n} // namespace\
     \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
     \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#include <cassert>\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point& p, const Line&\
-    \ l) {\n    assert(l.isValid());\n    Real coeff{dot(l.p2() - l.p1(), p - l.p1())\
-    \ / Point{l.p2() - l.p1()}.normSquare()};\n    return coeff * l.p2() + (static_cast<Real>(1)\
-    \ - coeff) * l.p1();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
-    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point& point, const\
+    \ Line& line) {\n    assert(line.isValid());\n    Real coeff{dot(line.p2() - line.p1(),\
+    \ point - line.p1()) / Point{line.p2() - line.p1()}.normSquare()};\n    return\
+    \ coeff * line.p2() + (static_cast<Real>(1) - coeff) * line.p1();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n\
+    #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
+    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 8 \"Test/AOJ/CGL_1_A.test.cpp\"\n\n#line 10 \"\
     Test/AOJ/CGL_1_A.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
@@ -155,7 +156,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_1_A.test.cpp
   requiredBy: []
-  timestamp: '2023-11-08 18:32:02+09:00'
+  timestamp: '2023-11-08 18:50:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_1_A.test.cpp

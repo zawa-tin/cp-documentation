@@ -5,34 +5,42 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Real.hpp
-    title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Projection.hpp
     title: Src/GeometryR2/Projection.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Real.hpp
+    title: Src/GeometryR2/Real.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Reflection.hpp
     title: Src/GeometryR2/Reflection.hpp
-  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
-    \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B
+  bundledCode: "#line 1 \"Test/AOJ/CGL_1_B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B\"\
+    \n#define ERROR 0.00000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2\
+    \ \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n\
+    using Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\
+    \nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
     \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
     \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
     \    return internal::zero;\n}\n\nconstexpr bool IsZero(Real value) {\n    return\
@@ -100,45 +108,68 @@ data:
     \   }\n    friend Real Argument(const Point& lhs, const Point& rhs) {\n      \
     \  return rhs.argument() - lhs.argument();\n    }\n    friend bool ArgComp(const\
     \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.argument(), rhs.argument());\n\
-    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Line.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n   \
-    \ Point p1_{}, p2_{};\npublic:\n    /* constructor */\n    Line() = default;\n\
-    \    Line(const Point& p1, const Point& p2) : p1_{p1}, p2_{p2} {}\n    // y =\
-    \ ax + b \n    Line(Real a, Real b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1),\
-    \ a + b} {}\n\n    /* getter, setter */\n    const Point& p1() const {\n     \
-    \   return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n    const\
-    \ Point& p2() const {\n        return p2_;\n    }\n    Point& p2() {\n       \
-    \ return p2_;\n    }\n\n    /* member function */\n    bool isValid() const {\n\
-    \        return p1_ != p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nclass Line {\nprivate:\n    Point p1_{}, p2_{};\npublic:\n \
-    \   /* constructor */\n    Line() = default;\n    Line(const Point& p1, const\
-    \ Point& p2) : p1_{p1}, p2_{p2} {}\n    // y = ax + b \n    Line(Real a, Real\
-    \ b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1), a + b} {}\n\n \
-    \   /* getter, setter */\n    const Point& p1() const {\n        return p1_;\n\
-    \    }\n    Point& p1() {\n        return p1_;\n    }\n    const Point& p2() const\
-    \ {\n        return p2_;\n    }\n    Point& p2() {\n        return p2_;\n    }\n\
-    \n    /* member function */\n    bool isValid() const {\n        return p1_ !=\
-    \ p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nclass Line {\nprivate:\n    Point p1_{}, p2_{};\npublic:\n    /* constructor\
+    \ */\n    Line() = default;\n    Line(const Point& p1, const Point& p2) : p1_{p1},\
+    \ p2_{p2} {}\n    // y = ax + b \n    Line(Real a, Real b) : p1_{static_cast<Real>(0),\
+    \ b}, p2_{static_cast<Real>(1), a + b} {}\n\n    /* getter, setter */\n    const\
+    \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
+    \ return p1_;\n    }\n    const Point& p2() const {\n        return p2_;\n   \
+    \ }\n    Point& p2() {\n        return p2_;\n    }\n\n    /* member function */\n\
+    \    bool isValid() const {\n        return p1_ != p2_;\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Reflection.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Projection.hpp\"\n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
+    \ Projection(const Point& point, const Line& line) {\n    assert(line.isValid());\n\
+    \    Real coeff{dot(line.p2() - line.p1(), point - line.p1()) / Point{line.p2()\
+    \ - line.p1()}.normSquare()};\n    return coeff * line.p2() + (static_cast<Real>(1)\
+    \ - coeff) * line.p1();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryR2/Reflection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nPoint Reflection(const Point& point, const Line& line) {\n    return -point\
+    \ + static_cast<Real>(2) * Projection(point, line);\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 8 \"Test/AOJ/CGL_1_B.test.cpp\"\n\n#line 10 \"\
+    Test/AOJ/CGL_1_B.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
+    \ namespace geometryR2;\n\n    SetFastIO();\n    SetPrecision(10);\n    Line line{};\n\
+    \    std::cin >> line.p1() >> line.p2();\n    int q; std::cin >> q;\n    for (int\
+    \ _{} ; _ < q ; _++) {\n        Point p{}; std::cin >> p;\n        Point ans{Reflection(p,\
+    \ line)};\n        std::cout << ans.x() << ' ' << ans.y() << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_B\"\
+    \n#define ERROR 0.00000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include\
+    \ \"../../Src/GeometryR2/Line.hpp\"\n#include \"../../Src/GeometryR2/Reflection.hpp\"\
+    \n#include \"../../Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\nint\
+    \ main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\n   \
+    \ SetFastIO();\n    SetPrecision(10);\n    Line line{};\n    std::cin >> line.p1()\
+    \ >> line.p2();\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n\
+    \        Point p{}; std::cin >> p;\n        Point ans{Reflection(p, line)};\n\
+    \        std::cout << ans.x() << ' ' << ans.y() << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
-  isVerificationFile: false
-  path: Src/GeometryR2/Line.hpp
-  requiredBy:
+  - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Projection.hpp
-  timestamp: '2023-11-08 18:32:02+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-documentation_of: Src/GeometryR2/Line.hpp
+  - Src/Template/IOSetting.hpp
+  - Src/Template/TypeAlias.hpp
+  isVerificationFile: true
+  path: Test/AOJ/CGL_1_B.test.cpp
+  requiredBy: []
+  timestamp: '2023-11-08 18:50:13+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AOJ/CGL_1_B.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Line.hpp
-- /library/Src/GeometryR2/Line.hpp.html
-title: Src/GeometryR2/Line.hpp
+- /verify/Test/AOJ/CGL_1_B.test.cpp
+- /verify/Test/AOJ/CGL_1_B.test.cpp.html
+title: Test/AOJ/CGL_1_B.test.cpp
 ---

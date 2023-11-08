@@ -5,22 +5,19 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Real.hpp
-    title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Projection.hpp
     title: Src/GeometryR2/Projection.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Reflection.hpp
-    title: Src/GeometryR2/Reflection.hpp
+    path: Src/GeometryR2/Real.hpp
+    title: Src/GeometryR2/Real.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_B.test.cpp
     title: Test/AOJ/CGL_1_B.test.cpp
@@ -29,7 +26,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/Reflection.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
     \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
@@ -100,45 +97,48 @@ data:
     \   }\n    friend Real Argument(const Point& lhs, const Point& rhs) {\n      \
     \  return rhs.argument() - lhs.argument();\n    }\n    friend bool ArgComp(const\
     \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.argument(), rhs.argument());\n\
-    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Line.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n   \
-    \ Point p1_{}, p2_{};\npublic:\n    /* constructor */\n    Line() = default;\n\
-    \    Line(const Point& p1, const Point& p2) : p1_{p1}, p2_{p2} {}\n    // y =\
-    \ ax + b \n    Line(Real a, Real b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1),\
-    \ a + b} {}\n\n    /* getter, setter */\n    const Point& p1() const {\n     \
-    \   return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n    const\
-    \ Point& p2() const {\n        return p2_;\n    }\n    Point& p2() {\n       \
-    \ return p2_;\n    }\n\n    /* member function */\n    bool isValid() const {\n\
-    \        return p1_ != p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \    }\n};\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nclass Line {\nprivate:\n    Point p1_{}, p2_{};\npublic:\n    /* constructor\
+    \ */\n    Line() = default;\n    Line(const Point& p1, const Point& p2) : p1_{p1},\
+    \ p2_{p2} {}\n    // y = ax + b \n    Line(Real a, Real b) : p1_{static_cast<Real>(0),\
+    \ b}, p2_{static_cast<Real>(1), a + b} {}\n\n    /* getter, setter */\n    const\
+    \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
+    \ return p1_;\n    }\n    const Point& p2() const {\n        return p2_;\n   \
+    \ }\n    Point& p2() {\n        return p2_;\n    }\n\n    /* member function */\n\
+    \    bool isValid() const {\n        return p1_ != p2_;\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#include <cassert>\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point& point, const\
+    \ Line& line) {\n    assert(line.isValid());\n    Real coeff{dot(line.p2() - line.p1(),\
+    \ point - line.p1()) / Point{line.p2() - line.p1()}.normSquare()};\n    return\
+    \ coeff * line.p2() + (static_cast<Real>(1) - coeff) * line.p1();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Reflection.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Reflection(const Point&\
+    \ point, const Line& line) {\n    return -point + static_cast<Real>(2) * Projection(point,\
+    \ line);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n#include\
+    \ \"./Projection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
+    \ Reflection(const Point& point, const Line& line) {\n    return -point + static_cast<Real>(2)\
+    \ * Projection(point, line);\n}\n\n} // namespace geometryR2\n\n} // namespace\
     \ zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nclass Line {\nprivate:\n    Point p1_{}, p2_{};\npublic:\n \
-    \   /* constructor */\n    Line() = default;\n    Line(const Point& p1, const\
-    \ Point& p2) : p1_{p1}, p2_{p2} {}\n    // y = ax + b \n    Line(Real a, Real\
-    \ b) : p1_{static_cast<Real>(0), b}, p2_{static_cast<Real>(1), a + b} {}\n\n \
-    \   /* getter, setter */\n    const Point& p1() const {\n        return p1_;\n\
-    \    }\n    Point& p1() {\n        return p1_;\n    }\n    const Point& p2() const\
-    \ {\n        return p2_;\n    }\n    Point& p2() {\n        return p2_;\n    }\n\
-    \n    /* member function */\n    bool isValid() const {\n        return p1_ !=\
-    \ p2_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
-  isVerificationFile: false
-  path: Src/GeometryR2/Line.hpp
-  requiredBy:
-  - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Projection.hpp
-  timestamp: '2023-11-08 18:32:02+09:00'
+  isVerificationFile: false
+  path: Src/GeometryR2/Reflection.hpp
+  requiredBy: []
+  timestamp: '2023-11-08 18:50:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-documentation_of: Src/GeometryR2/Line.hpp
+documentation_of: Src/GeometryR2/Reflection.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Line.hpp
-- /library/Src/GeometryR2/Line.hpp.html
-title: Src/GeometryR2/Line.hpp
+- /library/Src/GeometryR2/Reflection.hpp
+- /library/Src/GeometryR2/Reflection.hpp.html
+title: Src/GeometryR2/Reflection.hpp
 ---

@@ -13,11 +13,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Reflection.hpp
+    title: Src/GeometryR2/Reflection.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_B.test.cpp
+    title: Test/AOJ/CGL_1_B.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -106,16 +112,16 @@ data:
     \    bool isValid() const {\n        return p1_ != p2_;\n    }\n};\n\n} // namespace\
     \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Projection.hpp\"\
     \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
-    \ Projection(const Point& p, const Line& l) {\n    assert(l.isValid());\n    Real\
-    \ coeff{dot(l.p2() - l.p1(), p - l.p1()) / Point{l.p2() - l.p1()}.normSquare()};\n\
-    \    return coeff * l.p2() + (static_cast<Real>(1) - coeff) * l.p1();\n}\n\n}\
-    \ // namespace geometryR2\n\n} // namespace zawa\n"
+    \ Projection(const Point& point, const Line& line) {\n    assert(line.isValid());\n\
+    \    Real coeff{dot(line.p2() - line.p1(), point - line.p1()) / Point{line.p2()\
+    \ - line.p1()}.normSquare()};\n    return coeff * line.p2() + (static_cast<Real>(1)\
+    \ - coeff) * line.p1();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n\n#include\
     \ <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const\
-    \ Point& p, const Line& l) {\n    assert(l.isValid());\n    Real coeff{dot(l.p2()\
-    \ - l.p1(), p - l.p1()) / Point{l.p2() - l.p1()}.normSquare()};\n    return coeff\
-    \ * l.p2() + (static_cast<Real>(1) - coeff) * l.p1();\n}\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n"
+    \ Point& point, const Line& line) {\n    assert(line.isValid());\n    Real coeff{dot(line.p2()\
+    \ - line.p1(), point - line.p1()) / Point{line.p2() - line.p1()}.normSquare()};\n\
+    \    return coeff * line.p2() + (static_cast<Real>(1) - coeff) * line.p1();\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -123,10 +129,12 @@ data:
   - Src/GeometryR2/Line.hpp
   isVerificationFile: false
   path: Src/GeometryR2/Projection.hpp
-  requiredBy: []
-  timestamp: '2023-11-08 18:32:02+09:00'
+  requiredBy:
+  - Src/GeometryR2/Reflection.hpp
+  timestamp: '2023-11-08 18:50:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
 documentation_of: Src/GeometryR2/Projection.hpp
 layout: document
