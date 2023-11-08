@@ -52,6 +52,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SparseTable/SparseTable.hpp
       title: Sparse Table
+  - name: Src/GeometryR2
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Angle.hpp
+      title: Src/GeometryR2/Angle.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Point.hpp
+      title: Src/GeometryR2/Point.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Real.hpp
+      title: Src/GeometryR2/Real.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -206,6 +217,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_f.test.cpp
       title: Test/AtCoder/abc247_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc259_b.test.cpp
+      title: Test/AtCoder/abc259_b.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc276_f.test.cpp
       title: Test/AtCoder/abc276_f.test.cpp

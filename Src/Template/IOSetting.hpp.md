@@ -16,6 +16,9 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc259_b.test.cpp
+    title: Test/AtCoder/abc259_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
