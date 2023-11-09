@@ -17,6 +17,9 @@ data:
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Relation.hpp
+    title: Src/GeometryR2/Relation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
@@ -114,23 +117,46 @@ data:
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
     \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Line.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
-    \ */\n    Line() = default;\n    Line(const Point& p0, const Point& p1) : p0_{p0},\
-    \ p1_{p1} {}\n    // y = ax + b \n    Line(Real a, Real b) : p0_{static_cast<Real>(0),\
-    \ b}, p1_{static_cast<Real>(1), a + b} {}\n\n    /* getter, setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
-    \    bool isValid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
-    \ point, const Line& line) {\n    assert(line.isValid());\n    Real coeff{Dot(line.p1()\
-    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
-    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
+    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
+    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
+    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
+    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
+    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
+    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
+    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
+    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
+    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
+    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
+    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5\
+    \ \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
+    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
+    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
+    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
+    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
+    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
+    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
+    \ p1_;\n    }\n\n    /* member function */\n    bool isValid() const {\n     \
+    \   return p0_ != p1_;\n    }\n\n    /* friend function */\n    friend bool Parallel(const\
+    \ Line& lhs, const Line& rhs) {\n        assert(lhs.isValid());\n        assert(rhs.isValid());\n\
+    \        Vector lVector{lhs.p1() - lhs.p0()};\n        Vector rVector{rhs.p1()\
+    \ - rhs.p0()};\n        return Zero(Cross(lVector, rVector));\n    }\n    friend\
+    \ bool Orthgonal(const Line& lhs, const Line& rhs) {\n        assert(lhs.isValid());\n\
+    \        assert(rhs.isValid());\n        Vector lVector{lhs.p1() - lhs.p0()};\n\
+    \        Vector rVector{rhs.p1() - rhs.p0()};\n        return Zero(Dot(lVector,\
+    \ rVector));\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryR2/Projection.hpp\"\n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
+    \   assert(line.isValid());\n    Real coeff{Dot(line.p1() - line.p0(), point -\
+    \ line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n    return coeff *\
+    \ line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n\
+    #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -158,13 +184,14 @@ data:
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Projection.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/AOJ/CGL_1_A.test.cpp
   requiredBy: []
-  timestamp: '2023-11-08 20:56:36+09:00'
+  timestamp: '2023-11-09 09:20:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_1_A.test.cpp

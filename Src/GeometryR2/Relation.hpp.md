@@ -10,11 +10,29 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Projection.hpp
+    title: Src/GeometryR2/Projection.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Reflection.hpp
+    title: Src/GeometryR2/Reflection.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_A.test.cpp
+    title: Test/AOJ/CGL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_B.test.cpp
+    title: Test/AOJ/CGL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_C.test.cpp
     title: Test/AOJ/CGL_1_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_2_A.test.cpp
+    title: Test/AOJ/CGL_2_A.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -135,11 +153,17 @@ data:
   - Src/GeometryR2/Angle.hpp
   isVerificationFile: false
   path: Src/GeometryR2/Relation.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Projection.hpp
   timestamp: '2023-11-08 20:56:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_1_C.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
 documentation_of: Src/GeometryR2/Relation.hpp
 layout: document
 redirect_from:
