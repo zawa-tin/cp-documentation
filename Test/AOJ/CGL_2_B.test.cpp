@@ -3,6 +3,8 @@
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryR2/Segment.hpp"
 
+#include <iostream>
+
 int main() {
     using namespace zawa;
     using namespace geometryR2;
