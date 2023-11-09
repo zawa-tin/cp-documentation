@@ -5,45 +5,39 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Circle.hpp
+    title: Src/GeometryR2/Circle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
-  _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Line.hpp
-    title: Src/GeometryR2/Line.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Reflection.hpp
-    title: Src/GeometryR2/Reflection.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_A.test.cpp
-    title: Test/AOJ/CGL_2_A.test.cpp
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
-    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
-    \ {\n\nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
-    \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
-    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
+  bundledCode: "#line 1 \"Test/AOJ/CGL_7_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\
+    \n\n#line 2 \"Src/GeometryR2/Circle.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n\
+    #include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real\
+    \ = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr\
+    \ int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\n} //\
+    \ namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value < -EPS)\
+    \ return internal::negative;\n    if (value > EPS) return internal::positive;\n\
     \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
     \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
     \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
@@ -122,57 +116,65 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
-    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
-    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
-    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
-    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
-    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
-    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
-    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
-    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
-    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
-    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Real.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
-    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
-    \ = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\
-    \u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
-    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    //\
-    \ (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\
-    \u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\
-    \u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const Point& p0, const\
-    \ Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a,\
-    \ b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (Smaller(a.normSquare(),\
-    \ b.normSquare())) return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n"
+    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n\
+    \    Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
+    \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
+    \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
+    \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
+    \   /* getter setter */\n    const Point& center() const {\n        return center_;\n\
+    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
+    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
+    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
+    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
+    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
+    \ Circle& lhs, const Circle& rhs) {\n        Real dist{DistanceSquare(lhs.center(),\
+    \ rhs.center())};\n        Real down{Square(Abs(lhs.radius() - rhs.radius()))};\n\
+    \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
+    \ 1;\n        Real up{Square(lhs.radius() + rhs.radius())};\n        if (Smaller(dist,\
+    \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
+    \    }\n    friend bool Intersect(const Circle& lhs, const Circle& rhs) {\n  \
+    \      u32 numberCommonTangent{NumberCommonTangent(lhs, rhs)};\n        return\
+    \ 0u < numberCommonTangent and numberCommonTangent < 4u;\n    }\n    friend std::pair<Point,\
+    \ Point> CrossPoint(const Circle& lhs, const Circle& rhs) {\n        assert(lhs.center()\
+    \ != rhs.center());\n        assert(Intersect(lhs, rhs));\n        assert(!Zero(lhs.radius())\
+    \ or !Zero(rhs.radius()));\n        if (Zero(lhs.radius())) return {lhs.center(),\
+    \ lhs.center()};\n        if (Zero(rhs.radius())) return {rhs.center(), rhs.center()};\n\
+    \        Real d{Distance(lhs.center(), rhs.center())};\n        Real cosine{(Square(lhs.radius())\
+    \ + Square(d) - Square(rhs.radius()))\n            / (static_cast<Real>(2)*lhs.radius()*d)};\n\
+    \        Real rc{lhs.radius()*cosine};\n        Real rs{Sqrt(Square(lhs.radius())\
+    \ - Square(rc))};\n        Vector lr{Vector{rhs.center() - lhs.center()}.normalized()};\n\
+    \        Vector h{lhs.center() + lr*rc};\n        std::pair<Point, Point> res;\n\
+    \        res.first = h + lr.rotatedByArc(90) * rs;\n        res.second = h + lr.rotatedByArc(-90)\
+    \ * rs;\n        return res;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n#line 4 \"Test/AOJ/CGL_7_A.test.cpp\"\n\n#line 6 \"Test/AOJ/CGL_7_A.test.cpp\"\
+    \n\nint main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n  \
+    \  std::cin >> a.center() >> a.radius();\n    std::cin >> b.center() >> b.radius();\n\
+    \    std::cout << NumberCommonTangent(a, b) << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\
+    \n\n#include \"../../Src/GeometryR2/Circle.hpp\"\n\n#include <iostream>\n\nint\
+    \ main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n    std::cin\
+    \ >> a.center() >> a.radius();\n    std::cin >> b.center() >> b.radius();\n  \
+    \  std::cout << NumberCommonTangent(a, b) << '\\n';\n}\n"
   dependsOn:
+  - Src/GeometryR2/Circle.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
-  isVerificationFile: false
-  path: Src/GeometryR2/Relation.hpp
-  requiredBy:
-  - Src/GeometryR2/Reflection.hpp
-  - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/Projection.hpp
+  isVerificationFile: true
+  path: Test/AOJ/CGL_7_A.test.cpp
+  requiredBy: []
   timestamp: '2023-11-09 10:05:21+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/CGL_2_A.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_C.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-documentation_of: Src/GeometryR2/Relation.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AOJ/CGL_7_A.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Relation.hpp
-- /library/Src/GeometryR2/Relation.hpp.html
-title: Src/GeometryR2/Relation.hpp
+- /verify/Test/AOJ/CGL_7_A.test.cpp
+- /verify/Test/AOJ/CGL_7_A.test.cpp.html
+title: Test/AOJ/CGL_7_A.test.cpp
 ---

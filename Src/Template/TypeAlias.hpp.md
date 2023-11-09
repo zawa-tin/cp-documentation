@@ -27,6 +27,9 @@ data:
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Circle.hpp
+    title: Src/GeometryR2/Circle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
@@ -94,6 +97,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_A.test.cpp
     title: Test/AOJ/CGL_2_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_A.test.cpp
+    title: Test/AOJ/CGL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
@@ -356,6 +362,7 @@ data:
   - Src/Number/EratosthenesSieve.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/GeometryR2/Circle.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -394,6 +401,7 @@ data:
   - Test/AOJ/ITP1_2_C.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
+  - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp

@@ -180,6 +180,9 @@ data:
       path: Test/AOJ/CGL_2_A.test.cpp
       title: Test/AOJ/CGL_2_A.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_A.test.cpp
+      title: Test/AOJ/CGL_7_A.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_E.test.cpp
       title: Test/AOJ/CGL_7_E.test.cpp
     - icon: ':heavy_check_mark:'
