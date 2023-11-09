@@ -112,10 +112,10 @@ public:
     
     /* member function */
     Real normSquare() const {
-        return x_ * x_ + y_ * y_;
+        return Square(x_) + Square(y_);
     }
     Real norm() const {
-        return sqrtl(normSquare());
+        return Sqrt(normSquare());
     }
     void normalize() {
         (*this) /= norm(); 
