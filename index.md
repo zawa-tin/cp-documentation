@@ -78,6 +78,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Relation.hpp
       title: Src/GeometryR2/Relation.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Segment.hpp
+      title: Src/GeometryR2/Segment.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -179,6 +182,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_2_A.test.cpp
       title: Test/AOJ/CGL_2_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_2_B.test.cpp
+      title: Test/AOJ/CGL_2_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_A.test.cpp
       title: Test/AOJ/CGL_7_A.test.cpp

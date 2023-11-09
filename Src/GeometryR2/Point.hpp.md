@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Relation.hpp
     title: Src/GeometryR2/Relation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Segment.hpp
+    title: Src/GeometryR2/Segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_A.test.cpp
     title: Test/AOJ/CGL_2_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_2_B.test.cpp
+    title: Test/AOJ/CGL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A.test.cpp
     title: Test/AOJ/CGL_7_A.test.cpp
@@ -204,6 +210,7 @@ data:
   path: Src/GeometryR2/Point.hpp
   requiredBy:
   - Src/GeometryR2/Relation.hpp
+  - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Circle.hpp
@@ -214,6 +221,7 @@ data:
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_1_C.test.cpp
