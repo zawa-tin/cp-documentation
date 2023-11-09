@@ -1,5 +1,8 @@
 #pragma once
 
+#include <cmath>
+#include <cassert>
+
 namespace zawa {
 
 namespace geometryR2 {
@@ -43,6 +46,19 @@ constexpr bool Smaller(Real a, Real b) {
 
 constexpr bool Bigger(Real a, Real b) {
     return Positive(a - b);
+}
+
+constexpr Real Square(Real value) {
+    return value * value;
+}
+
+constexpr Real Sqrt(Real value) {
+    assert(!Negative(value));
+    return (Zero(value) ? value : sqrtl(value));
+}
+
+constexpr Real Abs(Real value) {
+    return (Negative(value) ? -value : value);
 }
 
 } // namespace geometryR2
