@@ -156,19 +156,46 @@ data:
     \ p) const {\n        assert(valid());\n        if (Negative(Dot(p1_ - p0_, p\
     \ - p0_))) return Vector{p - p0_}.norm();\n        if (Negative(Dot(p0_ - p1_,\
     \ p - p1_))) return Vector{p - p1_}.norm();\n        return Abs(Cross(p1_ - p0_,\
-    \ p - p0_) / length());\n    }\n\n    /* friend function */\n    friend bool Intersect(const\
-    \ Segment& s0, const Segment& s1) {\n        return s0.straddle(s1) and s1.straddle(s0);\
-    \ \n    }\n    friend Real Distance(const Segment& s0, const Segment& s1) {\n\
-    \        if (Intersect(s0, s1)) return static_cast<Real>(0);\n        return std::min({\n\
-    \                s0.distance(s1.p0()),\n                s0.distance(s1.p1()),\n\
-    \                s1.distance(s0.p0()),\n                s1.distance(s0.p1())\n\
-    \                });\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 6 \"Test/AOJ/CGL_2_D.test.cpp\"\n\n#line 8 \"Test/AOJ/CGL_2_D.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
-    \    SetFastIO();\n    SetPrecision(10);\n    int q; std::cin >> q;\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        Segment s0{}, s1{};\n        std::cin >> s0.p0()\
-    \ >> s0.p1();\n        std::cin >> s1.p0() >> s1.p1();\n        std::cout << Distance(s0,\
-    \ s1) << '\\n';\n    }\n}\n"
+    \ p - p0_) / length());\n    }\n    bool on(const Point& p) const {\n        assert(valid());\n\
+    \        return Zero(distance(p));\n    }\n\n    /* friend function */\n    friend\
+    \ bool Parallel(const Segment& s0, const Segment& s1) {\n        assert(s0.valid());\n\
+    \        assert(s1.valid());\n        return Zero(Cross(s0.p1() - s0.p0(), s1.p1()\
+    \ - s1.p0()));\n    }\n    friend bool Intersect(const Segment& s0, const Segment&\
+    \ s1) {\n        return s0.straddle(s1) and s1.straddle(s0); \n    }\n    friend\
+    \ bool Orthgonal(const Segment& s0, const Segment& s1) {\n        assert(s0.valid());\n\
+    \        assert(s1.valid());\n        return Intersect(s0, s1) and Zero(Dot(s0.p1()\
+    \ - s0.p0(), s1.p1() - s1.p0()));\n    }\n    friend Real Distance(const Segment&\
+    \ s0, const Segment& s1) {\n        if (Intersect(s0, s1)) return static_cast<Real>(0);\n\
+    \        return std::min({\n                s0.distance(s1.p0()),\n          \
+    \      s0.distance(s1.p1()),\n                s1.distance(s0.p0()),\n        \
+    \        s1.distance(s0.p1())\n                });\n    }\n    friend Point CrossPoint(const\
+    \ Segment& s0, const Segment& s1) {\n        assert(s0.valid());\n        assert(s1.valid());\n\
+    \        assert(Intersect(s0, s1));\n        if (Parallel(s0, s1)) {\n       \
+    \     if (s0.p0() == s1.p0()) {\n                if (Relation(s0.p0(), s0.p1(),\
+    \ s1.p1()) == ONLINE_BACK) {\n                    return s0.p0();\n          \
+    \      }\n                else {\n                    assert(false);\n       \
+    \         }\n            }\n            else if (s0.p0() == s1.p1()) {\n     \
+    \           if (Relation(s0.p0(), s0.p1(), s1.p0()) == ONLINE_BACK) {\n      \
+    \              return s0.p0();\n                }\n                else {\n  \
+    \                  assert(false);\n                }\n            }\n        \
+    \    else if (s0.p1() == s1.p0()) {\n                if (Relation(s0.p1(), s0.p0(),\
+    \ s1.p1()) == ONLINE_BACK) {\n                    return s0.p1();\n          \
+    \      }\n                else {\n                    assert(false);\n       \
+    \         }\n            }\n            else if (s0.p1() == s1.p1()) {\n     \
+    \           if (Relation(s0.p1(), s0.p0(), s1.p0()) == ONLINE_BACK) {\n      \
+    \              return s0.p1();\n                }\n                else {\n  \
+    \                  assert(false);\n                }\n            }\n        \
+    \    else {\n                assert(false);\n            }\n        }\n      \
+    \  else {\n            Vector base{s0.p1() - s0.p0()};\n            Real baseNorm{base.norm()};\n\
+    \            Real r1{Abs(Cross(base, s1.p0() - s0.p0())) / baseNorm};\n      \
+    \      Real r2{Abs(Cross(base, s1.p1() - s0.p0())) / baseNorm};\n            return\
+    \ s1.p0() + (s1.p1() - s1.p0()) * (r1 / (r1 + r2));\n        }\n    }\n};\n\n\
+    } // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Test/AOJ/CGL_2_D.test.cpp\"\
+    \n\n#line 8 \"Test/AOJ/CGL_2_D.test.cpp\"\n\nint main() {\n    using namespace\
+    \ zawa;\n    using namespace geometryR2;\n    SetFastIO();\n    SetPrecision(10);\n\
+    \    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n        Segment\
+    \ s0{}, s1{};\n        std::cin >> s0.p0() >> s0.p1();\n        std::cin >> s1.p0()\
+    \ >> s1.p1();\n        std::cout << Distance(s0, s1) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
     \n#define ERROR 0.00000001\n\n#include \"../../Src/Template/IOSetting.hpp\"\n\
     #include \"../../Src/GeometryR2/Segment.hpp\"\n\n#include <iostream>\n\nint main()\
@@ -188,7 +215,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_2_D.test.cpp
   requiredBy: []
-  timestamp: '2023-11-10 16:09:42+09:00'
+  timestamp: '2023-11-10 17:17:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_2_D.test.cpp

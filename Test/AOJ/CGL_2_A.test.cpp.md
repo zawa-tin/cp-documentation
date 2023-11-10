@@ -147,16 +147,16 @@ data:
     \ a + b} {}\n\n    /* getter, setter */\n    const Point& p0() const {\n     \
     \   return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const\
     \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
-    \ return p1_;\n    }\n\n    /* member function */\n    bool isValid() const {\n\
-    \        return p0_ != p1_;\n    }\n\n    /* friend function */\n    friend bool\
-    \ Parallel(const Line& lhs, const Line& rhs) {\n        assert(lhs.isValid());\n\
-    \        assert(rhs.isValid());\n        Vector lVector{lhs.p1() - lhs.p0()};\n\
-    \        Vector rVector{rhs.p1() - rhs.p0()};\n        return Zero(Cross(lVector,\
-    \ rVector));\n    }\n    friend bool Orthgonal(const Line& lhs, const Line& rhs)\
-    \ {\n        assert(lhs.isValid());\n        assert(rhs.isValid());\n        Vector\
-    \ lVector{lhs.p1() - lhs.p0()};\n        Vector rVector{rhs.p1() - rhs.p0()};\n\
-    \        return Zero(Dot(lVector, rVector));\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n#line 5 \"Test/AOJ/CGL_2_A.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_2_A.test.cpp\"\
+    \ return p1_;\n    }\n\n    /* member function */\n    bool valid() const {\n\
+    \        return p0_ != p1_;\n    }\n    bool straddle(const Line& l) const {\n\
+    \        return Relation(p0_, p1_, l.p0()) * Relation(p0_, p1_, l.p1()) <= 0;\n\
+    \    }\n\n    /* friend function */\n    friend bool Parallel(const Line& l0,\
+    \ const Line& l1) {\n        assert(l0.valid());\n        assert(l1.valid());\n\
+    \        return Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n    }\n  \
+    \  friend bool Orthgonal(const Line& l0, const Line& l1) {\n        assert(l0.valid());\n\
+    \        assert(l1.valid());\n        return Zero(Dot(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0()));\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 5 \"Test/AOJ/CGL_2_A.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_2_A.test.cpp\"\
     \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
     \    SetFastIO();\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++)\
     \ {\n        Line l1, l2;\n        std::cin >> l1.p0() >> l1.p1() >> l2.p0() >>\
@@ -182,7 +182,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_2_A.test.cpp
   requiredBy: []
-  timestamp: '2023-11-09 10:05:21+09:00'
+  timestamp: '2023-11-10 17:17:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_2_A.test.cpp

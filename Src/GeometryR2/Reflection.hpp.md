@@ -137,30 +137,30 @@ data:
     \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
     \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
     \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
-    \ p1_;\n    }\n\n    /* member function */\n    bool isValid() const {\n     \
-    \   return p0_ != p1_;\n    }\n\n    /* friend function */\n    friend bool Parallel(const\
-    \ Line& lhs, const Line& rhs) {\n        assert(lhs.isValid());\n        assert(rhs.isValid());\n\
-    \        Vector lVector{lhs.p1() - lhs.p0()};\n        Vector rVector{rhs.p1()\
-    \ - rhs.p0()};\n        return Zero(Cross(lVector, rVector));\n    }\n    friend\
-    \ bool Orthgonal(const Line& lhs, const Line& rhs) {\n        assert(lhs.isValid());\n\
-    \        assert(rhs.isValid());\n        Vector lVector{lhs.p1() - lhs.p0()};\n\
-    \        Vector rVector{rhs.p1() - rhs.p0()};\n        return Zero(Dot(lVector,\
-    \ rVector));\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Projection.hpp\"\n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
-    \   assert(line.isValid());\n    Real coeff{Dot(line.p1() - line.p0(), point -\
-    \ line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n    return coeff *\
-    \ line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Reflection.hpp\"\
+    \ p1_;\n    }\n\n    /* member function */\n    bool valid() const {\n       \
+    \ return p0_ != p1_;\n    }\n    bool straddle(const Line& l) const {\n      \
+    \  return Relation(p0_, p1_, l.p0()) * Relation(p0_, p1_, l.p1()) <= 0;\n    }\n\
+    \n    /* friend function */\n    friend bool Parallel(const Line& l0, const Line&\
+    \ l1) {\n        assert(l0.valid());\n        assert(l1.valid());\n        return\
+    \ Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n    }\n    friend bool Orthgonal(const\
+    \ Line& l0, const Line& l1) {\n        assert(l0.valid());\n        assert(l1.valid());\n\
+    \        return Zero(Dot(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n    }\n};\n\n\
+    } // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
+    \ point, const Line& line) {\n    assert(line.valid());\n    Real coeff{Dot(line.p1()\
+    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
+    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Reflection.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Reflection(const Point&\
-    \ point, const Line& line) {\n    return -point + static_cast<Real>(2) * Projection(point,\
-    \ line);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n#include\
-    \ \"./Projection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
-    \ Reflection(const Point& point, const Line& line) {\n    return -point + static_cast<Real>(2)\
+    \ point, const Line& line) {\n    assert(line.valid());\n    return -point + static_cast<Real>(2)\
     \ * Projection(point, line);\n}\n\n} // namespace geometryR2\n\n} // namespace\
     \ zawa\n"
+  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n#include\
+    \ \"./Projection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
+    \ Reflection(const Point& point, const Line& line) {\n    assert(line.valid());\n\
+    \    return -point + static_cast<Real>(2) * Projection(point, line);\n}\n\n} //\
+    \ namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -171,7 +171,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Reflection.hpp
   requiredBy: []
-  timestamp: '2023-11-09 10:05:21+09:00'
+  timestamp: '2023-11-10 17:20:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_1_B.test.cpp
