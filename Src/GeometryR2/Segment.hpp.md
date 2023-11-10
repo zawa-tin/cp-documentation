@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_B.test.cpp
     title: Test/AOJ/CGL_2_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_2_D.test.cpp
+    title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -122,32 +125,52 @@ data:
     \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
     \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
     \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
-    \ // namespace zawa\n#line 5 \"Src/GeometryR2/Segment.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\n\
-    public:\n    /* constructor */\n    Segment() = default;\n    Segment(const Point&\
-    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real x0, Real y0, Real\
-    \ x1, Real y1) : p0_{x0, y0}, p1_{x1, y1} {}\n\n    /* getter setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
-    \    bool Straddle(const Segment& s) const {\n        return Relation(p0_, p1_,\
-    \ s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;\n    }\n\n    /* friend function\
-    \ */\n    friend bool Intersect(const Segment& s0, const Segment& s1) {\n    \
-    \    return s0.Straddle(s1) and s1.Straddle(s0); \n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n\
-    namespace zawa {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n    Point\
-    \ p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment() = default;\n  \
-    \  Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real\
+    \ // namespace zawa\n#line 5 \"Src/GeometryR2/Segment.hpp\"\n\n#include <algorithm>\n\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n  \
+    \  Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment() = default;\n\
+    \    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real\
     \ x0, Real y0, Real x1, Real y1) : p0_{x0, y0}, p1_{x1, y1} {}\n\n    /* getter\
     \ setter */\n    const Point& p0() const {\n        return p0_;\n    }\n    Point&\
     \ p0() {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
     \ p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member\
-    \ function */\n    bool Straddle(const Segment& s) const {\n        return Relation(p0_,\
-    \ p1_, s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;\n    }\n\n    /* friend function\
-    \ */\n    friend bool Intersect(const Segment& s0, const Segment& s1) {\n    \
-    \    return s0.Straddle(s1) and s1.Straddle(s0); \n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n"
+    \ function */\n    bool valid() const {\n        return p0_ != p1_;\n    }\n \
+    \   bool straddle(const Segment& s) const {\n        return Relation(p0_, p1_,\
+    \ s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n\
+    \        return Vector{p1_ - p0_}.norm();\n    }\n    Real distance(const Point&\
+    \ p) const {\n        assert(valid());\n        if (Negative(Dot(p1_ - p0_, p\
+    \ - p0_))) return Vector{p - p0_}.norm();\n        if (Negative(Dot(p0_ - p1_,\
+    \ p - p1_))) return Vector{p - p1_}.norm();\n        return Abs(Cross(p1_ - p0_,\
+    \ p - p0_) / length());\n    }\n\n    /* friend function */\n    friend bool Intersect(const\
+    \ Segment& s0, const Segment& s1) {\n        return s0.straddle(s1) and s1.straddle(s0);\
+    \ \n    }\n    friend Real Distance(const Segment& s0, const Segment& s1) {\n\
+    \        if (Intersect(s0, s1)) return static_cast<Real>(0);\n        return std::min({\n\
+    \                s0.distance(s1.p0()),\n                s0.distance(s1.p1()),\n\
+    \                s1.distance(s0.p0()),\n                s1.distance(s0.p1())\n\
+    \                });\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n"
+  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n\
+    #include <algorithm>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Segment\
+    \ {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment()\
+    \ = default;\n    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1}\
+    \ {}\n    Segment(Real x0, Real y0, Real x1, Real y1) : p0_{x0, y0}, p1_{x1, y1}\
+    \ {}\n\n    /* getter setter */\n    const Point& p0() const {\n        return\
+    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
+    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
+    \ p1_;\n    }\n\n    /* member function */\n    bool valid() const {\n       \
+    \ return p0_ != p1_;\n    }\n    bool straddle(const Segment& s) const {\n   \
+    \     return Relation(p0_, p1_, s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;\n \
+    \   }\n    Real length() const {\n        return Vector{p1_ - p0_}.norm();\n \
+    \   }\n    Real distance(const Point& p) const {\n        assert(valid());\n \
+    \       if (Negative(Dot(p1_ - p0_, p - p0_))) return Vector{p - p0_}.norm();\n\
+    \        if (Negative(Dot(p0_ - p1_, p - p1_))) return Vector{p - p1_}.norm();\n\
+    \        return Abs(Cross(p1_ - p0_, p - p0_) / length());\n    }\n\n    /* friend\
+    \ function */\n    friend bool Intersect(const Segment& s0, const Segment& s1)\
+    \ {\n        return s0.straddle(s1) and s1.straddle(s0); \n    }\n    friend Real\
+    \ Distance(const Segment& s0, const Segment& s1) {\n        if (Intersect(s0,\
+    \ s1)) return static_cast<Real>(0);\n        return std::min({\n             \
+    \   s0.distance(s1.p0()),\n                s0.distance(s1.p1()),\n           \
+    \     s1.distance(s0.p0()),\n                s1.distance(s0.p1())\n          \
+    \      });\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -156,10 +179,11 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Segment.hpp
   requiredBy: []
-  timestamp: '2023-11-09 10:41:55+09:00'
+  timestamp: '2023-11-10 16:07:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Segment.hpp
 layout: document
 redirect_from:

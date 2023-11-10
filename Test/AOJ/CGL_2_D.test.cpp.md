@@ -29,42 +29,43 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_B
+    ERROR: '0.00000001'
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_B
-  bundledCode: "#line 1 \"Test/AOJ/CGL_2_B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_B\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
-    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#include\
-    \ <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n\
-    using Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\
-    \nconstexpr int negative{-1};\nconstexpr int zero{};\nconstexpr int positive{1};\n\
-    \n} // namespace internal\n\nconstexpr int Sign(Real value) {\n    if (value <\
-    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
-    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
-    \ {\n    return value * value;\n}\n\nconstexpr Real Sqrt(Real value) {\n    assert(!Negative(value));\n\
-    \    return (Zero(value) ? value : sqrtl(value));\n}\n\nconstexpr Real Abs(Real\
-    \ value) {\n    return (Negative(value) ? -value : value);\n}\n\n} // namespace\
-    \ geometryR2\n \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n\
-    #line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
-    constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
-    \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
-    \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D
+  bundledCode: "#line 1 \"Test/AOJ/CGL_2_D.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
+    \n#define ERROR 0.00000001\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
+    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
+    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr\
+    \ Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr int negative{-1};\nconstexpr\
+    \ int zero{};\nconstexpr int positive{1};\n\n} // namespace internal\n\nconstexpr\
+    \ int Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
+    \   if (value > EPS) return internal::positive;\n    return internal::zero;\n\
+    }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
+    }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
+    }\n\nconstexpr bool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
+    \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
+    \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real\
+    \ Square(Real value) {\n    return value * value;\n}\n\nconstexpr Real Sqrt(Real\
+    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
+    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
+    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
+    Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6\
+    \ \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
+    \nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\
+    \nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
+    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 9 \"Src/GeometryR2/Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nclass Point {\nprivate:\n    Real x_{}, y_{};\npublic:\n    /* constructor\
     \ */\n    Point() = default;\n    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n\
@@ -162,18 +163,20 @@ data:
     \                s0.distance(s1.p0()),\n                s0.distance(s1.p1()),\n\
     \                s1.distance(s0.p0()),\n                s1.distance(s0.p1())\n\
     \                });\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AOJ/CGL_2_B.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_2_B.test.cpp\"\
+    \ zawa\n#line 6 \"Test/AOJ/CGL_2_D.test.cpp\"\n\n#line 8 \"Test/AOJ/CGL_2_D.test.cpp\"\
     \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
-    \n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n        Segment\
-    \ s0, s1;\n        std::cin >> s0.p0() >> s0.p1() >> s1.p0() >> s1.p1();\n   \
-    \     std::cout << Intersect(s0, s1) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_B\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryR2/Segment.hpp\"\
-    \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryR2;\n\n    int q; std::cin >> q;\n    for (int _{} ; _ < q\
-    \ ; _++) {\n        Segment s0, s1;\n        std::cin >> s0.p0() >> s0.p1() >>\
-    \ s1.p0() >> s1.p1();\n        std::cout << Intersect(s0, s1) << '\\n';\n    }\n\
-    }\n"
+    \    SetFastIO();\n    SetPrecision(10);\n    int q; std::cin >> q;\n    for (int\
+    \ _{} ; _ < q ; _++) {\n        Segment s0{}, s1{};\n        std::cin >> s0.p0()\
+    \ >> s0.p1();\n        std::cin >> s1.p0() >> s1.p1();\n        std::cout << Distance(s0,\
+    \ s1) << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_D\"\
+    \n#define ERROR 0.00000001\n\n#include \"../../Src/Template/IOSetting.hpp\"\n\
+    #include \"../../Src/GeometryR2/Segment.hpp\"\n\n#include <iostream>\n\nint main()\
+    \ {\n    using namespace zawa;\n    using namespace geometryR2;\n    SetFastIO();\n\
+    \    SetPrecision(10);\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ;\
+    \ _++) {\n        Segment s0{}, s1{};\n        std::cin >> s0.p0() >> s0.p1();\n\
+    \        std::cin >> s1.p0() >> s1.p1();\n        std::cout << Distance(s0, s1)\
+    \ << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -183,15 +186,15 @@ data:
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Relation.hpp
   isVerificationFile: true
-  path: Test/AOJ/CGL_2_B.test.cpp
+  path: Test/AOJ/CGL_2_D.test.cpp
   requiredBy: []
-  timestamp: '2023-11-10 16:07:37+09:00'
+  timestamp: '2023-11-10 16:09:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/CGL_2_B.test.cpp
+documentation_of: Test/AOJ/CGL_2_D.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_2_B.test.cpp
-- /verify/Test/AOJ/CGL_2_B.test.cpp.html
-title: Test/AOJ/CGL_2_B.test.cpp
+- /verify/Test/AOJ/CGL_2_D.test.cpp
+- /verify/Test/AOJ/CGL_2_D.test.cpp.html
+title: Test/AOJ/CGL_2_D.test.cpp
 ---
