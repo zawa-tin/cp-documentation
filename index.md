@@ -81,6 +81,61 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Segment.hpp
       title: Src/GeometryR2/Segment.hpp
+  - name: Src/GeometryR2/CrossPoint
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+      title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+      title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+      title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - name: Src/GeometryR2/Distance
+    pages:
+    - icon: ':warning:'
+      path: Src/GeometryR2/Distance/LineAndLine.hpp
+      title: Src/GeometryR2/Distance/LineAndLine.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/Distance/LineAndPoint.hpp
+      title: Src/GeometryR2/Distance/LineAndPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Distance/PointAndPoint.hpp
+      title: Src/GeometryR2/Distance/PointAndPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Distance/PointAndSegment.hpp
+      title: Src/GeometryR2/Distance/PointAndSegment.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+      title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - name: Src/GeometryR2/Intersect
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+      title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/Intersect/LineAndLine.hpp
+      title: Src/GeometryR2/Intersect/LineAndLine.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+      title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - name: Src/GeometryR2/Orthgonal
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+      title: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+      title: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - name: Src/GeometryR2/Parallel
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Parallel/LineAndLine.hpp
+      title: Src/GeometryR2/Parallel/LineAndLine.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+      title: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'

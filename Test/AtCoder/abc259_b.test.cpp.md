@@ -29,11 +29,16 @@ data:
     - https://atcoder.jp/contests/abc259/tasks/abc259_b
   bundledCode: "#line 1 \"Test/AtCoder/abc259_b.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc259/tasks/abc259_b\"\
     \n#define ERROR 0.000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr Real\
-    \ EPS{1e-12};\n\nnamespace internal {\n\nconstexpr int negative{-1};\nconstexpr\
-    \ int zero{};\nconstexpr int positive{1};\n\n} // namespace internal\n\nconstexpr\
-    \ int Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
+    Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include\
+    \ <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
+    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
+    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
+    #line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n\
+    namespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr\
+    \ Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr i32 negative{-1};\nconstexpr\
+    \ i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\nconstexpr\
+    \ i32 Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
     \   if (value > EPS) return internal::positive;\n    return internal::zero;\n\
     }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
     }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
@@ -41,14 +46,14 @@ data:
     }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
     \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
     \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real\
-    \ Square(Real value) {\n    return value * value;\n}\n\nconstexpr Real Sqrt(Real\
-    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
-    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
-    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
-    Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6\
-    \ \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
-    \nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\
-    \nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    \ Square(Real value) {\n    return (Zero(value) ? value : value * value);\n}\n\
+    \nconstexpr Real Sqrt(Real value) {\n    assert(!Negative(value));\n    return\
+    \ (Zero(value) ? value : sqrtl(value));\n}\n\nconstexpr Real Abs(Real value) {\n\
+    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
+    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
     }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
     \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
@@ -92,34 +97,26 @@ data:
     \ ',' << p.y_ << ')';\n        return os;\n    }\n    \n    /* member function\
     \ */\n    Real normSquare() const {\n        return Square(x_) + Square(y_);\n\
     \    }\n    Real norm() const {\n        return Sqrt(normSquare());\n    }\n \
-    \   void normalize() {\n        (*this) /= norm(); \n    }\n    Point normalized()\
-    \ const {\n        Point res{*this};\n        res.normalize();\n        return\
-    \ res;\n    }\n    Point rotated(Real radian) const {\n        return Point{\n\
-    \            x_ * cosl(radian) - y_ * sinl(radian),\n            x_ * sinl(radian)\
-    \ + y_ * cosl(radian)\n        };\n    }\n    void rotate(Real radian) {\n   \
-    \     *this = rotated(radian); \n    }\n    Point rotatedByArc(Real arc) const\
-    \ {\n        return rotated(ArcToRadian(arc));\n    }\n    void rotateByArc(Real\
-    \ arc) {\n        *this = rotatedByArc(arc);\n    }\n    Real argument() const\
-    \ {\n        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);\n\
-    \    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
+    \   void normalize() {\n        assert((*this) != Point{});\n        (*this) /=\
+    \ norm(); \n    }\n    Point normalized() const {\n        Point res{*this};\n\
+    \        res.normalize();\n        return res;\n    }\n    Point rotated(Real\
+    \ radian) const {\n        return Point{\n            x_ * cosl(radian) - y_ *\
+    \ sinl(radian),\n            x_ * sinl(radian) + y_ * cosl(radian)\n        };\n\
+    \    }\n    void rotate(Real radian) {\n        *this = rotated(radian); \n  \
+    \  }\n    Point rotatedByArc(Real arc) const {\n        return rotated(ArcToRadian(arc));\n\
+    \    }\n    void rotateByArc(Real arc) {\n        *this = rotatedByArc(arc);\n\
+    \    }\n    Real argument() const {\n        return (Negative(y_) ? TAU : static_cast<Real>(0))\
+    \ + atan2l(y_, x_);\n    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
     \    }\n\n    /* friend function */\n    friend Real Dot(const Point& lhs, const\
     \ Point& rhs) {\n        return lhs.x() * rhs.x() + lhs.y() * rhs.y();\n    }\n\
     \    friend Real Cross(const Point& lhs, const Point& rhs) {\n        return lhs.x()\
-    \ * rhs.y() - lhs.y() * rhs.x();\n    }\n    friend Real DistanceSquare(const\
-    \ Point& lhs, const Point& rhs) {\n        return Point{lhs - rhs}.normSquare();\n\
-    \    }\n    friend Real Distance(const Point& lhs, const Point& rhs) {\n     \
-    \   return Point{lhs - rhs}.norm();\n    }\n    friend Real Argument(const Point&\
+    \ * rhs.y() - lhs.y() * rhs.x();\n    }\n    friend Real Argument(const Point&\
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
-    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc259_b.test.cpp\"\n\n#line\
     \ 8 \"Test/AtCoder/abc259_b.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
@@ -135,13 +132,13 @@ data:
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/Template/IOSetting.hpp
-  - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc259_b.test.cpp
   requiredBy: []
-  timestamp: '2023-11-09 10:05:21+09:00'
+  timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc259_b.test.cpp

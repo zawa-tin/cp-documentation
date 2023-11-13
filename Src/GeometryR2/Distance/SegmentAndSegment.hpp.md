@@ -5,6 +5,15 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndPoint.hpp
+    title: Src/GeometryR2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndSegment.hpp
+    title: Src/GeometryR2/Distance/PointAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -14,26 +23,24 @@ data:
     path: Src/GeometryR2/Relation.hpp
     title: Src/GeometryR2/Relation.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+    path: Src/GeometryR2/Segment.hpp
+    title: Src/GeometryR2/Segment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_2_D.test.cpp
+    title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.00000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C
-    links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C
-  bundledCode: "#line 1 \"Test/AOJ/CGL_1_C.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C\"\
-    \n#define ERROR 0.00000001\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2\
-    \ \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include\
-    \ <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    links: []
+  bundledCode: "#line 2 \"Src/GeometryR2/Distance/SegmentAndSegment.hpp\"\n\n#line\
+    \ 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n\
+    #include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
     using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
     \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
     using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
@@ -53,13 +60,15 @@ data:
     \nconstexpr Real Sqrt(Real value) {\n    assert(!Negative(value));\n    return\
     \ (Zero(value) ? value : sqrtl(value));\n}\n\nconstexpr Real Abs(Real value) {\n\
     \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
-    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
-    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
-    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
-    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"\
+    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4\
+    \ \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr\
+    \ Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real arc)\
+    \ {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real RadianToArc(Real\
+    \ radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\n\n\
+    #line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
     \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
     \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
@@ -132,49 +141,75 @@ data:
     \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
     \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
     \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
-    \ // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
-    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 7 \"Test/AOJ/CGL_1_C.test.cpp\"\n\n#line 9 \"\
-    Test/AOJ/CGL_1_C.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryR2;\n\n    SetFastIO();\n    Point p0, p1; std::cin >> p0\
-    \ >> p1;\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n     \
-    \   Point p2; std::cin >> p2;\n        auto ans{Relation(p0, p1, p2)};\n     \
-    \   if (ans == COUNTER_CLOCKWISE) std::cout << \"COUNTER_CLOCKWISE\\n\";\n   \
-    \     else if (ans == CLOCKWISE) std::cout << \"CLOCKWISE\\n\";\n        else\
-    \ if (ans == ONLINE_BACK) std::cout << \"ONLINE_BACK\\n\";\n        else if (ans\
-    \ == ONLINE_FRONT) std::cout << \"ONLINE_FRONT\\n\";\n        else std::cout <<\
-    \ \"ON_SEGMENT\\n\";\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C\"\
-    \n#define ERROR 0.00000001\n\n#include \"../../Src/GeometryR2/Point.hpp\"\n#include\
-    \ \"../../Src/GeometryR2/Relation.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryR2;\n\n    SetFastIO();\n    Point p0, p1; std::cin >> p0\
-    \ >> p1;\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n     \
-    \   Point p2; std::cin >> p2;\n        auto ans{Relation(p0, p1, p2)};\n     \
-    \   if (ans == COUNTER_CLOCKWISE) std::cout << \"COUNTER_CLOCKWISE\\n\";\n   \
-    \     else if (ans == CLOCKWISE) std::cout << \"CLOCKWISE\\n\";\n        else\
-    \ if (ans == ONLINE_BACK) std::cout << \"ONLINE_BACK\\n\";\n        else if (ans\
-    \ == ONLINE_FRONT) std::cout << \"ONLINE_FRONT\\n\";\n        else std::cout <<\
-    \ \"ON_SEGMENT\\n\";\n    }\n}\n"
+    \ // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n\
+    #line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\n\
+    namespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Segment.hpp\"\n\n\
+    #include <algorithm>\n#line 9 \"Src/GeometryR2/Segment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\n\
+    public:\n    /* constructor */\n    Segment() = default;\n    Segment(const Point&\
+    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real x0, Real y0, Real\
+    \ x1, Real y1) : p0_{x0, y0}, p1_{x1, y1} {}\n\n    /* getter setter */\n    const\
+    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
+    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
+    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
+    \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
+    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
+    \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
+    \        return Distance(p0_, p1_);\n    }\n};\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\n\n#line 6 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Segment&\
+    \ s0, const Segment& s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n\
+    \    return s0.straddle(s1) and s1.straddle(s0);\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\n#line 9 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p,\
+    \ const Segment& s) {\n    assert(s.valid());\n    if (Negative(Dot(s.p1() - s.p0(),\
+    \ p - s.p0()))) {\n        return Distance(p, s.p0());\n    }\n    if (Negative(Dot(s.p0()\
+    \ - s.p1(), p - s.p1()))) {\n        return Distance(p, s.p1());\n    }\n    return\
+    \ Abs(Cross(s.p1() - s.p0(), p - s.p0())) / s.length();\n}\n\nbool PointOnSegment(const\
+    \ Point& p, const Segment& s) {\n    assert(s.valid());\n    return Zero(Distance(p,\
+    \ s));\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/SegmentAndSegment.hpp\"\
+    \n\n#line 9 \"Src/GeometryR2/Distance/SegmentAndSegment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nReal Distance(const Segment& s0, const Segment&\
+    \ s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n    if (Intersect(s0,\
+    \ s1)) {\n        return static_cast<Real>(0);\n    }\n    else {\n        return\
+    \ std::min({ \n                Distance(s1.p0(), s0), \n                Distance(s1.p1(),\
+    \ s0),\n                Distance(s0.p0(), s1),\n                Distance(s0.p1(),\
+    \ s1) });\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Real.hpp\"\n#include \"../Segment.hpp\"\n#include\
+    \ \"../Intersect/SegmentAndSegment.hpp\"\n#include \"./PointAndSegment.hpp\"\n\
+    \n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const\
+    \ Segment& s0, const Segment& s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n\
+    \    if (Intersect(s0, s1)) {\n        return static_cast<Real>(0);\n    }\n \
+    \   else {\n        return std::min({ \n                Distance(s1.p0(), s0),\
+    \ \n                Distance(s1.p1(), s0),\n                Distance(s0.p0(),\
+    \ s1),\n                Distance(s0.p1(), s1) });\n    }\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/GeometryR2/Segment.hpp
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Relation.hpp
-  - Src/Template/IOSetting.hpp
-  isVerificationFile: true
-  path: Test/AOJ/CGL_1_C.test.cpp
+  - Src/GeometryR2/Distance/PointAndPoint.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/Distance/PointAndSegment.hpp
+  isVerificationFile: false
+  path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
   requiredBy: []
   timestamp: '2023-11-13 09:08:37+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/AOJ/CGL_1_C.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AOJ/CGL_2_D.test.cpp
+documentation_of: Src/GeometryR2/Distance/SegmentAndSegment.hpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_1_C.test.cpp
-- /verify/Test/AOJ/CGL_1_C.test.cpp.html
-title: Test/AOJ/CGL_1_C.test.cpp
+- /library/Src/GeometryR2/Distance/SegmentAndSegment.hpp
+- /library/Src/GeometryR2/Distance/SegmentAndSegment.hpp.html
+title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
 ---

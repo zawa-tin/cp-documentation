@@ -4,6 +4,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Intersect/LineAndLine.hpp
+    title: Src/GeometryR2/Intersect/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
@@ -11,90 +17,25 @@ data:
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Relation.hpp
+    title: Src/GeometryR2/Relation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':warning:'
-    path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
-    title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-    title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-  - icon: ':warning:'
-    path: Src/GeometryR2/Distance/LineAndLine.hpp
-    title: Src/GeometryR2/Distance/LineAndLine.hpp
-  - icon: ':warning:'
-    path: Src/GeometryR2/Distance/LineAndPoint.hpp
-    title: Src/GeometryR2/Distance/LineAndPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/PointAndSegment.hpp
-    title: Src/GeometryR2/Distance/PointAndSegment.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  - icon: ':warning:'
-    path: Src/GeometryR2/Intersect/LineAndLine.hpp
-    title: Src/GeometryR2/Intersect/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Line.hpp
-    title: Src/GeometryR2/Line.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Orthgonal/LineAndLine.hpp
-    title: Src/GeometryR2/Orthgonal/LineAndLine.hpp
-  - icon: ':warning:'
-    path: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Parallel/LineAndLine.hpp
-    title: Src/GeometryR2/Parallel/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Reflection.hpp
-    title: Src/GeometryR2/Reflection.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Segment.hpp
-    title: Src/GeometryR2/Segment.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_A.test.cpp
-    title: Test/AOJ/CGL_1_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_A.test.cpp
-    title: Test/AOJ/CGL_2_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_B.test.cpp
-    title: Test/AOJ/CGL_2_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_C.test.cpp
-    title: Test/AOJ/CGL_2_C.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_D.test.cpp
-    title: Test/AOJ/CGL_2_D.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\n#line 2 \"\
+    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"\
+    Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
+    \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
+    \ std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16\
+    \ = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\n\
+    using usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\
     \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
     \ {\n\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
@@ -111,14 +52,13 @@ data:
     \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
     }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
     \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
-    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4\
-    \ \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr\
-    \ Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real arc)\
-    \ {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real RadianToArc(Real\
-    \ radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\n\n\
-    #line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
+    Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6\
+    \ \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
+    \nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\
+    \nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
+    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
     \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
     \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
@@ -176,7 +116,8 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
     \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
     \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
@@ -190,60 +131,61 @@ data:
     \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
     \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
     \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Real.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
-    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
-    \ = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\
-    \u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
-    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    //\
-    \ (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\
-    \u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\
-    \u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const Point& p0, const\
-    \ Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a,\
-    \ b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (Smaller(a.normSquare(),\
-    \ b.normSquare())) return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n"
+    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5\
+    \ \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
+    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
+    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
+    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
+    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
+    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
+    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
+    \ p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line& l0,\
+    \ const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()))\
+    \ and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n    friend bool\
+    \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
+    \    }\n\n    /* member function */\n    bool valid() const {\n        return\
+    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nbool Intersect(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    if (!Zero(Cross(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0()))) {\n        return true;\n    }\n    else if\
+    \ (!Zero(Cross(l0.p1() - l0.p0(), l1.p0() - l0.p0()))) {\n        return false;\n\
+    \    }\n    else {\n        return true;\n    }\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace \n#line 6 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\n#line\
+    \ 8 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n    assert(l0.valid());\n\
+    \    assert(l1.valid());\n    assert(Intersect(l0, l1));\n    assert(l0 != l1);\n\
+    \    return l0.p0() + (l0.p1() - l0.p0()) * \n        (Cross(l1.p0() - l0.p0(),\
+    \ l1.p1() - l1.p0()) / Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n}\n\n} //\
+    \ namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Point.hpp\"\n#include \"../Line.hpp\"\n#include\
+    \ \"../Intersect/LineAndLine.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    assert(Intersect(l0, l1));\n\
+    \    assert(l0 != l1);\n    return l0.p0() + (l0.p1() - l0.p0()) * \n        (Cross(l1.p0()\
+    \ - l0.p0(), l1.p1() - l1.p0()) / Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
-  isVerificationFile: false
-  path: Src/GeometryR2/Relation.hpp
-  requiredBy:
-  - Src/GeometryR2/Segment.hpp
-  - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/Parallel/LineAndLine.hpp
-  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
-  - Src/GeometryR2/Distance/LineAndPoint.hpp
-  - Src/GeometryR2/Distance/LineAndLine.hpp
-  - Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  - Src/GeometryR2/Distance/PointAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Intersect/LineAndLine.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Projection.hpp
-  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
-  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  isVerificationFile: false
+  path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  requiredBy: []
   timestamp: '2023-11-13 09:08:37+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/CGL_2_A.test.cpp
-  - Test/AOJ/CGL_2_B.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_1_C.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
-documentation_of: Src/GeometryR2/Relation.hpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: Src/GeometryR2/CrossPoint/LineAndLine.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Relation.hpp
-- /library/Src/GeometryR2/Relation.hpp.html
-title: Src/GeometryR2/Relation.hpp
+- /library/Src/GeometryR2/CrossPoint/LineAndLine.hpp
+- /library/Src/GeometryR2/CrossPoint/LineAndLine.hpp.html
+title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
 ---

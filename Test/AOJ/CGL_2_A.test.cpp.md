@@ -8,6 +8,12 @@ data:
     path: Src/GeometryR2/Line.hpp
     title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+    title: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Parallel/LineAndLine.hpp
+    title: Src/GeometryR2/Parallel/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -42,19 +48,20 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr\
-    \ Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr int negative{-1};\nconstexpr\
-    \ int zero{};\nconstexpr int positive{1};\n\n} // namespace internal\n\nconstexpr\
-    \ int Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
-    \   if (value > EPS) return internal::positive;\n    return internal::zero;\n\
-    }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
-    }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
-    }\n\nconstexpr bool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
-    \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
-    \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real\
-    \ Square(Real value) {\n    return value * value;\n}\n\nconstexpr Real Sqrt(Real\
+    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\
+    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
+    \ {\n\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
+    \n} // namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value <\
+    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
+    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
+    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
+    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
+    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
+    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
+    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
+    \ {\n    return (Zero(value) ? value : value * value);\n}\n\nconstexpr Real Sqrt(Real\
     \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
     }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
     \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
@@ -105,26 +112,24 @@ data:
     \      return os;\n    }\n    \n    /* member function */\n    Real normSquare()\
     \ const {\n        return Square(x_) + Square(y_);\n    }\n    Real norm() const\
     \ {\n        return Sqrt(normSquare());\n    }\n    void normalize() {\n     \
-    \   (*this) /= norm(); \n    }\n    Point normalized() const {\n        Point\
-    \ res{*this};\n        res.normalize();\n        return res;\n    }\n    Point\
-    \ rotated(Real radian) const {\n        return Point{\n            x_ * cosl(radian)\
-    \ - y_ * sinl(radian),\n            x_ * sinl(radian) + y_ * cosl(radian)\n  \
-    \      };\n    }\n    void rotate(Real radian) {\n        *this = rotated(radian);\
-    \ \n    }\n    Point rotatedByArc(Real arc) const {\n        return rotated(ArcToRadian(arc));\n\
-    \    }\n    void rotateByArc(Real arc) {\n        *this = rotatedByArc(arc);\n\
-    \    }\n    Real argument() const {\n        return (Negative(y_) ? TAU : static_cast<Real>(0))\
-    \ + atan2l(y_, x_);\n    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
+    \   assert((*this) != Point{});\n        (*this) /= norm(); \n    }\n    Point\
+    \ normalized() const {\n        Point res{*this};\n        res.normalize();\n\
+    \        return res;\n    }\n    Point rotated(Real radian) const {\n        return\
+    \ Point{\n            x_ * cosl(radian) - y_ * sinl(radian),\n            x_ *\
+    \ sinl(radian) + y_ * cosl(radian)\n        };\n    }\n    void rotate(Real radian)\
+    \ {\n        *this = rotated(radian); \n    }\n    Point rotatedByArc(Real arc)\
+    \ const {\n        return rotated(ArcToRadian(arc));\n    }\n    void rotateByArc(Real\
+    \ arc) {\n        *this = rotatedByArc(arc);\n    }\n    Real argument() const\
+    \ {\n        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);\n\
+    \    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
     \    }\n\n    /* friend function */\n    friend Real Dot(const Point& lhs, const\
     \ Point& rhs) {\n        return lhs.x() * rhs.x() + lhs.y() * rhs.y();\n    }\n\
     \    friend Real Cross(const Point& lhs, const Point& rhs) {\n        return lhs.x()\
-    \ * rhs.y() - lhs.y() * rhs.x();\n    }\n    friend Real DistanceSquare(const\
-    \ Point& lhs, const Point& rhs) {\n        return Point{lhs - rhs}.normSquare();\n\
-    \    }\n    friend Real Distance(const Point& lhs, const Point& rhs) {\n     \
-    \   return Point{lhs - rhs}.norm();\n    }\n    friend Real Argument(const Point&\
+    \ * rhs.y() - lhs.y() * rhs.x();\n    }\n    friend Real Argument(const Point&\
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geomeryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
     \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
     \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
@@ -147,16 +152,24 @@ data:
     \ a + b} {}\n\n    /* getter, setter */\n    const Point& p0() const {\n     \
     \   return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const\
     \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
-    \ return p1_;\n    }\n\n    /* member function */\n    bool valid() const {\n\
-    \        return p0_ != p1_;\n    }\n    bool straddle(const Line& l) const {\n\
-    \        return Relation(p0_, p1_, l.p0()) * Relation(p0_, p1_, l.p1()) <= 0;\n\
-    \    }\n\n    /* friend function */\n    friend bool Parallel(const Line& l0,\
-    \ const Line& l1) {\n        assert(l0.valid());\n        assert(l1.valid());\n\
-    \        return Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n    }\n  \
-    \  friend bool Orthgonal(const Line& l0, const Line& l1) {\n        assert(l0.valid());\n\
-    \        assert(l1.valid());\n        return Zero(Dot(l0.p1() - l0.p0(), l1.p1()\
-    \ - l1.p0()));\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 5 \"Test/AOJ/CGL_2_A.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_2_A.test.cpp\"\
+    \ return p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line&\
+    \ l0, const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0())) and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n\
+    \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
+    \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
+    \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
+    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Parallel/LineAndLine.hpp\"\n\n\
+    #line 4 \"Src/GeometryR2/Parallel/LineAndLine.hpp\"\n\n#line 6 \"Src/GeometryR2/Parallel/LineAndLine.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Parallel(const Line& l0,\
+    \ const Line& l1) {\n    assert(l0.valid());\n    assert(l1.valid());\n    return\
+    \ Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n}\n\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\n\n#line 4 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nbool Orthgonal(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    return Zero(Dot(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0()));\n}\n\n} // namespace zawa\n\n} // namespace\
+    \ zawa\n#line 7 \"Test/AOJ/CGL_2_A.test.cpp\"\n\n#line 9 \"Test/AOJ/CGL_2_A.test.cpp\"\
     \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
     \    SetFastIO();\n    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++)\
     \ {\n        Line l1, l2;\n        std::cin >> l1.p0() >> l1.p1() >> l2.p0() >>\
@@ -165,6 +178,7 @@ data:
     \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_2_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryR2/Line.hpp\"\
+    \n#include \"../../Src/GeometryR2/Parallel/LineAndLine.hpp\"\n#include \"../../Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\
     \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
     \ namespace geometryR2;\n    SetFastIO();\n    int q; std::cin >> q;\n    for\
     \ (int _{} ; _ < q ; _++) {\n        Line l1, l2;\n        std::cin >> l1.p0()\
@@ -179,10 +193,12 @@ data:
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Relation.hpp
+  - Src/GeometryR2/Parallel/LineAndLine.hpp
+  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
   isVerificationFile: true
   path: Test/AOJ/CGL_2_A.test.cpp
   requiredBy: []
-  timestamp: '2023-11-10 17:17:13+09:00'
+  timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_2_A.test.cpp

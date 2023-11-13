@@ -27,8 +27,77 @@ data:
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Angle.hpp
+    title: Src/GeometryR2/Angle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Circle.hpp
     title: Src/GeometryR2/Circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+    title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+    title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Distance/LineAndLine.hpp
+    title: Src/GeometryR2/Distance/LineAndLine.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Distance/LineAndPoint.hpp
+    title: Src/GeometryR2/Distance/LineAndPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndPoint.hpp
+    title: Src/GeometryR2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndSegment.hpp
+    title: Src/GeometryR2/Distance/PointAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+    title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Intersect/LineAndLine.hpp
+    title: Src/GeometryR2/Intersect/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Line.hpp
+    title: Src/GeometryR2/Line.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+    title: Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Parallel/LineAndLine.hpp
+    title: Src/GeometryR2/Parallel/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Point.hpp
+    title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Projection.hpp
+    title: Src/GeometryR2/Projection.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Real.hpp
+    title: Src/GeometryR2/Real.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Reflection.hpp
+    title: Src/GeometryR2/Reflection.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Relation.hpp
+    title: Src/GeometryR2/Relation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Segment.hpp
+    title: Src/GeometryR2/Segment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
@@ -371,7 +440,30 @@ data:
   - Src/Number/EratosthenesSieve.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/GeometryR2/Angle.hpp
+  - Src/GeometryR2/Relation.hpp
+  - Src/GeometryR2/Real.hpp
+  - Src/GeometryR2/Segment.hpp
+  - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/Parallel/LineAndLine.hpp
+  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - Src/GeometryR2/Distance/LineAndPoint.hpp
+  - Src/GeometryR2/Distance/LineAndLine.hpp
+  - Src/GeometryR2/Distance/PointAndPoint.hpp
+  - Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - Src/GeometryR2/Distance/PointAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/Circle.hpp
+  - Src/GeometryR2/Intersect/LineAndLine.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - Src/GeometryR2/Projection.hpp
+  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
