@@ -2,12 +2,14 @@
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryR2/Segment.hpp"
+#include "../../Src/GeometryR2/Intersect/SegmentAndSegment.hpp"
 
 #include <iostream>
 
 int main() {
     using namespace zawa;
     using namespace geometryR2;
+    SetFastIO();
 
     int q; std::cin >> q;
     for (int _{} ; _ < q ; _++) {

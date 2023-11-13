@@ -118,6 +118,7 @@ public:
         return Sqrt(normSquare());
     }
     void normalize() {
+        assert((*this) != Point{});
         (*this) /= norm(); 
     }
     Point normalized() const {
@@ -154,12 +155,6 @@ public:
     friend Real Cross(const Point& lhs, const Point& rhs) {
         return lhs.x() * rhs.y() - lhs.y() * rhs.x();
     }
-    friend Real DistanceSquare(const Point& lhs, const Point& rhs) {
-        return Point{lhs - rhs}.normSquare();
-    }
-    friend Real Distance(const Point& lhs, const Point& rhs) {
-        return Point{lhs - rhs}.norm();
-    }
     friend Real Argument(const Point& lhs, const Point& rhs) {
         return rhs.argument() - lhs.argument();
     }
@@ -170,6 +165,6 @@ public:
 
 using Vector = Point;
 
-} // namespace geomeryR2
+} // namespace geometryR2
 
 } // namespace zawa

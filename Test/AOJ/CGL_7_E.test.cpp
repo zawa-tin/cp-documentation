@@ -3,6 +3,8 @@
 
 #include "../../Src/GeometryR2/Point.hpp"
 #include "../../Src/GeometryR2/Circle.hpp"
+#include "../../Src/GeometryR2/Intersect/CircleAndCircle.hpp"
+#include "../../Src/GeometryR2/CrossPoint/CircleAndCircle.hpp"
 #include "../../Src/Template/IOSetting.hpp"
 
 int main() {

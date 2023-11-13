@@ -2,6 +2,8 @@
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryR2/Line.hpp"
+#include "../../Src/GeometryR2/Parallel/LineAndLine.hpp"
+#include "../../Src/GeometryR2/Orthgonal/LineAndLine.hpp"
 
 #include <iostream>
 
