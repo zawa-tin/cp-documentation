@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
+    title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -320,6 +323,9 @@ data:
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/unionfind.test.cpp
+    title: Test/LC/unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -427,6 +433,7 @@ data:
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -525,6 +532,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/LC/unionfind.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp

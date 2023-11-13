@@ -20,6 +20,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
+  - name: Src/DataStructure/DisjointSetUnion
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
+      title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -394,6 +399,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/staticrmq.test.cpp
       title: Test/LC/staticrmq.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/unionfind.test.cpp
+      title: Test/LC/unionfind.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

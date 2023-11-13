@@ -70,6 +70,9 @@ data:
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/unionfind.test.cpp
+    title: Test/LC/unionfind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -121,6 +124,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/LC/unionfind.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
