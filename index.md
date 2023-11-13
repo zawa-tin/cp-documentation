@@ -25,6 +25,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
       title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
+      title: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -257,6 +260,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_E.test.cpp
       title: Test/AOJ/CGL_7_E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_1_B.test.cpp
+      title: Test/AOJ/DSL_1_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_A.test.cpp
       title: Test/AOJ/DSL_2_A.test.cpp

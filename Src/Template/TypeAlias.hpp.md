@@ -6,6 +6,9 @@ data:
     path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
     title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
+    title: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -184,6 +187,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_1_B.test.cpp
+    title: Test/AOJ/DSL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
@@ -433,6 +439,7 @@ data:
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
@@ -517,6 +524,7 @@ data:
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_1_C.test.cpp
+  - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/2957.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp

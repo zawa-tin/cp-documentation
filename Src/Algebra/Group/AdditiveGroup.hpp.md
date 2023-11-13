@@ -7,6 +7,9 @@ data:
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_1_B.test.cpp
+    title: Test/AOJ/DSL_1_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -60,6 +63,7 @@ data:
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/DSL_1_B.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
