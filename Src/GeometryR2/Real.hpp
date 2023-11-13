@@ -1,5 +1,7 @@
 #pragma once
 
+#include "../Template/TypeAlias.hpp"
+
 #include <cmath>
 #include <cassert>
 
@@ -12,13 +14,13 @@ constexpr Real EPS{1e-12};
 
 namespace internal {
 
-constexpr int negative{-1};
-constexpr int zero{};
-constexpr int positive{1};
+constexpr i32 negative{-1};
+constexpr i32 zero{};
+constexpr i32 positive{1};
 
 } // namespace internal
 
-constexpr int Sign(Real value) {
+constexpr i32 Sign(Real value) {
     if (value < -EPS) return internal::negative;
     if (value > EPS) return internal::positive;
     return internal::zero;
@@ -49,7 +51,7 @@ constexpr bool Bigger(Real a, Real b) {
 }
 
 constexpr Real Square(Real value) {
-    return value * value;
+    return (Zero(value) ? value : value * value);
 }
 
 constexpr Real Sqrt(Real value) {

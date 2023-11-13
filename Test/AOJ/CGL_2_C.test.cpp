@@ -3,6 +3,7 @@
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryR2/Segment.hpp"
+#include "../../Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp"
 
 #include <iostream>
 

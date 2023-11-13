@@ -3,6 +3,7 @@
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryR2/Segment.hpp"
+#include "../../Src/GeometryR2/Distance/SegmentAndSegment.hpp"
 
 #include <iostream>
 
