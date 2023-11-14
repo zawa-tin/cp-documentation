@@ -21,12 +21,21 @@ data:
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
     title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/CircleAndLine.hpp
+    title: Src/GeometryR2/Intersect/CircleAndLine.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A.test.cpp
     title: Test/AOJ/CGL_7_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_D.test.cpp
+    title: Test/AOJ/CGL_7_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
@@ -179,12 +188,15 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Circle.hpp
   requiredBy:
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_7_A.test.cpp
 documentation_of: Src/GeometryR2/Circle.hpp
 layout: document

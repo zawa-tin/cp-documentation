@@ -21,12 +21,15 @@ data:
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - icon: ':warning:'
     path: Src/GeometryR2/Distance/LineAndLine.hpp
     title: Src/GeometryR2/Distance/LineAndLine.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/LineAndPoint.hpp
     title: Src/GeometryR2/Distance/LineAndPoint.hpp
   - icon: ':heavy_check_mark:'
@@ -38,6 +41,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
     title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/CircleAndLine.hpp
+    title: Src/GeometryR2/Intersect/CircleAndLine.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
     title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
@@ -63,6 +69,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A.test.cpp
     title: Test/AOJ/CGL_7_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_D.test.cpp
+    title: Test/AOJ/CGL_7_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
@@ -182,9 +191,11 @@ data:
   - Src/GeometryR2/Distance/LineAndLine.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/Circle.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
@@ -193,6 +204,7 @@ data:
   verifiedWith:
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp

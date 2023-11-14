@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/LineAndPoint.hpp
     title: Src/GeometryR2/Distance/LineAndPoint.hpp
   - icon: ':heavy_check_mark:'

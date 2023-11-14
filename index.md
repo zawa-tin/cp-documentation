@@ -94,6 +94,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
       title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+      title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     - icon: ':warning:'
       path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
       title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
@@ -105,7 +108,7 @@ data:
     - icon: ':warning:'
       path: Src/GeometryR2/Distance/LineAndLine.hpp
       title: Src/GeometryR2/Distance/LineAndLine.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Distance/LineAndPoint.hpp
       title: Src/GeometryR2/Distance/LineAndPoint.hpp
     - icon: ':heavy_check_mark:'
@@ -122,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
       title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Intersect/CircleAndLine.hpp
+      title: Src/GeometryR2/Intersect/CircleAndLine.hpp
     - icon: ':warning:'
       path: Src/GeometryR2/Intersect/LineAndLine.hpp
       title: Src/GeometryR2/Intersect/LineAndLine.hpp
@@ -257,6 +263,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_A.test.cpp
       title: Test/AOJ/CGL_7_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_D.test.cpp
+      title: Test/AOJ/CGL_7_D.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_E.test.cpp
       title: Test/AOJ/CGL_7_E.test.cpp
