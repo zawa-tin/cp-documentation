@@ -34,6 +34,9 @@ data:
     title: Src/GeometryR2/Intersect/CircleAndLine.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1053.test.cpp
+    title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
   _isVerificationFailed: false
@@ -194,6 +197,7 @@ data:
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
 documentation_of: Src/GeometryR2/Distance/LineAndPoint.hpp
 layout: document

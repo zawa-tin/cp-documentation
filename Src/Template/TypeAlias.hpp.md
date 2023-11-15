@@ -161,6 +161,12 @@ data:
       10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1053.test.cpp
+    title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2003.test.cpp
+    title: Test/AOJ/2003.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
     title: AOJ2957 MOD Rush
   - icon: ':heavy_check_mark:'
@@ -521,6 +527,7 @@ data:
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
+  - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
@@ -534,6 +541,7 @@ data:
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_1_C.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp

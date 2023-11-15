@@ -28,6 +28,12 @@ data:
     title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1053.test.cpp
+    title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2003.test.cpp
+    title: Test/AOJ/2003.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
@@ -189,6 +195,8 @@ data:
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/1053.test.cpp
+  - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Distance/PointAndSegment.hpp
 layout: document

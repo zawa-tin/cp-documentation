@@ -234,6 +234,12 @@ data:
   - name: Test/AOJ
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1053.test.cpp
+      title: AOJ1053 Accelerated Railgun
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2003.test.cpp
+      title: Test/AOJ/2003.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/2957.test.cpp
       title: AOJ2957 MOD Rush
     - icon: ':heavy_check_mark:'
