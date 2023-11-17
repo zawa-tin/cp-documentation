@@ -26,7 +26,7 @@ data:
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
-    title: Test/AOJ/1132.test.cpp
+    title: AOJ1132 Circle and Points
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'

@@ -234,8 +234,8 @@ data:
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2003.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
 documentation_of: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
 layout: document
 redirect_from:

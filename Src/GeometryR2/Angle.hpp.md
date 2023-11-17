@@ -92,7 +92,7 @@ data:
     title: AOJ1053 Accelerated Railgun
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
-    title: Test/AOJ/1132.test.cpp
+    title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
@@ -174,49 +174,49 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Angle.hpp
   requiredBy:
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Relation.hpp
-  - Src/GeometryR2/Segment.hpp
-  - Src/GeometryR2/Circle.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
-  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
-  - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/Parallel/LineAndLine.hpp
-  - Src/GeometryR2/Intersect/CircleAndCircle.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Intersect/CircleAndLine.hpp
-  - Src/GeometryR2/Intersect/LineAndLine.hpp
-  - Src/GeometryR2/Projection.hpp
+  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - Src/GeometryR2/Distance/LineAndPoint.hpp
+  - Src/GeometryR2/Distance/LineAndLine.hpp
+  - Src/GeometryR2/Distance/PointAndPoint.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
-  - Src/GeometryR2/Distance/PointAndPoint.hpp
-  - Src/GeometryR2/Distance/LineAndLine.hpp
-  - Src/GeometryR2/Distance/LineAndPoint.hpp
-  - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+  - Src/GeometryR2/Circle.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/Intersect/LineAndLine.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - Src/GeometryR2/Projection.hpp
+  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
-  - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_2_B.test.cpp
-  - Test/AOJ/2003.test.cpp
-  - Test/AOJ/CGL_7_E.test.cpp
-  - Test/AOJ/CGL_2_A.test.cpp
-  - Test/AOJ/CGL_7_A.test.cpp
-  - Test/AOJ/1132.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
+  - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/CGL_7_A.test.cpp
+  - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/2003.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - Test/AOJ/1132.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Angle.hpp
 layout: document
 redirect_from:

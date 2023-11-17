@@ -175,8 +175,8 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Intersect/LineAndLine.hpp
   requiredBy:
-  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
   - Src/GeometryR2/Distance/LineAndLine.hpp
+  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
