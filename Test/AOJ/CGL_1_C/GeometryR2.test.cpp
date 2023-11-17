@@ -1,9 +1,9 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_1_C"
 #define ERROR 0.00000001
 
-#include "../../Src/GeometryR2/Point.hpp"
-#include "../../Src/GeometryR2/Relation.hpp"
-#include "../../Src/Template/IOSetting.hpp"
+#include "../../../Src/GeometryR2/Point.hpp"
+#include "../../../Src/GeometryR2/Relation.hpp"
+#include "../../../Src/Template/IOSetting.hpp"
 
 #include <iostream>
 
