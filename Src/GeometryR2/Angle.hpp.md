@@ -127,6 +127,9 @@ data:
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc157_f.test.cpp
+    title: ABC157-F Yakiniku Optimization Problem
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
   _isVerificationFailed: false
@@ -204,6 +207,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc259_b.test.cpp
+  - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp

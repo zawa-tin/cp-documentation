@@ -10,6 +10,9 @@ data:
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc157_f.test.cpp
+    title: ABC157-F Yakiniku Optimization Problem
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc191_d.test.cpp
     title: Test/AtCoder/abc191_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,6 +78,7 @@ data:
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
+  - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document

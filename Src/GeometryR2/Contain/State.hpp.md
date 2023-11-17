@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc157_f.test.cpp
+    title: ABC157-F Yakiniku Optimization Problem
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -28,6 +31,7 @@ data:
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Contain/State.hpp
 layout: document

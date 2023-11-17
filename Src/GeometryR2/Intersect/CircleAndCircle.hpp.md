@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_E.test.cpp
     title: Test/AOJ/CGL_7_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc157_f.test.cpp
+    title: ABC157-F Yakiniku Optimization Problem
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -165,6 +168,7 @@ data:
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
 documentation_of: Src/GeometryR2/Intersect/CircleAndCircle.hpp
 layout: document
