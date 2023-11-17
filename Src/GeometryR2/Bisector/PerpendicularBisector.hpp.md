@@ -14,31 +14,29 @@ data:
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Projection.hpp
-    title: Src/GeometryR2/Projection.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Relation.hpp
     title: Src/GeometryR2/Relation.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Segment.hpp
+    title: Src/GeometryR2/Segment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1053.test.cpp
-    title: AOJ1053 Accelerated Railgun
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_B.test.cpp
-    title: Test/AOJ/CGL_1_B.test.cpp
+    path: Test/AOJ/1132.test.cpp
+    title: Test/AOJ/1132.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Reflection.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/Bisector/PerpendicularBisector.hpp\"\n\n\
+    #line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -125,79 +123,89 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
-    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
-    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
-    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
-    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
-    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
-    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
-    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
-    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
-    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
-    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5\
-    \ \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
-    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
-    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
-    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
-    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
-    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
-    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
-    \ p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line& l0,\
-    \ const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()))\
-    \ and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n    friend bool\
-    \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
-    \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
-    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const\
-    \ Point& p0, const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 8 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
-    \   assert(line.valid());\n    Real coeff{Dot(line.p1() - line.p0(), point - line.p0())\
-    \ / DistanceSquare(line.p0(), line.p1())};\n    return coeff * line.p1() + (static_cast<Real>(1)\
-    \ - coeff) * line.p0();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 6 \"Src/GeometryR2/Reflection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nPoint Reflection(const Point& point, const Line& line) {\n    assert(line.valid());\n\
-    \    return -point + static_cast<Real>(2) * Projection(point, line);\n}\n\n} //\
-    \ namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n#include\
-    \ \"./Projection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint\
-    \ Reflection(const Point& point, const Line& line) {\n    assert(line.valid());\n\
-    \    return -point + static_cast<Real>(2) * Projection(point, line);\n}\n\n} //\
-    \ namespace geometryR2\n\n} // namespace zawa\n"
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
+    \ -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\
+    \n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\
+    \u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n\
+    \    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\n\
+    RELATION Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point\
+    \ a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
+    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
+    \ // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n\
+    #line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\n\
+    namespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Segment.hpp\"\n\n\
+    #include <algorithm>\n#line 9 \"Src/GeometryR2/Segment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\n\
+    public:\n    /* constructor */\n    Segment() = default;\n    Segment(const Point&\
+    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real x0, Real y0, Real\
+    \ x1, Real y1) : p0_{x0, y0}, p1_{x1, y1} {}\n\n    /* getter setter */\n    const\
+    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
+    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
+    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
+    \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
+    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
+    \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
+    \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
+    \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Line.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n   \
+    \ Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n\
+    \    Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y =\
+    \ ax + b \n    Line(Real a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1),\
+    \ a + b} {}\n\n    /* getter, setter */\n    const Point& p0() const {\n     \
+    \   return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const\
+    \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
+    \ return p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line&\
+    \ l0, const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0())) and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n\
+    \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
+    \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
+    \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Bisector/PerpendicularBisector.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/Bisector/PerpendicularBisector.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nLine PerpendicularBisector(const Segment&\
+    \ s) {\n    assert(s.valid());\n    Point midpoint{s.midpoint()}; \n    Vector\
+    \ vertical{Vector{s.p1() - s.p0()}.rotatedByArc(90)};\n    return Line{midpoint,\
+    \ midpoint + vertical};\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Segment.hpp\"\n#include \"../Line.hpp\"\n#include\
+    \ \"../Point.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nLine PerpendicularBisector(const Segment& s) {\n    assert(s.valid());\n\
+    \    Point midpoint{s.midpoint()}; \n    Vector vertical{Vector{s.p1() - s.p0()}.rotatedByArc(90)};\n\
+    \    return Line{midpoint, midpoint + vertical};\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n"
   dependsOn:
+  - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Angle.hpp
-  - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Relation.hpp
-  - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/Distance/PointAndPoint.hpp
+  - Src/GeometryR2/Line.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Reflection.hpp
+  path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   requiredBy: []
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-documentation_of: Src/GeometryR2/Reflection.hpp
+  - Test/AOJ/1132.test.cpp
+documentation_of: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Reflection.hpp
-- /library/Src/GeometryR2/Reflection.hpp.html
-title: Src/GeometryR2/Reflection.hpp
+- /library/Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+- /library/Src/GeometryR2/Bisector/PerpendicularBisector.hpp.html
+title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
 ---

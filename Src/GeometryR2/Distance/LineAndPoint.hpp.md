@@ -161,12 +161,14 @@ data:
     \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const\
-    \ Point& p0, const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
+    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
+    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
     \n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\nnamespace zawa {\n\
     \nnamespace geometryR2 {\n\nReal Distance(const Line& l, const Point& p) {\n \
     \   assert(l.valid());\n    return Abs(Cross(p - l.p0(), l.p1() - l.p0())) / Distance(l.p1(),\
@@ -191,10 +193,10 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Distance/LineAndPoint.hpp
   requiredBy:
-  - Src/GeometryR2/Distance/LineAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndLine.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  - Src/GeometryR2/Distance/LineAndLine.hpp
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp

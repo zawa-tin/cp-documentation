@@ -148,14 +148,16 @@ data:
     \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
     \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
     \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\n\
-    #line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nbool Intersect(const Line& l0, const Line& l1) {\n    assert(l0.valid());\n\
-    \    assert(l1.valid());\n    if (!Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())))\
-    \ {\n        return true;\n    }\n    else if (!Zero(Cross(l0.p1() - l0.p0(),\
-    \ l1.p0() - l0.p0()))) {\n        return false;\n    }\n    else {\n        return\
-    \ true;\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace \n"
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nbool Intersect(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    if (!Zero(Cross(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0()))) {\n        return true;\n    }\n    else if\
+    \ (!Zero(Cross(l0.p1() - l0.p0(), l1.p0() - l0.p0()))) {\n        return false;\n\
+    \    }\n    else {\n        return true;\n    }\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace \n"
   code: "#pragma once\n\n#include \"../Line.hpp\"\n\n#include <cassert>\n\nnamespace\
     \ zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Line& l0, const Line&\
     \ l1) {\n    assert(l0.valid());\n    assert(l1.valid());\n    if (!Zero(Cross(l0.p1()\
@@ -173,9 +175,9 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Intersect/LineAndLine.hpp
   requiredBy:
-  - Src/GeometryR2/Distance/LineAndLine.hpp
   - Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  - Src/GeometryR2/Distance/LineAndLine.hpp
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Src/GeometryR2/Intersect/LineAndLine.hpp

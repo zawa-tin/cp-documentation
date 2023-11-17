@@ -18,6 +18,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+    title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - icon: ':warning:'
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1053.test.cpp
     title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1132.test.cpp
+    title: Test/AOJ/1132.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
@@ -184,8 +190,9 @@ data:
     \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
     \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
     \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n"
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n\
     #include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line\
     \ {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Line()\
@@ -200,8 +207,9 @@ data:
     \    }\n    friend bool operator!=(const Line& l0, const Line& l1) {\n       \
     \ return !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n"
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -211,24 +219,26 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Line.hpp
   requiredBy:
-  - Src/GeometryR2/Reflection.hpp
-  - Src/GeometryR2/Parallel/LineAndLine.hpp
-  - Src/GeometryR2/Distance/LineAndPoint.hpp
-  - Src/GeometryR2/Distance/LineAndLine.hpp
+  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - Src/GeometryR2/Parallel/LineAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/LineAndLine.hpp
   - Src/GeometryR2/Projection.hpp
-  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  - Src/GeometryR2/Distance/LineAndLine.hpp
+  - Src/GeometryR2/Distance/LineAndPoint.hpp
+  - Src/GeometryR2/Reflection.hpp
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Line.hpp
 layout: document
 redirect_from:

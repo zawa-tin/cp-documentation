@@ -21,6 +21,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+    title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -42,6 +45,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1053.test.cpp
     title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1132.test.cpp
+    title: Test/AOJ/1132.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
@@ -178,8 +184,9 @@ data:
     \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
     \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
     \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
-    \        return Distance(p0_, p1_);\n    }\n};\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n"
+    \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
+    \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n#include\
     \ \"./Distance/PointAndPoint.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
     \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n  \
@@ -192,8 +199,10 @@ data:
     \ function */\n    bool valid() const {\n        return p0_ != p1_;\n    }\n \
     \   bool straddle(const Segment& s) const {\n        return Relation(p0_, p1_,\
     \ s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n\
-    \        assert(valid());\n        return Distance(p0_, p1_);\n    }\n};\n\n}\
-    \ // namespace geometryR2\n\n} // namespace zawa\n"
+    \        assert(valid());\n        return Distance(p0_, p1_);\n    }\n    Point\
+    \ midpoint() const {\n        assert(valid());\n        return p0_ + Vector{p1_\
+    \ - p0_} / static_cast<Real>(2);\n    }\n};\n\n} // namespace geometryR2\n\n}\
+    \ // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -204,20 +213,22 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Segment.hpp
   requiredBy:
+  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/2003.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Segment.hpp
 layout: document
 redirect_from:

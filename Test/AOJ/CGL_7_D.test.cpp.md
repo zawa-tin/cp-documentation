@@ -198,25 +198,26 @@ data:
     \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/CrossPoint/CircleAndLine.hpp\"\n\n#line 2 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nReal Distance(const Line& l, const Point& p) {\n \
-    \   assert(l.valid());\n    return Abs(Cross(p - l.p0(), l.p1() - l.p0())) / Distance(l.p1(),\
-    \ l.p0());\n}\n\nbool PointOnLine(const Line& l, const Point& p) {\n    assert(l.valid());\n\
-    \    return Zero(Distance(l, p));\n}\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 6 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\n\n#line 8 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\
-    \n\nnamespace zawa {\n    \nnamespace geometryR2 {\n\nbool Intersect(const Circle&\
-    \ c, const Line& l) {\n    assert(l.valid());\n    return !Bigger(Distance(l,\
-    \ c.center()), c.radius());\n}\n    \n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
-    \   assert(line.valid());\n    Real coeff{Dot(line.p1() - line.p0(), point - line.p0())\
-    \ / Point{line.p1() - line.p0()}.normSquare()};\n    return coeff * line.p1()\
-    \ + (static_cast<Real>(1) - coeff) * line.p0();\n}\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n#line 9 \"Src/GeometryR2/CrossPoint/CircleAndLine.hpp\"\
+    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
+    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/CrossPoint/CircleAndLine.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\n\n#line 2 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Line& l,\
+    \ const Point& p) {\n    assert(l.valid());\n    return Abs(Cross(p - l.p0(),\
+    \ l.p1() - l.p0())) / Distance(l.p1(), l.p0());\n}\n\nbool PointOnLine(const Line&\
+    \ l, const Point& p) {\n    assert(l.valid());\n    return Zero(Distance(l, p));\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\n\nnamespace zawa {\n\
+    \    \nnamespace geometryR2 {\n\nbool Intersect(const Circle& c, const Line& l)\
+    \ {\n    assert(l.valid());\n    return !Bigger(Distance(l, c.center()), c.radius());\n\
+    }\n    \n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Projection.hpp\"\n\n#line 8 \"Src/GeometryR2/Projection.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
+    \ point, const Line& line) {\n    assert(line.valid());\n    Real coeff{Dot(line.p1()\
+    \ - line.p0(), point - line.p0()) / DistanceSquare(line.p0(), line.p1())};\n \
+    \   return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n}\n\
+    \n} // namespace geometryR2\n\n} // namespace zawa\n#line 9 \"Src/GeometryR2/CrossPoint/CircleAndLine.hpp\"\
     \n\n#line 12 \"Src/GeometryR2/CrossPoint/CircleAndLine.hpp\"\n\nnamespace zawa\
     \ {\n\nnamespace geometryR2 {\n\nstd::pair<Point, Point> CrossPoint(const Circle&\
     \ c, const Line& l) {\n    assert(l.valid());\n    assert(Intersect(c, l));\n\
@@ -259,7 +260,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_7_D.test.cpp
   requiredBy: []
-  timestamp: '2023-11-14 14:19:30+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_7_D.test.cpp

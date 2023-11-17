@@ -169,8 +169,9 @@ data:
     \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
     \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
     \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
-    \        return Distance(p0_, p1_);\n    }\n};\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n#line 2 \"Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp\"\
+    \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
+    \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Parallel/SegmentAndSegment.hpp\"\n\n#line 4 \"Src/GeometryR2/Parallel/SegmentAndSegment.hpp\"\
     \n\n#line 6 \"Src/GeometryR2/Parallel/SegmentAndSegment.hpp\"\n\nnamespace zawa\
     \ {\n\nnamespace geometryR2 {\n\nbool Parallel(const Segment& s0, const Segment&\
@@ -232,7 +233,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_2_C.test.cpp
   requiredBy: []
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_2_C.test.cpp

@@ -89,6 +89,19 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Segment.hpp
       title: Src/GeometryR2/Segment.hpp
+  - name: Src/GeometryR2/Bisector
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+      title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - name: Src/GeometryR2/Contain
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+      title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Contain/State.hpp
+      title: Src/GeometryR2/Contain/State.hpp
   - name: Src/GeometryR2/CrossPoint
     pages:
     - icon: ':heavy_check_mark:'
@@ -258,6 +271,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1053.test.cpp
       title: AOJ1053 Accelerated Railgun
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1132.test.cpp
+      title: Test/AOJ/1132.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2003.test.cpp
       title: Test/AOJ/2003.test.cpp

@@ -186,12 +186,13 @@ data:
     \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
     \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
     \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\n\
-    #line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nReal Distance(const Line& l, const Point& p) {\n    assert(l.valid());\n\
-    \    return Abs(Cross(p - l.p0(), l.p1() - l.p0())) / Distance(l.p1(), l.p0());\n\
-    }\n\nbool PointOnLine(const Line& l, const Point& p) {\n    assert(l.valid());\n\
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
+    \n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nReal Distance(const Line& l, const Point& p) {\n \
+    \   assert(l.valid());\n    return Abs(Cross(p - l.p0(), l.p1() - l.p0())) / Distance(l.p1(),\
+    \ l.p0());\n}\n\nbool PointOnLine(const Line& l, const Point& p) {\n    assert(l.valid());\n\
     \    return Zero(Distance(l, p));\n}\n\n} // namespace geometryR2\n\n} // namespace\
     \ zawa\n#line 6 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\n\n#line 8 \"Src/GeometryR2/Intersect/CircleAndLine.hpp\"\
     \n\nnamespace zawa {\n    \nnamespace geometryR2 {\n\nbool Intersect(const Circle&\
@@ -217,7 +218,7 @@ data:
   path: Src/GeometryR2/Intersect/CircleAndLine.hpp
   requiredBy:
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  timestamp: '2023-11-14 14:19:30+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp

@@ -145,12 +145,14 @@ data:
     \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
     \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
     \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n#line 4 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\n\n\
-    #line 6 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nbool Orthgonal(const Line& l0, const Line& l1) {\n    assert(l0.valid());\n\
-    \    assert(l1.valid());\n    return Zero(Dot(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n\
-    }\n\n} // namespace zawa\n\n} // namespace zawa\n"
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Orthgonal/LineAndLine.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nbool Orthgonal(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    return Zero(Dot(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0()));\n}\n\n} // namespace zawa\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"../Line.hpp\"\n\n#include <cassert>\n\nnamespace\
     \ zawa {\n\nnamespace geometryR2 {\n\nbool Orthgonal(const Line& l0, const Line&\
     \ l1) {\n    assert(l0.valid());\n    assert(l1.valid());\n    return Zero(Dot(l0.p1()\
@@ -166,7 +168,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Orthgonal/LineAndLine.hpp
   requiredBy: []
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_2_A.test.cpp

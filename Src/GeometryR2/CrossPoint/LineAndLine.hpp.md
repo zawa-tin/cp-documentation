@@ -146,21 +146,22 @@ data:
     \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
-    \n\n#line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nbool Intersect(const Line& l0, const Line& l1) {\n\
-    \    assert(l0.valid());\n    assert(l1.valid());\n    if (!Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0()))) {\n        return true;\n    }\n    else if\
-    \ (!Zero(Cross(l0.p1() - l0.p0(), l1.p0() - l0.p0()))) {\n        return false;\n\
-    \    }\n    else {\n        return true;\n    }\n}\n\n} // namespace geometryR2\n\
-    \n} // namespace \n#line 6 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\n#line\
-    \ 8 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n    assert(l0.valid());\n\
-    \    assert(l1.valid());\n    assert(Intersect(l0, l1));\n    assert(l0 != l1);\n\
-    \    return l0.p0() + (l0.p1() - l0.p0()) * \n        (Cross(l1.p0() - l0.p0(),\
-    \ l1.p1() - l1.p0()) / Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n}\n\n} //\
-    \ namespace geometryR2\n\n} // namespace zawa\n"
+    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
+    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\n#line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Line& l0,\
+    \ const Line& l1) {\n    assert(l0.valid());\n    assert(l1.valid());\n    if\
+    \ (!Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()))) {\n        return true;\n\
+    \    }\n    else if (!Zero(Cross(l0.p1() - l0.p0(), l1.p0() - l0.p0()))) {\n \
+    \       return false;\n    }\n    else {\n        return true;\n    }\n}\n\n}\
+    \ // namespace geometryR2\n\n} // namespace \n#line 6 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n\
+    \    assert(l0.valid());\n    assert(l1.valid());\n    assert(Intersect(l0, l1));\n\
+    \    assert(l0 != l1);\n    return l0.p0() + (l0.p1() - l0.p0()) * \n        (Cross(l1.p0()\
+    \ - l0.p0(), l1.p1() - l1.p0()) / Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Point.hpp\"\n#include \"../Line.hpp\"\n#include\
     \ \"../Intersect/LineAndLine.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\
     \nnamespace geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n\
@@ -179,7 +180,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
   requiredBy: []
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Src/GeometryR2/CrossPoint/LineAndLine.hpp

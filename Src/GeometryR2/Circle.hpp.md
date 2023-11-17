@@ -18,6 +18,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1053.test.cpp
     title: AOJ1053 Accelerated Railgun
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1132.test.cpp
+    title: Test/AOJ/1132.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A.test.cpp
     title: Test/AOJ/CGL_7_A.test.cpp
@@ -191,17 +197,19 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Circle.hpp
   requiredBy:
-  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/Contain/CircleContainsPoint.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
-  - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_7_A.test.cpp
+  - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Circle.hpp
 layout: document
 redirect_from:

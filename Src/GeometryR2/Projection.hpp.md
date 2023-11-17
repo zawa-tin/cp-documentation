@@ -5,6 +5,9 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndPoint.hpp
+    title: Src/GeometryR2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Line.hpp
     title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -161,19 +164,26 @@ data:
     \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
-    \ point, const Line& line) {\n    assert(line.valid());\n    Real coeff{Dot(line.p1()\
-    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
-    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n\n#include\
-    \ <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const\
-    \ Point& point, const Line& line) {\n    assert(line.valid());\n    Real coeff{Dot(line.p1()\
-    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
-    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
+    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
+    \   assert(line.valid());\n    Real coeff{Dot(line.p1() - line.p0(), point - line.p0())\
+    \ / DistanceSquare(line.p0(), line.p1())};\n    return coeff * line.p1() + (static_cast<Real>(1)\
+    \ - coeff) * line.p0();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./Point.hpp\"\n#include \"./Line.hpp\"\n#include\
+    \ \"./Distance/PointAndPoint.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nPoint Projection(const Point& point, const Line& line)\
+    \ {\n    assert(line.valid());\n    Real coeff{Dot(line.p1() - line.p0(), point\
+    \ - line.p0()) / DistanceSquare(line.p0(), line.p1())};\n    return coeff * line.p1()\
+    \ + (static_cast<Real>(1) - coeff) * line.p0();\n}\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
@@ -181,18 +191,19 @@ data:
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Relation.hpp
+  - Src/GeometryR2/Distance/PointAndPoint.hpp
   isVerificationFile: false
   path: Src/GeometryR2/Projection.hpp
   requiredBy:
-  - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  - Src/GeometryR2/Reflection.hpp
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
 documentation_of: Src/GeometryR2/Projection.hpp
 layout: document
 redirect_from:

@@ -161,15 +161,16 @@ data:
     \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
     \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
     \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
-    \        return Distance(p0_, p1_);\n    }\n};\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\
-    \n#line 9 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nReal Distance(const Point& p, const Segment& s) {\n\
-    \    assert(s.valid());\n    if (Negative(Dot(s.p1() - s.p0(), p - s.p0()))) {\n\
-    \        return Distance(p, s.p0());\n    }\n    if (Negative(Dot(s.p0() - s.p1(),\
-    \ p - s.p1()))) {\n        return Distance(p, s.p1());\n    }\n    return Abs(Cross(s.p1()\
-    \ - s.p0(), p - s.p0())) / s.length();\n}\n\nbool PointOnSegment(const Point&\
-    \ p, const Segment& s) {\n    assert(s.valid());\n    return Zero(Distance(p,\
+    \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
+    \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\
+    \n\n#line 9 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p, const Segment&\
+    \ s) {\n    assert(s.valid());\n    if (Negative(Dot(s.p1() - s.p0(), p - s.p0())))\
+    \ {\n        return Distance(p, s.p0());\n    }\n    if (Negative(Dot(s.p0() -\
+    \ s.p1(), p - s.p1()))) {\n        return Distance(p, s.p1());\n    }\n    return\
+    \ Abs(Cross(s.p1() - s.p0(), p - s.p0())) / s.length();\n}\n\nbool PointOnSegment(const\
+    \ Point& p, const Segment& s) {\n    assert(s.valid());\n    return Zero(Distance(p,\
     \ s));\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Real.hpp\"\n#include \"../Segment.hpp\"\n#include\
     \ \"../Point.hpp\"\n#include \"./PointAndPoint.hpp\"\n\n#include <cassert>\n\n\
@@ -192,12 +193,12 @@ data:
   path: Src/GeometryR2/Distance/PointAndSegment.hpp
   requiredBy:
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp
-  - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/2003.test.cpp
 documentation_of: Src/GeometryR2/Distance/PointAndSegment.hpp
 layout: document
 redirect_from:

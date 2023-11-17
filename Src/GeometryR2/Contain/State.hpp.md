@@ -1,0 +1,38 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1132.test.cpp
+    title: Test/AOJ/1132.test.cpp
+  _isVerificationFailed: false
+  _pathExtension: hpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    links: []
+  bundledCode: "#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nenum State {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum State\
+    \ {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: Src/GeometryR2/Contain/State.hpp
+  requiredBy:
+  - Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  timestamp: '2023-11-18 00:31:45+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AOJ/1132.test.cpp
+documentation_of: Src/GeometryR2/Contain/State.hpp
+layout: document
+redirect_from:
+- /library/Src/GeometryR2/Contain/State.hpp
+- /library/Src/GeometryR2/Contain/State.hpp.html
+title: Src/GeometryR2/Contain/State.hpp
+---

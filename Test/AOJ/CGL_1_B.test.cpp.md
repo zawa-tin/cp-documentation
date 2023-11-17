@@ -5,6 +5,9 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Distance/PointAndPoint.hpp
+    title: Src/GeometryR2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Line.hpp
     title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -156,20 +159,26 @@ data:
     \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
     \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Reflection.hpp\"\n\n#line 2 \"Src/GeometryR2/Projection.hpp\"\
-    \n\n#line 5 \"Src/GeometryR2/Projection.hpp\"\n\n#line 7 \"Src/GeometryR2/Projection.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Projection(const Point&\
-    \ point, const Line& line) {\n    assert(line.valid());\n    Real coeff{Dot(line.p1()\
-    \ - line.p0(), point - line.p0()) / Point{line.p1() - line.p0()}.normSquare()};\n\
-    \    return coeff * line.p1() + (static_cast<Real>(1) - coeff) * line.p0();\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Reflection.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nPoint Reflection(const Point&\
-    \ point, const Line& line) {\n    assert(line.valid());\n    return -point + static_cast<Real>(2)\
-    \ * Projection(point, line);\n}\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 6 \"Src/Template/IOSetting.hpp\"\n#include <iomanip>\n\nnamespace zawa\
-    \ {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
+    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Reflection.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Projection.hpp\"\n\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Projection.hpp\"\
+    \n\n#line 8 \"Src/GeometryR2/Projection.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nPoint Projection(const Point& point, const Line& line) {\n \
+    \   assert(line.valid());\n    Real coeff{Dot(line.p1() - line.p0(), point - line.p0())\
+    \ / DistanceSquare(line.p0(), line.p1())};\n    return coeff * line.p1() + (static_cast<Real>(1)\
+    \ - coeff) * line.p0();\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryR2/Reflection.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nPoint Reflection(const Point& point, const Line& line) {\n    assert(line.valid());\n\
+    \    return -point + static_cast<Real>(2) * Projection(point, line);\n}\n\n} //\
+    \ namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 8 \"Test/AOJ/CGL_1_B.test.cpp\"\n\n#line 10 \"\
     Test/AOJ/CGL_1_B.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    using\
@@ -195,11 +204,12 @@ data:
   - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Projection.hpp
+  - Src/GeometryR2/Distance/PointAndPoint.hpp
   - Src/Template/IOSetting.hpp
   isVerificationFile: true
   path: Test/AOJ/CGL_1_B.test.cpp
   requiredBy: []
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_1_B.test.cpp
