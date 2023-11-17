@@ -13,8 +13,11 @@ data:
     path: Test/AOJ/CGL_1_B.test.cpp
     title: Test/AOJ/CGL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
+    path: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_A.test.cpp
     title: Test/AOJ/CGL_2_A.test.cpp
@@ -27,6 +30,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_A.test.cpp
+    title: Test/AOJ/CGL_3_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_B.test.cpp
+    title: Test/AOJ/CGL_3_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -51,6 +60,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc296_g.test.cpp
+    title: Test/AtCoder/abc296_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
@@ -110,20 +122,24 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/CGL_3_B.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_1_C.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/Manual/practice2_l.test.cpp

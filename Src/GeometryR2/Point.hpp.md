@@ -94,8 +94,8 @@ data:
     path: Test/AOJ/CGL_1_B.test.cpp
     title: Test/AOJ/CGL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
+    path: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_A.test.cpp
     title: Test/AOJ/CGL_2_A.test.cpp
@@ -315,7 +315,7 @@ data:
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_1_C.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Point.hpp

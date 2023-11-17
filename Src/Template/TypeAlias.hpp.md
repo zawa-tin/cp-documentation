@@ -111,6 +111,21 @@ data:
     path: Src/GeometryR2/Segment.hpp
     title: Src/GeometryR2/Segment.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Point.hpp
+    title: Src/GeometryZ2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Polygon.hpp
+    title: Src/GeometryZ2/Polygon.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Relation.hpp
+    title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Zahlen.hpp
+    title: Src/GeometryZ2/Zahlen.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
@@ -179,8 +194,11 @@ data:
     path: Test/AOJ/CGL_1_B.test.cpp
     title: Test/AOJ/CGL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C.test.cpp
-    title: Test/AOJ/CGL_1_C.test.cpp
+    path: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_A.test.cpp
     title: Test/AOJ/CGL_2_A.test.cpp
@@ -193,6 +211,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_A.test.cpp
+    title: Test/AOJ/CGL_3_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_B.test.cpp
+    title: Test/AOJ/CGL_3_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A.test.cpp
     title: Test/AOJ/CGL_7_A.test.cpp
@@ -272,6 +296,9 @@ data:
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc266_c.test.cpp
+    title: Test/AtCoder/abc266_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -292,6 +319,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc295_a.test.cpp
     title: Test/AtCoder/abc295_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc296_g.test.cpp
+    title: Test/AtCoder/abc296_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
@@ -463,6 +493,11 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Sequence/RunLengthEncoding.hpp
+  - Src/GeometryZ2/Relation.hpp
+  - Src/GeometryZ2/Polygon.hpp
+  - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - Src/GeometryZ2/Point.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/LinearSieve.hpp
   - Src/Number/EnumerateQuotients.hpp
@@ -498,11 +533,13 @@ data:
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/agc047_a.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
@@ -528,12 +565,14 @@ data:
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_3_B.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/ITP1_2_C.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/CGL_7_A.test.cpp
@@ -543,9 +582,10 @@ data:
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
-  - Test/AOJ/CGL_1_C.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/2957.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
