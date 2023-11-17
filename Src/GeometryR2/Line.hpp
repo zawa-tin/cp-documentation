@@ -45,6 +45,10 @@ public:
     bool valid() const {
         return p0_ != p1_;
     }
+    Vector slope() const {
+        assert(valid());
+        return Vector{p1() - p0()}.normalized();
+    }
 };
 
 } // namespace geometryR2

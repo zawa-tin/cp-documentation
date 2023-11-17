@@ -45,6 +45,10 @@ public:
         assert(valid());
         return Distance(p0_, p1_);
     }
+    Point midpoint() const {
+        assert(valid());
+        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);
+    }
 };
 
 } // namespace geometryR2
