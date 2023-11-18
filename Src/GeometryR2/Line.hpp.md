@@ -23,7 +23,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
     title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
   - icon: ':warning:'
@@ -35,7 +35,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndLine.hpp
     title: Src/GeometryR2/Intersect/CircleAndLine.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/LineAndLine.hpp
     title: Src/GeometryR2/Intersect/LineAndLine.hpp
   - icon: ':heavy_check_mark:'
@@ -57,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2009.test.cpp
+    title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
@@ -237,6 +240,7 @@ data:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/2009.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
 documentation_of: Src/GeometryR2/Line.hpp

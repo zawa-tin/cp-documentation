@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/PointAndPoint.hpp
     title: Src/GeometryR2/Distance/PointAndPoint.hpp
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/LineAndLine.hpp
     title: Src/GeometryR2/Intersect/LineAndLine.hpp
   - icon: ':heavy_check_mark:'

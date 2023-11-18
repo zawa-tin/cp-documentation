@@ -28,6 +28,9 @@ data:
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2009.test.cpp
+    title: Test/AOJ/2009.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -224,6 +227,7 @@ data:
   verifiedWith:
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/2009.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
 documentation_of: Src/GeometryR2/Polygon.hpp
