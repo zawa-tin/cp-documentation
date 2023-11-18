@@ -37,6 +37,9 @@ data:
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2862.test.cpp
+    title: Test/AOJ/2862.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
@@ -201,8 +204,9 @@ data:
   verifiedWith:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/2862.test.cpp
+  - Test/AOJ/2003.test.cpp
 documentation_of: Src/GeometryR2/Distance/PointAndSegment.hpp
 layout: document
 redirect_from:

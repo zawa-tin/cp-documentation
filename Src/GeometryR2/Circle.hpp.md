@@ -40,6 +40,9 @@ data:
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2862.test.cpp
+    title: Test/AOJ/2862.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -201,19 +204,20 @@ data:
   path: Src/GeometryR2/Circle.hpp
   requiredBy:
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
-  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
-  - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_7_E.test.cpp
-  - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/2862.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/1132.test.cpp
+  - Test/AtCoder/abc157_f.test.cpp
 documentation_of: Src/GeometryR2/Circle.hpp
 layout: document
 redirect_from:

@@ -304,6 +304,9 @@ data:
       path: Test/AOJ/2009.test.cpp
       title: Test/AOJ/2009.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2862.test.cpp
+      title: Test/AOJ/2862.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/2957.test.cpp
       title: AOJ2957 MOD Rush
     - icon: ':heavy_check_mark:'
