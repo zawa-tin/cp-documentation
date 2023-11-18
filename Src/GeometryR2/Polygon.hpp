@@ -83,7 +83,12 @@ public:
         }
         return res / static_cast<Real>(2);
     }
-
+    void pushBack(const Point& p) {
+        data_.push_back(p);
+    }
+    void emplaceBack(Real x, Real y) {
+        data_.emplace_back(x, y);
+    }
 };
 
 } // namespace geometryR2
