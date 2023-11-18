@@ -29,10 +29,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
     title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+    title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - icon: ':warning:'
     path: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
     title: Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1157.test.cpp
+    title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
@@ -194,11 +200,13 @@ data:
   requiredBy:
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp

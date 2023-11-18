@@ -8,8 +8,14 @@ data:
     path: Src/GeometryR2/Distance/PointAndPoint.hpp
     title: Src/GeometryR2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Polygon.hpp
+    title: Src/GeometryR2/Polygon.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
@@ -22,59 +28,47 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1053.test.cpp
-    title: AOJ1053 Accelerated Railgun
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/2003.test.cpp
-    title: Test/AOJ/2003.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_2_D.test.cpp
-    title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\n#line 2\
-    \ \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include\
-    \ <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
-    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
-    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
-    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
-    #line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n\
-    namespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr\
-    \ Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr i32 negative{-1};\nconstexpr\
-    \ i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\nconstexpr\
-    \ i32 Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
-    \   if (value > EPS) return internal::positive;\n    return internal::zero;\n\
-    }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
-    }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
-    }\n\nconstexpr bool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
-    \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
-    \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real\
-    \ Square(Real value) {\n    return (Zero(value) ? value : value * value);\n}\n\
-    \nconstexpr Real Sqrt(Real value) {\n    assert(!Negative(value));\n    return\
-    \ (Zero(value) ? value : sqrtl(value));\n}\n\nconstexpr Real Abs(Real value) {\n\
-    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4\
-    \ \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr\
-    \ Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real arc)\
-    \ {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real RadianToArc(Real\
-    \ radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\n\n\
-    #line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\
+    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
+    \ {\n\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
+    \n} // namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value <\
+    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
+    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
+    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
+    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
+    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
+    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
+    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
+    \ {\n    return (Zero(value) ? value : value * value);\n}\n\nconstexpr Real Sqrt(Real\
+    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
+    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
+    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
+    Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6\
+    \ \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
+    \nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\
+    \nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
+    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
     \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
     \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
@@ -166,47 +160,79 @@ data:
     \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
     \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
     \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Distance/PointAndSegment.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p, const Segment&\
-    \ s) {\n    assert(s.valid());\n    if (Negative(Dot(s.p1() - s.p0(), p - s.p0())))\
-    \ {\n        return Distance(p, s.p0());\n    }\n    if (Negative(Dot(s.p0() -\
-    \ s.p1(), p - s.p1()))) {\n        return Distance(p, s.p1());\n    }\n    return\
-    \ Abs(Cross(s.p1() - s.p0(), p - s.p0())) / s.length();\n}\n\nbool PointOnSegment(const\
-    \ Point& p, const Segment& s) {\n    assert(s.valid());\n    return Zero(Distance(p,\
-    \ s));\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Real.hpp\"\n#include \"../Segment.hpp\"\n#include\
-    \ \"../Point.hpp\"\n#include \"./PointAndPoint.hpp\"\n\n#include <cassert>\n\n\
-    namespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p, const\
-    \ Segment& s) {\n    assert(s.valid());\n    if (Negative(Dot(s.p1() - s.p0(),\
-    \ p - s.p0()))) {\n        return Distance(p, s.p0());\n    }\n    if (Negative(Dot(s.p0()\
-    \ - s.p1(), p - s.p1()))) {\n        return Distance(p, s.p1());\n    }\n    return\
-    \ Abs(Cross(s.p1() - s.p0(), p - s.p0())) / s.length();\n}\n\nbool PointOnSegment(const\
-    \ Point& p, const Segment& s) {\n    assert(s.valid());\n    return Zero(Distance(p,\
-    \ s));\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nbool Intersect(const Segment& s0, const Segment&\
+    \ s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n    return s0.straddle(s1)\
+    \ and s1.straddle(s0);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryR2/Polygon.hpp\"\n\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\
+    \n\n#line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <vector>\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n    std::vector<Point>\
+    \ data_;\npublic:\n    /* member */\n    usize size() const {\n        return\
+    \ data_.size();\n    }\n\n    /* constructor */\n    Polygon() = default;\n  \
+    \  Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n    Polygon(const\
+    \ std::vector<Point>& data) : data_{data} {}\n    Polygon(usize n) : data_{n}\
+    \ {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /* operator[] */\n\
+    \    Point& operator[](usize i) {\n        assert(i < size());\n        return\
+    \ data_[i];\n    }\n    const Point& operator[](usize i) const {\n        assert(i\
+    \ < size());\n        return data_[i];\n    }\n    Polygon& operator=(const Polygon&\
+    \ polygon) {\n        data_ = polygon.data_;\n        return *this;\n    }\n \
+    \   friend std::istream& operator>>(std::istream& is, Polygon& polygon) {\n  \
+    \      for (size_t i{} ; i < polygon.size() ; i++) {\n            is >> polygon[i];\n\
+    \        }\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Polygon& polygon) {\n        for (usize i{} ; i < polygon.size() ;\
+    \ i++) {\n            std::cout << polygon[i] << (i + 1 == polygon.size() ? \"\
+    \" : \" \");\n        }\n        return os;\n    }\n\n    /* member function */\n\
+    \    void orderRotate(usize i) {\n        assert(i < size());\n        std::rotate(data_.begin(),\
+    \ data_.begin() + i, data_.end());\n    }\n    void headMinimize() {\n       \
+    \ auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};\n\
+    \        orderRotate(index);\n    }\n    bool isConvex() const {\n        assert(size()\
+    \ >= static_cast<usize>(3));\n        for (usize i{} ; i < size() ; i++) {\n \
+    \           if (Relation(data_[i], data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n\
+    \                    == CLOCKWISE) {\n                return false;\n        \
+    \    }\n        }\n        return true;\n    }\n    Real area() const {\n    \
+    \    assert(size() >= static_cast<usize>(3));\n        Real res{};\n        for\
+    \ (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i] - data_[0],\
+    \ data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n\
+    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
+    \ }\n    void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 7 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\
+    \n\n#line 9 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nbool Intersect(const Polygon& polygon, const\
+    \ Segment& segment) {\n    usize n{polygon.size()};\n    assert(n >= static_cast<usize>(3));\n\
+    \    assert(segment.valid());\n    for (usize i{} ; i < n ; i++) {\n        Segment\
+    \ edge{polygon[i], polygon[i+1==n?0:i+1]};\n        if (Intersect(edge, segment))\
+    \ {\n            return true;\n        }\n    }\n    return false;\n}\n\n} //\
+    \ namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"./SegmentAndSegment.hpp\"\
+    \n#include \"../Polygon.hpp\"\n#include \"../Segment.hpp\"\n\n#include <cassert>\n\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Polygon&\
+    \ polygon, const Segment& segment) {\n    usize n{polygon.size()};\n    assert(n\
+    \ >= static_cast<usize>(3));\n    assert(segment.valid());\n    for (usize i{}\
+    \ ; i < n ; i++) {\n        Segment edge{polygon[i], polygon[i+1==n?0:i+1]};\n\
+    \        if (Intersect(edge, segment)) {\n            return true;\n        }\n\
+    \    }\n    return false;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Distance/PointAndPoint.hpp
+  - Src/GeometryR2/Polygon.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Distance/PointAndSegment.hpp
-  requiredBy:
-  - Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  timestamp: '2023-11-18 00:31:45+09:00'
+  path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  requiredBy: []
+  timestamp: '2023-11-19 02:23:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1053.test.cpp
   - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2003.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
-documentation_of: Src/GeometryR2/Distance/PointAndSegment.hpp
+documentation_of: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Distance/PointAndSegment.hpp
-- /library/Src/GeometryR2/Distance/PointAndSegment.hpp.html
-title: Src/GeometryR2/Distance/PointAndSegment.hpp
+- /library/Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+- /library/Src/GeometryR2/Intersect/PolygonAndSegment.hpp.html
+title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
 ---

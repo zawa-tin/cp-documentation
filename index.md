@@ -151,6 +151,9 @@ data:
       path: Src/GeometryR2/Intersect/LineAndLine.hpp
       title: Src/GeometryR2/Intersect/LineAndLine.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+      title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
       title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - name: Src/GeometryR2/Orthgonal
@@ -291,6 +294,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1132.test.cpp
       title: AOJ1132 Circle and Points
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1157.test.cpp
+      title: Test/AOJ/1157.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2003.test.cpp
       title: Test/AOJ/2003.test.cpp

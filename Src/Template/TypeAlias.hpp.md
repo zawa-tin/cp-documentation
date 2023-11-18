@@ -84,6 +84,9 @@ data:
     path: Src/GeometryR2/Intersect/LineAndLine.hpp
     title: Src/GeometryR2/Intersect/LineAndLine.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+    title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
     title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -202,6 +205,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1157.test.cpp
+    title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
@@ -573,6 +579,7 @@ data:
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/Circle.hpp
   - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - Src/GeometryR2/Intersect/LineAndLine.hpp
   - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
@@ -627,6 +634,7 @@ data:
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp

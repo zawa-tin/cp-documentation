@@ -31,6 +31,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1157.test.cpp
+    title: Test/AOJ/1157.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
   _isVerificationFailed: false
@@ -206,6 +209,7 @@ data:
   timestamp: '2023-11-18 00:31:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Distance/SegmentAndSegment.hpp
 layout: document

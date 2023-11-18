@@ -173,7 +173,9 @@ data:
     \ >= static_cast<usize>(3));\n        Real res{};\n        for (usize i{1} ; i\
     \ < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
     \ - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n    }\n\
-    \n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 2 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
+    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
+    \ void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n    }\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 2 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
     \ geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
     };\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 9 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
@@ -215,7 +217,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_3_C.test.cpp
   requiredBy: []
-  timestamp: '2023-11-19 01:21:38+09:00'
+  timestamp: '2023-11-19 02:23:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_3_C.test.cpp

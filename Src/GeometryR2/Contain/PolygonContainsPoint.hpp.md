@@ -25,6 +25,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1157.test.cpp
+    title: Test/AOJ/1157.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_C.test.cpp
     title: Test/AOJ/CGL_3_C.test.cpp
   _isVerificationFailed: false
@@ -167,7 +170,9 @@ data:
     \ >= static_cast<usize>(3));\n        Real res{};\n        for (usize i{1} ; i\
     \ < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
     \ - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n    }\n\
-    \n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 9 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
+    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
+    \ void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n    }\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 9 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
     \n\n#line 11 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\n#include <utility>\n\
     \nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState PolygonContainsPoint(const\
     \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
@@ -201,9 +206,10 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   requiredBy: []
-  timestamp: '2023-11-19 01:21:38+09:00'
+  timestamp: '2023-11-19 02:23:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
 documentation_of: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
 layout: document

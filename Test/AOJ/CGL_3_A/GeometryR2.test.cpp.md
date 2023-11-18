@@ -169,12 +169,13 @@ data:
     \    assert(size() >= static_cast<usize>(3));\n        Real res{};\n        for\
     \ (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i] - data_[0],\
     \ data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n\
-    \    }\n\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 5 \"\
-    Test/AOJ/CGL_3_A/GeometryR2.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_3_A/GeometryR2.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    using namespace geometryR2;\n\
-    \    SetFastIO();\n    SetPrecision(1);\n    int n; std::cin >> n;\n    Polygon\
-    \ ps(n);\n    std::cin >> ps;\n    Real area{ps.area()};\n    std::cout << area\
-    \ << '\\n';\n}\n"
+    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
+    \ }\n    void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 5 \"Test/AOJ/CGL_3_A/GeometryR2.test.cpp\"\
+    \n\n#line 7 \"Test/AOJ/CGL_3_A/GeometryR2.test.cpp\"\n\nint main() {\n    using\
+    \ namespace zawa;\n    using namespace geometryR2;\n    SetFastIO();\n    SetPrecision(1);\n\
+    \    int n; std::cin >> n;\n    Polygon ps(n);\n    std::cin >> ps;\n    Real\
+    \ area{ps.area()};\n    std::cout << area << '\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_A\"\
     \n\n#include \"../../../Src/Template/IOSetting.hpp\"\n#include \"../../../Src/GeometryR2/Polygon.hpp\"\
     \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
@@ -192,7 +193,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   requiredBy: []
-  timestamp: '2023-11-19 01:21:38+09:00'
+  timestamp: '2023-11-19 02:23:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_3_A/GeometryR2.test.cpp

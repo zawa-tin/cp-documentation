@@ -20,7 +20,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+    title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1157.test.cpp
+    title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
@@ -166,7 +172,9 @@ data:
     \    assert(size() >= static_cast<usize>(3));\n        Real res{};\n        for\
     \ (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i] - data_[0],\
     \ data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n\
-    \    }\n\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n"
+    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
+    \ }\n    void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Real.hpp\"\
     \n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2\
@@ -197,7 +205,9 @@ data:
     \ >= static_cast<usize>(3));\n        Real res{};\n        for (usize i{1} ; i\
     \ < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
     \ - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n    }\n\
-    \n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n"
+    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
+    \ void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n    }\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Real.hpp
@@ -208,10 +218,12 @@ data:
   path: Src/GeometryR2/Polygon.hpp
   requiredBy:
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
-  timestamp: '2023-11-19 01:21:38+09:00'
+  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  timestamp: '2023-11-19 02:23:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
 documentation_of: Src/GeometryR2/Polygon.hpp
