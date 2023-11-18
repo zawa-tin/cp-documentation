@@ -57,7 +57,8 @@ data:
     \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
     \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
     \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
-    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\n} // namespace\
+    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
+    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
     \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
     #line 8 \"Src/GeometryZ2/Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
     \ {\n\nclass Point {\nprivate:\n    Zahlen x_{}, y_{};\n    static constexpr u32\
@@ -100,8 +101,8 @@ data:
     \ is, Point& p) {\n        is >> p.x() >> p.y();\n        return is;\n    }\n\
     \    friend std::ostream& operator<<(std::ostream& os, const Point& p) {\n   \
     \     os << '(' << p.x() << ',' << p.y() << ')';\n        return os;\n    }\n\n\
-    \    /* member function */\n    Zahlen normSquare() const {\n        return x()\
-    \ * x() + y() * y();\n    }\n\n    /* friend function */\n    friend Zahlen Dot(const\
+    \    /* member function */\n    Zahlen normSquare() const {\n        return Square(x())\
+    \ + Square(y());\n    }\n\n    /* friend function */\n    friend Zahlen Dot(const\
     \ Point& p0, const Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n\
     \    }\n    friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return\
     \ p0.x() * p1.y() - p0.y() * p1.x();\n    }\n    friend bool ArgComp(const Point&\
@@ -233,7 +234,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc296_g.test.cpp
   requiredBy: []
-  timestamp: '2023-11-17 15:09:54+09:00'
+  timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc296_g.test.cpp

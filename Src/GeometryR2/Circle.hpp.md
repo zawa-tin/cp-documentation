@@ -40,8 +40,8 @@ data:
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_7_A.test.cpp
-    title: Test/AOJ/CGL_7_A.test.cpp
+    path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -211,8 +211,8 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Circle.hpp
 layout: document

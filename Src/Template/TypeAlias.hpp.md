@@ -117,8 +117,17 @@ data:
     path: Src/GeometryR2/Segment.hpp
     title: Src/GeometryR2/Segment.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Circle.hpp
+    title: Src/GeometryZ2/Circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
@@ -227,8 +236,11 @@ data:
     path: Test/AOJ/CGL_3_B.test.cpp
     title: Test/AOJ/CGL_3_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_7_A.test.cpp
-    title: Test/AOJ/CGL_7_A.test.cpp
+    path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -508,8 +520,11 @@ data:
   - Src/GeometryZ2/Relation.hpp
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Circle.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/LinearSieve.hpp
   - Src/Number/EnumerateQuotients.hpp
@@ -587,10 +602,11 @@ data:
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/ITP1_2_C.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
-  - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp

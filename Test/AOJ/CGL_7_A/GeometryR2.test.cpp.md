@@ -29,14 +29,15 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
-  bundledCode: "#line 1 \"Test/AOJ/CGL_7_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\
-    \n\n#line 2 \"Src/GeometryR2/Circle.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\
-    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
+  bundledCode: "#line 1 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\n\n#line\
+    \ 2 \"Src/GeometryR2/Circle.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n\
+    #include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
+    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
+    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n\
+    #include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
     \ {\n\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
     \n} // namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value <\
@@ -142,14 +143,14 @@ data:
     \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
     \ 1;\n        Real up{Square(c0.radius() + c1.radius())};\n        if (Smaller(dist,\
     \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Test/AOJ/CGL_7_A.test.cpp\"\
-    \n\n#line 6 \"Test/AOJ/CGL_7_A.test.cpp\"\n\nint main() {\n    using namespace\
-    \ zawa::geometryR2;\n    Circle a, b;\n    std::cin >> a.center() >> a.radius();\n\
-    \    std::cin >> b.center() >> b.radius();\n    std::cout << NumberCommonTangent(a,\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\
+    \n\n#line 6 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\n\nint main() {\n    using\
+    \ namespace zawa::geometryR2;\n    Circle a, b;\n    std::cin >> a.center() >>\
+    \ a.radius();\n    std::cin >> b.center() >> b.radius();\n    std::cout << NumberCommonTangent(a,\
     \ b) << '\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\
-    \n\n#include \"../../Src/GeometryR2/Circle.hpp\"\n\n#include <iostream>\n\nint\
-    \ main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n    std::cin\
+    \n\n#include \"../../../Src/GeometryR2/Circle.hpp\"\n\n#include <iostream>\n\n\
+    int main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n    std::cin\
     \ >> a.center() >> a.radius();\n    std::cin >> b.center() >> b.radius();\n  \
     \  std::cout << NumberCommonTangent(a, b) << '\\n';\n}\n"
   dependsOn:
@@ -160,15 +161,15 @@ data:
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Distance/PointAndPoint.hpp
   isVerificationFile: true
-  path: Test/AOJ/CGL_7_A.test.cpp
+  path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   requiredBy: []
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/CGL_7_A.test.cpp
+documentation_of: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_7_A.test.cpp
-- /verify/Test/AOJ/CGL_7_A.test.cpp.html
-title: Test/AOJ/CGL_7_A.test.cpp
+- /verify/Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+- /verify/Test/AOJ/CGL_7_A/GeometryR2.test.cpp.html
+title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
 ---

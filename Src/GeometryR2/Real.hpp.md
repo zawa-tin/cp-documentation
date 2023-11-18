@@ -118,8 +118,8 @@ data:
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_7_A.test.cpp
-    title: Test/AOJ/CGL_7_A.test.cpp
+    path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -217,8 +217,8 @@ data:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/CGL_7_A.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp

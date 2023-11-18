@@ -2,6 +2,24 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Circle.hpp
+    title: Src/GeometryZ2/Circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/State.hpp
+    title: Src/GeometryZ2/Contain/State.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Point.hpp
+    title: Src/GeometryZ2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Zahlen.hpp
+    title: Src/GeometryZ2/Zahlen.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Number/IntegerDivision.hpp
     title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
       \u3052\u9664\u7B97"
@@ -76,42 +94,151 @@ data:
     \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
     \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
-    \ ? ok : ng) = mid;\n    }\n    return ok;\n}\n\n} // namespace zawa\n#line 8\
-    \ \"Test/AtCoder/abc191_d.test.cpp\"\n\n#include <iostream>\n#line 11 \"Test/AtCoder/abc191_d.test.cpp\"\
-    \n\nusing namespace zawa;\n\ni64 parse() {\n    std::string s; std::cin >> s;\n\
-    \    return FloatingMarkerShift(s, 4);\n}\n\nconstexpr i64 mul{10000}, range{200100};\n\
-    \nint main() {\n    i64 X{parse()}, Y{parse()}, R{parse()}; \n    u64 ans{};\n\
-    \    for (i64 x{-range * mul} ; x <= range * mul ; x += mul) {\n        if (abs(x\
-    \ - X) > R) continue;\n        i64 y2{ R * R - (x - X) * (x - X) };\n        assert(y2\
-    \ >= 0);\n        i64 u{BinarySearch(Y, Y + R + 1, [&](i64 p) -> bool { return\
-    \ (p - Y) * (p - Y) <= y2;})};\n        u = DivFloor(u, mul);\n        i64 d{BinarySearch(Y,\
-    \ Y - R - 1, [&](i64 p) -> bool { return (p - Y) * (p - Y) <= y2;})};\n      \
-    \  d = DivCeil(d, mul);\n        ans += (u - d + 1);\n    }\n    std::cout <<\
-    \ ans << std::endl;\n}\n"
+    \ ? ok : ng) = mid;\n    }\n    return ok;\n}\n\n} // namespace zawa\n#line 2\
+    \ \"Src/GeometryZ2/Circle.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line\
+    \ 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 6 \"Src/GeometryZ2/Zahlen.hpp\"\n\n\
+    namespace zawa {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace\
+    \ internal {\n\nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr\
+    \ i32 negative{-1};\n\n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value)\
+    \ {\n    if (value < 0) return internal::negative;\n    if (value > 0) return\
+    \ internal::positive;\n    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen\
+    \ value) {\n    return Sign(value) == internal::positive;\n}\n\nconstexpr bool\
+    \ Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr\
+    \ bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
+    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n#include <iostream>\n#line 8 \"Src/GeometryZ2/Point.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point {\nprivate:\n  \
+    \  Zahlen x_{}, y_{};\n    static constexpr u32 origin{0};\n    static constexpr\
+    \ u32 firstQuadrant{1};\n    static constexpr u32 secondQuadrant{1};\n    static\
+    \ constexpr u32 thirdQuadrant{1};\n    static constexpr u32 forthQuadrant{1};\n\
+    \n    u32 area() const {\n        if (x_ == 0 and y_ == 0) return origin;\n  \
+    \      if (x_ > 0 and y_ >= 0) return firstQuadrant;\n        if (x_ <= 0 and\
+    \ y_ > 0) return secondQuadrant;\n        if (x_ < 0 and y_ <= 0) return thirdQuadrant;\n\
+    \        return forthQuadrant;\n    }\npublic:\n    /* constructor */\n    Point()\
+    \ = default;\n    Point(const Point& p) : x_{p.x()}, y_{p.y()} {}\n    Point(Zahlen\
+    \ x, Zahlen y) : x_{x}, y_{y} {}\n\n    /* getter setter */\n    Zahlen& x() {\n\
+    \        return x_;\n    }\n    const Zahlen& x() const {\n        return x_;\n\
+    \    }\n    Zahlen& y() {\n        return y_;\n    }\n    const Zahlen& y() const\
+    \ {\n        return y_;\n    }\n\n    /* operator */\n    Point& operator=(const\
+    \ Point& p) {\n        x() = p.x();\n        y() = p.y();\n        return *this;\n\
+    \    }\n    Point& operator+=(const Point& p) {\n        x() += p.x();\n     \
+    \   y() += p.y();\n        return *this;\n    }\n    friend Point operator+(const\
+    \ Point& p0, const Point& p1) {\n        return Point{p0} += p1;\n    }\n    Point&\
+    \ operator-=(const Point& p) {\n        x() -= p.x();\n        y() -= p.y();\n\
+    \        return *this;\n    }\n    friend Point operator-(const Point& p0, const\
+    \ Point& p1) {\n        return Point{p0} -= p1;\n    }\n    Point& operator*=(Zahlen\
+    \ k) {\n        x() *= k;\n        y() *= k;\n        return *this;\n    }\n \
+    \   friend Point operator*(const Point& p, Zahlen k) {\n        return Point{p}\
+    \ *= k;\n    }\n    friend Point operator*(Zahlen k, const Point& p) {\n     \
+    \   return Point{p} *= k;\n    }\n    Point& operator/=(Zahlen k) {\n        assert(k);\n\
+    \        assert(x() % k == 0);\n        assert(y() % k == 0);\n        x() /=\
+    \ k;\n        y() /= k;\n        return *this;\n    }\n    friend Point operator/(const\
+    \ Point& p, Zahlen k) {\n        return Point{p} /= k;\n    }\n    friend bool\
+    \ operator==(const Point& p0, const Point& p1) {\n        return p0.x() == p1.x()\
+    \ and p0.y() == p1.y();\n    }\n    friend bool operator!=(const Point& p0, const\
+    \ Point& p1) {\n        return p0.x() != p1.x() or p0.y() != p1.y();\n    }\n\
+    \    friend bool operator<(const Point& p0, const Point& p1) {\n        if (p0.x()\
+    \ != p1.x()) return p0.x() < p1.x();\n        else return p0.y() < p1.y();\n \
+    \   }\n    friend bool operator<=(const Point& p0, const Point& p1) {\n      \
+    \  return (p0 < p1) or (p0 == p1);\n    }\n    friend bool operator>(const Point&\
+    \ p0, const Point& p1) {\n        if (p0.x() != p1.x()) return p0.x() > p1.x();\n\
+    \        else return p0.y() > p1.y();\n    }\n    friend bool operator>=(const\
+    \ Point& p0, const Point& p1) {\n        return (p0 > p1) or (p0 == p1);\n   \
+    \ }\n    friend std::istream& operator>>(std::istream& is, Point& p) {\n     \
+    \   is >> p.x() >> p.y();\n        return is;\n    }\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const Point& p) {\n        os << '(' << p.x() <<\
+    \ ',' << p.y() << ')';\n        return os;\n    }\n\n    /* member function */\n\
+    \    Zahlen normSquare() const {\n        return Square(x()) + Square(y());\n\
+    \    }\n\n    /* friend function */\n    friend Zahlen Dot(const Point& p0, const\
+    \ Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n   \
+    \ friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x()\
+    \ * p1.y() - p0.y() * p1.x();\n    }\n    friend bool ArgComp(const Point& p0,\
+    \ const Point& p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n\
+    \        Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
+    \ : p0.normSquare() < p1.normSquare());\n    }\n};\nusing Vector = Point;\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
+    \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n#line 7 \"Src/GeometryZ2/Circle.hpp\"\n\n#line 9 \"Src/GeometryZ2/Circle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Circle {\nprivate:\n \
+    \   Point center_{};\n    Zahlen radius_{};\npublic:\n    /* constructor */\n\
+    \    Circle() = default;\n    Circle(const Point& center, const Zahlen radius)\
+    \ : center_{center}, radius_{radius} {\n        assert(!Negative(radius_));\n\
+    \    }\n\n    /* getter, setter */\n    Point& center() {\n        return center_;\n\
+    \    }\n    const Point& center() const {\n        return center_;\n    }\n  \
+    \  Zahlen& radius() {\n        return radius_;\n    }\n    const Zahlen& radius()\
+    \ const {\n        return radius_;\n    }\n\n    /* operator */\n    Circle& operator=(const\
+    \ Circle& c) {\n        radius_ = c.radius();\n        center_ = c.center();\n\
+    \        return *this;\n    }\n    friend bool operator==(const Circle& c0, const\
+    \ Circle& c1) {\n        return c0.radius() == c1.radius() and c0.center() ==\
+    \ c1.center();\n    }\n    friend bool operator!=(const Circle& c0, const Circle&\
+    \ c1) {\n        return c0.radius() != c1.radius() or c0.center() != c1.center();\n\
+    \    }\n\n    /* member */\n    \n    Zahlen radiusSquare() const {\n        return\
+    \ Square(radius_);\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
+    \ Circle& c0, const Circle& c1) {\n        Zahlen dist{DistanceSquare(c0.center(),\
+    \ c1.center())};\n        Zahlen down{Square(Abs(c0.radius() - c1.radius()))};\n\
+    \        if (dist < down) {\n            return 0;\n        }\n        if (dist\
+    \ == down) {\n            return 1;\n        }\n        Zahlen up{Square(c0.radius()\
+    \ + c1.radius())}; \n        if (dist < up) {\n            return 2;\n       \
+    \ }\n        if (dist == up) {\n            return 3;\n        }\n        return\
+    \ 4;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"\
+    Src/GeometryZ2/Contain/CircleContainsPoint.hpp\"\n\n#line 2 \"Src/GeometryZ2/Contain/State.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum ContainState {\n    INSIDE\
+    \          = 0,\n    ONLINE          = 1,\n    OUTSIDE         = 2\n};\n\n} //\
+    \ namespace geometryZ2\n\n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Contain/CircleContainsPoint.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nContainState CircleContainsPoint(const\
+    \ Circle& c, const Point& p) {\n    Zahlen dist{DistanceSquare(c.center(), p)};\n\
+    \    if (dist < c.radiusSquare()) {\n        return INSIDE;\n    }\n    else if\
+    \ (dist == c.radiusSquare()) {\n        return ONLINE;\n    }\n    else {\n  \
+    \      return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n#line 10 \"Test/AtCoder/abc191_d.test.cpp\"\n\n#line 13 \"Test/AtCoder/abc191_d.test.cpp\"\
+    \n\nusing namespace zawa;\nusing namespace geometryZ2;\n\ni64 parse() {\n    std::string\
+    \ s; std::cin >> s;\n    return FloatingMarkerShift(s, 4);\n}\n\nconstexpr i64\
+    \ mul{10000}, range{200100};\n\nint main() {\n    i64 X{parse()}, Y{parse()},\
+    \ R{parse()}; \n    Circle c{Point{X, Y}, R};\n    u64 ans{};\n    \n    auto\
+    \ contain{[&](Zahlen x, Zahlen y) -> bool {\n        return CircleContainsPoint(c,\
+    \ Point{x, y}) != OUTSIDE;\n    }};\n\n    for (i64 x{-range * mul} ; x <= range\
+    \ * mul ; x += mul) {\n        if (!contain(x, Y)) continue;\n        i64 u{BinarySearch(Y,\
+    \ Y + R + 1, [&](i64 p) -> bool { return contain(x, p); })};\n        u = DivFloor(u,\
+    \ mul);\n        i64 d{BinarySearch(Y, Y - R - 1, [&](i64 p) -> bool { return\
+    \ contain(x, p); })};\n        d = DivCeil(d, mul);\n        ans += (u - d + 1);\n\
+    \    }\n    std::cout << ans << std::endl;\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc191/tasks/abc191_d\"\n\n\
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/FloatingNumberAlias.hpp\"\
     \n#include \"../../Src/Number/IntegerDivision.hpp\"\n#include \"../../Src/Utility/FloatingMarkerShift.hpp\"\
-    \n#include \"../../Src/Utility/BinarySearch.hpp\"\n\n#include <iostream>\n#include\
-    \ <cmath>\n\nusing namespace zawa;\n\ni64 parse() {\n    std::string s; std::cin\
-    \ >> s;\n    return FloatingMarkerShift(s, 4);\n}\n\nconstexpr i64 mul{10000},\
-    \ range{200100};\n\nint main() {\n    i64 X{parse()}, Y{parse()}, R{parse()};\
-    \ \n    u64 ans{};\n    for (i64 x{-range * mul} ; x <= range * mul ; x += mul)\
-    \ {\n        if (abs(x - X) > R) continue;\n        i64 y2{ R * R - (x - X) *\
-    \ (x - X) };\n        assert(y2 >= 0);\n        i64 u{BinarySearch(Y, Y + R +\
-    \ 1, [&](i64 p) -> bool { return (p - Y) * (p - Y) <= y2;})};\n        u = DivFloor(u,\
-    \ mul);\n        i64 d{BinarySearch(Y, Y - R - 1, [&](i64 p) -> bool { return\
-    \ (p - Y) * (p - Y) <= y2;})};\n        d = DivCeil(d, mul);\n        ans += (u\
-    \ - d + 1);\n    }\n    std::cout << ans << std::endl;\n}\n"
+    \n#include \"../../Src/Utility/BinarySearch.hpp\"\n#include \"../../Src/GeometryZ2/Circle.hpp\"\
+    \n#include \"../../Src/GeometryZ2/Contain/CircleContainsPoint.hpp\"\n\n#include\
+    \ <iostream>\n#include <cmath>\n\nusing namespace zawa;\nusing namespace geometryZ2;\n\
+    \ni64 parse() {\n    std::string s; std::cin >> s;\n    return FloatingMarkerShift(s,\
+    \ 4);\n}\n\nconstexpr i64 mul{10000}, range{200100};\n\nint main() {\n    i64\
+    \ X{parse()}, Y{parse()}, R{parse()}; \n    Circle c{Point{X, Y}, R};\n    u64\
+    \ ans{};\n    \n    auto contain{[&](Zahlen x, Zahlen y) -> bool {\n        return\
+    \ CircleContainsPoint(c, Point{x, y}) != OUTSIDE;\n    }};\n\n    for (i64 x{-range\
+    \ * mul} ; x <= range * mul ; x += mul) {\n        if (!contain(x, Y)) continue;\n\
+    \        i64 u{BinarySearch(Y, Y + R + 1, [&](i64 p) -> bool { return contain(x,\
+    \ p); })};\n        u = DivFloor(u, mul);\n        i64 d{BinarySearch(Y, Y - R\
+    \ - 1, [&](i64 p) -> bool { return contain(x, p); })};\n        d = DivCeil(d,\
+    \ mul);\n        ans += (u - d + 1);\n    }\n    std::cout << ans << std::endl;\n\
+    }\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Template/FloatingNumberAlias.hpp
   - Src/Number/IntegerDivision.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/GeometryZ2/Circle.hpp
+  - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryZ2/Contain/State.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc191_d.test.cpp
   requiredBy: []
-  timestamp: '2023-09-24 02:48:01+09:00'
+  timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc191_d.test.cpp

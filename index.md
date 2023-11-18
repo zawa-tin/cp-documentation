@@ -163,16 +163,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
       title: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
-  - name: Src/GeometryZ2/Contain
-    pages:
-    - icon: ':heavy_check_mark:'
-      path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-      title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-    - icon: ':heavy_check_mark:'
-      path: Src/GeometryZ2/Contain/State.hpp
-      title: Src/GeometryZ2/Contain/State.hpp
   - name: Src/GeometryZ2
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Circle.hpp
+      title: Src/GeometryZ2/Circle.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Point.hpp
       title: Src/GeometryZ2/Point.hpp
@@ -185,6 +180,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Zahlen.hpp
       title: Src/GeometryZ2/Zahlen.hpp
+  - name: Src/GeometryZ2/Contain
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+      title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+      title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/State.hpp
+      title: Src/GeometryZ2/Contain/State.hpp
+  - name: Src/GeometryZ2/Distance
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+      title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -308,9 +319,6 @@ data:
       path: Test/AOJ/CGL_3_B.test.cpp
       title: Test/AOJ/CGL_3_B.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/AOJ/CGL_7_A.test.cpp
-      title: Test/AOJ/CGL_7_A.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_D.test.cpp
       title: Test/AOJ/CGL_7_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -354,6 +362,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
       title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - name: Test/AOJ/CGL_7_A
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+      title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+      title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'

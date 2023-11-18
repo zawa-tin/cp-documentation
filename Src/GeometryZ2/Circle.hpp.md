@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -12,38 +15,26 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Polygon.hpp
-    title: Src/GeometryZ2/Polygon.hpp
+    path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+    path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A.test.cpp
-    title: Test/AOJ/CGL_3_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B.test.cpp
-    title: Test/AOJ/CGL_3_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc266_c.test.cpp
-    title: Test/AtCoder/abc266_c.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc296_g.test.cpp
-    title: Test/AtCoder/abc296_g.test.cpp
+    path: Test/AtCoder/abc191_d.test.cpp
+    title: Test/AtCoder/abc191_d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Circle.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
     \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
     \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
     \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
@@ -105,59 +96,75 @@ data:
     \ const Point& p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n\
     \        Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
     \ : p0.normSquare() < p1.normSquare());\n    }\n};\nusing Vector = Point;\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
-    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
-    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
-    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
-    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
-    \        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\
-    \u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2\
-    \ -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\
-    \u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
+    \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n#line 7 \"Src/GeometryZ2/Circle.hpp\"\n\n#line 9 \"Src/GeometryZ2/Circle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Circle {\nprivate:\n \
+    \   Point center_{};\n    Zahlen radius_{};\npublic:\n    /* constructor */\n\
+    \    Circle() = default;\n    Circle(const Point& center, const Zahlen radius)\
+    \ : center_{center}, radius_{radius} {\n        assert(!Negative(radius_));\n\
+    \    }\n\n    /* getter, setter */\n    Point& center() {\n        return center_;\n\
+    \    }\n    const Point& center() const {\n        return center_;\n    }\n  \
+    \  Zahlen& radius() {\n        return radius_;\n    }\n    const Zahlen& radius()\
+    \ const {\n        return radius_;\n    }\n\n    /* operator */\n    Circle& operator=(const\
+    \ Circle& c) {\n        radius_ = c.radius();\n        center_ = c.center();\n\
+    \        return *this;\n    }\n    friend bool operator==(const Circle& c0, const\
+    \ Circle& c1) {\n        return c0.radius() == c1.radius() and c0.center() ==\
+    \ c1.center();\n    }\n    friend bool operator!=(const Circle& c0, const Circle&\
+    \ c1) {\n        return c0.radius() != c1.radius() or c0.center() != c1.center();\n\
+    \    }\n\n    /* member */\n    \n    Zahlen radiusSquare() const {\n        return\
+    \ Square(radius_);\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
+    \ Circle& c0, const Circle& c1) {\n        Zahlen dist{DistanceSquare(c0.center(),\
+    \ c1.center())};\n        Zahlen down{Square(Abs(c0.radius() - c1.radius()))};\n\
+    \        if (dist < down) {\n            return 0;\n        }\n        if (dist\
+    \ == down) {\n            return 1;\n        }\n        Zahlen up{Square(c0.radius()\
+    \ + c1.radius())}; \n        if (dist < up) {\n            return 2;\n       \
+    \ }\n        if (dist == up) {\n            return 3;\n        }\n        return\
+    \ 4;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Zahlen.hpp\"\
+    \n#include \"./Point.hpp\"\n#include \"./Distance/PointAndPoint.hpp\"\n\n#include\
+    \ <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Circle {\n\
+    private:\n    Point center_{};\n    Zahlen radius_{};\npublic:\n    /* constructor\
+    \ */\n    Circle() = default;\n    Circle(const Point& center, const Zahlen radius)\
+    \ : center_{center}, radius_{radius} {\n        assert(!Negative(radius_));\n\
+    \    }\n\n    /* getter, setter */\n    Point& center() {\n        return center_;\n\
+    \    }\n    const Point& center() const {\n        return center_;\n    }\n  \
+    \  Zahlen& radius() {\n        return radius_;\n    }\n    const Zahlen& radius()\
+    \ const {\n        return radius_;\n    }\n\n    /* operator */\n    Circle& operator=(const\
+    \ Circle& c) {\n        radius_ = c.radius();\n        center_ = c.center();\n\
+    \        return *this;\n    }\n    friend bool operator==(const Circle& c0, const\
+    \ Circle& c1) {\n        return c0.radius() == c1.radius() and c0.center() ==\
+    \ c1.center();\n    }\n    friend bool operator!=(const Circle& c0, const Circle&\
+    \ c1) {\n        return c0.radius() != c1.radius() or c0.center() != c1.center();\n\
+    \    }\n\n    /* member */\n    \n    Zahlen radiusSquare() const {\n        return\
+    \ Square(radius_);\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
+    \ Circle& c0, const Circle& c1) {\n        Zahlen dist{DistanceSquare(c0.center(),\
+    \ c1.center())};\n        Zahlen down{Square(Abs(c0.radius() - c1.radius()))};\n\
+    \        if (dist < down) {\n            return 0;\n        }\n        if (dist\
+    \ == down) {\n            return 1;\n        }\n        Zahlen up{Square(c0.radius()\
+    \ + c1.radius())}; \n        if (dist < up) {\n            return 2;\n       \
+    \ }\n        if (dist == up) {\n            return 3;\n        }\n        return\
+    \ 4;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/Relation.hpp
+  path: Src/GeometryZ2/Circle.hpp
   requiredBy:
-  - Src/GeometryZ2/Polygon.hpp
-  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc266_c.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/AOJ/CGL_3_B.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-documentation_of: Src/GeometryZ2/Relation.hpp
+  - Test/AtCoder/abc191_d.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+documentation_of: Src/GeometryZ2/Circle.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Relation.hpp
-- /library/Src/GeometryZ2/Relation.hpp.html
-title: Src/GeometryZ2/Relation.hpp
+- /library/Src/GeometryZ2/Circle.hpp
+- /library/Src/GeometryZ2/Circle.hpp.html
+title: Src/GeometryZ2/Circle.hpp
 ---

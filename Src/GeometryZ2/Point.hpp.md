@@ -9,8 +9,17 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Circle.hpp
+    title: Src/GeometryZ2/Circle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Polygon.hpp
     title: Src/GeometryZ2/Polygon.hpp
@@ -27,6 +36,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_B.test.cpp
     title: Test/AOJ/CGL_3_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc191_d.test.cpp
+    title: Test/AtCoder/abc191_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc266_c.test.cpp
     title: Test/AtCoder/abc266_c.test.cpp
@@ -53,7 +68,8 @@ data:
     }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
     }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
     }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
-    }\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
+    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
     \n\n#include <iostream>\n#line 8 \"Src/GeometryZ2/Point.hpp\"\n\nnamespace zawa\
     \ {\n\nnamespace geometryZ2 {\n\nclass Point {\nprivate:\n    Zahlen x_{}, y_{};\n\
     \    static constexpr u32 origin{0};\n    static constexpr u32 firstQuadrant{1};\n\
@@ -96,13 +112,13 @@ data:
     \   is >> p.x() >> p.y();\n        return is;\n    }\n    friend std::ostream&\
     \ operator<<(std::ostream& os, const Point& p) {\n        os << '(' << p.x() <<\
     \ ',' << p.y() << ')';\n        return os;\n    }\n\n    /* member function */\n\
-    \    Zahlen normSquare() const {\n        return x() * x() + y() * y();\n    }\n\
-    \n    /* friend function */\n    friend Zahlen Dot(const Point& p0, const Point&\
-    \ p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n    friend\
-    \ Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x() * p1.y()\
-    \ - p0.y() * p1.x();\n    }\n    friend bool ArgComp(const Point& p0, const Point&\
-    \ p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n \
-    \       Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
+    \    Zahlen normSquare() const {\n        return Square(x()) + Square(y());\n\
+    \    }\n\n    /* friend function */\n    friend Zahlen Dot(const Point& p0, const\
+    \ Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n   \
+    \ friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x()\
+    \ * p1.y() - p0.y() * p1.x();\n    }\n    friend bool ArgComp(const Point& p0,\
+    \ const Point& p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n\
+    \        Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
     \ : p0.normSquare() < p1.normSquare());\n    }\n};\nusing Vector = Point;\n\n\
     } // namespace geometryZ2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Zahlen.hpp\"\
@@ -147,8 +163,8 @@ data:
     \ is, Point& p) {\n        is >> p.x() >> p.y();\n        return is;\n    }\n\
     \    friend std::ostream& operator<<(std::ostream& os, const Point& p) {\n   \
     \     os << '(' << p.x() << ',' << p.y() << ')';\n        return os;\n    }\n\n\
-    \    /* member function */\n    Zahlen normSquare() const {\n        return x()\
-    \ * x() + y() * y();\n    }\n\n    /* friend function */\n    friend Zahlen Dot(const\
+    \    /* member function */\n    Zahlen normSquare() const {\n        return Square(x())\
+    \ + Square(y());\n    }\n\n    /* friend function */\n    friend Zahlen Dot(const\
     \ Point& p0, const Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n\
     \    }\n    friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return\
     \ p0.x() * p1.y() - p0.y() * p1.x();\n    }\n    friend bool ArgComp(const Point&\
@@ -164,13 +180,18 @@ data:
   requiredBy:
   - Src/GeometryZ2/Relation.hpp
   - Src/GeometryZ2/Polygon.hpp
+  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  timestamp: '2023-11-17 15:09:54+09:00'
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Circle.hpp
+  timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc191_d.test.cpp
   - Test/AOJ/CGL_3_B.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
 documentation_of: Src/GeometryZ2/Point.hpp
