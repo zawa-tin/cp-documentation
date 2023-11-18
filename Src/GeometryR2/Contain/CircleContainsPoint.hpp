@@ -10,7 +10,7 @@ namespace zawa {
 
 namespace geometryR2 {
 
-State CircleContainsPoint(const Circle& circle, const Point& p) {
+ContainState CircleContainsPoint(const Circle& circle, const Point& p) {
     Real dist{Distance(circle.center(), p)};
     if (Smaller(dist, circle.radius())) {
         return INSIDE;

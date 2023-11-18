@@ -4,7 +4,7 @@ namespace zawa {
 
 namespace geometryR2 {
 
-enum State {
+enum ContainState {
     INSIDE,
     ONLINE,
     OUTSIDE
