@@ -37,8 +37,20 @@ data:
     path: Test/AOJ/CGL_3_A.test.cpp
     title: Test/AOJ/CGL_3_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B.test.cpp
-    title: Test/AOJ/CGL_3_B.test.cpp
+    path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+    title: Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_C.test.cpp
+    title: Test/AOJ/CGL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -135,18 +147,22 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
-  - Test/AOJ/CGL_3_B.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp

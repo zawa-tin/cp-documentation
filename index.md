@@ -75,6 +75,9 @@ data:
       path: Src/GeometryR2/Point.hpp
       title: Src/GeometryR2/Point.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Polygon.hpp
+      title: Src/GeometryR2/Polygon.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Projection.hpp
       title: Src/GeometryR2/Projection.hpp
     - icon: ':heavy_check_mark:'
@@ -99,6 +102,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
       title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+      title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/State.hpp
       title: Src/GeometryR2/Contain/State.hpp
@@ -316,8 +322,8 @@ data:
       path: Test/AOJ/CGL_3_A.test.cpp
       title: Test/AOJ/CGL_3_A.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/AOJ/CGL_3_B.test.cpp
-      title: Test/AOJ/CGL_3_B.test.cpp
+      path: Test/AOJ/CGL_3_C.test.cpp
+      title: Test/AOJ/CGL_3_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_D.test.cpp
       title: Test/AOJ/CGL_7_D.test.cpp
@@ -362,6 +368,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
       title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - name: Test/AOJ/CGL_3_A
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+      title: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+      title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - name: Test/AOJ/CGL_3_B
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+      title: Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+      title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - name: Test/AOJ/CGL_7_A
     pages:
     - icon: ':heavy_check_mark:'

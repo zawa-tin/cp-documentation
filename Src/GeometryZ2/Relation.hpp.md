@@ -25,8 +25,11 @@ data:
     path: Test/AOJ/CGL_3_A.test.cpp
     title: Test/AOJ/CGL_3_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B.test.cpp
-    title: Test/AOJ/CGL_3_B.test.cpp
+    path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+    title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc266_c.test.cpp
     title: Test/AtCoder/abc266_c.test.cpp
@@ -151,8 +154,9 @@ data:
   verifiedWith:
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
-  - Test/AOJ/CGL_3_B.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
 documentation_of: Src/GeometryZ2/Relation.hpp
 layout: document

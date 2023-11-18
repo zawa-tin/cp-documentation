@@ -200,9 +200,9 @@ data:
     \ h + lr.rotatedByArc(-90) * rs;\n    return res;\n}\n\n} // namespace geometryR2\n\
     \    \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryR2 {\n\nenum State {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nState CircleContainsPoint(const\
+    \ geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
     \ Circle& circle, const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n\
     \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
     \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
@@ -264,7 +264,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc157_f.test.cpp
   requiredBy: []
-  timestamp: '2023-11-18 01:44:45+09:00'
+  timestamp: '2023-11-19 01:21:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc157_f.test.cpp

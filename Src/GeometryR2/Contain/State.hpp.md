@@ -5,10 +5,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
     title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+    title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_3_C.test.cpp
+    title: Test/AOJ/CGL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
@@ -18,9 +24,9 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nenum State {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
-    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum State\
+    \nnamespace geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n  \
+    \  OUTSIDE\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum ContainState\
     \ {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n} // namespace geometryR2\n\n\
     } // namespace zawa\n"
   dependsOn: []
@@ -28,10 +34,12 @@ data:
   path: Src/GeometryR2/Contain/State.hpp
   requiredBy:
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
-  timestamp: '2023-11-18 00:31:45+09:00'
+  - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  timestamp: '2023-11-19 01:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Contain/State.hpp
 layout: document

@@ -37,9 +37,9 @@ data:
     links: []
   bundledCode: "#line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\n#line\
     \ 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nenum State {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line\
-    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \ {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n} //\
+    \ namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Real.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -151,7 +151,7 @@ data:
     \ 1;\n        Real up{Square(c0.radius() + c1.radius())};\n        if (Smaller(dist,\
     \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
     \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nState CircleContainsPoint(const\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
     \ Circle& circle, const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n\
     \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
     \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
@@ -159,7 +159,7 @@ data:
     } // namespace zawa\n"
   code: "#pragma once\n\n#include \"./State.hpp\"\n#include \"../Real.hpp\"\n#include\
     \ \"../Circle.hpp\"\n#include \"../Point.hpp\"\n#include \"../Distance/PointAndPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nState CircleContainsPoint(const\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
     \ Circle& circle, const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n\
     \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
     \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
@@ -176,7 +176,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
   requiredBy: []
-  timestamp: '2023-11-18 00:31:45+09:00'
+  timestamp: '2023-11-19 01:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc157_f.test.cpp
