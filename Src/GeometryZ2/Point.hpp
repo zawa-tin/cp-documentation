@@ -121,7 +121,7 @@ public:
 
     /* member function */
     Zahlen normSquare() const {
-        return x() * x() + y() * y();
+        return Square(x()) + Square(y());
     }
 
     /* friend function */
