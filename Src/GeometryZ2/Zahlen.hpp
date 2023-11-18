@@ -40,6 +40,10 @@ constexpr Zahlen Abs(Zahlen value) {
     return (value > 0 ? value : -value);
 }
 
+constexpr Zahlen Square(Zahlen value) {
+    return value * value;
+}
+
 } // namespace geometryZ2
 
 } // namespace zawa
