@@ -22,33 +22,44 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/BinarySearch.hpp
+    title: "\u4E8C\u5206\u63A2\u7D22"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1157.test.cpp
-    title: Test/AOJ/1157.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/2009.test.cpp
-    title: Test/AOJ/2009.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_C.test.cpp
-    title: Test/AOJ/CGL_3_C.test.cpp
+    path: Test/AOJ/0412.test.cpp
+    title: Test/AOJ/0412.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\n\n#line\
-    \ 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n};\n\n} //\
-    \ namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Real.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 2 \"Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp\"\n\
+    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\
-    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Utility/BinarySearch.hpp\"\
+    \n\n#line 4 \"Src/Utility/BinarySearch.hpp\"\n\n#include <cmath>\n#include <functional>\n\
+    #include <type_traits>\n#include <utility>\n\nnamespace zawa {\n\nnamespace internal\
+    \ {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n    if (a > b) std::swap(a,\
+    \ b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate <class T>\nT Abs(T a, T b)\
+    \ {\n    return (a >= b ? a - b : b - a);\n}\n\n} // namespace zawa::internal\n\
+    \ntemplate <class T, class Function>\nT BinarySearch(T ok, T ng, const Function&\
+    \ f) {\n    static_assert(std::is_integral_v<T>, \"T must be integral type\");\n\
+    \    static_assert(std::is_convertible_v<Function, std::function<bool(T)>>, \"\
+    f must be function bool(T)\");\n    while (internal::Abs(ok, ng) > 1) {\n    \
+    \    T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ? ok : ng) = mid;\n\
+    \    }\n    return ok;\n}\n\ntemplate <class T, class Function>\nT BinarySearch(T\
+    \ ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
+    \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
+    \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
+    \ ? ok : ng) = mid;\n    }\n    return ok;\n}\n\n} // namespace zawa\n#line 2\
+    \ \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n#line\
+    \ 6 \"Src/GeometryR2/Real.hpp\"\n#include <cassert>\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
     constexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
     \n} // namespace internal\n\nReal& Eps() {\n    return internal::EPS;\n}\n\ni32\
     \ Sign(Real value) {\n    if (value < -Eps()) return internal::negative;\n   \
@@ -62,15 +73,14 @@ data:
     \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
     \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
     \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4\
-    \ \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr\
-    \ Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real arc)\
-    \ {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real RadianToArc(Real\
-    \ radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\n\n\
-    #line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
+    constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
+    \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
+    \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
     \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
     \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
@@ -128,7 +138,8 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Polygon.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
     \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
     \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
@@ -142,14 +153,13 @@ data:
     \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
     \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
     \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2\
-    \ \"Src/GeometryR2/Polygon.hpp\"\n\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\n\n\
-    #include <algorithm>\n#line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n  \
-    \  std::vector<Point> data_;\npublic:\n    /* member */\n    usize size() const\
-    \ {\n        return data_.size();\n    }\n\n    /* constructor */\n    Polygon()\
-    \ = default;\n    Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n\
-    \    Polygon(const std::vector<Point>& data) : data_{data} {}\n    Polygon(usize\
+    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 7\
+    \ \"Src/GeometryR2/Polygon.hpp\"\n\n#include <algorithm>\n#line 10 \"Src/GeometryR2/Polygon.hpp\"\
+    \n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon\
+    \ {\nprivate:\n    std::vector<Point> data_;\npublic:\n    /* member */\n    usize\
+    \ size() const {\n        return data_.size();\n    }\n\n    /* constructor */\n\
+    \    Polygon() = default;\n    Polygon(const Polygon& polygon) : data_{polygon.data_}\
+    \ {}\n    Polygon(const std::vector<Point>& data) : data_{data} {}\n    Polygon(usize\
     \ n) : data_{n} {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /*\
     \ operator[] */\n    Point& operator[](usize i) {\n        assert(i < size());\n\
     \        return data_[i];\n    }\n    const Point& operator[](usize i) const {\n\
@@ -177,50 +187,84 @@ data:
     \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
     \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Real x,\
     \ Real y) {\n        data_.emplace_back(x, y);\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n\n#line 9 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
-    \n\n#line 11 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\n#include <utility>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState PolygonContainsPoint(const\
+    \n} // namespace zawa\n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n\
+    \    OUTSIDE\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 9\
+    \ \"Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp\"\n\n#line 11 \"Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nnamespace internal {\n\nbool\
+    \ TriangleContainsPoint(const Point& p0, const Point& p1, const Point& p2, const\
+    \ Point& p) {\n    Real area{Abs(Cross(p1 - p0, p2 - p0))};\n    Real value{};\n\
+    \    value += Abs(Cross(p0 - p, p1 - p));\n    value += Abs(Cross(p1 - p, p2 -\
+    \ p));\n    value += Abs(Cross(p2 - p, p0 - p));\n    return Equal(area, value);\n\
+    }\n\n} // namespace internal\n\n// note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\
+    \u3053\u3068\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note:\
+    \ normal form\u306B\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState\
+    \ ConvexPolygonContainsPoint(const Polygon& polygon, const Point& p) {\n    usize\
+    \ n{polygon.size()};\n    assert(n >= static_cast<usize>(3));\n    if (polygon[0]\
+    \ == p or polygon[1] == p or polygon[n - 1] == p) {\n        return ONLINE;\n\
+    \    }\n    if (Relation(polygon[0], polygon[1], p) == ON_SEGMENT) {\n       \
+    \ return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[n - 1], p) == ON_SEGMENT)\
+    \ {\n        return ONLINE;\n    }\n    if (Zero(Cross(polygon[1] - polygon[0],\
+    \ p - polygon[0]))) {\n        return OUTSIDE;\n    }\n    if (Zero(Cross(polygon[n\
+    \ - 1] - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n   \
+    \ if (!(Relation(polygon[0], polygon[1], p) == COUNTER_CLOCKWISE and Relation(polygon[0],\
+    \ p, polygon[n - 1]) == COUNTER_CLOCKWISE)) {\n        return OUTSIDE;\n    }\n\
+    \n    auto f{[&](usize i) -> bool {\n        return Relation(polygon[0], polygon[i],\
+    \ p) == COUNTER_CLOCKWISE;\n    }};\n\n    usize pos{BinarySearch(usize{0}, usize{n\
+    \ - 1}, f)};\n    if (p == polygon[pos]) return ONLINE;\n    if (p == polygon[pos\
+    \ + 1]) return ONLINE;\n    if (Relation(polygon[pos], polygon[pos + 1], p) ==\
+    \ ON_SEGMENT) return ONLINE;\n\n    if (internal::TriangleContainsPoint(polygon[0],\
+    \ polygon[pos], polygon[pos + 1], p)) {\n        return INSIDE;\n    }\n    else\
+    \ {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Utility/BinarySearch.hpp\"\
+    \n#include \"../Real.hpp\"\n#include \"../Point.hpp\"\n#include \"../Polygon.hpp\"\
+    \n#include \"./State.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const Point&\
+    \ p0, const Point& p1, const Point& p2, const Point& p) {\n    Real area{Abs(Cross(p1\
+    \ - p0, p2 - p0))};\n    Real value{};\n    value += Abs(Cross(p0 - p, p1 - p));\n\
+    \    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 - p, p0 -\
+    \ p));\n    return Equal(area, value);\n}\n\n} // namespace internal\n\n// note:\
+    \ \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\
+    \u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\u304A\
+    \u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
     \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    bool odd{};\n    for (usize i{} ; i < n ; i++)\
-    \ {\n        if (polygon[i] == p) {\n            return ONLINE;\n        }\n \
-    \       if (Relation(polygon[i], polygon[i+1==n?0:i+1], p) == ON_SEGMENT) {\n\
-    \            return ONLINE;\n        }\n        Vector a{polygon[i] - p}, b{polygon[i+1==n?0:i+1]\
-    \ - p};\n        if (Bigger(a.y(), b.y())) std::swap(a, b);\n        odd ^= !Positive(a.y())\
-    \ and Positive(b.y()) and Positive(Cross(a, b));\n    }\n    return (odd ? INSIDE\
-    \ : OUTSIDE);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./State.hpp\"\n#include \"../Real.hpp\"\n#include\
-    \ \"../Relation.hpp\"\n#include \"../Polygon.hpp\"\n#include \"../Point.hpp\"\n\
-    #include \"../../Template/TypeAlias.hpp\"\n\n#include <cassert>\n#include <utility>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState PolygonContainsPoint(const\
-    \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    bool odd{};\n    for (usize i{} ; i < n ; i++)\
-    \ {\n        if (polygon[i] == p) {\n            return ONLINE;\n        }\n \
-    \       if (Relation(polygon[i], polygon[i+1==n?0:i+1], p) == ON_SEGMENT) {\n\
-    \            return ONLINE;\n        }\n        Vector a{polygon[i] - p}, b{polygon[i+1==n?0:i+1]\
-    \ - p};\n        if (Bigger(a.y(), b.y())) std::swap(a, b);\n        odd ^= !Positive(a.y())\
-    \ and Positive(b.y()) and Positive(Cross(a, b));\n    }\n    return (odd ? INSIDE\
-    \ : OUTSIDE);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
+    \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
+    \ p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0],\
+    \ polygon[n - 1], p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Zero(Cross(polygon[1]\
+    \ - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n    if (Zero(Cross(polygon[n\
+    \ - 1] - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n   \
+    \ if (!(Relation(polygon[0], polygon[1], p) == COUNTER_CLOCKWISE and Relation(polygon[0],\
+    \ p, polygon[n - 1]) == COUNTER_CLOCKWISE)) {\n        return OUTSIDE;\n    }\n\
+    \n    auto f{[&](usize i) -> bool {\n        return Relation(polygon[0], polygon[i],\
+    \ p) == COUNTER_CLOCKWISE;\n    }};\n\n    usize pos{BinarySearch(usize{0}, usize{n\
+    \ - 1}, f)};\n    if (p == polygon[pos]) return ONLINE;\n    if (p == polygon[pos\
+    \ + 1]) return ONLINE;\n    if (Relation(polygon[pos], polygon[pos + 1], p) ==\
+    \ ON_SEGMENT) return ONLINE;\n\n    if (internal::TriangleContainsPoint(polygon[0],\
+    \ polygon[pos], polygon[pos + 1], p)) {\n        return INSIDE;\n    }\n    else\
+    \ {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
-  - Src/GeometryR2/Contain/State.hpp
-  - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Relation.hpp
+  - Src/Utility/BinarySearch.hpp
+  - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Polygon.hpp
+  - Src/GeometryR2/Relation.hpp
+  - Src/GeometryR2/Contain/State.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   requiredBy: []
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2009.test.cpp
-  - Test/AOJ/CGL_3_C.test.cpp
-documentation_of: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  - Test/AOJ/0412.test.cpp
+documentation_of: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Contain/PolygonContainsPoint.hpp
-- /library/Src/GeometryR2/Contain/PolygonContainsPoint.hpp.html
-title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+- /library/Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+- /library/Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp.html
+title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
 ---

@@ -58,25 +58,24 @@ data:
     \ zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\
     \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal\
-    \ {\n\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
-    \n} // namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value <\
-    \ -EPS) return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
-    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
-    \ {\n    return (Zero(value) ? value : value * value);\n}\n\nconstexpr Real Sqrt(Real\
-    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
-    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
-    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"\
-    Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6\
-    \ \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\
-    \nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2) * PI};\n\
-    \nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    \ {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
+    constexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
+    \n} // namespace internal\n\nReal& Eps() {\n    return internal::EPS;\n}\n\ni32\
+    \ Sign(Real value) {\n    if (value < -Eps()) return internal::negative;\n   \
+    \ if (value > Eps()) return internal::positive;\n    return internal::zero;\n\
+    }\n\nbool Zero(Real value) {\n    return Sign(value) == internal::zero;\n}\n\n\
+    bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n}\n\
+    \nbool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nbool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nbool Smaller(Real\
+    \ a, Real b) {\n    return Negative(a - b);\n}\n\nbool Bigger(Real a, Real b)\
+    \ {\n    return Positive(a - b);\n}\n\nReal Square(Real value) {\n    return (Zero(value)\
+    \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
+    \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
+    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
+    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
     }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
     \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 9 \"Src/GeometryR2/Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
@@ -233,7 +232,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_2_C.test.cpp
   requiredBy: []
-  timestamp: '2023-11-18 00:31:45+09:00'
+  timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_2_C.test.cpp

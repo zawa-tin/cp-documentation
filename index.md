@@ -103,6 +103,9 @@ data:
       path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
       title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+      title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
       title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     - icon: ':heavy_check_mark:'
@@ -288,6 +291,9 @@ data:
   verificationCategories:
   - name: Test/AOJ
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/0412.test.cpp
+      title: Test/AOJ/0412.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/0445.test.cpp
       title: Test/AOJ/0445.test.cpp

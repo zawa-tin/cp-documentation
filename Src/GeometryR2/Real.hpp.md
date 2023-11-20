@@ -18,6 +18,9 @@ data:
     path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
     title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+    title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
@@ -97,6 +100,9 @@ data:
     title: Src/GeometryR2/Segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0412.test.cpp
+    title: Test/AOJ/0412.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/1053.test.cpp
     title: AOJ1053 Accelerated Railgun
   - icon: ':heavy_check_mark:'
@@ -171,38 +177,36 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n\
     #include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real\
-    \ = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr\
-    \ i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\n} //\
-    \ namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value < -EPS)\
-    \ return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
-    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
-    \ {\n    return (Zero(value) ? value : value * value);\n}\n\nconstexpr Real Sqrt(Real\
+    \ = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\nconstexpr i32 negative{-1};\n\
+    constexpr i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\
+    \nReal& Eps() {\n    return internal::EPS;\n}\n\ni32 Sign(Real value) {\n    if\
+    \ (value < -Eps()) return internal::negative;\n    if (value > Eps()) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nbool Zero(Real value) {\n    return Sign(value)\
+    \ == internal::zero;\n}\n\nbool Positive(Real value) {\n    return Sign(value)\
+    \ == internal::positive;\n}\n\nbool Negative(Real value) {\n    return Sign(value)\
+    \ == internal::negative;\n}\n\nbool Equal(Real a, Real b) {\n    return Zero(a\
+    \ - b);\n}\n\nbool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\
+    \nbool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nReal Square(Real\
+    \ value) {\n    return (Zero(value) ? value : value * value);\n}\n\nReal Sqrt(Real\
     \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
-    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
-    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n"
+    }\n\nReal Abs(Real value) {\n    return (Negative(value) ? -value : value);\n\
+    }\n\n} // namespace geometryR2\n \n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <cmath>\n\
     #include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real\
-    \ = long double;\nconstexpr Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr\
-    \ i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\n} //\
-    \ namespace internal\n\nconstexpr i32 Sign(Real value) {\n    if (value < -EPS)\
-    \ return internal::negative;\n    if (value > EPS) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Zero(Real value) {\n    return\
-    \ Sign(value) == internal::zero;\n}\n\nconstexpr bool Positive(Real value) {\n\
-    \    return Sign(value) == internal::positive;\n}\n\nconstexpr bool Negative(Real\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr bool\
-    \ Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr bool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr bool Bigger(Real a,\
-    \ Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real Square(Real value)\
-    \ {\n    return (Zero(value) ? value : value * value);\n}\n\nconstexpr Real Sqrt(Real\
+    \ = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\nconstexpr i32 negative{-1};\n\
+    constexpr i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\
+    \nReal& Eps() {\n    return internal::EPS;\n}\n\ni32 Sign(Real value) {\n    if\
+    \ (value < -Eps()) return internal::negative;\n    if (value > Eps()) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nbool Zero(Real value) {\n    return Sign(value)\
+    \ == internal::zero;\n}\n\nbool Positive(Real value) {\n    return Sign(value)\
+    \ == internal::positive;\n}\n\nbool Negative(Real value) {\n    return Sign(value)\
+    \ == internal::negative;\n}\n\nbool Equal(Real a, Real b) {\n    return Zero(a\
+    \ - b);\n}\n\nbool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\
+    \nbool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nReal Square(Real\
+    \ value) {\n    return (Zero(value) ? value : value * value);\n}\n\nReal Sqrt(Real\
     \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
-    }\n\nconstexpr Real Abs(Real value) {\n    return (Negative(value) ? -value :\
-    \ value);\n}\n\n} // namespace geometryR2\n \n} // namespace zawa\n"
+    }\n\nReal Abs(Real value) {\n    return (Negative(value) ? -value : value);\n\
+    }\n\n} // namespace geometryR2\n \n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
@@ -214,6 +218,7 @@ data:
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Reflection.hpp
@@ -238,7 +243,7 @@ data:
   - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/Orthgonal/LineAndLine.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  timestamp: '2023-11-13 09:08:37+09:00'
+  timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc259_b.test.cpp
@@ -255,6 +260,7 @@ data:
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp

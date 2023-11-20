@@ -49,27 +49,27 @@ data:
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
     \n\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\nconstexpr\
-    \ Real EPS{1e-12};\n\nnamespace internal {\n\nconstexpr i32 negative{-1};\nconstexpr\
-    \ i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\nconstexpr\
-    \ i32 Sign(Real value) {\n    if (value < -EPS) return internal::negative;\n \
-    \   if (value > EPS) return internal::positive;\n    return internal::zero;\n\
-    }\n\nconstexpr bool Zero(Real value) {\n    return Sign(value) == internal::zero;\n\
-    }\n\nconstexpr bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n\
-    }\n\nconstexpr bool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nconstexpr bool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nconstexpr\
-    \ bool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\nconstexpr\
-    \ bool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nconstexpr Real\
-    \ Square(Real value) {\n    return (Zero(value) ? value : value * value);\n}\n\
-    \nconstexpr Real Sqrt(Real value) {\n    assert(!Negative(value));\n    return\
-    \ (Zero(value) ? value : sqrtl(value));\n}\n\nconstexpr Real Abs(Real value) {\n\
-    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
-    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
-    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
-    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
-    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\n\n\
+    namespace internal {\n\nReal EPS{1e-12};\nconstexpr i32 negative{-1};\nconstexpr\
+    \ i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\nReal&\
+    \ Eps() {\n    return internal::EPS;\n}\n\ni32 Sign(Real value) {\n    if (value\
+    \ < -Eps()) return internal::negative;\n    if (value > Eps()) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nbool Zero(Real value) {\n    return Sign(value)\
+    \ == internal::zero;\n}\n\nbool Positive(Real value) {\n    return Sign(value)\
+    \ == internal::positive;\n}\n\nbool Negative(Real value) {\n    return Sign(value)\
+    \ == internal::negative;\n}\n\nbool Equal(Real a, Real b) {\n    return Zero(a\
+    \ - b);\n}\n\nbool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\
+    \nbool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nReal Square(Real\
+    \ value) {\n    return (Zero(value) ? value : value * value);\n}\n\nReal Sqrt(Real\
+    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
+    }\n\nReal Abs(Real value) {\n    return (Negative(value) ? -value : value);\n\
+    }\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
+    constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
+    \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
+    \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 9 \"Src/GeometryR2/Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nclass Point {\nprivate:\n    Real x_{}, y_{};\npublic:\n    /* constructor\
     \ */\n    Point() = default;\n    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n\
@@ -163,19 +163,21 @@ data:
     \ == polygon.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
     \    /* member function */\n    void orderRotate(usize i) {\n        assert(i\
     \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
-    \    }\n    void headMinimize() {\n        auto index{std::distance(data_.begin(),\
+    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
     \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
-    \    }\n    bool isConvex() const {\n        assert(size() >= static_cast<usize>(3));\n\
-    \        for (usize i{} ; i < size() ; i++) {\n            if (Relation(data_[i],\
-    \ data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n             \
-    \       == CLOCKWISE) {\n                return false;\n            }\n      \
-    \  }\n        return true;\n    }\n    Real area() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        Real res{};\n        for (usize i{1} ; i\
-    \ < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
-    \ - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n    }\n\
-    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
-    \ void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n    }\n\
-    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n#line 2 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
+    \    }\n    Polygon normalFormed() const {\n        Polygon res{*this};\n    \
+    \    res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
+    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
+    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
+    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
+    \              return false;\n            }\n        }\n        return true;\n\
+    \    }\n    Real area() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
+    \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
+    \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
+    \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Real x,\
+    \ Real y) {\n        data_.emplace_back(x, y);\n    }\n};\n\n} // namespace geometryR2\n\
+    \n} // namespace zawa\n\n#line 2 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
     \ geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
     };\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 9 \"Src/GeometryR2/Contain/PolygonContainsPoint.hpp\"\
@@ -217,7 +219,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_3_C.test.cpp
   requiredBy: []
-  timestamp: '2023-11-19 02:23:34+09:00'
+  timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_3_C.test.cpp

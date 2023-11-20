@@ -6,9 +6,15 @@ data:
     path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
     title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+    title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0412.test.cpp
+    title: Test/AOJ/0412.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
@@ -40,6 +46,7 @@ data:
   path: Src/GeometryR2/Contain/State.hpp
   requiredBy:
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   timestamp: '2023-11-19 01:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -47,6 +54,7 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/2009.test.cpp
+  - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Contain/State.hpp

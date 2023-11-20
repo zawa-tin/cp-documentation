@@ -6,9 +6,15 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+    title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0412.test.cpp
+    title: Test/AOJ/0412.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
@@ -72,6 +78,7 @@ data:
   path: Src/Utility/BinarySearch.hpp
   requiredBy:
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   timestamp: '2023-09-24 02:48:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -80,6 +87,7 @@ data:
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AOJ/0412.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document
 title: "\u4E8C\u5206\u63A2\u7D22"
