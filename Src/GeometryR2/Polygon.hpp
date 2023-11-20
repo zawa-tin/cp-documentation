@@ -61,9 +61,14 @@ public:
         assert(i < size());
         std::rotate(data_.begin(), data_.begin() + i, data_.end());
     }
-    void headMinimize() {
+    void normalForm() {
         auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};
         orderRotate(index);
+    }
+    Polygon normalFormed() const {
+        Polygon res{*this};
+        res.normalForm();
+        return res;
     }
     bool isConvex() const {
         assert(size() >= static_cast<usize>(3));
