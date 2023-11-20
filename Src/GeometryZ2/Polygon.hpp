@@ -30,6 +30,10 @@ public:
     }
 
     /* operator */
+    Polygon& operator=(const Polygon& polygon) {
+        data_ = polygon.data_;
+        return *this;
+    }
     Point& operator[](usize i) {
         assert(i < size());
         return data_[i];
@@ -52,13 +56,24 @@ public:
     }
 
     /* member function */
+    void pushBack(const Point& p) {
+        data_.push_back(p);
+    }
+    void emplaceBack(Zahlen x, Zahlen y) {
+        data_.emplace_back(x, y);
+    }
     void orderRotate(usize i) {
         assert(i < size());
         std::rotate(data_.begin(), data_.begin() + i, data_.end());
     }
-    void headMinimize() {
+    void normalForm() {
         auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};
         orderRotate(index);
+    }
+    Polygon normalFormed() const {
+        Polygon res{*this};
+        res.normalForm();
+        return res;
     }
     bool isConvex() const {
         assert(size() >= static_cast<usize>(3));
@@ -77,6 +92,12 @@ public:
             res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);
         }
         return res;
+    }
+    Polygon subtriangle(usize i, usize j, usize k) const {
+        assert(i < size());
+        assert(j < size());
+        assert(k < size());
+        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};
     }
 };
 

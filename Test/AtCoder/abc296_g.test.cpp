@@ -15,7 +15,7 @@ int main() {
     int n; std::cin >> n;
     Polygon ps(n);
     std::cin >> ps;
-    ps.headMinimize();
+    ps.normalForm();
     assert(ps.isConvex());
     int q; std::cin >> q;
     for (int _{} ; _ < q ; _++) {

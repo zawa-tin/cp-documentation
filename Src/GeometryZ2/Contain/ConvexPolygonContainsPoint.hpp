@@ -27,7 +27,7 @@ bool TriangleContainsPoint(const Point& p0, const Point& p1, const Point& p2, co
 } // namespace internal
 
 // note: 凸多角形であることを確認してください。
-// note: polygon[0]が辞書順最小の点であることを確認してください
+// note: normal formにしておいてください
 ContainState ConvexPolygonContainsPoint(const Polygon& polygon, const Point& p) {
     usize n{polygon.size()};
     assert(n >= static_cast<usize>(3));
