@@ -10,56 +10,60 @@ namespace zawa {
 namespace geometryR2 {
 
 using Real = long double;
-constexpr Real EPS{1e-12};
 
 namespace internal {
 
+Real EPS{1e-12};
 constexpr i32 negative{-1};
 constexpr i32 zero{};
 constexpr i32 positive{1};
 
 } // namespace internal
 
-constexpr i32 Sign(Real value) {
-    if (value < -EPS) return internal::negative;
-    if (value > EPS) return internal::positive;
+Real& Eps() {
+    return internal::EPS;
+}
+
+i32 Sign(Real value) {
+    if (value < -Eps()) return internal::negative;
+    if (value > Eps()) return internal::positive;
     return internal::zero;
 }
 
-constexpr bool Zero(Real value) {
+bool Zero(Real value) {
     return Sign(value) == internal::zero;
 }
 
-constexpr bool Positive(Real value) {
+bool Positive(Real value) {
     return Sign(value) == internal::positive;
 }
 
-constexpr bool Negative(Real value) {
+bool Negative(Real value) {
     return Sign(value) == internal::negative;
 }
 
-constexpr bool Equal(Real a, Real b) {
+bool Equal(Real a, Real b) {
     return Zero(a - b);
 }
 
-constexpr bool Smaller(Real a, Real b) {
+bool Smaller(Real a, Real b) {
     return Negative(a - b);
 }
 
-constexpr bool Bigger(Real a, Real b) {
+bool Bigger(Real a, Real b) {
     return Positive(a - b);
 }
 
-constexpr Real Square(Real value) {
+Real Square(Real value) {
     return (Zero(value) ? value : value * value);
 }
 
-constexpr Real Sqrt(Real value) {
+Real Sqrt(Real value) {
     assert(!Negative(value));
     return (Zero(value) ? value : sqrtl(value));
 }
 
-constexpr Real Abs(Real value) {
+Real Abs(Real value) {
     return (Negative(value) ? -value : value);
 }
 
