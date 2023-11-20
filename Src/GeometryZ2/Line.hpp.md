@@ -5,55 +5,25 @@ data:
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Relation.hpp
+    title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Line.hpp
-    title: Src/GeometryZ2/Line.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Polygon.hpp
-    title: Src/GeometryZ2/Polygon.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
     title: Test/AOJ/0388.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/0445.test.cpp
-    title: Test/AOJ/0445.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A.test.cpp
-    title: Test/AOJ/CGL_3_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc250_f.test.cpp
-    title: Test/AtCoder/abc250_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc266_c.test.cpp
-    title: Test/AtCoder/abc266_c.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc296_g.test.cpp
-    title: Test/AtCoder/abc296_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -120,64 +90,92 @@ data:
     \ const Point& p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n\
     \        Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
     \ : p0.normSquare() < p1.normSquare());\n    }\n};\nusing Vector = Point;\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
-    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
-    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
-    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\
-    \u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT\
-    \        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\
-    \u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2\
-    \ -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\
-    \u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT        = -2,\n    // (p1\
+    \ - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\
+    \u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT       \
+    \   =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\
+    \u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE   = +1,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK         = +2\n};\n\nRELATION\
+    \ Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1\
+    \ - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
+    \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\n\n\
+    namespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n    Point\
+    \ p0_{}, p1_{};\n\n    Vector positiveDir() const {\n        Vector res{p1_ -\
+    \ p0_};\n        if (Negative(res.x())) {\n            res.x() *= -1;\n      \
+    \      res.y() *= -1;\n        }\n        return res;\n    }\npublic:\n    /*\
+    \ constructor */\n    Line() = default;\n    Line(const Point& p0, const Point&\
+    \ p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b\n    Line(const Zahlen& a, const\
+    \ Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a + b} {}\n    Line(const Line& l) : p0_{l.p0()},\
+    \ p1_{l.p1()} {}\n\n    /* getter, setter */\n    const Point& p0() const {\n\
+    \        return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n \
+    \   const Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n\
+    \        return p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
+    \ Line& l0, const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0())) \n            and Zero(Cross(l1.p0() - l0.p0(), l0.p1() - l0.p0()));\n\
+    \    }\n    friend bool operator!=(const Line& l0, const Line& l1) {\n       \
+    \ return !(l0 == l1);\n    }\n    friend bool operator<(const Line& l0, const\
+    \ Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())))\
+    \ {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;\n\
+    \        }\n        else {\n            return ArgComp(l0.positiveDir(), l1.positiveDir());\n\
+    \        }\n    }\n    friend bool operator<=(const Line& l0, const Line& l1)\
+    \ {\n        return (l0 == l1) or (l0 < l1);\n    }\n    friend bool operator>(const\
+    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == CLOCKWISE;\n\
+    \        }\n        else {\n            return ArgComp(l0.positiveDir(), l1.positiveDir());\n\
+    \        }\n    }\n    friend bool operator>=(const Line& l0, const Line& l1)\
+    \ {\n        return (l0 == l1) or (l0 > l1);\n    }\n};\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n\n"
+  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n#include\
+    \ \"./Relation.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\n\n    Vector positiveDir()\
+    \ const {\n        Vector res{p1_ - p0_};\n        if (Negative(res.x())) {\n\
+    \            res.x() *= -1;\n            res.y() *= -1;\n        }\n        return\
+    \ res;\n    }\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
+    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b\n    Line(const\
+    \ Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a + b} {}\n    Line(const\
+    \ Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter, setter */\n    const\
+    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
+    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
+    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator */\n   \
+    \ friend bool operator==(const Line& l0, const Line& l1) {\n        return Zero(Cross(l0.p1()\
+    \ - l0.p0(), l1.p1() - l1.p0())) \n            and Zero(Cross(l1.p0() - l0.p0(),\
+    \ l0.p1() - l0.p0()));\n    }\n    friend bool operator!=(const Line& l0, const\
+    \ Line& l1) {\n        return !(l0 == l1);\n    }\n    friend bool operator<(const\
+    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;\n\
+    \        }\n        else {\n            return ArgComp(l0.positiveDir(), l1.positiveDir());\n\
+    \        }\n    }\n    friend bool operator<=(const Line& l0, const Line& l1)\
+    \ {\n        return (l0 == l1) or (l0 < l1);\n    }\n    friend bool operator>(const\
+    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == CLOCKWISE;\n\
+    \        }\n        else {\n            return ArgComp(l0.positiveDir(), l1.positiveDir());\n\
+    \        }\n    }\n    friend bool operator>=(const Line& l0, const Line& l1)\
+    \ {\n        return (l0 == l1) or (l0 > l1);\n    }\n};\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n\n"
   dependsOn:
   - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/Relation.hpp
-  requiredBy:
-  - Src/GeometryZ2/Polygon.hpp
-  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - Src/GeometryZ2/Line.hpp
-  timestamp: '2023-11-18 23:42:25+09:00'
+  path: Src/GeometryZ2/Line.hpp
+  requiredBy: []
+  timestamp: '2023-11-20 13:49:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc266_c.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/AtCoder/abc250_f.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/0388.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - Test/AOJ/0445.test.cpp
-documentation_of: Src/GeometryZ2/Relation.hpp
+documentation_of: Src/GeometryZ2/Line.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Relation.hpp
-- /library/Src/GeometryZ2/Relation.hpp.html
-title: Src/GeometryZ2/Relation.hpp
+- /library/Src/GeometryZ2/Line.hpp
+- /library/Src/GeometryZ2/Line.hpp.html
+title: Src/GeometryZ2/Line.hpp
 ---

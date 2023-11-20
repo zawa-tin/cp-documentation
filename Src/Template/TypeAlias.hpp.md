@@ -141,6 +141,9 @@ data:
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Line.hpp
+    title: Src/GeometryZ2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -202,6 +205,9 @@ data:
     title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
       10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0388.test.cpp
+    title: Test/AOJ/0388.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0412.test.cpp
     title: Test/AOJ/0412.test.cpp
@@ -565,6 +571,7 @@ data:
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/Number/ModInt.hpp
@@ -660,6 +667,7 @@ data:
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp
+  - Test/AOJ/0388.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp

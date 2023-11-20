@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0388.test.cpp
+    title: Test/AOJ/0388.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/0412.test.cpp
     title: Test/AOJ/0412.test.cpp
   - icon: ':heavy_check_mark:'
@@ -174,6 +177,7 @@ data:
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/2009.test.cpp
+  - Test/AOJ/0388.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/0412.test.cpp

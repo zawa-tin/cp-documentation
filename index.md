@@ -181,6 +181,9 @@ data:
       path: Src/GeometryZ2/Circle.hpp
       title: Src/GeometryZ2/Circle.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Line.hpp
+      title: Src/GeometryZ2/Line.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Point.hpp
       title: Src/GeometryZ2/Point.hpp
     - icon: ':heavy_check_mark:'
@@ -291,6 +294,9 @@ data:
   verificationCategories:
   - name: Test/AOJ
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/0388.test.cpp
+      title: Test/AOJ/0388.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/0412.test.cpp
       title: Test/AOJ/0412.test.cpp
