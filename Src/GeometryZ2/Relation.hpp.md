@@ -19,6 +19,9 @@ data:
     title: Src/GeometryZ2/Polygon.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0445.test.cpp
+    title: Test/AOJ/0445.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc250_f.test.cpp
+    title: Test/AtCoder/abc250_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc266_c.test.cpp
     title: Test/AtCoder/abc266_c.test.cpp
@@ -152,12 +158,14 @@ data:
   timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc250_f.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_3_A.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - Test/AOJ/0445.test.cpp
 documentation_of: Src/GeometryZ2/Relation.hpp
 layout: document
 redirect_from:

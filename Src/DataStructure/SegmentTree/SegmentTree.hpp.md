@@ -147,9 +147,9 @@ data:
   timestamp: '2023-09-26 23:32:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_set_range_composite.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree

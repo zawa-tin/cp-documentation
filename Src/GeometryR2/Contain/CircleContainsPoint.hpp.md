@@ -179,8 +179,8 @@ data:
   timestamp: '2023-11-19 01:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1132.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Contain/CircleContainsPoint.hpp
 layout: document
 redirect_from:

@@ -26,18 +26,17 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B
+    PROBLEM: https://atcoder.jp/contests/abc250/tasks/abc250_f
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B
-  bundledCode: "#line 1 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B\"\n\n#line\
-    \ 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\
-    \n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
-    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
-    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
-    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
-    #line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
-    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    - https://atcoder.jp/contests/abc250/tasks/abc250_f
+  bundledCode: "#line 1 \"Test/AtCoder/abc250_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc250/tasks/abc250_f\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
+    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 2 \"\
     Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4\
@@ -153,15 +152,27 @@ data:
     \ i, usize j, usize k) const {\n        assert(i < size());\n        assert(j\
     \ < size());\n        assert(k < size());\n        return Polygon{std::vector<Point>{\
     \ data_[i], data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line\
-    \ 5 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\n\n#line 7 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\
+    \ 5 \"Test/AtCoder/abc250_f.test.cpp\"\n\n#line 7 \"Test/AtCoder/abc250_f.test.cpp\"\
     \n\nint main() {\n    using namespace zawa;\n    using namespace geometryZ2;\n\
-    \    SetFastIO();\n    int n; std::cin >> n;\n    Polygon ps(n); \n    std::cin\
-    \ >> ps;\n    std::cout << ps.isConvex() << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/3/CGL_3_B\"\
-    \n\n#include \"../../../Src/Template/IOSetting.hpp\"\n#include \"../../../Src/GeometryZ2/Polygon.hpp\"\
+    \    SetFastIO();\n    int n; std::cin >> n;\n    Polygon p(n);\n    std::cin\
+    \ >> p;\n    Zahlen a{p.areaTwice()};\n    Zahlen b{};\n    Zahlen ans{4 * a};\n\
+    \    int r{};\n    for (int l{} ; l < n ; l++) {\n        while (b < a) {\n  \
+    \          b += 4 * p.subtriangle(l, r, r+1==n?0:r+1).areaTwice();\n         \
+    \   r = (r+1==n?0:r+1);\n            ans = std::min(ans, std::abs(a - b));\n \
+    \       }\n        if (l == r) r++;\n        else {\n            b -= 4 * p.subtriangle(l,\
+    \ l+1==n?0:l+1, r).areaTwice();\n            ans = std::min(ans, std::abs(a -\
+    \ b));\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc250/tasks/abc250_f\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Polygon.hpp\"\
     \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
     \ namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin >> n;\n    Polygon\
-    \ ps(n); \n    std::cin >> ps;\n    std::cout << ps.isConvex() << '\\n';\n}\n"
+    \ p(n);\n    std::cin >> p;\n    Zahlen a{p.areaTwice()};\n    Zahlen b{};\n \
+    \   Zahlen ans{4 * a};\n    int r{};\n    for (int l{} ; l < n ; l++) {\n    \
+    \    while (b < a) {\n            b += 4 * p.subtriangle(l, r, r+1==n?0:r+1).areaTwice();\n\
+    \            r = (r+1==n?0:r+1);\n            ans = std::min(ans, std::abs(a -\
+    \ b));\n        }\n        if (l == r) r++;\n        else {\n            b -=\
+    \ 4 * p.subtriangle(l, l+1==n?0:l+1, r).areaTwice();\n            ans = std::min(ans,\
+    \ std::abs(a - b));\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -170,15 +181,15 @@ data:
   - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Relation.hpp
   isVerificationFile: true
-  path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  path: Test/AtCoder/abc250_f.test.cpp
   requiredBy: []
   timestamp: '2023-11-20 10:17:08+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+documentation_of: Test/AtCoder/abc250_f.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-- /verify/Test/AOJ/CGL_3_B/GeometryZ2.test.cpp.html
-title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+- /verify/Test/AtCoder/abc250_f.test.cpp
+- /verify/Test/AtCoder/abc250_f.test.cpp.html
+title: Test/AtCoder/abc250_f.test.cpp
 ---

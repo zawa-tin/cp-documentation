@@ -140,40 +140,47 @@ data:
     \   Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n    Polygon(const\
     \ std::vector<Point>& data) : data_{data} {}\n    Polygon(usize n) : data_{n}\
     \ {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /* operator */\n\
-    \    Point& operator[](usize i) {\n        assert(i < size());\n        return\
-    \ data_[i];\n    }\n    const Point& operator[](usize i) const {\n        assert(i\
-    \ < size());\n        return data_[i];\n    }\n    friend std::istream& operator>>(std::istream&\
-    \ is, Polygon& polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++)\
-    \ {\n            is >> polygon[i];\n        }\n        return is;\n    }\n   \
-    \ friend std::ostream& operator<<(std::ostream& os, const Polygon& polygon) {\n\
-    \        for (usize i{} ; i < polygon.size() ; i++) {\n            std::cout <<\
-    \ polygon[i] << (i + 1 == polygon.size() ? \"\" : \" \");\n        }\n       \
-    \ return os;\n    }\n\n    /* member function */\n    void orderRotate(usize i)\
-    \ {\n        assert(i < size());\n        std::rotate(data_.begin(), data_.begin()\
-    \ + i, data_.end());\n    }\n    void headMinimize() {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
-    \    }\n    bool isConvex() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \    Polygon& operator=(const Polygon& polygon) {\n        data_ = polygon.data_;\n\
+    \        return *this;\n    }\n    Point& operator[](usize i) {\n        assert(i\
+    \ < size());\n        return data_[i];\n    }\n    const Point& operator[](usize\
+    \ i) const {\n        assert(i < size());\n        return data_[i];\n    }\n \
+    \   friend std::istream& operator>>(std::istream& is, Polygon& polygon) {\n  \
+    \      for (size_t i{} ; i < polygon.size() ; i++) {\n            is >> polygon[i];\n\
+    \        }\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Polygon& polygon) {\n        for (usize i{} ; i < polygon.size() ;\
+    \ i++) {\n            std::cout << polygon[i] << (i + 1 == polygon.size() ? \"\
+    \" : \" \");\n        }\n        return os;\n    }\n\n    /* member function */\n\
+    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
+    \ void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x, y);\n\
+    \    }\n    void orderRotate(usize i) {\n        assert(i < size());\n       \
+    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    void\
+    \ normalForm() {\n        auto index{std::distance(data_.begin(), std::min_element(data_.begin(),\
+    \ data_.end()))};\n        orderRotate(index);\n    }\n    Polygon normalFormed()\
+    \ const {\n        Polygon res{*this};\n        res.normalForm();\n        return\
+    \ res;\n    }\n    bool isConvex() const {\n        assert(size() >= static_cast<usize>(3));\n\
     \        for (usize i{} ; i < size() ; i++) {\n            if (Relation(data_[i],\
     \ data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n             \
     \       == CLOCKWISE) {\n                return false;\n            }\n      \
     \  }\n        return true;\n    }\n    Zahlen areaTwice() const {\n        assert(size()\
     \ >= static_cast<usize>(3));\n        Zahlen res{};\n        for (usize i{1} ;\
     \ i < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
-    \ - data_[0]);\n        }\n        return res;\n    }\n};\n\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/GeometryZ2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryZ2 {\n\nenum ContainState {\n    INSIDE          = 0,\n    ONLINE  \
-    \        = 1,\n    OUTSIDE         = 2\n};\n\n} // namespace geometryZ2\n\n} //\
-    \ namespace zawa\n#line 9 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\
-    \n\n#line 11 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const\
+    \ - data_[0]);\n        }\n        return res;\n    }\n    Polygon subtriangle(usize\
+    \ i, usize j, usize k) const {\n        assert(i < size());\n        assert(j\
+    \ < size());\n        assert(k < size());\n        return Polygon{std::vector<Point>{\
+    \ data_[i], data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line\
+    \ 2 \"Src/GeometryZ2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum ContainState {\n    INSIDE          = 0,\n    ONLINE          = 1,\n\
+    \    OUTSIDE         = 2\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 9 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\n#line 11\
+    \ \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryZ2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const\
     \ Point& p0, const Point& p1, const Point& p2, const Point& p) {\n    Zahlen area{Abs(Cross(p1\
     \ - p0, p2 - p0))};\n    Zahlen value{};\n    value += Abs(Cross(p0 - p, p1 -\
     \ p));\n    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 -\
     \ p, p0 - p));\n    return area == value;\n}\n\n} // namespace internal\n\n//\
     \ note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: polygon[0]\u304C\u8F9E\u66F8\
-    \u9806\u6700\u5C0F\u306E\u70B9\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
+    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\
+    \u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
     \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
     \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
     \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
@@ -200,9 +207,8 @@ data:
     \ p));\n    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 -\
     \ p, p0 - p));\n    return area == value;\n}\n\n} // namespace internal\n\n//\
     \ note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: polygon[0]\u304C\u8F9E\u66F8\
-    \u9806\u6700\u5C0F\u306E\u70B9\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
+    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\
+    \u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
     \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
     \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
     \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
@@ -231,7 +237,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   requiredBy: []
-  timestamp: '2023-11-18 23:42:25+09:00'
+  timestamp: '2023-11-20 10:17:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc296_g.test.cpp

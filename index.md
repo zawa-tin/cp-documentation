@@ -289,6 +289,9 @@ data:
   - name: Test/AOJ
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/0445.test.cpp
+      title: Test/AOJ/0445.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/1053.test.cpp
       title: AOJ1053 Accelerated Railgun
     - icon: ':heavy_check_mark:'
@@ -445,6 +448,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_f.test.cpp
       title: Test/AtCoder/abc247_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc250_f.test.cpp
+      title: Test/AtCoder/abc250_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc259_b.test.cpp
       title: Test/AtCoder/abc259_b.test.cpp

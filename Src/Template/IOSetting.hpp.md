@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0445.test.cpp
+    title: Test/AOJ/0445.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
@@ -79,6 +82,9 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc250_f.test.cpp
+    title: Test/AtCoder/abc250_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -146,44 +152,46 @@ data:
   timestamp: '2023-08-05 13:24:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/unionfind.test.cpp
-  - Test/LC/staticrmq.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
-  - Test/LC/many_aplusb.test.cpp
-  - Test/LC/range_affine_point_get.test.cpp
-  - Test/AOJ/CGL_1_A.test.cpp
-  - Test/AOJ/DSL_1_B.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/abc259_b.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
+  - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
-  - Test/AOJ/CGL_7_E.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
-  - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
+  - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/1157.test.cpp
+  - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/2009.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AOJ/DSL_1_B.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1132.test.cpp
-  - Test/AOJ/2009.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
-  - Test/AtCoder/abc259_b.test.cpp
-  - Test/AtCoder/abc322_f.test.cpp
-  - Test/AtCoder/abc157_f.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/Manual/CF895-E.test.cpp
+  - Test/AOJ/0445.test.cpp
+  - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
   - Test/Manual/practice2_l.test.cpp
+  - Test/Manual/CF895-E.test.cpp
+  - Test/LC/many_aplusb.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/staticrmq.test.cpp
+  - Test/LC/unionfind.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"

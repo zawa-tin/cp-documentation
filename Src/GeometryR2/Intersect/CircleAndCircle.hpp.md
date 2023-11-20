@@ -168,8 +168,8 @@ data:
   timestamp: '2023-11-13 09:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_7_E.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AOJ/CGL_7_E.test.cpp
 documentation_of: Src/GeometryR2/Intersect/CircleAndCircle.hpp
 layout: document
 redirect_from:
