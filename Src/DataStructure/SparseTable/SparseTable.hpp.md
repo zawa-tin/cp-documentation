@@ -70,8 +70,8 @@ data:
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc288_e.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

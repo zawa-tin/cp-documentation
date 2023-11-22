@@ -175,6 +175,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
       title: Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - name: Src/GeometryR2/Tangent
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Tangent/TangentToCircle.hpp
+      title: Src/GeometryR2/Tangent/TangentToCircle.hpp
   - name: Src/GeometryZ2
     pages:
     - icon: ':heavy_check_mark:'
@@ -357,6 +362,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_E.test.cpp
       title: Test/AOJ/CGL_7_E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_F.test.cpp
+      title: Test/AOJ/CGL_7_F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_1_B.test.cpp
       title: Test/AOJ/DSL_1_B.test.cpp

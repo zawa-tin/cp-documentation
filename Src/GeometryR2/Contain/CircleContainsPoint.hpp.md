@@ -22,11 +22,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Tangent/TangentToCircle.hpp
+    title: Src/GeometryR2/Tangent/TangentToCircle.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_F.test.cpp
+    title: Test/AOJ/CGL_7_F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
@@ -174,12 +180,14 @@ data:
   - Src/GeometryR2/Distance/PointAndPoint.hpp
   isVerificationFile: false
   path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/GeometryR2/Tangent/TangentToCircle.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc157_f.test.cpp
+  - Test/AOJ/CGL_7_F.test.cpp
   - Test/AOJ/1132.test.cpp
+  - Test/AtCoder/abc157_f.test.cpp
 documentation_of: Src/GeometryR2/Contain/CircleContainsPoint.hpp
 layout: document
 redirect_from:
