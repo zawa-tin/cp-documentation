@@ -198,6 +198,9 @@ data:
       path: Src/GeometryZ2/Relation.hpp
       title: Src/GeometryZ2/Relation.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Segment.hpp
+      title: Src/GeometryZ2/Segment.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Zahlen.hpp
       title: Src/GeometryZ2/Zahlen.hpp
   - name: Src/GeometryZ2/Contain
@@ -216,6 +219,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Distance/PointAndPoint.hpp
       title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - name: Src/GeometryZ2/Parallel
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+      title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - name: Src/Graph/Components
     pages:
     - icon: ':heavy_check_mark:'
@@ -317,6 +325,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1157.test.cpp
       title: Test/AOJ/1157.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1379.test.cpp
+      title: Test/AOJ/1379.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2003.test.cpp
       title: Test/AOJ/2003.test.cpp

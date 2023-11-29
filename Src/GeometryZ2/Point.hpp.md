@@ -24,11 +24,17 @@ data:
     path: Src/GeometryZ2/Line.hpp
     title: Src/GeometryZ2/Line.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+    title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Polygon.hpp
     title: Src/GeometryZ2/Polygon.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Relation.hpp
     title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Segment.hpp
+    title: Src/GeometryZ2/Segment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -36,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0445.test.cpp
     title: Test/AOJ/0445.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1379.test.cpp
+    title: Test/AOJ/1379.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
@@ -195,15 +204,18 @@ data:
   requiredBy:
   - Src/GeometryZ2/Relation.hpp
   - Src/GeometryZ2/Polygon.hpp
+  - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Line.hpp
+  - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
   timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - Test/AOJ/1379.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
