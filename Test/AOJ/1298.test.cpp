@@ -54,13 +54,7 @@ bool solve() {
             for (int i{} ; i < (int)h2.size() ; i++) {
                 ok &= ConvexPolygonContainsPoint(h1, h2[i]) == OUTSIDE;
             }
-            for (int i{} ; i < (int)h1.size() ; i++) {
-                for (int j{} ; j < (int)h2.size() ; j++) {
-                    Segment s0{h1[i], h1[(i + 1) % h1.size()]};
-                    Segment s1{h2[j], h2[(j + 1) % h2.size()]};
-                    ok &= !Intersect(s0, s1);
-                }
-            }
+            ok &= !Intersect(h1, h2);
             std::cout << (ok ? "YES" : "NO") << '\n';
         }
     }
