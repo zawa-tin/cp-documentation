@@ -15,6 +15,9 @@ data:
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/ConvexHull.hpp
+    title: Src/GeometryZ2/ConvexHull.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Line.hpp
     title: Src/GeometryZ2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -39,6 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_A.test.cpp
+    title: Test/AOJ/CGL_4_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc250_f.test.cpp
     title: Test/AtCoder/abc250_f.test.cpp
@@ -162,10 +168,12 @@ data:
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Line.hpp
+  - Src/GeometryZ2/ConvexHull.hpp
   timestamp: '2023-11-18 23:42:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp

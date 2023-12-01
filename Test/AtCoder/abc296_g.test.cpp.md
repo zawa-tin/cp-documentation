@@ -126,54 +126,63 @@ data:
     \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
     \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
     \n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Polygon.hpp\"\n\n#include <algorithm>\n\
-    #line 9 \"Src/GeometryZ2/Polygon.hpp\"\n#include <iterator>\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Polygon {\nprivate:\n  \
-    \  std::vector<Point> data_;\npublic:\n    usize size() const {\n        return\
-    \ data_.size(); \n    }\n\n    /* constructor */\n    Polygon() = default;\n \
-    \   Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n    Polygon(const\
-    \ std::vector<Point>& data) : data_{data} {}\n    Polygon(usize n) : data_{n}\
-    \ {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /* operator */\n\
-    \    Polygon& operator=(const Polygon& polygon) {\n        data_ = polygon.data_;\n\
-    \        return *this;\n    }\n    Point& operator[](usize i) {\n        assert(i\
-    \ < size());\n        return data_[i];\n    }\n    const Point& operator[](usize\
-    \ i) const {\n        assert(i < size());\n        return data_[i];\n    }\n \
-    \   friend std::istream& operator>>(std::istream& is, Polygon& polygon) {\n  \
-    \      for (size_t i{} ; i < polygon.size() ; i++) {\n            is >> polygon[i];\n\
-    \        }\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Polygon& polygon) {\n        for (usize i{} ; i < polygon.size() ;\
-    \ i++) {\n            std::cout << polygon[i] << (i + 1 == polygon.size() ? \"\
-    \" : \" \");\n        }\n        return os;\n    }\n\n    /* member function */\n\
-    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
-    \ void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x, y);\n\
+    #line 9 \"Src/GeometryZ2/Polygon.hpp\"\n#include <iterator>\n#include <type_traits>\n\
+    #include <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Polygon\
+    \ {\nprivate:\n    std::vector<Point> data_;\npublic:\n    usize size() const\
+    \ {\n        return data_.size(); \n    }\n\n    /* constructor */\n    Polygon()\
+    \ = default;\n    Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n\
+    \    Polygon(const std::vector<Point>& data) : data_{data} {}\n    Polygon(usize\
+    \ n) : data_{n} {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /*\
+    \ operator */\n    Polygon& operator=(const Polygon& polygon) {\n        data_\
+    \ = polygon.data_;\n        return *this;\n    }\n    Point& operator[](usize\
+    \ i) {\n        assert(i < size());\n        return data_[i];\n    }\n    const\
+    \ Point& operator[](usize i) const {\n        assert(i < size());\n        return\
+    \ data_[i];\n    }\n    friend std::istream& operator>>(std::istream& is, Polygon&\
+    \ polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++) {\n        \
+    \    is >> polygon[i];\n        }\n        return is;\n    }\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const Polygon& polygon) {\n        for (usize i{}\
+    \ ; i < polygon.size() ; i++) {\n            std::cout << polygon[i] << (i + 1\
+    \ == polygon.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
+    \    /* member function */\n    void reserve(usize n) {\n        data_.reserve(n);\n\
+    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
+    \ }\n    void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x,\
+    \ y);\n    }\n    template <class RandomAccessIterator>\n    void insert(usize\
+    \ n, RandomAccessIterator first, RandomAccessIterator last) {\n        assert(n\
+    \ <= size());\n        data_.insert(std::next(data_.begin(), n), first, last);\n\
     \    }\n    void orderRotate(usize i) {\n        assert(i < size());\n       \
-    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    void\
-    \ normalForm() {\n        auto index{std::distance(data_.begin(), std::min_element(data_.begin(),\
-    \ data_.end()))};\n        orderRotate(index);\n    }\n    Polygon normalFormed()\
-    \ const {\n        Polygon res{*this};\n        res.normalForm();\n        return\
-    \ res;\n    }\n    bool isConvex() const {\n        assert(size() >= static_cast<usize>(3));\n\
-    \        for (usize i{} ; i < size() ; i++) {\n            if (Relation(data_[i],\
-    \ data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n             \
-    \       == CLOCKWISE) {\n                return false;\n            }\n      \
-    \  }\n        return true;\n    }\n    Zahlen areaTwice() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        Zahlen res{};\n        for (usize i{1} ;\
-    \ i < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
-    \ - data_[0]);\n        }\n        return res;\n    }\n    Polygon subtriangle(usize\
-    \ i, usize j, usize k) const {\n        assert(i < size());\n        assert(j\
-    \ < size());\n        assert(k < size());\n        return Polygon{std::vector<Point>{\
-    \ data_[i], data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line\
-    \ 2 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\n#line 2 \"Src/Utility/BinarySearch.hpp\"\
-    \n\n#line 4 \"Src/Utility/BinarySearch.hpp\"\n\n#include <cmath>\n#include <functional>\n\
-    #include <type_traits>\n#include <utility>\n\nnamespace zawa {\n\nnamespace internal\
-    \ {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n    if (a > b) std::swap(a,\
-    \ b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate <class T>\nT Abs(T a, T b)\
-    \ {\n    return (a >= b ? a - b : b - a);\n}\n\n} // namespace zawa::internal\n\
-    \ntemplate <class T, class Function>\nT BinarySearch(T ok, T ng, const Function&\
-    \ f) {\n    static_assert(std::is_integral_v<T>, \"T must be integral type\");\n\
-    \    static_assert(std::is_convertible_v<Function, std::function<bool(T)>>, \"\
-    f must be function bool(T)\");\n    while (internal::Abs(ok, ng) > 1) {\n    \
-    \    T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ? ok : ng) = mid;\n\
-    \    }\n    return ok;\n}\n\ntemplate <class T, class Function>\nT BinarySearch(T\
-    \ ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
+    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    template\
+    \ <class F>\n    void normalForm(const F& func) {\n        auto index{std::distance(data_.begin(),\
+    \ std::min_element(data_.begin(), data_.end(), func))};\n        orderRotate(index);\n\
+    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
+    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
+    \    }\n    template <class F>\n    Polygon normalFormed(const F& func = [](const\
+    \ Point& a, const Point& b) -> bool { return a < b; }) const {\n        Polygon\
+    \ res{*this};\n        res.normalForm(func);\n        return res;\n    }\n   \
+    \ Polygon normalFormed() {\n        Polygon res{*this};\n        res.normalForm();\n\
+    \        return res;\n    }\n    bool isConvex() const {\n        assert(size()\
+    \ >= static_cast<usize>(3));\n        for (usize i{} ; i < size() ; i++) {\n \
+    \           if (Relation(data_[i], data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n\
+    \                    == CLOCKWISE) {\n                return false;\n        \
+    \    }\n        }\n        return true;\n    }\n    Zahlen areaTwice() const {\n\
+    \        assert(size() >= static_cast<usize>(3));\n        Zahlen res{};\n   \
+    \     for (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i]\
+    \ - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return\
+    \ res;\n    }\n    Polygon subtriangle(usize i, usize j, usize k) const {\n  \
+    \      assert(i < size());\n        assert(j < size());\n        assert(k < size());\n\
+    \        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};\n\
+    \    }\n};\n\n}\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\
+    \n\n#line 2 \"Src/Utility/BinarySearch.hpp\"\n\n#line 4 \"Src/Utility/BinarySearch.hpp\"\
+    \n\n#include <cmath>\n#include <functional>\n#line 8 \"Src/Utility/BinarySearch.hpp\"\
+    \n#include <utility>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <class\
+    \ T>\nT MidPoint(T a, T b) {\n    if (a > b) std::swap(a, b);\n    return a +\
+    \ ((b - a) >> 1);\n}\n\ntemplate <class T>\nT Abs(T a, T b) {\n    return (a >=\
+    \ b ? a - b : b - a);\n}\n\n} // namespace zawa::internal\n\ntemplate <class T,\
+    \ class Function>\nT BinarySearch(T ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>,\
+    \ \"T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
+    \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (internal::Abs(ok,\
+    \ ng) > 1) {\n        T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ?\
+    \ ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\n\
+    T BinarySearch(T ok, T ng, const Function& f, u32 upperLimit) {\n    static_assert(std::is_signed_v<T>,\
     \ \"T must be signed arithmetic type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    for (u32 _{}\
     \ ; _ < upperLimit ; _++) {\n        T mid{ (ok + ng) / (T)2 };\n        (f(mid)\
@@ -241,7 +250,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc296_g.test.cpp
   requiredBy: []
-  timestamp: '2023-11-20 10:17:08+09:00'
+  timestamp: '2023-12-02 01:07:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc296_g.test.cpp

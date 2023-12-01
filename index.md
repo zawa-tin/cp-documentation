@@ -186,11 +186,17 @@ data:
       path: Src/GeometryZ2/Circle.hpp
       title: Src/GeometryZ2/Circle.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/ConvexHull.hpp
+      title: Src/GeometryZ2/ConvexHull.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Line.hpp
       title: Src/GeometryZ2/Line.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Point.hpp
       title: Src/GeometryZ2/Point.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/PointCloud.hpp
+      title: Src/GeometryZ2/PointCloud.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Polygon.hpp
       title: Src/GeometryZ2/Polygon.hpp
@@ -367,6 +373,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_3_C.test.cpp
       title: Test/AOJ/CGL_3_C.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_4_A.test.cpp
+      title: Test/AOJ/CGL_4_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_D.test.cpp
       title: Test/AOJ/CGL_7_D.test.cpp
