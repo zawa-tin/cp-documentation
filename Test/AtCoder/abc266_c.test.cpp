@@ -8,5 +8,5 @@ int main() {
     using namespace zawa::geometryZ2;
     Polygon p(4);
     std::cin >> p;
-    std::cout << (p.isConvex() ? "Yes" : "No") << '\n';
+    std::cout << (p.isConvex() ? "Yes\n" : "No\n");
 }
