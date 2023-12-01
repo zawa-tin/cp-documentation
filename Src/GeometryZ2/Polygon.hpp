@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iterator>
+#include <type_traits>
 #include <vector>
 
 namespace zawa {
@@ -56,23 +57,33 @@ public:
     }
 
     /* member function */
+    void reserve(usize n) {
+        data_.reserve(n);
+    }
     void pushBack(const Point& p) {
         data_.push_back(p);
     }
     void emplaceBack(Zahlen x, Zahlen y) {
         data_.emplace_back(x, y);
     }
+    template <class RandomAccessIterator>
+    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last) {
+        assert(n <= size());
+        data_.insert(std::next(data_.begin(), n), first, last);
+    }
     void orderRotate(usize i) {
         assert(i < size());
         std::rotate(data_.begin(), data_.begin() + i, data_.end());
     }
-    void normalForm() {
-        auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};
+    template <class F>
+    void normalForm(const F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) {
+        auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end(), func))};
         orderRotate(index);
     }
-    Polygon normalFormed() const {
+    template <class F>
+    Polygon normalFormed(const F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) const {
         Polygon res{*this};
-        res.normalForm();
+        res.normalForm(func);
         return res;
     }
     bool isConvex() const {
