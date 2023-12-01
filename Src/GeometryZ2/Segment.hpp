@@ -2,6 +2,7 @@
 
 #include "./Zahlen.hpp"
 #include "./Point.hpp"
+#include "./Relation.hpp"
 
 namespace zawa {
 
@@ -42,6 +43,14 @@ public:
     }
     friend bool operator!=(const Segment& s0, const Segment& s1) {
         return !(s0 == s1);
+    }
+
+    /* member function */
+    bool valid() const {
+        return p0_ != p1_;
+    }
+    bool straddle(const Segment& s) const {
+        return Relation(p0_, p1_, s.p0()) * Relation(p0_, p1_, s.p1()) <= 0;
     }
 };
 
