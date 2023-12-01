@@ -225,6 +225,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Distance/PointAndPoint.hpp
       title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - name: Src/GeometryZ2/Intersect
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+      title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+      title: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   - name: Src/GeometryZ2/Parallel
     pages:
     - icon: ':heavy_check_mark:'
@@ -331,6 +339,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1157.test.cpp
       title: Test/AOJ/1157.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1298.test.cpp
+      title: Test/AOJ/1298.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1379.test.cpp
       title: Test/AOJ/1379.test.cpp

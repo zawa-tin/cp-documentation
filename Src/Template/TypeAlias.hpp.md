@@ -147,6 +147,12 @@ data:
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+    title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Line.hpp
     title: Src/GeometryZ2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -238,6 +244,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1298.test.cpp
+    title: Test/AOJ/1298.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1379.test.cpp
     title: Test/AOJ/1379.test.cpp
@@ -639,6 +648,8 @@ data:
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
@@ -661,6 +672,7 @@ data:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/1298.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp

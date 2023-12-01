@@ -22,6 +22,9 @@ data:
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1298.test.cpp
+    title: Test/AOJ/1298.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
@@ -174,6 +177,7 @@ data:
   - Test/LC/range_affine_point_get.test.cpp
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/1298.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp

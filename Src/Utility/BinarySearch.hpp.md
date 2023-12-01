@@ -16,6 +16,9 @@ data:
     path: Test/AOJ/0412.test.cpp
     title: Test/AOJ/0412.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1298.test.cpp
+    title: Test/AOJ/1298.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
@@ -83,6 +86,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0412.test.cpp
+  - Test/AOJ/1298.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/arc165_c.test.cpp

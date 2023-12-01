@@ -2,67 +2,44 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Polygon.hpp
+    title: Src/GeometryZ2/Polygon.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Relation.hpp
     title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Segment.hpp
+    title: Src/GeometryZ2/Segment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/ConvexHull.hpp
-    title: Src/GeometryZ2/ConvexHull.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-    title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/0445.test.cpp
-    title: Test/AOJ/0445.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1298.test.cpp
     title: Test/AOJ/1298.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A.test.cpp
-    title: Test/AOJ/CGL_3_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_A.test.cpp
-    title: Test/AOJ/CGL_4_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc250_f.test.cpp
-    title: Test/AtCoder/abc250_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc266_c.test.cpp
-    title: Test/AtCoder/abc266_c.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc296_g.test.cpp
-    title: Test/AtCoder/abc296_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp\"\n\n#line\
+    \ 2 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\
+    \n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
+    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
+    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\
+    \n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
     \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
     \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
     \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
@@ -184,80 +161,64 @@ data:
     \ res;\n    }\n    Polygon subtriangle(usize i, usize j, usize k) const {\n  \
     \      assert(i < size());\n        assert(j < size());\n        assert(k < size());\n\
     \        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};\n\
-    \    }\n};\n\n}\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Point.hpp\"\
-    \n#include \"./Relation.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <iterator>\n#include <type_traits>\n#include <vector>\n\nnamespace zawa {\n\n\
-    namespace geometryZ2 {\n\nclass Polygon {\nprivate:\n    std::vector<Point> data_;\n\
-    public:\n    usize size() const {\n        return data_.size(); \n    }\n\n  \
-    \  /* constructor */\n    Polygon() = default;\n    Polygon(const Polygon& polygon)\
-    \ : data_{polygon.data_} {}\n    Polygon(const std::vector<Point>& data) : data_{data}\
-    \ {}\n    Polygon(usize n) : data_{n} {\n        assert(n >= static_cast<usize>(3));\n\
-    \    }\n\n    /* operator */\n    Polygon& operator=(const Polygon& polygon) {\n\
-    \        data_ = polygon.data_;\n        return *this;\n    }\n    Point& operator[](usize\
-    \ i) {\n        assert(i < size());\n        return data_[i];\n    }\n    const\
-    \ Point& operator[](usize i) const {\n        assert(i < size());\n        return\
-    \ data_[i];\n    }\n    friend std::istream& operator>>(std::istream& is, Polygon&\
-    \ polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++) {\n        \
-    \    is >> polygon[i];\n        }\n        return is;\n    }\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const Polygon& polygon) {\n        for (usize i{}\
-    \ ; i < polygon.size() ; i++) {\n            std::cout << polygon[i] << (i + 1\
-    \ == polygon.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
-    \    /* member function */\n    void reserve(usize n) {\n        data_.reserve(n);\n\
-    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
-    \ }\n    void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x,\
-    \ y);\n    }\n    template <class RandomAccessIterator>\n    void insert(usize\
-    \ n, RandomAccessIterator first, RandomAccessIterator last) {\n        assert(n\
-    \ <= size());\n        data_.insert(std::next(data_.begin(), n), first, last);\n\
-    \    }\n    void orderRotate(usize i) {\n        assert(i < size());\n       \
-    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    template\
-    \ <class F>\n    void normalForm(const F& func) {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end(), func))};\n        orderRotate(index);\n\
-    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
-    \    }\n    template <class F>\n    Polygon normalFormed(const F& func = [](const\
-    \ Point& a, const Point& b) -> bool { return a < b; }) const {\n        Polygon\
-    \ res{*this};\n        res.normalForm(func);\n        return res;\n    }\n   \
-    \ Polygon normalFormed() {\n        Polygon res{*this};\n        res.normalForm();\n\
-    \        return res;\n    }\n    bool isConvex() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        for (usize i{} ; i < size() ; i++) {\n \
-    \           if (Relation(data_[i], data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n\
-    \                    == CLOCKWISE) {\n                return false;\n        \
-    \    }\n        }\n        return true;\n    }\n    Zahlen areaTwice() const {\n\
-    \        assert(size() >= static_cast<usize>(3));\n        Zahlen res{};\n   \
-    \     for (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i]\
-    \ - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return\
-    \ res;\n    }\n    Polygon subtriangle(usize i, usize j, usize k) const {\n  \
-    \      assert(i < size());\n        assert(j < size());\n        assert(k < size());\n\
-    \        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};\n\
-    \    }\n};\n\n}\n\n} // namespace zawa\n"
+    \    }\n};\n\n}\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Segment.hpp\"\
+    \n\n#line 6 \"Src/GeometryZ2/Segment.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
+    \ */\n    Segment() = default;\n    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_}\
+    \ {}\n    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n\
+    \    /* getter, setter */ \n    const Point& p0() const {\n        return p0_;\n\
+    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
+    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
+    \n    /* operator */\n    Segment& operator=(const Segment& s) {\n        p0_\
+    \ = s.p0();\n        p1_ = s.p1();\n        return *this;\n    }\n    friend bool\
+    \ operator==(const Segment& s0, const Segment& s1) {\n        return (s0.p0()\
+    \ == s1.p0() and s0.p1() == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1()\
+    \ == s1.p0());\n    }\n    friend bool operator!=(const Segment& s0, const Segment&\
+    \ s1) {\n        return !(s0 == s1);\n    }\n\n    /* member function */\n   \
+    \ bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
+    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
+    \ p1_, s.p1()) <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/GeometryZ2/Intersect/SegmentAndSegment.hpp\"\n\n#line 5\
+    \ \"Src/GeometryZ2/Intersect/SegmentAndSegment.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryZ2 {\n\nbool Intersect(const Segment& s0, const Segment& s1) {\n   \
+    \ assert(s0.valid());\n    assert(s1.valid());\n    return s0.straddle(s1) and\
+    \ s1.straddle(s0);\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line\
+    \ 6 \"Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp\"\n\n#line 8 \"Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\n// !!!!!! naive algorithm !!!!!!\n\
+    bool Intersect(const Polygon& p0, const Polygon& p1) {\n    assert(p0.size() >=\
+    \ 2u);\n    assert(p1.size() >= 2u);\n    for (size_t i{} ; i < p0.size() ; i++)\
+    \ {\n        for (size_t j{} ; j + 1 < p1.size() ; j++) {\n            Segment\
+    \ s0{p0[i], p0[i+1==p0.size()?0u:i+1]};\n            Segment s1{p1[j], p1[j+1==p1.size()?0u:j+1]};\n\
+    \            if (Intersect(s0, s1)) return true;\n        }\n    }\n    return\
+    \ false;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Polygon.hpp\"\n#include \"../Segment.hpp\"\n\
+    #include \"./SegmentAndSegment.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\
+    \nnamespace geometryZ2 {\n\n// !!!!!! naive algorithm !!!!!!\nbool Intersect(const\
+    \ Polygon& p0, const Polygon& p1) {\n    assert(p0.size() >= 2u);\n    assert(p1.size()\
+    \ >= 2u);\n    for (size_t i{} ; i < p0.size() ; i++) {\n        for (size_t j{}\
+    \ ; j + 1 < p1.size() ; j++) {\n            Segment s0{p0[i], p0[i+1==p0.size()?0u:i+1]};\n\
+    \            Segment s1{p1[j], p1[j+1==p1.size()?0u:j+1]};\n            if (Intersect(s0,\
+    \ s1)) return true;\n        }\n    }\n    return false;\n}\n\n} // namespace\
+    \ geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
+  - Src/GeometryZ2/Polygon.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Relation.hpp
+  - Src/GeometryZ2/Segment.hpp
+  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/Polygon.hpp
-  requiredBy:
-  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-  - Src/GeometryZ2/ConvexHull.hpp
-  timestamp: '2023-12-02 01:07:40+09:00'
+  path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  requiredBy: []
+  timestamp: '2023-12-02 02:46:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1298.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/0445.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
-  - Test/AtCoder/abc266_c.test.cpp
-  - Test/AtCoder/abc250_f.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-documentation_of: Src/GeometryZ2/Polygon.hpp
+documentation_of: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Polygon.hpp
-- /library/Src/GeometryZ2/Polygon.hpp.html
-title: Src/GeometryZ2/Polygon.hpp
+- /library/Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+- /library/Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp.html
+title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
 ---

@@ -16,17 +16,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+    title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1379.test.cpp
-    title: Test/AOJ/1379.test.cpp
+    path: Test/AOJ/1298.test.cpp
+    title: Test/AOJ/1298.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Parallel/SegmentAndSegment.hpp\"\n\n#line\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Intersect/SegmentAndSegment.hpp\"\n\n#line\
     \ 2 \"Src/GeometryZ2/Segment.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n\
     #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
@@ -126,13 +129,15 @@ data:
     \ bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
     \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
     \ p1_, s.p1()) <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n#line 4 \"Src/GeometryZ2/Parallel/SegmentAndSegment.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nbool Parallel(const Segment& s0, const Segment&\
-    \ s1) {\n    return Zero(Cross(s0.p1() - s0.p0(), s1.p1() - s1.p0()));\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Segment.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryZ2 {\n\nbool Parallel(const Segment& s0, const Segment& s1) {\n    return\
-    \ Zero(Cross(s0.p1() - s0.p0(), s1.p1() - s1.p0()));\n}\n\n} // namespace geometryZ2\n\
+    \ zawa\n#line 5 \"Src/GeometryZ2/Intersect/SegmentAndSegment.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\nbool Intersect(const Segment& s0, const\
+    \ Segment& s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n    return\
+    \ s0.straddle(s1) and s1.straddle(s0);\n}\n\n} // namespace geometryZ2\n\n} //\
+    \ namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Segment.hpp\"\n#include \"../Relation.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nbool Intersect(const Segment&\
+    \ s0, const Segment& s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n\
+    \    return s0.straddle(s1) and s1.straddle(s0);\n}\n\n} // namespace geometryZ2\n\
     \n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryZ2/Segment.hpp
@@ -141,16 +146,17 @@ data:
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
-  requiredBy: []
+  path: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  requiredBy:
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   timestamp: '2023-12-02 02:46:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1379.test.cpp
-documentation_of: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+  - Test/AOJ/1298.test.cpp
+documentation_of: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
-- /library/Src/GeometryZ2/Parallel/SegmentAndSegment.hpp.html
-title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
+- /library/Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+- /library/Src/GeometryZ2/Intersect/SegmentAndSegment.hpp.html
+title: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
 ---

@@ -5,6 +5,9 @@ data:
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Relation.hpp
+    title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
@@ -12,9 +15,18 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+    title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
     title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1298.test.cpp
+    title: Test/AOJ/1298.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1379.test.cpp
     title: Test/AOJ/1379.test.cpp
@@ -90,10 +102,43 @@ data:
     \ const Point& p1) {\n        if (p0.area() != p1.area()) return p0.area() < p1.area();\n\
     \        Zahlen cross{Cross(p0, p1)};\n        return (!Zero(cross) ? Positive(cross)\
     \ : p0.normSquare() < p1.normSquare());\n    }\n};\nusing Vector = Point;\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Segment.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Segment {\nprivate:\n\
-    \    Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment() = default;\n\
-    \    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_} {}\n    Segment(const\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT        = -2,\n    // (p1\
+    \ - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\
+    \u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT       \
+    \   =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\
+    \u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE   = +1,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK         = +2\n};\n\nRELATION\
+    \ Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1\
+    \ - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
+    \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryZ2/Segment.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
+    \ */\n    Segment() = default;\n    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_}\
+    \ {}\n    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n\
+    \    /* getter, setter */ \n    const Point& p0() const {\n        return p0_;\n\
+    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
+    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
+    \n    /* operator */\n    Segment& operator=(const Segment& s) {\n        p0_\
+    \ = s.p0();\n        p1_ = s.p1();\n        return *this;\n    }\n    friend bool\
+    \ operator==(const Segment& s0, const Segment& s1) {\n        return (s0.p0()\
+    \ == s1.p0() and s0.p1() == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1()\
+    \ == s1.p0());\n    }\n    friend bool operator!=(const Segment& s0, const Segment&\
+    \ s1) {\n        return !(s0 == s1);\n    }\n\n    /* member function */\n   \
+    \ bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
+    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
+    \ p1_, s.p1()) <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n"
+  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n#include\
+    \ \"./Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Segment\
+    \ {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment()\
+    \ = default;\n    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_} {}\n    Segment(const\
     \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n    /* getter, setter */\
     \ \n    const Point& p0() const {\n        return p0_;\n    }\n    Point& p0()\
     \ {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
@@ -103,33 +148,25 @@ data:
     \ Segment& s0, const Segment& s1) {\n        return (s0.p0() == s1.p0() and s0.p1()\
     \ == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1() == s1.p0());\n \
     \   }\n    friend bool operator!=(const Segment& s0, const Segment& s1) {\n  \
-    \      return !(s0 == s1);\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n"
-  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nclass Segment {\nprivate:\n    Point p0_{},\
-    \ p1_{};\npublic:\n    /* constructor */\n    Segment() = default;\n    Segment(const\
-    \ Segment& s) : p0_{s.p0_}, p1_{s.p1_} {}\n    Segment(const Point& p0, const\
-    \ Point& p1) : p0_{p0}, p1_{p1} {}\n\n    /* getter, setter */ \n    const Point&\
-    \ p0() const {\n        return p0_;\n    }\n    Point& p0() {\n        return\
-    \ p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n    }\n   \
-    \ Point& p1() {\n        return p1_;\n    }\n\n    /* operator */\n    Segment&\
-    \ operator=(const Segment& s) {\n        p0_ = s.p0();\n        p1_ = s.p1();\n\
-    \        return *this;\n    }\n    friend bool operator==(const Segment& s0, const\
-    \ Segment& s1) {\n        return (s0.p0() == s1.p0() and s0.p1() == s1.p1())\n\
-    \            or (s0.p1() == s1.p1() and s0.p1() == s1.p0());\n    }\n    friend\
-    \ bool operator!=(const Segment& s0, const Segment& s1) {\n        return !(s0\
-    \ == s1);\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
+    \      return !(s0 == s1);\n    }\n\n    /* member function */\n    bool valid()\
+    \ const {\n        return p0_ != p1_;\n    }\n    bool straddle(const Segment&\
+    \ s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_, p1_, s.p1())\
+    \ <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
   path: Src/GeometryZ2/Segment.hpp
   requiredBy:
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
-  timestamp: '2023-11-29 18:06:39+09:00'
+  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  timestamp: '2023-12-02 02:46:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/1298.test.cpp
   - Test/AOJ/1379.test.cpp
 documentation_of: Src/GeometryZ2/Segment.hpp
 layout: document
