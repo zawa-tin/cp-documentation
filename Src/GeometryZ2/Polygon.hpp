@@ -76,14 +76,23 @@ public:
         std::rotate(data_.begin(), data_.begin() + i, data_.end());
     }
     template <class F>
-    void normalForm(const F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) {
+    void normalForm(const F& func) {
         auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end(), func))};
+        orderRotate(index);
+    }
+    void normalForm() {
+        auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};
         orderRotate(index);
     }
     template <class F>
     Polygon normalFormed(const F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) const {
         Polygon res{*this};
         res.normalForm(func);
+        return res;
+    }
+    Polygon normalFormed() {
+        Polygon res{*this};
+        res.normalForm();
         return res;
     }
     bool isConvex() const {
