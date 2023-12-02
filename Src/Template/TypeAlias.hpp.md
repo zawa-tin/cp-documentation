@@ -359,6 +359,9 @@ data:
     path: Test/AtCoder/abc132_f.test.cpp
     title: ABC132-F Small Products
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc139_f.test.cpp
+    title: Test/AtCoder/abc139_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
@@ -376,6 +379,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc225_e.test.cpp
+    title: Test/AtCoder/abc225_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc229_d.test.cpp
     title: ABC229-D Longest X
@@ -472,6 +478,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/sort_by_argument.test.cpp
+    title: Test/LC/sort_by_argument.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -663,6 +672,7 @@ data:
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/sort_by_argument.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -733,8 +743,10 @@ data:
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/abc213_c.test.cpp

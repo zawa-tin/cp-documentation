@@ -91,8 +91,14 @@ data:
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc139_f.test.cpp
+    title: Test/AtCoder/abc139_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc225_e.test.cpp
+    title: Test/AtCoder/abc225_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
@@ -129,6 +135,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/sort_by_argument.test.cpp
+    title: Test/LC/sort_by_argument.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
@@ -172,6 +181,7 @@ data:
   - Test/LC/staticrmq.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/sort_by_argument.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -210,6 +220,8 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc139_f.test.cpp
+  - Test/AtCoder/abc225_e.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
 documentation_of: Src/Template/IOSetting.hpp

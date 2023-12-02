@@ -2,14 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Line.hpp
-    title: Src/GeometryZ2/Line.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Relation.hpp
-    title: Src/GeometryZ2/Relation.hpp
+    path: Src/GeometryZ2/PointCloud.hpp
+    title: Src/GeometryZ2/PointCloud.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
@@ -26,10 +23,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/0388
+    PROBLEM: https://atcoder.jp/contests/abc225/tasks/abc225_e
     links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/0388
-  bundledCode: "#line 1 \"Test/AOJ/0388.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/0388\"\
+    - https://atcoder.jp/contests/abc225/tasks/abc225_e
+  bundledCode: "#line 1 \"Test/AtCoder/abc225_e.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc225/tasks/abc225_e\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -101,92 +98,43 @@ data:
     \ Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n   \
     \ friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x()\
     \ * p1.y() - p0.y() * p1.x();\n    }\n};\nusing Vector = Point;\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line\
-    \ 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
-    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
-    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
-    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n   \
-    \ Point p0_{}, p1_{};\n\npublic:\n    /* constructor */\n    Line() = default;\n\
-    \    Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y =\
-    \ ax + b\n    Line(const Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a,\
-    \ a + b} {}\n    Line(const Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter,\
-    \ setter */\n    const Point& p0() const {\n        return p0_;\n    }\n    Point&\
-    \ p0() {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
-    \ p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator\
-    \ */\n    friend bool operator==(const Line& l0, const Line& l1) {\n        return\
-    \ Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) \n            and Zero(Cross(l1.p0()\
-    \ - l0.p0(), l0.p1() - l0.p0()));\n    }\n    friend bool operator!=(const Line&\
-    \ l0, const Line& l1) {\n        return !(l0 == l1);\n    }\n    friend bool operator<(const\
-    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
-    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;\n\
-    \        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator<=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 < l1);\n    }\n    friend\
-    \ bool operator>(const Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(),\
-    \ l1.p0()) == CLOCKWISE;\n        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator>=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 > l1);\n    }\n\n  \
-    \  /* member function */\n    Vector positiveDir() const {\n        Vector res{p1_\
-    \ - p0_};\n        if (Negative(res.x())) {\n            res.x() *= -1;\n    \
-    \        res.y() *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n\n#line 6 \"Test/AOJ/0388.test.cpp\"\n\n\
-    #include <algorithm>\n#include <vector>\n\nint main() {\n    using namespace zawa;\n\
-    \    using namespace geometryZ2;\n    SetFastIO();\n    int n, k; std::cin >>\
-    \ n >> k;\n    std::vector<Point> p(n);\n    for (auto& v : p) std::cin >> v;\n\
-    \    std::vector<Line> all;\n    for (int i{} ; i < n ; i++) {\n        std::vector<Line>\
-    \ now;\n        for (int j{i + 1} ; j < n ; j++) {\n            now.emplace_back(p[i],\
-    \ p[j]);\n        }\n        std::sort(now.begin(), now.end());\n        auto\
-    \ m{std::distance(now.begin(), std::unique(now.begin(), now.end()))};\n      \
-    \  for (int j{} ; j < m ; j++) {\n            all.push_back(now[j]);\n       \
-    \ }\n    }\n    std::sort(all.begin(), all.end());\n    bool ans{};\n    int r{};\n\
-    \    for (int l{} ; l < (int)all.size() ; l = r) {\n        while (r < (int)all.size()\
-    \ and all[l] == all[r]) r++;\n        ans |= (r - l + 1) >= k;\n    }\n    std::cout\
-    \ << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/0388\"\n\n#include\
-    \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
-    \n#include \"../../Src/GeometryZ2/Line.hpp\"\n\n#include <algorithm>\n#include\
-    \ <vector>\n\nint main() {\n    using namespace zawa;\n    using namespace geometryZ2;\n\
-    \    SetFastIO();\n    int n, k; std::cin >> n >> k;\n    std::vector<Point> p(n);\n\
-    \    for (auto& v : p) std::cin >> v;\n    std::vector<Line> all;\n    for (int\
-    \ i{} ; i < n ; i++) {\n        std::vector<Line> now;\n        for (int j{i +\
-    \ 1} ; j < n ; j++) {\n            now.emplace_back(p[i], p[j]);\n        }\n\
-    \        std::sort(now.begin(), now.end());\n        auto m{std::distance(now.begin(),\
-    \ std::unique(now.begin(), now.end()))};\n        for (int j{} ; j < m ; j++)\
-    \ {\n            all.push_back(now[j]);\n        }\n    }\n    std::sort(all.begin(),\
-    \ all.end());\n    bool ans{};\n    int r{};\n    for (int l{} ; l < (int)all.size()\
-    \ ; l = r) {\n        while (r < (int)all.size() and all[l] == all[r]) r++;\n\
-    \        ans |= (r - l + 1) >= k;\n    }\n    std::cout << ans << '\\n';\n}\n"
+    \ geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\
+    \n\n#line 4 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#include <algorithm>\n#include\
+    \ <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud =\
+    \ std::vector<Point>;\n\nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(),\
+    \ p.end(), Point::ArgComp);\n}\n\n} // namespace geometryZ2 \n\n} // namespace\
+    \ zawa\n#line 6 \"Test/AtCoder/abc225_e.test.cpp\"\n\nint main() {\n    using\
+    \ namespace zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n    int\
+    \ n; std::cin >> n;\n    PointCloud p(n);\n    for (auto& v : p) std::cin >> v;\n\
+    \    for (auto& v : p) v.x()--;\n    ArgSort(p);\n    int ans{1};\n    Point now{p[0]};\n\
+    \    for (int i{1} ; i < n ; i++) {\n        Point tar{p[i] + Point{1, -1}};\n\
+    \        if (Cross(now, tar) >= 0) {\n            ans++;\n            now = p[i];\n\
+    \        }\n    }\n    std::cout << ans << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc225/tasks/abc225_e\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
+    \n#include \"../../Src/GeometryZ2/PointCloud.hpp\"\n\nint main() {\n    using\
+    \ namespace zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n    int\
+    \ n; std::cin >> n;\n    PointCloud p(n);\n    for (auto& v : p) std::cin >> v;\n\
+    \    for (auto& v : p) v.x()--;\n    ArgSort(p);\n    int ans{1};\n    Point now{p[0]};\n\
+    \    for (int i{1} ; i < n ; i++) {\n        Point tar{p[i] + Point{1, -1}};\n\
+    \        if (Cross(now, tar) >= 0) {\n            ans++;\n            now = p[i];\n\
+    \        }\n    }\n    std::cout << ans << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Zahlen.hpp
-  - Src/GeometryZ2/Line.hpp
-  - Src/GeometryZ2/Relation.hpp
+  - Src/GeometryZ2/PointCloud.hpp
   isVerificationFile: true
-  path: Test/AOJ/0388.test.cpp
+  path: Test/AtCoder/abc225_e.test.cpp
   requiredBy: []
   timestamp: '2023-12-02 16:32:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/0388.test.cpp
+documentation_of: Test/AtCoder/abc225_e.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/0388.test.cpp
-- /verify/Test/AOJ/0388.test.cpp.html
-title: Test/AOJ/0388.test.cpp
+- /verify/Test/AtCoder/abc225_e.test.cpp
+- /verify/Test/AtCoder/abc225_e.test.cpp.html
+title: Test/AtCoder/abc225_e.test.cpp
 ---

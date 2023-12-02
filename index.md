@@ -464,6 +464,9 @@ data:
       path: Test/AtCoder/abc132_f.test.cpp
       title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc139_f.test.cpp
+      title: Test/AtCoder/abc139_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc157_f.test.cpp
       title: ABC157-F Yakiniku Optimization Problem
     - icon: ':heavy_check_mark:'
@@ -481,6 +484,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc225_e.test.cpp
+      title: Test/AtCoder/abc225_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc229_d.test.cpp
       title: ABC229-D Longest X
@@ -579,6 +585,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_affine_range_sum.test.cpp
       title: Test/LC/range_affine_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/sort_by_argument.test.cpp
+      title: Test/LC/sort_by_argument.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
