@@ -57,7 +57,7 @@ public:
             return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;
         }
         else {
-            return ArgComp(l0.positiveDir(), l1.positiveDir());
+            return Point::ArgComp(l0.positiveDir(), l1.positiveDir());
         }
     }
     friend bool operator<=(const Line& l0, const Line& l1) {
@@ -68,7 +68,7 @@ public:
             return Relation(l0.p0(), l0.p1(), l1.p0()) == CLOCKWISE;
         }
         else {
-            return ArgComp(l0.positiveDir(), l1.positiveDir());
+            return Point::ArgComp(l0.positiveDir(), l1.positiveDir());
         }
     }
     friend bool operator>=(const Line& l0, const Line& l1) {
