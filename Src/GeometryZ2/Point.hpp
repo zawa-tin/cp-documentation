@@ -13,11 +13,11 @@ namespace geometryZ2 {
 class Point {
 private:
     Zahlen x_{}, y_{};
-    static constexpr u32 origin{0};
-    static constexpr u32 firstQuadrant{1};
-    static constexpr u32 secondQuadrant{2};
-    static constexpr u32 thirdQuadrant{3};
-    static constexpr u32 forthQuadrant{4};
+    static constexpr i32 origin{0};
+    static constexpr i32 firstQuadrant{1};
+    static constexpr i32 secondQuadrant{2};
+    static constexpr i32 thirdQuadrant{-2};
+    static constexpr i32 forthQuadrant{-1};
 public:
     /* constructor */
     Point() = default;
@@ -116,12 +116,12 @@ public:
         return Square(x()) + Square(y());
     }
 
-    u32 area() const {
+    i32 area() const {
         if (x_ == 0 and y_ == 0) return origin;
-        if (x_ > 0 and y_ >= 0) return firstQuadrant;
-        if (x_ <= 0 and y_ > 0) return secondQuadrant;
-        if (x_ < 0 and y_ <= 0) return thirdQuadrant;
-        return forthQuadrant;
+        if (x_ <= 0 and y_ < 0) return thirdQuadrant;
+        if (x_ > 0 and y_ <= 0) return forthQuadrant;
+        if (x_ >= 0 and y_ > 0) return firstQuadrant;
+        return secondQuadrant;
     }
 
     /* static member */

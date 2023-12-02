@@ -14,14 +14,6 @@ class Line {
 private:
     Point p0_{}, p1_{};
 
-    Vector positiveDir() const {
-        Vector res{p1_ - p0_};
-        if (Negative(res.x())) {
-            res.x() *= -1;
-            res.y() *= -1;
-        }
-        return res;
-    }
 public:
     /* constructor */
     Line() = default;
@@ -73,6 +65,16 @@ public:
     }
     friend bool operator>=(const Line& l0, const Line& l1) {
         return (l0 == l1) or (l0 > l1);
+    }
+
+    /* member function */
+    Vector positiveDir() const {
+        Vector res{p1_ - p0_};
+        if (Negative(res.x())) {
+            res.x() *= -1;
+            res.y() *= -1;
+        }
+        return res;
     }
 };
 
