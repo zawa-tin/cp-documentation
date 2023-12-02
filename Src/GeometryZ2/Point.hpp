@@ -15,17 +15,9 @@ private:
     Zahlen x_{}, y_{};
     static constexpr u32 origin{0};
     static constexpr u32 firstQuadrant{1};
-    static constexpr u32 secondQuadrant{1};
-    static constexpr u32 thirdQuadrant{1};
-    static constexpr u32 forthQuadrant{1};
-
-    u32 area() const {
-        if (x_ == 0 and y_ == 0) return origin;
-        if (x_ > 0 and y_ >= 0) return firstQuadrant;
-        if (x_ <= 0 and y_ > 0) return secondQuadrant;
-        if (x_ < 0 and y_ <= 0) return thirdQuadrant;
-        return forthQuadrant;
-    }
+    static constexpr u32 secondQuadrant{2};
+    static constexpr u32 thirdQuadrant{3};
+    static constexpr u32 forthQuadrant{4};
 public:
     /* constructor */
     Point() = default;
@@ -124,17 +116,27 @@ public:
         return Square(x()) + Square(y());
     }
 
+    u32 area() const {
+        if (x_ == 0 and y_ == 0) return origin;
+        if (x_ > 0 and y_ >= 0) return firstQuadrant;
+        if (x_ <= 0 and y_ > 0) return secondQuadrant;
+        if (x_ < 0 and y_ <= 0) return thirdQuadrant;
+        return forthQuadrant;
+    }
+
+    /* static member */
+    static bool ArgComp(const Point& p0, const Point& p1) {
+        if (p0.area() != p1.area()) return p0.area() < p1.area();
+        Zahlen cross{Cross(p0, p1)};
+        return (!Zero(cross) ? Positive(cross) : p0.normSquare() < p1.normSquare());
+    }
+
     /* friend function */
     friend Zahlen Dot(const Point& p0, const Point& p1) {
         return p0.x() * p1.x() + p0.y() * p1.y();
     }
     friend Zahlen Cross(const Point& p0, const Point& p1) {
         return p0.x() * p1.y() - p0.y() * p1.x();
-    }
-    friend bool ArgComp(const Point& p0, const Point& p1) {
-        if (p0.area() != p1.area()) return p0.area() < p1.area();
-        Zahlen cross{Cross(p0, p1)};
-        return (!Zero(cross) ? Positive(cross) : p0.normSquare() < p1.normSquare());
     }
 };
 using Vector = Point;
