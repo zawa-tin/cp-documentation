@@ -34,4 +34,5 @@ int main() {
         ans |= (r - l + 1) >= k;
     }
     std::cout << ans << '\n';
+
 }
