@@ -22,13 +22,13 @@ int main() {
     m32 ans{};
     for (u32 k{1} ; k <= n ; k++) {
         m32 a; std::cin >> a;
-        now += (m32{2} * ft1.product(0, a.v() + 1) + m32{1}) * a;
+        now += (m32{2} * ft1.prefixProduct(a.v() + 1) + m32{1}) * a;
         now += m32{2} * ft2.product(a.v() + 1, sz);
         ans = now / (m32{k} * m32{k});
 
-        std::cout << ans << std::endl;
+        std::cout << ans << '\n';
 
-        ft1.add(a.v(), m32{1});
-        ft2.add(a.v(), a);
+        ft1.operation(a.v(), m32{1});
+        ft2.operation(a.v(), a);
     }
 }

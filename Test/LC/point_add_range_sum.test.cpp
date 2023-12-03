@@ -24,11 +24,11 @@ int main() {
         if (t == 0) {
             u32 p; std::cin >> p;
             i64 x; std::cin >> x;
-            ft.add(p, x);
+            ft.operation(p, x);
         }
         else if (t == 1) {
             u32 l, r; std::cin >> l >> r;
-            std::cout << ft.product(l, r) << std::endl;
+            std::cout << ft.product(l, r) << '\n';
         }
         else {
             assert(!"input fail");

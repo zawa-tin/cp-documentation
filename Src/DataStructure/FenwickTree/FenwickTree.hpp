@@ -19,7 +19,7 @@ private:
     u32 bitWidth_;
     std::vector<Value> a_, dat_;
 
-    inline i32 lsb(i32 x) const noexcept {
+    constexpr i32 lsb(i32 x) const noexcept {
         return x & -x;
     }
     
@@ -56,7 +56,13 @@ public:
     }
 
     // return a[i]
-    Value get(u32 i) const noexcept {
+    const Value& get(usize i) const noexcept {
+        assert(i < n_);
+        return a_[i];
+    }
+
+    // return a[i]
+    const Value& operator[](usize i) const noexcept {
         assert(i < n_);
         return a_[i];
     }
@@ -66,27 +72,33 @@ public:
     }
 
     // a[i] <- a[i] + v
-    void add(u32 i, const Value& v) {
+    void operation(usize i, const Value& v) {
         assert(i < n_);
         addDat(i, v);
         a_[i] = Group::operation(a_[i], v);
     }
 
     // a[i] <- v
-    void set(u32 i, const Value& v) {
+    void set(usize i, const Value& v) {
         assert(i < n_);
         addDat(i, Group::operation(Group::inverse(a_[i]), v));
         a_[i] = v;
     }
 
+    // return a[0] + a[1] + ... + a[r - 1]
+    Value prefixProduct(usize r) const {
+        assert(r <= n_);
+        return product(r);
+    }
+
     // return a[l] + a[l + 1] ... + a[r - 1]
-    Value product(u32 l, u32 r) const {
+    Value product(usize l, usize r) const {
         assert(l <= r and r <= n_);
         return Group::operation(Group::inverse(product(l)), product(r));
     }
 
     template <class Function>
-    u32 maxRight(u32 l, const Function& f) const {
+    u32 maxRight(usize l, const Function& f) const {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "maxRight's argument f must be function bool(T)");
         assert(l < n_);
         Value sum{ Group::inverse(product(l)) }; 
@@ -104,7 +116,7 @@ public:
     }
 
     template <class Function>
-    u32 minLeft(u32 r, const Function& f) const {
+    u32 minLeft(usize r, const Function& f) const {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "minLeft's argument f must be function bool(T)");
         assert(r <= n_);
         Value sum{ product(r) };
@@ -124,7 +136,7 @@ public:
     // debug print
     friend std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {
         for (u32 i{} ; i <= ft.size() ; i++) {
-            os << ft.product(0, i) << (i == ft.size() ? "" : " ");
+            os << ft.prefixProduct(i) << (i == ft.size() ? "" : " ");
         }
         return os;
     }

@@ -5,7 +5,7 @@ documentation_of: //Src/DataStructure/FenwickTree/FenwickTree.hpp
 
 ## 概要
 
-群 $G = (S, \circ)$ 上で列上の一点更新、区間積クエリに答えることができるデータ構造です。
+可換群 $G = (S, \circ)$ 上で列上の一点更新、区間積クエリに答えることができるデータ構造です。
 - 以後、管理する列を $A$ とします。
 
 ## ライブラリの使い方
@@ -49,7 +49,7 @@ template <class Group>
 #### get
 
 ```cpp
-Value get(u32 i) const noexcept
+const Value& get(usize i) const noexcept
 ```
 
 $A_i$ を返します。
@@ -59,6 +59,19 @@ $A_i$ を返します。
 **計算量**: 定数時間
 
 <br/>
+
+#### operator[]
+
+```cpp
+const Value& operator[](usize i) const noexcept
+```
+$A_i$ を返します。
+
+**制約**: $0\ \le\ i\ <\ n$
+
+**計算量**: 定数時間
+
+<br />
 
 #### size
 
@@ -72,10 +85,10 @@ $A$ の要素数を返します。
 
 <br />
 
-#### add
+#### operation
 
 ```cpp
-void add(u32 i, const Value& v)
+void operation(usize i, const Value& v)
 ```
 
 $A_i$ を $A_i \circ v$ に置き換えます。
@@ -89,7 +102,7 @@ $A_i$ を $A_i \circ v$ に置き換えます。
 #### set
 
 ```cpp
-void set(u32 i, const Value& v)
+void set(usize i, const Value& v)
 ```
 $A_i$ を $v$ を置き換えます。
 
@@ -99,10 +112,24 @@ $A_i$ を $v$ を置き換えます。
 
 <br />
 
+#### prefixProduct
+
+```cpp
+Value prefixProduct(usize r) const;
+```
+
+$\displaystyle \prod_{i = 0}^{r - 1} A_{i}$ を求め、返します。
+
+このメンバは`Group::inverse`を呼ばないので、`inverse`が定義されていない`Group`でも呼び出すことができます。
+
+- 可換モノイドならok
+
+<br />
+
 #### product
 
 ```cpp
-Value product(u32 l, u32 r) const
+Value product(usize l, usize r) const
 ```
 
 $\displaystyle \prod_{i = l}^{r - 1} A_i$ を求めます。
