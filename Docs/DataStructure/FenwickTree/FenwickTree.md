@@ -195,3 +195,11 @@ friend std::ostream& operator<<(std::ostream& os, const FenwickTree& ft)
 ```
 
 $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaystyle \prod_{j = 0}^{i} A_{j}$ を出力します。
+
+<br />
+
+#### update
+
+2023/12/03: prefixProductメンバを作成
+
+2023/12/03: 一部のメンバの引数の型`u32`を`usize`へ変更
