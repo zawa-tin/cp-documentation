@@ -29,7 +29,7 @@ data:
     \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n#include <functional>\n\
     #include <type_traits>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass FenwickTree\
     \ {\nprivate:\n    using Value = typename Group::Element;\n\n    usize n_;\n \
-    \   u32 bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    inline i32 lsb(i32\
+    \   u32 bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32\
     \ x) const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i]\
     \ + v\n    void addDat(i32 i, const Value& v) {\n        assert(0 <= i and i <\
     \ static_cast<i32>(n_));\n        for ( i++ ; i < static_cast<i32>(dat_.size())\
@@ -45,25 +45,28 @@ data:
     \ std::__lg(static_cast<u32>(a.size())) + 1 }, a_(a), dat_(a.size() + 1, Group::identity())\
     \ {\n        dat_.shrink_to_fit();  \n        for (i32 i{} ; i < static_cast<i32>(n_)\
     \ ; i++) {\n            addDat(i, a[i]);\n        }\n    }\n\n    // return a[i]\n\
-    \    Value get(u32 i) const noexcept {\n        assert(i < n_);\n        return\
-    \ a_[i];\n    }\n\n    usize size() const noexcept {\n        return n_;\n   \
-    \ }\n\n    // a[i] <- a[i] + v\n    void add(u32 i, const Value& v) {\n      \
-    \  assert(i < n_);\n        addDat(i, v);\n        a_[i] = Group::operation(a_[i],\
-    \ v);\n    }\n\n    // a[i] <- v\n    void set(u32 i, const Value& v) {\n    \
-    \    assert(i < n_);\n        addDat(i, Group::operation(Group::inverse(a_[i]),\
-    \ v));\n        a_[i] = v;\n    }\n\n    // return a[l] + a[l + 1] ... + a[r -\
-    \ 1]\n    Value product(u32 l, u32 r) const {\n        assert(l <= r and r <=\
-    \ n_);\n        return Group::operation(Group::inverse(product(l)), product(r));\n\
-    \    }\n\n    template <class Function>\n    u32 maxRight(u32 l, const Function&\
-    \ f) const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>,\
-    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l < n_);\n\
-    \        Value sum{ Group::inverse(product(l)) }; \n        u32 r{};\n       \
-    \ for (u32 bit{ bitWidth_ } ; bit ; ) {\n            bit--;\n            u32 nxt{\
-    \ r | (1u << bit) };\n            if (nxt < dat_.size() and f(Group::operation(sum,\
-    \ dat_[nxt]))) {\n                sum = Group::operation(sum, dat_[nxt]);\n  \
-    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
-    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    u32 minLeft(u32\
-    \ r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \    const Value& get(usize i) const noexcept {\n        assert(i < n_);\n   \
+    \     return a_[i];\n    }\n\n    // return a[i]\n    const Value& operator[](usize\
+    \ i) const noexcept {\n        assert(i < n_);\n        return a_[i];\n    }\n\
+    \n    usize size() const noexcept {\n        return n_;\n    }\n\n    // a[i]\
+    \ <- a[i] + v\n    void operation(usize i, const Value& v) {\n        assert(i\
+    \ < n_);\n        addDat(i, v);\n        a_[i] = Group::operation(a_[i], v);\n\
+    \    }\n\n    // a[i] <- v\n    void set(usize i, const Value& v) {\n        assert(i\
+    \ < n_);\n        addDat(i, Group::operation(Group::inverse(a_[i]), v));\n   \
+    \     a_[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r - 1]\n    Value\
+    \ prefixProduct(usize r) const {\n        assert(r <= n_);\n        return product(r);\n\
+    \    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n    Value product(usize\
+    \ l, usize r) const {\n        assert(l <= r and r <= n_);\n        return Group::operation(Group::inverse(product(l)),\
+    \ product(r));\n    }\n\n    template <class Function>\n    u32 maxRight(usize\
+    \ l, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(Value)>>, \"maxRight's argument f must be function bool(T)\"\
+    );\n        assert(l < n_);\n        Value sum{ Group::inverse(product(l)) };\
+    \ \n        u32 r{};\n        for (u32 bit{ bitWidth_ } ; bit ; ) {\n        \
+    \    bit--;\n            u32 nxt{ r | (1u << bit) };\n            if (nxt < dat_.size()\
+    \ and f(Group::operation(sum, dat_[nxt]))) {\n                sum = Group::operation(sum,\
+    \ dat_[nxt]);\n                r = std::move(nxt);\n            }\n        }\n\
+    \        assert(l <= r);\n        return r;\n    }\n\n    template <class Function>\n\
+    \    u32 minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
     \ std::function<bool(Value)>>, \"minLeft's argument f must be function bool(T)\"\
     );\n        assert(r <= n_);\n        Value sum{ product(r) };\n        u32 l{};\n\
     \        for (u32 bit{ bitWidth_ } ; bit ; ) {\n            bit--;\n         \
@@ -72,14 +75,14 @@ data:
     \ sum);\n                l = std::move(nxt);\n            }\n        }\n     \
     \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
-    \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.product(0, i)\
+    \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
     \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
     };\n\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <ostream>\n#include <functional>\n#include <type_traits>\n\
     \nnamespace zawa {\n\ntemplate <class Group>\nclass FenwickTree {\nprivate:\n\
     \    using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
-    \    std::vector<Value> a_, dat_;\n\n    inline i32 lsb(i32 x) const noexcept\
+    \    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept\
     \ {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32\
     \ i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
     \        for ( i++ ; i < static_cast<i32>(dat_.size()) ; i += lsb(i)) {\n    \
@@ -94,25 +97,29 @@ data:
     \ a) : n_{ a.size() }, bitWidth_{ std::__lg(static_cast<u32>(a.size())) + 1 },\
     \ a_(a), dat_(a.size() + 1, Group::identity()) {\n        dat_.shrink_to_fit();\
     \  \n        for (i32 i{} ; i < static_cast<i32>(n_) ; i++) {\n            addDat(i,\
-    \ a[i]);\n        }\n    }\n\n    // return a[i]\n    Value get(u32 i) const noexcept\
-    \ {\n        assert(i < n_);\n        return a_[i];\n    }\n\n    usize size()\
-    \ const noexcept {\n        return n_;\n    }\n\n    // a[i] <- a[i] + v\n   \
-    \ void add(u32 i, const Value& v) {\n        assert(i < n_);\n        addDat(i,\
-    \ v);\n        a_[i] = Group::operation(a_[i], v);\n    }\n\n    // a[i] <- v\n\
-    \    void set(u32 i, const Value& v) {\n        assert(i < n_);\n        addDat(i,\
-    \ Group::operation(Group::inverse(a_[i]), v));\n        a_[i] = v;\n    }\n\n\
-    \    // return a[l] + a[l + 1] ... + a[r - 1]\n    Value product(u32 l, u32 r)\
-    \ const {\n        assert(l <= r and r <= n_);\n        return Group::operation(Group::inverse(product(l)),\
-    \ product(r));\n    }\n\n    template <class Function>\n    u32 maxRight(u32 l,\
-    \ const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(Value)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(l < n_);\n        Value sum{ Group::inverse(product(l)) };\
-    \ \n        u32 r{};\n        for (u32 bit{ bitWidth_ } ; bit ; ) {\n        \
-    \    bit--;\n            u32 nxt{ r | (1u << bit) };\n            if (nxt < dat_.size()\
-    \ and f(Group::operation(sum, dat_[nxt]))) {\n                sum = Group::operation(sum,\
-    \ dat_[nxt]);\n                r = std::move(nxt);\n            }\n        }\n\
-    \        assert(l <= r);\n        return r;\n    }\n\n    template <class Function>\n\
-    \    u32 minLeft(u32 r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ a[i]);\n        }\n    }\n\n    // return a[i]\n    const Value& get(usize i)\
+    \ const noexcept {\n        assert(i < n_);\n        return a_[i];\n    }\n\n\
+    \    // return a[i]\n    const Value& operator[](usize i) const noexcept {\n \
+    \       assert(i < n_);\n        return a_[i];\n    }\n\n    usize size() const\
+    \ noexcept {\n        return n_;\n    }\n\n    // a[i] <- a[i] + v\n    void operation(usize\
+    \ i, const Value& v) {\n        assert(i < n_);\n        addDat(i, v);\n     \
+    \   a_[i] = Group::operation(a_[i], v);\n    }\n\n    // a[i] <- v\n    void set(usize\
+    \ i, const Value& v) {\n        assert(i < n_);\n        addDat(i, Group::operation(Group::inverse(a_[i]),\
+    \ v));\n        a_[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r - 1]\n\
+    \    Value prefixProduct(usize r) const {\n        assert(r <= n_);\n        return\
+    \ product(r);\n    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n    Value\
+    \ product(usize l, usize r) const {\n        assert(l <= r and r <= n_);\n   \
+    \     return Group::operation(Group::inverse(product(l)), product(r));\n    }\n\
+    \n    template <class Function>\n    u32 maxRight(usize l, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>,\
+    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l < n_);\n\
+    \        Value sum{ Group::inverse(product(l)) }; \n        u32 r{};\n       \
+    \ for (u32 bit{ bitWidth_ } ; bit ; ) {\n            bit--;\n            u32 nxt{\
+    \ r | (1u << bit) };\n            if (nxt < dat_.size() and f(Group::operation(sum,\
+    \ dat_[nxt]))) {\n                sum = Group::operation(sum, dat_[nxt]);\n  \
+    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    u32 minLeft(usize\
+    \ r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
     \ std::function<bool(Value)>>, \"minLeft's argument f must be function bool(T)\"\
     );\n        assert(r <= n_);\n        Value sum{ product(r) };\n        u32 l{};\n\
     \        for (u32 bit{ bitWidth_ } ; bit ; ) {\n            bit--;\n         \
@@ -121,7 +128,7 @@ data:
     \ sum);\n                l = std::move(nxt);\n            }\n        }\n     \
     \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
-    \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.product(0, i)\
+    \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
     \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
     };\n\n\n} // namespace zawa\n"
   dependsOn:
@@ -129,7 +136,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/FenwickTree.hpp
   requiredBy: []
-  timestamp: '2023-08-26 19:43:49+09:00'
+  timestamp: '2023-12-03 18:29:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/point_add_range_sum.test.cpp
@@ -142,7 +149,7 @@ title: Fenwick Tree
 
 ## 概要
 
-群 $G = (S, \circ)$ 上で列上の一点更新、区間積クエリに答えることができるデータ構造です。
+可換群 $G = (S, \circ)$ 上で列上の一点更新、区間積クエリに答えることができるデータ構造です。
 - 以後、管理する列を $A$ とします。
 
 ## ライブラリの使い方
@@ -186,7 +193,7 @@ template <class Group>
 #### get
 
 ```cpp
-Value get(u32 i) const noexcept
+const Value& get(usize i) const noexcept
 ```
 
 $A_i$ を返します。
@@ -196,6 +203,19 @@ $A_i$ を返します。
 **計算量**: 定数時間
 
 <br/>
+
+#### operator[]
+
+```cpp
+const Value& operator[](usize i) const noexcept
+```
+$A_i$ を返します。
+
+**制約**: $0\ \le\ i\ <\ n$
+
+**計算量**: 定数時間
+
+<br />
 
 #### size
 
@@ -209,10 +229,10 @@ $A$ の要素数を返します。
 
 <br />
 
-#### add
+#### operation
 
 ```cpp
-void add(u32 i, const Value& v)
+void operation(usize i, const Value& v)
 ```
 
 $A_i$ を $A_i \circ v$ に置き換えます。
@@ -226,7 +246,7 @@ $A_i$ を $A_i \circ v$ に置き換えます。
 #### set
 
 ```cpp
-void set(u32 i, const Value& v)
+void set(usize i, const Value& v)
 ```
 $A_i$ を $v$ を置き換えます。
 
@@ -236,10 +256,24 @@ $A_i$ を $v$ を置き換えます。
 
 <br />
 
+#### prefixProduct
+
+```cpp
+Value prefixProduct(usize r) const;
+```
+
+$\displaystyle \prod_{i = 0}^{r - 1} A_{i}$ を求め、返します。
+
+このメンバは`Group::inverse`を呼ばないので、`inverse`が定義されていない`Group`でも呼び出すことができます。
+
+- 可換モノイドならok
+
+<br />
+
 #### product
 
 ```cpp
-Value product(u32 l, u32 r) const
+Value product(usize l, usize r) const
 ```
 
 $\displaystyle \prod_{i = l}^{r - 1} A_i$ を求めます。
@@ -305,3 +339,11 @@ friend std::ostream& operator<<(std::ostream& os, const FenwickTree& ft)
 ```
 
 $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaystyle \prod_{j = 0}^{i} A_{j}$ を出力します。
+
+<br />
+
+#### update
+
+2023/12/03: prefixProductメンバを作成
+
+2023/12/03: 一部のメンバの引数の型`u32`を`usize`へ変更
