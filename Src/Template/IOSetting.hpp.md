@@ -28,6 +28,9 @@ data:
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ALDS1_14_B.test.cpp
+    title: Test/AOJ/ALDS1_14_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -94,6 +97,9 @@ data:
     path: Test/AtCoder/abc139_f.test.cpp
     title: Test/AtCoder/abc139_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc141_e.test.cpp
+    title: Test/AtCoder/abc141_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
@@ -111,6 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc284_f.test.cpp
+    title: Test/AtCoder/abc284_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
@@ -192,6 +201,7 @@ data:
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/ALDS1_14_B.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
@@ -219,9 +229,11 @@ data:
   - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
+  - Test/AtCoder/abc141_e.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
 documentation_of: Src/Template/IOSetting.hpp

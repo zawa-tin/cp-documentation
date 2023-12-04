@@ -259,6 +259,9 @@ data:
       path: Src/Number/LinearSieve.hpp
       title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
+      path: Src/Number/Mersenne61ModInt.hpp
+      title: Src/Number/Mersenne61ModInt.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Number/ModInt.hpp
       title: Src/Number/ModInt.hpp
   - name: Src/Sequence
@@ -266,6 +269,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/CompressedSequence.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
+    - icon: ':heavy_check_mark:'
+      path: Src/Sequence/RollingHash.hpp
+      title: "\u30ED\u30EA\u30CF"
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/RunLengthEncoding.hpp
       title: "\u9023\u9577\u5727\u7E2E"
@@ -360,6 +366,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ALDS1_14_B.test.cpp
+      title: Test/AOJ/ALDS1_14_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_A.test.cpp
       title: Test/AOJ/CGL_1_A.test.cpp
@@ -467,6 +476,9 @@ data:
       path: Test/AtCoder/abc139_f.test.cpp
       title: Test/AtCoder/abc139_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc141_e.test.cpp
+      title: Test/AtCoder/abc141_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc157_f.test.cpp
       title: ABC157-F Yakiniku Optimization Problem
     - icon: ':heavy_check_mark:'
@@ -517,6 +529,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc276_f.test.cpp
       title: Test/AtCoder/abc276_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc284_f.test.cpp
+      title: Test/AtCoder/abc284_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc288_c.test.cpp
       title: Test/AtCoder/abc288_c.test.cpp

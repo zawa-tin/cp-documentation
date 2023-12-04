@@ -189,11 +189,17 @@ data:
     path: Src/Number/LinearSieve.hpp
     title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
+    path: Src/Number/Mersenne61ModInt.hpp
+    title: Src/Number/Mersenne61ModInt.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Number/ModInt.hpp
     title: Src/Number/ModInt.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/RollingHash.hpp
+    title: "\u30ED\u30EA\u30CF"
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/RunLengthEncoding.hpp
     title: "\u9023\u9577\u5727\u7E2E"
@@ -265,6 +271,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ALDS1_14_B.test.cpp
+    title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
@@ -362,6 +371,9 @@ data:
     path: Test/AtCoder/abc139_f.test.cpp
     title: Test/AtCoder/abc139_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc141_e.test.cpp
+    title: Test/AtCoder/abc141_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
@@ -412,6 +424,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc284_f.test.cpp
+    title: Test/AtCoder/abc284_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_c.test.cpp
     title: Test/AtCoder/abc288_c.test.cpp
@@ -590,6 +605,7 @@ data:
   - Src/Number/ModInt.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/EratosthenesSieve.hpp
+  - Src/Number/Mersenne61ModInt.hpp
   - Src/Number/LinearSieve.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/GeometryR2/Point.hpp
@@ -643,6 +659,7 @@ data:
   - Src/Template/Input.hpp
   - Src/Template/IOSetting.hpp
   - Src/Sequence/CompressedSequence.hpp
+  - Src/Sequence/RollingHash.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/BinarySearch.hpp
@@ -687,6 +704,7 @@ data:
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/ALDS1_14_B.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
@@ -742,6 +760,7 @@ data:
   - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
@@ -752,6 +771,7 @@ data:
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
+  - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/CF895-E.test.cpp
