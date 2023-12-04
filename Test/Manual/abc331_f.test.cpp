@@ -1,5 +1,10 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * ABC331-F Palindrome Query
+ * https://atcoder.jp/contests/abc331/submissions/48195607
+ */
+
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/RollingHashMonoid.hpp"
@@ -54,6 +59,6 @@ int main() {
 #ifdef ATCODER
     solve();
 #else
-    std::cout << "Hello World!" << '\n';
+    std::cout << "Hello World" << '\n';
 #endif
 }
