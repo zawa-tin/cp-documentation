@@ -3,6 +3,10 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/RollingHashMonoid.hpp
+    title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
+      \u306E\u30E2\u30CE\u30A4\u30C9"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
     title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - icon: ':heavy_check_mark:'
@@ -512,6 +516,9 @@ data:
     path: Test/Manual/CF902-B.test.cpp
     title: Test/Manual/CF902-B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc331_f.test.cpp
+    title: Test/Manual/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -602,6 +609,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/EratosthenesSieve.hpp
@@ -774,6 +782,7 @@ data:
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/abc331_f.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/agc026_a.test.cpp

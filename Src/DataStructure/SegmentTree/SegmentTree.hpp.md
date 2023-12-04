@@ -13,6 +13,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc331_f.test.cpp
+    title: Test/Manual/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   _isVerificationFailed: false
@@ -150,6 +153,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/abc331_f.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree

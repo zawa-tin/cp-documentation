@@ -20,6 +20,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/RollingHashMonoid.hpp
+      title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
+        \u306E\u30E2\u30CE\u30A4\u30C9"
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -620,6 +624,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/CF902-B.test.cpp
       title: Test/Manual/CF902-B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc331_f.test.cpp
+      title: Test/Manual/abc331_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp

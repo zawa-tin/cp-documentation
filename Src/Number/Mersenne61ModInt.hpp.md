@@ -6,6 +6,10 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/RollingHashMonoid.hpp
+    title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
+      \u306E\u30E2\u30CE\u30A4\u30C9"
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RollingHash.hpp
     title: "\u30ED\u30EA\u30CF"
   _extendedVerifiedWith:
@@ -18,6 +22,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc284_f.test.cpp
     title: Test/AtCoder/abc284_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc331_f.test.cpp
+    title: Test/Manual/abc331_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -64,6 +71,7 @@ data:
   isVerificationFile: false
   path: Src/Number/Mersenne61ModInt.hpp
   requiredBy:
+  - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Sequence/RollingHash.hpp
   timestamp: '2023-12-04 20:18:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -71,6 +79,7 @@ data:
   - Test/AOJ/ALDS1_14_B.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
+  - Test/Manual/abc331_f.test.cpp
 documentation_of: Src/Number/Mersenne61ModInt.hpp
 layout: document
 redirect_from:

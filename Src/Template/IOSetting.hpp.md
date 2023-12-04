@@ -157,6 +157,9 @@ data:
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc331_f.test.cpp
+    title: Test/Manual/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
   _isVerificationFailed: false
@@ -234,6 +237,7 @@ data:
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
+  - Test/Manual/abc331_f.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
