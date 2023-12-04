@@ -130,6 +130,9 @@ data:
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/lca.test.cpp
+    title: Test/LC/lca.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -156,6 +159,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc267_f.test.cpp
+    title: Test/Manual/abc267_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc331_f.test.cpp
     title: Test/Manual/abc331_f.test.cpp
@@ -190,6 +196,7 @@ data:
   verifiedWith:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/unionfind.test.cpp
+  - Test/LC/lca.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
@@ -240,6 +247,7 @@ data:
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
+  - Test/Manual/abc267_f.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"

@@ -21,6 +21,9 @@ data:
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+      title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/RollingHashMonoid.hpp
       title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
         \u306E\u30E2\u30CE\u30A4\u30C9"
@@ -247,6 +250,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/ConnectedComponents.hpp
       title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
+  - name: Src/Graph/Tree
+    pages:
+    - icon: ':warning:'
+      path: Src/Graph/Tree/EulerTour.hpp
+      title: Src/Graph/Tree/EulerTour.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/LevelAncestor.hpp
+      title: Src/Graph/Tree/LevelAncestor.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/LowestCommonAncestor.hpp
+      title: Lowest Common Ancestor
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -590,6 +604,9 @@ data:
       path: Test/LC/enumerate_quotients.test.cpp
       title: Test/LC/enumerate_quotients.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/lca.test.cpp
+      title: Test/LC/lca.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
     - icon: ':heavy_check_mark:'
@@ -624,6 +641,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/CF902-B.test.cpp
       title: Test/Manual/CF902-B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc267_f.test.cpp
+      title: Test/Manual/abc267_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc331_f.test.cpp
       title: Test/Manual/abc331_f.test.cpp

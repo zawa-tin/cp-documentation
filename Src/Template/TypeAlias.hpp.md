@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+    title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/RollingHashMonoid.hpp
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
@@ -183,6 +186,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
+  - icon: ':warning:'
+    path: Src/Graph/Tree/EulerTour.hpp
+    title: Src/Graph/Tree/EulerTour.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/LevelAncestor.hpp
+    title: Src/Graph/Tree/LevelAncestor.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/LowestCommonAncestor.hpp
+    title: Lowest Common Ancestor
   - icon: ':heavy_check_mark:'
     path: Src/Number/EnumerateQuotients.hpp
     title: "\u5546\u5217\u6319"
@@ -483,6 +495,9 @@ data:
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/lca.test.cpp
+    title: Test/LC/lca.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -515,6 +530,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/CF902-B.test.cpp
     title: Test/Manual/CF902-B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc267_f.test.cpp
+    title: Test/Manual/abc267_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc331_f.test.cpp
     title: Test/Manual/abc331_f.test.cpp
@@ -610,12 +628,16 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
+  - Src/Algebra/Monoid/MinWithIndexMonoid.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/Mersenne61ModInt.hpp
   - Src/Number/LinearSieve.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Graph/Tree/LevelAncestor.hpp
+  - Src/Graph/Tree/EulerTour.hpp
+  - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Polygon.hpp
@@ -692,6 +714,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/LC/lca.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/enumerate_primes.test.cpp
@@ -787,6 +810,7 @@ data:
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/CF902-B.test.cpp
+  - Test/Manual/abc267_f.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
