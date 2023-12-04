@@ -66,6 +66,14 @@ public:
         return spt_.product(first_[u], first_[v] + 1).index();
     }
 
+    u32 depth(u32 v) const noexcept {
+        assert(v < size());
+        return depth_[v];
+    }
+
+    bool isAncestor(u32 anc, u32 child) const {
+        return (*this)(anc, child) == anc;
+    }
 };
 
 } // namespace zawa
