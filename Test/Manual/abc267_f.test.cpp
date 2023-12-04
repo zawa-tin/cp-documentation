@@ -1,4 +1,9 @@
-#define PROBLEM "https://atcoder.jp/contests/abc267/tasks/abc267_f"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+
+/*
+ * ABC267-F Exactly K Steps
+ * https://atcoder.jp/contests/abc267/submissions/48201106
+ */
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Tree/LevelAncestor.hpp"
@@ -11,7 +16,7 @@ using namespace zawa;
 #include <queue>
 #include <vector>
 
-int main() {
+void solve() {
     SetFastIO();
     int n; std::cin >> n;
     std::vector g(n, std::vector<u32>{});
@@ -61,4 +66,12 @@ int main() {
             std::cout << vL + 1 << '\n';
         }
     }
+}
+
+int main() {
+#ifdef ATCODER
+    solve();
+#else
+    std::cout << "Hello World" << '\n';
+#endif
 }
