@@ -8,7 +8,7 @@
 
 /*
  * ABC168-D .. (Double Dots)
- * https://atcoder.jp/contests/abc168/submissions/48487774
+ * https://atcoder.jp/contests/abc168/submissions/48494188
  */
 
 void solve() {

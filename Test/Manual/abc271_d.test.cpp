@@ -10,7 +10,7 @@
 
 /*
  * ABC271-D Flip and Adjust
- * https://atcoder.jp/contests/abc271/submissions/48487470
+ * https://atcoder.jp/contests/abc271/submissions/48494158
  */
 
 void solve() {

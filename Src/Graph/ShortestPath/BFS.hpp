@@ -25,7 +25,7 @@ public:
         adj_.shrink_to_fit();
     }
 
-    u32 size() const noexcept {
+    usize size() const noexcept {
         return n_;
     }
     void addDirectedEdge(u32 from, u32 to, u32 id = invalid()) {

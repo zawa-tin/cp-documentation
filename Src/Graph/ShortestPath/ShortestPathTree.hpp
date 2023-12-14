@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "./Edge.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -10,34 +11,13 @@ namespace zawa {
 
 namespace internal {
 
-class Edge {
-protected:
-    static constexpr u32 INVALID{static_cast<u32>(-1)};
-public:
-    u32 parent{INVALID}; 
-    u32 id{INVALID};
-    Edge() = default;
-    Edge(u32 parent, u32 id) : parent{parent}, id{id} {}
-    Edge& operator=(const Edge& edge) {
-        parent = edge.parent;
-        id = edge.id;
-        return *this;
-    }
-    inline bool exist() const noexcept {
-        return parent != INVALID;
-    }
-    static constexpr u32 invalid() noexcept {
-        return INVALID; 
-    }
-};
-
 class ShortestPathTree {
 public:
-    using E = internal::Edge;
+    using E = Edge;
     static constexpr u32 invalid() noexcept {
         return E::invalid();
     }
-protected:
+private:
     static constexpr u32 INVALID{E::invalid()};
     usize n_;
     u32 root_;
@@ -55,6 +35,9 @@ public:
     inline usize size() const noexcept {
         return n_;
     }
+    inline usize root() const noexcept {
+        return root_;
+    }
     inline u32 parent(u32 v) const noexcept {
         assert(v < size());
         return tree_[v].parent;
@@ -65,7 +48,7 @@ public:
     }
     inline bool connect(u32 v) const noexcept {
         assert(v < size());
-        return tree_[v].exist();
+        return root() == v or tree_[v].exist();
     }
     inline u32 dist(u32 v) const noexcept {
         assert(v < size());
