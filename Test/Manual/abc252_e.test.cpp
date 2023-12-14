@@ -6,10 +6,10 @@
 
 /*
  * ABC252-E Road Reduction
- * https://atcoder.jp/contests/abc252/submissions/48494049
+ * https://atcoder.jp/contests/abc252/submissions/48494342
  */
 
-int main() {
+void solve() {
     using namespace zawa;
     SetFastIO();
     int n, m; std::cin >> n >> m;
@@ -22,4 +22,12 @@ int main() {
     for (int i{1} ; i < n ; i++) {
         std::cout << tree.id(i) + 1 << (i + 1 == n ? '\n' : ' ');
     }
+}
+
+int main() {
+#ifdef ATCODER
+    solve();
+#else
+    std::cout << "Hello World" << '\n';
+#endif
 }
