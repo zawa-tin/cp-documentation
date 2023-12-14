@@ -250,6 +250,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/ConnectedComponents.hpp
       title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
+  - name: Src/Graph/ShortestPath
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/ShortestPath/BFS.hpp
+      title: Src/Graph/ShortestPath/BFS.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/ShortestPath/ShortestPathTree.hpp
+      title: Src/Graph/ShortestPath/ShortestPathTree.hpp
   - name: Src/Graph/Tree
     pages:
     - icon: ':warning:'
@@ -642,8 +650,14 @@ data:
       path: Test/Manual/CF902-B.test.cpp
       title: Test/Manual/CF902-B.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc168_d.test.cpp
+      title: Test/Manual/abc168_d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc267_f.test.cpp
       title: Test/Manual/abc267_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc271_d.test.cpp
+      title: Test/Manual/abc271_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc331_f.test.cpp
       title: Test/Manual/abc331_f.test.cpp

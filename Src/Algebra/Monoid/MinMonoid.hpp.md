@@ -39,10 +39,10 @@ data:
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/staticrmq.test.cpp
-  - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
+  - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/LC/staticrmq.test.cpp
 documentation_of: Src/Algebra/Monoid/MinMonoid.hpp
 layout: document
 title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
