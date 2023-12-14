@@ -5,15 +5,18 @@
 
 #include <algorithm>
 #include <cassert>
+#include <type_traits>
 #include <vector>
 
 namespace zawa {
 
 namespace internal {
 
-class ShortestPathTree {
+template <class Weight>
+class WeightedShortestPathTree {
 public:
-    using E = Edge;
+    static_assert(std::is_unsigned_v<Weight>, "Dijkstra's Algorithm only be work well by unsigned weight");
+    using E = WeightedEdge<Weight>;
     static constexpr u32 invalid() noexcept {
         return E::invalid();
     }
@@ -22,20 +25,21 @@ private:
     usize n_;
     u32 root_;
     std::vector<E> tree_;
-    std::vector<u32> dist_;
+    std::vector<Weight> dist_;
 public:
-    ShortestPathTree() = default;
-    ShortestPathTree(usize n, u32 root) : n_{n}, root_{root}, tree_(n), dist_(n, INVALID) {
+    WeightedShortestPathTree() = default;
+    WeightedShortestPathTree(u32 n, u32 root) 
+        : n_{n}, root_{root}, tree_(n), dist_(n, static_cast<Weight>(-1)) {
         assert(root < n);
         tree_.shrink_to_fit();
         dist_.shrink_to_fit();
-        dist_[root] = 0;
+        dist_[root] = Weight{};
     }
 
     inline usize size() const noexcept {
         return n_;
     }
-    inline usize root() const noexcept {
+    inline u32 root() const noexcept {
         return root_;
     }
     inline u32 parent(u32 v) const noexcept {
@@ -48,21 +52,21 @@ public:
     }
     inline bool connect(u32 v) const noexcept {
         assert(v < size());
-        return root() == v or tree_[v].exist();
+        return v == root_ or tree_[v].exist();
     }
-    inline u32 dist(u32 v) const noexcept {
+    inline const Weight& dist(u32 v) const noexcept {
         assert(v < size());
         return dist_[v];
     }
 
-    u32 operator[](u32 v) const noexcept {
+    const Weight& operator[](u32 v) const noexcept {
         assert(v < size());
         return dist_[v];
     }
 
-    bool relax(u32 from, u32 to, u32 id) {
-        if (dist_[to] > dist_[from] + 1) {
-            dist_[to] = dist_[from] + 1;
+    bool relax(u32 from, u32 to, const Weight& weight, u32 id) {
+        if (dist_[to] > dist_[from] + weight) {
+            dist_[to] = dist_[from] + weight;
             tree_[to].parent = from;
             tree_[to].id = id;
             return true;
@@ -73,23 +77,25 @@ public:
     std::vector<u32> pathV(u32 v) {
         assert(v < size());
         assert(connect(v));
-        std::vector<u32> res(dist(v) + 1);
-        res[dist(v)] = v;
-        for (u32 i{dist(v)} ; i-- ; ) {
+        std::vector<u32> res(1);
+        res[0] = v;
+        while (parent(v) != invalid()) {
             v = parent(v);
-            res[i] = v;
+            res.emplace_back(v);
         }
+        std::reverse(res.begin(), res.end());
         return res;
     }
-    
+
     std::vector<E> pathE(u32 v) {
         assert(v < size());
         assert(connect(v));
-        std::vector<E> res(dist(v));
-        for (u32 i{dist(v)} ; i-- ; ) {
-            res[i] = tree_[v];
+        std::vector<E> res;
+        while (v != root()) {
+            res.emplace_back(tree_[v]);
             v = parent(v);
         }
+        std::reverse(res.begin(), res.end());
         return res;
     }
 };
