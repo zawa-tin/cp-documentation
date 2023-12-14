@@ -6,6 +6,11 @@
 #include <cassert>
 #include <iostream>
 
+/*
+ * ABC168-D .. (Double Dots)
+ * https://atcoder.jp/contests/abc168/submissions/48487774
+ */
+
 void solve() {
     using namespace zawa;
     SetFastIO();
