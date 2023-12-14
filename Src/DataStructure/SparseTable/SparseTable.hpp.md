@@ -78,8 +78,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc288_e.test.cpp
-  - Test/LC/lca.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/LC/lca.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

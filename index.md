@@ -256,8 +256,17 @@ data:
       path: Src/Graph/ShortestPath/BFS.hpp
       title: Src/Graph/ShortestPath/BFS.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/ShortestPath/Dijkstra.hpp
+      title: Src/Graph/ShortestPath/Dijkstra.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/ShortestPath/Edge.hpp
+      title: Src/Graph/ShortestPath/Edge.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/ShortestPath/ShortestPathTree.hpp
       title: Src/Graph/ShortestPath/ShortestPathTree.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
+      title: Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
   - name: Src/Graph/Tree
     pages:
     - icon: ':warning:'
@@ -630,6 +639,9 @@ data:
       path: Test/LC/range_affine_range_sum.test.cpp
       title: Test/LC/range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/shortest_path.test.cpp
+      title: Test/LC/shortest_path.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/sort_by_argument.test.cpp
       title: Test/LC/sort_by_argument.test.cpp
     - icon: ':heavy_check_mark:'
@@ -652,6 +664,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc168_d.test.cpp
       title: Test/Manual/abc168_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc252_e.test.cpp
+      title: Test/Manual/abc252_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc267_f.test.cpp
       title: Test/Manual/abc267_f.test.cpp
