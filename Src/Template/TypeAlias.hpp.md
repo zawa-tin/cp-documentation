@@ -187,6 +187,9 @@ data:
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Flow/Dinic.hpp
+    title: Src/Graph/Flow/Dinic.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/ShortestPath/BFS.hpp
     title: Src/Graph/ShortestPath/BFS.hpp
   - icon: ':heavy_check_mark:'
@@ -300,6 +303,9 @@ data:
     path: Test/AOJ/2957.test.cpp
     title: AOJ2957 MOD Rush
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3168.test.cpp
+    title: Test/AOJ/3168.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -383,6 +389,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_1_A.test.cpp
     title: Test/AOJ/GRL_1_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_6_A.test.cpp
+    title: Test/AOJ/GRL_6_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_7_A.test.cpp
+    title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ITP1_1_A.test.cpp
     title: Test/AOJ/ITP1_1_A.test.cpp
@@ -724,6 +736,7 @@ data:
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Flow/Dinic.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/PointCloud.hpp
@@ -805,11 +818,13 @@ data:
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/0388.test.cpp
+  - Test/AOJ/GRL_7_A.test.cpp
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - Test/AOJ/3168.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/1298.test.cpp
@@ -834,6 +849,7 @@ data:
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AOJ/GRL_6_A.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp

@@ -28,6 +28,9 @@ data:
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3168.test.cpp
+    title: Test/AOJ/3168.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_14_B.test.cpp
     title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,6 +96,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_6_A.test.cpp
+    title: Test/AOJ/GRL_6_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_7_A.test.cpp
+    title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc139_f.test.cpp
     title: Test/AtCoder/abc139_f.test.cpp
@@ -235,8 +244,10 @@ data:
   - Test/AOJ/CGL_7_F.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/0388.test.cpp
+  - Test/AOJ/GRL_7_A.test.cpp
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/0445.test.cpp
+  - Test/AOJ/3168.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
@@ -256,6 +267,7 @@ data:
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
+  - Test/AOJ/GRL_6_A.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/abc168_d.test.cpp

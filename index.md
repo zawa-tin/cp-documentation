@@ -250,6 +250,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/ConnectedComponents.hpp
       title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
+  - name: Src/Graph/Flow
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Flow/Dinic.hpp
+      title: Src/Graph/Flow/Dinic.hpp
   - name: Src/Graph/ShortestPath
     pages:
     - icon: ':heavy_check_mark:'
@@ -399,6 +404,9 @@ data:
       path: Test/AOJ/2957.test.cpp
       title: AOJ2957 MOD Rush
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/3168.test.cpp
+      title: Test/AOJ/3168.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -458,6 +466,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/GRL_6_A.test.cpp
+      title: Test/AOJ/GRL_6_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/GRL_7_A.test.cpp
+      title: Test/AOJ/GRL_7_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ITP1_1_A.test.cpp
       title: Test/AOJ/ITP1_1_A.test.cpp
