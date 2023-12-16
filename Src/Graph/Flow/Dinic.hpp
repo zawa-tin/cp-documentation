@@ -6,8 +6,10 @@
 #include <algorithm>
 #include <cassert>
 #include <iostream>
+#include <limits>
 #include <type_traits>
 #include <vector>
+#include <queue>
 
 namespace zawa {
 
@@ -27,13 +29,10 @@ private:
         struct Edge {
             u32 from{}, to{};
             Cap cap{};
-            u32 rev{}, id{};
+            u32 rev{};
             Edge() = default;
             Edge(u32 from, u32 to, const Cap& cap, u32 rev)
                 : from{from}, to{to}, cap{cap}, rev{rev} {}
-            EdgePointer reverseEdgePointer() const {
-                return EdgePointer{to, rev};
-            }
         }; 
     private:
         usize n_{}, m_{};
@@ -50,9 +49,6 @@ private:
         inline usize edgeNumber() const noexcept {
             return m_;
         }
-        u32 invalidEdgePointer(u32 v) const noexcept {
-            return g_[v].size();
-        }
 
         std::vector<Edge>& operator[](usize i) noexcept {
             return g_[i];
@@ -68,8 +64,8 @@ private:
         }
 
         const Edge& reverseEdge(const EdgePointer& pos) const noexcept {
-            EdgePointer rev{g_[pos.first()][pos.second()].reverseEdgePointer()};
-            return g_[rev.first()][rev.second()];
+            const Edge& edge{g_[pos.first()][pos.second()]};
+            return g_[edge.to][edge.rev];
         }
         
         u32 addEdge(u32 from, u32 to, const Cap& cap) {
@@ -83,7 +79,7 @@ private:
         void update(Edge& e, const Cap& flow) {
             assert(e.cap >= flow);
             e.cap -= flow;
-            (*this)[e.reverseEdgePointer()].cap += flow;
+            g_[e.to][e.rev].cap += flow;
         }
     };
 
@@ -110,15 +106,15 @@ private:
     bool dualStep(u32 s, u32 t) {
         std::fill(label_.begin(), label_.end(), invalid());
         label_[s] = 0;
-        std::vector<u32> queue;
-        queue.reserve(size());
-        queue.emplace_back(s);
-        for (u32 topQ{} ; topQ < queue.size() ; topQ++) {
-            u32 v{queue[topQ]};
-            for (const auto& e : graph_[v]) if (e.cap > 0) {
-                if (label_[e.to] > label_[v] + 1) {
-                    label_[e.to] = label_[v] + 1;
-                    queue.emplace_back(e.to);
+        std::queue<u32> que{ { s } };
+        while (que.size()) {
+            u32 v{que.front()};
+            que.pop();
+            for (const auto& edge : graph_[v]) if (edge.cap > 0) {
+                if (label_[edge.to] > label_[v] + 1) {
+                    label_[edge.to] = label_[v] + 1;
+                    if (edge.to == t) return true;
+                    que.emplace(edge.to);
                 }
             }
         }
@@ -128,7 +124,7 @@ private:
     bool findAdmissiblePath(u32 s, u32 t, std::vector<EdgePointer>& path) {
         u32 v{path.empty() ? s : graph_[path.back()].to};
         while (true) {
-            while (currentEdge_[v] != graph_.invalidEdgePointer(v)) {
+            while (currentEdge_[v] < graph_[v].size()) {
                 const Edge& now{graph_[v][currentEdge_[v]]};
                 if (admissible(now)) {
                     path.emplace_back(v, currentEdge_[v]);
@@ -168,12 +164,11 @@ private:
 
     Cap primalStep(u32 s, u32 t) {
         std::fill(currentEdge_.begin(), currentEdge_.end(), u32{});
-        currentEdge_[t] = graph_.invalidEdgePointer(t);
+        currentEdge_[t] = graph_[t].size();
         std::vector<EdgePointer> path;
         Cap res{};
         while (findAdmissiblePath(s, t, path)) {
             res += flow(path);
-            path.clear();
         }
         return res;
     }
@@ -235,16 +230,15 @@ public:
 
     std::vector<bool> minCut(u32 s) const {
         std::vector<bool> res(size());
-        std::vector<u32> queue;
-        queue.reserve(size());
-        queue.emplace_back(s);
+        std::queue<u32> que{ { s } };
         res[s] = true;
-        for (u32 topQ{} ; topQ < queue.size() ; topQ++) {
-            u32 v{queue[topQ]};
-            for (const auto& e : graph_[v]) {
-                if (e.cap > 0 and !res[e.to]) {
-                    res[e.to] = true;
-                    queue.emplace_back(e.to);
+        while (que.size()) {
+            u32 v{que.front()};
+            que.pop();
+            for (const auto& edge : graph_[v]) {
+                if (edge.cap > 0 and !res[edge.to]) {
+                    res[edge.to] = true;
+                    que.emplace(edge.to);
                 } 
             }
         }
