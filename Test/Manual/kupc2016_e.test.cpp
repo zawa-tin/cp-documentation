@@ -7,6 +7,11 @@
 #include <string>
 #include <vector>
 
+/*
+ * Kyoto University Programming Contest 2016-E 柵
+ * https://atcoder.jp/contests/kupc2016/submissions/48524483
+ */
+
 long long solve() {
     using namespace zawa;
     int h, w; std::cin >> h >> w;
