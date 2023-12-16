@@ -22,6 +22,9 @@ data:
     path: Test/Manual/abc239_g.test.cpp
     title: ABC239-G Builder Takahashi
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc317_g.test.cpp
+    title: ABC317-G Rearranging
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/kupc2016_e.test.cpp
     title: "Kyoto University Programming Contest 2016-E \u67F5"
   - icon: ':heavy_check_mark:'
@@ -61,7 +64,7 @@ data:
     \ e) noexcept {\n            return g_[e.first][e.second];\n        }\n      \
     \  const Edge& operator[](const EdgePointer& e) const noexcept {\n           \
     \ return g_[e.first][e.second];\n        }\n\n        const Edge& reverseEdge(const\
-    \ EdgePointer& pos) {\n            return g_[g_[pos].reverseEdgePointer()];\n\
+    \ EdgePointer& pos) {\n            return (*this)[(*this)[pos].reverseEdgePointer()];\n\
     \        }\n        \n        u32 addEdge(u32 from, u32 to, const Cap& cap, u32\
     \ id) {\n            u32 i{static_cast<u32>(g_[from].size())};\n            u32\
     \ j{static_cast<u32>(from == to ? i + 1 : g_[to].size())};\n            g_[from].emplace_back(from,\
@@ -151,7 +154,7 @@ data:
     \ e) noexcept {\n            return g_[e.first][e.second];\n        }\n      \
     \  const Edge& operator[](const EdgePointer& e) const noexcept {\n           \
     \ return g_[e.first][e.second];\n        }\n\n        const Edge& reverseEdge(const\
-    \ EdgePointer& pos) {\n            return g_[g_[pos].reverseEdgePointer()];\n\
+    \ EdgePointer& pos) {\n            return (*this)[(*this)[pos].reverseEdgePointer()];\n\
     \        }\n        \n        u32 addEdge(u32 from, u32 to, const Cap& cap, u32\
     \ id) {\n            u32 i{static_cast<u32>(g_[from].size())};\n            u32\
     \ j{static_cast<u32>(from == to ? i + 1 : g_[to].size())};\n            g_[from].emplace_back(from,\
@@ -222,7 +225,7 @@ data:
   isVerificationFile: false
   path: Src/Graph/Flow/Dinic.hpp
   requiredBy: []
-  timestamp: '2023-12-16 12:15:06+09:00'
+  timestamp: '2023-12-16 16:17:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/GRL_7_A.test.cpp
@@ -232,6 +235,7 @@ data:
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
+  - Test/Manual/abc317_g.test.cpp
 documentation_of: Src/Graph/Flow/Dinic.hpp
 layout: document
 title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"

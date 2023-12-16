@@ -17,10 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/1163
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/1163
-  bundledCode: "#line 1 \"Test/AOJ/1163.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/1163\"\
+    - https://atcoder.jp/contests/abc317/submissions/48525602
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/Manual/abc317_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -120,45 +121,69 @@ data:
     \ {\n                if (e.cap > 0 and !res[e.to]) {\n                    res[e.to]\
     \ = true;\n                    queue.emplace_back(e.to);\n                } \n\
     \            }\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Test/AOJ/1163.test.cpp\"\n\n#line 7 \"Test/AOJ/1163.test.cpp\"\n#include\
-    \ <numeric>\n#line 9 \"Test/AOJ/1163.test.cpp\"\n\nbool solve() {\n    using namespace\
-    \ zawa;\n    SetFastIO();\n    int n, m; std::cin >> n >> m;\n    if (n == 0 and\
-    \ m == 0) return false;\n    std::vector<int> a(n), b(m);\n    for (auto& x :\
-    \ a) std::cin >> x;\n    for (auto& x : b) std::cin >> x;\n    Dinic<int> maxflow(2\
-    \ + n + m);\n    for (int i{} ; i < n ; i++) {\n        maxflow.addEdge(n + m,\
-    \ i, 1);\n    }\n    for (int i{} ; i < m ; i++) {\n        maxflow.addEdge(n\
-    \ + i, n + m + 1, 1);\n    }\n    for (int i{} ; i < n ; i++) for (int j{} ; j\
-    \ < m ; j++) {\n        if (std::gcd(a[i], b[j]) > 1) {\n            maxflow.addEdge(i,\
-    \ n + j, 1);\n        }\n    }\n    int ans{maxflow.flow(n + m, n + m + 1)};\n\
-    \    std::cout << ans << '\\n';\n    return true;\n}\n\nint main() {\n    while\
-    \ (solve()) {}\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/1163\"\n\n#include\
-    \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\n#include <iostream>\n#include <numeric>\n#include <vector>\n\nbool solve()\
-    \ {\n    using namespace zawa;\n    SetFastIO();\n    int n, m; std::cin >> n\
-    \ >> m;\n    if (n == 0 and m == 0) return false;\n    std::vector<int> a(n),\
-    \ b(m);\n    for (auto& x : a) std::cin >> x;\n    for (auto& x : b) std::cin\
-    \ >> x;\n    Dinic<int> maxflow(2 + n + m);\n    for (int i{} ; i < n ; i++) {\n\
-    \        maxflow.addEdge(n + m, i, 1);\n    }\n    for (int i{} ; i < m ; i++)\
-    \ {\n        maxflow.addEdge(n + i, n + m + 1, 1);\n    }\n    for (int i{} ;\
-    \ i < n ; i++) for (int j{} ; j < m ; j++) {\n        if (std::gcd(a[i], b[j])\
-    \ > 1) {\n            maxflow.addEdge(i, n + j, 1);\n        }\n    }\n    int\
-    \ ans{maxflow.flow(n + m, n + m + 1)};\n    std::cout << ans << '\\n';\n    return\
-    \ true;\n}\n\nint main() {\n    while (solve()) {}\n}\n"
+    #line 5 \"Test/Manual/abc317_g.test.cpp\"\n\n#line 9 \"Test/Manual/abc317_g.test.cpp\"\
+    \n\n/*\n * AtCoder Beginner Contest 317 - G Rearranging\n * https://atcoder.jp/contests/abc317/submissions/48525602\n\
+    \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n,\
+    \ m; std::cin >> n >> m;\n    // i\u884C\u76EE\u306B\u6B8B\u308A\u8981\u7D20j\u304C\
+    \u4F55\u500B\u6B8B\u3063\u3066\u3044\u308B\u304B\uFF1F\n    std::vector remain(n,\
+    \ std::vector<int>(n)); for (int i{} ; i < n ; i++) for (int j{} ; j < m ; j++)\
+    \ {\n        int a; std::cin >> a;\n        remain[i][a - 1]++;\n    }\n    std::vector\
+    \ ans(n, std::vector<int>(m));\n    for (int col{} ; col < m ; col++) {\n    \
+    \    Dinic<int> mf(2 * n + 2);\n        for (int i{} ; i < n ; i++) {\n      \
+    \      mf.addEdge(2 * n, i, 1);\n            mf.addEdge(n + i, 2 * n + 1, 1);\n\
+    \        }\n        std::vector id(n, std::vector<int>(n));\n        for (int\
+    \ i{} ; i < n ; i++) for (int j{} ; j < n ; j++) {\n            id[i][j] = mf.addEdge(i,\
+    \ n + j, (bool)remain[i][j]);\n        }\n        assert(mf.flow(2 * n, 2 * n\
+    \ + 1) == n);\n        for (int i{} ; i < n ; i++) for (int j{} ; j < n ; j++)\
+    \ {\n            if (mf.flowed(id[i][j]) == 1) {\n                ans[i][col]\
+    \ = j + 1;\n                remain[i][j]--;\n            }\n        }\n    }\n\
+    \    std::cout << \"Yes\" << '\\n';\n    for (int i{} ; i < n ; i++) {\n     \
+    \   for (int j{} ; j < m ; j++) {\n            std::cout << ans[i][j] << (j +\
+    \ 1 == m ? '\\n' : ' ');\n        }\n    }\n}\n\nint main() {\n#ifdef ATCODER\n\
+    \    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
+    \n\n#include <cassert>\n#include <iostream>\n#include <vector>\n\n/*\n * AtCoder\
+    \ Beginner Contest 317 - G Rearranging\n * https://atcoder.jp/contests/abc317/submissions/48525602\n\
+    \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n,\
+    \ m; std::cin >> n >> m;\n    // i\u884C\u76EE\u306B\u6B8B\u308A\u8981\u7D20j\u304C\
+    \u4F55\u500B\u6B8B\u3063\u3066\u3044\u308B\u304B\uFF1F\n    std::vector remain(n,\
+    \ std::vector<int>(n)); for (int i{} ; i < n ; i++) for (int j{} ; j < m ; j++)\
+    \ {\n        int a; std::cin >> a;\n        remain[i][a - 1]++;\n    }\n    std::vector\
+    \ ans(n, std::vector<int>(m));\n    for (int col{} ; col < m ; col++) {\n    \
+    \    Dinic<int> mf(2 * n + 2);\n        for (int i{} ; i < n ; i++) {\n      \
+    \      mf.addEdge(2 * n, i, 1);\n            mf.addEdge(n + i, 2 * n + 1, 1);\n\
+    \        }\n        std::vector id(n, std::vector<int>(n));\n        for (int\
+    \ i{} ; i < n ; i++) for (int j{} ; j < n ; j++) {\n            id[i][j] = mf.addEdge(i,\
+    \ n + j, (bool)remain[i][j]);\n        }\n        assert(mf.flow(2 * n, 2 * n\
+    \ + 1) == n);\n        for (int i{} ; i < n ; i++) for (int j{} ; j < n ; j++)\
+    \ {\n            if (mf.flowed(id[i][j]) == 1) {\n                ans[i][col]\
+    \ = j + 1;\n                remain[i][j]--;\n            }\n        }\n    }\n\
+    \    std::cout << \"Yes\" << '\\n';\n    for (int i{} ; i < n ; i++) {\n     \
+    \   for (int j{} ; j < m ; j++) {\n            std::cout << ans[i][j] << (j +\
+    \ 1 == m ? '\\n' : ' ');\n        }\n    }\n}\n\nint main() {\n#ifdef ATCODER\n\
+    \    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Flow/Dinic.hpp
   isVerificationFile: true
-  path: Test/AOJ/1163.test.cpp
+  path: Test/Manual/abc317_g.test.cpp
   requiredBy: []
   timestamp: '2023-12-16 16:17:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/1163.test.cpp
+documentation_of: Test/Manual/abc317_g.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/AOJ/1163.test.cpp
-- /verify/Test/AOJ/1163.test.cpp.html
-title: Test/AOJ/1163.test.cpp
+title: ABC317-G Rearranging
 ---
+
+左の列から順番に条件を満たすように配置を変えることを考える。
+
+順列を構成することを「完全マッチングを一つ抜き去る」と言い換える。
+
+$i$ 行目に要素 $j$ が残り何個あるか？を辺容量として二部マッチングを構成する。
+
+計算量は全ての辺容量が1である $2n + 2$ 頂点 $O(nm)$ 辺の最大流問題を $m$ 回解くので $O(n^{\frac{3}{2}}m^2)$
+
+Tips: [https://37zigen.com/noga-alon-edge-coloring-bipartite/](https://37zigen.com/noga-alon-edge-coloring-bipartite/) を使うともっと効率的に解ける。いつか盆栽に植えたいねぇ

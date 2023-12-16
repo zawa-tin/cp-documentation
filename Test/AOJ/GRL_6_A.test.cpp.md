@@ -54,7 +54,7 @@ data:
     \ e) noexcept {\n            return g_[e.first][e.second];\n        }\n      \
     \  const Edge& operator[](const EdgePointer& e) const noexcept {\n           \
     \ return g_[e.first][e.second];\n        }\n\n        const Edge& reverseEdge(const\
-    \ EdgePointer& pos) {\n            return g_[g_[pos].reverseEdgePointer()];\n\
+    \ EdgePointer& pos) {\n            return (*this)[(*this)[pos].reverseEdgePointer()];\n\
     \        }\n        \n        u32 addEdge(u32 from, u32 to, const Cap& cap, u32\
     \ id) {\n            u32 i{static_cast<u32>(g_[from].size())};\n            u32\
     \ j{static_cast<u32>(from == to ? i + 1 : g_[to].size())};\n            g_[from].emplace_back(from,\
@@ -138,7 +138,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/GRL_6_A.test.cpp
   requiredBy: []
-  timestamp: '2023-12-16 12:15:06+09:00'
+  timestamp: '2023-12-16 16:17:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/GRL_6_A.test.cpp

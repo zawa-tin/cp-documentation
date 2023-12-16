@@ -694,6 +694,9 @@ data:
       path: Test/Manual/abc271_d.test.cpp
       title: Test/Manual/abc271_d.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc317_g.test.cpp
+      title: ABC317-G Rearranging
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc331_f.test.cpp
       title: Test/Manual/abc331_f.test.cpp
     - icon: ':heavy_check_mark:'
