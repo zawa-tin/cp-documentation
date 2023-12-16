@@ -3,18 +3,19 @@
 #include "../Template/TypeAlias.hpp"
 
 #include <functional>
+#include <iostream>
 
 namespace zawa {
 
 class U32Pair {
 private:
-    static constexpr u32 SHIFT{31};
-    static constexpr u32 MASK{static_cast<u32>((1LL << 31) - 1)};
+    static constexpr u32 SHIFT{32};
+    static constexpr u32 MASK{static_cast<u32>((1LL << SHIFT) - 1)};
     u64 value_{};
 public:
     constexpr U32Pair() {}
     constexpr U32Pair(u32 first, u32 second) {
-        value_ = static_cast<u64>(first << SHIFT) | second;
+        value_ = (static_cast<u64>(first) << SHIFT) | second;
     }
     constexpr u32 first() const noexcept {
         return static_cast<u32>(value_ >> SHIFT);
@@ -46,6 +47,10 @@ public:
     }
     friend constexpr bool operator>=(const U32Pair& lhs, const U32Pair& rhs) {
         return lhs.value_ >= rhs.value_;
+    }
+    friend std::ostream& operator<<(std::ostream& os, const U32Pair& pair) {
+        os << '(' << pair.first() << ',' << pair.second() << ')';
+        return os;
     }
 };
 
