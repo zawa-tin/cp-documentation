@@ -139,6 +139,9 @@ data:
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
   - icon: ':heavy_check_mark:'
+    path: Test/LC/bipartitematching.test.cpp
+    title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
@@ -204,6 +207,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/typical90_by.test.cpp
+    title: Test/Manual/typical90_by.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -246,6 +252,7 @@ data:
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/shortest_path.test.cpp
+  - Test/LC/bipartitematching.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/sort_by_argument.test.cpp
@@ -286,6 +293,7 @@ data:
   - Test/AOJ/GRL_6_A.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/Manual/abc239_g.test.cpp
+  - Test/Manual/typical90_by.test.cpp
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/practice2_d.test.cpp

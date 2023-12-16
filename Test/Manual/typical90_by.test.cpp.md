@@ -22,16 +22,17 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/practice2/submissions/48601081
+    - https://atcoder.jp/contests/typical90/submissions/48601091
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/practice2_d.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
-    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+  bundledCode: "#line 1 \"Test/Manual/typical90_by.test.cpp\"\n#define PROBLEM \"\
+    https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n#line 2\
+    \ \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n\
+    #include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
+    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
+    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
+    #line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
+    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Flow/Dinic.hpp\"\n\n#line 2 \"Src/Utility/U32Pair.hpp\"\
     \n\n#line 4 \"Src/Utility/U32Pair.hpp\"\n\n#include <functional>\n#line 7 \"Src/Utility/U32Pair.hpp\"\
@@ -149,103 +150,77 @@ data:
     \ edge : graph_[v]) {\n                if (edge.cap > 0 and !res[edge.to]) {\n\
     \                    res[edge.to] = true;\n                    que.emplace(edge.to);\n\
     \                } \n            }\n        }\n        return res;\n    }\n};\n\
-    \n} // namespace zawa\n#line 5 \"Test/Manual/practice2_d.test.cpp\"\n\n#line 9\
-    \ \"Test/Manual/practice2_d.test.cpp\"\n#include <string>\n#include <utility>\n\
-    #line 12 \"Test/Manual/practice2_d.test.cpp\"\n\n/*\n * AtCoder Library Practice\
-    \ Contest-D Maxflow\n * https://atcoder.jp/contests/practice2/submissions/48601081\n\
-    \ */\n\nvoid solve() {\n    using namespace zawa; \n    int n, m; std::cin >>\
-    \ n >> m;\n    std::vector<std::string> s(n);\n    for (auto& v : s) std::cin\
-    \ >> v;\n    constexpr int dx[4]{ 1, 0, -1, 0 };\n    constexpr int dy[4]{ 0,\
-    \ 1, 0, -1 }; \n    auto f{[&](int x, int y) -> int {\n        return x * m +\
-    \ y;\n    }};\n    auto sign{[&](int x, int y) -> int {\n        return (x % 2)\
-    \ ^ (y % 2);\n    }};\n    auto in{[&](int x, int y) -> bool {\n        return\
-    \ 0 <= x and x < n and 0 <= y and y < m;\n    }};\n    Dinic<int> maxflow(n *\
-    \ m + 2);\n    std::vector edges(n * m + 2, std::vector<u32>{});\n    for (int\
-    \ i{} ; i < n ; i++) for (int j{} ; j < m ; j++) {\n        if (s[i][j] == '#')\
-    \ continue;\n        if (sign(i, j) == 0) {\n            maxflow.addEdge(n * m,\
-    \ f(i, j), 1);\n            for (int d{} ; d < 4 ; d++) {\n                int\
-    \ ni{i + dx[d]}, nj{j + dy[d]};\n                if (!in(ni, nj)) continue;\n\
-    \                if (s[ni][nj] == '#') continue;\n                edges[f(i, j)].push_back(maxflow.addEdge(f(i,\
-    \ j), f(ni, nj), 1));\n            }\n        }\n        else {\n            maxflow.addEdge(f(i,\
-    \ j), n * m + 1, 1);\n        }\n    }\n    int ans{maxflow.flow(n * m, n * m\
-    \ + 1)};\n    std::cout << ans << '\\n';\n    std::vector<std::string> t(n, std::string(m,\
-    \ '.'));\n    auto g{[&](int v) -> std::pair<int, int> {\n        return std::pair{\
-    \ v / m, v % m };\n    }};\n    for (int v{} ; v < n + m - 1 ; v++) {\n      \
-    \  for (int i{std::max(0, v - m + 1)} ; i < std::min(n, v + 1) ; i++) {\n    \
-    \        int j{v - i};\n            if (s[i][j] == '#') {\n                t[i][j]\
-    \ = '#';\n                continue;\n            }\n            if (sign(i, j)\
-    \ % 2 == 1) continue;\n            for (auto e : edges[f(i, j)]) {\n         \
-    \       if (maxflow.residual(e) == 1) continue;\n                auto [x, y]{\
-    \ g(maxflow.to(e)) };\n                assert(in(x, y));\n                assert(s[x][y]\
-    \ == '.');\n                assert(t[x][y] == '.');\n                int dx{ x\
-    \ - i }, dy{ y - j };\n                if (dx == -1 and dy == 0) {\n         \
-    \           t[x][y] = 'v';\n                    t[i][j] = '^';\n             \
-    \   }\n                else if (dx == 1 and dy == 0) {\n                    t[x][y]\
-    \ = '^';\n                    t[i][j] = 'v';\n                }\n            \
-    \    else if (dx == 0 and dy == -1) {\n                    t[x][y] = '>';\n  \
-    \                  t[i][j] = '<';\n                }\n                else if\
-    \ (dx == 0 and dy == 1) {\n                    t[x][y] = '<';\n              \
-    \      t[i][j] = '>';\n                }\n                else {\n           \
-    \         assert(false);\n                }\n            } \n        }\n    }\n\
-    \    for (const auto& v : t) std::cout << v << '\\n';\n}\n\nint main() {\n#ifdef\
-    \ ATCODER\n    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
-    }\n"
+    \n} // namespace zawa\n#line 5 \"Test/Manual/typical90_by.test.cpp\"\n\n#line\
+    \ 7 \"Test/Manual/typical90_by.test.cpp\"\n#include <unordered_map>\n#line 9 \"\
+    Test/Manual/typical90_by.test.cpp\"\n\n/*\n * \u7AF6\u30D7\u30ED\u5178\u578B90-077\
+    \ Planes on a 2D Plane\n * https://atcoder.jp/contests/typical90/submissions/48601091\n\
+    \ */\n\nint dx[8]{ 1, 1, 0, -1, -1, -1, 0, 1 };\nint dy[8]{ 0, 1, 1, 1, 0, -1,\
+    \ -1, -1 };\n\nconst long long INF{(long long)2e9};\nlong long f(int x, int y)\
+    \ {\n    return (long long)x * INF + y;\n}\n\nvoid solve() {\n    using namespace\
+    \ zawa;\n    SetFastIO();\n    int n, t; std::cin >> n >> t;\n    for (int i{}\
+    \ ; i < 8 ; i++) {\n        dx[i] *= t;\n        dy[i] *= t;\n    }\n    std::vector<int>\
+    \ ax(n), ay(n);\n    for (int i{} ; i < n ; i++) std::cin >> ax[i] >> ay[i];\n\
+    \    std::unordered_map<long long, int> map;\n    for (int i{} ; i < n ; i++)\
+    \ {\n        int x, y; std::cin >> x >> y;\n        map[f(x, y)] = i;\n    }\n\
+    \    Dinic<int> mf(2 * n + 2, 2 * n + 8 * n); \n    for (int i{} ; i < n ; i++)\
+    \ {\n        mf.addEdge(2 * n, i, 1);\n        mf.addEdge(n + i, 2 * n + 1, 1);\n\
+    \    }\n    std::vector table(n, std::vector<int>(8, -1));\n    for (int i{} ;\
+    \ i < n ; i++) {\n        for (int j{} ; j < 8 ; j++) {\n            int nx{ax[i]\
+    \ + dx[j]}, ny{ay[i] + dy[j]};\n            if (nx < 0 or ny < 0) continue;\n\
+    \            if (nx > (int)1e9 or ny > (int)1e9) continue;\n            auto it{map.find(f(nx,\
+    \ ny))};\n            if (it == map.end()) continue;\n            table[i][j]\
+    \ = mf.addEdge(i, n + it->second, 1);\n        }\n    }\n    int ans{mf.flow(2\
+    \ * n, 2 * n + 1)};\n    if (ans < n) {\n        std::cout << \"No\" << '\\n';\n\
+    \    }\n    else {\n        std::cout << \"Yes\" << '\\n';\n        for (int i{}\
+    \ ; i < n ; i++) {\n            for (int j{} ; j < 8 ; j++) {\n              \
+    \  if (table[i][j] == -1) continue;\n                if (mf.residual(table[i][j])\
+    \ == 0) {\n                    std::cout << j + 1 << (i + 1 == n ? '\\n' : ' ');\n\
+    \                    break;\n                }\n            }\n        }\n   \
+    \ }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n    std::cout <<\
+    \ \"Hello World\" << '\\n';\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include <string>\n\
-    #include <utility>\n#include <vector>\n\n/*\n * AtCoder Library Practice Contest-D\
-    \ Maxflow\n * https://atcoder.jp/contests/practice2/submissions/48601081\n */\n\
-    \nvoid solve() {\n    using namespace zawa; \n    int n, m; std::cin >> n >> m;\n\
-    \    std::vector<std::string> s(n);\n    for (auto& v : s) std::cin >> v;\n  \
-    \  constexpr int dx[4]{ 1, 0, -1, 0 };\n    constexpr int dy[4]{ 0, 1, 0, -1 };\
-    \ \n    auto f{[&](int x, int y) -> int {\n        return x * m + y;\n    }};\n\
-    \    auto sign{[&](int x, int y) -> int {\n        return (x % 2) ^ (y % 2);\n\
-    \    }};\n    auto in{[&](int x, int y) -> bool {\n        return 0 <= x and x\
-    \ < n and 0 <= y and y < m;\n    }};\n    Dinic<int> maxflow(n * m + 2);\n   \
-    \ std::vector edges(n * m + 2, std::vector<u32>{});\n    for (int i{} ; i < n\
-    \ ; i++) for (int j{} ; j < m ; j++) {\n        if (s[i][j] == '#') continue;\n\
-    \        if (sign(i, j) == 0) {\n            maxflow.addEdge(n * m, f(i, j), 1);\n\
-    \            for (int d{} ; d < 4 ; d++) {\n                int ni{i + dx[d]},\
-    \ nj{j + dy[d]};\n                if (!in(ni, nj)) continue;\n               \
-    \ if (s[ni][nj] == '#') continue;\n                edges[f(i, j)].push_back(maxflow.addEdge(f(i,\
-    \ j), f(ni, nj), 1));\n            }\n        }\n        else {\n            maxflow.addEdge(f(i,\
-    \ j), n * m + 1, 1);\n        }\n    }\n    int ans{maxflow.flow(n * m, n * m\
-    \ + 1)};\n    std::cout << ans << '\\n';\n    std::vector<std::string> t(n, std::string(m,\
-    \ '.'));\n    auto g{[&](int v) -> std::pair<int, int> {\n        return std::pair{\
-    \ v / m, v % m };\n    }};\n    for (int v{} ; v < n + m - 1 ; v++) {\n      \
-    \  for (int i{std::max(0, v - m + 1)} ; i < std::min(n, v + 1) ; i++) {\n    \
-    \        int j{v - i};\n            if (s[i][j] == '#') {\n                t[i][j]\
-    \ = '#';\n                continue;\n            }\n            if (sign(i, j)\
-    \ % 2 == 1) continue;\n            for (auto e : edges[f(i, j)]) {\n         \
-    \       if (maxflow.residual(e) == 1) continue;\n                auto [x, y]{\
-    \ g(maxflow.to(e)) };\n                assert(in(x, y));\n                assert(s[x][y]\
-    \ == '.');\n                assert(t[x][y] == '.');\n                int dx{ x\
-    \ - i }, dy{ y - j };\n                if (dx == -1 and dy == 0) {\n         \
-    \           t[x][y] = 'v';\n                    t[i][j] = '^';\n             \
-    \   }\n                else if (dx == 1 and dy == 0) {\n                    t[x][y]\
-    \ = '^';\n                    t[i][j] = 'v';\n                }\n            \
-    \    else if (dx == 0 and dy == -1) {\n                    t[x][y] = '>';\n  \
-    \                  t[i][j] = '<';\n                }\n                else if\
-    \ (dx == 0 and dy == 1) {\n                    t[x][y] = '<';\n              \
-    \      t[i][j] = '>';\n                }\n                else {\n           \
-    \         assert(false);\n                }\n            } \n        }\n    }\n\
-    \    for (const auto& v : t) std::cout << v << '\\n';\n}\n\nint main() {\n#ifdef\
-    \ ATCODER\n    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
-    }\n"
+    \n\n#include <iostream>\n#include <unordered_map>\n#include <vector>\n\n/*\n *\
+    \ \u7AF6\u30D7\u30ED\u5178\u578B90-077 Planes on a 2D Plane\n * https://atcoder.jp/contests/typical90/submissions/48601091\n\
+    \ */\n\nint dx[8]{ 1, 1, 0, -1, -1, -1, 0, 1 };\nint dy[8]{ 0, 1, 1, 1, 0, -1,\
+    \ -1, -1 };\n\nconst long long INF{(long long)2e9};\nlong long f(int x, int y)\
+    \ {\n    return (long long)x * INF + y;\n}\n\nvoid solve() {\n    using namespace\
+    \ zawa;\n    SetFastIO();\n    int n, t; std::cin >> n >> t;\n    for (int i{}\
+    \ ; i < 8 ; i++) {\n        dx[i] *= t;\n        dy[i] *= t;\n    }\n    std::vector<int>\
+    \ ax(n), ay(n);\n    for (int i{} ; i < n ; i++) std::cin >> ax[i] >> ay[i];\n\
+    \    std::unordered_map<long long, int> map;\n    for (int i{} ; i < n ; i++)\
+    \ {\n        int x, y; std::cin >> x >> y;\n        map[f(x, y)] = i;\n    }\n\
+    \    Dinic<int> mf(2 * n + 2, 2 * n + 8 * n); \n    for (int i{} ; i < n ; i++)\
+    \ {\n        mf.addEdge(2 * n, i, 1);\n        mf.addEdge(n + i, 2 * n + 1, 1);\n\
+    \    }\n    std::vector table(n, std::vector<int>(8, -1));\n    for (int i{} ;\
+    \ i < n ; i++) {\n        for (int j{} ; j < 8 ; j++) {\n            int nx{ax[i]\
+    \ + dx[j]}, ny{ay[i] + dy[j]};\n            if (nx < 0 or ny < 0) continue;\n\
+    \            if (nx > (int)1e9 or ny > (int)1e9) continue;\n            auto it{map.find(f(nx,\
+    \ ny))};\n            if (it == map.end()) continue;\n            table[i][j]\
+    \ = mf.addEdge(i, n + it->second, 1);\n        }\n    }\n    int ans{mf.flow(2\
+    \ * n, 2 * n + 1)};\n    if (ans < n) {\n        std::cout << \"No\" << '\\n';\n\
+    \    }\n    else {\n        std::cout << \"Yes\" << '\\n';\n        for (int i{}\
+    \ ; i < n ; i++) {\n            for (int j{} ; j < 8 ; j++) {\n              \
+    \  if (table[i][j] == -1) continue;\n                if (mf.residual(table[i][j])\
+    \ == 0) {\n                    std::cout << j + 1 << (i + 1 == n ? '\\n' : ' ');\n\
+    \                    break;\n                }\n            }\n        }\n   \
+    \ }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n    std::cout <<\
+    \ \"Hello World\" << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Flow/Dinic.hpp
   - Src/Utility/U32Pair.hpp
   isVerificationFile: true
-  path: Test/Manual/practice2_d.test.cpp
+  path: Test/Manual/typical90_by.test.cpp
   requiredBy: []
   timestamp: '2023-12-17 03:05:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/practice2_d.test.cpp
+documentation_of: Test/Manual/typical90_by.test.cpp
 layout: document
-title: AtCoder Library Practice Contest - D Maxflow
+redirect_from:
+- /verify/Test/Manual/typical90_by.test.cpp
+- /verify/Test/Manual/typical90_by.test.cpp.html
+title: Test/Manual/typical90_by.test.cpp
 ---
-
-グリッドは市松に考えると二部グラフ！！！(素振り1000回！)
