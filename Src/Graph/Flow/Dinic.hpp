@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Utility/U32Pair.hpp"
 
 #include <algorithm>
 #include <cassert>
 #include <type_traits>
-#include <utility>
 #include <vector>
 
 namespace zawa {
@@ -15,7 +15,7 @@ class Dinic {
 private:
     static_assert(std::is_signed_v<Cap>, "Cap must be signed");
     static constexpr u32 INVALID{static_cast<u32>(-1)};
-    using EdgePointer = std::pair<u32, u32>;
+    using EdgePointer = U32Pair;
 public:
     static constexpr u32 invalid() noexcept {
         return INVALID;
@@ -28,8 +28,8 @@ private:
             Cap cap{};
             u32 rev{}, id{};
             Edge() = default;
-            Edge(u32 from, u32 to, const Cap& cap, u32 rev, u32 id)
-                : from{from}, to{to}, cap{cap}, rev{rev}, id{id} {}
+            Edge(u32 from, u32 to, const Cap& cap, u32 rev)
+                : from{from}, to{to}, cap{cap}, rev{rev} {}
             EdgePointer reverseEdgePointer() const {
                 return EdgePointer{to, rev};
             }
@@ -60,21 +60,22 @@ private:
             return g_[i];
         }
         Edge& operator[](const EdgePointer& e) noexcept {
-            return g_[e.first][e.second];
+            return g_[e.first()][e.second()];
         }
         const Edge& operator[](const EdgePointer& e) const noexcept {
-            return g_[e.first][e.second];
+            return g_[e.first()][e.second()];
         }
 
-        const Edge& reverseEdge(const EdgePointer& pos) {
-            return (*this)[(*this)[pos].reverseEdgePointer()];
+        const Edge& reverseEdge(const EdgePointer& pos) const noexcept {
+            EdgePointer rev{g_[pos.first()][pos.second]};
+            return g_[rev.first()][rev.second()];
         }
         
-        u32 addEdge(u32 from, u32 to, const Cap& cap, u32 id) {
+        u32 addEdge(u32 from, u32 to, const Cap& cap) {
             u32 i{static_cast<u32>(g_[from].size())};
             u32 j{static_cast<u32>(from == to ? i + 1 : g_[to].size())};
-            g_[from].emplace_back(from, to, cap, j, id);
-            g_[to].emplace_back(to, from, Cap{}, i, id);
+            g_[from].emplace_back(from, to, cap, j);
+            g_[to].emplace_back(to, from, Cap{}, i);
             m_++;
             return i;
         }
@@ -90,6 +91,7 @@ private:
     ResidualGraph graph_;
     std::vector<u32> label_;
     std::vector<EdgePointer> edges_;
+    std::vector<u32> currentEdge_;
 
 public:
     inline usize size() const noexcept {
@@ -100,7 +102,7 @@ public:
     }
 private:
 
-    bool admissible(const Edge& e) {
+    inline bool admissible(const Edge& e) const noexcept {
         return e.cap > 0 and label_[e.from] + 1 == label_[e.to];
     }
 
@@ -123,27 +125,25 @@ private:
     }
 
     bool findAdmissiblePath(u32 s, u32 t, std::vector<EdgePointer>& path) {
-        std::vector<u32> currentEdge(size());
-        currentEdge[t] = graph_.invalidEdgePointer(t);
+        std::fill(currentEdge_.begin(), currentEdge_.end(), u32{});
+        currentEdge_[t] = graph_.invalidEdgePointer(t);
         u32 v{s};
         while (true) {
-            while (currentEdge[v] != graph_.invalidEdgePointer(v)) {
-                const Edge& now{graph_[v][currentEdge[v]]};
+            while (currentEdge_[v] != graph_.invalidEdgePointer(v)) {
+                const Edge& now{graph_[v][currentEdge_[v]]};
                 if (admissible(now)) {
-                    path.emplace_back(v, currentEdge[v]);
+                    path.emplace_back(v, currentEdge_[v]);
                     v = now.to;
                 }
                 else {
-                    currentEdge[v]++;
+                    currentEdge_[v]++;
                 }
             }
             if (v == s) return false;
             if (v == t) return true;
-            if (v != t) {
-                v = path.back().first;
-                path.pop_back();
-                currentEdge[v]++;
-            }
+            v = path.back().first();
+            path.pop_back();
+            currentEdge_[v]++;
         }
         assert(false);
         return false;
@@ -176,40 +176,41 @@ public:
 
     Dinic() = default;
     // @param m: 辺数をここに入れるとreserveしてくれる
-    Dinic(usize n, usize m = usize{}) : graph_{n}, label_(n) {
+    Dinic(usize n, usize m = usize{}) : graph_{n}, label_(n), currentEdge_(n) {
         label_.shrink_to_fit();
+        currentEdge_.shrink_to_fit();
         edges_.reserve(m);
     }
 
-    u32 addEdge(u32 from, u32 to, const Cap& cap, u32 id = invalid()) {
+    u32 addEdge(u32 from, u32 to, const Cap& cap) {
         assert(from < size());
         assert(to < size());
         u32 res{static_cast<u32>(edges_.size())};
-        edges_.emplace_back(from, graph_.addEdge(from, to, cap, id));
+        edges_.emplace_back(from, graph_.addEdge(from, to, cap));
         return res;
     }
 
-    u32 from(u32 id) {
+    u32 from(u32 id) const noexcept {
         assert(id < edgeNumber());
         return graph_[edges_[id]].from;
     }
 
-    u32 to(u32 id) {
+    u32 to(u32 id) const noexcept {
         assert(id < edgeNumber());
         return graph_[edges_[id]].to;
     }
 
-    Cap residual(u32 id) {
+    Cap residual(u32 id) const noexcept {
         assert(id < edgeNumber());
         return graph_[edges_[id]].cap;
     }
 
-    Cap flowed(u32 id) {
+    Cap flowed(u32 id) const noexcept {
         assert(id < edgeNumber());
         return graph_.reverseEdge(edges_[id]).cap;
     }
 
-    Cap originCap(u32 id) {
+    Cap originCap(u32 id) const noexcept {
         assert(id < edgeNumber());
         EdgePointer e{edges_[id]};
         return graph_[e].cap + graph_.reverseEdge(edges_[id]).cap;
