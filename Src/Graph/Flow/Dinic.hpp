@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 #include <type_traits>
 #include <vector>
 
@@ -67,7 +68,7 @@ private:
         }
 
         const Edge& reverseEdge(const EdgePointer& pos) const noexcept {
-            EdgePointer rev{g_[pos.first()][pos.second]};
+            EdgePointer rev{g_[pos.first()][pos.second()].reverseEdgePointer()};
             return g_[rev.first()][rev.second()];
         }
         
@@ -125,9 +126,7 @@ private:
     }
 
     bool findAdmissiblePath(u32 s, u32 t, std::vector<EdgePointer>& path) {
-        std::fill(currentEdge_.begin(), currentEdge_.end(), u32{});
-        currentEdge_[t] = graph_.invalidEdgePointer(t);
-        u32 v{s};
+        u32 v{path.empty() ? s : graph_[path.back()].to};
         while (true) {
             while (currentEdge_[v] != graph_.invalidEdgePointer(v)) {
                 const Edge& now{graph_[v][currentEdge_[v]]};
@@ -149,20 +148,27 @@ private:
         return false;
     }
 
-    Cap flow(const std::vector<EdgePointer>& path) {
-        auto min{std::min_element(path.begin(), path.end(), [&](const EdgePointer& l, const EdgePointer& r) -> bool {
+    Cap flow(std::vector<EdgePointer>& path) {
+        Cap amount{graph_[*std::min_element(path.begin(), path.end(), [&](const EdgePointer& l, const EdgePointer& r) -> bool {
                 return graph_[l].cap < graph_[r].cap;
-            })};
-        Cap amount{graph_[*min].cap};
+            })].cap};
         assert(amount > 0);
-        for (const auto& pos : path) {
-            Edge& e{graph_[pos]};
-            graph_.update(e, amount);
+        usize becomeZero{invalid()};
+        for (usize i{path.size()} ; i-- ; ) {
+            Edge& edge{graph_[path[i]]};
+            graph_.update(edge, amount);
+            if (edge.cap == 0) {
+                currentEdge_[edge.from]++;
+                becomeZero = i;
+            }
         }
+        path.erase(path.begin() + becomeZero, path.end());
         return amount;
     }
 
     Cap primalStep(u32 s, u32 t) {
+        std::fill(currentEdge_.begin(), currentEdge_.end(), u32{});
+        currentEdge_[t] = graph_.invalidEdgePointer(t);
         std::vector<EdgePointer> path;
         Cap res{};
         while (findAdmissiblePath(s, t, path)) {
@@ -176,7 +182,8 @@ public:
 
     Dinic() = default;
     // @param m: 辺数をここに入れるとreserveしてくれる
-    Dinic(usize n, usize m = usize{}) : graph_{n}, label_(n), currentEdge_(n) {
+    Dinic(usize n, usize m = usize{}) 
+        : graph_{n}, label_(n), currentEdge_(n) {
         label_.shrink_to_fit();
         currentEdge_.shrink_to_fit();
         edges_.reserve(m);
