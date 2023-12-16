@@ -215,8 +215,7 @@ data:
   verifiedWith: []
 documentation_of: Test/Manual/practice2_d.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/Manual/practice2_d.test.cpp
-- /verify/Test/Manual/practice2_d.test.cpp.html
-title: Test/Manual/practice2_d.test.cpp
+title: AtCoder Library Practice Contest - D Maxflow
 ---
+
+グリッドは市松に考えると二部グラフ！！！(素振り1000回！)

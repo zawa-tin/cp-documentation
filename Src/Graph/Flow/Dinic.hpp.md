@@ -29,7 +29,7 @@ data:
     title: "Kyoto University Programming Contest 2016-E \u67F5"
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
-    title: Test/Manual/practice2_d.test.cpp
+    title: AtCoder Library Practice Contest - D Maxflow
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
