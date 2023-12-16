@@ -9,7 +9,7 @@
 
 /*
  * Kyoto University Programming Contest 2016-E 柵
- * https://atcoder.jp/contests/kupc2016/submissions/48524483
+ * https://atcoder.jp/contests/kupc2016/submissions/48601070
  */
 
 long long solve() {

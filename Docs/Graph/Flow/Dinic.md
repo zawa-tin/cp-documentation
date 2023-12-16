@@ -60,12 +60,11 @@ inline usize edgeNumber() const noexcept
 #### addEdge
 
 ```cpp
-u32 addEdge(u32 from, u32 to, const Cap& cap , u32 id = -1)
+u32 addEdge(u32 from, u32 to, const Cap& cap)
 ```
 
 頂点`from`から頂点`to`へ向けて辺容量`cap`の辺を貼ります。返り値としてこの辺が何番目に追加された辺かを返します。
 
-この返り値とは別に識別番号がほしい時様に、`id`を指定することができます。(デフォルトでは-1 = `std::numeric_limits<u32>::max()`が指定されています。
 
 計算量: 定数時間
 
@@ -74,7 +73,7 @@ u32 addEdge(u32 from, u32 to, const Cap& cap , u32 id = -1)
 #### from
 
 ```cpp
-u32 from(u32 id)
+u32 from(u32 id) const noexcept
 ```
 
 `id`番目に(`addEdge`で)追加された辺の接続元の頂点番号を返します。
@@ -86,7 +85,7 @@ u32 from(u32 id)
 #### to
 
 ```cpp
-u32 to(u32 id)
+u32 to(u32 id) const noexcept 
 ```
 
 `id`番目に(`addEdge`で)追加された辺の接続先の頂点番号を返します。
@@ -98,7 +97,7 @@ u32 to(u32 id)
 #### residual
 
 ```cpp
-u32 residual(u32 id)
+u32 residual(u32 id) const noexcept
 ```
 
 `id`番目に(`addEdge`で)追加された辺の残余容量を返します。
@@ -110,7 +109,7 @@ u32 residual(u32 id)
 #### flowed
 
 ```cpp
-u32 flowed(u32 id)
+u32 flowed(u32 id) const noexcept
 ```
 
 `id`番目に(`addEdge`で)追加された辺に流れた水の量を返します。
@@ -122,7 +121,7 @@ u32 flowed(u32 id)
 #### originCap
 
 ```cpp
-u32 originCap(u32 id)
+u32 originCap(u32 id) const noexcept
 ```
 
 `id`番目に(`addEdge`で)追加された辺の元々の容量を返します。

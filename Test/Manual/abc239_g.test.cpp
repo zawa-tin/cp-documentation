@@ -5,7 +5,7 @@
 
 /*
  * ABC239-G Builder Takahashi
- * https://atcoder.jp/contests/abc239/submissions/48520630
+ * https://atcoder.jp/contests/abc239/submissions/48601038
  */
 
 void solve() {
