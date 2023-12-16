@@ -703,6 +703,9 @@ data:
       path: Test/Manual/agc026_a.test.cpp
       title: Test/Manual/agc026_a.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/kupc2016_e.test.cpp
+      title: "Kyoto University Programming Contest 2016-E \u67F5"
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_d.test.cpp
       title: Test/Manual/practice2_d.test.cpp
     - icon: ':heavy_check_mark:'

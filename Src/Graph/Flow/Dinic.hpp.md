@@ -22,6 +22,9 @@ data:
     path: Test/Manual/abc239_g.test.cpp
     title: ABC239-G Builder Takahashi
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/kupc2016_e.test.cpp
+    title: "Kyoto University Programming Contest 2016-E \u67F5"
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
     title: Test/Manual/practice2_d.test.cpp
   _isVerificationFailed: false
@@ -228,6 +231,7 @@ data:
   - Test/AOJ/GRL_6_A.test.cpp
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/practice2_d.test.cpp
+  - Test/Manual/kupc2016_e.test.cpp
 documentation_of: Src/Graph/Flow/Dinic.hpp
 layout: document
 title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"

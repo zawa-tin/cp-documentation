@@ -193,6 +193,9 @@ data:
     path: Test/Manual/abc331_f.test.cpp
     title: Test/Manual/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/kupc2016_e.test.cpp
+    title: "Kyoto University Programming Contest 2016-E \u67F5"
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
     title: Test/Manual/practice2_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -285,6 +288,7 @@ data:
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/abc271_d.test.cpp
+  - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/abc252_e.test.cpp
