@@ -67,7 +67,7 @@ private:
         }
 
         const Edge& reverseEdge(const EdgePointer& pos) {
-            return g_[g_[pos].reverseEdgePointer()];
+            return (*this)[(*this)[pos].reverseEdgePointer()];
         }
         
         u32 addEdge(u32 from, u32 to, const Cap& cap, u32 id) {
