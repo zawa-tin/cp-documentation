@@ -188,7 +188,7 @@ data:
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/Dinic.hpp
-    title: Src/Graph/Flow/Dinic.hpp
+    title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/ShortestPath/BFS.hpp
     title: Src/Graph/ShortestPath/BFS.hpp
@@ -284,6 +284,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1163.test.cpp
+    title: Test/AOJ/1163.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1298.test.cpp
     title: Test/AOJ/1298.test.cpp
@@ -838,6 +841,7 @@ data:
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp
+  - Test/AOJ/1163.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp

@@ -22,6 +22,9 @@ data:
     path: Test/AOJ/1157.test.cpp
     title: Test/AOJ/1157.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1163.test.cpp
+    title: Test/AOJ/1163.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/1298.test.cpp
     title: Test/AOJ/1298.test.cpp
   - icon: ':heavy_check_mark:'
@@ -259,6 +262,7 @@ data:
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp
+  - Test/AOJ/1163.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp

@@ -254,7 +254,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Flow/Dinic.hpp
-      title: Src/Graph/Flow/Dinic.hpp
+      title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
   - name: Src/Graph/ShortestPath
     pages:
     - icon: ':heavy_check_mark:'
@@ -385,6 +385,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1157.test.cpp
       title: Test/AOJ/1157.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1163.test.cpp
+      title: Test/AOJ/1163.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1298.test.cpp
       title: Test/AOJ/1298.test.cpp
