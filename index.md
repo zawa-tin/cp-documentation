@@ -679,6 +679,9 @@ data:
       path: Test/Manual/abc168_d.test.cpp
       title: Test/Manual/abc168_d.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc239_g.test.cpp
+      title: ABC239-G Builder Takahashi
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc252_e.test.cpp
       title: Test/Manual/abc252_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -696,6 +699,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc026_a.test.cpp
       title: Test/Manual/agc026_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/practice2_d.test.cpp
+      title: Test/Manual/practice2_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_l.test.cpp
       title: ALPC-L Lazy Segment Tree

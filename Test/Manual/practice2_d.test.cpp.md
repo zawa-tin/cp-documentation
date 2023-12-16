@@ -17,10 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A
-  bundledCode: "#line 1 \"Test/AOJ/GRL_7_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A\"\
+    - https://atcoder.jp/contests/practice2/submissions/48521503
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/Manual/practice2_d.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -120,36 +121,102 @@ data:
     \ {\n                if (e.cap > 0 and !res[e.to]) {\n                    res[e.to]\
     \ = true;\n                    queue.emplace_back(e.to);\n                } \n\
     \            }\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Test/AOJ/GRL_7_A.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
-    \    SetFastIO();\n    int x, y, m; std::cin >> x >> y >> m;\n    Dinic<int> maxflow(x\
-    \ + y + 2);\n    for (int i{} ; i < x ; i++) {\n        maxflow.addEdge(x + y,\
-    \ i, 1);\n    }\n    for (int i{} ; i < y ; i++) {\n        maxflow.addEdge(x\
-    \ + i, x + y + 1, 1);\n    }\n    for (int i{} ; i < m ; i++) {\n        int u,\
-    \ v; std::cin >> u >> v;\n        maxflow.addEdge(u, x + v, 1);\n    }\n    int\
-    \ ans{maxflow.flow(x + y, x + y + 1)};\n    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A\"\
+    #line 5 \"Test/Manual/practice2_d.test.cpp\"\n\n#line 9 \"Test/Manual/practice2_d.test.cpp\"\
+    \n#include <string>\n#line 12 \"Test/Manual/practice2_d.test.cpp\"\n\n/*\n * AtCoder\
+    \ Library Practice Contest-D Maxflow\n * https://atcoder.jp/contests/practice2/submissions/48521503\n\
+    \ */\n\nvoid solve() {\n    using namespace zawa; \n    int n, m; std::cin >>\
+    \ n >> m;\n    std::vector<std::string> s(n);\n    for (auto& v : s) std::cin\
+    \ >> v;\n    constexpr int dx[4]{ 1, 0, -1, 0 };\n    constexpr int dy[4]{ 0,\
+    \ 1, 0, -1 }; \n    auto f{[&](int x, int y) -> int {\n        return x * m +\
+    \ y;\n    }};\n    auto sign{[&](int x, int y) -> int {\n        return (x % 2)\
+    \ ^ (y % 2);\n    }};\n    auto in{[&](int x, int y) -> bool {\n        return\
+    \ 0 <= x and x < n and 0 <= y and y < m;\n    }};\n    Dinic<int> maxflow(n *\
+    \ m + 2);\n    std::vector edges(n * m + 2, std::vector<u32>{});\n    for (int\
+    \ i{} ; i < n ; i++) for (int j{} ; j < m ; j++) {\n        if (s[i][j] == '#')\
+    \ continue;\n        if (sign(i, j) == 0) {\n            maxflow.addEdge(n * m,\
+    \ f(i, j), 1);\n            for (int d{} ; d < 4 ; d++) {\n                int\
+    \ ni{i + dx[d]}, nj{j + dy[d]};\n                if (!in(ni, nj)) continue;\n\
+    \                if (s[ni][nj] == '#') continue;\n                edges[f(i, j)].push_back(maxflow.addEdge(f(i,\
+    \ j), f(ni, nj), 1));\n            }\n        }\n        else {\n            maxflow.addEdge(f(i,\
+    \ j), n * m + 1, 1);\n        }\n    }\n    int ans{maxflow.flow(n * m, n * m\
+    \ + 1)};\n    std::cout << ans << '\\n';\n    std::vector<std::string> t(n, std::string(m,\
+    \ '.'));\n    auto g{[&](int v) -> std::pair<int, int> {\n        return std::pair{\
+    \ v / m, v % m };\n    }};\n    for (int v{} ; v < n + m - 1 ; v++) {\n      \
+    \  for (int i{std::max(0, v - m + 1)} ; i < std::min(n, v + 1) ; i++) {\n    \
+    \        int j{v - i};\n            if (s[i][j] == '#') {\n                t[i][j]\
+    \ = '#';\n                continue;\n            }\n            if (sign(i, j)\
+    \ % 2 == 1) continue;\n            for (auto e : edges[f(i, j)]) {\n         \
+    \       if (maxflow.residual(e) == 1) continue;\n                auto [x, y]{\
+    \ g(maxflow.to(e)) };\n                assert(in(x, y));\n                assert(s[x][y]\
+    \ == '.');\n                assert(t[x][y] == '.');\n                int dx{ x\
+    \ - i }, dy{ y - j };\n                if (dx == -1 and dy == 0) {\n         \
+    \           t[x][y] = 'v';\n                    t[i][j] = '^';\n             \
+    \   }\n                else if (dx == 1 and dy == 0) {\n                    t[x][y]\
+    \ = '^';\n                    t[i][j] = 'v';\n                }\n            \
+    \    else if (dx == 0 and dy == -1) {\n                    t[x][y] = '>';\n  \
+    \                  t[i][j] = '<';\n                }\n                else if\
+    \ (dx == 0 and dy == 1) {\n                    t[x][y] = '<';\n              \
+    \      t[i][j] = '>';\n                }\n                else {\n           \
+    \         assert(false);\n                }\n            } \n        }\n    }\n\
+    \    for (const auto& v : t) std::cout << v << '\\n';\n}\n\nint main() {\n#ifdef\
+    \ ATCODER\n    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
+    }\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int x, y, m;\
-    \ std::cin >> x >> y >> m;\n    Dinic<int> maxflow(x + y + 2);\n    for (int i{}\
-    \ ; i < x ; i++) {\n        maxflow.addEdge(x + y, i, 1);\n    }\n    for (int\
-    \ i{} ; i < y ; i++) {\n        maxflow.addEdge(x + i, x + y + 1, 1);\n    }\n\
-    \    for (int i{} ; i < m ; i++) {\n        int u, v; std::cin >> u >> v;\n  \
-    \      maxflow.addEdge(u, x + v, 1);\n    }\n    int ans{maxflow.flow(x + y, x\
-    \ + y + 1)};\n    std::cout << ans << '\\n';\n}\n"
+    \n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include <string>\n\
+    #include <utility>\n#include <vector>\n\n/*\n * AtCoder Library Practice Contest-D\
+    \ Maxflow\n * https://atcoder.jp/contests/practice2/submissions/48521503\n */\n\
+    \nvoid solve() {\n    using namespace zawa; \n    int n, m; std::cin >> n >> m;\n\
+    \    std::vector<std::string> s(n);\n    for (auto& v : s) std::cin >> v;\n  \
+    \  constexpr int dx[4]{ 1, 0, -1, 0 };\n    constexpr int dy[4]{ 0, 1, 0, -1 };\
+    \ \n    auto f{[&](int x, int y) -> int {\n        return x * m + y;\n    }};\n\
+    \    auto sign{[&](int x, int y) -> int {\n        return (x % 2) ^ (y % 2);\n\
+    \    }};\n    auto in{[&](int x, int y) -> bool {\n        return 0 <= x and x\
+    \ < n and 0 <= y and y < m;\n    }};\n    Dinic<int> maxflow(n * m + 2);\n   \
+    \ std::vector edges(n * m + 2, std::vector<u32>{});\n    for (int i{} ; i < n\
+    \ ; i++) for (int j{} ; j < m ; j++) {\n        if (s[i][j] == '#') continue;\n\
+    \        if (sign(i, j) == 0) {\n            maxflow.addEdge(n * m, f(i, j), 1);\n\
+    \            for (int d{} ; d < 4 ; d++) {\n                int ni{i + dx[d]},\
+    \ nj{j + dy[d]};\n                if (!in(ni, nj)) continue;\n               \
+    \ if (s[ni][nj] == '#') continue;\n                edges[f(i, j)].push_back(maxflow.addEdge(f(i,\
+    \ j), f(ni, nj), 1));\n            }\n        }\n        else {\n            maxflow.addEdge(f(i,\
+    \ j), n * m + 1, 1);\n        }\n    }\n    int ans{maxflow.flow(n * m, n * m\
+    \ + 1)};\n    std::cout << ans << '\\n';\n    std::vector<std::string> t(n, std::string(m,\
+    \ '.'));\n    auto g{[&](int v) -> std::pair<int, int> {\n        return std::pair{\
+    \ v / m, v % m };\n    }};\n    for (int v{} ; v < n + m - 1 ; v++) {\n      \
+    \  for (int i{std::max(0, v - m + 1)} ; i < std::min(n, v + 1) ; i++) {\n    \
+    \        int j{v - i};\n            if (s[i][j] == '#') {\n                t[i][j]\
+    \ = '#';\n                continue;\n            }\n            if (sign(i, j)\
+    \ % 2 == 1) continue;\n            for (auto e : edges[f(i, j)]) {\n         \
+    \       if (maxflow.residual(e) == 1) continue;\n                auto [x, y]{\
+    \ g(maxflow.to(e)) };\n                assert(in(x, y));\n                assert(s[x][y]\
+    \ == '.');\n                assert(t[x][y] == '.');\n                int dx{ x\
+    \ - i }, dy{ y - j };\n                if (dx == -1 and dy == 0) {\n         \
+    \           t[x][y] = 'v';\n                    t[i][j] = '^';\n             \
+    \   }\n                else if (dx == 1 and dy == 0) {\n                    t[x][y]\
+    \ = '^';\n                    t[i][j] = 'v';\n                }\n            \
+    \    else if (dx == 0 and dy == -1) {\n                    t[x][y] = '>';\n  \
+    \                  t[i][j] = '<';\n                }\n                else if\
+    \ (dx == 0 and dy == 1) {\n                    t[x][y] = '<';\n              \
+    \      t[i][j] = '>';\n                }\n                else {\n           \
+    \         assert(false);\n                }\n            } \n        }\n    }\n\
+    \    for (const auto& v : t) std::cout << v << '\\n';\n}\n\nint main() {\n#ifdef\
+    \ ATCODER\n    solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
+    }\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Flow/Dinic.hpp
   isVerificationFile: true
-  path: Test/AOJ/GRL_7_A.test.cpp
+  path: Test/Manual/practice2_d.test.cpp
   requiredBy: []
   timestamp: '2023-12-16 12:15:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/GRL_7_A.test.cpp
+documentation_of: Test/Manual/practice2_d.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/GRL_7_A.test.cpp
-- /verify/Test/AOJ/GRL_7_A.test.cpp.html
-title: Test/AOJ/GRL_7_A.test.cpp
+- /verify/Test/Manual/practice2_d.test.cpp
+- /verify/Test/Manual/practice2_d.test.cpp.html
+title: Test/Manual/practice2_d.test.cpp
 ---

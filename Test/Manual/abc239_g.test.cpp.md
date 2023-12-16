@@ -17,10 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A
-  bundledCode: "#line 1 \"Test/AOJ/GRL_7_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A\"\
+    - https://atcoder.jp/contests/abc239/submissions/48520630
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/Manual/abc239_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -120,36 +121,59 @@ data:
     \ {\n                if (e.cap > 0 and !res[e.to]) {\n                    res[e.to]\
     \ = true;\n                    queue.emplace_back(e.to);\n                } \n\
     \            }\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Test/AOJ/GRL_7_A.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
-    \    SetFastIO();\n    int x, y, m; std::cin >> x >> y >> m;\n    Dinic<int> maxflow(x\
-    \ + y + 2);\n    for (int i{} ; i < x ; i++) {\n        maxflow.addEdge(x + y,\
-    \ i, 1);\n    }\n    for (int i{} ; i < y ; i++) {\n        maxflow.addEdge(x\
-    \ + i, x + y + 1, 1);\n    }\n    for (int i{} ; i < m ; i++) {\n        int u,\
-    \ v; std::cin >> u >> v;\n        maxflow.addEdge(u, x + v, 1);\n    }\n    int\
-    \ ans{maxflow.flow(x + y, x + y + 1)};\n    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/7/GRL_7_A\"\
+    #line 5 \"Test/Manual/abc239_g.test.cpp\"\n\n/*\n * ABC239-G Builder Takahashi\n\
+    \ * https://atcoder.jp/contests/abc239/submissions/48520630\n */\n\nvoid solve()\
+    \ {\n    using namespace zawa;\n    SetFastIO();\n    int n, m; std::cin >> n\
+    \ >> m;\n    Dinic<long long> maxflow(2 * n);\n    const long long INF{(long long)1e18};\n\
+    \    for (int _{} ; _ < m ; _++) {\n        int a, b; std::cin >> a >> b;\n  \
+    \      a--; b--;\n        maxflow.addEdge(n + a, b, INF);\n        maxflow.addEdge(n\
+    \ + b, a, INF);\n    }\n    std::vector<u32> id(n);\n    for (int i{} ; i < n\
+    \ ; i++) {\n        int c; std::cin >> c;\n        id[i] = maxflow.addEdge(i,\
+    \ i + n, c);\n        assert((int)id[i] == m + m + i);\n    }\n    long long ans{maxflow.flow(n,\
+    \ n - 1)};\n    std::cout << ans << '\\n';\n    auto cut{maxflow.minCut(n)};\n\
+    \    // for (auto x : cut) std::cerr << x << ' ';\n    // std::cerr << '\\n';\n\
+    \    std::vector<int> recover;\n    for (int i{1} ; i < n - 1 ; i++) {\n     \
+    \   if (cut[i] and !cut[i + n]) recover.push_back(i);\n    }\n    std::cout <<\
+    \ recover.size() << '\\n';\n    for (int i{} ; i < (int)recover.size() ; i++)\
+    \ {\n        std::cout << recover[i] + 1 << (i + 1 == (int)recover.size() ? '\\\
+    n' : ' ');\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n  \
+    \  std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int x, y, m;\
-    \ std::cin >> x >> y >> m;\n    Dinic<int> maxflow(x + y + 2);\n    for (int i{}\
-    \ ; i < x ; i++) {\n        maxflow.addEdge(x + y, i, 1);\n    }\n    for (int\
-    \ i{} ; i < y ; i++) {\n        maxflow.addEdge(x + i, x + y + 1, 1);\n    }\n\
-    \    for (int i{} ; i < m ; i++) {\n        int u, v; std::cin >> u >> v;\n  \
-    \      maxflow.addEdge(u, x + v, 1);\n    }\n    int ans{maxflow.flow(x + y, x\
-    \ + y + 1)};\n    std::cout << ans << '\\n';\n}\n"
+    \n\n/*\n * ABC239-G Builder Takahashi\n * https://atcoder.jp/contests/abc239/submissions/48520630\n\
+    \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n,\
+    \ m; std::cin >> n >> m;\n    Dinic<long long> maxflow(2 * n);\n    const long\
+    \ long INF{(long long)1e18};\n    for (int _{} ; _ < m ; _++) {\n        int a,\
+    \ b; std::cin >> a >> b;\n        a--; b--;\n        maxflow.addEdge(n + a, b,\
+    \ INF);\n        maxflow.addEdge(n + b, a, INF);\n    }\n    std::vector<u32>\
+    \ id(n);\n    for (int i{} ; i < n ; i++) {\n        int c; std::cin >> c;\n \
+    \       id[i] = maxflow.addEdge(i, i + n, c);\n        assert((int)id[i] == m\
+    \ + m + i);\n    }\n    long long ans{maxflow.flow(n, n - 1)};\n    std::cout\
+    \ << ans << '\\n';\n    auto cut{maxflow.minCut(n)};\n    // for (auto x : cut)\
+    \ std::cerr << x << ' ';\n    // std::cerr << '\\n';\n    std::vector<int> recover;\n\
+    \    for (int i{1} ; i < n - 1 ; i++) {\n        if (cut[i] and !cut[i + n]) recover.push_back(i);\n\
+    \    }\n    std::cout << recover.size() << '\\n';\n    for (int i{} ; i < (int)recover.size()\
+    \ ; i++) {\n        std::cout << recover[i] + 1 << (i + 1 == (int)recover.size()\
+    \ ? '\\n' : ' ');\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n\
+    \    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Flow/Dinic.hpp
   isVerificationFile: true
-  path: Test/AOJ/GRL_7_A.test.cpp
+  path: Test/Manual/abc239_g.test.cpp
   requiredBy: []
   timestamp: '2023-12-16 12:15:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/GRL_7_A.test.cpp
+documentation_of: Test/Manual/abc239_g.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/AOJ/GRL_7_A.test.cpp
-- /verify/Test/AOJ/GRL_7_A.test.cpp.html
-title: Test/AOJ/GRL_7_A.test.cpp
+title: ABC239-G Builder Takahashi
 ---
+
+最大流最小カット定理より、ネットワーク $(V, E, s, t)$ の最大フロー $f$ から誘導される残余ネットワーク$G_{f}$ は $s-t$ の最小カットである。
+
+今回の問題は最小カットを求める問題と一緒なので、最大フロー $f$ を求めた上でカットを復元できれば良い。
+
+これは残余ネットワーク上で $s$ 側から正の残余容量を持つ辺のみをたどって到達できる頂点集合が最小カットの片側の集合である。
+- BFSをすれば良い
