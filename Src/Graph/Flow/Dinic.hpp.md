@@ -47,6 +47,9 @@ data:
     path: Test/Manual/practice2_d.test.cpp
     title: AtCoder Library Practice Contest - D Maxflow
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/typical90_an.test.cpp
+    title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_by.test.cpp
     title: Test/Manual/typical90_by.test.cpp
   _isVerificationFailed: false
@@ -286,6 +289,7 @@ data:
   - Test/AOJ/2872.test.cpp
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/typical90_by.test.cpp
+  - Test/Manual/typical90_an.test.cpp
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc317_g.test.cpp
