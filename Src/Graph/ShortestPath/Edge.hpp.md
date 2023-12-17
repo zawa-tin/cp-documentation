@@ -19,6 +19,10 @@ data:
     title: Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2872.test.cpp
+    title: "AOJ2872 \u6700\u77ED\u8DDD\u96E2\u3092\u4F38\u3070\u3059\u3048\u3073\u3061\
+      \u3083\u3093"
+  - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -81,6 +85,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/shortest_path.test.cpp
+  - Test/AOJ/2872.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/abc252_e.test.cpp

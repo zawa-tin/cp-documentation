@@ -13,6 +13,10 @@ data:
     path: Test/AOJ/1163.test.cpp
     title: Test/AOJ/1163.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2872.test.cpp
+    title: "AOJ2872 \u6700\u77ED\u8DDD\u96E2\u3092\u4F38\u3070\u3059\u3048\u3073\u3061\
+      \u3083\u3093"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/3168.test.cpp
     title: Test/AOJ/3168.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,6 +283,7 @@ data:
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/1163.test.cpp
   - Test/AOJ/GRL_6_A.test.cpp
+  - Test/AOJ/2872.test.cpp
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/practice2_d.test.cpp
