@@ -139,6 +139,9 @@ data:
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc318_g.test.cpp
+    title: ABC318-G Typical Path Problem
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
   - icon: ':heavy_check_mark:'
@@ -240,6 +243,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc259_b.test.cpp

@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/abc205_f.test.cpp
     title: ABC205-F Grid and Tokens
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc318_g.test.cpp
+    title: ABC318-G Typical Path Problem
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -115,6 +118,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/Utility/U32Pair.test.cpp
+  - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
