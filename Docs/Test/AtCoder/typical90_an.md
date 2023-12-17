@@ -20,3 +20,5 @@ documentation_of: //Test/Manual/typical90_an.test.cpp
 以上の $3$ つのパターンの制約の記述の仕方は親切な燃やす埋める問題の解説記事に書いてあるだろう。
 
 履かせた下駄に関しては、無限大の容量の辺を切らない限り解に $N$ 回寄与しているので、最小カットから求めたい値もわかる。
+
+[参考にしました](https://www.slideshare.net/shindannin/project-selection-problem)
