@@ -115,6 +115,9 @@ data:
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc205_f.test.cpp
+    title: ABC205-F Grid and Tokens
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc225_e.test.cpp
     title: Test/AtCoder/abc225_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -237,6 +240,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
