@@ -442,6 +442,9 @@ data:
     path: Test/AtCoder/abc191_d.test.cpp
     title: Test/AtCoder/abc191_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc193_f.test.cpp
+    title: ABC193-F Zebraness
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc205_f.test.cpp
     title: ABC205-F Grid and Tokens
   - icon: ':heavy_check_mark:'
@@ -802,6 +805,7 @@ data:
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
+  - Test/AtCoder/abc193_f.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
