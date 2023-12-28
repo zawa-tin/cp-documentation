@@ -1,4 +1,4 @@
-#define PROBLEM "https://atcoder.jp/contests/abc287/tasks/abc287_g"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Sequence/CompressedSequence.hpp"
@@ -9,7 +9,12 @@
 #include <iostream>
 #include <vector>
 
-int main() {
+/*
+ * ABC287-G Balance Update Query
+ * https://atcoder.jp/contests/abc287/submissions/48904316
+ */
+
+void solve() {
     using namespace zawa;
     SetFastIO();
     int n; std::cin >> n;
@@ -89,4 +94,12 @@ int main() {
             assert(false);
         }
     }
+}
+
+int main() {
+#ifdef ATCODER
+    solve();
+#else
+    std::cout << "Hello World" << '\n';
+#endif
 }
