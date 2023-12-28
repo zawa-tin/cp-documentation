@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc287_g.test.cpp
+    title: Test/Manual/abc287_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,6 +61,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

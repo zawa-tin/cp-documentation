@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc287_g.test.cpp
+    title: Test/Manual/abc287_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -142,6 +145,7 @@ data:
   - Test/AtCoder/abc276_f.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document
 title: Fenwick Tree
@@ -320,7 +324,6 @@ u32 minLeft(u32 l, const Function& f) const
 
 ただし、 $f(\displaystyle \prod_{i = 0}^{r - 1} A_{i}) = \text{true}$ の時は $0$ を返します。
 
-実装に自信が無い。バグっているかも...
 
 **制約**
 
@@ -347,3 +350,5 @@ $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaysty
 2023/12/03: prefixProductメンバを作成
 
 2023/12/03: 一部のメンバの引数の型`u32`を`usize`へ変更
+
+2023/12/28: minLeftをverify

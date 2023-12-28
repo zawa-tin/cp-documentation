@@ -601,6 +601,9 @@ data:
     path: Test/Manual/abc271_d.test.cpp
     title: Test/Manual/abc271_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc287_g.test.cpp
+    title: Test/Manual/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
@@ -918,6 +921,7 @@ data:
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/practice2_l.test.cpp
+  - Test/Manual/abc287_g.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc317_g.test.cpp

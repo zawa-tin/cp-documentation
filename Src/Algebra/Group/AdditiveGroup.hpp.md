@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc287_g.test.cpp
+    title: Test/Manual/abc287_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -67,6 +70,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"
