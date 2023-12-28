@@ -5,7 +5,7 @@
 
 /*
  * ABC239-G Builder Takahashi
- * https://atcoder.jp/contests/abc239/submissions/48601038
+ * https://atcoder.jp/contests/abc239/submissions/48902677
  */
 
 void solve() {
@@ -28,9 +28,7 @@ void solve() {
     }
     long long ans{maxflow.flow(n, n - 1)};
     std::cout << ans << '\n';
-    auto cut{maxflow.minCut(n)};
-    // for (auto x : cut) std::cerr << x << ' ';
-    // std::cerr << '\n';
+    auto cut{maxflow.cut(n)};
     std::vector<int> recover;
     for (int i{1} ; i < n - 1 ; i++) {
         if (cut[i] and !cut[i + n]) recover.push_back(i);

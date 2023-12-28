@@ -7,7 +7,7 @@
 
 /*
  * 競プロ典型90問-040 Get More Money
- * https://atcoder.jp/contests/typical90/submissions/48628968
+ * https://atcoder.jp/contests/typical90/submissions/48902896
  */
 
 void solve() {

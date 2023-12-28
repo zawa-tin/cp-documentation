@@ -9,7 +9,7 @@
 
 /*
  * AtCoder Beginner Contest 317 - G Rearranging
- * https://atcoder.jp/contests/abc317/submissions/48601055
+ * https://atcoder.jp/contests/abc317/submissions/48902760
  */
 
 void solve() {
