@@ -176,7 +176,6 @@ u32 minLeft(u32 l, const Function& f) const
 
 ただし、 $f(\displaystyle \prod_{i = 0}^{r - 1} A_{i}) = \text{true}$ の時は $0$ を返します。
 
-実装に自信が無い。バグっているかも...
 
 **制約**
 
@@ -203,3 +202,5 @@ $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaysty
 2023/12/03: prefixProductメンバを作成
 
 2023/12/03: 一部のメンバの引数の型`u32`を`usize`へ変更
+
+2023/12/28: minLeftをverify
