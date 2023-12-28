@@ -89,4 +89,5 @@ int main() {
             assert(false);
         }
     }
+    std::cout << '\n';
 }
