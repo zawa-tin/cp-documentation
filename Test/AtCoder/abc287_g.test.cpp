@@ -83,11 +83,10 @@ int main() {
         else if (t[i] == 3) {
             long long l{calcByMinLeft(x[i])}, r{calcByMaxRight(x[i])};
             assert(l == r);
-            std::cout << r << '\n';
+            std::cout << r << std::endl;
         }
         else {
             assert(false);
         }
     }
-    std::cout << '\n';
 }
