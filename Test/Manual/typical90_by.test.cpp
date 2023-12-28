@@ -9,7 +9,7 @@
 
 /*
  * 競プロ典型90-077 Planes on a 2D Plane
- * https://atcoder.jp/contests/typical90/submissions/48601091
+ * https://atcoder.jp/contests/typical90/submissions/48902918
  */
 
 int dx[8]{ 1, 1, 0, -1, -1, -1, 0, 1 };

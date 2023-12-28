@@ -6,11 +6,11 @@
 int main() {
     using namespace zawa;
     int n, m; std::cin >> n >> m;
-    Dinic<int> solver(n);
+    Dinic<int> mf(n);
     for (int _{} ; _ < m ; _++) {
         int u, v, c; std::cin >> u >> v >> c;
-        solver.addEdge(u, v, c);
+        mf.addEdge(u, v, c);
     }
-    int ans{solver.flow(0, n - 1)};
+    int ans{mf.flow(0, n - 1)};
     std::cout << ans << '\n';
 }
