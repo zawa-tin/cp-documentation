@@ -592,6 +592,9 @@ data:
       path: Test/AtCoder/abc259_b.test.cpp
       title: Test/AtCoder/abc259_b.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc263_g.test.cpp
+      title: ABC263-G Erasing Prime Pairs
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc266_c.test.cpp
       title: Test/AtCoder/abc266_c.test.cpp
     - icon: ':heavy_check_mark:'
