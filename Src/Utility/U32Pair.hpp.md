@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/Dinic.hpp
     title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Flow/SuccessiveShortestPath.hpp
+    title: Src/Graph/Flow/SuccessiveShortestPath.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1163.test.cpp
@@ -26,6 +29,9 @@ data:
     path: Test/AOJ/GRL_6_A.test.cpp
     title: Test/AOJ/GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_6_B.test.cpp
+    title: Test/AOJ/GRL_6_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -35,6 +41,9 @@ data:
     path: Test/AtCoder/abc205_f.test.cpp
     title: ABC205-F Grid and Tokens
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_g.test.cpp
+    title: Test/AtCoder/abc247_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc263_g.test.cpp
     title: ABC263-G Erasing Prime Pairs
   - icon: ':heavy_check_mark:'
@@ -43,6 +52,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc004_d.test.cpp
+    title: Test/Manual/abc004_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc239_g.test.cpp
     title: ABC239-G Builder Takahashi
@@ -55,6 +67,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
     title: AtCoder Library Practice Contest - D Maxflow
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/practice2_e.test.cpp
+    title: AtCoder Library Practice Contest - E MinCostFlow
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_an.test.cpp
     title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
@@ -129,6 +144,7 @@ data:
   isVerificationFile: false
   path: Src/Utility/U32Pair.hpp
   requiredBy:
+  - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/Dinic.hpp
   timestamp: '2023-12-16 19:11:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -137,18 +153,22 @@ data:
   - Test/AtCoder/abc193_f.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
+  - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/1163.test.cpp
   - Test/AOJ/2943.test.cpp
+  - Test/AOJ/GRL_6_B.test.cpp
   - Test/AOJ/GRL_6_A.test.cpp
   - Test/AOJ/2872.test.cpp
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/typical90_an.test.cpp
   - Test/Manual/practice2_d.test.cpp
+  - Test/Manual/abc004_d.test.cpp
+  - Test/Manual/practice2_e.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc317_g.test.cpp
 documentation_of: Src/Utility/U32Pair.hpp

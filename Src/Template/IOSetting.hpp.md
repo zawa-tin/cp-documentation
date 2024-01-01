@@ -110,6 +110,9 @@ data:
     path: Test/AOJ/GRL_6_A.test.cpp
     title: Test/AOJ/GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_6_B.test.cpp
+    title: Test/AOJ/GRL_6_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -133,6 +136,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_g.test.cpp
+    title: Test/AtCoder/abc247_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc250_f.test.cpp
     title: Test/AtCoder/abc250_f.test.cpp
@@ -227,6 +233,9 @@ data:
     path: Test/Manual/practice2_d.test.cpp
     title: AtCoder Library Practice Contest - D Maxflow
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/practice2_e.test.cpp
+    title: AtCoder Library Practice Contest - E MinCostFlow
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
   - icon: ':heavy_check_mark:'
@@ -273,6 +282,7 @@ data:
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
@@ -312,6 +322,7 @@ data:
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/GRL_6_B.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
@@ -332,6 +343,7 @@ data:
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/Manual/abc271_d.test.cpp
+  - Test/Manual/practice2_e.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/CF895-E.test.cpp

@@ -255,6 +255,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Flow/Dinic.hpp
       title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Flow/SuccessiveShortestPath.hpp
+      title: Src/Graph/Flow/SuccessiveShortestPath.hpp
   - name: Src/Graph/ShortestPath
     pages:
     - icon: ':heavy_check_mark:'
@@ -483,6 +486,9 @@ data:
       path: Test/AOJ/GRL_6_A.test.cpp
       title: Test/AOJ/GRL_6_A.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/GRL_6_B.test.cpp
+      title: Test/AOJ/GRL_6_B.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_7_A.test.cpp
       title: Test/AOJ/GRL_7_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -585,6 +591,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_f.test.cpp
       title: Test/AtCoder/abc247_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc247_g.test.cpp
+      title: Test/AtCoder/abc247_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc250_f.test.cpp
       title: Test/AtCoder/abc250_f.test.cpp
@@ -704,6 +713,9 @@ data:
       path: Test/Manual/CF902-B.test.cpp
       title: Test/Manual/CF902-B.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc004_d.test.cpp
+      title: Test/Manual/abc004_d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc168_d.test.cpp
       title: Test/Manual/abc168_d.test.cpp
     - icon: ':heavy_check_mark:'
@@ -739,6 +751,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_d.test.cpp
       title: AtCoder Library Practice Contest - D Maxflow
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/practice2_e.test.cpp
+      title: AtCoder Library Practice Contest - E MinCostFlow
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_l.test.cpp
       title: ALPC-L Lazy Segment Tree

@@ -190,6 +190,9 @@ data:
     path: Src/Graph/Flow/Dinic.hpp
     title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Flow/SuccessiveShortestPath.hpp
+    title: Src/Graph/Flow/SuccessiveShortestPath.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/ShortestPath/BFS.hpp
     title: Src/Graph/ShortestPath/BFS.hpp
   - icon: ':heavy_check_mark:'
@@ -406,6 +409,9 @@ data:
     path: Test/AOJ/GRL_6_A.test.cpp
     title: Test/AOJ/GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/GRL_6_B.test.cpp
+    title: Test/AOJ/GRL_6_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -474,6 +480,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_f.test.cpp
     title: Test/AtCoder/abc247_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc247_g.test.cpp
+    title: Test/AtCoder/abc247_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc250_f.test.cpp
     title: Test/AtCoder/abc250_f.test.cpp
@@ -589,6 +598,9 @@ data:
     path: Test/Manual/CF902-B.test.cpp
     title: Test/Manual/CF902-B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc004_d.test.cpp
+    title: Test/Manual/abc004_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc168_d.test.cpp
     title: Test/Manual/abc168_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -624,6 +636,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
     title: AtCoder Library Practice Contest - D Maxflow
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/practice2_e.test.cpp
+    title: AtCoder Library Practice Contest - E MinCostFlow
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
@@ -789,6 +804,7 @@ data:
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/Dinic.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/GeometryZ2/Segment.hpp
@@ -845,6 +861,7 @@ data:
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
@@ -901,6 +918,7 @@ data:
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/GRL_6_B.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
@@ -923,10 +941,12 @@ data:
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/CF902-B.test.cpp
   - Test/Manual/agc026_a.test.cpp
+  - Test/Manual/abc004_d.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/Manual/abc271_d.test.cpp
+  - Test/Manual/practice2_e.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/CF895-E.test.cpp
