@@ -384,10 +384,10 @@ bool flow(u32 s, u32 t, Cap flow)
 
 $s$ から $t$ へ水を $\text{flow}$ だけ流す。 $\text{flow}$ 流せたら `true` を返す。
 
-**計算量**: $O(\text{flow} \times |E|\log (|V|))$
+**計算量**: $O(\text{flow} \times \mid E\mid\log (\mid V\mid))$
 
 負辺を`addEdge`していると遅い。こういう時は`bellmanford`、`dagdp` -> `updatePotential` でポテンシャルを予め計算しておくと正常に動作する。
-- `bellmanford`は $O(|V||E|)$ で動作することに注意
+- `bellmanford`は $O(\midV\mid\midE\mid)$ で動作することに注意
 
 #### maxflow
 
@@ -397,7 +397,7 @@ Cap maxflow(u32 s, u32 t)
 
 $s$ から $t$ へ流せるだけ水を流す (最小費用最大流問題)
 
-**計算量**: 最大流を $F$ として $O(F \times |E|\log (|V|))$
+**計算量**: 最大流を $F$ として $O(F \times \mid E\mid\log (\mid V\mid))$
 
 <br />
 
@@ -419,7 +419,7 @@ std::vector<Cap> slope(u32 s, u32 t)
 
 $s$ から $t$ への最大流を $F$ とする。 $s$ から $t$ へ水を $0$ 流した時、 $1$ 流した時、 .... 、 $F$ 流した時のフローの最小コストを`std::vector<Cost>`で返す。
 
-**計算量**: 最大流を $F$ として $O(F \times |E|\log (|V|))$
+**計算量**: 最大流を $F$ として $O(F \times \mid E\mid\log (\mid V\mid))$
 
 <br />
 
