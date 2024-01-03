@@ -9,7 +9,7 @@
 
 /*
  * AtCoder Library Practice Contest - E MinCostFlow
- * https://atcoder.jp/contests/practice2/submissions/48968582
+ * https://atcoder.jp/contests/practice2/submissions/49008995
  */
 
 void solve() {

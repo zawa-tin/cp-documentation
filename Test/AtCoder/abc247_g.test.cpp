@@ -23,13 +23,10 @@ int main() {
     }
 
     auto info{mcf.slope(source, sink)};
-    int k{info.back().up};
-    std::cout << k << std::endl;
-    long long ans{};
-    int now{};
+    int k{(int)info.size() - 1};
+    std::cout << k << '\n';
     for (int i{1} ; i <= k ; i++) {
-        ans += INF - info[now].slope;
+        long long ans{INF * (long long)i - info[i]};
         std::cout << ans << '\n';
-        if (i == info[now].up) now++;
     }
 }

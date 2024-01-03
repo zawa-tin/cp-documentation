@@ -35,7 +35,7 @@ public:
     std::vector<std::vector<u32>> g_;
     std::vector<Cost> dist_, potential_;
     std::vector<U32Pair> prev_;
-    Cost mcf{};
+    Cost mcf_{};
 
     constexpr usize size() const noexcept {
         return n_;
@@ -46,7 +46,7 @@ public:
     
     SuccessiveShortestPath() = default;
     SuccessiveShortestPath(usize n, usize m = usize{}) 
-        : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf{} {
+        : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf_{} {
         g_.shrink_to_fit();
         dist_.shrink_to_fit();
         potential_.shrink_to_fit();
@@ -159,6 +159,11 @@ public:
         return dist_[t] < invalid;
     }
 
+    void updatePotential() {
+        for (u32 v{} ; v < size() ; v++) {
+            potential_[v] = potential_[v] + (dist_[v] == invalid ? Cost{} : dist_[v]);
+        }
+    }
 
     Cap flush(u32 s, u32 t, Cap up = std::numeric_limits<Cap>::max()) {
         for (u32 v{t} ; v != s ; v = prev_[v].first()) {
@@ -175,11 +180,9 @@ public:
         assert(s < size());
         assert(t < size());
         while (flow > 0 and dijkstra(s, t)) {
-            for (u32 i{} ; i < size() ; i++) {
-                potential_[i] = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);
-            }
+            updatePotential();
             Cap water{flush(s, t, flow)};
-            mcf += potential_[t] * water;
+            mcf_ += potential_[t] * water;
             flow -= water;
         }
         return flow == 0;
@@ -190,14 +193,30 @@ public:
         assert(t < size());
         Cap flow{};
         while (dijkstra(s, t)) {
-            for (u32 i{} ; i < size() ; i++) {
-                potential_[i] = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);
-            }
+            updatePotential();
             Cap water{flush(s, t)};
-            mcf += potential_[t] * water;
+            mcf_ += potential_[t] * water;
             flow += water;
         }
         return flow;
+    }
+
+    std::vector<Cost> slope(u32 s, u32 t) {
+        assert(s < size());
+        assert(t < size());
+        Cap flow{};
+        std::vector<Cost> res;
+        while (dijkstra(s, t)) {
+            updatePotential();
+            Cap water{flush(s, t)};
+            for (u32 i{} ; i < water ; i++) {
+                res.emplace_back(mcf_);
+                mcf_ += potential_[t];
+                flow++;
+            }
+        }
+        res.emplace_back(mcf_);
+        return res;
     }
 
     struct Line {
@@ -206,17 +225,15 @@ public:
         Line() = default;
         Line(Cap dn, Cap up, Cost slope) : dn{dn}, up{up}, slope{slope} {}
     };
-    std::vector<Line> slope(u32 s, u32 t) {
+    std::vector<Line> slopeACL(u32 s, u32 t) {
         assert(s < size());
         assert(t < size()); 
         Cap flow{};
         std::vector<Line> res;
         while (dijkstra(s, t)) {
-            for (u32 i{} ; i < size() ; i++) {
-                potential_[i] = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);
-            }
+            updatePotential();
             Cap water{flush(s, t)};
-            mcf += potential_[t] * water;
+            mcf_ += potential_[t] * water;
             res.emplace_back(flow, flow + water, potential_[t]);
             flow += water;
         }
@@ -224,7 +241,7 @@ public:
     }
 
     Cost minCost() const noexcept {
-        return mcf;
+        return mcf_;
     }
 };
 
