@@ -3,7 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/SuccessiveShortestPath.hpp
-    title: Src/Graph/Flow/SuccessiveShortestPath.hpp
+    title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\
+      \u8DEF\u53CD\u5FA9\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -69,11 +70,11 @@ data:
     \ const Cap& cap, const Cost& cost)\n            : from{from}, to{to}, residual{cap},\
     \ cost{cost} {}\n    };\n\n    usize n_{}, m_{};\n    std::vector<Edge> edges_;\n\
     \    std::vector<std::vector<u32>> g_;\n    std::vector<Cost> dist_, potential_;\n\
-    \    std::vector<U32Pair> prev_;\n    Cost mcf{};\n\n    constexpr usize size()\
+    \    std::vector<U32Pair> prev_;\n    Cost mcf_{};\n\n    constexpr usize size()\
     \ const noexcept {\n        return n_;\n    }\n    constexpr usize edgeSize()\
     \ const noexcept {\n        return m_;\n    }\n    \n    SuccessiveShortestPath()\
     \ = default;\n    SuccessiveShortestPath(usize n, usize m = usize{}) \n      \
-    \  : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf{} {\n\
+    \  : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf_{} {\n\
     \        g_.shrink_to_fit();\n        dist_.shrink_to_fit();\n        potential_.shrink_to_fit();\n\
     \        prev_.shrink_to_fit();\n        edges_.reserve(2 * m);\n    }\n\n   \
     \ void emplace(u32 from, u32 to, const Cap& cap, const Cost& cost) {\n       \
@@ -116,45 +117,49 @@ data:
     \ dist_.end(), invalid);\n        dist_[s] = Cost{};\n        for (u32 i{} ; i\
     \ + 1 < size() ; i++) {\n            for (u32 j{} ; j < edgeSize() ; j++) {\n\
     \                relax(j);\n            }\n        }\n        return dist_[t]\
-    \ < invalid;\n    }\n\n\n    Cap flush(u32 s, u32 t, Cap up = std::numeric_limits<Cap>::max())\
-    \ {\n        for (u32 v{t} ; v != s ; v = prev_[v].first()) {\n            up\
-    \ = std::min(up, residual(prev_[v].second()));\n        }\n        for (u32 v{t}\
-    \ ; v != s ; v = prev_[v].first()) {\n            edges_[prev_[v].second()].residual\
-    \ -= up;\n            edges_[prev_[v].second() ^ 1].residual += up;\n        }\n\
-    \        return up;\n    }\n\n    bool flow(u32 s, u32 t, Cap flow) {\n      \
-    \  assert(s < size());\n        assert(t < size());\n        while (flow > 0 and\
-    \ dijkstra(s, t)) {\n            for (u32 i{} ; i < size() ; i++) {\n        \
-    \        potential_[i] = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);\n\
-    \            }\n            Cap water{flush(s, t, flow)};\n            mcf +=\
-    \ potential_[t] * water;\n            flow -= water;\n        }\n        return\
-    \ flow == 0;\n    }\n\n    Cap maxflow(u32 s, u32 t) {\n        assert(s < size());\n\
-    \        assert(t < size());\n        Cap flow{};\n        while (dijkstra(s,\
-    \ t)) {\n            for (u32 i{} ; i < size() ; i++) {\n                potential_[i]\
-    \ = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);\n            }\n\
-    \            Cap water{flush(s, t)};\n            mcf += potential_[t] * water;\n\
-    \            flow += water;\n        }\n        return flow;\n    }\n\n    struct\
+    \ < invalid;\n    }\n\n    void updatePotential() {\n        for (u32 v{} ; v\
+    \ < size() ; v++) {\n            potential_[v] = potential_[v] + (dist_[v] ==\
+    \ invalid ? Cost{} : dist_[v]);\n        }\n    }\n\n    Cap flush(u32 s, u32\
+    \ t, Cap up = std::numeric_limits<Cap>::max()) {\n        for (u32 v{t} ; v !=\
+    \ s ; v = prev_[v].first()) {\n            up = std::min(up, residual(prev_[v].second()));\n\
+    \        }\n        for (u32 v{t} ; v != s ; v = prev_[v].first()) {\n       \
+    \     edges_[prev_[v].second()].residual -= up;\n            edges_[prev_[v].second()\
+    \ ^ 1].residual += up;\n        }\n        return up;\n    }\n\n    bool flow(u32\
+    \ s, u32 t, Cap flow) {\n        assert(s < size());\n        assert(t < size());\n\
+    \        while (flow > 0 and dijkstra(s, t)) {\n            updatePotential();\n\
+    \            Cap water{flush(s, t, flow)};\n            mcf_ += potential_[t]\
+    \ * water;\n            flow -= water;\n        }\n        return flow == 0;\n\
+    \    }\n\n    Cap maxflow(u32 s, u32 t) {\n        assert(s < size());\n     \
+    \   assert(t < size());\n        Cap flow{};\n        while (dijkstra(s, t)) {\n\
+    \            updatePotential();\n            Cap water{flush(s, t)};\n       \
+    \     mcf_ += potential_[t] * water;\n            flow += water;\n        }\n\
+    \        return flow;\n    }\n\n    std::vector<Cost> slope(u32 s, u32 t) {\n\
+    \        assert(s < size());\n        assert(t < size());\n        Cap flow{};\n\
+    \        std::vector<Cost> res;\n        while (dijkstra(s, t)) {\n          \
+    \  updatePotential();\n            Cap water{flush(s, t)};\n            for (u32\
+    \ i{} ; i < water ; i++) {\n                res.emplace_back(mcf_);\n        \
+    \        mcf_ += potential_[t];\n                flow++;\n            }\n    \
+    \    }\n        res.emplace_back(mcf_);\n        return res;\n    }\n\n    struct\
     \ Line {\n        Cap dn{}, up{};\n        Cost slope{};\n        Line() = default;\n\
     \        Line(Cap dn, Cap up, Cost slope) : dn{dn}, up{up}, slope{slope} {}\n\
-    \    };\n    std::vector<Line> slope(u32 s, u32 t) {\n        assert(s < size());\n\
+    \    };\n    std::vector<Line> slopeACL(u32 s, u32 t) {\n        assert(s < size());\n\
     \        assert(t < size()); \n        Cap flow{};\n        std::vector<Line>\
-    \ res;\n        while (dijkstra(s, t)) {\n            for (u32 i{} ; i < size()\
-    \ ; i++) {\n                potential_[i] = potential_[i] + (dist_[i] == invalid\
-    \ ? Cost{} : dist_[i]);\n            }\n            Cap water{flush(s, t)};\n\
-    \            mcf += potential_[t] * water;\n            res.emplace_back(flow,\
-    \ flow + water, potential_[t]);\n            flow += water;\n        }\n     \
-    \   return res;\n    }\n\n    Cost minCost() const noexcept {\n        return\
-    \ mcf;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc247_g.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int n; std::cin\
-    \ >> n;\n    const int m{150};\n    SuccessiveShortestPath<int, long long> mcf(2\
-    \ * m + 2, 2 * m + n);\n    int source{2 * m}, sink{2 * m + 1};\n    const long\
-    \ long INF{(long long)1e9};\n    for (int i{} ; i < m ; i++) {\n        mcf.addEdge(source,\
-    \ i, 1, 0);\n        mcf.addEdge(m + i, sink, 1, 0);\n    }\n    for (int i{}\
-    \ ; i < n ; i++) {\n        int a, b, c; std::cin >> a >> b >> c;\n        a--;\
-    \ b--;\n        c = INF - c;\n        mcf.addEdge(a, m + b, 1, c);\n    }\n\n\
-    \    auto info{mcf.slope(source, sink)};\n    int k{info.back().up};\n    std::cout\
-    \ << k << std::endl;\n    long long ans{};\n    int now{};\n    for (int i{1}\
-    \ ; i <= k ; i++) {\n        ans += INF - info[now].slope;\n        std::cout\
-    \ << ans << '\\n';\n        if (i == info[now].up) now++;\n    }\n}\n"
+    \ res;\n        while (dijkstra(s, t)) {\n            updatePotential();\n   \
+    \         Cap water{flush(s, t)};\n            mcf_ += potential_[t] * water;\n\
+    \            res.emplace_back(flow, flow + water, potential_[t]);\n          \
+    \  flow += water;\n        }\n        return res;\n    }\n\n    Cost minCost()\
+    \ const noexcept {\n        return mcf_;\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 5 \"Test/AtCoder/abc247_g.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
+    \    SetFastIO();\n    int n; std::cin >> n;\n    const int m{150};\n    SuccessiveShortestPath<int,\
+    \ long long> mcf(2 * m + 2, 2 * m + n);\n    int source{2 * m}, sink{2 * m + 1};\n\
+    \    const long long INF{(long long)1e9};\n    for (int i{} ; i < m ; i++) {\n\
+    \        mcf.addEdge(source, i, 1, 0);\n        mcf.addEdge(m + i, sink, 1, 0);\n\
+    \    }\n    for (int i{} ; i < n ; i++) {\n        int a, b, c; std::cin >> a\
+    \ >> b >> c;\n        a--; b--;\n        c = INF - c;\n        mcf.addEdge(a,\
+    \ m + b, 1, c);\n    }\n\n    auto info{mcf.slope(source, sink)};\n    int k{(int)info.size()\
+    \ - 1};\n    std::cout << k << '\\n';\n    for (int i{1} ; i <= k ; i++) {\n \
+    \       long long ans{INF * (long long)i - info[i]};\n        std::cout << ans\
+    \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc247/tasks/abc247_g\"\n\n\
     #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/SuccessiveShortestPath.hpp\"\
     \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int n; std::cin\
@@ -164,10 +169,10 @@ data:
     \ i, 1, 0);\n        mcf.addEdge(m + i, sink, 1, 0);\n    }\n    for (int i{}\
     \ ; i < n ; i++) {\n        int a, b, c; std::cin >> a >> b >> c;\n        a--;\
     \ b--;\n        c = INF - c;\n        mcf.addEdge(a, m + b, 1, c);\n    }\n\n\
-    \    auto info{mcf.slope(source, sink)};\n    int k{info.back().up};\n    std::cout\
-    \ << k << std::endl;\n    long long ans{};\n    int now{};\n    for (int i{1}\
-    \ ; i <= k ; i++) {\n        ans += INF - info[now].slope;\n        std::cout\
-    \ << ans << '\\n';\n        if (i == info[now].up) now++;\n    }\n}\n"
+    \    auto info{mcf.slope(source, sink)};\n    int k{(int)info.size() - 1};\n \
+    \   std::cout << k << '\\n';\n    for (int i{1} ; i <= k ; i++) {\n        long\
+    \ long ans{INF * (long long)i - info[i]};\n        std::cout << ans << '\\n';\n\
+    \    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -176,13 +181,26 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc247_g.test.cpp
   requiredBy: []
-  timestamp: '2024-01-01 16:25:26+09:00'
+  timestamp: '2024-01-04 02:51:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc247_g.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/AtCoder/abc247_g.test.cpp
-- /verify/Test/AtCoder/abc247_g.test.cpp.html
-title: Test/AtCoder/abc247_g.test.cpp
+title: ABC247-G Dream Team
 ---
+
+最大重み二部マッチング問題に帰着するので、最小費用流で解ける。最大化問題を最小化問題に変換するためにコストを $-1$ 倍する。
+
+この時に負のコストが出現する。この時の対処法をいくつか
+
+1. 下駄を履かせる
+
+使う辺の数が固定の時に有効。
+
+2. ポテンシャルの初期値の計算にベルマンフォード法やDAG上のDPを適用する
+
+特に、グラフがDAGの時は計算量が悪化していないことに注目
+
+3. 流量固定時の変形
+
+良くわかっていない。蟻本p205

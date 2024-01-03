@@ -31,6 +31,9 @@ data:
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2828.test.cpp
+    title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2872.test.cpp
     title: "AOJ2872 \u6700\u77ED\u8DDD\u96E2\u3092\u4F38\u3070\u3059\u3048\u3073\u3061\
       \u3083\u3093"
@@ -138,7 +141,7 @@ data:
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_g.test.cpp
-    title: Test/AtCoder/abc247_g.test.cpp
+    title: ABC247-G Dream Team
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc250_f.test.cpp
     title: Test/AtCoder/abc250_f.test.cpp
@@ -298,6 +301,7 @@ data:
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/lca.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/AOJ/2828.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp

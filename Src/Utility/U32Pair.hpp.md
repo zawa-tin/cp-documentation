@@ -10,11 +10,15 @@ data:
     title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/SuccessiveShortestPath.hpp
-    title: Src/Graph/Flow/SuccessiveShortestPath.hpp
+    title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\
+      \u8DEF\u53CD\u5FA9\u6CD5)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1163.test.cpp
     title: Test/AOJ/1163.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2828.test.cpp
+    title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2872.test.cpp
     title: "AOJ2872 \u6700\u77ED\u8DDD\u96E2\u3092\u4F38\u3070\u3059\u3048\u3073\u3061\
@@ -42,7 +46,7 @@ data:
     title: ABC205-F Grid and Tokens
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_g.test.cpp
-    title: Test/AtCoder/abc247_g.test.cpp
+    title: ABC247-G Dream Team
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc263_g.test.cpp
     title: ABC263-G Erasing Prime Pairs
@@ -156,6 +160,7 @@ data:
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/LC/bipartitematching.test.cpp
+  - Test/AOJ/2828.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/1163.test.cpp

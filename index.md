@@ -257,7 +257,8 @@ data:
       title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Flow/SuccessiveShortestPath.hpp
-      title: Src/Graph/Flow/SuccessiveShortestPath.hpp
+      title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\
+        \u8DEF\u53CD\u5FA9\u6CD5)"
   - name: Src/Graph/ShortestPath
     pages:
     - icon: ':heavy_check_mark:'
@@ -406,6 +407,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2009.test.cpp
       title: Test/AOJ/2009.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2828.test.cpp
+      title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2862.test.cpp
       title: Test/AOJ/2862.test.cpp
@@ -593,7 +597,7 @@ data:
       title: Test/AtCoder/abc247_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc247_g.test.cpp
-      title: Test/AtCoder/abc247_g.test.cpp
+      title: ABC247-G Dream Team
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc250_f.test.cpp
       title: Test/AtCoder/abc250_f.test.cpp

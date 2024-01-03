@@ -3,7 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/SuccessiveShortestPath.hpp
-    title: Src/Graph/Flow/SuccessiveShortestPath.hpp
+    title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\
+      \u8DEF\u53CD\u5FA9\u6CD5)"
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -22,7 +23,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/practice2/submissions/48968582
+    - https://atcoder.jp/contests/practice2/submissions/49008995
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/practice2_e.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -70,11 +71,11 @@ data:
     \ const Cap& cap, const Cost& cost)\n            : from{from}, to{to}, residual{cap},\
     \ cost{cost} {}\n    };\n\n    usize n_{}, m_{};\n    std::vector<Edge> edges_;\n\
     \    std::vector<std::vector<u32>> g_;\n    std::vector<Cost> dist_, potential_;\n\
-    \    std::vector<U32Pair> prev_;\n    Cost mcf{};\n\n    constexpr usize size()\
+    \    std::vector<U32Pair> prev_;\n    Cost mcf_{};\n\n    constexpr usize size()\
     \ const noexcept {\n        return n_;\n    }\n    constexpr usize edgeSize()\
     \ const noexcept {\n        return m_;\n    }\n    \n    SuccessiveShortestPath()\
     \ = default;\n    SuccessiveShortestPath(usize n, usize m = usize{}) \n      \
-    \  : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf{} {\n\
+    \  : n_{n}, m_{}, edges_{}, g_(n), dist_(n), potential_(n), prev_(n), mcf_{} {\n\
     \        g_.shrink_to_fit();\n        dist_.shrink_to_fit();\n        potential_.shrink_to_fit();\n\
     \        prev_.shrink_to_fit();\n        edges_.reserve(2 * m);\n    }\n\n   \
     \ void emplace(u32 from, u32 to, const Cap& cap, const Cost& cost) {\n       \
@@ -117,37 +118,41 @@ data:
     \ dist_.end(), invalid);\n        dist_[s] = Cost{};\n        for (u32 i{} ; i\
     \ + 1 < size() ; i++) {\n            for (u32 j{} ; j < edgeSize() ; j++) {\n\
     \                relax(j);\n            }\n        }\n        return dist_[t]\
-    \ < invalid;\n    }\n\n\n    Cap flush(u32 s, u32 t, Cap up = std::numeric_limits<Cap>::max())\
-    \ {\n        for (u32 v{t} ; v != s ; v = prev_[v].first()) {\n            up\
-    \ = std::min(up, residual(prev_[v].second()));\n        }\n        for (u32 v{t}\
-    \ ; v != s ; v = prev_[v].first()) {\n            edges_[prev_[v].second()].residual\
-    \ -= up;\n            edges_[prev_[v].second() ^ 1].residual += up;\n        }\n\
-    \        return up;\n    }\n\n    bool flow(u32 s, u32 t, Cap flow) {\n      \
-    \  assert(s < size());\n        assert(t < size());\n        while (flow > 0 and\
-    \ dijkstra(s, t)) {\n            for (u32 i{} ; i < size() ; i++) {\n        \
-    \        potential_[i] = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);\n\
-    \            }\n            Cap water{flush(s, t, flow)};\n            mcf +=\
-    \ potential_[t] * water;\n            flow -= water;\n        }\n        return\
-    \ flow == 0;\n    }\n\n    Cap maxflow(u32 s, u32 t) {\n        assert(s < size());\n\
-    \        assert(t < size());\n        Cap flow{};\n        while (dijkstra(s,\
-    \ t)) {\n            for (u32 i{} ; i < size() ; i++) {\n                potential_[i]\
-    \ = potential_[i] + (dist_[i] == invalid ? Cost{} : dist_[i]);\n            }\n\
-    \            Cap water{flush(s, t)};\n            mcf += potential_[t] * water;\n\
-    \            flow += water;\n        }\n        return flow;\n    }\n\n    struct\
+    \ < invalid;\n    }\n\n    void updatePotential() {\n        for (u32 v{} ; v\
+    \ < size() ; v++) {\n            potential_[v] = potential_[v] + (dist_[v] ==\
+    \ invalid ? Cost{} : dist_[v]);\n        }\n    }\n\n    Cap flush(u32 s, u32\
+    \ t, Cap up = std::numeric_limits<Cap>::max()) {\n        for (u32 v{t} ; v !=\
+    \ s ; v = prev_[v].first()) {\n            up = std::min(up, residual(prev_[v].second()));\n\
+    \        }\n        for (u32 v{t} ; v != s ; v = prev_[v].first()) {\n       \
+    \     edges_[prev_[v].second()].residual -= up;\n            edges_[prev_[v].second()\
+    \ ^ 1].residual += up;\n        }\n        return up;\n    }\n\n    bool flow(u32\
+    \ s, u32 t, Cap flow) {\n        assert(s < size());\n        assert(t < size());\n\
+    \        while (flow > 0 and dijkstra(s, t)) {\n            updatePotential();\n\
+    \            Cap water{flush(s, t, flow)};\n            mcf_ += potential_[t]\
+    \ * water;\n            flow -= water;\n        }\n        return flow == 0;\n\
+    \    }\n\n    Cap maxflow(u32 s, u32 t) {\n        assert(s < size());\n     \
+    \   assert(t < size());\n        Cap flow{};\n        while (dijkstra(s, t)) {\n\
+    \            updatePotential();\n            Cap water{flush(s, t)};\n       \
+    \     mcf_ += potential_[t] * water;\n            flow += water;\n        }\n\
+    \        return flow;\n    }\n\n    std::vector<Cost> slope(u32 s, u32 t) {\n\
+    \        assert(s < size());\n        assert(t < size());\n        Cap flow{};\n\
+    \        std::vector<Cost> res;\n        while (dijkstra(s, t)) {\n          \
+    \  updatePotential();\n            Cap water{flush(s, t)};\n            for (u32\
+    \ i{} ; i < water ; i++) {\n                res.emplace_back(mcf_);\n        \
+    \        mcf_ += potential_[t];\n                flow++;\n            }\n    \
+    \    }\n        res.emplace_back(mcf_);\n        return res;\n    }\n\n    struct\
     \ Line {\n        Cap dn{}, up{};\n        Cost slope{};\n        Line() = default;\n\
     \        Line(Cap dn, Cap up, Cost slope) : dn{dn}, up{up}, slope{slope} {}\n\
-    \    };\n    std::vector<Line> slope(u32 s, u32 t) {\n        assert(s < size());\n\
+    \    };\n    std::vector<Line> slopeACL(u32 s, u32 t) {\n        assert(s < size());\n\
     \        assert(t < size()); \n        Cap flow{};\n        std::vector<Line>\
-    \ res;\n        while (dijkstra(s, t)) {\n            for (u32 i{} ; i < size()\
-    \ ; i++) {\n                potential_[i] = potential_[i] + (dist_[i] == invalid\
-    \ ? Cost{} : dist_[i]);\n            }\n            Cap water{flush(s, t)};\n\
-    \            mcf += potential_[t] * water;\n            res.emplace_back(flow,\
-    \ flow + water, potential_[t]);\n            flow += water;\n        }\n     \
-    \   return res;\n    }\n\n    Cost minCost() const noexcept {\n        return\
-    \ mcf;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/Manual/practice2_e.test.cpp\"\
-    \n\n#line 7 \"Test/Manual/practice2_e.test.cpp\"\n#include <string>\n#line 9 \"\
-    Test/Manual/practice2_e.test.cpp\"\n\n/*\n * AtCoder Library Practice Contest\
-    \ - E MinCostFlow\n * https://atcoder.jp/contests/practice2/submissions/48968582\n\
+    \ res;\n        while (dijkstra(s, t)) {\n            updatePotential();\n   \
+    \         Cap water{flush(s, t)};\n            mcf_ += potential_[t] * water;\n\
+    \            res.emplace_back(flow, flow + water, potential_[t]);\n          \
+    \  flow += water;\n        }\n        return res;\n    }\n\n    Cost minCost()\
+    \ const noexcept {\n        return mcf_;\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 5 \"Test/Manual/practice2_e.test.cpp\"\n\n#line 7 \"Test/Manual/practice2_e.test.cpp\"\
+    \n#include <string>\n#line 9 \"Test/Manual/practice2_e.test.cpp\"\n\n/*\n * AtCoder\
+    \ Library Practice Contest - E MinCostFlow\n * https://atcoder.jp/contests/practice2/submissions/49008995\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n,\
     \ k; std::cin >> n >> k;\n    SuccessiveShortestPath<int, long long> mcf(2 * n\
     \ + 2);\n    int source{2 * n}, sink{2 * n + 1};\n    for (int i{} ; i < n ; i++)\
@@ -167,7 +172,7 @@ data:
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/SuccessiveShortestPath.hpp\"\
     \n\n#include <iostream>\n#include <string>\n#include <vector>\n\n/*\n * AtCoder\
-    \ Library Practice Contest - E MinCostFlow\n * https://atcoder.jp/contests/practice2/submissions/48968582\n\
+    \ Library Practice Contest - E MinCostFlow\n * https://atcoder.jp/contests/practice2/submissions/49008995\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n,\
     \ k; std::cin >> n >> k;\n    SuccessiveShortestPath<int, long long> mcf(2 * n\
     \ + 2);\n    int source{2 * n}, sink{2 * n + 1};\n    for (int i{} ; i < n ; i++)\
@@ -192,7 +197,7 @@ data:
   isVerificationFile: true
   path: Test/Manual/practice2_e.test.cpp
   requiredBy: []
-  timestamp: '2024-01-01 16:25:26+09:00'
+  timestamp: '2024-01-04 02:51:07+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/practice2_e.test.cpp
@@ -206,4 +211,4 @@ title: AtCoder Library Practice Contest - E MinCostFlow
 
 こういう時はsourceからsinkに向けて容量無限、コスト $0$ の辺を張ると良い。
 
-今回は最大化問題を最小化問題に変換するために下駄を履かせているので、この辺にも下駄を履かせること
+今回は最大化問題を最小化問題に変換するために(コストをマイナス1倍しており、負コストを解消するため)下駄を履かせているので、この辺にも下駄を履かせること
