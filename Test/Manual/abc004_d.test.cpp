@@ -8,7 +8,7 @@
 
 /*
  * ABC004 - D マーブル
- * https://atcoder.jp/contests/abc004/submissions/48968257
+ * https://atcoder.jp/contests/abc004/submissions/49008975
  */
 
 int solve() {
