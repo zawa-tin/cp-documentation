@@ -12,6 +12,9 @@ data:
     path: Src/Graph/Flow/SuccessiveShortestPath.hpp
     title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\
       \u8DEF\u53CD\u5FA9\u6CD5)"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/HeavyLightDecomposition.hpp
+    title: Src/Graph/Tree/HeavyLightDecomposition.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1163.test.cpp
@@ -56,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_path_sum.test.cpp
+    title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc004_d.test.cpp
     title: Test/Manual/abc004_d.test.cpp
@@ -148,6 +154,7 @@ data:
   isVerificationFile: false
   path: Src/Utility/U32Pair.hpp
   requiredBy:
+  - Src/Graph/Tree/HeavyLightDecomposition.hpp
   - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/Dinic.hpp
   timestamp: '2023-12-16 19:11:08+09:00'
@@ -160,6 +167,7 @@ data:
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/LC/bipartitematching.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AOJ/2828.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
   - Test/AOJ/3168.test.cpp

@@ -34,6 +34,9 @@ data:
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_path_sum.test.cpp
+    title: Test/LC/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
   _isVerificationFailed: false
@@ -66,6 +69,7 @@ data:
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp

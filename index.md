@@ -282,6 +282,9 @@ data:
       path: Src/Graph/Tree/EulerTour.hpp
       title: Src/Graph/Tree/EulerTour.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/HeavyLightDecomposition.hpp
+      title: Src/Graph/Tree/HeavyLightDecomposition.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/LevelAncestor.hpp
       title: Src/Graph/Tree/LevelAncestor.hpp
     - icon: ':heavy_check_mark:'
@@ -708,6 +711,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/unionfind.test.cpp
       title: Test/LC/unionfind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/vertex_add_path_sum.test.cpp
+      title: Test/LC/vertex_add_path_sum.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

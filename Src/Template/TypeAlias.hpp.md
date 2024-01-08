@@ -212,6 +212,9 @@ data:
     path: Src/Graph/Tree/EulerTour.hpp
     title: Src/Graph/Tree/EulerTour.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/HeavyLightDecomposition.hpp
+    title: Src/Graph/Tree/HeavyLightDecomposition.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LevelAncestor.hpp
     title: Src/Graph/Tree/LevelAncestor.hpp
   - icon: ':heavy_check_mark:'
@@ -596,6 +599,9 @@ data:
     path: Test/LC/unionfind.test.cpp
     title: Test/LC/unionfind.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_path_sum.test.cpp
+    title: Test/LC/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -805,6 +811,7 @@ data:
   - Src/Graph/ShortestPath/Dijkstra.hpp
   - Src/Graph/ShortestPath/ShortestPathTree.hpp
   - Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
+  - Src/Graph/Tree/HeavyLightDecomposition.hpp
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
@@ -881,6 +888,7 @@ data:
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
