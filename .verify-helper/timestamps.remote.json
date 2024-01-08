@@ -106,6 +106,7 @@
 "Test/LC/static_range_sum.test.cpp": "2023-07-22 13:55:49 +0900",
 "Test/LC/staticrmq.test.cpp": "2023-11-01 12:01:29 +0900",
 "Test/LC/unionfind.test.cpp": "2023-11-13 10:16:50 +0900",
+"Test/LC/vertex_add_path_sum.test.cpp": "2024-01-09 00:25:14 +0900",
 "Test/Manual/CF895-E.test.cpp": "2023-11-08 14:46:32 +0900",
 "Test/Manual/CF902-B.test.cpp": "2023-10-10 12:22:15 +0900",
 "Test/Manual/abc004_d.test.cpp": "2024-01-04 02:51:07 +0900",
