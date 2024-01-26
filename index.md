@@ -253,6 +253,9 @@ data:
   - name: Src/Graph/Flow
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Flow/BurnBury.hpp
+      title: Src/Graph/Flow/BurnBury.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Flow/Dinic.hpp
       title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
     - icon: ':heavy_check_mark:'

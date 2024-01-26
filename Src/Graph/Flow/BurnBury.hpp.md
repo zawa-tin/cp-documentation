@@ -2,14 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Flow/BurnBury.hpp
-    title: Src/Graph/Flow/BurnBury.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/Dinic.hpp
     title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
-  - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -17,30 +11,23 @@ data:
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/typical90_an.test.cpp
+    title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-    links:
-    - https://atcoder.jp/contests/typical90/submissions/49664834
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/typical90_an.test.cpp\"\n#define PROBLEM \"\
-    https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n#line 2\
-    \ \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n\
-    #include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
-    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
-    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
-    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
-    #line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
-    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Flow/BurnBury.hpp\"\n\n#line 2 \"\
-    Src/Utility/U32Pair.hpp\"\n\n#line 4 \"Src/Utility/U32Pair.hpp\"\n\n#include <functional>\n\
-    #line 7 \"Src/Utility/U32Pair.hpp\"\n\nnamespace zawa {\n\nclass U32Pair {\nprivate:\n\
-    \    static constexpr u32 SHIFT{32};\n    static constexpr u32 MASK{static_cast<u32>((1LL\
+    links: []
+  bundledCode: "#line 2 \"Src/Graph/Flow/BurnBury.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/Utility/U32Pair.hpp\"\n\n#line 4 \"Src/Utility/U32Pair.hpp\"\
+    \n\n#include <functional>\n#include <iostream>\n\nnamespace zawa {\n\nclass U32Pair\
+    \ {\nprivate:\n    static constexpr u32 SHIFT{32};\n    static constexpr u32 MASK{static_cast<u32>((1LL\
     \ << SHIFT) - 1)};\n    u64 value_{};\npublic:\n    constexpr U32Pair() {}\n \
     \   constexpr U32Pair(u32 first, u32 second) {\n        value_ = (static_cast<u64>(first)\
     \ << SHIFT) | second;\n    }\n    constexpr u32 first() const noexcept {\n   \
@@ -173,74 +160,75 @@ data:
     \ tot{mf_.cut(sink_)};\n        std::vector<u32> res(size());\n        for (u32\
     \ i{} ; i < size() ; i++) {\n            if (!tos[i] and !tot[i]) res[i] = 2;\n\
     \            else if (tos[i]) res[i] = 0;\n            else res[i] = 1;\n    \
-    \    }\n        return res;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/Manual/typical90_an.test.cpp\"\
-    \n\n#line 7 \"Test/Manual/typical90_an.test.cpp\"\n\n/*\n * \u7AF6\u30D7\u30ED\
-    \u5178\u578B90\u554F-040 Get More Money\n * https://atcoder.jp/contests/typical90/submissions/49664834\n\
-    \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
-    \ std::cin >> n;\n    BurnBury<long long> solver(n);\n    long long w; std::cin\
-    \ >> w;\n    for (int i{} ; i < n ; i++) {\n        long long a; std::cin >> a;\n\
-    \        solver.func1(i, { 0LL, -(a - w) });\n    }\n    const long long INF{(long\
-    \ long)1e12};\n    for (int i{} ; i < n ; i++) {\n        int k; std::cin >> k;\n\
-    \        for (int _{} ; _ < k ; _++) {\n            int c; std::cin >> c;\n  \
-    \          c--;\n            solver.func2(i, c, { 0LL, INF, 0LL, 0LL });\n   \
-    \     }\n    }\n    long long ans{solver.build()};\n    ans *= -1;\n    std::cout\
-    \ << ans << '\\n';\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n \
-    \   std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/BurnBury.hpp\"\
-    \n\n#include <iostream>\n\n/*\n * \u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get\
-    \ More Money\n * https://atcoder.jp/contests/typical90/submissions/49664834\n\
-    \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
-    \ std::cin >> n;\n    BurnBury<long long> solver(n);\n    long long w; std::cin\
-    \ >> w;\n    for (int i{} ; i < n ; i++) {\n        long long a; std::cin >> a;\n\
-    \        solver.func1(i, { 0LL, -(a - w) });\n    }\n    const long long INF{(long\
-    \ long)1e12};\n    for (int i{} ; i < n ; i++) {\n        int k; std::cin >> k;\n\
-    \        for (int _{} ; _ < k ; _++) {\n            int c; std::cin >> c;\n  \
-    \          c--;\n            solver.func2(i, c, { 0LL, INF, 0LL, 0LL });\n   \
-    \     }\n    }\n    long long ans{solver.build()};\n    ans *= -1;\n    std::cout\
-    \ << ans << '\\n';\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n \
-    \   std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \    }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Utility/U32Pair.hpp\"\
+    \n#include \"Dinic.hpp\"\n\n#include <cassert>\n#include <unordered_map>\n#include\
+    \ <vector>\n\nnamespace zawa {\n\ntemplate <class Cost>\nclass BurnBury {\nprivate:\n\
+    \    usize n_{}, source_{}, sink_{}, graphsize_{};\n    Dinic<Cost> mf_{}; \n\
+    \    Cost common_{};\n    std::unordered_map<U32Pair, Cost, U32PairHash> edge_{};\n\
+    \    void addEdge(u32 u, u32 v, const Cost& cost) {\n        edge_[U32Pair{ u,\
+    \ v }] += cost;\n    }\n    constexpr usize size() const noexcept {\n        return\
+    \ n_;\n    }\npublic:\n    BurnBury() = default;    \n    BurnBury(usize n) :\
+    \ n_{n}, source_{n}, sink_{n + 1}, graphsize_{n + 2} {\n        assert(n);\n \
+    \   }\n    void constant(const Cost& cost) {\n        common_ += cost;\n    }\n\
+    \    void func1(u32 v, const std::vector<Cost>& cost) {\n        assert(v < size());\n\
+    \        assert(cost.size() == (1u << 1));\n        if (cost[0] <= cost[1]) {\n\
+    \            addEdge(source_, v, cost[1] - cost[0]);\n            constant(cost[0]);\n\
+    \        }\n        else {\n            addEdge(v, sink_, cost[0] - cost[1]);\n\
+    \            constant(cost[1]);\n        }\n    }\n    void func2(u32 u, u32 v,\
+    \ const std::vector<Cost>& cost) {\n        assert(u < size());\n        assert(v\
+    \ < size());\n        assert(cost.size() == (1u << 2));\n        constant(cost[0]);\n\
+    \        func1(u, { Cost{0}, cost[2] - cost[0] });\n        func1(v, { Cost{0},\
+    \ cost[3] - cost[2] });\n        assert(cost[1] + cost[2] - cost[0] - cost[3]\
+    \ >= 0);\n        addEdge(u, v, cost[1] + cost[2] - cost[0] - cost[3]);\n    }\n\
+    \    void func3(u32 u, u32 v, u32 w, const std::vector<Cost>& cost) {\n      \
+    \  assert(u < size());\n        assert(v < size());\n        assert(w < size());\n\
+    \        assert(cost.size() == (1u << 3));\n        Cost p{cost[1] + cost[3] +\
+    \ cost[5] + cost[6] - (cost[1] + cost[2] + cost[4] + cost[7])};\n        if (p\
+    \ >= 0) {\n            constant(cost[0]);\n            func1(u, Cost{0}, cost[5]\
+    \ - cost[1]);\n            func1(v, Cost{0}, cost[6] - cost[4]);\n           \
+    \ func1(w, Cost{0}, cost[3] - cost[2]);\n            // 01\u4EE5\u5916\u306F0\n\
+    \            func2(u, v, { Cost{0}, cost[2] + cost[4] - cost[0] - cost[6], Cost{0},\
+    \ Cost{0} });\n            func2(v, w, { Cost{0}, cost[1] + cost[2] - cost[0]\
+    \ - cost[3], Cost{0}, Cost{0} });\n            func2(w, u, { Cost{0}, cost[1]\
+    \ + cost[4] - cost[0] - cost[5], Cost{0}, Cost{0} });\n            // 111\u3068\
+    \u3059\u308B\u3068-p\n            addEdge(u, graphsize_, p);\n            addEdge(v,\
+    \ graphsize_, p);\n            addEdge(w, graphsize_, p);\n            addEdge(graphsize_,\
+    \ sink_, p);\n            constant(-p);\n            graphsize_++;\n        }\n\
+    \        else {\n            constant(cost[7]);\n            func1(u, { cost[2]\
+    \ - cost[6], Cost{0} });\n            func1(v, { cost[1] - cost[3], Cost{0} });\n\
+    \            func1(w, { cost[4] - cost[5], Cost{0} });\n            // 10\u306E\
+    \u6642\n            func2(u, v, { Cost{0}, Cost{0}, cost[3] + cost[5] - cost[1]\
+    \ - cost[7], Cost{0} });\n            func2(v, w, { Cost{0}, Cost{0}, cost[5]\
+    \ + cost[6] - cost[4] - cost[7], Cost{0} });\n            func2(w, u, { Cost{0},\
+    \ Cost{0}, cost[3] + cost[6] - cost[2] - cost[7], Cost{0} });\n            //\
+    \ 000\n            addEdge(source_, graphsize_, -p);\n            addEdge(graphsize_,\
+    \ u, -p);\n            addEdge(graphsize_, v, -p);\n            addEdge(graphsize_,\
+    \ w, -p);\n            constant(p);\n            graphsize_++;\n        }\n  \
+    \  }\n\n    [[nodiscard]] Cost build() {\n        mf_ = Dinic<Cost>(graphsize_);\n\
+    \        for (const auto& [uv, cost] : edge_) {\n            mf_.addEdge(uv.first(),\
+    \ uv.second(), cost);\n        }\n        Cost res{mf_.flow(source_, sink_)};\n\
+    \        res += common_;\n        return res;\n    }\n\n    [[nodiscard]] std::vector<u32>\
+    \ assign() {\n        auto tos{mf_.cut(source_)}, tot{mf_.cut(sink_)};\n     \
+    \   std::vector<u32> res(size());\n        for (u32 i{} ; i < size() ; i++) {\n\
+    \            if (!tos[i] and !tot[i]) res[i] = 2;\n            else if (tos[i])\
+    \ res[i] = 0;\n            else res[i] = 1;\n        }\n        return res;\n\
+    \    }\n};\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/Graph/Flow/BurnBury.hpp
   - Src/Utility/U32Pair.hpp
   - Src/Graph/Flow/Dinic.hpp
-  isVerificationFile: true
-  path: Test/Manual/typical90_an.test.cpp
+  isVerificationFile: false
+  path: Src/Graph/Flow/BurnBury.hpp
   requiredBy: []
   timestamp: '2024-01-26 17:02:26+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/Manual/typical90_an.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/Manual/typical90_an.test.cpp
+documentation_of: Src/Graph/Flow/BurnBury.hpp
 layout: document
-title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
+redirect_from:
+- /library/Src/Graph/Flow/BurnBury.hpp
+- /library/Src/Graph/Flow/BurnBury.hpp.html
+title: Src/Graph/Flow/BurnBury.hpp
 ---
-
-燃やす埋める
-
-$x_{i} =$ 家 $i$ に入る時 $1$ 、家 $i$ に入らない時 $0$ とする。
-
-$x_{i}$ の割り当て方によって以下の様に利得が発生する。
-
-- $x_{i} = 1$ ならば、 $W - A_{i}$ 円の得
-- $x_{i} = 0$ かつ $x_{c_{ij}} = 1$ ならば、 $-\infty$ 円の得(このような割り当ての禁止)
-- $x_{1}, x_{2}, \dots, x_{n}$ に $01$ を上手く割り当てて得られるお金の総和を最大化したい
-
-最小カットに帰着したいので、全て $-1$ 倍することで最小化問題を考えることにする。
-
-- $x_{i} = 1$ ならば、 $-(W - A_{i})$ 円の損
-- $x_{i} = 0$ かつ $x_{c_{ij}} = 1$ ならば、 $\infty$ 円の損(このような割り当ての禁止)
-- $x_{1}, x_{2}, \dots, x_{n}$ に $01$ を上手く割り当てて損失するお金の総和を最小化したい
-
-二番目の条件が $2$ 変数関数になっているので、劣モジュラ性を持つかを確認する必要がある。
-
-| $i \\ c_{ij}$ | 0 | 1 |
-| ---- | ---- | ---- |
-| 0 | 0 | $\infty$ |
-| 1 | 0 | 0 |
-
-
-$i\ \lt\ j, x_{i} = 0, x_{j} = 1$ の数を $\text{cnt}$ として $S = (x_{1}, x_{2}, \dots, x_{n})$ $T = (x_{1}', x_{2}', \dots, x_{n}')$
-
-$S\cap T, S\cup T$ との $\text{cnt}$ の変化を考えると、 $\text{cnt}(S) + \text{cnt}(T) = \text{cnt}(S\cap T) + \text{cnt}(S\cup T)$ なので劣モジュラ性が成り立っている。

@@ -79,8 +79,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc295_a.test.cpp
-  - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
   - Test/LC/many_aplusb.test.cpp
 documentation_of: Src/Template/Input.hpp
 layout: document
