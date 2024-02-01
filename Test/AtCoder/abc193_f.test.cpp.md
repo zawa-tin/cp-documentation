@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Flow/BurnBury.hpp
+    title: Src/Graph/Flow/BurnBury.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/Dinic.hpp
     title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
   - icon: ':heavy_check_mark:'
@@ -32,31 +35,32 @@ data:
     \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Flow/Dinic.hpp\"\n\n#line 2 \"Src/Utility/U32Pair.hpp\"\
-    \n\n#line 4 \"Src/Utility/U32Pair.hpp\"\n\n#include <functional>\n#line 7 \"Src/Utility/U32Pair.hpp\"\
-    \n\nnamespace zawa {\n\nclass U32Pair {\nprivate:\n    static constexpr u32 SHIFT{32};\n\
-    \    static constexpr u32 MASK{static_cast<u32>((1LL << SHIFT) - 1)};\n    u64\
-    \ value_{};\npublic:\n    constexpr U32Pair() {}\n    constexpr U32Pair(u32 first,\
-    \ u32 second) {\n        value_ = (static_cast<u64>(first) << SHIFT) | second;\n\
-    \    }\n    constexpr u32 first() const noexcept {\n        return static_cast<u32>(value_\
-    \ >> SHIFT);\n    }\n    constexpr u32 second() const noexcept {\n        return\
-    \ static_cast<u32>(value_ & MASK);\n    }\n    constexpr u64 combined() const\
-    \ noexcept {\n        return value_;\n    }\n    constexpr U32Pair& operator=(const\
-    \ U32Pair& rhs) {\n        value_ = rhs.value_;\n        return *this;\n    }\n\
-    \    friend constexpr bool operator==(const U32Pair& lhs, const U32Pair& rhs)\
-    \ {\n        return lhs.value_ == rhs.value_;\n    }\n    friend constexpr bool\
-    \ operator!=(const U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_\
-    \ != rhs.value_;\n    }\n    friend constexpr bool operator<(const U32Pair& lhs,\
-    \ const U32Pair& rhs) {\n        return lhs.value_ < rhs.value_;\n    }\n    friend\
-    \ constexpr bool operator<=(const U32Pair& lhs, const U32Pair& rhs) {\n      \
-    \  return lhs.value_ <= rhs.value_;\n    }\n    friend constexpr bool operator>(const\
-    \ U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_ > rhs.value_;\n\
-    \    }\n    friend constexpr bool operator>=(const U32Pair& lhs, const U32Pair&\
-    \ rhs) {\n        return lhs.value_ >= rhs.value_;\n    }\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const U32Pair& pair) {\n        os << '(' << pair.first()\
-    \ << ',' << pair.second() << ')';\n        return os;\n    }\n};\n\nstruct U32PairHash\
-    \ {\n    usize operator()(const U32Pair& pair) const noexcept {\n        return\
-    \ std::hash<u64>{}(pair.combined());\n    }\n};\n\n} // namespace zawa\n#line\
+    }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Flow/BurnBury.hpp\"\n\n#line 2 \"\
+    Src/Utility/U32Pair.hpp\"\n\n#line 4 \"Src/Utility/U32Pair.hpp\"\n\n#include <functional>\n\
+    #line 7 \"Src/Utility/U32Pair.hpp\"\n\nnamespace zawa {\n\nclass U32Pair {\nprivate:\n\
+    \    static constexpr u32 SHIFT{32};\n    static constexpr u32 MASK{static_cast<u32>((1LL\
+    \ << SHIFT) - 1)};\n    u64 value_{};\npublic:\n    constexpr U32Pair() {}\n \
+    \   constexpr U32Pair(u32 first, u32 second) {\n        value_ = (static_cast<u64>(first)\
+    \ << SHIFT) | second;\n    }\n    constexpr u32 first() const noexcept {\n   \
+    \     return static_cast<u32>(value_ >> SHIFT);\n    }\n    constexpr u32 second()\
+    \ const noexcept {\n        return static_cast<u32>(value_ & MASK);\n    }\n \
+    \   constexpr u64 combined() const noexcept {\n        return value_;\n    }\n\
+    \    constexpr U32Pair& operator=(const U32Pair& rhs) {\n        value_ = rhs.value_;\n\
+    \        return *this;\n    }\n    friend constexpr bool operator==(const U32Pair&\
+    \ lhs, const U32Pair& rhs) {\n        return lhs.value_ == rhs.value_;\n    }\n\
+    \    friend constexpr bool operator!=(const U32Pair& lhs, const U32Pair& rhs)\
+    \ {\n        return lhs.value_ != rhs.value_;\n    }\n    friend constexpr bool\
+    \ operator<(const U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_\
+    \ < rhs.value_;\n    }\n    friend constexpr bool operator<=(const U32Pair& lhs,\
+    \ const U32Pair& rhs) {\n        return lhs.value_ <= rhs.value_;\n    }\n   \
+    \ friend constexpr bool operator>(const U32Pair& lhs, const U32Pair& rhs) {\n\
+    \        return lhs.value_ > rhs.value_;\n    }\n    friend constexpr bool operator>=(const\
+    \ U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_ >= rhs.value_;\n\
+    \    }\n    friend std::ostream& operator<<(std::ostream& os, const U32Pair& pair)\
+    \ {\n        os << '(' << pair.first() << ',' << pair.second() << ')';\n     \
+    \   return os;\n    }\n};\n\nstruct U32PairHash {\n    usize operator()(const\
+    \ U32Pair& pair) const noexcept {\n        return std::hash<u64>{}(pair.combined());\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Graph/Flow/Dinic.hpp\"\n\n#line\
     \ 5 \"Src/Graph/Flow/Dinic.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
     #include <limits>\n#include <type_traits>\n#include <vector>\n#include <queue>\n\
     \nnamespace zawa {\n\ntemplate <class Cap> \nclass Dinic {\nprivate:\n    static_assert(std::is_signed_v<Cap>,\
@@ -116,52 +120,106 @@ data:
     \   queue.pop();\n            for (const auto& e : g_[v]) if (e.residual > 0 and\
     \ !res[e.to]) {\n                res[e.to] = true;\n                queue.emplace(e.to);\n\
     \            }\n        }\n        return res;\n    }    \n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AtCoder/abc193_f.test.cpp\"\n\nint main() {\n    using\
-    \ namespace zawa;\n    SetFastIO();\n    int n; std::cin >> n;\n    std::vector<std::string>\
-    \ S(n);\n    for (auto& s : S) std::cin >> s;\n    Dinic<int> mf(n * n + 2);\n\
-    \    int source{n * n}, sink{n * n + 1};\n    constexpr int dx[4]{ 1, 0, -1, 0\
-    \ };\n    constexpr int dy[4]{ 0, 1, 0, -1 };\n    auto in{[&](int x, int y) ->\
-    \ bool {\n        return 0 <= x and x < n and 0 <= y and y < n;\n    }};\n   \
-    \ auto f{[&](int x, int y) -> int {\n        return x * n + y;\n    }};\n    constexpr\
-    \ int INF{10000};\n    int good{};\n    for (int x{} ; x < n ; x++) {\n      \
-    \  for (int y{} ; y < n ; y++) {\n            for (int d{} ; d < 4 ; d++) {\n\
-    \                int nx{x + dx[d]}, ny{y + dy[d]};\n                if (!in(nx,\
-    \ ny)) continue;\n                mf.addEdge(f(x, y), f(nx, ny), 1);\n       \
-    \         good++;\n            }\n            if ((x + y) & 1) {\n           \
-    \     mf.addEdge(source, f(x, y), S[x][y] == 'B' ? INF : 0);\n               \
-    \ mf.addEdge(f(x, y), sink, S[x][y] == 'W' ? INF : 0);\n            }\n      \
-    \      else {\n                mf.addEdge(source, f(x, y), S[x][y] == 'W' ? INF\
-    \ : 0);\n                mf.addEdge(f(x, y), sink, S[x][y] == 'B' ? INF : 0);\n\
-    \            }\n        }\n    }\n    good /= 2;\n    int ans{good - mf.flow(source,\
-    \ sink)};\n    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc193/tasks/abc193_f\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int n; std::cin\
-    \ >> n;\n    std::vector<std::string> S(n);\n    for (auto& s : S) std::cin >>\
-    \ s;\n    Dinic<int> mf(n * n + 2);\n    int source{n * n}, sink{n * n + 1};\n\
-    \    constexpr int dx[4]{ 1, 0, -1, 0 };\n    constexpr int dy[4]{ 0, 1, 0, -1\
+    \ zawa\n#line 6 \"Src/Graph/Flow/BurnBury.hpp\"\n\n#line 8 \"Src/Graph/Flow/BurnBury.hpp\"\
+    \n#include <unordered_map>\n#line 10 \"Src/Graph/Flow/BurnBury.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class Cost>\nclass BurnBury {\nprivate:\n    usize n_{},\
+    \ source_{}, sink_{}, graphsize_{};\n    Dinic<Cost> mf_{}; \n    Cost common_{};\n\
+    \    std::unordered_map<U32Pair, Cost, U32PairHash> edge_{};\n    void addEdge(u32\
+    \ u, u32 v, const Cost& cost) {\n        edge_[U32Pair{ u, v }] += cost;\n   \
+    \ }\n    constexpr usize size() const noexcept {\n        return n_;\n    }\n\
+    public:\n    BurnBury() = default;    \n    BurnBury(usize n) : n_{n}, source_{n},\
+    \ sink_{n + 1}, graphsize_{n + 2} {\n        assert(n);\n    }\n    void constant(const\
+    \ Cost& cost) {\n        common_ += cost;\n    }\n    void func1(u32 v, const\
+    \ std::vector<Cost>& cost) {\n        assert(v < size());\n        assert(cost.size()\
+    \ == (1u << 1));\n        if (cost[0] <= cost[1]) {\n            addEdge(source_,\
+    \ v, cost[1] - cost[0]);\n            constant(cost[0]);\n        }\n        else\
+    \ {\n            addEdge(v, sink_, cost[0] - cost[1]);\n            constant(cost[1]);\n\
+    \        }\n    }\n    void func2(u32 u, u32 v, const std::vector<Cost>& cost)\
+    \ {\n        assert(u < size());\n        assert(v < size());\n        assert(cost.size()\
+    \ == (1u << 2));\n        constant(cost[0]);\n        func1(u, { Cost{0}, cost[2]\
+    \ - cost[0] });\n        func1(v, { Cost{0}, cost[3] - cost[2] });\n        assert(cost[1]\
+    \ + cost[2] - cost[0] - cost[3] >= 0);\n        addEdge(u, v, cost[1] + cost[2]\
+    \ - cost[0] - cost[3]);\n    }\n    void func3(u32 u, u32 v, u32 w, const std::vector<Cost>&\
+    \ cost) {\n        assert(u < size());\n        assert(v < size());\n        assert(w\
+    \ < size());\n        assert(cost.size() == (1u << 3));\n        Cost p{cost[1]\
+    \ + cost[3] + cost[5] + cost[6] - (cost[1] + cost[2] + cost[4] + cost[7])};\n\
+    \        if (p >= 0) {\n            constant(cost[0]);\n            func1(u, Cost{0},\
+    \ cost[5] - cost[1]);\n            func1(v, Cost{0}, cost[6] - cost[4]);\n   \
+    \         func1(w, Cost{0}, cost[3] - cost[2]);\n            // 01\u4EE5\u5916\
+    \u306F0\n            func2(u, v, { Cost{0}, cost[2] + cost[4] - cost[0] - cost[6],\
+    \ Cost{0}, Cost{0} });\n            func2(v, w, { Cost{0}, cost[1] + cost[2] -\
+    \ cost[0] - cost[3], Cost{0}, Cost{0} });\n            func2(w, u, { Cost{0},\
+    \ cost[1] + cost[4] - cost[0] - cost[5], Cost{0}, Cost{0} });\n            //\
+    \ 111\u3068\u3059\u308B\u3068-p\n            addEdge(u, graphsize_, p);\n    \
+    \        addEdge(v, graphsize_, p);\n            addEdge(w, graphsize_, p);\n\
+    \            addEdge(graphsize_, sink_, p);\n            constant(-p);\n     \
+    \       graphsize_++;\n        }\n        else {\n            constant(cost[7]);\n\
+    \            func1(u, { cost[2] - cost[6], Cost{0} });\n            func1(v, {\
+    \ cost[1] - cost[3], Cost{0} });\n            func1(w, { cost[4] - cost[5], Cost{0}\
+    \ });\n            // 10\u306E\u6642\n            func2(u, v, { Cost{0}, Cost{0},\
+    \ cost[3] + cost[5] - cost[1] - cost[7], Cost{0} });\n            func2(v, w,\
+    \ { Cost{0}, Cost{0}, cost[5] + cost[6] - cost[4] - cost[7], Cost{0} });\n   \
+    \         func2(w, u, { Cost{0}, Cost{0}, cost[3] + cost[6] - cost[2] - cost[7],\
+    \ Cost{0} });\n            // 000\n            addEdge(source_, graphsize_, -p);\n\
+    \            addEdge(graphsize_, u, -p);\n            addEdge(graphsize_, v, -p);\n\
+    \            addEdge(graphsize_, w, -p);\n            constant(p);\n         \
+    \   graphsize_++;\n        }\n    }\n\n    [[nodiscard]] Cost build() {\n    \
+    \    mf_ = Dinic<Cost>(graphsize_);\n        for (const auto& [uv, cost] : edge_)\
+    \ {\n            mf_.addEdge(uv.first(), uv.second(), cost);\n        }\n    \
+    \    Cost res{mf_.flow(source_, sink_)};\n        res += common_;\n        return\
+    \ res;\n    }\n\n    [[nodiscard]] std::vector<u32> assign() {\n        auto tos{mf_.cut(source_)},\
+    \ tot{mf_.cut(sink_)};\n        std::vector<u32> res(size());\n        for (u32\
+    \ i{} ; i < size() ; i++) {\n            if (!tos[i] and !tot[i]) res[i] = 2;\n\
+    \            else if (tos[i]) res[i] = 0;\n            else res[i] = 1;\n    \
+    \    }\n        return res;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc193_f.test.cpp\"\
+    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n\n    int n; std::cin\
+    \ >> n;\n    std::vector s(n, std::string{});\n    for (auto& v : s) std::cin\
+    \ >> v;\n\n    auto f{[&](int x, int y) -> int {\n        return x * n + y;\n\
+    \    }};\n    const int dx[4]{ 1, 0, -1, 0 };\n    const int dy[4]{ 0, 1, 0, -1\
     \ };\n    auto in{[&](int x, int y) -> bool {\n        return 0 <= x and x < n\
-    \ and 0 <= y and y < n;\n    }};\n    auto f{[&](int x, int y) -> int {\n    \
-    \    return x * n + y;\n    }};\n    constexpr int INF{10000};\n    int good{};\n\
-    \    for (int x{} ; x < n ; x++) {\n        for (int y{} ; y < n ; y++) {\n  \
-    \          for (int d{} ; d < 4 ; d++) {\n                int nx{x + dx[d]}, ny{y\
-    \ + dy[d]};\n                if (!in(nx, ny)) continue;\n                mf.addEdge(f(x,\
-    \ y), f(nx, ny), 1);\n                good++;\n            }\n            if ((x\
-    \ + y) & 1) {\n                mf.addEdge(source, f(x, y), S[x][y] == 'B' ? INF\
-    \ : 0);\n                mf.addEdge(f(x, y), sink, S[x][y] == 'W' ? INF : 0);\n\
-    \            }\n            else {\n                mf.addEdge(source, f(x, y),\
-    \ S[x][y] == 'W' ? INF : 0);\n                mf.addEdge(f(x, y), sink, S[x][y]\
-    \ == 'B' ? INF : 0);\n            }\n        }\n    }\n    good /= 2;\n    int\
-    \ ans{good - mf.flow(source, sink)};\n    std::cout << ans << '\\n';\n}\n"
+    \ and 0 <= y and y < n;\n    }};\n\n    BurnBury<int> optimizer(n * n);\n    const\
+    \ int INF{(int)1e5};\n    for (int x{} ; x < n ; x++) {\n        for (int y{}\
+    \ ; y < n ; y++) {\n            if ((x + y) % 2 == 0) {\n                optimizer.func1(f(x,\
+    \ y), {\n                        (s[x][y] == 'W' ? INF : 0),\n               \
+    \         (s[x][y] == 'B' ? INF : 0)\n                        });\n          \
+    \  }\n            else {\n                optimizer.func1(f(x, y), {\n       \
+    \                 (s[x][y] == 'B' ? INF : 0),\n                        (s[x][y]\
+    \ == 'W' ? INF : 0)\n                        });\n            }\n            for\
+    \ (int d{} ; d < 4 ; d++) {\n                int nx{x + dx[d]}, ny{y + dy[d]};\n\
+    \                if (!in(nx, ny)) continue;\n                if (f(x, y) > f(nx,\
+    \ ny)) continue;\n                optimizer.func2(f(x, y), f(nx, ny), {-1, 0,\
+    \ 0, -1});\n            }\n        }\n    }\n\n    int ans{optimizer.build()};\
+    \  \n    ans *= -1;\n    std::cout << ans << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc193/tasks/abc193_f\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/BurnBury.hpp\"\
+    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n\n    int n; std::cin\
+    \ >> n;\n    std::vector s(n, std::string{});\n    for (auto& v : s) std::cin\
+    \ >> v;\n\n    auto f{[&](int x, int y) -> int {\n        return x * n + y;\n\
+    \    }};\n    const int dx[4]{ 1, 0, -1, 0 };\n    const int dy[4]{ 0, 1, 0, -1\
+    \ };\n    auto in{[&](int x, int y) -> bool {\n        return 0 <= x and x < n\
+    \ and 0 <= y and y < n;\n    }};\n\n    BurnBury<int> optimizer(n * n);\n    const\
+    \ int INF{(int)1e5};\n    for (int x{} ; x < n ; x++) {\n        for (int y{}\
+    \ ; y < n ; y++) {\n            if ((x + y) % 2 == 0) {\n                optimizer.func1(f(x,\
+    \ y), {\n                        (s[x][y] == 'W' ? INF : 0),\n               \
+    \         (s[x][y] == 'B' ? INF : 0)\n                        });\n          \
+    \  }\n            else {\n                optimizer.func1(f(x, y), {\n       \
+    \                 (s[x][y] == 'B' ? INF : 0),\n                        (s[x][y]\
+    \ == 'W' ? INF : 0)\n                        });\n            }\n            for\
+    \ (int d{} ; d < 4 ; d++) {\n                int nx{x + dx[d]}, ny{y + dy[d]};\n\
+    \                if (!in(nx, ny)) continue;\n                if (f(x, y) > f(nx,\
+    \ ny)) continue;\n                optimizer.func2(f(x, y), f(nx, ny), {-1, 0,\
+    \ 0, -1});\n            }\n        }\n    }\n\n    int ans{optimizer.build()};\
+    \  \n    ans *= -1;\n    std::cout << ans << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/Graph/Flow/Dinic.hpp
+  - Src/Graph/Flow/BurnBury.hpp
   - Src/Utility/U32Pair.hpp
+  - Src/Graph/Flow/Dinic.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc193_f.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 22:17:54+09:00'
+  timestamp: '2024-02-01 12:13:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc193_f.test.cpp
@@ -169,40 +227,29 @@ layout: document
 title: ABC193-F Zebraness
 ---
 
-燃やす埋める。いくつかのポイントを残しておく
+燃やす埋める。
 
-## しまうま度(得)の最大化 -> しまうまじゃない度(損)の最小化 と言い換える
+$f: \\{ 0, 1 \\}^{n^{2}}\ \to\ \mathbb{Z}$
 
-理想のしまうまから最小カット容量(損としてあり得る最小)を引いてあげる。
+$f$ の定義域: 長さ $n^{2}$ の01列全体
+- マス $(i, j)$ の色を列の要素に対応させる
+- 例えば、 $(n = 5)$ 「マス $(2, 3)$ が黒色」を表現したいなら「列の $2\times 5 + 3 = 13$ 番目の要素を $1$ にする」など
 
-理想のしまうまは明らかに市松模様に塗られた時である。(その時のしまうま度は $2\times N\times (N - 1)$ の様だ)
+$f$ の値域: 整数全体
+- しまうま度を意味する
+- 入力とは矛盾したグリッドの状態(に対応した列)を引数にとった時は、 $-\infty$ を返すこととする
 
-## ?で無いマスに対しても白に変更するか黒に変更するかを考慮する。
+このように $f$ を上手く表現することができるならば、 $f$ を最大化する問題に帰着することができる。
+- よくある賞金・罰金の考え方に思いをはせると割と自然に表現できる
+- `?`じゃないマスに矛盾した色を割り当てる状態ならば(`W`なのに黒を割り当てたとか...) $-\infty$ 、そうでなければ $+0$ 
+- 隣合うマスに異なる色を割り当てたら $+1$
 
-?であるマスに対しての割当では無く、全てのマスに対して白か黒かを割り当てる問題と考えた方が後々の思考コストが下がるようだ。
+最小カットに帰着させたいので、全ての賞金・罰金を $-1$ 倍する。すると困ったことに劣モジュラでなくなる。困ります。
 
-この場合、「白マスを黒マスに割り当てる」や「黒マスを白マスに割り当てる」は「やってはいけない」割当であり、そのような割当には $\infity$ の損とする
-- 禁止を無限の損と言い換える良く見るやつ
+そこで、「隣合うマスに異なる色を割り当てたら $+1$ (現在は $-1$ 倍しているので $-1$ )」に注目する。グリッドグラフ上で $4$ 近傍で隣合う関係は二部グラフをなす。
 
-## マスの変更自体に損は無い
+マス $(i, j)$ の色を $(i + j)$ が偶数なら白黒の割り当てを反転する。-> 「隣合うマスに異なる色を割り当てたら $-1$ 」が「隣合うマスに同じ色を割り当てたら $-1$ 」になる
 
-「マス $(i, j)$ とマス $(i + 1, j)$ が同じ色の時、 1損する」みたいな2つの特定の割当によって発生するコストをsource -> マスやマス -> sinkの容量に記述してはいけない(頭が壊れる)
+劣モジュラ性を持つようになりました。goodgoodgood
 
-## グリッドグラフは市松で考える
-
-ネットワークの構築を試みる。例として右左に隣り合う?のマスに対してどのように辺が張られるかを考える。
-- source -(0)-> 左マス (左マスを白にすると0の損)
-- 左マス -(0)-> sink (左マスを黒にすると0の損)
-- source -(0)-> 右マス (右マスを白にすると0の損)
-- 右マス -(0)-> sink (右マスを黒にすると0の損)
-
-ここまでは良いが、「左のマスと右のマスが同じ色の時に1の損」が上手く記述できない。
-- 例えば左マス -(1)-> 右マスとしてもこの辺を切らせることはできない。両方白or両方黒のカットがコスト0でできている
-
-ここで、グリッドグラフの4近傍は二部グラフであることを思い出すと、市松の片方のsourceとsinkを反転させてあげれば良い
-- source -(0)-> 左マス (左マスを白にすると0の損)
-- 左マス -(0)-> sink (左マスを黒にすると0の損)
-- source -(0)-> 右マス (右マスを**黒**にすると0の損)
-- 右マス -(0)-> sink (右マスを**白**にすると0の損)
-- 右マス -(1) -> 左マス (左マスを白、右マスを白にすると1の損)
-- 左マス -(1)-> 右マス (左マスを黒、右マスを黒にすると1の損)
+全体を $-1$ 倍しているので、`BurnBury`が返す値は最適解の $-1$ 倍であることに注意

@@ -13,6 +13,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc193_f.test.cpp
+    title: ABC193-F Zebraness
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_an.test.cpp
     title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
   _isVerificationFailed: false
@@ -225,6 +228,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/typical90_an.test.cpp
+  - Test/AtCoder/abc193_f.test.cpp
 documentation_of: Src/Graph/Flow/BurnBury.hpp
 layout: document
 redirect_from:
