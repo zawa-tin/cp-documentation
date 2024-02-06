@@ -1,5 +1,5 @@
 ---
-title: ABC172-G Yet Another mod M
+title: ABC272-G Yet Another mod M
 documentation_of: //Test/Manual/abc272_g.test.cpp
 ---
 
