@@ -1,4 +1,4 @@
-#define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_h"
+#define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_ex"
 #define ERROR 1e-9
 
 #include "../../Src/Template/IOSetting.hpp"
