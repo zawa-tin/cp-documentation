@@ -89,7 +89,7 @@ data:
   verifiedWith: []
 documentation_of: Test/Manual/abc272_g.test.cpp
 layout: document
-title: ABC172-G Yet Another mod M
+title: ABC272-G Yet Another mod M
 ---
 
 $A$ にもともと過半数を占める要素が存在する場合、任意の $3$ 以上の整数が条件を満たす。

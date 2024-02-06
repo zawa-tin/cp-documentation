@@ -8,7 +8,7 @@ data:
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc272_g.test.cpp
-    title: ABC172-G Yet Another mod M
+    title: ABC272-G Yet Another mod M
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'

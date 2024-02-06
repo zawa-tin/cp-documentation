@@ -636,7 +636,7 @@ data:
     title: Test/Manual/abc271_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc272_g.test.cpp
-    title: ABC172-G Yet Another mod M
+    title: ABC272-G Yet Another mod M
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
