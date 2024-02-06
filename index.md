@@ -296,6 +296,9 @@ data:
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Number/Divisor.hpp
+      title: "\u7D04\u6570\u5217\u6319"
+    - icon: ':heavy_check_mark:'
       path: Src/Number/EnumerateQuotients.hpp
       title: "\u5546\u5217\u6319"
     - icon: ':heavy_check_mark:'
@@ -319,6 +322,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/CompressedSequence.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
+    - icon: ':heavy_check_mark:'
+      path: Src/Sequence/MajorityVote.hpp
+      title: "Boyer-Moore\u306EMajority vote algorithm"
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/RollingHash.hpp
       title: "\u30ED\u30EA\u30CF"
@@ -743,6 +749,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc271_d.test.cpp
       title: Test/Manual/abc271_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc272_g.test.cpp
+      title: ABC172-G Yet Another mod M
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc287_g.test.cpp
       title: Test/Manual/abc287_g.test.cpp
