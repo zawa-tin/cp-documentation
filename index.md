@@ -24,9 +24,15 @@ data:
       path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
       title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
+      title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/RollingHashMonoid.hpp
       title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
         \u306E\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':warning:'
+      path: Src/Algebra/Monoid/SuffixProductMonoid.hpp
+      title: Src/Algebra/Monoid/SuffixProductMonoid.hpp
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -637,6 +643,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc292_d.test.cpp
       title: Test/AtCoder/abc292_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc292_h.test.cpp
+      title: Test/AtCoder/abc292_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc293_b.test.cpp
       title: Test/AtCoder/abc293_b.test.cpp

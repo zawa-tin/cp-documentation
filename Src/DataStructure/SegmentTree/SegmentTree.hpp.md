@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc292_h.test.cpp
+    title: Test/AtCoder/abc292_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -153,6 +156,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc331_f.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document

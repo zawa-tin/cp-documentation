@@ -7,6 +7,9 @@ data:
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc292_h.test.cpp
+    title: Test/AtCoder/abc292_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   _isVerificationFailed: false
@@ -31,6 +34,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document

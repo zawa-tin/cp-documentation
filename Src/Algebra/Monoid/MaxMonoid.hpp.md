@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_e.test.cpp
     title: ABC288-E Wish List
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc292_h.test.cpp
+    title: Test/AtCoder/abc292_h.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -31,6 +34,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc288_e.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
 documentation_of: Src/Algebra/Monoid/MaxMonoid.hpp
 layout: document
 title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
