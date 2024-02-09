@@ -8,16 +8,18 @@
 
 int main() {
     using namespace zawa;
+    using M = MinMonoid<int>;
+    using MD = M::Element;
     std::cin.tie(nullptr)->sync_with_stdio(false);
     int n, q; std::cin >> n >> q; 
-    SegmentTree<MinMonoid<int>> seg(std::vector<int>(n, (int)((1LL << 31) - 1)));
+    SegmentTree<MinMonoid<int>> seg(std::vector<MD>(n, ((1LL << 31) - 1)));
     for (int _{} ; _ < q ; _++) {
         int com, x, y; std::cin >> com >> x >> y;
         if (com == 0) {
             seg.set(x, y);
         }
         else if (com == 1) {
-            std::cout << seg.product(x, y + 1) << std::endl;
+            std::cout << seg.product(x, y + 1).value() << '\n';
         }
         else {
             assert(false);

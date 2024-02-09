@@ -10,13 +10,18 @@
 int main() {
     using namespace zawa;
     SetFastIO();
+    using M = MinMonoid<int>;
+    using MD = M::Element;
     int n, q; std::cin >> n >> q;
-    std::vector<int> a(n);
-    for (auto& x : a) std::cin >> x;
-    SparseTable<MinMonoid<int>> spt(a);
+    std::vector<MD> a(n);
+    for (auto& x : a) {
+        int v; std::cin >> v;
+        x = v;
+    }
+    SparseTable<M> spt(a);
     for (int _{} ; _ < q ; _++) {
         int l, r; std::cin >> l >> r;
-        int ans{spt.product(l, r)};
-        std::cout << ans << '\n';
+        MD ans{spt.product(l, r)};
+        std::cout << ans.value() << '\n';
     }
 }
