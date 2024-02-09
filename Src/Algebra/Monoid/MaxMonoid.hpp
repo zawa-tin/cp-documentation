@@ -11,7 +11,7 @@ public:
     using Element = T;
     // CHECK!!!
     static constexpr Element identity() noexcept {
-        return std::numeric_limits<Element>::min();
+        return std::numeric_limits<Element>::min() >> 1;
     }
     static constexpr Element operation(Element a, Element b) noexcept {
         return std::max(a, b);

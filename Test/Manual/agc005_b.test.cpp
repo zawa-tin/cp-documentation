@@ -5,13 +5,13 @@
 
 /*
  * AGC005-B Minimum Sum
- * https://atcoder.jp/contests/agc005/submissions/45952065
+ * https://atcoder.jp/contests/agc005/submissions/50115755
  */
 
 #include <iostream>
 #include <vector>
 
-void solve() {
+long long solve() {
     using namespace zawa;
     int n; std::cin >> n;
     std::vector<int> a(n);
@@ -25,9 +25,13 @@ void solve() {
         unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };
         ans += (long long)(right - i) * (long long)(i - left + 1) * (long long)a[i];
     }
-    std::cout << ans << std::endl;
+    return ans;
 }
 
 int main() {
-    std::cout << "Hello World" << std::endl;
+#ifdef ATCODER
+    std::cout << solve() << '\n';
+#else
+    std::cout << "Hello World" << '\n';
+#endif
 }
