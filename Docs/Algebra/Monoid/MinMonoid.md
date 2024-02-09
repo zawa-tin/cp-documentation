@@ -5,6 +5,6 @@ documentation_of: //Src/Algebra/Monoid/MinMonoid.hpp
 
 # 概要
 
-初期値(`identity()`)に値を加算してオーバーフローしないかよく注意すること
+`std::optional<T>`を利用して、 $\infty$ を `std::nullopt`で表現している。
 
-(bundleでの自動展開に頼らず、コピペして`identity()`を毎回適したものに変更する運用が良い)
+`std::optional<T>`の運用については [std::optional cpprefjp](https://cpprefjp.github.io/reference/optional/optional.html) 等も参考にすること。
