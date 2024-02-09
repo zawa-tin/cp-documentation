@@ -82,29 +82,34 @@ data:
     \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include\
-    \ <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n\
-    \    using Element = T;\n    // CHECK!!!\n    static constexpr Element identity()\
-    \ noexcept {\n        return std::numeric_limits<Element>::max();\n    }\n   \
-    \ static constexpr Element operation(Element a, Element b) noexcept {\n      \
-    \  return std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AOJ/DSL_2_A.test.cpp\"\
+    \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <algorithm>\n\
+    #include <optional>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid\
+    \ {\npublic:\n    using Element = std::optional<T>;\n    static constexpr Element\
+    \ identity() noexcept {\n        return std::nullopt;\n    }\n    static constexpr\
+    \ Element operation(const Element& l, const Element& r) noexcept {\n        if\
+    \ (l and r) {\n            return std::min(l, r);\n        }\n        else if\
+    \ (l) {\n            return l;\n        }\n        else if (r) {\n           \
+    \ return r;\n        }\n        else {\n            return std::nullopt;\n   \
+    \     }\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/AOJ/DSL_2_A.test.cpp\"\
     \n\n#include <iostream>\n#line 8 \"Test/AOJ/DSL_2_A.test.cpp\"\n\nint main() {\n\
-    \    using namespace zawa;\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    \    int n, q; std::cin >> n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<int>(n,\
-    \ (int)((1LL << 31) - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com,\
-    \ x, y; std::cin >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x,\
-    \ y);\n        }\n        else if (com == 1) {\n            std::cout << seg.product(x,\
-    \ y + 1) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \    using namespace zawa;\n    using M = MinMonoid<int>;\n    using MD = M::Element;\n\
+    \    std::cin.tie(nullptr)->sync_with_stdio(false);\n    int n, q; std::cin >>\
+    \ n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<MD>(n, ((1LL << 31)\
+    \ - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com, x, y; std::cin\
+    \ >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x, y);\n   \
+    \     }\n        else if (com == 1) {\n            std::cout << seg.product(x,\
+    \ y + 1).value() << '\\n';\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <iostream>\n#include\
-    \ <cassert>\n\nint main() {\n    using namespace zawa;\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    \    int n, q; std::cin >> n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<int>(n,\
-    \ (int)((1LL << 31) - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com,\
-    \ x, y; std::cin >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x,\
+    \ <cassert>\n\nint main() {\n    using namespace zawa;\n    using M = MinMonoid<int>;\n\
+    \    using MD = M::Element;\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \    int n, q; std::cin >> n >> q; \n    SegmentTree<MinMonoid<int>> seg(std::vector<MD>(n,\
+    \ ((1LL << 31) - 1)));\n    for (int _{} ; _ < q ; _++) {\n        int com, x,\
+    \ y; std::cin >> com >> x >> y;\n        if (com == 0) {\n            seg.set(x,\
     \ y);\n        }\n        else if (com == 1) {\n            std::cout << seg.product(x,\
-    \ y + 1) << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \ y + 1).value() << '\\n';\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -113,7 +118,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_2_A.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 12:01:29+09:00'
+  timestamp: '2024-02-09 19:34:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_A.test.cpp

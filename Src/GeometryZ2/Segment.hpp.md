@@ -160,8 +160,8 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Segment.hpp
   requiredBy:
-  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   timestamp: '2023-12-02 16:32:52+09:00'
   verificationStatus: LIBRARY_ALL_AC

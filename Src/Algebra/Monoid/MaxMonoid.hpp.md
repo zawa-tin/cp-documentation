@@ -14,27 +14,33 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/Algebra/Monoid/MaxMonoid.hpp\"\n\n#include <limits>\n\
-    #include <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MaxMonoid\
-    \ {\npublic:\n    using Element = T;\n    // CHECK!!!\n    static constexpr Element\
-    \ identity() noexcept {\n        return std::numeric_limits<Element>::min();\n\
-    \    }\n    static constexpr Element operation(Element a, Element b) noexcept\
-    \ {\n        return std::max(a, b);\n    }\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include <limits>\n#include <algorithm>\n\nnamespace zawa\
-    \ {\n\ntemplate <class T>\nclass MaxMonoid {\npublic:\n    using Element = T;\n\
-    \    // CHECK!!!\n    static constexpr Element identity() noexcept {\n       \
-    \ return std::numeric_limits<Element>::min();\n    }\n    static constexpr Element\
-    \ operation(Element a, Element b) noexcept {\n        return std::max(a, b);\n\
-    \    }\n};\n\n} // namespace zawa\n"
+  bundledCode: "#line 2 \"Src/Algebra/Monoid/MaxMonoid.hpp\"\n\n#include <algorithm>\n\
+    #include <limits>\n#include <optional>\n\nnamespace zawa {\n\ntemplate <class\
+    \ T>\nclass MaxMonoid {\npublic:\n    using Element = std::optional<T>;\n    static\
+    \ constexpr Element identity() noexcept {\n        return std::nullopt;\n    }\n\
+    \    static constexpr Element operation(const Element& l, const Element& r) noexcept\
+    \ {\n        if (l and r) {\n            return std::max(l, r);\n        }\n \
+    \       else if (l) {\n            return l;\n        }\n        else if (r) {\n\
+    \            return r;\n        }\n        else {\n            return std::nullopt;\n\
+    \        }\n    }\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include <algorithm>\n#include <limits>\n#include <optional>\n\
+    \nnamespace zawa {\n\ntemplate <class T>\nclass MaxMonoid {\npublic:\n    using\
+    \ Element = std::optional<T>;\n    static constexpr Element identity() noexcept\
+    \ {\n        return std::nullopt;\n    }\n    static constexpr Element operation(const\
+    \ Element& l, const Element& r) noexcept {\n        if (l and r) {\n         \
+    \   return std::max(l, r);\n        }\n        else if (l) {\n            return\
+    \ l;\n        }\n        else if (r) {\n            return r;\n        }\n   \
+    \     else {\n            return std::nullopt;\n        }\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   dependsOn: []
   isVerificationFile: false
   path: Src/Algebra/Monoid/MaxMonoid.hpp
   requiredBy: []
-  timestamp: '2023-11-01 12:01:29+09:00'
+  timestamp: '2024-02-09 20:29:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
 documentation_of: Src/Algebra/Monoid/MaxMonoid.hpp
 layout: document
 title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
@@ -42,6 +48,6 @@ title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
 
 # 概要
 
-初期値(`identity()`)に値を加算してオーバーフローしないかよく注意すること
+`std::optional<T>`を利用して、 $-\infty$ を `std::nullopt`で表現している。
 
-(bundleでの自動展開に頼らず、コピペして`identity()`を毎回適したものに変更する運用が良い)
+`std::optional<T>`の運用については [std::optional cpprefjp](https://cpprefjp.github.io/reference/optional/optional.html) 等も参考にすること。

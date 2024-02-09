@@ -8,6 +8,9 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -19,23 +22,27 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/agc005/submissions/45952065
+    - https://atcoder.jp/contests/agc005/submissions/50116418
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/agc005_b.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
-    #include <ostream>\n\nnamespace zawa {\n\ntemplate <class Monoid>\nclass SegmentTree\
-    \ {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n    constexpr\
-    \ u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32\
-    \ v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32\
-    \ v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
-    \ dat_;\n\npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{\
-    \ n }, dat_(n << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
+    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#line 4 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
+    #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
+    \nnamespace zawa {\n\ntemplate <class Monoid>\nclass SegmentTree {\npublic:\n\
+    \    using Value = typename Monoid::Element;\nprivate:\n    constexpr u32 left(u32\
+    \ v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32 v) const\
+    \ {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32 v) const\
+    \ {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value> dat_;\n\
+    \npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{ n }, dat_(n\
+    \ << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
     \ std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity())\
     \ {\n        assert(n_);\n        for (u32 i{} ; i < n_ ; i++) {\n           \
     \ dat_[i + n_] = dat[i];\n        }\n        for (u32 i{static_cast<u32>(n_) -\
@@ -83,42 +90,51 @@ data:
     \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include\
-    \ <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n\
-    \    using Element = T;\n    // CHECK!!!\n    static constexpr Element identity()\
-    \ noexcept {\n        return std::numeric_limits<Element>::max();\n    }\n   \
-    \ static constexpr Element operation(Element a, Element b) noexcept {\n      \
-    \  return std::min(a, b);\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/Manual/agc005_b.test.cpp\"\
-    \n\n/*\n * AGC005-B Minimum Sum\n * https://atcoder.jp/contests/agc005/submissions/45952065\n\
-    \ */\n\n#include <iostream>\n#line 13 \"Test/Manual/agc005_b.test.cpp\"\n\nvoid\
-    \ solve() {\n    using namespace zawa;\n    int n; std::cin >> n;\n    std::vector<int>\
-    \ a(n);\n    for (auto& x : a) std::cin >> x;\n    SegmentTree<MinMonoid<int>>\
-    \ seg(a);\n    long long ans{};\n    for (int i{} ; i < n ; i++) {\n        auto\
-    \ f{[&](int v) -> bool {\n            return v >= a[i];\n        }};\n       \
-    \ unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };\n        ans\
-    \ += (long long)(right - i) * (long long)(i - left + 1) * (long long)a[i];\n \
-    \   }\n    std::cout << ans << std::endl;\n}\n\nint main() {\n    std::cout <<\
-    \ \"Hello World\" << std::endl;\n}\n"
+    \ zawa\n#line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <algorithm>\n\
+    #include <optional>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid\
+    \ {\npublic:\n    using Element = std::optional<T>;\n    static constexpr Element\
+    \ identity() noexcept {\n        return std::nullopt;\n    }\n    static constexpr\
+    \ Element operation(const Element& l, const Element& r) noexcept {\n        if\
+    \ (l and r) {\n            return std::min(l, r);\n        }\n        else if\
+    \ (l) {\n            return l;\n        }\n        else if (r) {\n           \
+    \ return r;\n        }\n        else {\n            return std::nullopt;\n   \
+    \     }\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/Manual/agc005_b.test.cpp\"\
+    \n\n/*\n * AGC005-B Minimum Sum\n * https://atcoder.jp/contests/agc005/submissions/50116418\n\
+    \ */\n\n#line 14 \"Test/Manual/agc005_b.test.cpp\"\n\nlong long solve() {\n  \
+    \  using namespace zawa;\n    SetFastIO();\n    using M = MinMonoid<int>;\n  \
+    \  using MD = M::Element;\n    int n; std::cin >> n;\n    std::vector<MD> a(n);\n\
+    \    for (auto& x : a) {\n        int v; std::cin >> v;\n        x = v;\n    }\n\
+    \    SegmentTree<M> seg(a);\n    long long ans{};\n    for (int i{} ; i < n ;\
+    \ i++) {\n        auto f{[&](const MD& v) -> bool {\n            return !(bool)v\
+    \ or v.value() >= a[i];\n        }};\n        unsigned left{ seg.minLeft(i, f)\
+    \ }, right{ seg.maxRight(i, f) };\n        ans += (long long)(right - i) * (long\
+    \ long)(i - left + 1) * (long long)a[i].value();\n    }\n    return ans;\n}\n\n\
+    int main() {\n#ifdef ATCODER\n    std::cout << solve() << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\" << '\\n';\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\n/*\n * AGC005-B Minimum Sum\n\
-    \ * https://atcoder.jp/contests/agc005/submissions/45952065\n */\n\n#include <iostream>\n\
-    #include <vector>\n\nvoid solve() {\n    using namespace zawa;\n    int n; std::cin\
-    \ >> n;\n    std::vector<int> a(n);\n    for (auto& x : a) std::cin >> x;\n  \
-    \  SegmentTree<MinMonoid<int>> seg(a);\n    long long ans{};\n    for (int i{}\
-    \ ; i < n ; i++) {\n        auto f{[&](int v) -> bool {\n            return v\
-    \ >= a[i];\n        }};\n        unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i,\
-    \ f) };\n        ans += (long long)(right - i) * (long long)(i - left + 1) * (long\
-    \ long)a[i];\n    }\n    std::cout << ans << std::endl;\n}\n\nint main() {\n \
-    \   std::cout << \"Hello World\" << std::endl;\n}\n"
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n#include \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\n\n/*\n * AGC005-B Minimum\
+    \ Sum\n * https://atcoder.jp/contests/agc005/submissions/50116418\n */\n\n#include\
+    \ <iostream>\n#include <vector>\n\nlong long solve() {\n    using namespace zawa;\n\
+    \    SetFastIO();\n    using M = MinMonoid<int>;\n    using MD = M::Element;\n\
+    \    int n; std::cin >> n;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n\
+    \        int v; std::cin >> v;\n        x = v;\n    }\n    SegmentTree<M> seg(a);\n\
+    \    long long ans{};\n    for (int i{} ; i < n ; i++) {\n        auto f{[&](const\
+    \ MD& v) -> bool {\n            return !(bool)v or v.value() >= a[i];\n      \
+    \  }};\n        unsigned left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f)\
+    \ };\n        ans += (long long)(right - i) * (long long)(i - left + 1) * (long\
+    \ long)a[i].value();\n    }\n    return ans;\n}\n\nint main() {\n#ifdef ATCODER\n\
+    \    std::cout << solve() << '\\n';\n#else\n    std::cout << \"Hello World\" <<\
+    \ '\\n';\n#endif\n}\n"
   dependsOn:
-  - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MinMonoid.hpp
   isVerificationFile: true
   path: Test/Manual/agc005_b.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 12:01:29+09:00'
+  timestamp: '2024-02-09 19:34:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/agc005_b.test.cpp

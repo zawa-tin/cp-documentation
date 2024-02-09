@@ -49,29 +49,35 @@ data:
     \        for (u32 j{} ; j + len - 1 < spt.dat[i].size() ; j++) {\n           \
     \     os << spt.dat[i][j] << (j + len == spt.dat[i].size() ? '\\n' : ' ');\n \
     \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n\
-    #line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <limits>\n#include <algorithm>\n\
-    \nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n    using\
-    \ Element = T;\n    // CHECK!!!\n    static constexpr Element identity() noexcept\
-    \ {\n        return std::numeric_limits<Element>::max();\n    }\n    static constexpr\
-    \ Element operation(Element a, Element b) noexcept {\n        return std::min(a,\
-    \ b);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
-    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    #line 2 \"Src/Algebra/Monoid/MinMonoid.hpp\"\n\n#include <algorithm>\n#include\
+    \ <optional>\n\nnamespace zawa {\n\ntemplate <class T>\nclass MinMonoid {\npublic:\n\
+    \    using Element = std::optional<T>;\n    static constexpr Element identity()\
+    \ noexcept {\n        return std::nullopt;\n    }\n    static constexpr Element\
+    \ operation(const Element& l, const Element& r) noexcept {\n        if (l and\
+    \ r) {\n            return std::min(l, r);\n        }\n        else if (l) {\n\
+    \            return l;\n        }\n        else if (r) {\n            return r;\n\
+    \        }\n        else {\n            return std::nullopt;\n        }\n    }\n\
+    };\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"\
+    Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\nnamespace\
+    \ zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 6 \"Test/LC/staticrmq.test.cpp\"\n\n#line 9 \"\
     Test/LC/staticrmq.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n\
-    \    int n, q; std::cin >> n >> q;\n    std::vector<int> a(n);\n    for (auto&\
-    \ x : a) std::cin >> x;\n    SparseTable<MinMonoid<int>> spt(a);\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        int l, r; std::cin >> l >> r;\n        int ans{spt.product(l,\
-    \ r)};\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \    using M = MinMonoid<int>;\n    using MD = M::Element;\n    int n, q; std::cin\
+    \ >> n >> q;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n        int\
+    \ v; std::cin >> v;\n        x = v;\n    }\n    SparseTable<M> spt(a);\n    for\
+    \ (int _{} ; _ < q ; _++) {\n        int l, r; std::cin >> l >> r;\n        MD\
+    \ ans{spt.product(l, r)};\n        std::cout << ans.value() << '\\n';\n    }\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
     \ \"../../Src/DataStructure/SparseTable/SparseTable.hpp\"\n#include \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\
     \n#include \"../../Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include\
-    \ <vector>\n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int\
-    \ n, q; std::cin >> n >> q;\n    std::vector<int> a(n);\n    for (auto& x : a)\
-    \ std::cin >> x;\n    SparseTable<MinMonoid<int>> spt(a);\n    for (int _{} ;\
-    \ _ < q ; _++) {\n        int l, r; std::cin >> l >> r;\n        int ans{spt.product(l,\
-    \ r)};\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \ <vector>\n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    using\
+    \ M = MinMonoid<int>;\n    using MD = M::Element;\n    int n, q; std::cin >> n\
+    \ >> q;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n        int v; std::cin\
+    \ >> v;\n        x = v;\n    }\n    SparseTable<M> spt(a);\n    for (int _{} ;\
+    \ _ < q ; _++) {\n        int l, r; std::cin >> l >> r;\n        MD ans{spt.product(l,\
+    \ r)};\n        std::cout << ans.value() << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/Template/TypeAlias.hpp
@@ -80,7 +86,7 @@ data:
   isVerificationFile: true
   path: Test/LC/staticrmq.test.cpp
   requiredBy: []
-  timestamp: '2023-11-01 12:01:29+09:00'
+  timestamp: '2024-02-09 19:34:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/staticrmq.test.cpp

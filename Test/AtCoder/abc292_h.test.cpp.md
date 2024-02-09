@@ -44,16 +44,18 @@ data:
     \ = T;\n    static T identity() noexcept {\n        return T{};\n    }\n    static\
     \ T operation(const T& a, const T& b) noexcept {\n        return a + b;\n    }\n\
     };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MaxMonoid.hpp\"\n\n#include\
-    \ <limits>\n#include <algorithm>\n\nnamespace zawa {\n\ntemplate <class T>\nclass\
-    \ MaxMonoid {\npublic:\n    using Element = T;\n    // CHECK!!!\n    static constexpr\
-    \ Element identity() noexcept {\n        return std::numeric_limits<Element>::min();\n\
-    \    }\n    static constexpr Element operation(Element a, Element b) noexcept\
-    \ {\n        return std::max(a, b);\n    }\n};\n\n} // namespace zawa\n#line 2\
-    \ \"Src/Algebra/Monoid/PrefixProductMonoid.hpp\"\n\n#include <type_traits>\n\n\
-    namespace zawa {\n\ntemplate <class Value>\nclass PrefixProductMonoidData {\n\
-    \    Value product_{}, prefix_{};\npublic:\n    PrefixProductMonoidData() = default;\n\
-    \    PrefixProductMonoidData(const Value& product, const Value& prefix)\n    \
-    \    : product_{product}, prefix_{prefix} {}\n\n    inline const Value& product()\
+    \ <algorithm>\n#include <limits>\n#include <optional>\n\nnamespace zawa {\n\n\
+    template <class T>\nclass MaxMonoid {\npublic:\n    using Element = std::optional<T>;\n\
+    \    static constexpr Element identity() noexcept {\n        return std::nullopt;\n\
+    \    }\n    static constexpr Element operation(const Element& l, const Element&\
+    \ r) noexcept {\n        if (l and r) {\n            return std::max(l, r);\n\
+    \        }\n        else if (l) {\n            return l;\n        }\n        else\
+    \ if (r) {\n            return r;\n        }\n        else {\n            return\
+    \ std::nullopt;\n        }\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/PrefixProductMonoid.hpp\"\
+    \n\n#include <type_traits>\n\nnamespace zawa {\n\ntemplate <class Value>\nclass\
+    \ PrefixProductMonoidData {\n    Value product_{}, prefix_{};\npublic:\n    PrefixProductMonoidData()\
+    \ = default;\n    PrefixProductMonoidData(const Value& product, const Value& prefix)\n\
+    \        : product_{product}, prefix_{prefix} {}\n\n    inline const Value& product()\
     \ const noexcept {\n        return product_;\n    }\n    inline const Value& prefix()\
     \ const noexcept {\n        return prefix_;\n    }\n};\n\ntemplate <class O, class\
     \ F>\nclass PrefixProductMonoid {\n    static_assert(std::is_same_v<typename O::Element,\
@@ -120,36 +122,46 @@ data:
     \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 9 \"Test/AtCoder/abc292_h.test.cpp\"\n\nusing namespace zawa; \n\
-    using M = PrefixProductMonoid<AdditionMonoid<long long>, MaxMonoid<long long>>;\n\
-    using MD = typename M::Element;\n\n#line 18 \"Test/AtCoder/abc292_h.test.cpp\"\
-    \n\nint main() {\n    SetFastIO();\n    SetPrecision(10);\n\n    int n, q;\n \
-    \   long long b;\n    std::cin >> n >> b >> q;\n    std::vector<MD> a(n);\n  \
-    \  for (int i{} ; i < n ; i++) {\n        long long v; std::cin >> v;\n      \
-    \  a[i] = MD{v - b, v - b};\n    }\n    SegmentTree<M> seg(a);\n    for (int _{}\
-    \ ; _ < q ; _++) {\n        int c; std::cin >> c;\n        c--;\n        long\
-    \ long x; std::cin >> x;\n        x -= b;\n        seg.set(c, MD{x, x});\n   \
-    \     auto r{seg.maxRight(0, [](const auto& v) -> bool { return v.prefix() < 0LL;\
-    \ })};\n        r = std::min<int>(r + 1, n);\n        long long sum{seg.product(0,\
-    \ r).product()};\n        long double ans{(long double)(sum + b * (long long)r)\
-    \ / (long double)r};\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \ zawa\n#line 9 \"Test/AtCoder/abc292_h.test.cpp\"\n\n#line 15 \"Test/AtCoder/abc292_h.test.cpp\"\
+    \n\nusing namespace zawa; \nusing D = std::optional<long long>;\nusing vM = MaxMonoid<long\
+    \ long>;\nstruct oM {\n    using Element = D;\n    static D identity() noexcept\
+    \ {\n        return 0LL;\n    }\n    static D operation(const D& l, const D& r)\
+    \ noexcept {\n        if (l and r) return l.value() + r.value();\n        else\
+    \ return (l ? l : (r ? r : 0LL));\n    }\n};\nusing M = PrefixProductMonoid<oM,\
+    \ vM>;\n\nint main() {\n    SetFastIO();\n    SetPrecision(10);\n\n    int n,\
+    \ q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
+    \ a(n);\n    for (int i{} ; i < n ; i++) {\n        long long v; std::cin >> v;\n\
+    \        a[i] = M::Element{D{v - b}, D{v - b}};\n    }\n    SegmentTree<M> seg(a);\n\
+    \    for (int _{} ; _ < q ; _++) {\n        int c; std::cin >> c;\n        c--;\n\
+    \        long long x; std::cin >> x;\n        x -= b;\n        seg.set(c, M::Element{D{x},\
+    \ D{x}});\n        auto r{seg.maxRight(0, [](const M::Element& v) -> bool { return\
+    \ (!(bool)v.prefix() or v.prefix().value() < 0LL); })};\n        r = std::min<int>(r\
+    \ + 1, n);\n        assert(seg.product(0, r).product().has_value());\n       \
+    \ long long sum{seg.product(0, r).product().value()};\n        long double ans{(long\
+    \ double)(sum + b * (long long)r) / (long double)r};\n        std::cout << ans\
+    \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://atcoder.jp/contests/abc292/tasks/abc292_ex\"\n\
     #define ERROR 1e-9\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/AdditionMonoid.hpp\"\n#include \"../../Src/Algebra/Monoid/MaxMonoid.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/PrefixProductMonoid.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\nusing namespace zawa; \nusing M = PrefixProductMonoid<AdditionMonoid<long\
-    \ long>, MaxMonoid<long long>>;\nusing MD = typename M::Element;\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <iostream>\n#include <vector>\n\nint main() {\n \
-    \   SetFastIO();\n    SetPrecision(10);\n\n    int n, q;\n    long long b;\n \
-    \   std::cin >> n >> b >> q;\n    std::vector<MD> a(n);\n    for (int i{} ; i\
-    \ < n ; i++) {\n        long long v; std::cin >> v;\n        a[i] = MD{v - b,\
-    \ v - b};\n    }\n    SegmentTree<M> seg(a);\n    for (int _{} ; _ < q ; _++)\
-    \ {\n        int c; std::cin >> c;\n        c--;\n        long long x; std::cin\
-    \ >> x;\n        x -= b;\n        seg.set(c, MD{x, x});\n        auto r{seg.maxRight(0,\
-    \ [](const auto& v) -> bool { return v.prefix() < 0LL; })};\n        r = std::min<int>(r\
-    \ + 1, n);\n        long long sum{seg.product(0, r).product()};\n        long\
-    \ double ans{(long double)(sum + b * (long long)r) / (long double)r};\n      \
-    \  std::cout << ans << '\\n';\n    }\n}\n"
+    \n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include <optional>\n\
+    #include <vector>\n\nusing namespace zawa; \nusing D = std::optional<long long>;\n\
+    using vM = MaxMonoid<long long>;\nstruct oM {\n    using Element = D;\n    static\
+    \ D identity() noexcept {\n        return 0LL;\n    }\n    static D operation(const\
+    \ D& l, const D& r) noexcept {\n        if (l and r) return l.value() + r.value();\n\
+    \        else return (l ? l : (r ? r : 0LL));\n    }\n};\nusing M = PrefixProductMonoid<oM,\
+    \ vM>;\n\nint main() {\n    SetFastIO();\n    SetPrecision(10);\n\n    int n,\
+    \ q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
+    \ a(n);\n    for (int i{} ; i < n ; i++) {\n        long long v; std::cin >> v;\n\
+    \        a[i] = M::Element{D{v - b}, D{v - b}};\n    }\n    SegmentTree<M> seg(a);\n\
+    \    for (int _{} ; _ < q ; _++) {\n        int c; std::cin >> c;\n        c--;\n\
+    \        long long x; std::cin >> x;\n        x -= b;\n        seg.set(c, M::Element{D{x},\
+    \ D{x}});\n        auto r{seg.maxRight(0, [](const M::Element& v) -> bool { return\
+    \ (!(bool)v.prefix() or v.prefix().value() < 0LL); })};\n        r = std::min<int>(r\
+    \ + 1, n);\n        assert(seg.product(0, r).product().has_value());\n       \
+    \ long long sum{seg.product(0, r).product().value()};\n        long double ans{(long\
+    \ double)(sum + b * (long long)r) / (long double)r};\n        std::cout << ans\
+    \ << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -160,7 +172,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc292_h.test.cpp
   requiredBy: []
-  timestamp: '2024-02-06 13:35:35+09:00'
+  timestamp: '2024-02-09 20:29:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc292_h.test.cpp
