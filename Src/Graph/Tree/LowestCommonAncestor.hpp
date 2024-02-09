@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
-#include "../../Algebra/Monoid/MinWithIndexMonoid.hpp"
+#include "../../Algebra/Monoid/ChminMonoid.hpp"
 #include "../../DataStructure/SparseTable/SparseTable.hpp"
 
 #include <cassert>
@@ -12,8 +12,9 @@ namespace zawa {
 
 class LowestCommonAncestor {
 private:
-    using SptValue = MinWithIndexMonoidData<u32>;
-    using Spt = SparseTable<MinWithIndexMonoid<u32>>;
+    using Monoid = ChminMonoid<u32, usize>;
+    using SptValue = Monoid::Element;
+    using Spt = SparseTable<Monoid>;
     static constexpr u32 invalid{static_cast<u32>(-1)};
     Spt spt_{};
     usize n_{}, root_{};
@@ -63,12 +64,18 @@ public:
         assert(u < size());
         assert(v < size());
         if (first_[u] > first_[v]) std::swap(u, v);
-        return spt_.product(first_[u], first_[v] + 1).index();
+        return spt_.product(first_[u], first_[v] + 1).value();
     }
 
     u32 depth(u32 v) const noexcept {
         assert(v < size());
         return depth_[v];
+    }
+
+    u32 distance(u32 u, u32 v) const {
+        assert(u < size());
+        assert(v < size());
+        return depth_[u] + depth_[v] - 2u * depth_[(*this)(u, v)];
     }
 
     bool isAncestor(u32 anc, u32 child) const {
