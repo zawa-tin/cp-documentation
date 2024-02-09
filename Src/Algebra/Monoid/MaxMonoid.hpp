@@ -1,20 +1,31 @@
 #pragma once
 
-#include <limits>
 #include <algorithm>
+#include <limits>
+#include <optional>
 
 namespace zawa {
 
 template <class T>
 class MaxMonoid {
 public:
-    using Element = T;
-    // CHECK!!!
+    using Element = std::optional<T>;
     static constexpr Element identity() noexcept {
-        return std::numeric_limits<Element>::min() >> 1;
+        return std::nullopt;
     }
-    static constexpr Element operation(Element a, Element b) noexcept {
-        return std::max(a, b);
+    static constexpr Element operation(const Element& l, const Element& r) noexcept {
+        if (l and r) {
+            return std::max(l, r);
+        }
+        else if (l) {
+            return l;
+        }
+        else if (r) {
+            return r;
+        }
+        else {
+            return std::nullopt;
+        }
     }
 };
 
