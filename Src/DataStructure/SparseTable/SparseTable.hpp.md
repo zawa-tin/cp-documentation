@@ -13,6 +13,9 @@ data:
     path: Test/AtCoder/abc288_e.test.cpp
     title: ABC288-E Wish List
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF923-D.test.cpp
+    title: Test/CF/CF923-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca.test.cpp
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -80,6 +83,7 @@ data:
   - Test/AtCoder/abc288_e.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/lca.test.cpp
+  - Test/CF/CF923-D.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
-    title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+    path: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: Src/Algebra/Monoid/ChminMonoid.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
@@ -36,20 +36,25 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\
-    \n#line 2 \"Src/Algebra/Monoid/MinWithIndexMonoid.hpp\"\n\n#line 4 \"Src/Algebra/Monoid/MinWithIndexMonoid.hpp\"\
-    \n\n#include <limits>\n#include <algorithm>\n\nnamespace zawa {\n\ntemplate <class\
-    \ T>\nclass MinWithIndexMonoidData {\nprivate:\n    // CHECK!! LIMIT\n    T value_{std::numeric_limits<T>::max()};\n\
-    \    usize index_{}; \npublic:\n    constexpr MinWithIndexMonoidData() {}\n  \
-    \  constexpr MinWithIndexMonoidData(const T& value, usize index) : value_{value},\
-    \ index_{index} {}\n\n    constexpr const T& value() const noexcept {\n      \
-    \  return value_;\n    } \n    T& value() noexcept {\n        return value_;\n\
-    \    }\n    constexpr const usize& index() const noexcept {\n        return index_;\n\
-    \    }\n    usize& index() noexcept {\n        return index_;\n    }\n};\n\ntemplate\
-    \ <class T>\nstruct MinWithIndexMonoid {\n    using Element = MinWithIndexMonoidData<T>;\n\
-    \    static constexpr Element identity() noexcept {\n        return Element{};\n\
-    \    }\n    // CHECK!!! tie break\n    static constexpr Element operation(const\
-    \ Element& lhs, const Element& rhs) noexcept {\n        return (rhs.value() <\
-    \ lhs.value() ? rhs : lhs);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+    \n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\n\n#line 4 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
+    \n\n#include <algorithm>\n#include <optional>\n\nnamespace zawa {\n\ntemplate\
+    \ <class T, class U>\nclass ChminMonoidData {\nprivate:\n    std::optional<T>\
+    \ priority_{};\n    U value_{};\npublic:\n    ChminMonoidData() = default;\n \
+    \   ChminMonoidData(const U& value)\n        : priority_{std::nullopt}, value_{value}\
+    \ {}\n    ChminMonoidData(const T& priority, const U& value)\n        : priority_{priority},\
+    \ value_{value} {}\n\n    constexpr bool infty() const noexcept {\n        return\
+    \ !priority_.has_value();\n    }\n    constexpr const T& priority() const noexcept\
+    \ {\n        return priority_.value();\n    }\n    constexpr const U& value()\
+    \ const noexcept {\n        return value_;\n    }\n    friend constexpr bool operator<(const\
+    \ ChminMonoidData& l, const ChminMonoidData& r) {\n        if (l.infty()) return\
+    \ false;\n        else if (r.infty()) return true;\n        else return l.priority()\
+    \ < r.priority();\n    }\n};\n\ntemplate <class T, class U>\nstruct ChminMonoid\
+    \ {\n    using Element = ChminMonoidData<T, U>;\n    static Element identity()\
+    \ noexcept {\n        return Element{};\n    }\n    // \u30BF\u30A4\u30D6\u30EC\
+    \u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\u3059\u308B\u3088\u3046\u306B\u306A\
+    \u3063\u3066\u3044\u308B\u3002\n    static Element operation(const Element& l,\
+    \ const Element& r) noexcept {\n        return (r < l ? r : l);\n    }\n};\n\n\
+    } // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
     \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
     \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
@@ -72,16 +77,16 @@ data:
     \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n\
     #line 6 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 8 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
     \n#include <utility>\n#line 10 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n\
-    namespace zawa {\n\nclass LowestCommonAncestor {\nprivate:\n    using SptValue\
-    \ = MinWithIndexMonoidData<u32>;\n    using Spt = SparseTable<MinWithIndexMonoid<u32>>;\n\
-    \    static constexpr u32 invalid{static_cast<u32>(-1)};\n    Spt spt_{};\n  \
-    \  usize n_{}, root_{};\n    std::vector<std::vector<u32>> tree_{};\n    std::vector<SptValue>\
-    \ euler_{};\n    std::vector<u32> first_{}, depth_{};\n\n    void dfs(u32 v, u32\
-    \ p) {\n        first_[v] = euler_.size();\n        depth_[v] = (p == invalid\
-    \ ? invalid : depth_[p]) + 1;\n        euler_.emplace_back(depth_[v], v);\n  \
-    \      for (auto x : tree_[v]) if (x != p) {\n            assert(first_[x] ==\
-    \ invalid or !\"given graph is not tree\");\n            dfs(x, v);\n        \
-    \    euler_.emplace_back(depth_[v], v);\n        }\n    }\n\npublic:\n    LowestCommonAncestor()\
+    namespace zawa {\n\nclass LowestCommonAncestor {\nprivate:\n    using Monoid =\
+    \ ChminMonoid<u32, usize>;\n    using SptValue = Monoid::Element;\n    using Spt\
+    \ = SparseTable<Monoid>;\n    static constexpr u32 invalid{static_cast<u32>(-1)};\n\
+    \    Spt spt_{};\n    usize n_{}, root_{};\n    std::vector<std::vector<u32>>\
+    \ tree_{};\n    std::vector<SptValue> euler_{};\n    std::vector<u32> first_{},\
+    \ depth_{};\n\n    void dfs(u32 v, u32 p) {\n        first_[v] = euler_.size();\n\
+    \        depth_[v] = (p == invalid ? invalid : depth_[p]) + 1;\n        euler_.emplace_back(depth_[v],\
+    \ v);\n        for (auto x : tree_[v]) if (x != p) {\n            assert(first_[x]\
+    \ == invalid or !\"given graph is not tree\");\n            dfs(x, v);\n     \
+    \       euler_.emplace_back(depth_[v], v);\n        }\n    }\n\npublic:\n    LowestCommonAncestor()\
     \ = default;\n    LowestCommonAncestor(u32 n, u32 root) \n        : n_{n}, root_{root},\
     \ tree_(n), euler_{}, first_(n, invalid), depth_(n) {\n        assert(n or !\"\
     empty graph is not allowed\");\n        assert(root < n);\n        euler_.reserve(2\
@@ -92,33 +97,35 @@ data:
     \    }\n\n    void build() {\n        dfs(root_, invalid);\n        spt_ = Spt(euler_);\n\
     \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(u < size());\n\
     \        assert(v < size());\n        if (first_[u] > first_[v]) std::swap(u,\
-    \ v);\n        return spt_.product(first_[u], first_[v] + 1).index();\n    }\n\
+    \ v);\n        return spt_.product(first_[u], first_[v] + 1).value();\n    }\n\
     \n    u32 depth(u32 v) const noexcept {\n        assert(v < size());\n       \
-    \ return depth_[v];\n    }\n\n    bool isAncestor(u32 anc, u32 child) const {\n\
-    \        return (*this)(anc, child) == anc;\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Test/LC/lca.test.cpp\"\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n\
-    \    int n, q; std::cin >> n >> q; \n    LowestCommonAncestor lca{n, 0};\n   \
-    \ for (int i{1} ; i < n ; i++) {\n        int p; std::cin >> p;\n        lca.addEdge(p,\
-    \ i);\n    }\n    lca.build();\n    for (int _{} ; _ < q ; _++) {\n        int\
-    \ u, v; std::cin >> u >> v;\n        int ans{lca(u, v)};\n        std::cout <<\
-    \ ans << '\\n';\n    }\n}\n"
+    \ return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n       \
+    \ assert(u < size());\n        assert(v < size());\n        return depth_[u] +\
+    \ depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool isAncestor(u32 anc,\
+    \ u32 child) const {\n        return (*this)(anc, child) == anc;\n    }\n};\n\n\
+    } // namespace zawa\n#line 5 \"Test/LC/lca.test.cpp\"\nusing namespace zawa;\n\
+    \nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q; \n    LowestCommonAncestor\
+    \ lca(n, 0);\n    for (int i{1} ; i < n ; i++) {\n        int p; std::cin >> p;\n\
+    \        lca.addEdge(p, i);\n    }\n    lca.build();\n    for (int _{} ; _ < q\
+    \ ; _++) {\n        int u, v; std::cin >> u >> v;\n        int ans{(int)lca(u,\
+    \ v)};\n        std::cout << ans << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\nusing namespace\
     \ zawa;\n\nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q; \n\
-    \    LowestCommonAncestor lca{n, 0};\n    for (int i{1} ; i < n ; i++) {\n   \
+    \    LowestCommonAncestor lca(n, 0);\n    for (int i{1} ; i < n ; i++) {\n   \
     \     int p; std::cin >> p;\n        lca.addEdge(p, i);\n    }\n    lca.build();\n\
     \    for (int _{} ; _ < q ; _++) {\n        int u, v; std::cin >> u >> v;\n  \
-    \      int ans{lca(u, v)};\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \      int ans{(int)lca(u, v)};\n        std::cout << ans << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
-  - Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+  - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   isVerificationFile: true
   path: Test/LC/lca.test.cpp
   requiredBy: []
-  timestamp: '2023-12-05 01:10:24+09:00'
+  timestamp: '2024-02-10 00:53:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/lca.test.cpp

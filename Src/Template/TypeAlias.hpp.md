@@ -3,8 +3,11 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
-    title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+    path: Src/Algebra/Monoid/ChmaxMonoid.hpp
+    title: Src/Algebra/Monoid/ChmaxMonoid.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: Src/Algebra/Monoid/ChminMonoid.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/RollingHashMonoid.hpp
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
@@ -566,6 +569,9 @@ data:
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF923-D.test.cpp
+    title: Test/CF/CF923-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -768,8 +774,9 @@ data:
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+  - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
-  - Src/Algebra/Monoid/MinWithIndexMonoid.hpp
+  - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/U32Pair.hpp
   - Src/Utility/BinarySearch.hpp
@@ -965,6 +972,7 @@ data:
   - Test/LC/sort_by_argument.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/CF/CF923-D.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/practice2_d.test.cpp

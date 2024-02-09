@@ -173,6 +173,9 @@ data:
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF923-D.test.cpp
+    title: Test/CF/CF923-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -353,6 +356,7 @@ data:
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/CF/CF923-D.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/practice2_d.test.cpp

@@ -15,14 +15,17 @@ data:
       path: Src/Algebra/Monoid/AffineMonoid.hpp
       title: Src/Algebra/Monoid/AffineMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/ChmaxMonoid.hpp
+      title: Src/Algebra/Monoid/ChmaxMonoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/ChminMonoid.hpp
+      title: Src/Algebra/Monoid/ChminMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MaxMonoid.hpp
       title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
-    - icon: ':heavy_check_mark:'
-      path: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
-      title: Src/Algebra/Monoid/MinWithIndexMonoid.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
       title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
@@ -682,6 +685,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc165_c.test.cpp
       title: Test/AtCoder/arc165_c.test.cpp
+  - name: Test/CF
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/CF923-D.test.cpp
+      title: Test/CF/CF923-D.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'
