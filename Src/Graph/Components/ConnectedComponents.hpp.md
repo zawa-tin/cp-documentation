@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc293_d.test.cpp
     title: Test/AtCoder/abc293_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc334_g.test.cpp
+    title: Test/AtCoder/abc334_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -174,6 +177,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/ALDS1_11_D.test.cpp
+  - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
