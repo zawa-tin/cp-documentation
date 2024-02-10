@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC2-E.test.cpp
+    title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_subtree_sum.test.cpp
+    title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
@@ -72,8 +78,10 @@ data:
   - Test/AtCoder/abc229_d.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/CF/EC2-E.test.cpp
   - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document

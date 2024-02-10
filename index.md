@@ -305,6 +305,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/LowestCommonAncestor.hpp
       title: Lowest Common Ancestor
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/Sack.hpp
+      title: Sack
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -700,11 +703,17 @@ data:
   - name: Test/CF
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/CF/CF316-D.test.cpp
+      title: Test/CF/CF316-D.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/CF923-D.test.cpp
       title: Test/CF/CF923-D.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF923-F.test.cpp
       title: CF923(Div. 3)-F Microcycle
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/EC2-E.test.cpp
+      title: Test/CF/EC2-E.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'
@@ -755,6 +764,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/vertex_add_path_sum.test.cpp
       title: Test/LC/vertex_add_path_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/vertex_add_subtree_sum.test.cpp
+      title: Test/LC/vertex_add_subtree_sum.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

@@ -182,11 +182,17 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF316-D.test.cpp
+    title: Test/CF/CF316-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-F.test.cpp
     title: CF923(Div. 3)-F Microcycle
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/EC2-E.test.cpp
+    title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
@@ -226,6 +232,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_subtree_sum.test.cpp
+    title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
@@ -364,6 +373,7 @@ data:
   - Test/LC/shortest_path.test.cpp
   - Test/LC/lca.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
@@ -371,8 +381,10 @@ data:
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/CF/CF316-D.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/CF923-F.test.cpp
+  - Test/CF/EC2-E.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/practice2_d.test.cpp
