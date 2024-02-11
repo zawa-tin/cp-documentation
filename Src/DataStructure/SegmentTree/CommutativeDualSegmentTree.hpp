@@ -61,7 +61,7 @@ public:
         initDat(first, last);
     }
 
-    void update(u32 l, u32 r, const Operator& v) {
+    virtual void operation(u32 l, u32 r, const Operator& v) {
         assert(l < n_);
         assert(l <= r and r <= n_);
         for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {
@@ -82,7 +82,7 @@ public:
         dat_[i + n_] = v;
     }
 
-    Operator operator[](u32 i) const {
+    virtual Operator operator[](u32 i) {
         assert(i < n_);
         Operator res{ Monoid::identity() };
         for (i += n_ ; i ; i = parent(i)) {

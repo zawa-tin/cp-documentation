@@ -21,11 +21,11 @@ int main() {
         if (t == 0) {
             int l, r; std::cin >> l >> r;
             mint b, c; std::cin >> b >> c;
-            seg.update(l, r, Affine{ b, c });
+            seg.operation(l, r, Affine{ b, c });
         }
         else if (t == 1) {
             int i; std::cin >> i;
-            std::cout << seg[i].mapping(a[i]) << std::endl;
+            std::cout << seg[i].mapping(a[i]) << '\n';
         }
         else {
             assert(false);

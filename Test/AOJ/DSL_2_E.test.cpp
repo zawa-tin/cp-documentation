@@ -16,12 +16,12 @@ int main() {
         if (com == 0) {
             int s, t, x; std::cin >> s >> t >> x;
             s--;
-            seg.update(s, t, x);
+            seg.operation(s, t, x);
         }
         else if (com == 1) {
             int i; std::cin >> i;
             i--;
-            std::cout << seg[i] << std::endl;
+            std::cout << seg[i] << '\n';
         }
         else {
             assert(false);
