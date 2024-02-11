@@ -58,18 +58,18 @@ data:
     \       initDat(dat.begin(), dat.end());\n    }\n    template <class InputIterator>\n\
     \    CommutativeDualSegmentTree(InputIterator first, InputIterator last)\n   \
     \     : n_{ static_cast<usize>(std::distance(first, last)) }, dat_((n_ << 1),\
-    \ Monoid::identity()) {\n        initDat(first, last);\n    }\n\n    void update(u32\
-    \ l, u32 r, const Operator& v) {\n        assert(l < n_);\n        assert(l <=\
-    \ r and r <= n_);\n        for (l += n_, r += n_ ; l < r ; l = parent(l), r =\
-    \ parent(r)) {\n            if (l & 1) {\n                dat_[l] = Monoid::operation(dat_[l],\
-    \ v);\n                l++;\n            }\n            if (r & 1) {\n       \
-    \         r--;\n                dat_[r] = Monoid::operation(dat_[r], v);\n   \
-    \         }\n        }\n    }\n\n    void set(u32 i, const Operator& v) {\n  \
-    \      assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n    }\n\n\
-    \    Operator operator[](u32 i) const {\n        assert(i < n_);\n        Operator\
-    \ res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i)) {\n  \
-    \          res = Monoid::operation(res, dat_[i]);\n        }\n        return res;\n\
-    \    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
+    \ Monoid::identity()) {\n        initDat(first, last);\n    }\n\n    virtual void\
+    \ operation(u32 l, u32 r, const Operator& v) {\n        assert(l < n_);\n    \
+    \    assert(l <= r and r <= n_);\n        for (l += n_, r += n_ ; l < r ; l =\
+    \ parent(l), r = parent(r)) {\n            if (l & 1) {\n                dat_[l]\
+    \ = Monoid::operation(dat_[l], v);\n                l++;\n            }\n    \
+    \        if (r & 1) {\n                r--;\n                dat_[r] = Monoid::operation(dat_[r],\
+    \ v);\n            }\n        }\n    }\n\n    void set(u32 i, const Operator&\
+    \ v) {\n        assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n\
+    \    }\n\n    virtual Operator operator[](u32 i) {\n        assert(i < n_);\n\
+    \        Operator res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i))\
+    \ {\n            res = Monoid::operation(res, dat_[i]);\n        }\n        return\
+    \ res;\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
     \ seg) {\n        usize size{ seg.dat_.size() };\n        for (u32 i{1} ; i <\
     \ size ; i++) {\n            os << seg.dat_[i] << (i + 1 == size ? \"\" : \" \"\
     );\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n#line 4 \"\
@@ -79,15 +79,15 @@ data:
     \    using Operator = typename Base::Operator;\n    DualSegmentTree() : Base()\
     \ {}\n    DualSegmentTree(u32 n) : Base(n) {}\n    DualSegmentTree(const std::vector<Operator>&\
     \ dat) : Base(dat) {}\n    template <class InputIterator>\n    DualSegmentTree(InputIterator\
-    \ first, InputIterator last) : Base(first, last) {}\n    \n    void update(u32\
-    \ l, u32 r, const Operator& v) {\n        Base::push(l);\n        if (l < r) Base::push(r\
-    \ - 1);\n        Base::update(l, r, v);\n    } \n\n    Operator operator[](u32\
-    \ i) {\n        Base::push(i);\n        return Base::operator[](i);\n    }\n};\n\
-    \n} // namespace zawa\n#line 2 \"Src/Number/ModInt.hpp\"\n\n#line 4 \"Src/Number/ModInt.hpp\"\
-    \n\n#include <type_traits>\n#include <iostream>\n#include <utility>\n#line 9 \"\
-    Src/Number/ModInt.hpp\"\n\nnamespace zawa {\n\ntemplate <class T, T mod>\nclass\
-    \ StaticModInt {\nprivate:\n    using mint = StaticModInt;\n\n    T v_{};\n\n\
-    \    static constexpr void templateTypeAssert() {\n        static_assert(std::is_integral_v<T>,\
+    \ first, InputIterator last) : Base(first, last) {}\n    \n    void operation(u32\
+    \ l, u32 r, const Operator& v) override {\n        Base::push(l);\n        if\
+    \ (l < r) Base::push(r - 1);\n        Base::operation(l, r, v);\n    } \n\n  \
+    \  Operator operator[](u32 i) override {\n        Base::push(i);\n        return\
+    \ Base::operator[](i);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Number/ModInt.hpp\"\
+    \n\n#line 4 \"Src/Number/ModInt.hpp\"\n\n#include <type_traits>\n#include <iostream>\n\
+    #include <utility>\n#line 9 \"Src/Number/ModInt.hpp\"\n\nnamespace zawa {\n\n\
+    template <class T, T mod>\nclass StaticModInt {\nprivate:\n    using mint = StaticModInt;\n\
+    \n    T v_{};\n\n    static constexpr void templateTypeAssert() {\n        static_assert(std::is_integral_v<T>,\
     \ \"ModInt template argument must be integral\");\n        static_assert(mod >\
     \ 0, \"mod must be positive\");\n    }\n\n    i64 extendGCD(i64 a, i64 b, i64&\
     \ x, i64& y) const {\n       i64 d{a};\n       if (b) {\n           d = extendGCD(b,\
@@ -148,10 +148,10 @@ data:
     \ x : a) std::cin >> x;\n    DualSegmentTree<AffineMonoid<mint>> seg(n);\n   \
     \ for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        if (t\
     \ == 0) {\n            int l, r; std::cin >> l >> r;\n            mint b, c; std::cin\
-    \ >> b >> c;\n            seg.update(l, r, Affine{ b, c });\n        }\n     \
-    \   else if (t == 1) {\n            int i; std::cin >> i;\n            std::cout\
-    \ << seg[i].mapping(a[i]) << std::endl;\n        }\n        else {\n         \
-    \   assert(false);\n        }\n    }\n}\n"
+    \ >> b >> c;\n            seg.operation(l, r, Affine{ b, c });\n        }\n  \
+    \      else if (t == 1) {\n            int i; std::cin >> i;\n            std::cout\
+    \ << seg[i].mapping(a[i]) << '\\n';\n        }\n        else {\n            assert(false);\n\
+    \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
     \ \"../../Src/Number/ModInt.hpp\"\n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\
@@ -161,10 +161,10 @@ data:
     \ a(n);\n    for (auto& x : a) std::cin >> x;\n    DualSegmentTree<AffineMonoid<mint>>\
     \ seg(n);\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n\
     \        if (t == 0) {\n            int l, r; std::cin >> l >> r;\n          \
-    \  mint b, c; std::cin >> b >> c;\n            seg.update(l, r, Affine{ b, c });\n\
-    \        }\n        else if (t == 1) {\n            int i; std::cin >> i;\n  \
-    \          std::cout << seg[i].mapping(a[i]) << std::endl;\n        }\n      \
-    \  else {\n            assert(false);\n        }\n    }\n}\n"
+    \  mint b, c; std::cin >> b >> c;\n            seg.operation(l, r, Affine{ b,\
+    \ c });\n        }\n        else if (t == 1) {\n            int i; std::cin >>\
+    \ i;\n            std::cout << seg[i].mapping(a[i]) << '\\n';\n        }\n   \
+    \     else {\n            assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -175,7 +175,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_affine_point_get.test.cpp
   requiredBy: []
-  timestamp: '2023-10-03 02:05:53+09:00'
+  timestamp: '2024-02-11 20:49:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_point_get.test.cpp

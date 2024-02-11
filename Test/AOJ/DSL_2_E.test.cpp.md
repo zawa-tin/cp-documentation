@@ -51,18 +51,18 @@ data:
     \       initDat(dat.begin(), dat.end());\n    }\n    template <class InputIterator>\n\
     \    CommutativeDualSegmentTree(InputIterator first, InputIterator last)\n   \
     \     : n_{ static_cast<usize>(std::distance(first, last)) }, dat_((n_ << 1),\
-    \ Monoid::identity()) {\n        initDat(first, last);\n    }\n\n    void update(u32\
-    \ l, u32 r, const Operator& v) {\n        assert(l < n_);\n        assert(l <=\
-    \ r and r <= n_);\n        for (l += n_, r += n_ ; l < r ; l = parent(l), r =\
-    \ parent(r)) {\n            if (l & 1) {\n                dat_[l] = Monoid::operation(dat_[l],\
-    \ v);\n                l++;\n            }\n            if (r & 1) {\n       \
-    \         r--;\n                dat_[r] = Monoid::operation(dat_[r], v);\n   \
-    \         }\n        }\n    }\n\n    void set(u32 i, const Operator& v) {\n  \
-    \      assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n    }\n\n\
-    \    Operator operator[](u32 i) const {\n        assert(i < n_);\n        Operator\
-    \ res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i)) {\n  \
-    \          res = Monoid::operation(res, dat_[i]);\n        }\n        return res;\n\
-    \    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
+    \ Monoid::identity()) {\n        initDat(first, last);\n    }\n\n    virtual void\
+    \ operation(u32 l, u32 r, const Operator& v) {\n        assert(l < n_);\n    \
+    \    assert(l <= r and r <= n_);\n        for (l += n_, r += n_ ; l < r ; l =\
+    \ parent(l), r = parent(r)) {\n            if (l & 1) {\n                dat_[l]\
+    \ = Monoid::operation(dat_[l], v);\n                l++;\n            }\n    \
+    \        if (r & 1) {\n                r--;\n                dat_[r] = Monoid::operation(dat_[r],\
+    \ v);\n            }\n        }\n    }\n\n    void set(u32 i, const Operator&\
+    \ v) {\n        assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n\
+    \    }\n\n    virtual Operator operator[](u32 i) {\n        assert(i < n_);\n\
+    \        Operator res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i))\
+    \ {\n            res = Monoid::operation(res, dat_[i]);\n        }\n        return\
+    \ res;\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
     \ seg) {\n        usize size{ seg.dat_.size() };\n        for (u32 i{1} ; i <\
     \ size ; i++) {\n            os << seg.dat_[i] << (i + 1 == size ? \"\" : \" \"\
     );\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n#line 2 \"\
@@ -79,9 +79,9 @@ data:
     \ >> n >> q;\n    CommutativeDualSegmentTree<AdditionMonoid<int>> seg(n);\n  \
     \  for (int _{} ; _ < q ; _++) {\n        int com; std::cin >> com;\n        if\
     \ (com == 0) {\n            int s, t, x; std::cin >> s >> t >> x;\n          \
-    \  s--;\n            seg.update(s, t, x);\n        }\n        else if (com ==\
-    \ 1) {\n            int i; std::cin >> i;\n            i--;\n            std::cout\
-    \ << seg[i] << std::endl;\n        }\n        else {\n            assert(false);\n\
+    \  s--;\n            seg.operation(s, t, x);\n        }\n        else if (com\
+    \ == 1) {\n            int i; std::cin >> i;\n            i--;\n            std::cout\
+    \ << seg[i] << '\\n';\n        }\n        else {\n            assert(false);\n\
     \        }\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_E\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp\"\
@@ -90,10 +90,10 @@ data:
     \    int n, q; std::cin >> n >> q;\n    CommutativeDualSegmentTree<AdditionMonoid<int>>\
     \ seg(n);\n    for (int _{} ; _ < q ; _++) {\n        int com; std::cin >> com;\n\
     \        if (com == 0) {\n            int s, t, x; std::cin >> s >> t >> x;\n\
-    \            s--;\n            seg.update(s, t, x);\n        }\n        else if\
-    \ (com == 1) {\n            int i; std::cin >> i;\n            i--;\n        \
-    \    std::cout << seg[i] << std::endl;\n        }\n        else {\n          \
-    \  assert(false);\n        }\n    }\n}\n"
+    \            s--;\n            seg.operation(s, t, x);\n        }\n        else\
+    \ if (com == 1) {\n            int i; std::cin >> i;\n            i--;\n     \
+    \       std::cout << seg[i] << '\\n';\n        }\n        else {\n           \
+    \ assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
@@ -102,7 +102,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_2_E.test.cpp
   requiredBy: []
-  timestamp: '2023-10-02 00:27:19+09:00'
+  timestamp: '2024-02-11 20:49:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_E.test.cpp

@@ -505,6 +505,9 @@ data:
       path: Test/AOJ/DSL_2_B.test.cpp
       title: Test/AOJ/DSL_2_B.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_D.test.cpp
+      title: Test/AOJ/DSL_2_D.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_E.test.cpp
       title: Test/AOJ/DSL_2_E.test.cpp
     - icon: ':heavy_check_mark:'

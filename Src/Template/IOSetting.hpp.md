@@ -107,6 +107,9 @@ data:
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_D.test.cpp
+    title: Test/AOJ/DSL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -339,6 +342,7 @@ data:
   - Test/AOJ/CGL_7_F.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
