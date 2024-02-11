@@ -7,11 +7,14 @@ documentation_of: //Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
 
 [テンプレート引数](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Monoid.html)
 
-`Operator = Monoid::Element`
+`using Operator = Monoid::Element`
 
-`update(u32 l, u32 r, const Operator& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
+`operation(u32 l, u32 r, const Operator& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
+- $O(\log n)$
 
 `set(u32 i, const Operator& v)` $i$ 番目の要素に $v$ を「代入」
+- $O(\log n)$
 
 `Operator operator[](u32 i)`
 - $i$ 番目の要素を取得
+- $O(\log n)$

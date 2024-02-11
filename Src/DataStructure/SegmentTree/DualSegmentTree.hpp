@@ -16,13 +16,13 @@ public:
     template <class InputIterator>
     DualSegmentTree(InputIterator first, InputIterator last) : Base(first, last) {}
     
-    void update(u32 l, u32 r, const Operator& v) {
+    void operation(u32 l, u32 r, const Operator& v) override {
         Base::push(l);
         if (l < r) Base::push(r - 1);
-        Base::update(l, r, v);
+        Base::operation(l, r, v);
     } 
 
-    Operator operator[](u32 i) {
+    Operator operator[](u32 i) override {
         Base::push(i);
         return Base::operator[](i);
     }
