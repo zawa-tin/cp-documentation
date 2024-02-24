@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/3326"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
@@ -12,8 +12,12 @@ using namespace zawa;
 using M = SameMonoid<long long>;
 using D = M::Element;
 
-int main() {
-    SetFastIO();
+/*
+ * AOJ3226 Range Same Query
+ * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/8942579/C++17
+ */
+
+void solve() {
     int n, q; std::cin >> n >> q;
     std::vector<long long> a(n);
     for (auto& x : a) std::cin >> x;
@@ -37,4 +41,13 @@ int main() {
             assert(false);
         }
     } 
+}
+
+int main() {
+#ifdef ONLINE_JUDGE
+    SetFastIO();
+    solve();
+#else
+    std::cout << "Hello World" << '\n';
+#endif
 }
