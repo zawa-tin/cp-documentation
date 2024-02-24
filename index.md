@@ -33,6 +33,10 @@ data:
       path: Src/Algebra/Monoid/RollingHashMonoid.hpp
       title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
         \u306E\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/SameMonoid.hpp
+      title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\
+        \u304B\u5224\u5B9A\u3059\u308B\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
       path: Src/Algebra/Monoid/SuffixProductMonoid.hpp
       title: Src/Algebra/Monoid/SuffixProductMonoid.hpp
@@ -715,6 +719,9 @@ data:
       path: Test/CF/CF923-F.test.cpp
       title: CF923(Div. 3)-F Microcycle
     - icon: ':heavy_check_mark:'
+      path: Test/CF/EC162-D.test.cpp
+      title: Test/CF/EC162-D.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/EC2-E.test.cpp
       title: Test/CF/EC2-E.test.cpp
   - name: Test/LC
@@ -814,6 +821,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc026_a.test.cpp
       title: Test/Manual/agc026_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/aoj3226.test.cpp
+      title: Test/Manual/aoj3226.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/kupc2016_e.test.cpp
       title: "Kyoto University Programming Contest 2016-E \u67F5"

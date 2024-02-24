@@ -40,8 +40,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1298.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
 documentation_of: Src/GeometryZ2/Contain/State.hpp
 layout: document
 redirect_from:

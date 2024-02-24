@@ -140,10 +140,10 @@ data:
   timestamp: '2023-08-12 14:28:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2957.test.cpp
-  - Test/AtCoder/abc132_f.test.cpp
-  - Test/AtCoder/abc230_e.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/AOJ/2957.test.cpp
+  - Test/AtCoder/abc230_e.test.cpp
+  - Test/AtCoder/abc132_f.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
 documentation_of: Src/Number/EnumerateQuotients.hpp
 layout: document

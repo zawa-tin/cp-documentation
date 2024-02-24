@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC162-D.test.cpp
+    title: Test/CF/EC162-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   _isVerificationFailed: false
@@ -90,10 +93,11 @@ data:
   timestamp: '2023-07-22 13:55:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc172_c.test.cpp
-  - Test/AtCoder/agc023_a.test.cpp
-  - Test/AtCoder/abc229_d.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc172_c.test.cpp
+  - Test/CF/EC162-D.test.cpp
 documentation_of: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
 layout: document
 title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"

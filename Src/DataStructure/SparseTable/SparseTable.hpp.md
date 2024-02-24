@@ -16,6 +16,9 @@ data:
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC162-D.test.cpp
+    title: Test/CF/EC162-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca.test.cpp
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -80,10 +83,11 @@ data:
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc288_e.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/lca.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
   - Test/CF/CF923-D.test.cpp
+  - Test/CF/EC162-D.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table
