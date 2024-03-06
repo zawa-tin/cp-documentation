@@ -61,8 +61,8 @@ data:
   timestamp: '2024-02-25 01:37:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/EC162-D.test.cpp
   - Test/Manual/aoj3226.test.cpp
+  - Test/CF/EC162-D.test.cpp
 documentation_of: Src/Algebra/Monoid/SameMonoid.hpp
 layout: document
 title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\u304B\
