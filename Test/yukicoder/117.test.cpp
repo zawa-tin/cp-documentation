@@ -5,7 +5,7 @@
 
 #include <iostream>
 #include <tuple>
-#include "../../ac-library/atcoder/modint.hpp"
+#include <atcoder/modint>
 using mint = atcoder::modint1000000007;
 using namespace zawa;
 
