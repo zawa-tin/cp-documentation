@@ -4,15 +4,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/internal_math.hpp
-    title: ac-library/atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/internal_type_traits.hpp
-    title: ac-library/atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
-    path: ac-library/atcoder/modint.hpp
-    title: ac-library/atcoder/modint.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -82,9 +73,6 @@ data:
     \    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
-  - ac-library/atcoder/internal_math.hpp
-  - ac-library/atcoder/modint.hpp
-  - ac-library/atcoder/internal_type_traits.hpp
   isVerificationFile: false
   path: Src/Number/BinomalCoefficients.hpp
   requiredBy: []
