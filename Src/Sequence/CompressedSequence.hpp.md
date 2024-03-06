@@ -60,8 +60,8 @@ data:
   timestamp: '2023-07-19 18:46:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc213_c.test.cpp
   - Test/Manual/abc287_g.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

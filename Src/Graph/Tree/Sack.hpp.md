@@ -102,8 +102,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/CF/EC2-E.test.cpp
   - Test/CF/CF316-D.test.cpp
+  - Test/CF/EC2-E.test.cpp
 documentation_of: Src/Graph/Tree/Sack.hpp
 layout: document
 title: Sack
