@@ -12,6 +12,9 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
 
+    - name: Update Submodules
+      run: git submodule update --remote
+
     - name: Install dependencies
       run: pip3 install -U online-judge-verify-helper
 
