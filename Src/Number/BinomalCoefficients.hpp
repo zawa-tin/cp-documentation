@@ -5,16 +5,19 @@
 #include <cassert>
 #include <cmath>
 #include <vector>
+#include <atcoder/internal_math>
+#include <atcoder/modint>
 
 namespace zawa {
 
-template <class T>
+template <u32 MOD>
 class BinomalCoefficients {
 public:
-    static constexpr u64 MOD{T::mod()};
+    using Value = atcoder::static_modint<MOD>;
+    static_assert(atcoder::internal::is_prime_constexpr(MOD));
 private:
     usize n_{};
-    std::vector<T> F_{}, inv_{}, invF_{};
+    std::vector<Value> F_{}, inv_{}, invF_{};
     constexpr bool need(usize n) const noexcept {
         return n_ <= n;
     }
@@ -23,7 +26,7 @@ private:
         inv_.reserve(n + 1);
         invF_.reserve(n + 1);
         for (usize i{n_} ; i <= n ; i++) {
-            F_.emplace_back(F_.back() * T{i});
+            F_.emplace_back(F_.back() * Value{i});
             inv_.emplace_back(MOD - inv_[MOD % i] * (MOD / i));
             invF_.emplace_back(invF_.back() * inv_.back());
         }
@@ -33,29 +36,33 @@ public:
     constexpr usize size() const noexcept {
         return n_;
     }
-    BinomalCoefficients() : n_{2u}, F_{T{1}, T{1}}, inv_{T{0}, T{1}}, invF_{T{1}, T{1}} {}
-    BinomalCoefficients(usize n) : n_{2u}, F_{T{1}, T{1}}, inv_{T{0}, T{1}}, invF_{T{1}, T{1}} {
+    BinomalCoefficients() 
+        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)}, 
+        invF_{Value::raw(1), Value::raw(1)} {}
+    BinomalCoefficients(usize n) 
+        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)}, 
+        invF_{Value::raw(1), Value::raw(1)} {
         assert(n);
         if (need(n)) expand(n);
     }
-    T F(i32 n) {
+    Value F(i32 n) {
         if (need(std::abs(n))) expand(static_cast<usize>(std::abs(n)));
         return (n >= 0 ? F_[n] : invF_[-n]);
     }
-    T P(i32 p, i32 q) {
-        if (q > p) return T{}; 
+    Value P(i32 p, i32 q) {
+        if (q > p) return Value{}; 
         return F(p) * F(q - p);
     }
-    T C(i32 p, i32 q) {
-        if (q > p) return T{};
+    Value C(i32 p, i32 q) {
+        if (q > p) return Value{};
         return P(p, q) * F(-q);
     }
-    T H(i32 p, i32 q) {
-        if (p == 0 and q == 0) return T{1};
+    Value H(i32 p, i32 q) {
+        if (p == 0 and q == 0) return Value::raw(1);
         return C(p + q - 1, q);
     }
-    T B(const std::vector<i32>& b) {
-        T res{1};
+    Value B(const std::vector<i32>& b) {
+        Value res{1};
         i32 sum{};
         for (i32 x : b) {
             res *= F(-x);

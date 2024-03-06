@@ -14,13 +14,18 @@ documentation_of: //Src/Number/BinomalCoefficients.hpp
 #### テンプレート引数
 
 ```cpp
-template <class T>
+template <u32 MOD>
 ```
 
-基本的には`atcoder::static_modint`を利用していれば問題無い。
+`MOD`が素数で無いと`static_assert`に引っかかる。
 
-- `T`の静的な定数に`mod`が定義されていることが必要。
-- `mod`が素数で無い場合、このライブラリは期待通りに動かない。
+- `atcoder::internal::is_prime_constexpr`が内部で走る
+
+#### 型
+
+```cpp
+using Value = atcoder::static_modint<MOD>;
+```
 
 #### コンストラクタ
 
@@ -36,7 +41,7 @@ template <class T>
 #### F
 
 ```cpp
-T F(i32 n)
+Value F(i32 n)
 ```
 
 $n$ が非負ならば $n!$ を、 $n$ が負ならば $(-n)!$ の乗法逆元を返す。
@@ -46,7 +51,7 @@ $n$ が非負ならば $n!$ を、 $n$ が負ならば $(-n)!$ の乗法逆元�
 #### P
 
 ```cpp
-T P(i32 p, i32 q)
+Value P(i32 p, i32 q)
 ```
 
 $p$ 個の区別可能なボールから $q$ 個取り出し、それを一列に並べる通り数を返す。
@@ -56,7 +61,7 @@ $p$ 個の区別可能なボールから $q$ 個取り出し、それを一列�
 #### C
 
 ```cpp
-T C(i32 p, i32 q)
+Value C(i32 p, i32 q)
 ```
 
 $p$ 個の区別可能なボールから $q$ 個取り出す通り数を返す。すなわち $\binom{p}{q}$ を返す。
@@ -66,7 +71,7 @@ $p$ 個の区別可能なボールから $q$ 個取り出す通り数を返す�
 #### H
 
 ```cpp
-T H(i32 p, i32 q)
+Value H(i32 p, i32 q)
 ```
 
 $p$ 種類のボールがそれぞれ無数にあるなかで、 $q$ 個取り出す通り数を返す。
@@ -78,7 +83,7 @@ $p$ 種類のボールがそれぞれ無数にあるなかで、 $q$ 個取り�
 #### B
 
 ```cpp
-T B(const std::vector<i32>& b)
+Value B(const std::vector<i32>& b)
 ```
 
 色 $0$ のボールが $b_0$ 個、色 $1$ のボールが $b_{1}$ 個.....
