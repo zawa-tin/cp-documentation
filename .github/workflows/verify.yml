@@ -12,9 +12,6 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v1
 
-    - name: Add AtCoder Library as Submodule
-      run: git submodule add https://github.com/atcoder/ac-library.git ac-library
-
     - name: Update Submodules
       run: git submodule update --remote
 
