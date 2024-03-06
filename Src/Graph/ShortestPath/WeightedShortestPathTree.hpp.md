@@ -123,8 +123,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/shortest_path.test.cpp
-  - Test/Manual/abc252_e.test.cpp
   - Test/AOJ/2872.test.cpp
+  - Test/Manual/abc252_e.test.cpp
 documentation_of: Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
 layout: document
 redirect_from:

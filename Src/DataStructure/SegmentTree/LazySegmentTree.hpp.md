@@ -193,10 +193,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_affine_range_sum.test.cpp
-  - Test/Manual/practice2_l.test.cpp
-  - Test/Manual/CF895-E.test.cpp
-  - Test/AOJ/DSL_2_F.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AOJ/DSL_2_F.test.cpp
+  - Test/Manual/CF895-E.test.cpp
+  - Test/Manual/practice2_l.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document
 title: Lazy Segment Tree

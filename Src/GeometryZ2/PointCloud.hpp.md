@@ -125,10 +125,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/sort_by_argument.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/1298.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
+  - Test/AOJ/CGL_4_A.test.cpp
+  - Test/AOJ/1298.test.cpp
 documentation_of: Src/GeometryZ2/PointCloud.hpp
 layout: document
 redirect_from:
