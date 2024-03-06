@@ -3,10 +3,10 @@
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Number/BinomalCoefficients.hpp"
 
-#include <iostream>
-#include <tuple>
+// #include <iostream>
+// #include <tuple>
 // #include "../../ac-library/atcoder/modint.hpp"
-using mint = atcoder::modint1000000007;
+// using mint = atcoder::modint1000000007;
 using namespace zawa;
 
 /*
