@@ -40,6 +40,11 @@ data:
     - icon: ':warning:'
       path: Src/Algebra/Monoid/SuffixProductMonoid.hpp
       title: Src/Algebra/Monoid/SuffixProductMonoid.hpp
+  - name: Src/Algebra/Ring
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Ring/UsualRing.hpp
+      title: Src/Algebra/Ring/UsualRing.hpp
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -312,6 +317,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Sack.hpp
       title: Sack
+  - name: Src/LinearAlgebra
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/LinearAlgebra/Matrix.hpp
+      title: Src/LinearAlgebra/Matrix.hpp
   - name: Src/Number
     pages:
     - icon: ':heavy_check_mark:'
@@ -727,6 +737,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC2-E.test.cpp
       title: Test/CF/EC2-E.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/ECR157-F.test.cpp
+      title: Test/CF/ECR157-F.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'
