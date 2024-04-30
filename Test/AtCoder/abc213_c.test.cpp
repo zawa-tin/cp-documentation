@@ -16,7 +16,8 @@ i32 main() {
         std::cin >> A[i] >> B[i];
     }
 
-    CompressedSequence compY(A), compX(B);
+    CompressedSequence compY(A);
+    CompressedSequence<u32> compX(B.begin(), B.end());
     for (u32 i = 0 ; i < N ; i++) {
         std::cout << compY.map(i) + 1 << ' ' << compX.map(i) + 1 << std::endl;
     }

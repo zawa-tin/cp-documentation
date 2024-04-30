@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <cassert>
+#include <iterator>
 
 namespace zawa {
 
@@ -16,22 +17,32 @@ private:
     
 public:
     CompressedSequence() = default;
-    CompressedSequence(const std::vector<T>& A) : comped_(A), f_(A.size()) {
+
+    template <class InputIterator>
+    CompressedSequence(InputIterator first, InputIterator last) : comped_(first, last), f_{} {
         std::sort(comped_.begin(), comped_.end());
         comped_.erase(std::unique(comped_.begin(), comped_.end()), comped_.end());
         comped_.shrink_to_fit();
-        f_.shrink_to_fit();
-        for (u32 i{} ; i < A.size() ; i++) {
-            f_[i] = std::lower_bound(comped_.begin(), comped_.end(), A[i]) - comped_.begin();
+        f_.reserve(std::distance(first, last));
+        for (auto it{first} ; it != last ; it++) {
+            f_.emplace_back(std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), *it)));
         }
-    }     
+    }
+
+    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(), A.end()) {}
 
     inline usize size() const noexcept {
         return comped_.size();
     }
 
     u32 operator[](const T& v) const {
-        return std::lower_bound(comped_.begin(), comped_.end(), v) - comped_.begin();
+        return std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
+    }
+
+    u32 at(const T& v) const {
+        u32 res{(*this)[v]};
+        assert(res < size() and comped_[res] == v);
+        return res;
     }
 
     inline u32 map(u32 i) const noexcept {
