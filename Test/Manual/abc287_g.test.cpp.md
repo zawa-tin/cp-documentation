@@ -25,7 +25,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc287/submissions/48904316
+    - https://atcoder.jp/contests/abc287/submissions/52968691
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/abc287_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -38,20 +38,24 @@ data:
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n\
     #line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <class T>\n\
-    class CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
-    \ f_;\n    \npublic:\n    CompressedSequence() = default;\n    CompressedSequence(const\
-    \ std::vector<T>& A) : comped_(A), f_(A.size()) {\n        std::sort(comped_.begin(),\
+    \ <algorithm>\n#include <cassert>\n#include <iterator>\n\nnamespace zawa {\n\n\
+    template <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n\
+    \    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence() = default;\n\
+    \n    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
+    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.shrink_to_fit();\n\
-    \        for (u32 i{} ; i < A.size() ; i++) {\n            f_[i] = std::lower_bound(comped_.begin(),\
-    \ comped_.end(), A[i]) - comped_.begin();\n        }\n    }     \n\n    inline\
-    \ usize size() const noexcept {\n        return comped_.size();\n    }\n\n   \
-    \ u32 operator[](const T& v) const {\n        return std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v) - comped_.begin();\n    }\n\n    inline u32 map(u32 i) const\
-    \ noexcept {\n        assert(i < f_.size());\n        return f_[i];\n    }\n\n\
-    \    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n \
-    \       return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
+    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
+    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
+    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
+    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#line 4 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 7 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n#include <ostream>\n#include <functional>\n#include <type_traits>\n\nnamespace\
     \ zawa {\n\ntemplate <class Group>\nclass FenwickTree {\nprivate:\n    using Value\
@@ -110,7 +114,7 @@ data:
     \ {\n        return l + r;\n    }\n    static constexpr T inverse(const T& v)\
     \ noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"\
     Test/Manual/abc287_g.test.cpp\"\n\n#line 11 \"Test/Manual/abc287_g.test.cpp\"\n\
-    \n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/48904316\n\
+    \n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/52968691\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -118,10 +122,10 @@ data:
     \       std::cin >> t[i] >> x[i];\n        if (t[i] == 1 or t[i] == 2) {\n   \
     \         x[i]--;\n            std::cin >> y[i];\n        }\n    }\n    std::vector<int>\
     \ app;\n    app.reserve(n + q);\n    for (int i{} ; i < n ; i++) app.push_back(a[i]);\n\
-    \    for (int i{} ; i < q ; i++) if (t[i] == 1) app.push_back(y[i]);\n\n    CompressedSequence\
-    \ comp{app};\n    usize m{comp.size()};\n    FenwickTree<AdditiveGroup<int>> ft1(m);\n\
-    \    FenwickTree<AdditiveGroup<long long>> ft2(m);\n\n    for (int i{} ; i < n\
-    \ ; i++) {\n        ft1.operation(comp[a[i]], b[i]);\n        ft2.operation(comp[a[i]],\
+    \    for (int i{} ; i < q ; i++) if (t[i] == 1) app.push_back(y[i]);\n\n    CompressedSequence<int>\
+    \ comp{ app.begin(), app.end() };\n    usize m{comp.size()};\n    FenwickTree<AdditiveGroup<int>>\
+    \ ft1(m);\n    FenwickTree<AdditiveGroup<long long>> ft2(m);\n\n    for (int i{}\
+    \ ; i < n ; i++) {\n        ft1.operation(comp[a[i]], b[i]);\n        ft2.operation(comp[a[i]],\
     \ (long long)a[i] * (long long)b[i]);\n    }\n\n    auto calcByMaxRight{[&](int\
     \ query) -> long long {\n        if (query > ft1.prefixProduct(m)) return -1LL;\n\
     \        query = ft1.prefixProduct(m) - query;\n        long long res{ft2.prefixProduct(m)};\n\
@@ -134,7 +138,7 @@ data:
     \      query -= (it + 1 == m ? 0 : ft1.product(it + 1, m));\n        long long\
     \ res{it + 1 == m ? 0LL : ft2.product(it + 1, m)};\n        res += (long long)comp.inverse(it)\
     \ * query;\n        return res;\n    }};\n\n    for (int i{} ; i < q ; i++) {\n\
-    \        if (t[i] == 1) {\n            int v{x[i]};\n            ft1.operation(comp[a[v]],\
+    \        if (t[i] == 1) {\n            int v{x[i]};\n            ft1.operation(comp.at(a[v]),\
     \ -b[v]);\n            ft2.operation(comp[a[v]], (long long)-a[v] * (long long)b[v]);\n\
     \            a[v] = y[i];\n            ft1.operation(comp[a[v]], b[v]);\n    \
     \        ft2.operation(comp[a[v]], (long long)a[v] * (long long)b[v]);\n     \
@@ -151,7 +155,7 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/CompressedSequence.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
-    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/48904316\n\
+    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/52968691\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -159,10 +163,10 @@ data:
     \       std::cin >> t[i] >> x[i];\n        if (t[i] == 1 or t[i] == 2) {\n   \
     \         x[i]--;\n            std::cin >> y[i];\n        }\n    }\n    std::vector<int>\
     \ app;\n    app.reserve(n + q);\n    for (int i{} ; i < n ; i++) app.push_back(a[i]);\n\
-    \    for (int i{} ; i < q ; i++) if (t[i] == 1) app.push_back(y[i]);\n\n    CompressedSequence\
-    \ comp{app};\n    usize m{comp.size()};\n    FenwickTree<AdditiveGroup<int>> ft1(m);\n\
-    \    FenwickTree<AdditiveGroup<long long>> ft2(m);\n\n    for (int i{} ; i < n\
-    \ ; i++) {\n        ft1.operation(comp[a[i]], b[i]);\n        ft2.operation(comp[a[i]],\
+    \    for (int i{} ; i < q ; i++) if (t[i] == 1) app.push_back(y[i]);\n\n    CompressedSequence<int>\
+    \ comp{ app.begin(), app.end() };\n    usize m{comp.size()};\n    FenwickTree<AdditiveGroup<int>>\
+    \ ft1(m);\n    FenwickTree<AdditiveGroup<long long>> ft2(m);\n\n    for (int i{}\
+    \ ; i < n ; i++) {\n        ft1.operation(comp[a[i]], b[i]);\n        ft2.operation(comp[a[i]],\
     \ (long long)a[i] * (long long)b[i]);\n    }\n\n    auto calcByMaxRight{[&](int\
     \ query) -> long long {\n        if (query > ft1.prefixProduct(m)) return -1LL;\n\
     \        query = ft1.prefixProduct(m) - query;\n        long long res{ft2.prefixProduct(m)};\n\
@@ -175,7 +179,7 @@ data:
     \      query -= (it + 1 == m ? 0 : ft1.product(it + 1, m));\n        long long\
     \ res{it + 1 == m ? 0LL : ft2.product(it + 1, m)};\n        res += (long long)comp.inverse(it)\
     \ * query;\n        return res;\n    }};\n\n    for (int i{} ; i < q ; i++) {\n\
-    \        if (t[i] == 1) {\n            int v{x[i]};\n            ft1.operation(comp[a[v]],\
+    \        if (t[i] == 1) {\n            int v{x[i]};\n            ft1.operation(comp.at(a[v]),\
     \ -b[v]);\n            ft2.operation(comp[a[v]], (long long)-a[v] * (long long)b[v]);\n\
     \            a[v] = y[i];\n            ft1.operation(comp[a[v]], b[v]);\n    \
     \        ft2.operation(comp[a[v]], (long long)a[v] * (long long)b[v]);\n     \
@@ -197,7 +201,7 @@ data:
   isVerificationFile: true
   path: Test/Manual/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 23:46:06+09:00'
+  timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/abc287_g.test.cpp

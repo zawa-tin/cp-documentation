@@ -23,41 +23,49 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include\
-    \ <vector>\n#include <algorithm>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n\
-    \    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence() = default;\n\
-    \    CompressedSequence(const std::vector<T>& A) : comped_(A), f_(A.size()) {\n\
-    \        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
-    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.shrink_to_fit();\n\
-    \        for (u32 i{} ; i < A.size() ; i++) {\n            f_[i] = std::lower_bound(comped_.begin(),\
-    \ comped_.end(), A[i]) - comped_.begin();\n        }\n    }     \n\n    inline\
-    \ usize size() const noexcept {\n        return comped_.size();\n    }\n\n   \
-    \ u32 operator[](const T& v) const {\n        return std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v) - comped_.begin();\n    }\n\n    inline u32 map(u32 i) const\
-    \ noexcept {\n        assert(i < f_.size());\n        return f_[i];\n    }\n\n\
-    \    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n \
-    \       return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
-    #include <algorithm>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <class\
-    \ T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
-    \ f_;\n    \npublic:\n    CompressedSequence() = default;\n    CompressedSequence(const\
-    \ std::vector<T>& A) : comped_(A), f_(A.size()) {\n        std::sort(comped_.begin(),\
+    \ <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n\n\
+    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
+    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.shrink_to_fit();\n\
-    \        for (u32 i{} ; i < A.size() ; i++) {\n            f_[i] = std::lower_bound(comped_.begin(),\
-    \ comped_.end(), A[i]) - comped_.begin();\n        }\n    }     \n\n    inline\
-    \ usize size() const noexcept {\n        return comped_.size();\n    }\n\n   \
-    \ u32 operator[](const T& v) const {\n        return std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v) - comped_.begin();\n    }\n\n    inline u32 map(u32 i) const\
-    \ noexcept {\n        assert(i < f_.size());\n        return f_[i];\n    }\n\n\
-    \    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n \
-    \       return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
+    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
+    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
+    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
+    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
+    #include <algorithm>\n#include <cassert>\n#include <iterator>\n\nnamespace zawa\
+    \ {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T>\
+    \ comped_;\n    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
+    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
+    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
+    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
+    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy: []
-  timestamp: '2023-07-19 18:46:17+09:00'
+  timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc213_c.test.cpp
@@ -87,11 +95,14 @@ title: "\u5EA7\u6A19\u5727\u7E2E"
 ```
 (1) CompressedSequence() = default;
 (2) CompressedSequence(const std::vector<T>& A)
+(3) CompressedSequence(InputIterator first, InputIterator last)
 ```
 
 (1) デフォルトコンストラクタ
 
 (2) 引数に与えた $A$ で座標圧縮した列を構築します。
+
+(3) イテレータfirst, last間で構築します。
 
 **計算量:** $O(N\log N)$
 
@@ -117,10 +128,17 @@ u32 operator[](const T& v) const
 
 `lower_bound - begin()`を返します。
 
-- なんでこれが`operator[]`なのかというと、私の手癖です。
-
 **計算量:** $O(\log N)$
-- $O(\log M)$ と言ったほうが良いのかな。よく分かりません....
+
+<br />
+
+#### at
+
+```cpp
+u32 at(const T& v) const
+```
+
+operator[]と一緒ですが、 $v$ が $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ に存在しない場合assertに引っかかる
 
 <br />
 

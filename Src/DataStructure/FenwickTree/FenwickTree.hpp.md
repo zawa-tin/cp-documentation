@@ -151,13 +151,13 @@ data:
   timestamp: '2023-12-03 18:29:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc276_f.test.cpp
-  - Test/CF/EC2-E.test.cpp
-  - Test/Manual/abc287_g.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/CF/EC2-E.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document
 title: Fenwick Tree

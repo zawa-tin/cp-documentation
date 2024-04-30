@@ -177,10 +177,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc288_c.test.cpp
-  - Test/AtCoder/abc247_f.test.cpp
-  - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/abc247_f.test.cpp
+  - Test/AtCoder/abc292_d.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
 documentation_of: Src/Graph/Components/ConnectedComponents.hpp
 layout: document
