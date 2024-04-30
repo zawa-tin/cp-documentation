@@ -11,7 +11,7 @@
 
 /*
  * ABC287-G Balance Update Query
- * https://atcoder.jp/contests/abc287/submissions/48904316
+ * https://atcoder.jp/contests/abc287/submissions/52968691
  */
 
 void solve() {
@@ -36,7 +36,7 @@ void solve() {
     for (int i{} ; i < n ; i++) app.push_back(a[i]);
     for (int i{} ; i < q ; i++) if (t[i] == 1) app.push_back(y[i]);
 
-    CompressedSequence comp{app};
+    CompressedSequence<int> comp{ app.begin(), app.end() };
     usize m{comp.size()};
     FenwickTree<AdditiveGroup<int>> ft1(m);
     FenwickTree<AdditiveGroup<long long>> ft2(m);
@@ -71,7 +71,7 @@ void solve() {
     for (int i{} ; i < q ; i++) {
         if (t[i] == 1) {
             int v{x[i]};
-            ft1.operation(comp[a[v]], -b[v]);
+            ft1.operation(comp.at(a[v]), -b[v]);
             ft2.operation(comp[a[v]], (long long)-a[v] * (long long)b[v]);
             a[v] = y[i];
             ft1.operation(comp[a[v]], b[v]);

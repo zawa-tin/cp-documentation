@@ -23,11 +23,14 @@ documentation_of: //Src/Sequence/CompressedSequence.hpp
 ```
 (1) CompressedSequence() = default;
 (2) CompressedSequence(const std::vector<T>& A)
+(3) CompressedSequence(InputIterator first, InputIterator last)
 ```
 
 (1) デフォルトコンストラクタ
 
 (2) 引数に与えた $A$ で座標圧縮した列を構築します。
+
+(3) イテレータfirst, last間で構築します。
 
 **計算量:** $O(N\log N)$
 
@@ -53,10 +56,17 @@ u32 operator[](const T& v) const
 
 `lower_bound - begin()`を返します。
 
-- なんでこれが`operator[]`なのかというと、私の手癖です。
-
 **計算量:** $O(\log N)$
-- $O(\log M)$ と言ったほうが良いのかな。よく分かりません....
+
+<br />
+
+#### at
+
+```cpp
+u32 at(const T& v) const
+```
+
+operator[]と一緒ですが、 $v$ が $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ に存在しない場合assertに引っかかる
 
 <br />
 
