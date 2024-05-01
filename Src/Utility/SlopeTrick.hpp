@@ -12,11 +12,11 @@ namespace zawa {
     class SlopeTrick {
         static_assert(std::is_integral_v<D>, "zawa::SlopeTrick::D must be integral");
         static_assert(std::is_integral_v<C>, "zawa::SlopeTrick::C must be integral");
-        using SizeType = usize;
     public:
+        using SizeType = usize;
         SlopeTrick() = default;
         SlopeTrick(const SlopeTrick& st) : L_{st.L_}, R_{st.R_}, min_{st.min_} {}
-        SlopeTrick(SlopeTrick&& st) : L_{st.L_}, R_{st.R_}, min_{st.min_} {}
+        SlopeTrick(SlopeTrick&& st) : L_{std::move(st.L_)}, R_{std::move(st.R_)}, min_{st.min_} {}
         SlopeTrick& operator=(const SlopeTrick& st) {
             L_ = st.L_;
             R_ = st.R_;
