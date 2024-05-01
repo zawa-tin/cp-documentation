@@ -131,6 +131,9 @@ data:
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc127_f.test.cpp
+    title: Test/AtCoder/abc127_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc139_f.test.cpp
     title: Test/AtCoder/abc139_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -145,6 +148,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc205_f.test.cpp
     title: ABC205-F Grid and Tokens
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc217_h.test.cpp
+    title: Test/AtCoder/abc217_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc225_e.test.cpp
     title: Test/AtCoder/abc225_e.test.cpp
@@ -184,6 +190,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc070_e.test.cpp
+    title: Test/AtCoder/arc070_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
@@ -278,8 +287,14 @@ data:
     path: Test/Manual/aoj3226.test.cpp
     title: Test/Manual/aoj3226.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/dwango2016qual_e.test.cpp
+    title: Test/Manual/dwango2016qual_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/kupc2016_e.test.cpp
     title: "Kyoto University Programming Contest 2016-E \u67F5"
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/kupc2016_h.test.cpp
+    title: Test/Manual/kupc2016_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_d.test.cpp
     title: AtCoder Library Practice Contest - D Maxflow
@@ -295,6 +310,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_by.test.cpp
     title: Test/Manual/typical90_by.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/utpc2012_12.test.cpp
+    title: Test/Manual/utpc2012_12.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
@@ -350,7 +368,9 @@ data:
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
+  - Test/AtCoder/abc217_h.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
+  - Test/AtCoder/abc127_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
@@ -358,6 +378,7 @@ data:
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/arc070_e.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
@@ -413,10 +434,13 @@ data:
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/abc287_g.test.cpp
+  - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/abc331_f.test.cpp
+  - Test/Manual/kupc2016_h.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/practice2_e.test.cpp
   - Test/Manual/abc271_d.test.cpp
+  - Test/Manual/utpc2012_12.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/CF895-E.test.cpp

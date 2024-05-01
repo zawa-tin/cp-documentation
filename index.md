@@ -413,6 +413,9 @@ data:
         10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\
         \u3064"
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/SlopeTrick.hpp
+      title: Src/Utility/SlopeTrick.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/U32Pair.hpp
       title: Src/Utility/U32Pair.hpp
   verificationCategories:
@@ -595,6 +598,9 @@ data:
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc127_f.test.cpp
+      title: Test/AtCoder/abc127_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
       title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
@@ -627,6 +633,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc217_h.test.cpp
+      title: Test/AtCoder/abc217_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc225_e.test.cpp
       title: Test/AtCoder/abc225_e.test.cpp
@@ -717,6 +726,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc047_a.test.cpp
       title: AGC047-A Integer Product
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc070_e.test.cpp
+      title: Test/AtCoder/arc070_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc165_c.test.cpp
       title: Test/AtCoder/arc165_c.test.cpp
@@ -841,8 +853,14 @@ data:
       path: Test/Manual/aoj3226.test.cpp
       title: Test/Manual/aoj3226.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/dwango2016qual_e.test.cpp
+      title: Test/Manual/dwango2016qual_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/kupc2016_e.test.cpp
       title: "Kyoto University Programming Contest 2016-E \u67F5"
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/kupc2016_h.test.cpp
+      title: Test/Manual/kupc2016_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_d.test.cpp
       title: AtCoder Library Practice Contest - D Maxflow
@@ -858,6 +876,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/typical90_by.test.cpp
       title: Test/Manual/typical90_by.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/utpc2012_12.test.cpp
+      title: Test/Manual/utpc2012_12.test.cpp
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'
