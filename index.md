@@ -414,7 +414,7 @@ data:
         \u3064"
     - icon: ':heavy_check_mark:'
       path: Src/Utility/SlopeTrick.hpp
-      title: Src/Utility/SlopeTrick.hpp
+      title: Slope Trick
     - icon: ':heavy_check_mark:'
       path: Src/Utility/U32Pair.hpp
       title: Src/Utility/U32Pair.hpp
@@ -729,6 +729,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc070_e.test.cpp
       title: Test/AtCoder/arc070_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc123_d.test.cpp
+      title: Test/AtCoder/arc123_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc165_c.test.cpp
       title: Test/AtCoder/arc165_c.test.cpp

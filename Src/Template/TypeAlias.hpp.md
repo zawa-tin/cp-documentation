@@ -599,6 +599,9 @@ data:
     path: Test/AtCoder/arc070_e.test.cpp
     title: Test/AtCoder/arc070_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc123_d.test.cpp
+    title: Test/AtCoder/arc123_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -973,6 +976,7 @@ data:
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
+  - Test/AtCoder/arc123_d.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc127_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp

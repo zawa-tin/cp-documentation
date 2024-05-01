@@ -17,15 +17,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    PROBLEM: https://atcoder.jp/contests/arc123/tasks/arc123_d
     links:
-    - https://atcoder.jp/contests/utpc2012/submissions/52989718
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/utpc2012_12.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * \u6771\u4EAC\u5927\u5B66\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\
-    \u30F3\u30C6\u30B9\u30C82012-L \u3058\u3087\u3046\u3057\u3087\u3046\u30C4\u30EA\
-    \u30FC\n * https://atcoder.jp/contests/utpc2012/submissions/52989718\n */\n\n\
-    #line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://atcoder.jp/contests/arc123/tasks/arc123_d
+  bundledCode: "#line 1 \"Test/AtCoder/arc123_d.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/arc123/tasks/arc123_d\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -103,52 +99,37 @@ data:
     \ r) const noexcept {\n            return r + addR_;\n        }\n        inline\
     \ void pushL(D v) noexcept {\n            L_.push(v - addL_);\n        }\n   \
     \     inline void pushR(D v) noexcept {\n            R_.push(v - addR_);\n   \
-    \     }\n    };\n\n} // namespace zawa\n#line 10 \"Test/Manual/utpc2012_12.test.cpp\"\
-    \n\n#line 13 \"Test/Manual/utpc2012_12.test.cpp\"\n\nusing namespace zawa;\n\n\
-    void solve() {\n    SetFastIO();\n    int N;\n    std::cin >> N;\n    std::vector<int>\
-    \ C(N), depth(N);\n    std::cin >> C[0];\n    std::vector<std::vector<int>> g(N);\n\
-    \    for (int i{1} ; i < N ; i++) {\n        int P;\n        std::cin >> P >>\
-    \ C[i];\n        P--;\n        g[P].push_back(i);\n        depth[i] = depth[P]\
-    \ + 1;\n        C[i] += depth[i];\n    }\n    std::vector<SlopeTrick<int, long\
-    \ long>> st(N);\n    auto dfs{[&](auto dfs, int v) -> void {\n        for (auto\
-    \ x : g[v]) {\n            dfs(dfs, x);\n            st[x].prefixMin();\n    \
-    \        if (st[v].size() < st[x].size()) {\n                std::swap(st[v],\
-    \ st[x]);\n            }\n            st[v] += st[x];\n            st[x].clear();\n\
-    \        }\n        st[v].addAbsoluteXA(C[v]);\n    }};\n    dfs(dfs, 0);\n  \
-    \  std::cout << st[0].min() << '\\n';\n}\n\nint main() {\n#ifdef ATCODER\n   \
-    \ solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * \u6771\u4EAC\u5927\u5B66\u30D7\u30ED\u30B0\u30E9\u30DF\u30F3\u30B0\u30B3\
-    \u30F3\u30C6\u30B9\u30C82012-L \u3058\u3087\u3046\u3057\u3087\u3046\u30C4\u30EA\
-    \u30FC\n * https://atcoder.jp/contests/utpc2012/submissions/52989718\n */\n\n\
+    \     }\n    };\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/arc123_d.test.cpp\"\
+    \n\n#line 8 \"Test/AtCoder/arc123_d.test.cpp\"\n\nusing namespace zawa;\n\nint\
+    \ main() {\n    SetFastIO();\n    int N;\n    std::cin >> N;\n    std::vector<int>\
+    \ A(N);\n    for (auto& a : A) std::cin >> a;\n    SlopeTrick<long long, long\
+    \ long> dp;\n    dp.addAbsoluteXA(0);\n    dp.addAbsoluteXA(A[0]);\n    for (int\
+    \ i{1} ; i < N ; i++) {\n        dp.translation(std::min(A[i] - A[i - 1], 0));\n\
+    \        dp.addAbsoluteXA(0);\n        dp.addAbsoluteXA(A[i]);\n    }\n    std::cout\
+    \ << dp.min() << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/arc123/tasks/arc123_d\"\n\n\
     #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Utility/SlopeTrick.hpp\"\
-    \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nvoid solve()\
-    \ {\n    SetFastIO();\n    int N;\n    std::cin >> N;\n    std::vector<int> C(N),\
-    \ depth(N);\n    std::cin >> C[0];\n    std::vector<std::vector<int>> g(N);\n\
-    \    for (int i{1} ; i < N ; i++) {\n        int P;\n        std::cin >> P >>\
-    \ C[i];\n        P--;\n        g[P].push_back(i);\n        depth[i] = depth[P]\
-    \ + 1;\n        C[i] += depth[i];\n    }\n    std::vector<SlopeTrick<int, long\
-    \ long>> st(N);\n    auto dfs{[&](auto dfs, int v) -> void {\n        for (auto\
-    \ x : g[v]) {\n            dfs(dfs, x);\n            st[x].prefixMin();\n    \
-    \        if (st[v].size() < st[x].size()) {\n                std::swap(st[v],\
-    \ st[x]);\n            }\n            st[v] += st[x];\n            st[x].clear();\n\
-    \        }\n        st[v].addAbsoluteXA(C[v]);\n    }};\n    dfs(dfs, 0);\n  \
-    \  std::cout << st[0].min() << '\\n';\n}\n\nint main() {\n#ifdef ATCODER\n   \
-    \ solve();\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n\n"
+    \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nint main()\
+    \ {\n    SetFastIO();\n    int N;\n    std::cin >> N;\n    std::vector<int> A(N);\n\
+    \    for (auto& a : A) std::cin >> a;\n    SlopeTrick<long long, long long> dp;\n\
+    \    dp.addAbsoluteXA(0);\n    dp.addAbsoluteXA(A[0]);\n    for (int i{1} ; i\
+    \ < N ; i++) {\n        dp.translation(std::min(A[i] - A[i - 1], 0));\n      \
+    \  dp.addAbsoluteXA(0);\n        dp.addAbsoluteXA(A[i]);\n    }\n    std::cout\
+    \ << dp.min() << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Utility/SlopeTrick.hpp
   isVerificationFile: true
-  path: Test/Manual/utpc2012_12.test.cpp
+  path: Test/AtCoder/arc123_d.test.cpp
   requiredBy: []
   timestamp: '2024-05-02 00:23:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/utpc2012_12.test.cpp
+documentation_of: Test/AtCoder/arc123_d.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Manual/utpc2012_12.test.cpp
-- /verify/Test/Manual/utpc2012_12.test.cpp.html
-title: Test/Manual/utpc2012_12.test.cpp
+- /verify/Test/AtCoder/arc123_d.test.cpp
+- /verify/Test/AtCoder/arc123_d.test.cpp.html
+title: Test/AtCoder/arc123_d.test.cpp
 ---
