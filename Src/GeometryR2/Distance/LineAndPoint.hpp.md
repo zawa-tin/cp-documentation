@@ -37,6 +37,9 @@ data:
     path: Test/AOJ/1053.test.cpp
     title: AOJ1053 Accelerated Railgun
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2201.test.cpp
+    title: "AOJ2201 \u4E0D\u6B7B\u306E\u5B9D\u77F3"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
   _isVerificationFailed: false
@@ -199,6 +202,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/2201.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
 documentation_of: Src/GeometryR2/Distance/LineAndPoint.hpp
 layout: document

@@ -28,6 +28,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2201.test.cpp
+    title: "AOJ2201 \u4E0D\u6B7B\u306E\u5B9D\u77F3"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_G.test.cpp
     title: Test/AOJ/CGL_7_G.test.cpp
   _isVerificationFailed: false
@@ -231,6 +234,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_7_G.test.cpp
+  - Test/AOJ/2201.test.cpp
 documentation_of: Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
 layout: document
 redirect_from:
