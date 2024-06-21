@@ -45,8 +45,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/staticrmq.test.cpp
-  - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
+  - Test/AOJ/DSL_2_F.test.cpp
   - Test/Manual/agc005_b.test.cpp
 documentation_of: Src/Algebra/Monoid/MinMonoid.hpp
 layout: document

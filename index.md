@@ -203,6 +203,9 @@ data:
   - name: Src/GeometryR2/Tangent
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
+      title: Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Tangent/TangentToCircle.hpp
       title: Src/GeometryR2/Tangent/TangentToCircle.hpp
   - name: Src/GeometryZ2
@@ -515,6 +518,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_F.test.cpp
       title: Test/AOJ/CGL_7_F.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_G.test.cpp
+      title: Test/AOJ/CGL_7_G.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_1_B.test.cpp
       title: Test/AOJ/DSL_1_B.test.cpp

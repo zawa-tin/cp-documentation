@@ -186,8 +186,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc157_f.test.cpp
-  - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_F.test.cpp
+  - Test/AOJ/1132.test.cpp
 documentation_of: Src/GeometryR2/Contain/CircleContainsPoint.hpp
 layout: document
 redirect_from:
