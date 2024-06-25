@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <cassert>
 #include <type_traits>
+#include <utility>
 #include <vector>
 
 namespace zawa {
@@ -20,6 +21,7 @@ public:
     Matrix(usize n) : dat_(n, std::vector<E>(n, Zero())) {}
     Matrix(usize h, usize w) : dat_(h, std::vector<E>(w, Zero())) {}
     Matrix(const Matrix& mat) : dat_{mat.dat_} {}
+    Matrix(Matrix&& mat) : dat_{std::move(mat.dat_)} {}
 
     static E Zero() {
         return A::identity();
@@ -87,6 +89,10 @@ public:
         dat_ = mat.dat_;
         return *this;
     }
+    Matrix& operator=(Matrix&& mat) {
+        dat_ = std::move(mat.dat_);
+        return *this;
+    }
     Matrix& operator+=(const Matrix& mat) {
         assert(height() == mat.height());
         assert(width() == mat.width());
@@ -114,10 +120,60 @@ public:
         return res;
     }
 
+    // 行列式
+    E determinant() const {
+        assert(height() == width());
+        usize n{height()};
+        Matrix<Semiring> dat{*this};
+        E res{M::identity()};
+        const E m1{A::inverse(M::identity())}; // -1
+        for (usize i{} ; i < n ; i++) {
+            for (usize j{i} ; j < n ; j++) {
+                if (dat[j][i] == A::identity()) {
+                    continue; 
+                }
+                if (i != j) {
+                    std::swap(dat[i], dat[j]);
+                    res = M::operation(res, m1);
+                }
+                break;
+            }
+            res = M::operation(res, dat[i][i]);
+            if (dat[i][i] == A::identity()) continue;
+            for (usize j{i + 1} ; j < n ; j++) {
+                if (dat[j][i] == A::identity()) {
+                    continue;
+                }
+                E coef{M::operation(m1, M::operation(dat[j][i], M::inverse(dat[i][i])))};
+                for (usize k{i} ; k < n ; k++) {
+                    dat[j][k] = A::operation(dat[j][k], M::operation(coef, dat[i][k]));
+                }
+            }
+        }
+        return res;
+    }
+    // 余因子
+    E cofactor(usize r, usize c) const {
+        assert(height() == width());
+        usize n{height()};
+        assert(n >= usize{2});
+        Matrix tmp(n - 1, n - 1);
+        for (usize i{} ; i < n ; i++) {
+            if (i == r) {
+                continue;
+            }
+            for (usize j{} ; j < n ; j++) {
+                if (j == c) {
+                    continue;
+                }
+                tmp[i > r ? i - 1 : i][j > c ? j - 1 : j] = dat_[i][j];
+            }
+        }
+        return tmp.determinant();
+    }
+
 private:
     std::vector<std::vector<E>> dat_;
 };
 
 } // namespace zawa
-
-

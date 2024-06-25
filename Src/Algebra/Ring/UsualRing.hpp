@@ -29,6 +29,9 @@ struct Multiplication {
     static Element operation(const Element& lhs, const Element& rhs) {
         return lhs * rhs;
     }
+    static Element inverse(const Element& value) {
+        return identity() / value;
+    }
 };
 
 } // namespace internal
