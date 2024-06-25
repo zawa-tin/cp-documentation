@@ -9,6 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/matrix_det.test.cpp
+    title: Test/LC/matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3369.test.cpp
+    title: Test/Manual/aoj3369.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -20,12 +26,13 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/LinearAlgebra/Matrix.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <type_traits>\n#include <vector>\n\nnamespace zawa\
-    \ {\n\ntemplate <class Semiring>\nclass Matrix {\npublic:\n    using E = typename\
-    \ Semiring::Element;\n    using A = typename Semiring::Addition;\n    using M\
-    \ = typename Semiring::Multiplication;\n\n    Matrix() = default;\n    Matrix(usize\
-    \ n) : dat_(n, std::vector<E>(n, Zero())) {}\n    Matrix(usize h, usize w) : dat_(h,\
-    \ std::vector<E>(w, Zero())) {}\n    Matrix(const Matrix& mat) : dat_{mat.dat_}\
+    #include <cassert>\n#include <type_traits>\n#include <utility>\n#include <vector>\n\
+    \nnamespace zawa {\n\ntemplate <class Semiring>\nclass Matrix {\npublic:\n   \
+    \ using E = typename Semiring::Element;\n    using A = typename Semiring::Addition;\n\
+    \    using M = typename Semiring::Multiplication;\n\n    Matrix() = default;\n\
+    \    Matrix(usize n) : dat_(n, std::vector<E>(n, Zero())) {}\n    Matrix(usize\
+    \ h, usize w) : dat_(h, std::vector<E>(w, Zero())) {}\n    Matrix(const Matrix&\
+    \ mat) : dat_{mat.dat_} {}\n    Matrix(Matrix&& mat) : dat_{std::move(mat.dat_)}\
     \ {}\n\n    static E Zero() {\n        return A::identity();\n    }\n    static\
     \ E One() {\n        return M::identity();\n    }\n    static Matrix O(usize h,\
     \ usize w) {\n        return Matrix(h, w);\n    }\n    static Matrix I(usize n)\
@@ -47,10 +54,11 @@ data:
     \ {\n        assert(i < height());\n        return dat_[i];\n    }\n    std::vector<E>&\
     \ operator[](usize i) {\n        assert(i < height());\n        return dat_[i];\n\
     \    }\n    Matrix& operator=(const Matrix& mat) {\n        dat_ = mat.dat_;\n\
-    \        return *this;\n    }\n    Matrix& operator+=(const Matrix& mat) {\n \
-    \       assert(height() == mat.height());\n        assert(width() == mat.width());\n\
-    \        for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ;\
-    \ j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
+    \        return *this;\n    }\n    Matrix& operator=(Matrix&& mat) {\n       \
+    \ dat_ = std::move(mat.dat_);\n        return *this;\n    }\n    Matrix& operator+=(const\
+    \ Matrix& mat) {\n        assert(height() == mat.height());\n        assert(width()\
+    \ == mat.width());\n        for (usize i{} ; i < height() ; i++) {\n         \
+    \   for (usize j{} ; j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
     \ mat[i][j]);\n            }\n        }\n        return *this;\n    }\n    friend\
     \ Matrix operator+(const Matrix& lhs, const Matrix& rhs) {\n        return Matrix{lhs}\
     \ += rhs;\n    }\n    friend Matrix operator*(const Matrix& lhs, const Matrix&\
@@ -59,15 +67,39 @@ data:
     \ (usize i{} ; i < lhs.height() ; i++) {\n            for (usize j{} ; j < rhs.width()\
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
     \              res[i][j] = A::operation(res[i][j], M::operation(lhs[i][k], rhs[k][j]));\n\
-    \                }\n            }\n        }\n        return res;\n    }\n\nprivate:\n\
-    \    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace zawa\n\n\n"
+    \                }\n            }\n        }\n        return res;\n    }\n\n \
+    \   // \u884C\u5217\u5F0F\n    E determinant() const {\n        assert(height()\
+    \ == width());\n        usize n{height()};\n        Matrix<Semiring> dat{*this};\n\
+    \        E res{M::identity()};\n        const E m1{A::inverse(M::identity())};\
+    \ // -1\n        for (usize i{} ; i < n ; i++) {\n            for (usize j{i}\
+    \ ; j < n ; j++) {\n                if (dat[j][i] == A::identity()) {\n      \
+    \              continue; \n                }\n                if (i != j) {\n\
+    \                    std::swap(dat[i], dat[j]);\n                    res = M::operation(res,\
+    \ m1);\n                }\n                break;\n            }\n           \
+    \ res = M::operation(res, dat[i][i]);\n            if (dat[i][i] == A::identity())\
+    \ continue;\n            for (usize j{i + 1} ; j < n ; j++) {\n              \
+    \  if (dat[j][i] == A::identity()) {\n                    continue;\n        \
+    \        }\n                E coef{M::operation(m1, M::operation(dat[j][i], M::inverse(dat[i][i])))};\n\
+    \                for (usize k{i} ; k < n ; k++) {\n                    dat[j][k]\
+    \ = A::operation(dat[j][k], M::operation(coef, dat[i][k]));\n                }\n\
+    \            }\n        }\n        return res;\n    }\n    // \u4F59\u56E0\u5B50\
+    \n    E cofactor(usize r, usize c) const {\n        assert(height() == width());\n\
+    \        usize n{height()};\n        assert(n >= usize{2});\n        Matrix tmp(n\
+    \ - 1, n - 1);\n        for (usize i{} ; i < n ; i++) {\n            if (i ==\
+    \ r) {\n                continue;\n            }\n            for (usize j{} ;\
+    \ j < n ; j++) {\n                if (j == c) {\n                    continue;\n\
+    \                }\n                tmp[i > r ? i - 1 : i][j > c ? j - 1 : j]\
+    \ = dat_[i][j];\n            }\n        }\n        return tmp.determinant();\n\
+    \    }\n\nprivate:\n    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <type_traits>\n#include <vector>\n\nnamespace zawa\
-    \ {\n\ntemplate <class Semiring>\nclass Matrix {\npublic:\n    using E = typename\
-    \ Semiring::Element;\n    using A = typename Semiring::Addition;\n    using M\
-    \ = typename Semiring::Multiplication;\n\n    Matrix() = default;\n    Matrix(usize\
-    \ n) : dat_(n, std::vector<E>(n, Zero())) {}\n    Matrix(usize h, usize w) : dat_(h,\
-    \ std::vector<E>(w, Zero())) {}\n    Matrix(const Matrix& mat) : dat_{mat.dat_}\
+    #include <cassert>\n#include <type_traits>\n#include <utility>\n#include <vector>\n\
+    \nnamespace zawa {\n\ntemplate <class Semiring>\nclass Matrix {\npublic:\n   \
+    \ using E = typename Semiring::Element;\n    using A = typename Semiring::Addition;\n\
+    \    using M = typename Semiring::Multiplication;\n\n    Matrix() = default;\n\
+    \    Matrix(usize n) : dat_(n, std::vector<E>(n, Zero())) {}\n    Matrix(usize\
+    \ h, usize w) : dat_(h, std::vector<E>(w, Zero())) {}\n    Matrix(const Matrix&\
+    \ mat) : dat_{mat.dat_} {}\n    Matrix(Matrix&& mat) : dat_{std::move(mat.dat_)}\
     \ {}\n\n    static E Zero() {\n        return A::identity();\n    }\n    static\
     \ E One() {\n        return M::identity();\n    }\n    static Matrix O(usize h,\
     \ usize w) {\n        return Matrix(h, w);\n    }\n    static Matrix I(usize n)\
@@ -89,10 +121,11 @@ data:
     \ {\n        assert(i < height());\n        return dat_[i];\n    }\n    std::vector<E>&\
     \ operator[](usize i) {\n        assert(i < height());\n        return dat_[i];\n\
     \    }\n    Matrix& operator=(const Matrix& mat) {\n        dat_ = mat.dat_;\n\
-    \        return *this;\n    }\n    Matrix& operator+=(const Matrix& mat) {\n \
-    \       assert(height() == mat.height());\n        assert(width() == mat.width());\n\
-    \        for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ;\
-    \ j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
+    \        return *this;\n    }\n    Matrix& operator=(Matrix&& mat) {\n       \
+    \ dat_ = std::move(mat.dat_);\n        return *this;\n    }\n    Matrix& operator+=(const\
+    \ Matrix& mat) {\n        assert(height() == mat.height());\n        assert(width()\
+    \ == mat.width());\n        for (usize i{} ; i < height() ; i++) {\n         \
+    \   for (usize j{} ; j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
     \ mat[i][j]);\n            }\n        }\n        return *this;\n    }\n    friend\
     \ Matrix operator+(const Matrix& lhs, const Matrix& rhs) {\n        return Matrix{lhs}\
     \ += rhs;\n    }\n    friend Matrix operator*(const Matrix& lhs, const Matrix&\
@@ -101,17 +134,42 @@ data:
     \ (usize i{} ; i < lhs.height() ; i++) {\n            for (usize j{} ; j < rhs.width()\
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
     \              res[i][j] = A::operation(res[i][j], M::operation(lhs[i][k], rhs[k][j]));\n\
-    \                }\n            }\n        }\n        return res;\n    }\n\nprivate:\n\
-    \    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace zawa\n\n\n"
+    \                }\n            }\n        }\n        return res;\n    }\n\n \
+    \   // \u884C\u5217\u5F0F\n    E determinant() const {\n        assert(height()\
+    \ == width());\n        usize n{height()};\n        Matrix<Semiring> dat{*this};\n\
+    \        E res{M::identity()};\n        const E m1{A::inverse(M::identity())};\
+    \ // -1\n        for (usize i{} ; i < n ; i++) {\n            for (usize j{i}\
+    \ ; j < n ; j++) {\n                if (dat[j][i] == A::identity()) {\n      \
+    \              continue; \n                }\n                if (i != j) {\n\
+    \                    std::swap(dat[i], dat[j]);\n                    res = M::operation(res,\
+    \ m1);\n                }\n                break;\n            }\n           \
+    \ res = M::operation(res, dat[i][i]);\n            if (dat[i][i] == A::identity())\
+    \ continue;\n            for (usize j{i + 1} ; j < n ; j++) {\n              \
+    \  if (dat[j][i] == A::identity()) {\n                    continue;\n        \
+    \        }\n                E coef{M::operation(m1, M::operation(dat[j][i], M::inverse(dat[i][i])))};\n\
+    \                for (usize k{i} ; k < n ; k++) {\n                    dat[j][k]\
+    \ = A::operation(dat[j][k], M::operation(coef, dat[i][k]));\n                }\n\
+    \            }\n        }\n        return res;\n    }\n    // \u4F59\u56E0\u5B50\
+    \n    E cofactor(usize r, usize c) const {\n        assert(height() == width());\n\
+    \        usize n{height()};\n        assert(n >= usize{2});\n        Matrix tmp(n\
+    \ - 1, n - 1);\n        for (usize i{} ; i < n ; i++) {\n            if (i ==\
+    \ r) {\n                continue;\n            }\n            for (usize j{} ;\
+    \ j < n ; j++) {\n                if (j == c) {\n                    continue;\n\
+    \                }\n                tmp[i > r ? i - 1 : i][j > c ? j - 1 : j]\
+    \ = dat_[i][j];\n            }\n        }\n        return tmp.determinant();\n\
+    \    }\n\nprivate:\n    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/LinearAlgebra/Matrix.hpp
   requiredBy: []
-  timestamp: '2024-04-06 11:46:53+09:00'
+  timestamp: '2024-06-25 21:03:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/matrix_det.test.cpp
   - Test/CF/ECR157-F.test.cpp
+  - Test/Manual/aoj3369.test.cpp
 documentation_of: Src/LinearAlgebra/Matrix.hpp
 layout: document
 redirect_from:

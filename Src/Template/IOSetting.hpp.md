@@ -233,6 +233,9 @@ data:
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/matrix_det.test.cpp
+    title: Test/LC/matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -295,6 +298,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3226.test.cpp
     title: Test/Manual/aoj3226.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3369.test.cpp
+    title: Test/Manual/aoj3369.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
@@ -381,6 +387,7 @@ data:
   - Test/LC/shortest_path.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/matrix_det.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/staticrmq.test.cpp
@@ -440,6 +447,7 @@ data:
   - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/abc252_e.test.cpp
+  - Test/Manual/aoj3369.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/aoj3226.test.cpp
   - Test/Manual/CF895-E.test.cpp

@@ -20,10 +20,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
     links:
-    - https://codeforces.com/contest/1895/submission/255171867
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    - https://judge.yosupo.jp/problem/matrix_det
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -34,39 +33,31 @@ data:
     \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
     \ File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
-    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint.hpp:\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Algebra/Ring/UsualRing.hpp\"\
-    \n#include \"../../Src/LinearAlgebra/Matrix.hpp\"\n#include \"atcoder/modint.hpp\"\
-    \n\n#include <iostream>\n\nusing namespace zawa;\nusing mint = atcoder::modint1000000007;\n\
-    using M = Matrix<UsualRing<mint>>;\n\n/*\n * ECR157-F Fancy Arrays\n * https://codeforces.com/contest/1895/submission/255171867\n\
-    \ */\n\nmint solve() {\n    int n, x, k; std::cin >> n >> x >> k;\n    mint ans{};\n\
-    \    if (x > 0) {\n        M A(x);\n        for (int i{} ; i < x ; i++) {\n  \
-    \          for (int j{} ; j < x ; j++) {\n                if (std::abs(i - j)\
-    \ <= k) {\n                    A[i][j] = mint::raw(1);\n                }\n  \
-    \          }\n        }\n        A = A.pow(n - 1);\n        for (int i{} ; i <\
-    \ x ; i++) {\n            for (int j{} ; j < x ; j++) {\n                ans +=\
-    \ A[i][j];\n            }\n        }\n    }\n    ans = mint{x + k} * mint{2 *\
-    \ k + 1}.pow(n - 1) - ans;\n    return ans;\n}\n\nint main() {\n#ifdef ONLINE_JUDGE\n\
-    \    SetFastIO();\n    int t; std::cin >> t;\n    while (t--) {\n        std::cout\
-    \ << solve().val() << '\\n';\n    }\n#else\n    std::cout << \"Hello World\" <<\
-    \ '\\n';\n#endif\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n\n#include\
+    \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/LinearAlgebra/Matrix.hpp\"\
+    \n#include \"../../Src/Algebra/Ring/UsualRing.hpp\"\n#include \"atcoder/modint\"\
+    \n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\nusing M = Matrix<UsualRing<mint>>;\n\
+    \nint main() {\n    int N;\n    std::cin >> N;\n    M A(N, N);\n    for (int i{}\
+    \ ; i < N ; i++) {\n        for (int j{} ; j < N ; j++) {\n            int a;\n\
+    \            std::cin >> a;\n            A[i][j] = mint::raw(a);\n        }\n\
+    \    }\n    std::cout << A.determinant().val() << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/Algebra/Ring/UsualRing.hpp
   - Src/LinearAlgebra/Matrix.hpp
+  - Src/Algebra/Ring/UsualRing.hpp
   isVerificationFile: true
-  path: Test/CF/ECR157-F.test.cpp
+  path: Test/LC/matrix_det.test.cpp
   requiredBy: []
   timestamp: '2024-06-25 21:03:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/CF/ECR157-F.test.cpp
+documentation_of: Test/LC/matrix_det.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/CF/ECR157-F.test.cpp
-- /verify/Test/CF/ECR157-F.test.cpp.html
-title: Test/CF/ECR157-F.test.cpp
+- /verify/Test/LC/matrix_det.test.cpp
+- /verify/Test/LC/matrix_det.test.cpp.html
+title: Test/LC/matrix_det.test.cpp
 ---

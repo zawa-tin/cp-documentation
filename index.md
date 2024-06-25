@@ -785,6 +785,9 @@ data:
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/matrix_det.test.cpp
+      title: Test/LC/matrix_det.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_range_sum.test.cpp
       title: Test/LC/point_add_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -864,6 +867,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/aoj3226.test.cpp
       title: Test/Manual/aoj3226.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/aoj3369.test.cpp
+      title: Test/Manual/aoj3369.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/dwango2016qual_e.test.cpp
       title: Test/Manual/dwango2016qual_e.test.cpp
