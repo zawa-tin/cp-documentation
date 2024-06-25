@@ -732,7 +732,7 @@ data:
     title: Test/Manual/aoj3226.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3369.test.cpp
-    title: Test/Manual/aoj3369.test.cpp
+    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp

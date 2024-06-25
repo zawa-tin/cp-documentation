@@ -14,7 +14,7 @@ data:
     title: Test/LC/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3369.test.cpp
-    title: Test/Manual/aoj3369.test.cpp
+    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
