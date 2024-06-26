@@ -32,33 +32,33 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_A
+    PROBLEM: https://judge.yosupo.jp/problem/static_convex_hull
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_A
-  bundledCode: "#line 1 \"Test/AOJ/CGL_4_A.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_A\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
-    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/ConvexHull.hpp\"\n\n#line 2\
-    \ \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n\
-    #line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
-    \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
-    \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
-    \ i32 Sign(Zahlen value) {\n    if (value < 0) return internal::negative;\n  \
-    \  if (value > 0) return internal::positive;\n    return internal::zero;\n}\n\n\
-    constexpr bool Positive(Zahlen value) {\n    return Sign(value) == internal::positive;\n\
-    }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
-    }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
-    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
-    \n\n#include <algorithm>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\n#include <limits>\n\
+    - https://judge.yosupo.jp/problem/static_convex_hull
+  bundledCode: "#line 1 \"Test/LC/static_convex_hull.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/static_convex_hull\"\n\n#line 2 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
+    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
+    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
+    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
+    \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
+    \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
+    \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
+    \ < 0) return internal::negative;\n    if (value > 0) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen value) {\n  \
+    \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
+    \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
+    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
+    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
+    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
+    \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
+    #include <algorithm>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\n#include <limits>\n\
     \nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point {\nprivate:\n    Zahlen\
     \ x_{}, y_{};\n    static constexpr i32 origin{0};\n    static constexpr i32 firstQuadrant{1};\n\
     \    static constexpr i32 secondQuadrant{2};\n    static constexpr i32 thirdQuadrant{-2};\n\
@@ -114,11 +114,12 @@ data:
     \ Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n   \
     \ friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x()\
     \ * p1.y() - p0.y() * p1.x();\n    }\n};\nusing Vector = Point;\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 4 \"Src/GeometryZ2/PointCloud.hpp\"\
-    \n\n#line 6 \"Src/GeometryZ2/PointCloud.hpp\"\n#include <vector>\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud = std::vector<Point>;\n\
-    \nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(), p.end(), Point::ArgComp);\n\
-    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\
+    \ geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\
+    \n\n#line 4 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 6 \"Src/GeometryZ2/PointCloud.hpp\"\
+    \n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud\
+    \ = std::vector<Point>;\n\nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(),\
+    \ p.end(), Point::ArgComp);\n}\n\n} // namespace geometryZ2 \n\n} // namespace\
+    \ zawa\n#line 2 \"Src/GeometryZ2/ConvexHull.hpp\"\n\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\
     \n\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
     \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
@@ -202,46 +203,43 @@ data:
     \    }\n\n    Polygon res;\n    res.reserve(lower.size() + upper.size() - 2);\n\
     \    res.insert(res.size(), lower.begin(), lower.end());\n    res.insert(res.size(),\
     \ std::next(upper.begin()), std::prev(upper.end()));\n    return res;\n}\n\n}\
-    \ // namespace geometryZ2\n\n} // namespace zawa\n#line 8 \"Test/AOJ/CGL_4_A.test.cpp\"\
-    \n\n#line 12 \"Test/AOJ/CGL_4_A.test.cpp\"\n\nint main() {\n    using namespace\
-    \ zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin\
-    \ >> n;\n    PointCloud p(n);\n    for (auto& v : p) std::cin >> v;\n\n    auto\
-    \ hull{ConvexHull<false>(p)};\n    hull.normalForm([&](const Point& a, const Point&\
-    \ b) -> bool {\n            if (a.y() != b.y()) return a.y() < b.y();\n      \
-    \      else return a.x() < b.x();\n            });    \n    std::cout << hull.size()\
-    \ << '\\n';\n    for (size_t i{} ; i < hull.size() ; i++) {\n        std::cout\
-    \ << hull[i].x() << ' ' << hull[i].y() << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/4/CGL_4_A\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/ConvexHull.hpp\"\
-    \n#include \"../../Src/GeometryZ2/Point.hpp\"\n#include \"../../Src/GeometryZ2/PointCloud.hpp\"\
-    \n#include \"../../Src/GeometryZ2/Polygon.hpp\"\n\n#include <algorithm>\n#include\
-    \ <iostream>\n#include <vector>\n\nint main() {\n    using namespace zawa;\n \
-    \   using namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin >> n;\n\
-    \    PointCloud p(n);\n    for (auto& v : p) std::cin >> v;\n\n    auto hull{ConvexHull<false>(p)};\n\
-    \    hull.normalForm([&](const Point& a, const Point& b) -> bool {\n         \
-    \   if (a.y() != b.y()) return a.y() < b.y();\n            else return a.x() <\
-    \ b.x();\n            });    \n    std::cout << hull.size() << '\\n';\n    for\
-    \ (size_t i{} ; i < hull.size() ; i++) {\n        std::cout << hull[i].x() <<\
-    \ ' ' << hull[i].y() << '\\n';\n    }\n}\n"
+    \ // namespace geometryZ2\n\n} // namespace zawa\n#line 7 \"Test/LC/static_convex_hull.test.cpp\"\
+    \n\n#line 9 \"Test/LC/static_convex_hull.test.cpp\"\n\nusing namespace zawa;\n\
+    using namespace geometryZ2;\n\nint main() {\n    SetFastIO();\n    int T;\n  \
+    \  std::cin >> T;\n    while (T--) {\n        int N;\n        std::cin >> N;\n\
+    \        PointCloud P(N);\n        for (auto& p : P) std::cin >> p;        \n\
+    \        auto ans{ConvexHull<true>(P)};\n        std::cout << ans.size() << '\\\
+    n';\n        for (int i{} ; i < (int)ans.size() ; i++) {\n            std::cout\
+    \ << ans[i].x() << ' ' << ans[i].y() << '\\n';\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_convex_hull\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
+    \n#include \"../../Src/GeometryZ2/PointCloud.hpp\"\n#include \"../../Src/GeometryZ2/ConvexHull.hpp\"\
+    \n\n#include <iostream>\n\nusing namespace zawa;\nusing namespace geometryZ2;\n\
+    \nint main() {\n    SetFastIO();\n    int T;\n    std::cin >> T;\n    while (T--)\
+    \ {\n        int N;\n        std::cin >> N;\n        PointCloud P(N);\n      \
+    \  for (auto& p : P) std::cin >> p;        \n        auto ans{ConvexHull<true>(P)};\n\
+    \        std::cout << ans.size() << '\\n';\n        for (int i{} ; i < (int)ans.size()\
+    \ ; i++) {\n            std::cout << ans[i].x() << ' ' << ans[i].y() << '\\n';\n\
+    \        }\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/PointCloud.hpp
+  - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Relation.hpp
   isVerificationFile: true
-  path: Test/AOJ/CGL_4_A.test.cpp
+  path: Test/LC/static_convex_hull.test.cpp
   requiredBy: []
   timestamp: '2024-06-26 18:12:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/CGL_4_A.test.cpp
+documentation_of: Test/LC/static_convex_hull.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_4_A.test.cpp
-- /verify/Test/AOJ/CGL_4_A.test.cpp.html
-title: Test/AOJ/CGL_4_A.test.cpp
+- /verify/Test/LC/static_convex_hull.test.cpp
+- /verify/Test/LC/static_convex_hull.test.cpp.html
+title: Test/LC/static_convex_hull.test.cpp
 ---

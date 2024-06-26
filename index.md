@@ -815,6 +815,9 @@ data:
       path: Test/LC/sort_by_argument.test.cpp
       title: Test/LC/sort_by_argument.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/static_convex_hull.test.cpp
+      title: Test/LC/static_convex_hull.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
     - icon: ':heavy_check_mark:'

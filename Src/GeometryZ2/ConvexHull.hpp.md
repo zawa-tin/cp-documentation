@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_4_A.test.cpp
     title: Test/AOJ/CGL_4_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/static_convex_hull.test.cpp
+    title: Test/LC/static_convex_hull.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -173,13 +176,13 @@ data:
     \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line 7 \"Src/GeometryZ2/ConvexHull.hpp\"\
     \n\n#line 13 \"Src/GeometryZ2/ConvexHull.hpp\"\n\nnamespace zawa {\n\nnamespace\
     \ geometryZ2 {\n\ntemplate <bool strictly>\nPolygon ConvexHull(const PointCloud&\
-    \ p) {\n    assert(p.size() or !\"ConvexHull do not allow empty PointCloud\");\n\
-    \    PointCloud cp{p};\n    std::sort(cp.begin(), cp.end());\n    PointCloud lower;\n\
-    \    lower.reserve(p.size());\n    for (auto it{cp.begin()} ; it != cp.end() ;\
-    \ it++) {\n        lower.push_back(*it);\n        while (lower.size() >= 3u) {\n\
-    \            if (Relation(lower[lower.size() - 3], lower[lower.size() - 2], lower[lower.size()\
-    \ - 1]) == COUNTER_CLOCKWISE) {\n                break;\n            }\n     \
-    \       if constexpr (!strictly) {\n                if (Relation(lower[lower.size()\
+    \ p) {\n    PointCloud cp{p};\n    std::sort(cp.begin(), cp.end());\n    cp.erase(std::unique(cp.begin(),\
+    \ cp.end()), cp.end());\n    if (cp.size() <= 2u) {\n        return Polygon{cp};\n\
+    \    }\n    PointCloud lower;\n    lower.reserve(p.size());\n    for (auto it{cp.begin()}\
+    \ ; it != cp.end() ; it++) {\n        lower.push_back(*it);\n        while (lower.size()\
+    \ >= 3u) {\n            if (Relation(lower[lower.size() - 3], lower[lower.size()\
+    \ - 2], lower[lower.size() - 1]) == COUNTER_CLOCKWISE) {\n                break;\n\
+    \            }\n            if constexpr (!strictly) {\n                if (Relation(lower[lower.size()\
     \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n\
     \                    break;\n                }\n            }\n            std::swap(lower[lower.size()\
     \ - 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n\
@@ -199,18 +202,18 @@ data:
     \n#include \"./Zahlen.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <iterator>\n#include <type_traits>\n#include <vector>\n\
     \nnamespace zawa {\n\nnamespace geometryZ2 {\n\ntemplate <bool strictly>\nPolygon\
-    \ ConvexHull(const PointCloud& p) {\n    assert(p.size() or !\"ConvexHull do not\
-    \ allow empty PointCloud\");\n    PointCloud cp{p};\n    std::sort(cp.begin(),\
-    \ cp.end());\n    PointCloud lower;\n    lower.reserve(p.size());\n    for (auto\
-    \ it{cp.begin()} ; it != cp.end() ; it++) {\n        lower.push_back(*it);\n \
-    \       while (lower.size() >= 3u) {\n            if (Relation(lower[lower.size()\
-    \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == COUNTER_CLOCKWISE)\
-    \ {\n                break;\n            }\n            if constexpr (!strictly)\
-    \ {\n                if (Relation(lower[lower.size() - 3], lower[lower.size()\
-    \ - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n                    break;\n\
-    \                }\n            }\n            std::swap(lower[lower.size() -\
-    \ 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n  \
-    \  }\n    PointCloud upper;\n    upper.reserve(p.size());\n    for (auto it{cp.rbegin()}\
+    \ ConvexHull(const PointCloud& p) {\n    PointCloud cp{p};\n    std::sort(cp.begin(),\
+    \ cp.end());\n    cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n   \
+    \ if (cp.size() <= 2u) {\n        return Polygon{cp};\n    }\n    PointCloud lower;\n\
+    \    lower.reserve(p.size());\n    for (auto it{cp.begin()} ; it != cp.end() ;\
+    \ it++) {\n        lower.push_back(*it);\n        while (lower.size() >= 3u) {\n\
+    \            if (Relation(lower[lower.size() - 3], lower[lower.size() - 2], lower[lower.size()\
+    \ - 1]) == COUNTER_CLOCKWISE) {\n                break;\n            }\n     \
+    \       if constexpr (!strictly) {\n                if (Relation(lower[lower.size()\
+    \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n\
+    \                    break;\n                }\n            }\n            std::swap(lower[lower.size()\
+    \ - 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n\
+    \    }\n    PointCloud upper;\n    upper.reserve(p.size());\n    for (auto it{cp.rbegin()}\
     \ ; it != cp.rend() ; it++) {\n        upper.push_back(*it);\n        while (upper.size()\
     \ >= 3u) {\n            if (Relation(upper[upper.size() - 3], upper[upper.size()\
     \ - 2], upper[upper.size() - 1]) == COUNTER_CLOCKWISE) {\n                break;\n\
@@ -232,9 +235,10 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/ConvexHull.hpp
   requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  timestamp: '2024-06-26 18:12:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/static_convex_hull.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
 documentation_of: Src/GeometryZ2/ConvexHull.hpp

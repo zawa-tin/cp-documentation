@@ -680,6 +680,9 @@ data:
     path: Test/LC/sort_by_argument.test.cpp
     title: Test/LC/sort_by_argument.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/static_convex_hull.test.cpp
+    title: Test/LC/static_convex_hull.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1012,6 +1015,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/shortest_path.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/aplusb.test.cpp

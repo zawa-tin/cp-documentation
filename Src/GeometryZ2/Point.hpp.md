@@ -102,6 +102,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/sort_by_argument.test.cpp
     title: Test/LC/sort_by_argument.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/static_convex_hull.test.cpp
+    title: Test/LC/static_convex_hull.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -268,6 +271,7 @@ data:
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
