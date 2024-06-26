@@ -34,6 +34,9 @@ data:
     path: Test/AOJ/2201.test.cpp
     title: "AOJ2201 \u4E0D\u6B7B\u306E\u5B9D\u77F3"
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2609.test.cpp
+    title: Test/AOJ/2609.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2828.test.cpp
     title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"
   - icon: ':heavy_check_mark:'
@@ -438,6 +441,7 @@ data:
   - Test/AOJ/2872.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/2609.test.cpp
   - Test/CF/CF923-F.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF316-D.test.cpp

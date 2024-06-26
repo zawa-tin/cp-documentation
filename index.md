@@ -461,6 +461,9 @@ data:
       path: Test/AOJ/2201.test.cpp
       title: "AOJ2201 \u4E0D\u6B7B\u306E\u5B9D\u77F3"
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2609.test.cpp
+      title: Test/AOJ/2609.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/2828.test.cpp
       title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"
     - icon: ':heavy_check_mark:'

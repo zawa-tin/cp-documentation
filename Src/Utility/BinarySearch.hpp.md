@@ -19,6 +19,9 @@ data:
     path: Test/AOJ/1298.test.cpp
     title: Test/AOJ/1298.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2609.test.cpp
+    title: Test/AOJ/2609.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
@@ -95,6 +98,7 @@ data:
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/0412.test.cpp
+  - Test/AOJ/2609.test.cpp
   - Test/CF/EC162-D.test.cpp
 documentation_of: Src/Utility/BinarySearch.hpp
 layout: document
