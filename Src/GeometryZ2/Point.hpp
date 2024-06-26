@@ -3,8 +3,10 @@
 #include "../Template/TypeAlias.hpp"
 #include "./Zahlen.hpp"
 
+#include <algorithm>
 #include <iostream>
 #include <cassert>
+#include <limits>
 
 namespace zawa {
 
@@ -114,6 +116,21 @@ public:
     /* member function */
     Zahlen normSquare() const {
         return Square(x()) + Square(y());
+    }
+    bool isNormSquareOver(Zahlen d) const {
+        assert(!Negative(d));
+        auto [mn, mx]{std::minmax({ Abs(x()), Abs(y()) })};
+        if (mx and mx > d / mx) {
+            return true;
+        }
+        long long s1{Square(mn)}, s2{Square(mx)};
+        if (s1 > d - s2) {
+            return true;
+        }
+        return false;
+    }
+    bool isNormSquareOverflow() const {
+        return isNormSquareOver(std::numeric_limits<Zahlen>::max());
     }
 
     i32 area() const {
