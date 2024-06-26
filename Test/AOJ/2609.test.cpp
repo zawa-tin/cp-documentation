@@ -1,5 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2609"
 
+#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryZ2/Point.hpp"
 #include "../../Src/GeometryZ2/Circle.hpp"
 #include "../../Src/Utility/BinarySearch.hpp"
@@ -7,6 +8,7 @@ using namespace zawa;
 using namespace geometryZ2;
 
 int main() {
+    SetFastIO();
     Zahlen W, H, V, T, X, Y, P, Q;
     std::cin >> W >> H >> V >> T >> X >> Y >> P >> Q;
     Circle wave{Point{ X, Y }, V * T};
