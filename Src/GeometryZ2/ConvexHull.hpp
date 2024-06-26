@@ -17,9 +17,12 @@ namespace geometryZ2 {
 
 template <bool strictly>
 Polygon ConvexHull(const PointCloud& p) {
-    assert(p.size() or !"ConvexHull do not allow empty PointCloud");
     PointCloud cp{p};
     std::sort(cp.begin(), cp.end());
+    cp.erase(std::unique(cp.begin(), cp.end()), cp.end());
+    if (cp.size() <= 2u) {
+        return Polygon{cp};
+    }
     PointCloud lower;
     lower.reserve(p.size());
     for (auto it{cp.begin()} ; it != cp.end() ; it++) {
