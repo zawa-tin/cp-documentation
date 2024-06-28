@@ -55,6 +55,10 @@ public:
         tree_[v].emplace_back(u);
     }
 
+    const std::vector<u32>& operator[](u32 v) const {
+        return tree_[v];
+    }
+
     void build() {
         dfs(root_, invalid);
         spt_ = Spt(euler_);
