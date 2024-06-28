@@ -94,21 +94,22 @@ data:
     \    }\n\n    constexpr u32 size() const noexcept {\n        return n_;\n    }\n\
     \n    void addEdge(usize u, usize v) {\n        assert(u < size());\n        assert(v\
     \ < size());\n        tree_[u].emplace_back(v);\n        tree_[v].emplace_back(u);\n\
-    \    }\n\n    void build() {\n        dfs(root_, invalid);\n        spt_ = Spt(euler_);\n\
-    \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(u < size());\n\
-    \        assert(v < size());\n        if (first_[u] > first_[v]) std::swap(u,\
-    \ v);\n        return spt_.product(first_[u], first_[v] + 1).value();\n    }\n\
-    \n    u32 depth(u32 v) const noexcept {\n        assert(v < size());\n       \
-    \ return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n       \
-    \ assert(u < size());\n        assert(v < size());\n        return depth_[u] +\
-    \ depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool isAncestor(u32 anc,\
-    \ u32 child) const {\n        return (*this)(anc, child) == anc;\n    }\n};\n\n\
-    } // namespace zawa\n#line 5 \"Test/LC/lca.test.cpp\"\nusing namespace zawa;\n\
-    \nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q; \n    LowestCommonAncestor\
-    \ lca(n, 0);\n    for (int i{1} ; i < n ; i++) {\n        int p; std::cin >> p;\n\
-    \        lca.addEdge(p, i);\n    }\n    lca.build();\n    for (int _{} ; _ < q\
-    \ ; _++) {\n        int u, v; std::cin >> u >> v;\n        int ans{(int)lca(u,\
-    \ v)};\n        std::cout << ans << '\\n';\n    }\n}\n"
+    \    }\n\n    const std::vector<u32>& operator[](u32 v) const {\n        return\
+    \ tree_[v];\n    }\n\n    void build() {\n        dfs(root_, invalid);\n     \
+    \   spt_ = Spt(euler_);\n    }\n\n    u32 operator()(u32 u, u32 v) const {\n \
+    \       assert(u < size());\n        assert(v < size());\n        if (first_[u]\
+    \ > first_[v]) std::swap(u, v);\n        return spt_.product(first_[u], first_[v]\
+    \ + 1).value();\n    }\n\n    u32 depth(u32 v) const noexcept {\n        assert(v\
+    \ < size());\n        return depth_[v];\n    }\n\n    u32 distance(u32 u, u32\
+    \ v) const {\n        assert(u < size());\n        assert(v < size());\n     \
+    \   return depth_[u] + depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool\
+    \ isAncestor(u32 anc, u32 child) const {\n        return (*this)(anc, child) ==\
+    \ anc;\n    }\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/lca.test.cpp\"\nusing\
+    \ namespace zawa;\n\nint main() {\n    SetFastIO();\n    int n, q; std::cin >>\
+    \ n >> q; \n    LowestCommonAncestor lca(n, 0);\n    for (int i{1} ; i < n ; i++)\
+    \ {\n        int p; std::cin >> p;\n        lca.addEdge(p, i);\n    }\n    lca.build();\n\
+    \    for (int _{} ; _ < q ; _++) {\n        int u, v; std::cin >> u >> v;\n  \
+    \      int ans{(int)lca(u, v)};\n        std::cout << ans << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\nusing namespace\
     \ zawa;\n\nint main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q; \n\
@@ -125,7 +126,7 @@ data:
   isVerificationFile: true
   path: Test/LC/lca.test.cpp
   requiredBy: []
-  timestamp: '2024-02-10 00:53:33+09:00'
+  timestamp: '2024-06-29 00:26:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/lca.test.cpp

@@ -83,16 +83,17 @@ data:
     \    }\n\n    constexpr u32 size() const noexcept {\n        return n_;\n    }\n\
     \n    void addEdge(usize u, usize v) {\n        assert(u < size());\n        assert(v\
     \ < size());\n        tree_[u].emplace_back(v);\n        tree_[v].emplace_back(u);\n\
-    \    }\n\n    void build() {\n        dfs(root_, invalid);\n        spt_ = Spt(euler_);\n\
-    \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(u < size());\n\
-    \        assert(v < size());\n        if (first_[u] > first_[v]) std::swap(u,\
-    \ v);\n        return spt_.product(first_[u], first_[v] + 1).value();\n    }\n\
-    \n    u32 depth(u32 v) const noexcept {\n        assert(v < size());\n       \
-    \ return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n       \
-    \ assert(u < size());\n        assert(v < size());\n        return depth_[u] +\
-    \ depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool isAncestor(u32 anc,\
-    \ u32 child) const {\n        return (*this)(anc, child) == anc;\n    }\n};\n\n\
-    } // namespace zawa\n"
+    \    }\n\n    const std::vector<u32>& operator[](u32 v) const {\n        return\
+    \ tree_[v];\n    }\n\n    void build() {\n        dfs(root_, invalid);\n     \
+    \   spt_ = Spt(euler_);\n    }\n\n    u32 operator()(u32 u, u32 v) const {\n \
+    \       assert(u < size());\n        assert(v < size());\n        if (first_[u]\
+    \ > first_[v]) std::swap(u, v);\n        return spt_.product(first_[u], first_[v]\
+    \ + 1).value();\n    }\n\n    u32 depth(u32 v) const noexcept {\n        assert(v\
+    \ < size());\n        return depth_[v];\n    }\n\n    u32 distance(u32 u, u32\
+    \ v) const {\n        assert(u < size());\n        assert(v < size());\n     \
+    \   return depth_[u] + depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool\
+    \ isAncestor(u32 anc, u32 child) const {\n        return (*this)(anc, child) ==\
+    \ anc;\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/ChminMonoid.hpp\"\
     \n#include \"../../DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <cassert>\n\
     #include <utility>\n#include <vector>\n\nnamespace zawa {\n\nclass LowestCommonAncestor\
@@ -113,16 +114,17 @@ data:
     \  }\n\n    constexpr u32 size() const noexcept {\n        return n_;\n    }\n\
     \n    void addEdge(usize u, usize v) {\n        assert(u < size());\n        assert(v\
     \ < size());\n        tree_[u].emplace_back(v);\n        tree_[v].emplace_back(u);\n\
-    \    }\n\n    void build() {\n        dfs(root_, invalid);\n        spt_ = Spt(euler_);\n\
-    \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(u < size());\n\
-    \        assert(v < size());\n        if (first_[u] > first_[v]) std::swap(u,\
-    \ v);\n        return spt_.product(first_[u], first_[v] + 1).value();\n    }\n\
-    \n    u32 depth(u32 v) const noexcept {\n        assert(v < size());\n       \
-    \ return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n       \
-    \ assert(u < size());\n        assert(v < size());\n        return depth_[u] +\
-    \ depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool isAncestor(u32 anc,\
-    \ u32 child) const {\n        return (*this)(anc, child) == anc;\n    }\n};\n\n\
-    } // namespace zawa\n"
+    \    }\n\n    const std::vector<u32>& operator[](u32 v) const {\n        return\
+    \ tree_[v];\n    }\n\n    void build() {\n        dfs(root_, invalid);\n     \
+    \   spt_ = Spt(euler_);\n    }\n\n    u32 operator()(u32 u, u32 v) const {\n \
+    \       assert(u < size());\n        assert(v < size());\n        if (first_[u]\
+    \ > first_[v]) std::swap(u, v);\n        return spt_.product(first_[u], first_[v]\
+    \ + 1).value();\n    }\n\n    u32 depth(u32 v) const noexcept {\n        assert(v\
+    \ < size());\n        return depth_[v];\n    }\n\n    u32 distance(u32 u, u32\
+    \ v) const {\n        assert(u < size());\n        assert(v < size());\n     \
+    \   return depth_[u] + depth_[v] - 2u * depth_[(*this)(u, v)];\n    }\n\n    bool\
+    \ isAncestor(u32 anc, u32 child) const {\n        return (*this)(anc, child) ==\
+    \ anc;\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
@@ -130,7 +132,7 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/LowestCommonAncestor.hpp
   requiredBy: []
-  timestamp: '2024-02-10 00:53:33+09:00'
+  timestamp: '2024-06-29 00:26:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/lca.test.cpp
