@@ -230,6 +230,9 @@ data:
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR167-F.test.cpp
+    title: Test/CF/ECR167-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -460,6 +463,7 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/ECR157-F.test.cpp
+  - Test/CF/ECR167-F.test.cpp
   - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/abc252_e.test.cpp

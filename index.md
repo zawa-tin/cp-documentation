@@ -272,6 +272,9 @@ data:
       path: Src/Graph/Components/ConnectedComponents.hpp
       title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Components/IncrementalSCC.hpp
+      title: offline incremental SCC
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/Lowlink.hpp
       title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"
   - name: Src/Graph/Flow
@@ -776,6 +779,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/ECR157-F.test.cpp
       title: Test/CF/ECR157-F.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/ECR167-F.test.cpp
+      title: Test/CF/ECR167-F.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'

@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR167-F.test.cpp
+    title: Test/CF/ECR167-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/unionfind.test.cpp
     title: Test/LC/unionfind.test.cpp
   _isVerificationFailed: false
@@ -68,6 +71,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/unionfind.test.cpp
+  - Test/CF/ECR167-F.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

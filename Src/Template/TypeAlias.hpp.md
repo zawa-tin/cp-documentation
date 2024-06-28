@@ -193,6 +193,9 @@ data:
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Components/IncrementalSCC.hpp
+    title: offline incremental SCC
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/Lowlink.hpp
     title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"
   - icon: ':heavy_check_mark:'
@@ -644,6 +647,9 @@ data:
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR167-F.test.cpp
+    title: Test/CF/ECR167-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -882,6 +888,7 @@ data:
   - Src/Graph/ShortestPath/Dijkstra.hpp
   - Src/Graph/Components/Lowlink.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
+  - Src/Graph/Components/IncrementalSCC.hpp
   - Src/Graph/Tree/Sack.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
@@ -1100,6 +1107,7 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/ECR157-F.test.cpp
+  - Test/CF/ECR167-F.test.cpp
   - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/abc331_f.test.cpp
   - Test/Manual/abc252_e.test.cpp
