@@ -19,7 +19,7 @@ public:
 
     u32 operation(T x, T y, const V& v) {
         u32 res{(u32)idx_.size()};
-        idx_.emplace_back(false, op.size());
+        idx_.emplace_back(false, op_.size());
         op_.emplace_back(x, y, v);
         return res;
     }
