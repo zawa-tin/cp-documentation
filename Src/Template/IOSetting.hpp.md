@@ -257,6 +257,9 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum.test.cpp
+    title: Test/LC/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -411,6 +414,7 @@ data:
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/point_add_rectangle_sum.test.cpp
   - Test/LC/matrix_det.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/many_aplusb.test.cpp

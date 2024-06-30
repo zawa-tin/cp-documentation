@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+    title: Fenwick Tree 2D (Offline Query)
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum.test.cpp
+    title: Test/LC/point_add_rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
@@ -147,13 +153,15 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/FenwickTree.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   timestamp: '2023-12-03 18:29:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc276_f.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/CF/EC2-E.test.cpp

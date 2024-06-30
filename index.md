@@ -58,6 +58,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/FenwickTree/FenwickTree.hpp
       title: Fenwick Tree
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+      title: Fenwick Tree 2D (Offline Query)
   - name: Src/DataStructure/PrefixSum1D
     pages:
     - icon: ':heavy_check_mark:'
@@ -820,6 +823,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_range_sum.test.cpp
       title: Test/LC/point_add_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_add_rectangle_sum.test.cpp
+      title: Test/LC/point_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_set_range_composite.test.cpp
       title: Test/LC/point_set_range_composite.test.cpp

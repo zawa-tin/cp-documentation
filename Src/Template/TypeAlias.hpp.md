@@ -22,6 +22,9 @@ data:
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+    title: Fenwick Tree 2D (Offline Query)
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
@@ -686,6 +689,9 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum.test.cpp
+    title: Test/LC/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -972,6 +978,7 @@ data:
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -1041,6 +1048,7 @@ data:
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/point_add_rectangle_sum.test.cpp
   - Test/LC/matrix_det.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/many_aplusb.test.cpp
