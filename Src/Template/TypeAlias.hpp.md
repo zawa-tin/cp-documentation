@@ -263,6 +263,9 @@ data:
     path: Src/Number/ModInt.hpp
     title: Src/Number/ModInt.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Number/PrimeFactor.hpp
+    title: Src/Number/PrimeFactor.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
   - icon: ':heavy_check_mark:'
@@ -614,6 +617,9 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc349_f.test.cpp
+    title: ABC349-F Subsequence LCM
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -631,6 +637,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF902-B.test.cpp
+    title: Test/CF/CF902-B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
@@ -712,9 +721,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/CF895-E.test.cpp
     title: Test/Manual/CF895-E.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/CF902-B.test.cpp
-    title: Test/Manual/CF902-B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc004_d.test.cpp
     title: Test/Manual/abc004_d.test.cpp
@@ -873,6 +879,7 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/LinearAlgebra/Matrix.hpp
+  - Src/Number/PrimeFactor.hpp
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/LinearSieve.hpp
@@ -1004,6 +1011,7 @@ data:
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
@@ -1108,6 +1116,7 @@ data:
   - Test/CF/CF923-F.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF316-D.test.cpp
+  - Test/CF/CF902-B.test.cpp
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/ECR157-F.test.cpp
@@ -1126,7 +1135,6 @@ data:
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/Manual/abc271_d.test.cpp
-  - Test/Manual/CF902-B.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/kupc2016_h.test.cpp
   - Test/Manual/kupc2016_e.test.cpp

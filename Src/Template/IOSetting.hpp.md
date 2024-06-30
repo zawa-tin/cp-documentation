@@ -206,6 +206,9 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc349_f.test.cpp
+    title: ABC349-F Subsequence LCM
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc070_e.test.cpp
     title: Test/AtCoder/arc070_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -387,6 +390,7 @@ data:
   - Test/AtCoder/arc123_d.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc284_f.test.cpp

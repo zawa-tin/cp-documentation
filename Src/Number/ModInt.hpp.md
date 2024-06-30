@@ -27,9 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/CF902-B.test.cpp
-    title: Test/Manual/CF902-B.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -141,7 +138,6 @@ data:
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
-  - Test/Manual/CF902-B.test.cpp
 documentation_of: Src/Number/ModInt.hpp
 layout: document
 redirect_from:
