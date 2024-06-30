@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Template/TypeAlias.hpp"
+#include "./PrimeFactor.hpp"
 
 #include <vector>
 #include <utility>
@@ -9,56 +10,60 @@
 namespace zawa {
 
 class LinearSieve {
-private:
-    std::vector<u32> primes_;
-    std::vector<u32> lpf_;
 public:
-    LinearSieve(u32 n) : primes_{}, lpf_(n + 1) {
-        for (u32 i{2} ; i <= n ; i++) {
+    using V = u32;
+    using F = PrimeFactor<V>;
+private:
+    std::vector<V> primes_;
+    std::vector<V> lpf_;
+public:
+    LinearSieve(V n) : primes_{}, lpf_(n + 1) {
+        for (V i{2} ; i <= n ; i++) {
             if (!lpf_[i]) {
                 lpf_[i] = i;
                 primes_.emplace_back(i);
             }
-            for (u32 p : primes_) {
+            for (V p : primes_) {
                 if (static_cast<u64>(p) * i > n) break;
                 lpf_[p * i] = p;
             }
         }
     }
 
-    usize size() const noexcept {
-        return lpf_.size() - 1;
+    V size() const noexcept {
+        return static_cast<V>(lpf_.size()) - 1;
     }
 
-    bool isPrime(u32 x) const noexcept {
+    bool isPrime(V x) const noexcept {
         assert(x < lpf_.size());
         return lpf_[x] == x;
     }
 
-    bool operator[](u32 x) const noexcept {
+    bool operator[](V x) const noexcept {
         assert(x < lpf_.size());
         return lpf_[x] == x;
     }
 
-    std::vector<u32> primes() const {
+    std::vector<V> primes() const {
         return primes_;
     }
 
     // @note: response array is not sorted.
-    std::vector<u32> divisor(u32 x) const {
+    std::vector<u32> divisor(V x) const {
         assert(0u < x and x < lpf_.size());
-        std::vector<u32> res(1, 1u);
+        std::vector<V> res(1, 1u);
         while (x > 1) {
-            u32 factor{lpf_[x]}, exponent{};
+            V factor{lpf_[x]};
+            u32 exponent{};
             while (lpf_[x] == factor) {
                 exponent++;
                 x /= lpf_[x];
             }
             usize line{res.size()};
-            u32 now{1};
+            V now{1};
             for (u32 i{} ; i < exponent ; i++) {
                 now *= factor;
-                for (u32 j{} ; j < line ; j++) {
+                for (usize j{} ; j < line ; j++) {
                     res.emplace_back(res[j] * now);
                 }
             }
@@ -66,25 +71,12 @@ public:
         return res;
     }
 
-    class PrimeFactor {
-    private:
-        u32 factor_{}, exponent_{};
-    public: 
-        PrimeFactor() = default;
-        PrimeFactor(u32 factor, u32 exponent) : factor_{factor}, exponent_{exponent} {}
-        u32 factor() const noexcept {
-            return factor_;
-        }
-        u32 exponent() const noexcept {
-            return exponent_;
-        }
-    };
-
-    std::vector<PrimeFactor> factorize(u32 x) const {
+    std::vector<F> factorize(V x) const {
         assert(0u < x and x < lpf_.size());
-        std::vector<PrimeFactor> res;
+        std::vector<F> res;
         while (x > 1) {
-            u32 factor{lpf_[x]}, exponent{};
+            V factor{lpf_[x]};
+            u32 exponent{};
             while (lpf_[x] == factor) {
                 exponent++;
                 x /= lpf_[x];

@@ -2,24 +2,25 @@
 
 /*
  * CF902-B Effects of Anti Pimples
- * https://codeforces.com/contest/1876/submission/227473226
+ * https://codeforces.com/contest/1876/submission/268094339
  */
 
-#include "../../Src/Number/ModInt.hpp"
 #include "../../Src/Number/LinearSieve.hpp"
-
-using mint = zawa::StaticModInt<unsigned, 998244353>;
+#include "atcoder/modint"
 
 #include <iostream>
 #include <vector>
 #include <utility>
 #include <algorithm>
 #include <set>
+using mint = atcoder::modint998244353;
 
 const int N{ 100100 };
+zawa::LinearSieve siv(N);
 
 void solve() {
-    int n; std::cin >> n;
+    int n; 
+    std::cin >> n;
     std::vector<int> a(n);
     for (int i{} ; i < n ; i++) {
         std::cin >> a[i];
@@ -37,7 +38,6 @@ void solve() {
     std::vector<mint> p2(n + 1, mint{1});
     for (int i{} ; i < n ; i++) p2[i + 1] = p2[i] * mint{2};
 
-    zawa::LinearSieve siv(N);
 
     std::set<int> ng;
     mint ans{};
@@ -50,7 +50,7 @@ void solve() {
         ans += (p2[t] - p2[t - must]) * mint{val};
         for (auto d : div) ng.emplace(d);
     }
-    std::cout << ans << std::endl;
+    std::cout << ans.val() << std::endl;
 }
 
 int main() {
