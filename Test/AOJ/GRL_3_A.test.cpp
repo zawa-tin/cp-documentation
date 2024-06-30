@@ -13,9 +13,9 @@ int main() {
         int s, t; std::cin >> s >> t;
         g.addEdge(s, t);
     }
-    g.build();
+    auto ans{g.build()};
     for (int i{} ; i < n ; i++) {
-        if (g.articular(i)) {
+        if (ans.isArticulation(i)) {
             std::cout << i << '\n';
         }
     }

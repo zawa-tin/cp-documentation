@@ -9,37 +9,62 @@
 
 namespace zawa {
 
+class LowlinkResponse {
+public:
+    LowlinkResponse() = default;
+
+    LowlinkResponse(const std::vector<u32>& articulation, const std::vector<bool>& bridge)
+        : articulation_{articulation}, bridge_{bridge} {}
+
+    inline bool isArticulation(u32 v) const {
+        assert(v < articulation_.size());
+        return articulation_[v] > 1u;
+    }
+
+    inline u32 cut(u32 v) const {
+        assert(v < articulation_.size());
+        return articulation_[v];
+    }
+
+    inline bool isBridge(u32 i) const {
+        assert(i < bridge_.size());
+        return bridge_[i];
+    }
+
+private:
+    std::vector<u32> articulation_;
+    std::vector<bool> bridge_;
+};
+
 class Lowlink {
 private:
     static constexpr u32 INVALID{static_cast<u32>(-1)};
     usize n_{}, m_{};
     std::vector<std::vector<std::pair<u32, u32>>> g_;
     std::vector<std::pair<u32, u32>> e_;
-    std::vector<u32> in_, low_;
-    std::vector<u32> articulation_;
-    std::vector<bool> bridge_;
 
-    void dfs(u32 v, u32 p, u32& t) {
-        low_[v] = in_[v] = t++;
+    void dfs(u32 v, u32 p, u32& t, std::vector<u32>& articulation, 
+            std::vector<bool>& bridge, std::vector<u32>& in, std::vector<u32>& low) const {
+        low[v] = in[v] = t++;
         u32 deg{}; 
         for (const auto& [x, i] : g_[v]) {
-            if (in_[x] == INVALID) {
+            if (in[x] == INVALID) {
                 deg++;
-                dfs(x, v, t);
-                low_[v] = std::min(low_[v], low_[x]);
-                if (p != INVALID and low_[x] >= in_[v]) {
-                    articulation_[v]++;
+                dfs(x, v, t, articulation, bridge, in, low);
+                low[v] = std::min(low[v], low[x]);
+                if (p != INVALID and low[x] >= in[v]) {
+                    articulation[v]++;
                 }
-                if (low_[x] > in_[v]) {
-                    bridge_[i] = true;
+                if (low[x] > in[v]) {
+                    bridge[i] = true;
                 }
             }
             else if (x != p) {
-                low_[v] = std::min(low_[v], in_[x]);
+                low[v] = std::min(low[v], in[x]);
             }
         }
         if (p == INVALID) {
-            articulation_[v] = deg;
+            articulation[v] = deg;
         }
     }
 
@@ -47,17 +72,16 @@ public:
     constexpr usize size() const noexcept {
         return n_;
     }
+
     constexpr usize edgeSize() const noexcept {
         return m_;
     }
 
     Lowlink() = default;
+
     Lowlink(usize n) 
-        : n_{n}, m_{}, g_(n), in_(n, INVALID), low_(n), articulation_(n, u32{1}), bridge_{} {
+        : n_{n}, m_{}, g_(n) {
         g_.shrink_to_fit();
-        in_.shrink_to_fit();
-        low_.shrink_to_fit();
-        articulation_.shrink_to_fit();
     }
     
     usize addEdge(u32 u, u32 v) {
@@ -77,26 +101,16 @@ public:
         return e_[i];
     }
 
-    void build() {
-        bridge_.resize(edgeSize());
+    LowlinkResponse build() const {
         u32 t{};
-        for (u32 v{} ; v < size() ; v++) if (in_[v] == INVALID) {
-            dfs(v, INVALID, t);
+        std::vector<u32> articulation(size(), 1u), in(size(), INVALID), low(size());
+        std::vector<bool> bridge(edgeSize());
+        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID) {
+            dfs(v, INVALID, t, articulation, bridge, in, low);
         }
+        return LowlinkResponse{ articulation, bridge };
     }
 
-    bool articular(u32 v) const noexcept {
-        assert(v < size());
-        return articulation_[v] > 1u;
-    }
-    u32 cut(u32 v) const noexcept {
-        assert(v < size());
-        return articulation_[v];
-    }
-    bool bridge(u32 i) const noexcept {
-        assert(i < edgeSize());
-        return bridge_[i];
-    }
 };
 
 } // namespace zawa

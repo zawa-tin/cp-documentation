@@ -3,12 +3,12 @@
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Components/ConnectedComponents.hpp"
 #include "../../Src/Graph/Components/Lowlink.hpp"
-#include "../../Src/Number/ModInt.hpp"
+#include "atcoder/modint"
 
 #include <iostream>
 
 using namespace zawa;
-using mint = StaticModInt<u32, 998244353>;
+using mint = atcoder::modint998244353;
 
 int main() {
     SetFastIO();
@@ -45,15 +45,15 @@ int main() {
         }
     } 
     cc.build();
-    g.build();
+    auto info{g.build()};
     mint res{};
     for (int x{} ; x < h ; x++) {
         for (int y{} ; y < w ; y++) {
             if (!in(x, y)) continue;
-            int num{(int)cc.size() - red + (int)g.cut(f(x, y)) - 1};
+            int num{(int)cc.size() - red + (int)info.cut(f(x, y)) - 1};
             int den{green};
             res += mint{num} / mint{den};
         }
     }
-    std::cout << res << '\n';
+    std::cout << res.val() << '\n';
 }
