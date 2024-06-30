@@ -11,30 +11,31 @@ documentation_of: //Src/Number/BinomalCoefficients.hpp
 
 ## ライブラリの使い方
 
-#### テンプレート引数
-
-```cpp
-template <u32 MOD>
-```
-
-`MOD`が素数で無いと`static_assert`に引っかかる。
-
-- `atcoder::internal::is_prime_constexpr`が内部で走る
-
 #### 型
 
 ```cpp
-using Value = atcoder::static_modint<MOD>;
+using Value = atcoder::modint
 ```
+
+dynamic_modintだからちょっと遅いんだよな。うーーーん。流石にAt, ICPCでこれが原因で完数落とすことは無いと信じたいが....
 
 #### コンストラクタ
 
 ```cpp
-(1) BinomalCoefficients()
-(2) BinomalCoefficients(usize n)
+(1) BinomalCoefficients(u32 M)
 ```
 
-予め内部のコンテナをreserveしたい場合は(2)を使用する。 $n \gt 0$ を満たさない場合assertまたは`std::length_error`にひっかかる
+modを $M$ として初期化する。 $M$ が素数でないとき`assert`に引っかかる。
+
+<br />
+
+#### reserve
+
+```cpp
+void reserve(u32 n)
+```
+
+内部のコンテナのサイズを $n$ にする。現在のコンテナのサイズが $n$ より大きいときは何もしない。
 
 <br />
 
