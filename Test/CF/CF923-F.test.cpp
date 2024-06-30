@@ -11,7 +11,7 @@ using namespace zawa;
 
 /*
  * Codeforces Round 923 (Div. 3) - F Microcycle
- * https://codeforces.com/contest/1927/submission/245659504
+ * https://codeforces.com/contest/1927/submission/268079140
  */
 
 void solve() {
@@ -25,10 +25,10 @@ void solve() {
             u--; v--;
             low.addEdge(u, v);
         }
-        low.build();
+        auto info{low.build()};
         int ans{(int)1e9}, ansId{-1};
         for (int i{} ; i < m ; i++) {
-            if (low.bridge(i)) continue;
+            if (info.isBridge(i)) continue;
             if (ans > std::get<2>(e[i])) {
                 ans = std::get<2>(e[i]);
                 ansId = i;

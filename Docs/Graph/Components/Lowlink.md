@@ -51,19 +51,6 @@ constexpr usize edgeSize() const noexcept
 
 <br />
 
-#### build
-
-```cpp
-void build()
-```
-
-現在のグラフで橋・関節点を列挙する。
-
-(このメンバを複数回呼ぶことを想定していないことに注意)
-
-**計算量**: $O(|V| + |E|)$
-
-<br />
 
 #### operator[]
 
@@ -89,38 +76,42 @@ $i$ 番目(0-indexed)に`addEdge`によって追加された辺を返す。
 
 以降のメンバは`build()`を呼んだ後に呼ばれることが想定されている。
 
-#### articular
+#### build
 
 ```cpp
-bool articular(u32 v) const noexcept
+LowlinkResponse build() const
 ```
 
-$v$ が関節点なら`true`を、そうでないなら`false`を返す。
+現在のグラフで橋・関節点を列挙する。
 
-**計算量**: $O(1)$
+**計算量**: $O(|V| + |E|)$
 
-<br />
+#### LowlinkResponse
+
+#### isArticulation
+
+```cpp
+inline bool isArticulation(u32 v) const 
+```
+
+頂点 $v$ が関節点かどうかを判定する。
+
+#### isBridge
+
+```cpp
+inline bool isBridge(u32 i) const
+```
+
+$i$ 番目の辺が橋かどうか判定する。
+
 
 #### cut
 
 ```cpp
-u32 cut(u32 v) const noexcept
+inline u32 cut(u32 v) const
 ```
 
-頂点 $v$ をグラフから取り除いた時、 もともと $v$ を含んでいた連結成分が何個の連結成分に分かれるかを返す。
-- $v$ が関節点で無い場合は $1$ である。
-
-**計算量**: $O(1)$
-
-<br />
-
-#### bridge
-
-```cpp
-bool bridge(u32 i) const noexcept
-```
-
-$i$ 番目に追加された辺が橋なら`true`をそうでないなら`false`を返す。
+頂点 $v$ と $v$ を端点に持つ辺を削除したとき、グラフが何個の連結成分に分かれるかを返す。
 
 <br />
 

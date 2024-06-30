@@ -17,10 +17,10 @@ int main() {
         int s, t; std::cin >> s >> t;
         g.addEdge(s, t);
     }
-    g.build();
+    auto info{g.build()};
     std::vector<std::pair<int, int>> ans;
     for (int i{} ; i < m ; i++) {
-        if (g.bridge(i)) {
+        if (info.isBridge(i)) {
             auto [u, v]{g.edge(i)};
             ans.emplace_back(std::min(u, v), std::max(u, v));
         }
