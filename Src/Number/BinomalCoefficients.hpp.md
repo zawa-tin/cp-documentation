@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/LC/binomial_coefficient_prime_mod.test.cpp
+    title: Test/LC/binomial_coefficient_prime_mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
   _isVerificationFailed: false
@@ -14,72 +17,55 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/Number/BinomalCoefficients.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Number/BinomalCoefficients.hpp\"\n\n#include\
-    \ <cassert>\n#include <cmath>\n#include <vector>\n#include <atcoder/internal_math>\n\
-    #include <atcoder/modint>\n\nnamespace zawa {\n\ntemplate <u32 MOD>\nclass BinomalCoefficients\
-    \ {\npublic:\n    using Value = atcoder::static_modint<MOD>;\n    static_assert(atcoder::internal::is_prime_constexpr(MOD));\n\
-    private:\n    usize n_{};\n    std::vector<Value> F_{}, inv_{}, invF_{};\n   \
-    \ constexpr bool need(usize n) const noexcept {\n        return n_ <= n;\n   \
-    \ }\n    void expand(usize n) {\n        F_.reserve(n + 1);\n        inv_.reserve(n\
-    \ + 1);\n        invF_.reserve(n + 1);\n        for (usize i{n_} ; i <= n ; i++)\
-    \ {\n            F_.emplace_back(F_.back() * Value{i});\n            inv_.emplace_back(MOD\
-    \ - inv_[MOD % i] * (MOD / i));\n            invF_.emplace_back(invF_.back() *\
-    \ inv_.back());\n        }\n        n_ = n + 1;\n    }\npublic:\n    constexpr\
-    \ usize size() const noexcept {\n        return n_;\n    }\n    BinomalCoefficients()\
-    \ \n        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)},\
-    \ \n        invF_{Value::raw(1), Value::raw(1)} {}\n    BinomalCoefficients(usize\
-    \ n) \n        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)},\
-    \ \n        invF_{Value::raw(1), Value::raw(1)} {\n        assert(n);\n      \
-    \  if (need(n)) expand(n);\n    }\n    Value F(i32 n) {\n        if (need(std::abs(n)))\
-    \ expand(static_cast<usize>(std::abs(n)));\n        return (n >= 0 ? F_[n] : invF_[-n]);\n\
-    \    }\n    Value P(i32 p, i32 q) {\n        if (q > p) return Value{}; \n   \
-    \     return F(p) * F(q - p);\n    }\n    Value C(i32 p, i32 q) {\n        if\
-    \ (q > p) return Value{};\n        return P(p, q) * F(-q);\n    }\n    Value H(i32\
-    \ p, i32 q) {\n        if (p == 0 and q == 0) return Value::raw(1);\n        return\
-    \ C(p + q - 1, q);\n    }\n    Value B(const std::vector<i32>& b) {\n        Value\
-    \ res{1};\n        i32 sum{};\n        for (i32 x : b) {\n            res *= F(-x);\n\
-    \            sum += x;\n        }\n        res *= F(sum);\n        return res;\n\
-    \    }\n};\n\n} // namespace zawa\n"
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
+    \ File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/internal_math.hpp:\
+    \ line -1: no such header\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <cassert>\n\
-    #include <cmath>\n#include <vector>\n#include <atcoder/internal_math>\n#include\
-    \ <atcoder/modint>\n\nnamespace zawa {\n\ntemplate <u32 MOD>\nclass BinomalCoefficients\
-    \ {\npublic:\n    using Value = atcoder::static_modint<MOD>;\n    static_assert(atcoder::internal::is_prime_constexpr(MOD));\n\
-    private:\n    usize n_{};\n    std::vector<Value> F_{}, inv_{}, invF_{};\n   \
-    \ constexpr bool need(usize n) const noexcept {\n        return n_ <= n;\n   \
-    \ }\n    void expand(usize n) {\n        F_.reserve(n + 1);\n        inv_.reserve(n\
-    \ + 1);\n        invF_.reserve(n + 1);\n        for (usize i{n_} ; i <= n ; i++)\
-    \ {\n            F_.emplace_back(F_.back() * Value{i});\n            inv_.emplace_back(MOD\
-    \ - inv_[MOD % i] * (MOD / i));\n            invF_.emplace_back(invF_.back() *\
-    \ inv_.back());\n        }\n        n_ = n + 1;\n    }\npublic:\n    constexpr\
-    \ usize size() const noexcept {\n        return n_;\n    }\n    BinomalCoefficients()\
-    \ \n        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)},\
-    \ \n        invF_{Value::raw(1), Value::raw(1)} {}\n    BinomalCoefficients(usize\
-    \ n) \n        : n_{2u}, F_{Value::raw(1), Value::raw(1)}, inv_{Value{}, Value::raw(1)},\
-    \ \n        invF_{Value::raw(1), Value::raw(1)} {\n        assert(n);\n      \
-    \  if (need(n)) expand(n);\n    }\n    Value F(i32 n) {\n        if (need(std::abs(n)))\
-    \ expand(static_cast<usize>(std::abs(n)));\n        return (n >= 0 ? F_[n] : invF_[-n]);\n\
-    \    }\n    Value P(i32 p, i32 q) {\n        if (q > p) return Value{}; \n   \
-    \     return F(p) * F(q - p);\n    }\n    Value C(i32 p, i32 q) {\n        if\
-    \ (q > p) return Value{};\n        return P(p, q) * F(-q);\n    }\n    Value H(i32\
-    \ p, i32 q) {\n        if (p == 0 and q == 0) return Value::raw(1);\n        return\
-    \ C(p + q - 1, q);\n    }\n    Value B(const std::vector<i32>& b) {\n        Value\
-    \ res{1};\n        i32 sum{};\n        for (i32 x : b) {\n            res *= F(-x);\n\
-    \            sum += x;\n        }\n        res *= F(sum);\n        return res;\n\
-    \    }\n};\n\n} // namespace zawa\n"
+    #include <cmath>\n#include <vector>\n#include \"atcoder/internal_math.hpp\"\n\
+    #include \"atcoder/modint\"\n\nnamespace zawa {\n\nclass BinomalCoefficients {\n\
+    public:\n    using Value = atcoder::modint;\n    u32 mod() const {\n        return\
+    \ Value::mod();\n    }\nprivate:\n    usize n_{};\n    std::vector<Value> F_{},\
+    \ inv_{}, invF_{};\n    constexpr bool need(usize n) const noexcept {\n      \
+    \  return n_ <= n;\n    }\n    void expand(usize n) {\n        F_.reserve(n +\
+    \ 1);\n        inv_.reserve(n + 1);\n        invF_.reserve(n + 1);\n        for\
+    \ (usize i{n_} ; i <= n ; i++) {\n            F_.emplace_back(F_.back() * Value{i});\n\
+    \            inv_.emplace_back(mod() - inv_[mod() % i] * (mod() / i));\n     \
+    \       invF_.emplace_back(invF_.back() * inv_.back());\n        }\n        n_\
+    \ = n + 1;\n    }\npublic:\n    constexpr usize size() const noexcept {\n    \
+    \    return n_;\n    }\n    BinomalCoefficients(u32 M) \n        : n_{2u}, F_{Value::raw(1),\
+    \ Value::raw(1)}, inv_{Value{0}, Value::raw(1)},\n        invF_{Value::raw(1),\
+    \ Value::raw(1)} {\n            assert(atcoder::internal::is_prime_constexpr(M));\n\
+    \            Value::set_mod(M);\n    }\n    void reserve(usize newSize) {\n  \
+    \      if (need(newSize)) {\n            expand(newSize);\n        }\n    }\n\
+    \    Value F(i32 n) noexcept {\n        if (need(std::abs(n))) expand(static_cast<usize>(std::abs(n)));\n\
+    \        return (n >= 0 ? F_[n] : invF_[-n]);\n    }\n    Value P(i32 p, i32 q)\
+    \ {\n        if (q > p) return Value{}; \n        return F(p) * F(q - p);\n  \
+    \  }\n    Value C(i32 p, i32 q) {\n        if (q > p) return Value{};\n      \
+    \  return P(p, q) * F(-q);\n    }\n    Value H(i32 p, i32 q) {\n        if (p\
+    \ == 0 and q == 0) return Value::raw(1);\n        return C(p + q - 1, q);\n  \
+    \  }\n    Value B(const std::vector<i32>& b) {\n        Value res{1};\n      \
+    \  i32 sum{};\n        for (i32 x : b) {\n            res *= F(-x);\n        \
+    \    sum += x;\n        }\n        res *= F(sum);\n        return res;\n    }\n\
+    };\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Number/BinomalCoefficients.hpp
   requiredBy: []
-  timestamp: '2024-03-06 21:16:01+09:00'
+  timestamp: '2024-06-30 16:42:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/yukicoder/117.test.cpp
+  - Test/LC/binomial_coefficient_prime_mod.test.cpp
 documentation_of: Src/Number/BinomalCoefficients.hpp
 layout: document
 title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
@@ -93,30 +79,31 @@ title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
 
 ## ライブラリの使い方
 
-#### テンプレート引数
-
-```cpp
-template <u32 MOD>
-```
-
-`MOD`が素数で無いと`static_assert`に引っかかる。
-
-- `atcoder::internal::is_prime_constexpr`が内部で走る
-
 #### 型
 
 ```cpp
-using Value = atcoder::static_modint<MOD>;
+using Value = atcoder::modint
 ```
+
+dynamic_modintだからちょっと遅いんだよな。うーーーん。流石にAt, ICPCでこれが原因で完数落とすことは無いと信じたいが....
 
 #### コンストラクタ
 
 ```cpp
-(1) BinomalCoefficients()
-(2) BinomalCoefficients(usize n)
+(1) BinomalCoefficients(u32 M)
 ```
 
-予め内部のコンテナをreserveしたい場合は(2)を使用する。 $n \gt 0$ を満たさない場合assertまたは`std::length_error`にひっかかる
+modを $M$ として初期化する。 $M$ が素数でないとき`assert`に引っかかる。
+
+<br />
+
+#### reserve
+
+```cpp
+void reserve(u32 n)
+```
+
+内部のコンテナのサイズを $n$ にする。現在のコンテナのサイズが $n$ より大きいときは何もしない。
 
 <br />
 

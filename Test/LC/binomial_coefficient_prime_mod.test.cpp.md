@@ -17,9 +17,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    - https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.4/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -34,35 +34,27 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/internal_math.hpp:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/binomial_coefficient_prime_mod\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Number/BinomalCoefficients.hpp\"\
-    \n\n#include <iostream>\n#include <tuple>\nusing namespace zawa;\n\n/*\n * yukicoder\
-    \ No.117 \u7D44\u307F\u5408\u308F\u305B\u306E\u6570\n */\n\nstd::tuple<char, int,\
-    \ int> parse() {\n    std::string s; std::cin >> s;\n    char c{s[0]};\n    int\
-    \ i{2};\n    int p{};\n    for (; s[i] != ',' ; i++) {\n        p = (p * 10) +\
-    \ (s[i] - '0');\n    }\n    int q{};\n    for (i++ ; s[i] != ')' ; i++) {\n  \
-    \      q = (q * 10) + (s[i] - '0');\n    }\n    return { c, p, q };\n}\n\nvoid\
-    \ solve() {\n    int t; std::cin >> t;\n    BinomalCoefficients comb(1000000007);\n\
-    \    comb.reserve(10000000);\n    for (int _{} ; _ < t ; _++) {\n        auto\
-    \ [c, p, q]{parse()}; \n        if (c == 'C') std::cout << comb.C(p, q).val()\
-    \ << '\\n';\n        else if (c == 'P') std::cout << comb.P(p, q).val() << '\\\
-    n';\n        else std::cout << comb.H(p, q).val() << '\\n';\n    }\n}\n\nint main()\
-    \ {\n#ifdef ONLINE_JUDGE\n    solve();\n#else\n    std::cout << \"Hello World\"\
-    \ << '\\n';\n#endif\n}\n"
+    \n\n#include <algorithm>\n#include <iostream>\n\nusing namespace zawa;\n\nint\
+    \ main() {\n    int T, m;\n    std::cin >> T >> m;\n    BinomalCoefficients comb(m);\n\
+    \    comb.reserve(std::min(m, 10000000));\n    while (T--) {\n        int n, k;\n\
+    \        std::cin >> n >> k;\n        std::cout << comb.C(n, k).val() << '\\n';\n\
+    \    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Number/BinomalCoefficients.hpp
   isVerificationFile: true
-  path: Test/yukicoder/117.test.cpp
+  path: Test/LC/binomial_coefficient_prime_mod.test.cpp
   requiredBy: []
   timestamp: '2024-06-30 16:42:17+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/yukicoder/117.test.cpp
+documentation_of: Test/LC/binomial_coefficient_prime_mod.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/yukicoder/117.test.cpp
-- /verify/Test/yukicoder/117.test.cpp.html
-title: Test/yukicoder/117.test.cpp
+- /verify/Test/LC/binomial_coefficient_prime_mod.test.cpp
+- /verify/Test/LC/binomial_coefficient_prime_mod.test.cpp.html
+title: Test/LC/binomial_coefficient_prime_mod.test.cpp
 ---

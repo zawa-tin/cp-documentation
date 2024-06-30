@@ -788,6 +788,9 @@ data:
       path: Test/LC/aplusb.test.cpp
       title: Test/LC/aplusb.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/binomial_coefficient_prime_mod.test.cpp
+      title: Test/LC/binomial_coefficient_prime_mod.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/bipartitematching.test.cpp
       title: Test/LC/bipartitematching.test.cpp
     - icon: ':heavy_check_mark:'

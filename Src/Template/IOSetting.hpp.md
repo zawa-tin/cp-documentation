@@ -233,6 +233,9 @@ data:
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/binomial_coefficient_prime_mod.test.cpp
+    title: Test/LC/binomial_coefficient_prime_mod.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   - icon: ':heavy_check_mark:'
@@ -395,6 +398,7 @@ data:
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/yukicoder/117.test.cpp
+  - Test/LC/binomial_coefficient_prime_mod.test.cpp
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
