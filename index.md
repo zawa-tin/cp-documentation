@@ -326,7 +326,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Sack.hpp
       title: Sack
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Tree.hpp
       title: Src/Graph/Tree/Tree.hpp
   - name: Src/LinearAlgebra
