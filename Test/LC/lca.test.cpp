@@ -6,16 +6,18 @@ using namespace zawa;
 
 int main() {
     SetFastIO();
-    int n, q; std::cin >> n >> q; 
-    LowestCommonAncestor lca(n, 0);
-    for (int i{1} ; i < n ; i++) {
-        int p; std::cin >> p;
-        lca.addEdge(p, i);
+    int N, Q;
+    std::cin >> N >> Q;
+    Tree T(N);
+    for (int i{1} ; i < N ; i++) {
+        int p;
+        std::cin >> p;
+        AddDirectedEdge(T, p, i);
     }
-    lca.build();
-    for (int _{} ; _ < q ; _++) {
-        int u, v; std::cin >> u >> v;
-        int ans{(int)lca(u, v)};
-        std::cout << ans << '\n';
+    LowestCommonAncestor lca{T, 0};
+    while (Q--) {
+        int u, v;
+        std::cin >> u >> v;
+        std::cout << lca(u, v) << '\n';
     }
 }
