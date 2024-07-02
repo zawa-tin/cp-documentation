@@ -46,6 +46,10 @@ public:
         return st_.product(L_[u], R_[v]).value();
     }
 
+    u32 lca(u32 u, u32 v) const {
+        return (*this)(u, v);
+    }
+
     inline u32 depth(u32 v) const noexcept {
         assert(verify(v));
         return depth_[v];
@@ -63,11 +67,10 @@ public:
         return L_[p] <= L_[v] and R_[v] <= R_[p];
     }
 
-private:
-    static constexpr u32 INVALID{static_cast<u32>(-1)};
-    usize n_{};
-    std::vector<u32> depth_, L_, R_;
-    SparseTable<Monoid> st_;
+protected:
+    u32 left(u32 v) const noexcept {
+        return L_[v];
+    }
 
     inline usize size() const {
         return n_;
@@ -76,6 +79,12 @@ private:
     inline bool verify(u32 v) const {
         return v < size();
     }
+
+private:
+    static constexpr u32 INVALID{static_cast<u32>(-1)};
+    usize n_{};
+    std::vector<u32> depth_, L_, R_;
+    SparseTable<Monoid> st_;
 };
 
 } // namespace zawa
