@@ -3,87 +3,78 @@
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/ChminMonoid.hpp"
 #include "../../DataStructure/SparseTable/SparseTable.hpp"
+#include "./Tree.hpp"
 
 #include <cassert>
-#include <utility>
 #include <vector>
 
 namespace zawa {
 
 class LowestCommonAncestor {
 private:
-    using Monoid = ChminMonoid<u32, usize>;
-    using SptValue = Monoid::Element;
-    using Spt = SparseTable<Monoid>;
-    static constexpr u32 invalid{static_cast<u32>(-1)};
-    Spt spt_{};
-    usize n_{}, root_{};
-    std::vector<std::vector<u32>> tree_{};
-    std::vector<SptValue> euler_{};
-    std::vector<u32> first_{}, depth_{};
-
-    void dfs(u32 v, u32 p) {
-        first_[v] = euler_.size();
-        depth_[v] = (p == invalid ? invalid : depth_[p]) + 1;
-        euler_.emplace_back(depth_[v], v);
-        for (auto x : tree_[v]) if (x != p) {
-            assert(first_[x] == invalid or !"given graph is not tree");
-            dfs(x, v);
-            euler_.emplace_back(depth_[v], v);
-        }
-    }
+    using Monoid = ChminMonoid<u32, u32>;
 
 public:
     LowestCommonAncestor() = default;
-    LowestCommonAncestor(u32 n, u32 root) 
-        : n_{n}, root_{root}, tree_(n), euler_{}, first_(n, invalid), depth_(n) {
-        assert(n or !"empty graph is not allowed");
-        assert(root < n);
-        euler_.reserve(2 * n - 1);
-        first_.shrink_to_fit();
-        depth_.shrink_to_fit();
-    }
 
-    constexpr u32 size() const noexcept {
-        return n_;
-    }
-
-    void addEdge(usize u, usize v) {
-        assert(u < size());
-        assert(v < size());
-        tree_[u].emplace_back(v);
-        tree_[v].emplace_back(u);
-    }
-
-    const std::vector<u32>& operator[](u32 v) const {
-        return tree_[v];
-    }
-
-    void build() {
-        dfs(root_, invalid);
-        spt_ = Spt(euler_);
+    LowestCommonAncestor(const Tree& tree, u32 r = 0u) 
+        : n_{tree.size()}, depth_(tree.size()), L_(tree.size()), R_(tree.size()), st_{} {
+            std::vector<Monoid::Element> init;
+            init.reserve(2 * size());
+            auto dfs{[&](auto dfs, u32 v, u32 p) -> void {
+                depth_[v] = (p == INVALID ? 0u : depth_[p] + 1);
+                L_[v] = (u32)init.size();
+                for (auto x : tree[v]) {
+                    if (x == p) {
+                        continue;
+                    }
+                    init.emplace_back(depth_[v], v);
+                    dfs(dfs, x, v);
+                }
+                R_[v] = (u32)init.size();
+            }};
+            dfs(dfs, r, INVALID);
+            st_ = SparseTable<Monoid>(init);
     }
 
     u32 operator()(u32 u, u32 v) const {
-        assert(u < size());
-        assert(v < size());
-        if (first_[u] > first_[v]) std::swap(u, v);
-        return spt_.product(first_[u], first_[v] + 1).value();
+        assert(verify(u));
+        assert(verify(v));
+        if (L_[u] > L_[v]) {
+            std::swap(u, v);
+        }
+        return st_.product(L_[u], R_[v]).value();
     }
 
-    u32 depth(u32 v) const noexcept {
-        assert(v < size());
+    inline u32 depth(u32 v) const noexcept {
+        assert(verify(v));
         return depth_[v];
     }
 
     u32 distance(u32 u, u32 v) const {
-        assert(u < size());
-        assert(v < size());
-        return depth_[u] + depth_[v] - 2u * depth_[(*this)(u, v)];
+        assert(verify(u));
+        assert(verify(v));
+        return depth(u) + depth(v) - 2u * depth((*this)(u, v));
     }
 
-    bool isAncestor(u32 anc, u32 child) const {
-        return (*this)(anc, child) == anc;
+    bool isAncestor(u32 p, u32 v) const {
+        assert(verify(p));
+        assert(verify(v));
+        return L_[p] <= L_[v] and R_[v] <= R_[p];
+    }
+
+private:
+    static constexpr u32 INVALID{static_cast<u32>(-1)};
+    usize n_{};
+    std::vector<u32> depth_, L_, R_;
+    SparseTable<Monoid> st_;
+
+    inline usize size() const {
+        return n_;
+    }
+
+    inline bool verify(u32 v) const {
+        return v < size();
     }
 };
 
