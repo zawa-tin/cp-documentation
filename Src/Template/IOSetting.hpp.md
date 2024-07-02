@@ -318,7 +318,7 @@ data:
     title: Test/Manual/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc359_g.test.cpp
-    title: ABC359-F Small Products
+    title: ABC359-F Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp

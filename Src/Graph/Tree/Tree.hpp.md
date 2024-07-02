@@ -23,7 +23,7 @@ data:
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc359_g.test.cpp
-    title: ABC359-F Small Products
+    title: ABC359-F Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp

@@ -216,7 +216,7 @@ data:
   verifiedWith: []
 documentation_of: Test/Manual/abc359_g.test.cpp
 layout: document
-title: ABC359-F Small Products
+title: ABC359-F Sum of Tree Distance
 ---
 
 $N$ 頂点からなる木について $\sum_{i = 1}^{N - 1} \sum_{j = i + 1}^{N} \text{dist}(i, j)$ を求める方法。
