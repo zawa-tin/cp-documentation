@@ -6,12 +6,21 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/AuxiliaryTree.hpp
+    title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\
+      \u306E\u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\
+      \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
+      \u6728)"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_e.test.cpp
     title: ABC288-E Wish List
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_g.test.cpp
+    title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
@@ -24,6 +33,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc359_g.test.cpp
+    title: ABC359-F Small Products
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/typical90_ai.test.cpp
+    title: Test/Manual/typical90_ai.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,15 +94,19 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/SparseTable.hpp
   requiredBy:
+  - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc288_e.test.cpp
+  - Test/AtCoder/abc340_g.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/lca.test.cpp
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF923-D.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
+  - Test/Manual/abc359_g.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

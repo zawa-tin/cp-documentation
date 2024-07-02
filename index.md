@@ -311,6 +311,12 @@ data:
       title: Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
   - name: Src/Graph/Tree
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/AuxiliaryTree.hpp
+      title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\
+        \u306E\u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\
+        \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
+        \u6728)"
     - icon: ':warning:'
       path: Src/Graph/Tree/EulerTour.hpp
       title: Src/Graph/Tree/EulerTour.hpp
@@ -754,6 +760,9 @@ data:
       path: Test/AtCoder/abc334_g.test.cpp
       title: Test/AtCoder/abc334_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc340_g.test.cpp
+      title: Test/AtCoder/abc340_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc349_f.test.cpp
       title: ABC349-F Subsequence LCM
     - icon: ':heavy_check_mark:'
@@ -898,6 +907,9 @@ data:
       path: Test/Manual/abc331_f.test.cpp
       title: Test/Manual/abc331_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc359_g.test.cpp
+      title: ABC359-F Small Products
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp
     - icon: ':heavy_check_mark:'
@@ -927,6 +939,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_l.test.cpp
       title: ALPC-L Lazy Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/typical90_ai.test.cpp
+      title: Test/Manual/typical90_ai.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/typical90_an.test.cpp
       title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"

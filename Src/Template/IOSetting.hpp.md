@@ -317,6 +317,9 @@ data:
     path: Test/Manual/abc331_f.test.cpp
     title: Test/Manual/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc359_g.test.cpp
+    title: ABC359-F Small Products
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -343,6 +346,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/typical90_ai.test.cpp
+    title: Test/Manual/typical90_ai.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_an.test.cpp
     title: "\u7AF6\u30D7\u30ED\u5178\u578B90\u554F-040 Get More Money"
@@ -486,9 +492,11 @@ data:
   - Test/Manual/typical90_an.test.cpp
   - Test/Manual/practice2_e.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/typical90_by.test.cpp
+  - Test/Manual/abc359_g.test.cpp
   - Test/Manual/kupc2016_h.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
   - Test/Manual/abc239_g.test.cpp
