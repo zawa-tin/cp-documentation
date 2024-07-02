@@ -241,6 +241,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/Sack.hpp
     title: Sack
+  - icon: ':warning:'
+    path: Src/Graph/Tree/Tree.hpp
+    title: Src/Graph/Tree/Tree.hpp
   - icon: ':heavy_check_mark:'
     path: Src/LinearAlgebra/Matrix.hpp
     title: Src/LinearAlgebra/Matrix.hpp
@@ -908,6 +911,7 @@ data:
   - Src/Graph/Tree/Sack.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Tree/Tree.hpp
   - Src/Graph/Tree/HeavyLightDecomposition.hpp
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Flow/SuccessiveShortestPath.hpp
