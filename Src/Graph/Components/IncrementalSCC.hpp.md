@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/incremental_scc.test.cpp
+    title: Test/LC/incremental_scc.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -78,6 +81,7 @@ data:
   timestamp: '2024-06-28 18:38:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/incremental_scc.test.cpp
   - Test/CF/ECR167-F.test.cpp
 documentation_of: Src/Graph/Components/IncrementalSCC.hpp
 layout: document

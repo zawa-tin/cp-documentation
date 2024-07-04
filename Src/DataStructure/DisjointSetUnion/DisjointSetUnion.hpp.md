@@ -10,6 +10,9 @@ data:
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/incremental_scc.test.cpp
+    title: Test/LC/incremental_scc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/unionfind.test.cpp
     title: Test/LC/unionfind.test.cpp
   _isVerificationFailed: false
@@ -71,6 +74,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/unionfind.test.cpp
+  - Test/LC/incremental_scc.test.cpp
   - Test/CF/ECR167-F.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document

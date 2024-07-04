@@ -245,6 +245,9 @@ data:
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/incremental_scc.test.cpp
+    title: Test/LC/incremental_scc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca.test.cpp
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -425,6 +428,7 @@ data:
   - Test/LC/unionfind.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/LC/incremental_scc.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/lca.test.cpp
