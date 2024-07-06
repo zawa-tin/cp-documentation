@@ -10,57 +10,55 @@
 namespace zawa {
 
 class DisjointSetUnion {
-private:
-    usize n_{};
-    std::vector<u32> parent_{}, size_{};
 public:
     DisjointSetUnion() = default;
-    DisjointSetUnion(usize n) : n_{n}, parent_(n), size_(n, u32{1}) {
-        parent_.shrink_to_fit();
-        size_.shrink_to_fit();
-        std::iota(parent_.begin(), parent_.end(), u32{});
-    }
 
+    DisjointSetUnion(usize n) : n_{n}, data_(n, -1) {
+        data_.shrink_to_fit();
+    }
+    
     u32 leader(u32 v) {
-        assert(v < n_);
-        return (v == parent_[v] ? v : parent_[v] = leader(parent_[v]));
+        return data_[v] < 0 ? v : static_cast<u32>(data_[v] = leader(data_[v]));
     }
 
     bool same(u32 u, u32 v) {
-        assert(u < n_);
-        assert(v < n_);
         return leader(u) == leader(v);
     }
 
-    void merge(u32 u, u32 v) {
+    bool merge(u32 u, u32 v) {
         assert(u < n_);
         assert(v < n_);
         u = leader(u);
         v = leader(v);
-        if (u == v) return;
-        if (size_[u] < size_[v]) std::swap(u, v);
-        size_[u] += size_[v];
-        parent_[v] = u;
+        if (u == v) return false;
+        if (data_[u] > data_[v]) std::swap(u, v);
+        data_[u] += data_[v];
+        data_[v] = u;
+        return true;
     }
 
-    constexpr u32 size() const noexcept {
+    inline usize size() const noexcept {
         return n_;
     }
 
-    u32 size(u32 v) {
+    usize size(u32 v) {
         assert(v < n_);
-        return size_[leader(v)];
+        return static_cast<usize>(-data_[leader(v)]);
     }
 
     std::vector<std::vector<u32>> enumerate() {
-        std::vector res(n_, std::vector<u32>{});
-        for (u32 i{} ; i < n_ ; i++) {
-            res[leader(i)].emplace_back(i);
+        std::vector<std::vector<u32>> res(n_);
+        for (u32 v{} ; v < n_ ; v++) {
+            res[leader(v)].push_back(v);
         }
         res.erase(std::remove_if(res.begin(), res.end(),
-                    [](const std::vector<u32>& array) { return array.empty(); }), res.end());
+                    [](const auto& arr) -> bool { return arr.empty(); }), res.end());
         return res;
     }
+
+private:
+    usize n_{};
+    std::vector<i32> data_;
 };
 
 } // namespace zawa
