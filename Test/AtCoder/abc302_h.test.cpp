@@ -1,4 +1,4 @@
-#define PROBLEM "https://atcoder.jp/contests/abc302/tasks/abc302_h"
+#define PROBLEM "https://atcoder.jp/contests/abc302/tasks/abc302_ex"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp"
