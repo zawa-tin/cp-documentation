@@ -53,6 +53,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
       title: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
+      title: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -88,6 +91,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SparseTable/SparseTable.hpp
       title: Sparse Table
+  - name: Src/DataStructure/Undoable
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Undoable/UndoableValue.hpp
+      title: Src/DataStructure/Undoable/UndoableValue.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Undoable/UndoableVector.hpp
+      title: Src/DataStructure/Undoable/UndoableVector.hpp
   - name: Src/GeometryR2
     pages:
     - icon: ':heavy_check_mark:'
@@ -652,6 +663,9 @@ data:
       path: Test/AtCoder/abc157_f.test.cpp
       title: ABC157-F Yakiniku Optimization Problem
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc165_f.test.cpp
+      title: Test/AtCoder/abc165_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc170_d.test.cpp
       title: Test/AtCoder/abc170_d.test.cpp
     - icon: ':heavy_check_mark:'
@@ -744,6 +758,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc299_c.test.cpp
       title: Test/AtCoder/abc299_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc302_h.test.cpp
+      title: Test/AtCoder/abc302_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc307_e.test.cpp
       title: Test/AtCoder/abc307_e.test.cpp

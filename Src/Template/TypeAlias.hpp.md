@@ -19,6 +19,9 @@ data:
     path: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
     title: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
+    title: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -45,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Undoable/UndoableVector.hpp
+    title: Src/DataStructure/Undoable/UndoableVector.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
@@ -521,6 +527,9 @@ data:
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc165_f.test.cpp
+    title: Test/AtCoder/abc165_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc170_d.test.cpp
     title: Test/AtCoder/abc170_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -613,6 +622,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc302_h.test.cpp
+    title: Test/AtCoder/abc302_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc307_e.test.cpp
     title: Test/AtCoder/abc307_e.test.cpp
@@ -999,7 +1011,9 @@ data:
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
+  - Src/DataStructure/Undoable/UndoableVector.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
+  - Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
@@ -1043,6 +1057,7 @@ data:
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/abc165_f.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
@@ -1054,6 +1069,7 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
+  - Test/AtCoder/abc302_h.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
