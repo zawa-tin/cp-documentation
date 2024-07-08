@@ -149,12 +149,6 @@ data:
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/abc261_f.test.cpp
-    title: Test/AOJ/abc261_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/abc296_f.test.cpp
-    title: Test/AOJ/abc296_f.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc127_f.test.cpp
     title: Test/AtCoder/abc127_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -194,6 +188,9 @@ data:
     path: Test/AtCoder/abc259_b.test.cpp
     title: Test/AtCoder/abc259_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc261_f.test.cpp
+    title: Test/AtCoder/abc261_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc263_g.test.cpp
     title: ABC263-G Erasing Prime Pairs
   - icon: ':heavy_check_mark:'
@@ -205,6 +202,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc296_f.test.cpp
+    title: "ABC296-F Simultaneous Swap (\u4E92\u63DB\u306F\u5947\u6570\u56DE\u306E\
+      \u96A3\u63A5swap)"
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
@@ -426,8 +427,10 @@ data:
   - Test/AtCoder/abc263_g.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc302_h.test.cpp
+  - Test/AtCoder/abc296_f.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
+  - Test/AtCoder/abc261_f.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/yukicoder/117.test.cpp
@@ -488,12 +491,10 @@ data:
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/abc296_f.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/2943.test.cpp
-  - Test/AOJ/abc261_f.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2872.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp

@@ -20,7 +20,7 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc296/tasks/abc296_f
     links:
     - https://atcoder.jp/contests/abc296/tasks/abc296_f
-  bundledCode: "#line 1 \"Test/AOJ/abc296_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc296/tasks/abc296_f\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc296_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc296/tasks/abc296_f\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -56,7 +56,7 @@ data:
     \ = A[i++];\n        while (j < R) tmp[k++] = A[j++];\n        for (usize l{L}\
     \ ; l < R ; l++) {\n            A[l] = tmp[l - L];\n        }\n        return\
     \ res;\n    }};\n    return rec(rec, usize{0}, usize{A.size()});\n}\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AOJ/abc296_f.test.cpp\"\n\n#line 8 \"Test/AOJ/abc296_f.test.cpp\"\
+    \ zawa\n#line 5 \"Test/AtCoder/abc296_f.test.cpp\"\n\n#line 8 \"Test/AtCoder/abc296_f.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N;\n    std::cin\
     \ >> N;\n    std::vector<int> A(N), B(N);\n    for (auto& x : A) {\n        std::cin\
     \ >> x;\n        x--;\n    }\n    for (auto& x : B) {\n        std::cin >> x;\n\
@@ -91,15 +91,39 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Sequence/InversionNumber.hpp
   isVerificationFile: true
-  path: Test/AOJ/abc296_f.test.cpp
+  path: Test/AtCoder/abc296_f.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 02:49:52+09:00'
+  timestamp: '2024-07-09 03:03:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/abc296_f.test.cpp
+documentation_of: Test/AtCoder/abc296_f.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/AOJ/abc296_f.test.cpp
-- /verify/Test/AOJ/abc296_f.test.cpp.html
-title: Test/AOJ/abc296_f.test.cpp
+title: "ABC296-F Simultaneous Swap (\u4E92\u63DB\u306F\u5947\u6570\u56DE\u306E\u96A3\
+  \u63A5swap)"
 ---
+
+長さ $N$ の数列 $A = (A_{1}, A_{2}, \dots, A_{N})$ の $L$ 番目の要素と $R$ 番目の要素をswapすることを考える。
+
+これは $2(R - L - 1) + 1$ 回の隣接要素のswapで実現できる。
+
+$A_{L}$ の要素を $A_{R}$ のところに運ぶのに $R - L$ 回のswap、現在 $A_{R}$ は $R - 1$ 番目にいて、これを $L$ 番目に運ぶのに $R - L - 1$ 回のswapを要する。
+
+$2\times$ 整数 $+1$ の形で表現できる整数は奇数であることを思い出すと、以下が成り立つことがわかる。
+
+**順列は互換( $L$ 番目の要素と $R$ 番目の要素をswapする)によって転倒数の偶奇が必ず入れ替わる**
+
+<br />
+
+この事実を利用してこの問題を解くことができる。 
+
+$A, B$ が多重集合として一致していることを仮定する。
+
+### $A$ がdistinctのとき
+
+操作によって $A$ の転倒数の偶奇、 $B$ の転倒数の偶奇は必ず入れ替わる。すなわち $A$ の転倒数 - $B$ の転倒数の偶奇は不変である。
+
+よって $A$ の転倒数の偶奇と $B$ の転倒数の偶奇が一致していることが必要だが、実は十分条件にもなっている。実際に操作列を構築することで示せるようだ。
+
+### $A$ がdistinctでないとき
+
+うまく $(i, j, k)$ を選ぶことで転倒数の偶奇すらずらせる。常にYes

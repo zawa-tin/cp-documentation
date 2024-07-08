@@ -10,11 +10,12 @@ data:
     path: Test/AOJ/ALDS1_5_D.test.cpp
     title: Test/AOJ/ALDS1_5_D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/abc261_f.test.cpp
-    title: Test/AOJ/abc261_f.test.cpp
+    path: Test/AtCoder/abc261_f.test.cpp
+    title: Test/AtCoder/abc261_f.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/abc296_f.test.cpp
-    title: Test/AOJ/abc296_f.test.cpp
+    path: Test/AtCoder/abc296_f.test.cpp
+    title: "ABC296-F Simultaneous Swap (\u4E92\u63DB\u306F\u5947\u6570\u56DE\u306E\
+      \u96A3\u63A5swap)"
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -88,9 +89,9 @@ data:
   timestamp: '2024-07-09 02:49:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc296_f.test.cpp
+  - Test/AtCoder/abc261_f.test.cpp
   - Test/AOJ/ALDS1_5_D.test.cpp
-  - Test/AOJ/abc296_f.test.cpp
-  - Test/AOJ/abc261_f.test.cpp
 documentation_of: Src/Sequence/InversionNumber.hpp
 layout: document
 redirect_from:

@@ -20,7 +20,7 @@ data:
     PROBLEM: https://atcoder.jp/contests/abc261/tasks/abc261_f
     links:
     - https://atcoder.jp/contests/abc261/tasks/abc261_f
-  bundledCode: "#line 1 \"Test/AOJ/abc261_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc261/tasks/abc261_f\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc261_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc261/tasks/abc261_f\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -56,7 +56,7 @@ data:
     \ = A[i++];\n        while (j < R) tmp[k++] = A[j++];\n        for (usize l{L}\
     \ ; l < R ; l++) {\n            A[l] = tmp[l - L];\n        }\n        return\
     \ res;\n    }};\n    return rec(rec, usize{0}, usize{A.size()});\n}\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AOJ/abc261_f.test.cpp\"\n\n#line 8 \"Test/AOJ/abc261_f.test.cpp\"\
+    \ zawa\n#line 5 \"Test/AtCoder/abc261_f.test.cpp\"\n\n#line 8 \"Test/AtCoder/abc261_f.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO(); \n    int N;\n   \
     \ std::cin >> N;\n    std::vector<int> C(N), X(N);\n    for (int& c : C) {\n \
     \       std::cin >> c;\n        c--;\n    }\n    std::vector<std::vector<int>>\
@@ -79,15 +79,15 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Sequence/InversionNumber.hpp
   isVerificationFile: true
-  path: Test/AOJ/abc261_f.test.cpp
+  path: Test/AtCoder/abc261_f.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 02:49:52+09:00'
+  timestamp: '2024-07-09 03:03:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/abc261_f.test.cpp
+documentation_of: Test/AtCoder/abc261_f.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/abc261_f.test.cpp
-- /verify/Test/AOJ/abc261_f.test.cpp.html
-title: Test/AOJ/abc261_f.test.cpp
+- /verify/Test/AtCoder/abc261_f.test.cpp
+- /verify/Test/AtCoder/abc261_f.test.cpp.html
+title: Test/AtCoder/abc261_f.test.cpp
 ---
