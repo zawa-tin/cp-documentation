@@ -290,6 +290,9 @@ data:
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/InversionNumber.hpp
+    title: Src/Sequence/InversionNumber.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/MajorityVote.hpp
     title: "Boyer-Moore\u306EMajority vote algorithm"
   - icon: ':heavy_check_mark:'
@@ -401,6 +404,9 @@ data:
     path: Test/AOJ/ALDS1_14_B.test.cpp
     title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ALDS1_5_D.test.cpp
+    title: Test/AOJ/ALDS1_5_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -511,6 +517,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ITP2_4_A.test.cpp
     title: Test/AOJ/ITP2_4_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/abc261_f.test.cpp
+    title: Test/AOJ/abc261_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/abc296_f.test.cpp
+    title: Test/AOJ/abc296_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc127_f.test.cpp
     title: Test/AtCoder/abc127_f.test.cpp
@@ -985,6 +997,7 @@ data:
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Sequence/MajorityVote.hpp
+  - Src/Sequence/InversionNumber.hpp
   - Src/Sequence/RollingHash.hpp
   - Src/Template/SupInf.hpp
   - Src/Template/VectorIO.hpp
@@ -1102,6 +1115,7 @@ data:
   - Test/LC/static_range_sum.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
+  - Test/AOJ/ALDS1_5_D.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
@@ -1151,11 +1165,13 @@ data:
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/abc296_f.test.cpp
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/2943.test.cpp
+  - Test/AOJ/abc261_f.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2872.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp

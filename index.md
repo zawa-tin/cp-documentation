@@ -390,6 +390,9 @@ data:
       path: Src/Sequence/CompressedSequence.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/InversionNumber.hpp
+      title: Src/Sequence/InversionNumber.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/MajorityVote.hpp
       title: "Boyer-Moore\u306EMajority vote algorithm"
     - icon: ':heavy_check_mark:'
@@ -527,6 +530,9 @@ data:
       path: Test/AOJ/ALDS1_14_B.test.cpp
       title: Test/AOJ/ALDS1_14_B.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/ALDS1_5_D.test.cpp
+      title: Test/AOJ/ALDS1_5_D.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_1_A.test.cpp
       title: Test/AOJ/CGL_1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -613,6 +619,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ITP2_4_A.test.cpp
       title: Test/AOJ/ITP2_4_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/abc261_f.test.cpp
+      title: Test/AOJ/abc261_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/abc296_f.test.cpp
+      title: Test/AOJ/abc296_f.test.cpp
   - name: Test/AOJ/CGL_1_C
     pages:
     - icon: ':heavy_check_mark:'

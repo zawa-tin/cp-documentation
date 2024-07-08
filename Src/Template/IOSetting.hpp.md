@@ -59,6 +59,9 @@ data:
     path: Test/AOJ/ALDS1_14_B.test.cpp
     title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/ALDS1_5_D.test.cpp
+    title: Test/AOJ/ALDS1_5_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_1_A.test.cpp
     title: Test/AOJ/CGL_1_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -145,6 +148,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_7_A.test.cpp
     title: Test/AOJ/GRL_7_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/abc261_f.test.cpp
+    title: Test/AOJ/abc261_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/abc296_f.test.cpp
+    title: Test/AOJ/abc296_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc127_f.test.cpp
     title: Test/AtCoder/abc127_f.test.cpp
@@ -441,6 +450,7 @@ data:
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/lca.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/AOJ/ALDS1_5_D.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
@@ -478,10 +488,12 @@ data:
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/abc296_f.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/2943.test.cpp
+  - Test/AOJ/abc261_f.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2872.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp
