@@ -20,6 +20,9 @@ public:
     constexpr T mapping(const T& x) const {
         return a_ * x + b_;
     }
+    constexpr T operator()(const T& x) const {
+        return a_ * x + b_;
+    }
     friend std::ostream& operator<<(std::ostream& os, const Affine& affine) {
         os << '(' << affine.a_ << ',' << affine.b_ << ')';
         return os;
