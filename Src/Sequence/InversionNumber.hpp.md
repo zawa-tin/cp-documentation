@@ -89,9 +89,9 @@ data:
   timestamp: '2024-07-09 02:49:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc296_f.test.cpp
-  - Test/AtCoder/abc261_f.test.cpp
   - Test/AOJ/ALDS1_5_D.test.cpp
+  - Test/AtCoder/abc261_f.test.cpp
+  - Test/AtCoder/abc296_f.test.cpp
 documentation_of: Src/Sequence/InversionNumber.hpp
 layout: document
 redirect_from:

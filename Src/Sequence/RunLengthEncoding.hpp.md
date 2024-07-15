@@ -140,8 +140,8 @@ data:
   timestamp: '2023-07-29 13:13:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
+  - Test/AtCoder/abc311_b.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
   - Test/Manual/agc026_a.test.cpp
 documentation_of: Src/Sequence/RunLengthEncoding.hpp

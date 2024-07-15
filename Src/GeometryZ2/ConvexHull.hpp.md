@@ -238,9 +238,9 @@ data:
   timestamp: '2024-06-26 18:12:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_convex_hull.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
 documentation_of: Src/GeometryZ2/ConvexHull.hpp
 layout: document
 redirect_from:

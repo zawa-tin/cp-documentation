@@ -12,6 +12,9 @@ data:
       \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
       \u6728)"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/Centroid.hpp
+    title: "\u6728\u306E\u91CD\u5FC3"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   _extendedVerifiedWith:
@@ -22,11 +25,17 @@ data:
     path: Test/LC/lca.test.cpp
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc291_h.test.cpp
+    title: Test/Manual/abc291_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc359_g.test.cpp
     title: ABC359-F Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/yahoo_procon2018_final_c.test.cpp
+    title: Test/Manual/yahoo_procon2018_final_c.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -56,6 +65,7 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/Tree.hpp
   requiredBy:
+  - Src/Graph/Tree/Centroid.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   timestamp: '2024-07-02 11:54:33+09:00'
@@ -63,7 +73,9 @@ data:
   verifiedWith:
   - Test/AtCoder/abc340_g.test.cpp
   - Test/LC/lca.test.cpp
+  - Test/Manual/abc291_h.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/abc359_g.test.cpp
 documentation_of: Src/Graph/Tree/Tree.hpp
 layout: document

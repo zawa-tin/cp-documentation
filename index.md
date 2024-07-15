@@ -328,6 +328,9 @@ data:
         \u306E\u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\
         \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
         \u6728)"
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/Centroid.hpp
+      title: "\u6728\u306E\u91CD\u5FC3"
     - icon: ':warning:'
       path: Src/Graph/Tree/EulerTour.hpp
       title: Src/Graph/Tree/EulerTour.hpp
@@ -934,6 +937,9 @@ data:
       path: Test/Manual/abc287_g.test.cpp
       title: Test/Manual/abc287_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc291_h.test.cpp
+      title: Test/Manual/abc291_h.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc317_g.test.cpp
       title: ABC317-G Rearranging
     - icon: ':heavy_check_mark:'
@@ -984,6 +990,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/utpc2012_12.test.cpp
       title: Test/Manual/utpc2012_12.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/yahoo_procon2018_final_c.test.cpp
+      title: Test/Manual/yahoo_procon2018_final_c.test.cpp
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'
