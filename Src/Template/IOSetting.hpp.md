@@ -285,6 +285,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/queue_operate_all_composite.test.cpp
+    title: Test/LC/queue_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -507,6 +510,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/point_add_rectangle_sum.test.cpp

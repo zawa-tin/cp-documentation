@@ -72,6 +72,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - name: Src/DataStructure/SWAG
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SWAG/SWAG.hpp
+      title: Src/DataStructure/SWAG/SWAG.hpp
   - name: Src/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -880,6 +885,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_set_range_composite.test.cpp
       title: Test/LC/point_set_range_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/queue_operate_all_composite.test.cpp
+      title: Test/LC/queue_operate_all_composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_affine_point_get.test.cpp
       title: Test/LC/range_affine_point_get.test.cpp

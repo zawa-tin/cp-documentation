@@ -34,6 +34,9 @@ data:
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/SWAG.hpp
+    title: Src/DataStructure/SWAG/SWAG.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
@@ -741,6 +744,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/queue_operate_all_composite.test.cpp
+    title: Test/LC/queue_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -997,6 +1003,7 @@ data:
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/Parallel/LineAndLine.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/DataStructure/SWAG/SWAG.hpp
   - Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
@@ -1186,6 +1193,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/bipartitematching.test.cpp

@@ -131,7 +131,8 @@ data:
     \ Affine() {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n\
     \    T a() const noexcept {\n        return a_;\n    }\n    T b() const noexcept\
     \ {\n        return b_;\n    }\n    constexpr T mapping(const T& x) const {\n\
-    \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \        return a_ * x + b_;\n    }\n    constexpr T operator()(const T& x) const\
+    \ {\n        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
     \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
     \ {\n    using Element = Affine<T>;\n    static constexpr Element identity() noexcept\
@@ -175,7 +176,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_affine_point_get.test.cpp
   requiredBy: []
-  timestamp: '2024-02-11 20:49:11+09:00'
+  timestamp: '2024-07-15 23:06:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_point_get.test.cpp
