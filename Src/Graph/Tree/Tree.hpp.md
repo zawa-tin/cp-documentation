@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/frequency_table_of_tree_distance.test.cpp
+    title: Test/LC/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca.test.cpp
     title: Test/LC/lca.test.cpp
   - icon: ':heavy_check_mark:'
@@ -73,6 +76,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc340_g.test.cpp
   - Test/LC/lca.test.cpp
+  - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp

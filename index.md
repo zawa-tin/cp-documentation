@@ -857,6 +857,9 @@ data:
       path: Test/LC/enumerate_quotients.test.cpp
       title: Test/LC/enumerate_quotients.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/frequency_table_of_tree_distance.test.cpp
+      title: Test/LC/frequency_table_of_tree_distance.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/incremental_scc.test.cpp
       title: Test/LC/incremental_scc.test.cpp
     - icon: ':heavy_check_mark:'

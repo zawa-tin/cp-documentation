@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/LC/frequency_table_of_tree_distance.test.cpp
+    title: Test/LC/frequency_table_of_tree_distance.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc291_h.test.cpp
     title: Test/Manual/abc291_h.test.cpp
   - icon: ':heavy_check_mark:'
@@ -106,6 +109,7 @@ data:
   timestamp: '2024-07-15 15:20:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
 documentation_of: Src/Graph/Tree/Centroid.hpp
