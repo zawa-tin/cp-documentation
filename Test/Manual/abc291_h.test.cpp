@@ -40,7 +40,7 @@ int main() {
     for (int v{} ; v < N ; v++) {
         std::cout << ans[v] << (v + 1 == N ? '\n' : ' ');
     }
-#elif
+#else
     std::cout << "Hello World" << '\n';
 #endif
 }
