@@ -15,9 +15,15 @@ data:
     path: Src/Graph/Tree/Centroid.hpp
     title: "\u6728\u306E\u91CD\u5FC3"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/HeavyLightDecomposition.hpp
+    title: Heavy Light Decomposition
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0465.test.cpp
+    title: Test/AOJ/0465.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
@@ -25,8 +31,17 @@ data:
     path: Test/LC/frequency_table_of_tree_distance.test.cpp
     title: Test/LC/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/lca.test.cpp
-    title: Test/LC/lca.test.cpp
+    path: Test/LC/jump_on_tree.test.cpp
+    title: Test/LC/jump_on_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/HeavyLightDecomposition.test.cpp
+    title: Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/LowestCommonAncestor.test.cpp
+    title: Test/LC/lca/LowestCommonAncestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_path_sum.test.cpp
+    title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc291_h.test.cpp
     title: Test/Manual/abc291_h.test.cpp
@@ -71,12 +86,17 @@ data:
   - Src/Graph/Tree/Centroid.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Tree/HeavyLightDecomposition.hpp
   timestamp: '2024-07-02 11:54:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/0465.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
-  - Test/LC/lca.test.cpp
+  - Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
+  - Test/LC/jump_on_tree.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp

@@ -341,7 +341,7 @@ data:
       title: Src/Graph/Tree/EulerTour.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/HeavyLightDecomposition.hpp
-      title: Src/Graph/Tree/HeavyLightDecomposition.hpp
+      title: Heavy Light Decomposition
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/LevelAncestor.hpp
       title: Src/Graph/Tree/LevelAncestor.hpp
@@ -476,6 +476,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/0445.test.cpp
       title: Test/AOJ/0445.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/0465.test.cpp
+      title: Test/AOJ/0465.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1053.test.cpp
       title: AOJ1053 Accelerated Railgun
@@ -868,8 +871,8 @@ data:
       path: Test/LC/incremental_scc.test.cpp
       title: Test/LC/incremental_scc.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/LC/lca.test.cpp
-      title: Test/LC/lca.test.cpp
+      path: Test/LC/jump_on_tree.test.cpp
+      title: Test/LC/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
@@ -918,6 +921,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/vertex_add_subtree_sum.test.cpp
       title: Test/LC/vertex_add_subtree_sum.test.cpp
+  - name: Test/LC/lca
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/lca/HeavyLightDecomposition.test.cpp
+      title: Test/LC/lca/HeavyLightDecomposition.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/lca/LowestCommonAncestor.test.cpp
+      title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

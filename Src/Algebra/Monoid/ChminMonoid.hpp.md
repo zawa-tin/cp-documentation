@@ -22,8 +22,8 @@ data:
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/lca.test.cpp
-    title: Test/LC/lca.test.cpp
+    path: Test/LC/lca/LowestCommonAncestor.test.cpp
+    title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc359_g.test.cpp
     title: ABC359-F Sum of Tree Distance
@@ -88,7 +88,7 @@ data:
   verifiedWith:
   - Test/CF/CF923-D.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
-  - Test/LC/lca.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc359_g.test.cpp
 documentation_of: Src/Algebra/Monoid/ChminMonoid.hpp

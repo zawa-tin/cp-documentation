@@ -16,6 +16,9 @@ data:
     path: Test/AOJ/0445.test.cpp
     title: Test/AOJ/0445.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0465.test.cpp
+    title: Test/AOJ/0465.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
@@ -267,8 +270,14 @@ data:
     path: Test/LC/incremental_scc.test.cpp
     title: Test/LC/incremental_scc.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/lca.test.cpp
-    title: Test/LC/lca.test.cpp
+    path: Test/LC/jump_on_tree.test.cpp
+    title: Test/LC/jump_on_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/HeavyLightDecomposition.test.cpp
+    title: Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/LowestCommonAncestor.test.cpp
+    title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/many_aplusb.test.cpp
     title: Test/LC/many_aplusb.test.cpp
@@ -420,6 +429,7 @@ data:
   verifiedWith:
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/2872.test.cpp
+  - Test/AOJ/0465.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
@@ -501,15 +511,17 @@ data:
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/lca.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/sort_by_argument.test.cpp
+  - Test/LC/jump_on_tree.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/bipartitematching.test.cpp

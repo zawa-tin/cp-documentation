@@ -29,35 +29,35 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
     - https://judge.yosupo.jp/problem/lca
-  bundledCode: "#line 1 \"Test/LC/lca.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
-    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\
-    \n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\n\n#line 4 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
-    \n\n#include <algorithm>\n#include <optional>\n\nnamespace zawa {\n\ntemplate\
-    \ <class T, class U>\nclass ChminMonoidData {\nprivate:\n    std::optional<T>\
-    \ priority_{};\n    U value_{};\npublic:\n    ChminMonoidData() = default;\n \
-    \   ChminMonoidData(const U& value)\n        : priority_{std::nullopt}, value_{value}\
-    \ {}\n    ChminMonoidData(const T& priority, const U& value)\n        : priority_{priority},\
-    \ value_{value} {}\n\n    constexpr bool infty() const noexcept {\n        return\
-    \ !priority_.has_value();\n    }\n    constexpr const T& priority() const noexcept\
-    \ {\n        return priority_.value();\n    }\n    constexpr const U& value()\
-    \ const noexcept {\n        return value_;\n    }\n    friend constexpr bool operator<(const\
-    \ ChminMonoidData& l, const ChminMonoidData& r) {\n        if (l.infty()) return\
-    \ false;\n        else if (r.infty()) return true;\n        else return l.priority()\
-    \ < r.priority();\n    }\n};\n\ntemplate <class T, class U>\nstruct ChminMonoid\
-    \ {\n    using Element = ChminMonoidData<T, U>;\n    static Element identity()\
-    \ noexcept {\n        return Element{};\n    }\n    // \u30BF\u30A4\u30D6\u30EC\
-    \u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\u3059\u308B\u3088\u3046\u306B\u306A\
-    \u3063\u3066\u3044\u308B\u3002\n    static Element operation(const Element& l,\
-    \ const Element& r) noexcept {\n        return (r < l ? r : l);\n    }\n};\n\n\
-    } // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+  bundledCode: "#line 1 \"Test/LC/lca/LowestCommonAncestor.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/lca\"\n\n#line 2 \"Src/Template/IOSetting.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
+    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
+    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
+    \n\n#line 4 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\n\n#include <algorithm>\n#include\
+    \ <optional>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass ChminMonoidData\
+    \ {\nprivate:\n    std::optional<T> priority_{};\n    U value_{};\npublic:\n \
+    \   ChminMonoidData() = default;\n    ChminMonoidData(const U& value)\n      \
+    \  : priority_{std::nullopt}, value_{value} {}\n    ChminMonoidData(const T& priority,\
+    \ const U& value)\n        : priority_{priority}, value_{value} {}\n\n    constexpr\
+    \ bool infty() const noexcept {\n        return !priority_.has_value();\n    }\n\
+    \    constexpr const T& priority() const noexcept {\n        return priority_.value();\n\
+    \    }\n    constexpr const U& value() const noexcept {\n        return value_;\n\
+    \    }\n    friend constexpr bool operator<(const ChminMonoidData& l, const ChminMonoidData&\
+    \ r) {\n        if (l.infty()) return false;\n        else if (r.infty()) return\
+    \ true;\n        else return l.priority() < r.priority();\n    }\n};\n\ntemplate\
+    \ <class T, class U>\nstruct ChminMonoid {\n    using Element = ChminMonoidData<T,\
+    \ U>;\n    static Element identity() noexcept {\n        return Element{};\n \
+    \   }\n    // \u30BF\u30A4\u30D6\u30EC\u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\
+    \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
+    \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
+    \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
     \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
     \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
@@ -111,14 +111,15 @@ data:
     \ size() const {\n        return n_;\n    }\n\n    inline bool verify(u32 v) const\
     \ {\n        return v < size();\n    }\n\nprivate:\n    static constexpr u32 INVALID{static_cast<u32>(-1)};\n\
     \    usize n_{};\n    std::vector<u32> depth_, L_, R_;\n    SparseTable<Monoid>\
-    \ st_;\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/lca.test.cpp\"\nusing namespace\
-    \ zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >>\
-    \ Q;\n    Tree T(N);\n    for (int i{1} ; i < N ; i++) {\n        int p;\n   \
-    \     std::cin >> p;\n        AddDirectedEdge(T, p, i);\n    }\n    LowestCommonAncestor\
-    \ lca{T, 0};\n    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n\
-    \        std::cout << lca(u, v) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\nusing namespace\
+    \ st_;\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/lca/LowestCommonAncestor.test.cpp\"\
+    \nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n   \
+    \ std::cin >> N >> Q;\n    Tree T(N);\n    for (int i{1} ; i < N ; i++) {\n  \
+    \      int p;\n        std::cin >> p;\n        AddDirectedEdge(T, p, i);\n   \
+    \ }\n    LowestCommonAncestor lca{T, 0};\n    while (Q--) {\n        int u, v;\n\
+    \        std::cin >> u >> v;\n        std::cout << lca(u, v) << '\\n';\n    }\n\
+    }\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../../Src/Template/IOSetting.hpp\"\
+    \n#include \"../../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\nusing namespace\
     \ zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >>\
     \ Q;\n    Tree T(N);\n    for (int i{1} ; i < N ; i++) {\n        int p;\n   \
     \     std::cin >> p;\n        AddDirectedEdge(T, p, i);\n    }\n    LowestCommonAncestor\
@@ -132,15 +133,15 @@ data:
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/Graph/Tree/Tree.hpp
   isVerificationFile: true
-  path: Test/LC/lca.test.cpp
+  path: Test/LC/lca/LowestCommonAncestor.test.cpp
   requiredBy: []
-  timestamp: '2024-07-02 11:54:33+09:00'
+  timestamp: '2024-07-17 11:37:50+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/lca.test.cpp
+documentation_of: Test/LC/lca/LowestCommonAncestor.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/lca.test.cpp
-- /verify/Test/LC/lca.test.cpp.html
-title: Test/LC/lca.test.cpp
+- /verify/Test/LC/lca/LowestCommonAncestor.test.cpp
+- /verify/Test/LC/lca/LowestCommonAncestor.test.cpp.html
+title: Test/LC/lca/LowestCommonAncestor.test.cpp
 ---

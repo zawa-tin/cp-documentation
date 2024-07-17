@@ -28,8 +28,8 @@ data:
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/lca.test.cpp
-    title: Test/LC/lca.test.cpp
+    path: Test/LC/lca/LowestCommonAncestor.test.cpp
+    title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
@@ -103,7 +103,7 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
-  - Test/LC/lca.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/staticrmq.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc359_g.test.cpp
