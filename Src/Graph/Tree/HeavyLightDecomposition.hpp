@@ -1,11 +1,11 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
-#include "../../Utility/U32Pair.hpp"
+#include "./Tree.hpp"
 
 #include <algorithm>
 #include <cassert>
-#include <iterator>
+#include <cmath>
 #include <limits>
 #include <utility>
 #include <vector>
@@ -13,112 +13,192 @@
 namespace zawa {
 
 class HeavyLightDecomposition {
-private:
-    usize n_;
-    std::vector<std::vector<u32>> g_;
-    std::vector<u32> index_, top_, depth_, par_;
-    std::vector<u32> subtree_;
-
-    static constexpr u32 invalid() noexcept {
-        return std::numeric_limits<u32>::max();
-    }
-
-    u32 dfsInit(u32 v, u32 p) {
-        par_[v] = p;
-        for (auto it{g_[v].begin()} ; it != g_[v].end() ; ) {
-            if (*it == p) {
-                it = g_[v].erase(it);
-            }
-            else {
-                subtree_[v] += dfsInit(*it, v);
-                it++;
-            }
-        }
-        return ++subtree_[v];
-    }
-    void dfs(u32 v, u32 p, u32 tp, u32& t) {
-        top_[v] = tp;
-        index_[v] = t;
-        depth_[v] = (p == invalid() ? u32{} : depth_[p] + 1);
-        if (g_[v].empty()) return;
-        auto max{std::distance(g_[v].begin(), std::max_element(g_[v].begin(), g_[v].end(), [&](const auto& i, const auto& j) {
-                    return subtree_[i] < subtree_[j];
-                }))};
-        if (max) std::swap(g_[v][0], g_[v][max]);
-        dfs(g_[v][0], v, tp, ++t);
-        for (u32 i{1u} ; i < g_[v].size() ; i++) {
-            dfs(g_[v][i], v, g_[v][i], ++t);
-        }
-    }
-
 public:
-    constexpr usize size() const noexcept {
+    using Vertex = u32;
+
+    static constexpr Vertex Invalid() noexcept {
+        return INVALID;
+    }
+
+    HeavyLightDecomposition() = default;
+
+    HeavyLightDecomposition(Tree T, Vertex root = 0u) 
+        : n_{T.size()}, par_(n_), top_(n_), idx_(n_), 
+        inv_(n_), size_(n_, usize{1}), dep_(n_) {
+
+            auto dfs1{[&](auto dfs, Vertex v, Vertex p, usize d) -> usize {
+                par_[v] = p;
+                dep_[v] = d;
+                if (p != INVALID) {
+                    for (u32 i{} ; i + 1 < T[v].size() ; i++) if (T[v][i] == p) {
+                        std::swap(T[v][i], T[v].back());
+                        break;
+                    }
+                    assert(T[v].back() == p);
+                    T[v].pop_back();
+                }
+                for (Vertex x : T[v]) {
+                    size_[v] += dfs(dfs, x, v, d + 1);
+                }
+                for (u32 i{1} ; i < T[v].size() ; i++) if (size_[T[v][0]] < size_[T[v][i]]) {
+                    std::swap(T[v][0], T[v][i]);
+                }
+                return size_[v];
+            }};
+
+            auto dfs2{[&](auto dfs, Vertex v, Vertex idx, Vertex top) -> Vertex {
+                idx_[v] = idx++;
+                inv_[idx_[v]] = v;
+                top_[v] = top;
+                if (T[v].size()) {
+                    idx = dfs(dfs, T[v][0], idx, top);
+                    for (u32 i{1} ; i < T[v].size() ; i++) {
+                        idx = dfs(dfs, T[v][i], idx, T[v][i]);
+                    }
+                }
+                return idx;
+            }};
+
+            dfs1(dfs1, root, INVALID, 0u);
+            dfs2(dfs2, root, 0u, root);
+        }
+
+    inline usize size() const noexcept {
         return n_;
     }
-    HeavyLightDecomposition() = default;
-    HeavyLightDecomposition(usize n) 
-        : n_{n}, g_(n), index_(n), top_(n), depth_(n), par_(n, invalid()), subtree_(n) {
-        g_.shrink_to_fit();
-        index_.shrink_to_fit();
-        top_.shrink_to_fit();
-        depth_.shrink_to_fit();
-        par_.shrink_to_fit();
-        subtree_.shrink_to_fit();
-    } 
-    void addEdge(u32 u, u32 v) {
-        assert(u < size());
+
+    usize size(Vertex v) const noexcept {
         assert(v < size());
-        g_[u].emplace_back(v);
-        g_[v].emplace_back(u);
-    }
-    void build(u32 r) {
-        assert(r < size()); 
-        dfsInit(r, invalid());
-        u32 t{};
-        dfs(r, invalid(), r, t);
+        return size_[v];
     }
 
-    const u32& operator[](u32 i) const noexcept {
-        assert(i < size());
-        return index_[i];
+    usize depth(Vertex v) const noexcept {
+        assert(v < size());
+        return dep_[v];
     }
 
-    std::vector<U32Pair> operator()(u32 s, u32 t) const {
+    Vertex parent(Vertex v) const noexcept {
+        assert(v < size());
+        return par_[v];
+    }
+
+    Vertex index(Vertex v) const noexcept {
+        assert(v < size());
+        return idx_[v];
+    }
+
+    Vertex operator[](Vertex v) const noexcept {
+        assert(v < size());
+        return idx_[v];
+    }
+
+
+    std::vector<std::pair<Vertex, Vertex>> decomp(Vertex s, Vertex t) const {
         assert(s < size());
         assert(t < size());
-        std::vector<U32Pair> res, ser; 
+        std::vector<std::pair<Vertex, Vertex>> res, ser;
         while (top_[s] != top_[t]) {
-            if (depth_[top_[s]] <= depth_[top_[t]]) {
-                ser.emplace_back(index_[top_[t]], index_[t] + 1);
-                t = top_[t];
-                t = (par_[t] == invalid() ? t : par_[t]);
+            if (dep_[top_[s]] >= dep_[top_[t]]) {
+                res.emplace_back(s, top_[s]);
+                s = top_[s];
+                if (par_[s] != INVALID) s = par_[s];
             }
             else {
-                res.emplace_back(index_[top_[s]], index_[s] + 1);
-                s = top_[s];
-                s = (par_[s] == invalid() ? s : par_[s]);
+                ser.emplace_back(top_[t], t);
+                t = top_[t];
+                if (par_[t] != INVALID) t = par_[t];
             }
         }
-        res.emplace_back(std::min(index_[s], index_[t]), std::max(index_[s], index_[t]) + 1u);
-        res.insert(res.end(), ser.begin(), ser.end());
+        res.emplace_back(s, t);
+        std::reverse(ser.begin(), ser.end());
+        res.insert(res.end(), ser.begin(), ser.end()); 
         return res;
     }
 
-    u32 lca(u32 u, u32 v) {
+    std::vector<std::pair<Vertex, Vertex>> operator()(Vertex s, Vertex t) const {
+        return decomp(s, t);
+    }
+
+    Vertex lca(u32 u, u32 v) const {
         assert(u < size());
         assert(v < size());
         while (top_[u] != top_[v]) {
-            if (depth_[top_[u]] <= depth_[top_[v]]) {
-                v = top_[v];
-                v = (par_[v] == invalid() ? v : par_[v]);
+            if (dep_[top_[u]] >= dep_[top_[v]]) {
+                u = top_[u];
+                if (par_[u] != INVALID) u = par_[u];
             }
             else {
-                u = top_[u];
-                u = (par_[u] == invalid() ? u : par_[u]);
+                v = top_[v];
+                if (par_[v] != INVALID) v = par_[v];
             }
         }
-        return (depth_[u] <= depth_[v] ? u : v);
+        return (dep_[u] <= dep_[v] ? u : v);
     }
+
+    // pはvの祖先か？
+    bool isAncestor(Vertex v, Vertex p) {
+        assert(v < size());
+        assert(p < size());
+        if (dep_[v] < dep_[p]) return false;
+        while (v != INVALID and top_[v] != top_[p]) {
+            v = par_[top_[v]];
+        }
+        return v != INVALID;
+    }
+
+    Vertex levelAncestor(Vertex v, usize step) const {
+        assert(v < size());
+        if (step > dep_[v]) return INVALID;
+        while (true) {
+            usize dist{dep_[v] - dep_[top_[v]]};
+            if (dist >= step) break;
+            step -= dist + 1;
+            v = par_[top_[v]];
+        }
+        step = (dep_[v] - dep_[top_[v]]) - step;
+        return inv_[idx_[top_[v]] + step];
+    }
+
+    Vertex jump(Vertex s, Vertex t, usize step) const {
+        assert(s < size());
+        assert(t < size());
+        Vertex uu{INVALID}, vv{INVALID};
+        usize d{};
+        for (auto [u, v] : decomp(s, t)) {
+            usize dist{std::max(dep_[u], dep_[v]) - std::min(dep_[u], dep_[v])};
+            if (dist >= step) {
+                uu = u;
+                vv = v;
+                d = dist;
+                break;
+            }
+            step -= dist + 1;
+        }
+        if (uu == INVALID) return INVALID;
+        if (dep_[uu] <= dep_[vv]) {
+            return inv_[idx_[uu] + step];
+        }
+        else {
+            return inv_[idx_[vv] + (d - step)];
+        }
+    }
+
+    usize distance(Vertex s, Vertex t) const {
+        assert(s < size());
+        assert(t < size());
+        usize res{};
+        for (auto [u, v] : decomp(s, t)) {
+            if (dep_[u] > dep_[v]) std::swap(u, v);
+            res += dep_[v] - dep_[u];
+        }
+        return res;
+    }
+
+private:
+    static constexpr Vertex INVALID{static_cast<Vertex>(-1)};
+    usize n_{};
+    std::vector<Vertex> par_{}, top_{}, idx_{}, inv_{};
+    std::vector<usize> size_{}, dep_{};
 };
 
 } // namespace zawa

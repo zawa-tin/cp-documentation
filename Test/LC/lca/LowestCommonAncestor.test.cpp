@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
-#include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/LowestCommonAncestor.hpp"
+#include "../../../Src/Template/IOSetting.hpp"
+#include "../../../Src/Graph/Tree/LowestCommonAncestor.hpp"
 using namespace zawa;
 
 int main() {

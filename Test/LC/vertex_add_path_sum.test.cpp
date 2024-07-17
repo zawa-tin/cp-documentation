@@ -3,43 +3,51 @@
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
+#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/HeavyLightDecomposition.hpp"
 
 #include <cassert>
 #include <iostream>
+#include <utility>
 #include <vector>
 
 int main() {
     using namespace zawa; 
     SetFastIO();
-    int n, q; std::cin >> n >> q;
-    std::vector<long long> a(n);
-    for (auto& x : a) std::cin >> x;
 
-    HeavyLightDecomposition hld(n);
-    for (int _{} ; _ < n - 1 ; _++) {
-        int u, v; std::cin >> u >> v;
-        hld.addEdge(u, v);
+    int N, Q;
+    std::cin >> N >> Q;
+    std::vector<int> A(N);
+    for (int& a : A) std::cin >> a;
+    Tree T(N);
+    for (int _{} ; _ < N - 1 ; _++) {
+        int u, v;
+        std::cin >> u >> v;
+        AddEdge(T, u, v);
     }
-    hld.build(0);
-
-    FenwickTree<AdditiveGroup<long long>> ft(n); 
-    for (int i{} ; i < n ; i++) {
-        ft.operation(hld[i], a[i]);
+    HeavyLightDecomposition hld(T);
+    std::vector<long long> init(N);
+    for (int v{} ; v < N ; v++) {
+        init[hld[v]] = A[v];
     }
-    for (int _{} ; _ < q ; _++) {
-        int t; std::cin >> t;
+    FenwickTree<AdditiveGroup<long long>> fen{init};
+    while (Q--) {
+        int t;
+        std::cin >> t;
         if (t == 0) {
-            int p, x; std::cin >> p >> x;
-            ft.operation(hld[p], x);
-            a[hld[p]] += x;
+            int p, x;
+            std::cin >> p >> x;
+            fen.operation(hld[p], x);
         }
         else if (t == 1) {
-            int u, v; std::cin >> u >> v;
+            int u, v;
+            std::cin >> u >> v;
             long long ans{};
-            auto decomp{hld(u, v)};
-            for (const auto& p : hld(u, v)) {
-                ans += ft.product(p.first(), p.second());
+            for (auto [u, v] : hld(u, v)) {
+                u = hld[u];
+                v = hld[v];
+                if (u > v) std::swap(u, v);
+                ans += fen.product(u, v + 1);
             }
             std::cout << ans << '\n';
         }
