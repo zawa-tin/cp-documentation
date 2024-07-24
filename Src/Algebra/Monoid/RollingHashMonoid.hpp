@@ -12,19 +12,15 @@ struct RollingHashMonoidData {
     using Value = Mersenne61ModInt::Value;
     using Size = usize;
     static Value base;
-    Value hash{}, pow{base};
+    Value hash{}, pow{1};
     usize len{};
 
     constexpr RollingHashMonoidData() = default;
     constexpr RollingHashMonoidData(Value h, Value p, usize l) : hash{h}, pow{p}, len{l} {}
-    
-    // 単一要素vからなるハッシュを返す
     template <class T>
-    static constexpr RollingHashMonoidData generate(const T& v) {
-        static_assert(std::is_convertible_v<T, Value>, "v must be convertible unsigned interger value");
-        return RollingHashMonoidData{v, base, 1};
-    }
-
+    constexpr RollingHashMonoidData(const T& v) 
+        : hash{static_cast<Value>(v)}, pow{base}, len{1} {}
+    
     static Value randomValue(const Value& sigma) {
         return std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;
     }
