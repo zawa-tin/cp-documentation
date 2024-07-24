@@ -7,17 +7,20 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0478.test.cpp
+    title: Test/AOJ/0478.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc331_f.test.cpp
+    title: Test/AtCoder/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc331_f.test.cpp
-    title: Test/Manual/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
@@ -157,11 +160,12 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_A.test.cpp
+  - Test/AOJ/0478.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
-  - Test/Manual/aoj3226.test.cpp
   - Test/Manual/agc005_b.test.cpp
-  - Test/Manual/abc331_f.test.cpp
+  - Test/Manual/aoj3226.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree

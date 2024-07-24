@@ -14,6 +14,9 @@ data:
     title: "\u30ED\u30EA\u30CF"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0478.test.cpp
+    title: Test/AOJ/0478.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_14_B.test.cpp
     title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -23,8 +26,8 @@ data:
     path: Test/AtCoder/abc284_f.test.cpp
     title: Test/AtCoder/abc284_f.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc331_f.test.cpp
-    title: Test/Manual/abc331_f.test.cpp
+    path: Test/AtCoder/abc331_f.test.cpp
+    title: Test/AtCoder/abc331_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -77,9 +80,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/ALDS1_14_B.test.cpp
-  - Test/AtCoder/abc284_f.test.cpp
+  - Test/AOJ/0478.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
-  - Test/Manual/abc331_f.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
+  - Test/AtCoder/abc284_f.test.cpp
 documentation_of: Src/Number/Mersenne61ModInt.hpp
 layout: document
 redirect_from:

@@ -143,8 +143,8 @@ data:
   - Test/AOJ/2957.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
 documentation_of: Src/Number/EnumerateQuotients.hpp
 layout: document
 title: "\u5546\u5217\u6319"

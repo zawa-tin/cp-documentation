@@ -480,6 +480,9 @@ data:
       path: Test/AOJ/0465.test.cpp
       title: Test/AOJ/0465.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/0478.test.cpp
+      title: Test/AOJ/0478.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/1053.test.cpp
       title: AOJ1053 Accelerated Railgun
     - icon: ':heavy_check_mark:'
@@ -798,6 +801,9 @@ data:
       path: Test/AtCoder/abc322_f.test.cpp
       title: ABC322-F Vacation Query
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc331_f.test.cpp
+      title: Test/AtCoder/abc331_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc334_g.test.cpp
       title: Test/AtCoder/abc334_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -964,9 +970,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc317_g.test.cpp
       title: ABC317-G Rearranging
-    - icon: ':heavy_check_mark:'
-      path: Test/Manual/abc331_f.test.cpp
-      title: Test/Manual/abc331_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc359_g.test.cpp
       title: ABC359-F Sum of Tree Distance

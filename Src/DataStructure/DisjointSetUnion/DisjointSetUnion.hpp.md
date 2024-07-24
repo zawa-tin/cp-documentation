@@ -71,8 +71,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/ECR167-F.test.cpp
-  - Test/LC/unionfind.test.cpp
   - Test/LC/incremental_scc.test.cpp
+  - Test/LC/unionfind.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

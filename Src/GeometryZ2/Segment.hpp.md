@@ -173,8 +173,8 @@ data:
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1298.test.cpp
   - Test/AOJ/1379.test.cpp
+  - Test/AOJ/1298.test.cpp
 documentation_of: Src/GeometryZ2/Segment.hpp
 layout: document
 redirect_from:

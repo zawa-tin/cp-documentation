@@ -91,8 +91,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/ITP1_1_A.test.cpp
-  - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc293_b.test.cpp
   - Test/LC/many_aplusb.test.cpp
 documentation_of: Src/Template/Output.hpp
 layout: document

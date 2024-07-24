@@ -24,13 +24,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    PROBLEM: https://atcoder.jp/contests/abc331/tasks/abc331_f
     links:
-    - https://atcoder.jp/contests/abc331/submissions/48195607
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/abc331_f.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * ABC331-F Palindrome Query\n * https://atcoder.jp/contests/abc331/submissions/48195607\n\
-    \ */\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://atcoder.jp/contests/abc331/tasks/abc331_f
+  bundledCode: "#line 1 \"Test/AtCoder/abc331_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -113,66 +111,59 @@ data:
     \    }\n};\n\n};\n#line 5 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\n#include\
     \ <random>\n#line 8 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\nnamespace\
     \ zawa {\n\nstruct RollingHashMonoidData {\n    using Value = Mersenne61ModInt::Value;\n\
-    \    using Size = usize;\n    static Value base;\n    Value hash{}, pow{base};\n\
+    \    using Size = usize;\n    static Value base;\n    Value hash{}, pow{1};\n\
     \    usize len{};\n\n    constexpr RollingHashMonoidData() = default;\n    constexpr\
     \ RollingHashMonoidData(Value h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n\
-    \    \n    // \u5358\u4E00\u8981\u7D20v\u304B\u3089\u306A\u308B\u30CF\u30C3\u30B7\
-    \u30E5\u3092\u8FD4\u3059\n    template <class T>\n    static constexpr RollingHashMonoidData\
-    \ generate(const T& v) {\n        static_assert(std::is_convertible_v<T, Value>,\
-    \ \"v must be convertible unsigned interger value\");\n        return RollingHashMonoidData{v,\
-    \ base, 1};\n    }\n\n    static Value randomValue(const Value& sigma) {\n   \
-    \     return std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod()\
-    \ - sigma) + sigma + 1;\n    }\n\n    friend constexpr bool operator==(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash == rhs.hash\
-    \ and lhs.len == rhs.len;\n    }\n    friend constexpr bool operator!=(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash\
-    \ or lhs.len != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo\
-    \ = Mersenne61ModInt;\n    using Element = RollingHashMonoidData;\n    static\
-    \ constexpr Element identity() noexcept {\n        return Element{};\n    }\n\
-    \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
-    \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
-    \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
-    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 11\
-    \ \"Test/Manual/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 16 \"Test/Manual/abc331_f.test.cpp\"\
-    \n#include <string>\n#line 18 \"Test/Manual/abc331_f.test.cpp\"\n\nusing Value\
-    \ = RollingHashMonoidData::Value;\n\nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
-    };\n\nvoid solve() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n  \
-    \  std::string s; std::cin >> s;\n\n    std::vector<RollingHashMonoidData> init(n),\
-    \ tini(n); \n    for (int i{} ; i < n ; i++) {\n        init[i] = RollingHashMonoidData::generate((Value)s[i]);\n\
-    \        tini[n - i - 1] = RollingHashMonoidData::generate((Value)s[i]);\n   \
-    \ }\n\n    SegmentTree<RollingHashMonoid> seg(init), ges(tini);\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        if (t == 1) {\n\
-    \            int x; std::cin >> x;\n            x--;\n            char c; std::cin\
-    \ >> c;\n            seg.set(x, RollingHashMonoidData::generate((Value)c));\n\
-    \            ges.set(n - x - 1, RollingHashMonoidData::generate((Value)c));\n\
+    \    template <class T>\n    constexpr RollingHashMonoidData(const T& v) \n  \
+    \      : hash{static_cast<Value>(v)}, pow{base}, len{1} {}\n    \n    static Value\
+    \ randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
+    \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
+    \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
+    \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
+    \    friend constexpr bool operator!=(const RollingHashMonoidData& lhs, const\
+    \ RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash or lhs.len\
+    \ != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo = Mersenne61ModInt;\n\
+    \    using Element = RollingHashMonoidData;\n    static constexpr Element identity()\
+    \ noexcept {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ Element& lhs, const Element& rhs) noexcept {\n        return Element{\n    \
+    \        Modulo::Modulo(Modulo::UnsafeMul(lhs.hash, rhs.pow) + rhs.hash),\n  \
+    \          Modulo::Mul(lhs.pow, rhs.pow),\n            lhs.len + rhs.len\n   \
+    \     };\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc331_f.test.cpp\"\
+    \nusing namespace zawa;\n\n#line 11 \"Test/AtCoder/abc331_f.test.cpp\"\n#include\
+    \ <string>\n#line 13 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value = RollingHashMonoidData::Value;\n\
+    \nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
+    };\n\nint main() {\n    SetFastIO();\n    int N, Q; \n    std::cin >> N >> Q;\n\
+    \    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
+    \ init(N), tini(N); \n    for (int i{} ; i < N ; i++) {\n        init[i] = RollingHashMonoidData{S[i]};\n\
+    \        tini[N - i - 1] = RollingHashMonoidData{S[i]};\n    }\n    SegmentTree<RollingHashMonoid>\
+    \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
+    \ t;\n        if (t == 1) {\n            int x; \n            std::cin >> x;\n\
+    \            x--;\n            char c; \n            std::cin >> c;\n        \
+    \    seg.set(x, RollingHashMonoidData{c});\n            ges.set(N - x - 1, RollingHashMonoidData{c});\n\
     \        }\n        else if (t == 2) {\n            int l, r; std::cin >> l >>\
-    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(n\
-    \ - r, n - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
+    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
+    \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
     \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n }\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n    std::cout\
-    \ << \"Hello World\" << '\\n';\n#endif\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * ABC331-F Palindrome Query\n * https://atcoder.jp/contests/abc331/submissions/48195607\n\
-    \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \    }\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/RollingHashMonoid.hpp\"\nusing namespace\
     \ zawa;\n\n#include <cassert>\n#include <iostream>\n#include <random>\n#include\
     \ <string>\n#include <vector>\n\nusing Value = RollingHashMonoidData::Value;\n\
     \nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
-    };\n\nvoid solve() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n  \
-    \  std::string s; std::cin >> s;\n\n    std::vector<RollingHashMonoidData> init(n),\
-    \ tini(n); \n    for (int i{} ; i < n ; i++) {\n        init[i] = RollingHashMonoidData::generate((Value)s[i]);\n\
-    \        tini[n - i - 1] = RollingHashMonoidData::generate((Value)s[i]);\n   \
-    \ }\n\n    SegmentTree<RollingHashMonoid> seg(init), ges(tini);\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        if (t == 1) {\n\
-    \            int x; std::cin >> x;\n            x--;\n            char c; std::cin\
-    \ >> c;\n            seg.set(x, RollingHashMonoidData::generate((Value)c));\n\
-    \            ges.set(n - x - 1, RollingHashMonoidData::generate((Value)c));\n\
+    };\n\nint main() {\n    SetFastIO();\n    int N, Q; \n    std::cin >> N >> Q;\n\
+    \    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
+    \ init(N), tini(N); \n    for (int i{} ; i < N ; i++) {\n        init[i] = RollingHashMonoidData{S[i]};\n\
+    \        tini[N - i - 1] = RollingHashMonoidData{S[i]};\n    }\n    SegmentTree<RollingHashMonoid>\
+    \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
+    \ t;\n        if (t == 1) {\n            int x; \n            std::cin >> x;\n\
+    \            x--;\n            char c; \n            std::cin >> c;\n        \
+    \    seg.set(x, RollingHashMonoidData{c});\n            ges.set(N - x - 1, RollingHashMonoidData{c});\n\
     \        }\n        else if (t == 2) {\n            int l, r; std::cin >> l >>\
-    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(n\
-    \ - r, n - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
+    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
+    \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
     \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n }\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n    std::cout\
-    \ << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -180,15 +171,15 @@ data:
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Number/Mersenne61ModInt.hpp
   isVerificationFile: true
-  path: Test/Manual/abc331_f.test.cpp
+  path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2023-12-04 22:40:21+09:00'
+  timestamp: '2024-07-25 02:21:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/abc331_f.test.cpp
+documentation_of: Test/AtCoder/abc331_f.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Manual/abc331_f.test.cpp
-- /verify/Test/Manual/abc331_f.test.cpp.html
-title: Test/Manual/abc331_f.test.cpp
+- /verify/Test/AtCoder/abc331_f.test.cpp
+- /verify/Test/AtCoder/abc331_f.test.cpp.html
+title: Test/AtCoder/abc331_f.test.cpp
 ---
