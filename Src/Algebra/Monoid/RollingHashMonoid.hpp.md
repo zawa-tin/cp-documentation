@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3548.test.cpp
+    title: AOJ3548 String Puzzle
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,19 +50,21 @@ data:
     \ RollingHashMonoidData() = default;\n    constexpr RollingHashMonoidData(Value\
     \ h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n    template <class T>\n\
     \    constexpr RollingHashMonoidData(const T& v) \n        : hash{static_cast<Value>(v)},\
-    \ pow{base}, len{1} {}\n    \n    static Value randomValue(const Value& sigma)\
-    \ {\n        return std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod()\
-    \ - sigma) + sigma + 1;\n    }\n\n    friend constexpr bool operator==(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash == rhs.hash\
-    \ and lhs.len == rhs.len;\n    }\n    friend constexpr bool operator!=(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash\
-    \ or lhs.len != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo\
-    \ = Mersenne61ModInt;\n    using Element = RollingHashMonoidData;\n    static\
-    \ constexpr Element identity() noexcept {\n        return Element{};\n    }\n\
-    \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
-    \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
-    \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
-    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n"
+    \ pow{base}, len{1} {}\n    RollingHashMonoidData(const RollingHashMonoidData&\
+    \ data)\n        : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n  \
+    \  static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
+    \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
+    \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
+    \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
+    \    friend constexpr bool operator!=(const RollingHashMonoidData& lhs, const\
+    \ RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash or lhs.len\
+    \ != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo = Mersenne61ModInt;\n\
+    \    using Element = RollingHashMonoidData;\n    static constexpr Element identity()\
+    \ noexcept {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ Element& lhs, const Element& rhs) noexcept {\n        return Element{\n    \
+    \        Modulo::Modulo(Modulo::UnsafeMul(lhs.hash, rhs.pow) + rhs.hash),\n  \
+    \          Modulo::Mul(lhs.pow, rhs.pow),\n            lhs.len + rhs.len\n   \
+    \     };\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Number/Mersenne61ModInt.hpp\"\
     \n\n#include <random>\n#include <type_traits>\n\nnamespace zawa {\n\nstruct RollingHashMonoidData\
     \ {\n    using Value = Mersenne61ModInt::Value;\n    using Size = usize;\n   \
@@ -67,30 +72,33 @@ data:
     \ RollingHashMonoidData() = default;\n    constexpr RollingHashMonoidData(Value\
     \ h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n    template <class T>\n\
     \    constexpr RollingHashMonoidData(const T& v) \n        : hash{static_cast<Value>(v)},\
-    \ pow{base}, len{1} {}\n    \n    static Value randomValue(const Value& sigma)\
-    \ {\n        return std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod()\
-    \ - sigma) + sigma + 1;\n    }\n\n    friend constexpr bool operator==(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash == rhs.hash\
-    \ and lhs.len == rhs.len;\n    }\n    friend constexpr bool operator!=(const RollingHashMonoidData&\
-    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash\
-    \ or lhs.len != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo\
-    \ = Mersenne61ModInt;\n    using Element = RollingHashMonoidData;\n    static\
-    \ constexpr Element identity() noexcept {\n        return Element{};\n    }\n\
-    \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
-    \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
-    \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
-    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n"
+    \ pow{base}, len{1} {}\n    RollingHashMonoidData(const RollingHashMonoidData&\
+    \ data)\n        : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n  \
+    \  static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
+    \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
+    \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
+    \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
+    \    friend constexpr bool operator!=(const RollingHashMonoidData& lhs, const\
+    \ RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash or lhs.len\
+    \ != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo = Mersenne61ModInt;\n\
+    \    using Element = RollingHashMonoidData;\n    static constexpr Element identity()\
+    \ noexcept {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ Element& lhs, const Element& rhs) noexcept {\n        return Element{\n    \
+    \        Modulo::Modulo(Modulo::UnsafeMul(lhs.hash, rhs.pow) + rhs.hash),\n  \
+    \          Modulo::Mul(lhs.pow, rhs.pow),\n            lhs.len + rhs.len\n   \
+    \     };\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Number/Mersenne61ModInt.hpp
   isVerificationFile: false
   path: Src/Algebra/Monoid/RollingHashMonoid.hpp
   requiredBy: []
-  timestamp: '2024-07-25 02:16:58+09:00'
+  timestamp: '2024-07-27 03:11:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0478.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
+  - Test/Manual/aoj3548.test.cpp
 documentation_of: Src/Algebra/Monoid/RollingHashMonoid.hpp
 layout: document
 title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\u306E\

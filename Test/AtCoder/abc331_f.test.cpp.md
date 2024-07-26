@@ -115,23 +115,24 @@ data:
     \    usize len{};\n\n    constexpr RollingHashMonoidData() = default;\n    constexpr\
     \ RollingHashMonoidData(Value h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n\
     \    template <class T>\n    constexpr RollingHashMonoidData(const T& v) \n  \
-    \      : hash{static_cast<Value>(v)}, pow{base}, len{1} {}\n    \n    static Value\
-    \ randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
-    \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
-    \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
-    \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
-    \    friend constexpr bool operator!=(const RollingHashMonoidData& lhs, const\
-    \ RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash or lhs.len\
-    \ != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo = Mersenne61ModInt;\n\
-    \    using Element = RollingHashMonoidData;\n    static constexpr Element identity()\
-    \ noexcept {\n        return Element{};\n    }\n    static constexpr Element operation(const\
-    \ Element& lhs, const Element& rhs) noexcept {\n        return Element{\n    \
-    \        Modulo::Modulo(Modulo::UnsafeMul(lhs.hash, rhs.pow) + rhs.hash),\n  \
-    \          Modulo::Mul(lhs.pow, rhs.pow),\n            lhs.len + rhs.len\n   \
-    \     };\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc331_f.test.cpp\"\
-    \nusing namespace zawa;\n\n#line 11 \"Test/AtCoder/abc331_f.test.cpp\"\n#include\
-    \ <string>\n#line 13 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value = RollingHashMonoidData::Value;\n\
-    \nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
+    \      : hash{static_cast<Value>(v)}, pow{base}, len{1} {}\n    RollingHashMonoidData(const\
+    \ RollingHashMonoidData& data)\n        : hash{data.hash}, pow{data.pow}, len{data.len}\
+    \ {}\n    \n    static Value randomValue(const Value& sigma) {\n        return\
+    \ std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod() - sigma) +\
+    \ sigma + 1;\n    }\n\n    friend constexpr bool operator==(const RollingHashMonoidData&\
+    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash == rhs.hash\
+    \ and lhs.len == rhs.len;\n    }\n    friend constexpr bool operator!=(const RollingHashMonoidData&\
+    \ lhs, const RollingHashMonoidData& rhs) {\n        return lhs.hash != rhs.hash\
+    \ or lhs.len != rhs.len;\n    }\n};\n\nstruct RollingHashMonoid {\n    using Modulo\
+    \ = Mersenne61ModInt;\n    using Element = RollingHashMonoidData;\n    static\
+    \ constexpr Element identity() noexcept {\n        return Element{};\n    }\n\
+    \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
+    \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
+    \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
+    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 6\
+    \ \"Test/AtCoder/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 11 \"Test/AtCoder/abc331_f.test.cpp\"\
+    \n#include <string>\n#line 13 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value\
+    \ = RollingHashMonoidData::Value;\n\nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
     };\n\nint main() {\n    SetFastIO();\n    int N, Q; \n    std::cin >> N >> Q;\n\
     \    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
     \ init(N), tini(N); \n    for (int i{} ; i < N ; i++) {\n        init[i] = RollingHashMonoidData{S[i]};\n\
@@ -173,7 +174,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2024-07-25 02:21:56+09:00'
+  timestamp: '2024-07-27 03:11:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc331_f.test.cpp

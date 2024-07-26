@@ -296,6 +296,9 @@ data:
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/EnumerateStaticLengthProduct.hpp
+    title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/InversionNumber.hpp
     title: Src/Sequence/InversionNumber.hpp
   - icon: ':heavy_check_mark:'
@@ -840,6 +843,9 @@ data:
     path: Test/Manual/aoj3369.test.cpp
     title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3548.test.cpp
+    title: AOJ3548 String Puzzle
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -996,6 +1002,7 @@ data:
   - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/GeometryZ2/Line.hpp
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/InversionNumber.hpp
@@ -1235,6 +1242,7 @@ data:
   - Test/Manual/utpc2012_12.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/typical90_an.test.cpp
+  - Test/Manual/aoj3548.test.cpp
   - Test/Manual/aoj3226.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/abc168_d.test.cpp

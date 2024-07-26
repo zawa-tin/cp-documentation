@@ -28,6 +28,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3548.test.cpp
+    title: AOJ3548 String Puzzle
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +87,7 @@ data:
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
+  - Test/Manual/aoj3548.test.cpp
 documentation_of: Src/Number/Mersenne61ModInt.hpp
 layout: document
 redirect_from:

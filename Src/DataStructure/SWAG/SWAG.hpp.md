@@ -4,11 +4,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/EnumerateStaticLengthProduct.hpp
+    title: Src/Sequence/EnumerateStaticLengthProduct.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3548.test.cpp
+    title: AOJ3548 String Puzzle
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -57,11 +63,13 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/SWAG/SWAG.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   timestamp: '2024-07-15 23:06:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/Manual/aoj3548.test.cpp
 documentation_of: Src/DataStructure/SWAG/SWAG.hpp
 layout: document
 redirect_from:
