@@ -20,6 +20,8 @@ struct RollingHashMonoidData {
     template <class T>
     constexpr RollingHashMonoidData(const T& v) 
         : hash{static_cast<Value>(v)}, pow{base}, len{1} {}
+    RollingHashMonoidData(const RollingHashMonoidData& data)
+        : hash{data.hash}, pow{data.pow}, len{data.len} {}
     
     static Value randomValue(const Value& sigma) {
         return std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;
