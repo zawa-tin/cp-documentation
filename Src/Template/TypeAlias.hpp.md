@@ -28,6 +28,10 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
+    title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
+      \u3092\u7BA1\u7406\u3059\u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
@@ -657,6 +661,9 @@ data:
     path: Test/AtCoder/abc307_e.test.cpp
     title: Test/AtCoder/abc307_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc308_g.test.cpp
+    title: Test/AtCoder/abc308_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc311_b.test.cpp
     title: Test/AtCoder/abc311_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -704,6 +711,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-F.test.cpp
     title: CF923(Div. 3)-F Microcycle
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF956-F.test.cpp
+    title: Test/CF/CF956-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
@@ -966,6 +976,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Src/DataStructure/Other/SortedAdjacentProduct.hpp
   - Src/DataStructure/SWAG/SWAG.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
@@ -1144,6 +1155,7 @@ data:
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/CF/CF956-F.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/CF923-F.test.cpp
@@ -1152,6 +1164,7 @@ data:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF316-D.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc308_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/arc165_c.test.cpp

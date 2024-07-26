@@ -219,6 +219,9 @@ data:
     path: Test/AtCoder/abc302_h.test.cpp
     title: Test/AtCoder/abc302_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc308_g.test.cpp
+    title: Test/AtCoder/abc308_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc318_g.test.cpp
     title: ABC318-G Typical Path Problem
   - icon: ':heavy_check_mark:'
@@ -248,6 +251,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-F.test.cpp
     title: CF923(Div. 3)-F Microcycle
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF956-F.test.cpp
+    title: Test/CF/CF956-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
@@ -483,6 +489,7 @@ data:
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/CF/CF956-F.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/CF923-F.test.cpp
   - Test/CF/ECR167-F.test.cpp
@@ -490,6 +497,7 @@ data:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF316-D.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc308_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc217_h.test.cpp

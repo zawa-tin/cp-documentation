@@ -37,6 +37,9 @@ data:
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF956-F.test.cpp
+    title: Test/CF/CF956-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   _isVerificationFailed: false
@@ -95,6 +98,7 @@ data:
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/0412.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/CF/CF956-F.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc191_d.test.cpp

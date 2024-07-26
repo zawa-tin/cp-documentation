@@ -6,6 +6,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Group/XorGroup.hpp
+      title: Src/Algebra/Group/XorGroup.hpp
   - name: Src/Algebra/Monoid
     pages:
     - icon: ':heavy_check_mark:'
@@ -64,6 +67,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
       title: Fenwick Tree 2D (Offline Query)
+  - name: Src/DataStructure/Other
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
+      title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
+        \u3092\u7BA1\u7406\u3059\u308B"
   - name: Src/DataStructure/PrefixSum1D
     pages:
     - icon: ':heavy_check_mark:'
@@ -795,6 +804,9 @@ data:
       path: Test/AtCoder/abc307_e.test.cpp
       title: Test/AtCoder/abc307_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc308_g.test.cpp
+      title: Test/AtCoder/abc308_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc311_b.test.cpp
       title: Test/AtCoder/abc311_b.test.cpp
     - icon: ':heavy_check_mark:'
@@ -844,6 +856,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF923-F.test.cpp
       title: CF923(Div. 3)-F Microcycle
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/CF956-F.test.cpp
+      title: Test/CF/CF956-F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC162-D.test.cpp
       title: Test/CF/EC162-D.test.cpp

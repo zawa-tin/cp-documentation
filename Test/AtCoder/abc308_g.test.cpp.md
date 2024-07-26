@@ -1,0 +1,111 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/XorGroup.hpp
+    title: Src/Algebra/Group/XorGroup.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
+    title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
+      \u3092\u7BA1\u7406\u3059\u308B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://atcoder.jp/contests/abc308/tasks/abc308_g
+    links:
+    - https://atcoder.jp/contests/abc308/tasks/abc308_g
+  bundledCode: "#line 1 \"Test/AtCoder/abc308_g.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc308/tasks/abc308_g\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
+    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/Other/SortedAdjacentProduct.hpp\"\
+    \n\n#include <cassert>\n#include <iterator>\n#include <set>\n#include <utility>\n\
+    \n#line 9 \"Src/DataStructure/Other/SortedAdjacentProduct.hpp\"\n\nnamespace zawa\
+    \ {\n\ntemplate <class S>\nclass SortedAdjacentProduct {\npublic:\n    using V\
+    \ = typename S::Element;\n    using Iterator = typename std::multiset<V>::const_iterator;\n\
+    \n    SortedAdjacentProduct() = default;\n\n    SortedAdjacentProduct(const SortedAdjacentProduct<S>&\
+    \ sap) \n        : set_{sap.set_}, adj_{sap.adj_} {}\n\n    SortedAdjacentProduct(SortedAdjacentProduct<S>&&\
+    \ sap)\n        : set_{std::move(sap.set_)}, adj_{std::move(sap.adj_)} {}\n\n\
+    \    inline usize size() const noexcept {\n        return set_.size();\n    }\n\
+    \n    inline bool empty() const noexcept {\n        return set_.empty();\n   \
+    \ }\n\n    const std::multiset<V>& set() const noexcept {\n        return set_;\n\
+    \    }\n\n    const std::multiset<V>& adjacents() const noexcept {\n        return\
+    \ adj_;\n    }\n\n    V min() const noexcept {\n        assert(size() >= usize{2});\n\
+    \        return *adj_.cbegin();\n    }\n\n    V max() const noexcept {\n     \
+    \   assert(size() >= usize(2));\n        return *adj_.crbegin();\n    }\n\n  \
+    \  void insert(const V& v) {\n        Iterator it{set_.lower_bound(v)};\n    \
+    \    if (it != set_.end() and it != set_.begin()) {\n            V val{S::operation(*std::prev(it),\
+    \ *it)};\n            assert(eraseAdj(val));\n        }\n        if (it != set_.end())\
+    \ {\n            adj_.insert(S::operation(v, *it));\n        }\n        if (it\
+    \ != set_.begin()) {\n            adj_.insert(S::operation(*std::prev(it), v));\n\
+    \        }\n        set_.insert(v);\n    }\n\n    void erase(const V& v) {\n \
+    \       auto it{set_.lower_bound(v)};\n        assert(it != set_.end() and *it\
+    \ == v);\n        if (it != set_.begin()) {\n            V val{S::operation(*std::prev(it),\
+    \ *it)};\n            assert(eraseAdj(val));\n        }\n        if (std::next(it)\
+    \ != set_.end()) {\n            V val{S::operation(*it, *std::next(it))};\n  \
+    \          assert(eraseAdj(val));\n        }\n        if (it != set_.begin() and\
+    \ std::next(it) != set_.end()) {\n            V val{S::operation(*std::prev(it),\
+    \ *std::next(it))};\n            adj_.insert(val);\n        }\n        set_.erase(it);\n\
+    \    }\n\n    bool contains(const V& v) {\n        return set_.find(v) != set_.end();\n\
+    \    }\n\nprivate:\n    std::multiset<V> set_, adj_;\n\n    bool eraseAdj(const\
+    \ V& v) {\n        auto it{adj_.find(v)};\n        bool res{it != adj_.end()};\n\
+    \        if (res) adj_.erase(it);\n        return res;\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Algebra/Group/XorGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <class T>\nclass XorGroup {\npublic:\n    using Element = T;\n    static constexpr\
+    \ Element identity() noexcept {\n        return Element{};\n    }\n    static\
+    \ constexpr Element operation(const Element& l, const Element& r) noexcept {\n\
+    \        return l ^ r;\n    }\n    static constexpr Element inverse(const Element&\
+    \ v) noexcept {\n        return v;\n    }\n};\n\n} // namespace zawa\n#line 6\
+    \ \"Test/AtCoder/abc308_g.test.cpp\"\n\n#line 9 \"Test/AtCoder/abc308_g.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO(); \n    int Q;\n   \
+    \ std::cin >> Q;\n    SortedAdjacentProduct<XorGroup<int>> data{};\n    while\
+    \ (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 1) {\n   \
+    \         int x;\n            std::cin >> x;\n            data.insert(x);\n  \
+    \      }\n        else if (t == 2) {\n            int x;\n            std::cin\
+    \ >> x;\n            data.erase(x);\n        }\n        else if (t == 3) {\n \
+    \           std::cout << data.min() << '\\n';\n        }\n        else {\n   \
+    \         assert(false);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc308/tasks/abc308_g\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/Other/SortedAdjacentProduct.hpp\"\
+    \n#include \"../../Src/Algebra/Group/XorGroup.hpp\"\n\n#include <cassert>\n#include\
+    \ <iostream>\n\nusing namespace zawa;\n\nint main() {\n    SetFastIO(); \n   \
+    \ int Q;\n    std::cin >> Q;\n    SortedAdjacentProduct<XorGroup<int>> data{};\n\
+    \    while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 1)\
+    \ {\n            int x;\n            std::cin >> x;\n            data.insert(x);\n\
+    \        }\n        else if (t == 2) {\n            int x;\n            std::cin\
+    \ >> x;\n            data.erase(x);\n        }\n        else if (t == 3) {\n \
+    \           std::cout << data.min() << '\\n';\n        }\n        else {\n   \
+    \         assert(false);\n        }\n    }\n}\n"
+  dependsOn:
+  - Src/Template/IOSetting.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/Other/SortedAdjacentProduct.hpp
+  - Src/Algebra/Group/XorGroup.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/abc308_g.test.cpp
+  requiredBy: []
+  timestamp: '2024-07-27 05:40:09+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/abc308_g.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/AtCoder/abc308_g.test.cpp
+- /verify/Test/AtCoder/abc308_g.test.cpp.html
+title: Test/AtCoder/abc308_g.test.cpp
+---
