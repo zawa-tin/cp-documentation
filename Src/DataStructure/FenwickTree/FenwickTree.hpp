@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Algebra/Group/GroupConcept.hpp"
 
 #include <vector>
 #include <cassert>
@@ -10,7 +11,7 @@
 
 namespace zawa {
 
-template <class Group>
+template <Concept::Group Group>
 class FenwickTree {
 private:
     using Value = typename Group::Element;
