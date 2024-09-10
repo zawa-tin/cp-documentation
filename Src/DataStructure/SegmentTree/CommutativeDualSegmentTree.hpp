@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Algebra/Monoid/MonoidConcept.hpp"
 
 #include <vector>
 #include <iterator>
@@ -9,7 +10,7 @@
 
 namespace zawa {
 
-template <class Monoid>
+template <Concept::Monoid Monoid>
 class CommutativeDualSegmentTree {
 public:
     using Operator = typename Monoid::Element;
@@ -62,7 +63,6 @@ public:
     }
 
     virtual void operation(u32 l, u32 r, const Operator& v) {
-        assert(l < n_);
         assert(l <= r and r <= n_);
         for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {
             if (l & 1) {

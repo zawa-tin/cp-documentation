@@ -121,7 +121,6 @@ public:
     }
 
     void operation(u32 L, u32 R, const Operator& o) {
-        assert(L < n_);
         assert(L <= R and R <= n_);
         L += size();
         R += size();
@@ -163,7 +162,6 @@ public:
     }
 
     Value product(u32 L, u32 R) {
-        assert(L < n_);
         assert(L <= R and R <= n_);
         L += size();
         R += size();

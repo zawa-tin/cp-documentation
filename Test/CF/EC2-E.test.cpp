@@ -12,7 +12,7 @@ using namespace zawa;
 
 /*
  * Educational Codeforces Round 2 - E Lomsat general
- * https://codeforces.com/contest/600/submission/245734447
+ * https://codeforces.com/contest/600/submission/280543477
  */
 
 void solve() {
