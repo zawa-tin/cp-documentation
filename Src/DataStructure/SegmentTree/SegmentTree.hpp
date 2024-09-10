@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Algebra/Monoid/MonoidConcept.hpp"
 
 #include <vector>
 #include <cassert>
@@ -10,7 +11,7 @@
 
 namespace zawa {
 
-template <class Monoid>
+template <Concept::Monoid Monoid>
 class SegmentTree {
 public:
     using Value = typename Monoid::Element;
@@ -58,7 +59,6 @@ public:
     }
 
     Value product(u32 l, u32 r) const {
-        assert(l < n_);
         assert(l <= r and r <= n_);
         Value leftValue{ Monoid::identity() }, rightValue{ Monoid::identity() };
         for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {

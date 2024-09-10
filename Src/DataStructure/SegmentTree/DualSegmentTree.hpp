@@ -4,7 +4,7 @@
 
 namespace zawa {
 
-template <class Monoid>
+template <Concept::Monoid Monoid>
 class DualSegmentTree : public CommutativeDualSegmentTree<Monoid> {
 private:
     using Base = CommutativeDualSegmentTree<Monoid>;
