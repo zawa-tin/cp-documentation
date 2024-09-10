@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -37,13 +40,18 @@ data:
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
-    #include <ostream>\n\nnamespace zawa {\n\ntemplate <class Monoid>\nclass SegmentTree\
-    \ {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n    constexpr\
-    \ u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32\
-    \ v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32\
-    \ v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\n\
+    class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
+    \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
+    \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
+    \ parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
     \ dat_;\n\npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{\
     \ n }, dat_(n << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
     \ std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity())\
@@ -55,11 +63,11 @@ data:
     \ {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = value;\n   \
     \     while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
     \ dat_[right(i)]);\n        }\n    }\n\n    Value product(u32 l, u32 r) const\
-    \ {\n        assert(l < n_);\n        assert(l <= r and r <= n_);\n        Value\
-    \ leftValue{ Monoid::identity() }, rightValue{ Monoid::identity() };\n       \
-    \ for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {\n          \
-    \  if (l & 1) {\n                leftValue = Monoid::operation(leftValue, dat_[l++]);\n\
-    \            }\n            if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
+    \ {\n        assert(l <= r and r <= n_);\n        Value leftValue{ Monoid::identity()\
+    \ }, rightValue{ Monoid::identity() };\n        for (l += n_, r += n_ ; l < r\
+    \ ; l = parent(l), r = parent(r)) {\n            if (l & 1) {\n              \
+    \  leftValue = Monoid::operation(leftValue, dat_[l++]);\n            }\n     \
+    \       if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
     \ rightValue);\n            }\n        }\n        return Monoid::operation(leftValue,\
     \ rightValue);\n    }\n\n    template <class Function>\n    u32 maxRight(u32 l,\
     \ const Function& f) {\n        assert(l < n_);\n        static_assert(std::is_convertible_v<decltype(f),\
@@ -94,15 +102,15 @@ data:
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
     \ zawa\n"
-  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
-    \nnamespace zawa {\n\ntemplate <class Monoid>\nclass SegmentTree {\npublic:\n\
-    \    using Value = typename Monoid::Element;\nprivate:\n    constexpr u32 left(u32\
-    \ v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32 v) const\
-    \ {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32 v) const\
-    \ {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value> dat_;\n\
-    \npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{ n }, dat_(n\
-    \ << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\n\
+    class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
+    \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
+    \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
+    \ parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
+    \ dat_;\n\npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{\
+    \ n }, dat_(n << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
     \ std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity())\
     \ {\n        assert(n_);\n        for (u32 i{} ; i < n_ ; i++) {\n           \
     \ dat_[i + n_] = dat[i];\n        }\n        for (u32 i{static_cast<u32>(n_) -\
@@ -112,11 +120,11 @@ data:
     \ {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = value;\n   \
     \     while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
     \ dat_[right(i)]);\n        }\n    }\n\n    Value product(u32 l, u32 r) const\
-    \ {\n        assert(l < n_);\n        assert(l <= r and r <= n_);\n        Value\
-    \ leftValue{ Monoid::identity() }, rightValue{ Monoid::identity() };\n       \
-    \ for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {\n          \
-    \  if (l & 1) {\n                leftValue = Monoid::operation(leftValue, dat_[l++]);\n\
-    \            }\n            if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
+    \ {\n        assert(l <= r and r <= n_);\n        Value leftValue{ Monoid::identity()\
+    \ }, rightValue{ Monoid::identity() };\n        for (l += n_, r += n_ ; l < r\
+    \ ; l = parent(l), r = parent(r)) {\n            if (l & 1) {\n              \
+    \  leftValue = Monoid::operation(leftValue, dat_[l++]);\n            }\n     \
+    \       if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
     \ rightValue);\n            }\n        }\n        return Monoid::operation(leftValue,\
     \ rightValue);\n    }\n\n    template <class Function>\n    u32 maxRight(u32 l,\
     \ const Function& f) {\n        assert(l < n_);\n        static_assert(std::is_convertible_v<decltype(f),\
@@ -153,17 +161,18 @@ data:
     \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/SegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-09-26 23:32:20+09:00'
+  timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/point_set_range_composite.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/0478.test.cpp
-  - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/aoj3226.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp

@@ -114,8 +114,8 @@ data:
   verifiedWith:
   - Test/AOJ/GRL_3_A.test.cpp
   - Test/AOJ/GRL_3_B.test.cpp
-  - Test/CF/CF923-F.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
+  - Test/CF/CF923-F.test.cpp
 documentation_of: Src/Graph/Components/Lowlink.hpp
 layout: document
 title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"

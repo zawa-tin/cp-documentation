@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
@@ -36,9 +39,14 @@ data:
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp\"\
     \n\n#include <vector>\n#include <iterator>\n#include <ostream>\n#include <cassert>\n\
-    \nnamespace zawa {\n\ntemplate <class Monoid>\nclass CommutativeDualSegmentTree\
+    \nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass CommutativeDualSegmentTree\
     \ {\npublic:\n    using Operator = typename Monoid::Element;\nprotected:\n\n \
     \   static constexpr u32 parent(u32 v) noexcept {\n        return v >> 1;\n  \
     \  }\n    static constexpr u32 left(u32 v) noexcept {\n        return v << 1;\n\
@@ -59,22 +67,22 @@ data:
     \    CommutativeDualSegmentTree(InputIterator first, InputIterator last)\n   \
     \     : n_{ static_cast<usize>(std::distance(first, last)) }, dat_((n_ << 1),\
     \ Monoid::identity()) {\n        initDat(first, last);\n    }\n\n    virtual void\
-    \ operation(u32 l, u32 r, const Operator& v) {\n        assert(l < n_);\n    \
-    \    assert(l <= r and r <= n_);\n        for (l += n_, r += n_ ; l < r ; l =\
-    \ parent(l), r = parent(r)) {\n            if (l & 1) {\n                dat_[l]\
-    \ = Monoid::operation(dat_[l], v);\n                l++;\n            }\n    \
-    \        if (r & 1) {\n                r--;\n                dat_[r] = Monoid::operation(dat_[r],\
-    \ v);\n            }\n        }\n    }\n\n    void set(u32 i, const Operator&\
-    \ v) {\n        assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n\
-    \    }\n\n    virtual Operator operator[](u32 i) {\n        assert(i < n_);\n\
-    \        Operator res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i))\
-    \ {\n            res = Monoid::operation(res, dat_[i]);\n        }\n        return\
-    \ res;\n    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
+    \ operation(u32 l, u32 r, const Operator& v) {\n        assert(l <= r and r <=\
+    \ n_);\n        for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r))\
+    \ {\n            if (l & 1) {\n                dat_[l] = Monoid::operation(dat_[l],\
+    \ v);\n                l++;\n            }\n            if (r & 1) {\n       \
+    \         r--;\n                dat_[r] = Monoid::operation(dat_[r], v);\n   \
+    \         }\n        }\n    }\n\n    void set(u32 i, const Operator& v) {\n  \
+    \      assert(i < n_);\n        push(i);\n        dat_[i + n_] = v;\n    }\n\n\
+    \    virtual Operator operator[](u32 i) {\n        assert(i < n_);\n        Operator\
+    \ res{ Monoid::identity() };\n        for (i += n_ ; i ; i = parent(i)) {\n  \
+    \          res = Monoid::operation(res, dat_[i]);\n        }\n        return res;\n\
+    \    }\n\n    friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree\
     \ seg) {\n        usize size{ seg.dat_.size() };\n        for (u32 i{1} ; i <\
     \ size ; i++) {\n            os << seg.dat_[i] << (i + 1 == size ? \"\" : \" \"\
     );\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n#line 4 \"\
     Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class Monoid>\nclass DualSegmentTree : public CommutativeDualSegmentTree<Monoid>\
+    \ <Concept::Monoid Monoid>\nclass DualSegmentTree : public CommutativeDualSegmentTree<Monoid>\
     \ {\nprivate:\n    using Base = CommutativeDualSegmentTree<Monoid>;\npublic:\n\
     \    using Operator = typename Base::Operator;\n    DualSegmentTree() : Base()\
     \ {}\n    DualSegmentTree(u32 n) : Base(n) {}\n    DualSegmentTree(const std::vector<Operator>&\
@@ -170,13 +178,14 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Number/ModInt.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   - Src/Template/IOSetting.hpp
   isVerificationFile: true
   path: Test/LC/range_affine_point_get.test.cpp
   requiredBy: []
-  timestamp: '2024-07-15 23:06:53+09:00'
+  timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_point_get.test.cpp

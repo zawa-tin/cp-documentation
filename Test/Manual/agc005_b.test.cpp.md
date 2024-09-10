@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MinMonoid.hpp
     title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -34,15 +37,20 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
-    \nnamespace zawa {\n\ntemplate <class Monoid>\nclass SegmentTree {\npublic:\n\
-    \    using Value = typename Monoid::Element;\nprivate:\n    constexpr u32 left(u32\
-    \ v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32 v) const\
-    \ {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32 v) const\
-    \ {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value> dat_;\n\
-    \npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{ n }, dat_(n\
-    \ << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
+    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\n\
+    class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
+    \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
+    \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
+    \ parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
+    \ dat_;\n\npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{\
+    \ n }, dat_(n << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
     \ std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity())\
     \ {\n        assert(n_);\n        for (u32 i{} ; i < n_ ; i++) {\n           \
     \ dat_[i + n_] = dat[i];\n        }\n        for (u32 i{static_cast<u32>(n_) -\
@@ -52,11 +60,11 @@ data:
     \ {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = value;\n   \
     \     while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
     \ dat_[right(i)]);\n        }\n    }\n\n    Value product(u32 l, u32 r) const\
-    \ {\n        assert(l < n_);\n        assert(l <= r and r <= n_);\n        Value\
-    \ leftValue{ Monoid::identity() }, rightValue{ Monoid::identity() };\n       \
-    \ for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {\n          \
-    \  if (l & 1) {\n                leftValue = Monoid::operation(leftValue, dat_[l++]);\n\
-    \            }\n            if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
+    \ {\n        assert(l <= r and r <= n_);\n        Value leftValue{ Monoid::identity()\
+    \ }, rightValue{ Monoid::identity() };\n        for (l += n_, r += n_ ; l < r\
+    \ ; l = parent(l), r = parent(r)) {\n            if (l & 1) {\n              \
+    \  leftValue = Monoid::operation(leftValue, dat_[l++]);\n            }\n     \
+    \       if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
     \ rightValue);\n            }\n        }\n        return Monoid::operation(leftValue,\
     \ rightValue);\n    }\n\n    template <class Function>\n    u32 maxRight(u32 l,\
     \ const Function& f) {\n        assert(l < n_);\n        static_assert(std::is_convertible_v<decltype(f),\
@@ -130,11 +138,12 @@ data:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Monoid/MinMonoid.hpp
   isVerificationFile: true
   path: Test/Manual/agc005_b.test.cpp
   requiredBy: []
-  timestamp: '2024-02-09 19:34:18+09:00'
+  timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/agc005_b.test.cpp

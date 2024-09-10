@@ -75,23 +75,22 @@ data:
     \ n_;\n    }\n\n    void operation(u32 i, const Operator& o) {\n        assert(i\
     \ < n_);\n        i += size();\n        propagateAncestor(i);\n        dat_[i].o_\
     \ = OM::operation(dat_[i].o_, o);\n        recalcAncestor(i);\n    }\n\n    void\
-    \ operation(u32 L, u32 R, const Operator& o) {\n        assert(L < n_);\n    \
-    \    assert(L <= R and R <= n_);\n        L += size();\n        R += size();\n\
-    \        propagateAncestor(L);\n        propagateAncestor(R);\n        for (u32\
-    \ l = L, r = R ; l < r ; l = parent(l), r = parent(r)) {\n            if (l &\
-    \ 1) {\n                dat_[l].o_ = OM::operation(dat_[l].o_, o);\n         \
-    \       l++;\n            }\n            if (r & 1) {\n                r--;\n\
-    \                dat_[r].o_ = OM::operation(dat_[r].o_, o);\n            }\n \
-    \       }\n        recalcAncestor(L);\n        recalcAncestor(R);\n    }\n\n \
-    \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
-    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
-    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
-    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
-    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
-    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \ operation(u32 L, u32 R, const Operator& o) {\n        assert(L <= R and R <=\
+    \ n_);\n        L += size();\n        R += size();\n        propagateAncestor(L);\n\
+    \        propagateAncestor(R);\n        for (u32 l = L, r = R ; l < r ; l = parent(l),\
+    \ r = parent(r)) {\n            if (l & 1) {\n                dat_[l].o_ = OM::operation(dat_[l].o_,\
+    \ o);\n                l++;\n            }\n            if (r & 1) {\n       \
+    \         r--;\n                dat_[r].o_ = OM::operation(dat_[r].o_, o);\n \
+    \           }\n        }\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
+    \    }\n\n    void set(u32 i, const Value& v) {\n        assert(i < n_);\n   \
+    \     i += size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
+    \ >> d);\n        }\n        dat_[i] = Node{ v, OM::identity() };\n        for\
+    \ (i = parent(i) ; i ; i = parent(i)) {\n            recalc(i);\n        }\n \
+    \   }\n\n    Value operator[](u32 i) {\n        assert(i < n_);\n        i +=\
+    \ size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
+    \ >> d);\n        }\n        return action(dat_[i]);\n    }\n\n    Value product(u32\
+    \ L, u32 R) {\n        assert(L <= R and R <= n_);\n        L += size();\n   \
+    \     R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
     \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
     \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
     \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
@@ -151,23 +150,22 @@ data:
     \ n_;\n    }\n\n    void operation(u32 i, const Operator& o) {\n        assert(i\
     \ < n_);\n        i += size();\n        propagateAncestor(i);\n        dat_[i].o_\
     \ = OM::operation(dat_[i].o_, o);\n        recalcAncestor(i);\n    }\n\n    void\
-    \ operation(u32 L, u32 R, const Operator& o) {\n        assert(L < n_);\n    \
-    \    assert(L <= R and R <= n_);\n        L += size();\n        R += size();\n\
-    \        propagateAncestor(L);\n        propagateAncestor(R);\n        for (u32\
-    \ l = L, r = R ; l < r ; l = parent(l), r = parent(r)) {\n            if (l &\
-    \ 1) {\n                dat_[l].o_ = OM::operation(dat_[l].o_, o);\n         \
-    \       l++;\n            }\n            if (r & 1) {\n                r--;\n\
-    \                dat_[r].o_ = OM::operation(dat_[r].o_, o);\n            }\n \
-    \       }\n        recalcAncestor(L);\n        recalcAncestor(R);\n    }\n\n \
-    \   void set(u32 i, const Value& v) {\n        assert(i < n_);\n        i += size();\n\
-    \        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n \
-    \       }\n        dat_[i] = Node{ v, OM::identity() };\n        for (i = parent(i)\
-    \ ; i ; i = parent(i)) {\n            recalc(i);\n        }\n    }\n\n    Value\
-    \ operator[](u32 i) {\n        assert(i < n_);\n        i += size();\n       \
-    \ for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i >> d);\n        }\n\
-    \        return action(dat_[i]);\n    }\n\n    Value product(u32 L, u32 R) {\n\
-    \        assert(L < n_);\n        assert(L <= R and R <= n_);\n        L += size();\n\
-    \        R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
+    \ operation(u32 L, u32 R, const Operator& o) {\n        assert(L <= R and R <=\
+    \ n_);\n        L += size();\n        R += size();\n        propagateAncestor(L);\n\
+    \        propagateAncestor(R);\n        for (u32 l = L, r = R ; l < r ; l = parent(l),\
+    \ r = parent(r)) {\n            if (l & 1) {\n                dat_[l].o_ = OM::operation(dat_[l].o_,\
+    \ o);\n                l++;\n            }\n            if (r & 1) {\n       \
+    \         r--;\n                dat_[r].o_ = OM::operation(dat_[r].o_, o);\n \
+    \           }\n        }\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
+    \    }\n\n    void set(u32 i, const Value& v) {\n        assert(i < n_);\n   \
+    \     i += size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
+    \ >> d);\n        }\n        dat_[i] = Node{ v, OM::identity() };\n        for\
+    \ (i = parent(i) ; i ; i = parent(i)) {\n            recalc(i);\n        }\n \
+    \   }\n\n    Value operator[](u32 i) {\n        assert(i < n_);\n        i +=\
+    \ size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
+    \ >> d);\n        }\n        return action(dat_[i]);\n    }\n\n    Value product(u32\
+    \ L, u32 R) {\n        assert(L <= R and R <= n_);\n        L += size();\n   \
+    \     R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
     \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
     \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
     \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
@@ -189,12 +187,12 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   requiredBy: []
-  timestamp: '2023-11-08 14:46:32+09:00'
+  timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/range_affine_range_sum.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
   - Test/Manual/CF895-E.test.cpp
   - Test/Manual/practice2_l.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp

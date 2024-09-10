@@ -5,6 +5,12 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -49,10 +55,21 @@ data:
     \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
     \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
     \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 6 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n#include <cassert>\n#include <ostream>\n#include <functional>\n#include <type_traits>\n\
-    \nnamespace zawa {\n\ntemplate <class Group>\nclass FenwickTree {\nprivate:\n\
-    \    using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 7 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <cassert>\n\
+    #include <ostream>\n#include <functional>\n#include <type_traits>\n\nnamespace\
+    \ zawa {\n\ntemplate <Concept::Group Group>\nclass FenwickTree {\nprivate:\n \
+    \   using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
     \    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept\
     \ {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32\
     \ i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
@@ -100,7 +117,7 @@ data:
     \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
     \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
-    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
+    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\
     };\n\n\n} // namespace zawa\n#line 8 \"Test/LC/point_add_range_sum.test.cpp\"\n\
     \n#line 12 \"Test/LC/point_add_range_sum.test.cpp\"\n\nusing namespace zawa;\n\
     \nint main() {\n    SetFastIO();\n    usize N, Q; std::cin >> N >> Q;\n    std::vector<i64>\
@@ -130,10 +147,12 @@ data:
   - Src/Template/VectorIO.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   isVerificationFile: true
   path: Test/LC/point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-12-03 18:29:53+09:00'
+  timestamp: '2024-09-10 17:41:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_range_sum.test.cpp

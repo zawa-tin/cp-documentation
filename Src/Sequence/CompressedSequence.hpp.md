@@ -75,8 +75,8 @@ data:
   timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc213_c.test.cpp
   - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
   - Test/Manual/abc287_g.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document

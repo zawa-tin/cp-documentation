@@ -7,6 +7,9 @@ data:
       path: Src/Algebra/Group/AdditiveGroup.hpp
       title: "\u52A0\u6CD5\u7FA4"
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Group/GroupConcept.hpp
+      title: Src/Algebra/Group/GroupConcept.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/XorGroup.hpp
       title: Src/Algebra/Group/XorGroup.hpp
   - name: Src/Algebra/Monoid
@@ -29,6 +32,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MonoidConcept.hpp
+      title: Src/Algebra/Monoid/MonoidConcept.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
       title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"

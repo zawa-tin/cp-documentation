@@ -5,6 +5,12 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -78,14 +84,24 @@ data:
     \ res{1}, base{k};\n        while (k) {\n            if (k & 1) res *= base;\n\
     \            base *= base; \n            k >>= 1;\n        }\n        return res;\n\
     \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#include <vector>\n\
-    #line 7 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <ostream>\n\
-    #include <functional>\n#line 10 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <class Group>\nclass FenwickTree {\nprivate:\n\
-    \    using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
-    \    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept\
-    \ {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32\
-    \ i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#include <vector>\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n#include <ostream>\n#include <functional>\n#line 11 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <Concept::Group Group>\nclass FenwickTree {\n\
+    private:\n    using Value = typename Group::Element;\n\n    usize n_;\n    u32\
+    \ bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x)\
+    \ const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] +\
+    \ v\n    void addDat(i32 i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
     \        for ( i++ ; i < static_cast<i32>(dat_.size()) ; i += lsb(i)) {\n    \
     \        dat_[i] = Group::operation(dat_[i], v);\n        }\n    }\n\n    // return\
     \ a[0] + a[1] + .. + a[i - 1]\n    Value product(i32 i) const {\n        assert(0\
@@ -130,7 +146,7 @@ data:
     \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
     \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
-    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
+    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\
     };\n\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\
     \nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n   \
     \ using Element = T;\n    static constexpr T identity() noexcept {\n        return\
@@ -163,11 +179,13 @@ data:
   - Src/Template/IOSetting.hpp
   - Src/Number/ModInt.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc276_f.test.cpp
   requiredBy: []
-  timestamp: '2023-12-03 18:29:53+09:00'
+  timestamp: '2024-09-10 17:41:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc276_f.test.cpp

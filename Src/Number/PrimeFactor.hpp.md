@@ -74,10 +74,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/2706.test.cpp
-  - Test/CF/CF902-B.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
-  - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc170_d.test.cpp
+  - Test/CF/CF902-B.test.cpp
 documentation_of: Src/Number/PrimeFactor.hpp
 layout: document
 redirect_from:

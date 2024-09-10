@@ -5,6 +5,12 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -25,7 +31,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc287/submissions/52968691
+    - https://atcoder.jp/contests/abc287/submissions/57621802
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/abc287_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -56,10 +62,21 @@ data:
     \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
     \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 7 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n#include <ostream>\n#include <functional>\n#include <type_traits>\n\nnamespace\
-    \ zawa {\n\ntemplate <class Group>\nclass FenwickTree {\nprivate:\n    using Value\
-    \ = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n    std::vector<Value>\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <ostream>\n\
+    #include <functional>\n#include <type_traits>\n\nnamespace zawa {\n\ntemplate\
+    \ <Concept::Group Group>\nclass FenwickTree {\nprivate:\n    using Value = typename\
+    \ Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n    std::vector<Value>\
     \ a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept {\n        return x\
     \ & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32 i, const Value&\
     \ v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n        for ( i++\
@@ -106,7 +123,7 @@ data:
     \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
     \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
-    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
+    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\
     };\n\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\
     \nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n   \
     \ using Element = T;\n    static constexpr T identity() noexcept {\n        return\
@@ -114,7 +131,7 @@ data:
     \ {\n        return l + r;\n    }\n    static constexpr T inverse(const T& v)\
     \ noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"\
     Test/Manual/abc287_g.test.cpp\"\n\n#line 11 \"Test/Manual/abc287_g.test.cpp\"\n\
-    \n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/52968691\n\
+    \n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/57621802\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -155,7 +172,7 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/CompressedSequence.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
-    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/52968691\n\
+    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/57621802\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -197,11 +214,13 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/Manual/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2024-04-30 19:27:16+09:00'
+  timestamp: '2024-09-10 17:41:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/abc287_g.test.cpp
