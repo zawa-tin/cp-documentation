@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/02559"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2559"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SparseTable/DualSparseTable.hpp"
