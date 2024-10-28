@@ -168,13 +168,13 @@ data:
   timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/0478.test.cpp
-  - Test/AtCoder/abc292_h.test.cpp
-  - Test/AtCoder/abc331_f.test.cpp
+  - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/aoj3226.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree

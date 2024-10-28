@@ -201,19 +201,19 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   requiredBy:
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-  - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_2_B.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2003.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/2334.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
 documentation_of: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
 layout: document
 redirect_from:

@@ -54,9 +54,9 @@ data:
   timestamp: '2024-07-15 23:06:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
 documentation_of: Src/Algebra/Monoid/AffineMonoid.hpp
 layout: document

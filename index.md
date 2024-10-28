@@ -109,6 +109,9 @@ data:
   - name: Src/DataStructure/SparseTable
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SparseTable/DualSparseTable.hpp
+      title: Dual Sparse Table
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SparseTable/SparseTable.hpp
       title: Sparse Table
   - name: Src/DataStructure/Undoable
@@ -530,6 +533,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2334.test.cpp
       title: "AOJ2334 \u8857\u3092\u99C6\u3051\u308B\u9053"
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2559.test.cpp
+      title: Test/AOJ/2559.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2609.test.cpp
       title: Test/AOJ/2609.test.cpp

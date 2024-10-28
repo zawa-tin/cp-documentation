@@ -97,8 +97,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0478.test.cpp
-  - Test/AtCoder/abc331_f.test.cpp
   - Test/Manual/aoj3548.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
 documentation_of: Src/Algebra/Monoid/RollingHashMonoid.hpp
 layout: document
 title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\u306E\

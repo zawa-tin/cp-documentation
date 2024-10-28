@@ -157,10 +157,10 @@ data:
   timestamp: '2024-07-02 11:54:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
   - Test/Manual/abc359_g.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/AtCoder/abc340_g.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
 documentation_of: Src/Graph/Tree/LowestCommonAncestor.hpp
 layout: document
 title: Lowest Common Ancestor

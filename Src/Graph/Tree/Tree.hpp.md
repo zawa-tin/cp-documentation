@@ -28,6 +28,9 @@ data:
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2559.test.cpp
+    title: Test/AOJ/2559.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -86,25 +89,26 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/Tree.hpp
   requiredBy:
+  - Src/Graph/Tree/AuxiliaryTree.hpp
+  - Src/Graph/Tree/Centroid.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/HeavyLightDecomposition.hpp
-  - Src/Graph/Tree/Centroid.hpp
-  - Src/Graph/Tree/AuxiliaryTree.hpp
   timestamp: '2024-07-02 11:54:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/vertex_add_path_sum.test.cpp
-  - Test/LC/frequency_table_of_tree_distance.test.cpp
-  - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/LC/lca/HeavyLightDecomposition.test.cpp
-  - Test/LC/jump_on_tree.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/2559.test.cpp
   - Test/AOJ/0465.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
   - Test/Manual/abc359_g.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/AtCoder/abc340_g.test.cpp
+  - Test/LC/frequency_table_of_tree_distance.test.cpp
+  - Test/LC/jump_on_tree.test.cpp
+  - Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
 documentation_of: Src/Graph/Tree/Tree.hpp
 layout: document
 redirect_from:

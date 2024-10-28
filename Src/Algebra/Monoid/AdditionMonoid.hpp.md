@@ -33,9 +33,9 @@ data:
   timestamp: '2023-10-01 23:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_range_sum.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document
 redirect_from:
