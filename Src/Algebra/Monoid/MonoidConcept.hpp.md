@@ -20,10 +20,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SparseTable/DualSparseTable.hpp
+    title: Dual Sparse Table
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2559.test.cpp
+    title: Test/AOJ/2559.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
@@ -95,6 +101,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Monoid/MonoidConcept.hpp
   requiredBy:
+  - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -106,6 +113,7 @@ data:
   verifiedWith:
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/2559.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp

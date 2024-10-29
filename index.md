@@ -47,6 +47,9 @@ data:
       title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\
         \u304B\u5224\u5B9A\u3059\u308B\u30E2\u30CE\u30A4\u30C9"
     - icon: ':warning:'
+      path: Src/Algebra/Monoid/SemigroupMonoid.hpp
+      title: Src/Algebra/Monoid/SemigroupMonoid.hpp
+    - icon: ':warning:'
       path: Src/Algebra/Monoid/SuffixProductMonoid.hpp
       title: Src/Algebra/Monoid/SuffixProductMonoid.hpp
   - name: Src/Algebra/Ring
