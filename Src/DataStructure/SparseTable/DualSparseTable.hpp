@@ -1,13 +1,14 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Algebra/Monoid/MonoidConcept.hpp"
 
 #include <vector>
 #include <cassert>
 
 namespace zawa {
 
-template <class S>
+template <Concept::Monoid S>
 class DualSparseTable {
 public:
     using Value = typename S::Element;
@@ -21,7 +22,8 @@ public:
         for (u32 i{1} ; i < L_.size() ; i++) {
             L_[i] = L_[i - 1] + (i >> (L_[i - 1] + 1));
         }
-        dat_ = std::vector(L_.back() + 1, A);
+        dat_ = std::vector(L_.back() + 1, std::vector(A.size(), S::identity()));
+        dat_[0] = A;
     }
 
     void operation(u32 L, u32 R, const Value& v) {
