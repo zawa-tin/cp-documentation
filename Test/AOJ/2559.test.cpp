@@ -15,6 +15,9 @@ using namespace zawa;
 
 struct MIN {
     using Element = int;
+    static Element identity() {
+        return (int)2e9;
+    }
     static Element operation(Element L, Element R) {
         return std::min(L, R);
     }
@@ -53,7 +56,7 @@ int main() {
         AddEdge(T, b, id[i]);
     }
     HeavyLightDecomposition hld{T};
-    const int INF{(int)2e9};
+    const int INF{MIN::identity()};
     DualSparseTable<MIN> spt{std::vector<int>(N + N - 1, INF)};
     for (auto [w, a, b, i] : E) if (id[i] == -1) {
         for (auto [l, r] : hld(a, b)) {
