@@ -237,6 +237,9 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc346_g.test.cpp
+    title: Test/AtCoder/abc346_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
@@ -269,6 +272,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/area_of_union_of_rectangles.test.cpp
+    title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/binomial_coefficient_prime_mod.test.cpp
     title: Test/LC/binomial_coefficient_prime_mod.test.cpp
@@ -529,6 +535,7 @@ data:
   - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
@@ -555,6 +562,7 @@ data:
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/yukicoder/117.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp

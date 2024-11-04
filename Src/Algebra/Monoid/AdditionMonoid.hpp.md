@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/AreaOfUnionOfRectangles.hpp
+    title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp
@@ -9,6 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc346_g.test.cpp
+    title: Test/AtCoder/abc346_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/area_of_union_of_rectangles.test.cpp
+    title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
@@ -29,12 +38,15 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Src/Algebra/Monoid/AdditionMonoid.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Utility/AreaOfUnionOfRectangles.hpp
   timestamp: '2023-10-01 23:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document

@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/AreaOfUnionOfRectangles.hpp
+    title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
@@ -12,6 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc346_g.test.cpp
+    title: Test/AtCoder/abc346_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/area_of_union_of_rectangles.test.cpp
+    title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
@@ -186,14 +195,17 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/Utility/AreaOfUnionOfRectangles.hpp
   timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/Manual/practice2_l.test.cpp
   - Test/Manual/CF895-E.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document

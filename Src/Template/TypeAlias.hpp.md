@@ -339,6 +339,9 @@ data:
     path: Src/Template/VectorIO.hpp
     title: "std::vector\u306E\u5165\u51FA\u529B"
   - icon: ':heavy_check_mark:'
+    path: Src/Utility/AreaOfUnionOfRectangles.hpp
+    title: Src/Utility/AreaOfUnionOfRectangles.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/BinarySearch.hpp
     title: "\u4E8C\u5206\u63A2\u7D22"
   - icon: ':heavy_check_mark:'
@@ -688,6 +691,9 @@ data:
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc346_g.test.cpp
+    title: Test/AtCoder/abc346_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
@@ -735,6 +741,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/area_of_union_of_rectangles.test.cpp
+    title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/binomial_coefficient_prime_mod.test.cpp
     title: Test/LC/binomial_coefficient_prime_mod.test.cpp
@@ -1008,6 +1017,7 @@ data:
   - Src/Number/BinomalCoefficients.hpp
   - Src/Utility/U32Pair.hpp
   - Src/Utility/FloatingMarkerShift.hpp
+  - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Utility/BinarySearch.hpp
   - Src/LinearAlgebra/Matrix.hpp
   - Src/GeometryR2/Polygon.hpp
@@ -1205,6 +1215,7 @@ data:
   - Test/AtCoder/abc299_c.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
@@ -1257,6 +1268,7 @@ data:
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
   - Test/LC/aplusb.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp

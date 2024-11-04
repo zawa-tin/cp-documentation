@@ -30,6 +30,9 @@ data:
       path: Src/Algebra/Monoid/MaxMonoid.hpp
       title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MinCountMonoid.hpp
+      title: Src/Algebra/Monoid/MinCountMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
@@ -475,6 +478,9 @@ data:
   - name: Src/Utility
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/AreaOfUnionOfRectangles.hpp
+      title: Src/Utility/AreaOfUnionOfRectangles.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/BinarySearch.hpp
       title: "\u4E8C\u5206\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
@@ -840,6 +846,9 @@ data:
       path: Test/AtCoder/abc340_g.test.cpp
       title: Test/AtCoder/abc340_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc346_g.test.cpp
+      title: Test/AtCoder/abc346_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc349_f.test.cpp
       title: ABC349-F Subsequence LCM
     - icon: ':heavy_check_mark:'
@@ -891,6 +900,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/aplusb.test.cpp
       title: Test/LC/aplusb.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/area_of_union_of_rectangles.test.cpp
+      title: Test/LC/area_of_union_of_rectangles.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/binomial_coefficient_prime_mod.test.cpp
       title: Test/LC/binomial_coefficient_prime_mod.test.cpp
