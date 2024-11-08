@@ -146,6 +146,7 @@
 "Test/LC/queue_operate_all_composite.test.cpp": "2024-07-15 23:06:53 +0900",
 "Test/LC/range_affine_point_get.test.cpp": "2024-09-10 19:45:45 +0900",
 "Test/LC/range_affine_range_sum.test.cpp": "2024-09-10 19:45:45 +0900",
+"Test/LC/rectangle_sum.test.cpp": "2024-11-09 02:34:38 +0900",
 "Test/LC/shortest_path.test.cpp": "2023-12-14 22:32:29 +0900",
 "Test/LC/sort_by_argument.test.cpp": "2024-06-26 14:51:43 +0900",
 "Test/LC/static_convex_hull.test.cpp": "2024-06-26 18:12:18 +0900",
