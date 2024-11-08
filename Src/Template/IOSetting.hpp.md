@@ -324,6 +324,9 @@ data:
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/rectangle_sum.test.cpp
+    title: Test/LC/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -574,6 +577,7 @@ data:
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/static_convex_hull.test.cpp
+  - Test/LC/rectangle_sum.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/LC/incremental_scc.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp

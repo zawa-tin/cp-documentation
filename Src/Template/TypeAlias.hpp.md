@@ -38,6 +38,12 @@ data:
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RectangleSum/RSType.hpp
+    title: Src/DataStructure/RectangleSum/RSType.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+    title: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/SWAG.hpp
     title: Src/DataStructure/SWAG/SWAG.hpp
   - icon: ':heavy_check_mark:'
@@ -796,6 +802,9 @@ data:
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/rectangle_sum.test.cpp
+    title: Test/LC/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1070,6 +1079,8 @@ data:
   - Src/DataStructure/Undoable/UndoableVector.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/DataStructure/RectangleSum/RSType.hpp
+  - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
@@ -1280,6 +1291,7 @@ data:
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/static_convex_hull.test.cpp
+  - Test/LC/rectangle_sum.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/incremental_scc.test.cpp

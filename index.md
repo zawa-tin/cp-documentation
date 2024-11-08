@@ -93,6 +93,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - name: Src/DataStructure/RectangleSum
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RectangleSum/RSType.hpp
+      title: Src/DataStructure/RectangleSum/RSType.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+      title: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
@@ -948,6 +956,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_affine_range_sum.test.cpp
       title: Test/LC/range_affine_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/rectangle_sum.test.cpp
+      title: Test/LC/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/shortest_path.test.cpp
       title: Test/LC/shortest_path.test.cpp
