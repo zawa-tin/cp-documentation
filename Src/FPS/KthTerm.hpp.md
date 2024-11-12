@@ -158,7 +158,7 @@ $$ \begin{pmatrix}
 0, 1, 0, \cdots, 0 \\
 0, 0, 1, \cdots, 0 \\
 \vdots \\
-0, 0, 0, \cdots, 0 \\
+0, 0, 0, \cdots, 1 \\
 C_{d}, C_{d - 1}, C_{d - 2}, \cdots, C{1} \\
 \end{pmatrix} $$
 
