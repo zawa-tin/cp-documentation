@@ -136,6 +136,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Undoable/UndoableVector.hpp
       title: Src/DataStructure/Undoable/UndoableVector.hpp
+  - name: Src/FPS
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/FPS/KthTerm.hpp
+      title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
+        \u308B"
   - name: Src/GeometryR2
     pages:
     - icon: ':heavy_check_mark:'
@@ -933,6 +939,9 @@ data:
       path: Test/LC/jump_on_tree.test.cpp
       title: Test/LC/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+      title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1062,6 +1071,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/practice2_l.test.cpp
       title: ALPC-L Lazy Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/tdpc_fibonacci.test.cpp
+      title: Test/Manual/tdpc_fibonacci.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/typical90_ai.test.cpp
       title: Test/Manual/typical90_ai.test.cpp

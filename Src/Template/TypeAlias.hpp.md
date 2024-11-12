@@ -68,6 +68,10 @@ data:
     path: Src/DataStructure/Undoable/UndoableVector.hpp
     title: Src/DataStructure/Undoable/UndoableVector.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/KthTerm.hpp
+    title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
+      \u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
@@ -772,6 +776,9 @@ data:
     path: Test/LC/jump_on_tree.test.cpp
     title: Test/LC/jump_on_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca/HeavyLightDecomposition.test.cpp
     title: Test/LC/lca/HeavyLightDecomposition.test.cpp
   - icon: ':heavy_check_mark:'
@@ -897,6 +904,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_l.test.cpp
     title: ALPC-L Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/tdpc_fibonacci.test.cpp
+    title: Test/Manual/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -1028,6 +1038,7 @@ data:
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/FPS/KthTerm.hpp
   - Src/LinearAlgebra/Matrix.hpp
   - Src/GeometryR2/Polygon.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
@@ -1200,6 +1211,7 @@ data:
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/practice2_e.test.cpp
+  - Test/Manual/tdpc_fibonacci.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/abc267_f.test.cpp
@@ -1283,6 +1295,7 @@ data:
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/point_add_rectangle_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp

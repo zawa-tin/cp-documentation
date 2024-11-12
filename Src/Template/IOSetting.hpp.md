@@ -294,6 +294,9 @@ data:
     path: Test/LC/jump_on_tree.test.cpp
     title: Test/LC/jump_on_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca/HeavyLightDecomposition.test.cpp
     title: Test/LC/lca/HeavyLightDecomposition.test.cpp
   - icon: ':heavy_check_mark:'
@@ -569,6 +572,7 @@ data:
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/point_add_rectangle_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp
