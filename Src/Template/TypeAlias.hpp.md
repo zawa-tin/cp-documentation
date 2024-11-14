@@ -310,6 +310,9 @@ data:
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/CartesianTree.hpp
+    title: Cartesian Tree
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
   - icon: ':heavy_check_mark:'
@@ -507,6 +510,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_G.test.cpp
     title: Test/AOJ/CGL_7_G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DPL_3_C.test.cpp
+    title: Test/AOJ/DPL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_1_B.test.cpp
     title: Test/AOJ/DSL_1_B.test.cpp
@@ -760,6 +766,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/cartesian_tree.test.cpp
+    title: Test/LC/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
@@ -1127,6 +1136,7 @@ data:
   - Src/Sequence/InversionNumber.hpp
   - Src/Sequence/RollingHash.hpp
   - Src/Sequence/RunLengthEncoding.hpp
+  - Src/Sequence/CartesianTree.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -1171,6 +1181,7 @@ data:
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/2609.test.cpp
+  - Test/AOJ/DPL_3_C.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
@@ -1317,6 +1328,7 @@ data:
   - Test/LC/matrix_det.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/LC/cartesian_tree.test.cpp
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/bipartitematching.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp

@@ -128,6 +128,9 @@ data:
     path: Test/AOJ/CGL_7_G.test.cpp
     title: Test/AOJ/CGL_7_G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DPL_3_C.test.cpp
+    title: Test/AOJ/DPL_3_C.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_1_B.test.cpp
     title: Test/AOJ/DSL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -281,6 +284,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/cartesian_tree.test.cpp
+    title: Test/LC/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
@@ -486,6 +492,7 @@ data:
   - Test/AOJ/0465.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/2609.test.cpp
+  - Test/AOJ/DPL_3_C.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
@@ -592,6 +599,7 @@ data:
   - Test/LC/matrix_det.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/LC/cartesian_tree.test.cpp
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/bipartitematching.test.cpp
 documentation_of: Src/Template/IOSetting.hpp

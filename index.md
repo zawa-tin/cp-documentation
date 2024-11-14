@@ -433,6 +433,9 @@ data:
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/CartesianTree.hpp
+      title: Cartesian Tree
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/CompressedSequence.hpp
       title: "\u5EA7\u6A19\u5727\u7E2E"
     - icon: ':heavy_check_mark:'
@@ -632,6 +635,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_G.test.cpp
       title: Test/AOJ/CGL_7_G.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DPL_3_C.test.cpp
+      title: Test/AOJ/DPL_3_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_1_B.test.cpp
       title: Test/AOJ/DSL_1_B.test.cpp
@@ -923,6 +929,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/bipartitematching.test.cpp
       title: Test/LC/bipartitematching.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/cartesian_tree.test.cpp
+      title: Test/LC/cartesian_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_primes.test.cpp
       title: Test/LC/enumerate_primes.test.cpp
