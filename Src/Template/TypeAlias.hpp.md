@@ -325,6 +325,9 @@ data:
     path: Src/Sequence/MajorityVote.hpp
     title: "Boyer-Moore\u306EMajority vote algorithm"
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/RangeKthSmallest.hpp
+    title: Range Kth Smallest
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RollingHash.hpp
     title: "\u30ED\u30EA\u30CF"
   - icon: ':heavy_check_mark:'
@@ -818,6 +821,9 @@ data:
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/range_kth_smallest.test.cpp
+    title: Test/LC/range_kth_smallest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/rectangle_sum.test.cpp
     title: Test/LC/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1132,6 +1138,7 @@ data:
   - Src/Graph/Tree/HeavyLightDecomposition.hpp
   - Src/Sequence/CompressedSequence.hpp
   - Src/Sequence/MajorityVote.hpp
+  - Src/Sequence/RangeKthSmallest.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/InversionNumber.hpp
   - Src/Sequence/RollingHash.hpp
@@ -1325,6 +1332,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/static_range_sum.test.cpp
+  - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/matrix_det.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp

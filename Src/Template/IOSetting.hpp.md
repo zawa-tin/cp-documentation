@@ -333,6 +333,9 @@ data:
     path: Test/LC/range_affine_range_sum.test.cpp
     title: Test/LC/range_affine_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/range_kth_smallest.test.cpp
+    title: Test/LC/range_kth_smallest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/rectangle_sum.test.cpp
     title: Test/LC/rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -596,6 +599,7 @@ data:
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/matrix_det.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp

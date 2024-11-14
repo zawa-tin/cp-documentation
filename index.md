@@ -448,6 +448,9 @@ data:
       path: Src/Sequence/MajorityVote.hpp
       title: "Boyer-Moore\u306EMajority vote algorithm"
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/RangeKthSmallest.hpp
+      title: Range Kth Smallest
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/RollingHash.hpp
       title: "\u30ED\u30EA\u30CF"
     - icon: ':heavy_check_mark:'
@@ -974,6 +977,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_affine_range_sum.test.cpp
       title: Test/LC/range_affine_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_kth_smallest.test.cpp
+      title: Test/LC/range_kth_smallest.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/rectangle_sum.test.cpp
       title: Test/LC/rectangle_sum.test.cpp

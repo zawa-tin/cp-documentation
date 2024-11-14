@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/RangeKthSmallest.hpp
+    title: Range Kth Smallest
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum.test.cpp
     title: Test/LC/point_add_rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_kth_smallest.test.cpp
+    title: Test/LC/range_kth_smallest.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
@@ -72,12 +78,14 @@ data:
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/Sequence/RangeKthSmallest.hpp
   timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/abc287_g.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/LC/range_kth_smallest.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"
