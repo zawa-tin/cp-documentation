@@ -38,11 +38,8 @@ data:
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/RectangleSum/RSType.hpp
-    title: Src/DataStructure/RectangleSum/RSType.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
-    title: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+    title: Static Point Add Rectangle Sum
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/SWAG.hpp
     title: Src/DataStructure/SWAG/SWAG.hpp
@@ -1105,7 +1102,6 @@ data:
   - Src/DataStructure/Undoable/UndoableVector.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
-  - Src/DataStructure/RectangleSum/RSType.hpp
   - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp

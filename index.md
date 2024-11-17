@@ -96,11 +96,8 @@ data:
   - name: Src/DataStructure/RectangleSum
     pages:
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/RectangleSum/RSType.hpp
-      title: Src/DataStructure/RectangleSum/RSType.hpp
-    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
-      title: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+      title: Static Point Add Rectangle Sum
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
