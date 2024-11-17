@@ -1,8 +1,9 @@
 #pragma once
 
-#include "./RSType.hpp"
+#include "../../Template/TypeAlias.hpp"
 
 #include <algorithm>
+#include <concepts>
 #include <utility>
 #include <vector>
 #include <type_traits>
@@ -11,9 +12,11 @@ namespace zawa {
 
 // P...座標の型
 // W...重みの型
-template <class P, class W>
-std::vector<W> StaticPointAddRectangleSum(std::vector<RSPoint<P, W>> ps, std::vector<RSQuery<P>> qs) {
-    static_assert(std::is_integral_v<W>, "W must be signed");
+template <class T, class U>
+std::vector<typename T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::vector<U> qs) {
+    using P = typename T::P;
+    using W = typename T::W;
+    static_assert(std::same_as<typename T::P, typename U::P>, "T::P and U::P must be same");
     usize n{ps.size()}, q{qs.size()};
     std::vector<P> xs(n);
     for (usize i{} ; i < n ; i++) xs[i] = ps[i].x;
