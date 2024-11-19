@@ -77,21 +77,29 @@ data:
     \        return res;\n    }\n\n    std::vector<W> execute() const {\n        std::vector<W>\
     \ res(m_qs.size());\n\n        auto rec{[&](auto rec, usize l, usize r) -> void\
     \ {\n            assert(l <= r);\n            if (l + 1 >= r) return;\n      \
-    \      usize m{(l + r) >> 1};\n            rec(rec, l, m);\n            rec(rec,\
-    \ m, r);\n            std::vector<usize> p, q;\n            for (usize i{l} ;\
-    \ i < m ; i++) if (!m_pos[i].first) {\n                p.push_back(m_pos[i].second);\n\
-    \            }\n            for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
-    \ {\n                q.push_back(m_pos[i].second);\n            }\n          \
-    \  if (p.empty() or q.empty()) return;\n            std::vector<W> kiyo{StaticPointAddRectangleSum<T,\
-    \ U>(\n                    std::vector<T>(m_ps.begin() + p.front(), m_ps.begin()\
-    \ + p.back() + 1),\n                    std::vector<U>(m_qs.begin() + q.front(),\
-    \ m_qs.begin() + q.back() + 1)\n                    )};\n            for (usize\
-    \ i{} ; i < q.size() ; i++) {\n                res[q[i]] += kiyo[i];\n       \
-    \     }\n        }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return\
-    \ res;\n    }\n\nprivate:\n\n    std::vector<T> m_ps;\n    std::vector<U> m_qs;\n\
-    \    std::vector<std::pair<bool, usize>> m_pos;\n};\n\n} // namespace zawa\n#line\
-    \ 5 \"Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp\"\n\
-    \n#line 8 \"Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp\"\
+    \      if (r - l > THRESHOLD) {\n                usize m{(l + r) >> 1};\n    \
+    \            rec(rec, l, m);\n                rec(rec, m, r);\n              \
+    \  std::vector<usize> p, q;\n                for (usize i{l} ; i < m ; i++) if\
+    \ (!m_pos[i].first) {\n                    p.push_back(m_pos[i].second);\n   \
+    \             }\n                for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
+    \ {\n                    q.push_back(m_pos[i].second);\n                }\n  \
+    \              if (p.empty() or q.empty()) return;\n                std::vector<W>\
+    \ kiyo{StaticPointAddRectangleSum<T, U>(\n                        std::vector<T>(m_ps.begin()\
+    \ + p.front(), m_ps.begin() + p.back() + 1),\n                        std::vector<U>(m_qs.begin()\
+    \ + q.front(), m_qs.begin() + q.back() + 1)\n                        )};\n   \
+    \             for (usize i{} ; i < q.size() ; i++) {\n                    res[q[i]]\
+    \ += kiyo[i];\n                }\n            }\n            else {\n        \
+    \        for (usize i{l} ; i < r ; i++) if (m_pos[i].first) {\n              \
+    \      const U& u{m_qs[m_pos[i].second]};\n                    for (usize j{l}\
+    \ ; j < i ; j++) if (!m_pos[j].first) {\n                        const T& t{m_ps[m_pos[j].second]};\n\
+    \                        if (u.l <= t.x and t.x < u.r and u.d <= t.y and t.y <\
+    \ u.u) {\n                            res[m_pos[i].second] += t.w;\n         \
+    \               }\n                    }\n                }\n            }\n \
+    \       }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return res;\n\
+    \    }\n\nprivate:\n\n    static constexpr usize THRESHOLD{200};\n\n    std::vector<T>\
+    \ m_ps;\n    std::vector<U> m_qs;\n    std::vector<std::pair<bool, usize>> m_pos;\n\
+    };\n\n} // namespace zawa\n#line 5 \"Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp\"\
+    \n\n#line 8 \"Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp\"\
     \n\nusing namespace zawa;\n\nstruct Point {\n    using P = int;\n    using W =\
     \ long long;\n    P x, y;\n    W w;\n};\n\nstruct Rect {\n    using P = int;\n\
     \    int l, d, r, u;\n};\n\nint main() {\n    SetFastIO();\n    int N, Q;\n  \
@@ -128,7 +136,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
   requiredBy: []
-  timestamp: '2024-11-19 19:41:39+09:00'
+  timestamp: '2024-11-19 21:09:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp

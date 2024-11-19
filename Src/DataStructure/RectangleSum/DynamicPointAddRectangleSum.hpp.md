@@ -65,19 +65,28 @@ data:
     \        return res;\n    }\n\n    std::vector<W> execute() const {\n        std::vector<W>\
     \ res(m_qs.size());\n\n        auto rec{[&](auto rec, usize l, usize r) -> void\
     \ {\n            assert(l <= r);\n            if (l + 1 >= r) return;\n      \
-    \      usize m{(l + r) >> 1};\n            rec(rec, l, m);\n            rec(rec,\
-    \ m, r);\n            std::vector<usize> p, q;\n            for (usize i{l} ;\
-    \ i < m ; i++) if (!m_pos[i].first) {\n                p.push_back(m_pos[i].second);\n\
-    \            }\n            for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
-    \ {\n                q.push_back(m_pos[i].second);\n            }\n          \
-    \  if (p.empty() or q.empty()) return;\n            std::vector<W> kiyo{StaticPointAddRectangleSum<T,\
-    \ U>(\n                    std::vector<T>(m_ps.begin() + p.front(), m_ps.begin()\
-    \ + p.back() + 1),\n                    std::vector<U>(m_qs.begin() + q.front(),\
-    \ m_qs.begin() + q.back() + 1)\n                    )};\n            for (usize\
-    \ i{} ; i < q.size() ; i++) {\n                res[q[i]] += kiyo[i];\n       \
-    \     }\n        }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return\
-    \ res;\n    }\n\nprivate:\n\n    std::vector<T> m_ps;\n    std::vector<U> m_qs;\n\
-    \    std::vector<std::pair<bool, usize>> m_pos;\n};\n\n} // namespace zawa\n"
+    \      if (r - l > THRESHOLD) {\n                usize m{(l + r) >> 1};\n    \
+    \            rec(rec, l, m);\n                rec(rec, m, r);\n              \
+    \  std::vector<usize> p, q;\n                for (usize i{l} ; i < m ; i++) if\
+    \ (!m_pos[i].first) {\n                    p.push_back(m_pos[i].second);\n   \
+    \             }\n                for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
+    \ {\n                    q.push_back(m_pos[i].second);\n                }\n  \
+    \              if (p.empty() or q.empty()) return;\n                std::vector<W>\
+    \ kiyo{StaticPointAddRectangleSum<T, U>(\n                        std::vector<T>(m_ps.begin()\
+    \ + p.front(), m_ps.begin() + p.back() + 1),\n                        std::vector<U>(m_qs.begin()\
+    \ + q.front(), m_qs.begin() + q.back() + 1)\n                        )};\n   \
+    \             for (usize i{} ; i < q.size() ; i++) {\n                    res[q[i]]\
+    \ += kiyo[i];\n                }\n            }\n            else {\n        \
+    \        for (usize i{l} ; i < r ; i++) if (m_pos[i].first) {\n              \
+    \      const U& u{m_qs[m_pos[i].second]};\n                    for (usize j{l}\
+    \ ; j < i ; j++) if (!m_pos[j].first) {\n                        const T& t{m_ps[m_pos[j].second]};\n\
+    \                        if (u.l <= t.x and t.x < u.r and u.d <= t.y and t.y <\
+    \ u.u) {\n                            res[m_pos[i].second] += t.w;\n         \
+    \               }\n                    }\n                }\n            }\n \
+    \       }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return res;\n\
+    \    }\n\nprivate:\n\n    static constexpr usize THRESHOLD{200};\n\n    std::vector<T>\
+    \ m_ps;\n    std::vector<U> m_qs;\n    std::vector<std::pair<bool, usize>> m_pos;\n\
+    };\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./StaticPointAddRectangleSum.hpp\"\n#include \"\
     ../../Template/TypeAlias.hpp\"\n\n#include <cassert>\n#include <utility>\n#include\
     \ <vector>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass DynamicPointAddRectangleSum\
@@ -94,26 +103,35 @@ data:
     \        return res;\n    }\n\n    std::vector<W> execute() const {\n        std::vector<W>\
     \ res(m_qs.size());\n\n        auto rec{[&](auto rec, usize l, usize r) -> void\
     \ {\n            assert(l <= r);\n            if (l + 1 >= r) return;\n      \
-    \      usize m{(l + r) >> 1};\n            rec(rec, l, m);\n            rec(rec,\
-    \ m, r);\n            std::vector<usize> p, q;\n            for (usize i{l} ;\
-    \ i < m ; i++) if (!m_pos[i].first) {\n                p.push_back(m_pos[i].second);\n\
-    \            }\n            for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
-    \ {\n                q.push_back(m_pos[i].second);\n            }\n          \
-    \  if (p.empty() or q.empty()) return;\n            std::vector<W> kiyo{StaticPointAddRectangleSum<T,\
-    \ U>(\n                    std::vector<T>(m_ps.begin() + p.front(), m_ps.begin()\
-    \ + p.back() + 1),\n                    std::vector<U>(m_qs.begin() + q.front(),\
-    \ m_qs.begin() + q.back() + 1)\n                    )};\n            for (usize\
-    \ i{} ; i < q.size() ; i++) {\n                res[q[i]] += kiyo[i];\n       \
-    \     }\n        }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return\
-    \ res;\n    }\n\nprivate:\n\n    std::vector<T> m_ps;\n    std::vector<U> m_qs;\n\
-    \    std::vector<std::pair<bool, usize>> m_pos;\n};\n\n} // namespace zawa\n"
+    \      if (r - l > THRESHOLD) {\n                usize m{(l + r) >> 1};\n    \
+    \            rec(rec, l, m);\n                rec(rec, m, r);\n              \
+    \  std::vector<usize> p, q;\n                for (usize i{l} ; i < m ; i++) if\
+    \ (!m_pos[i].first) {\n                    p.push_back(m_pos[i].second);\n   \
+    \             }\n                for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
+    \ {\n                    q.push_back(m_pos[i].second);\n                }\n  \
+    \              if (p.empty() or q.empty()) return;\n                std::vector<W>\
+    \ kiyo{StaticPointAddRectangleSum<T, U>(\n                        std::vector<T>(m_ps.begin()\
+    \ + p.front(), m_ps.begin() + p.back() + 1),\n                        std::vector<U>(m_qs.begin()\
+    \ + q.front(), m_qs.begin() + q.back() + 1)\n                        )};\n   \
+    \             for (usize i{} ; i < q.size() ; i++) {\n                    res[q[i]]\
+    \ += kiyo[i];\n                }\n            }\n            else {\n        \
+    \        for (usize i{l} ; i < r ; i++) if (m_pos[i].first) {\n              \
+    \      const U& u{m_qs[m_pos[i].second]};\n                    for (usize j{l}\
+    \ ; j < i ; j++) if (!m_pos[j].first) {\n                        const T& t{m_ps[m_pos[j].second]};\n\
+    \                        if (u.l <= t.x and t.x < u.r and u.d <= t.y and t.y <\
+    \ u.u) {\n                            res[m_pos[i].second] += t.w;\n         \
+    \               }\n                    }\n                }\n            }\n \
+    \       }};\n\n        rec(rec, usize{0}, m_pos.size());\n        return res;\n\
+    \    }\n\nprivate:\n\n    static constexpr usize THRESHOLD{200};\n\n    std::vector<T>\
+    \ m_ps;\n    std::vector<U> m_qs;\n    std::vector<std::pair<bool, usize>> m_pos;\n\
+    };\n\n} // namespace zawa\n"
   dependsOn:
   - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
   requiredBy: []
-  timestamp: '2024-11-19 19:41:39+09:00'
+  timestamp: '2024-11-19 21:09:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
@@ -181,5 +199,7 @@ struct Rect {
 これは[Static Point Add Rectangle Sum](https://zawa-tin.github.io/cp-documentation/Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp)そのものである。
 
 Static verはlog1つでできて、各クエリは高々 $\Theta (\log Q)$ 計算されるので、log2つ。
+
+実装上は $r - l$ がある程度小さかったら再帰を打ち切って愚直を回している。この工夫でほんのちょっと早くなった。
 
 アルゴリズム・実装共に [ei1333の日記](https://ei1333.hateblo.jp/entry/2022/06/10/022355) を参考にした。
