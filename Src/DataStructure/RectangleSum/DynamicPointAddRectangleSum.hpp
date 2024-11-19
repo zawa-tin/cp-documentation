@@ -50,23 +50,36 @@ public:
         auto rec{[&](auto rec, usize l, usize r) -> void {
             assert(l <= r);
             if (l + 1 >= r) return;
-            usize m{(l + r) >> 1};
-            rec(rec, l, m);
-            rec(rec, m, r);
-            std::vector<usize> p, q;
-            for (usize i{l} ; i < m ; i++) if (!m_pos[i].first) {
-                p.push_back(m_pos[i].second);
+            if (r - l > THRESHOLD) {
+                usize m{(l + r) >> 1};
+                rec(rec, l, m);
+                rec(rec, m, r);
+                std::vector<usize> p, q;
+                for (usize i{l} ; i < m ; i++) if (!m_pos[i].first) {
+                    p.push_back(m_pos[i].second);
+                }
+                for (usize i{m} ; i < r ; i++) if (m_pos[i].first) {
+                    q.push_back(m_pos[i].second);
+                }
+                if (p.empty() or q.empty()) return;
+                std::vector<W> kiyo{StaticPointAddRectangleSum<T, U>(
+                        std::vector<T>(m_ps.begin() + p.front(), m_ps.begin() + p.back() + 1),
+                        std::vector<U>(m_qs.begin() + q.front(), m_qs.begin() + q.back() + 1)
+                        )};
+                for (usize i{} ; i < q.size() ; i++) {
+                    res[q[i]] += kiyo[i];
+                }
             }
-            for (usize i{m} ; i < r ; i++) if (m_pos[i].first) {
-                q.push_back(m_pos[i].second);
-            }
-            if (p.empty() or q.empty()) return;
-            std::vector<W> kiyo{StaticPointAddRectangleSum<T, U>(
-                    std::vector<T>(m_ps.begin() + p.front(), m_ps.begin() + p.back() + 1),
-                    std::vector<U>(m_qs.begin() + q.front(), m_qs.begin() + q.back() + 1)
-                    )};
-            for (usize i{} ; i < q.size() ; i++) {
-                res[q[i]] += kiyo[i];
+            else {
+                for (usize i{l} ; i < r ; i++) if (m_pos[i].first) {
+                    const U& u{m_qs[m_pos[i].second]};
+                    for (usize j{l} ; j < i ; j++) if (!m_pos[j].first) {
+                        const T& t{m_ps[m_pos[j].second]};
+                        if (u.l <= t.x and t.x < u.r and u.d <= t.y and t.y < u.u) {
+                            res[m_pos[i].second] += t.w;
+                        }
+                    }
+                }
             }
         }};
 
@@ -75,6 +88,8 @@ public:
     }
 
 private:
+
+    static constexpr usize THRESHOLD{200};
 
     std::vector<T> m_ps;
     std::vector<U> m_qs;
