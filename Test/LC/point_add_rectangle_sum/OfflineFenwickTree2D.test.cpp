@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
 
-#include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Algebra/Group/AdditiveGroup.hpp"
-#include "../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp"
+#include "../../../Src/Template/IOSetting.hpp"
+#include "../../../Src/Algebra/Group/AdditiveGroup.hpp"
+#include "../../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp"
 
 using namespace zawa;
 
