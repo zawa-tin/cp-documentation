@@ -19,8 +19,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_add_rectangle_sum.test.cpp
-    title: Test/LC/point_add_rectangle_sum.test.cpp
+    path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -203,7 +203,7 @@ data:
   timestamp: '2024-09-10 17:41:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
 layout: document
 title: Fenwick Tree 2D (Offline Query)

@@ -35,22 +35,22 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
     links:
     - https://judge.yosupo.jp/problem/point_add_rectangle_sum
-  bundledCode: "#line 1 \"Test/LC/point_add_rectangle_sum.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
-    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
-    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\n\
-    template <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n \
-    \   static constexpr T identity() noexcept {\n        return T{};\n    }\n   \
-    \ static constexpr T operation(const T& l, const T& r) noexcept {\n        return\
-    \ l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept {\n     \
-    \   return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+  bundledCode: "#line 1 \"Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\n\
+    \n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
+    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\n\
+    namespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using\
+    \ Element = T;\n    static constexpr T identity() noexcept {\n        return T{};\n\
+    \    }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n\
+    \        return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
+    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
     \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
     namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
@@ -171,7 +171,7 @@ data:
     \          }\n        }\n        return res;\n    }\n\nprivate:\n    std::vector<std::tuple<T,\
     \ T, T>> op_;\n    std::vector<std::tuple<T, T, T, T>> prod_;\n    std::vector<std::pair<bool,\
     \ u32>> idx_;\n\n    constexpr i32 lsb(i32 v) const noexcept {\n        return\
-    \ v & -v;\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/point_add_rectangle_sum.test.cpp\"\
+    \ v & -v;\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n \
     \   std::cin >> N >> Q;\n    OfflineFenwickTree2D<int, AdditiveGroup<long long>>\
     \ fen{};\n    while (N--) {\n        int x, y, w;\n        std::cin >> x >> y\
@@ -183,18 +183,18 @@ data:
     \    for (auto [ans, _] : fen.execute()) {\n        std::cout << ans << '\\n';\n\
     \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
-    \n#include \"../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\n\n\
-    using namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    OfflineFenwickTree2D<int, AdditiveGroup<long long>> fen{};\n\
-    \    while (N--) {\n        int x, y, w;\n        std::cin >> x >> y >> w;\n \
-    \       fen.operation(x, y, w);\n    }\n    while (Q--) {\n        int t;\n  \
-    \      std::cin >> t;\n        if (t == 0) {\n            int x, y, w;\n     \
-    \       std::cin >> x >> y >> w;\n            fen.operation(x, y, w);\n      \
-    \  }\n        else {\n            int l, d, r, u;\n            std::cin >> l >>\
-    \ d >> r >> u;\n            fen.product(l, d, r, u);\n        }\n    }\n    for\
-    \ (auto [ans, _] : fen.execute()) {\n        std::cout << ans << '\\n';\n    }\n\
-    }\n"
+    \n\n#include \"../../../Src/Template/IOSetting.hpp\"\n#include \"../../../Src/Algebra/Group/AdditiveGroup.hpp\"\
+    \n#include \"../../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n \
+    \   std::cin >> N >> Q;\n    OfflineFenwickTree2D<int, AdditiveGroup<long long>>\
+    \ fen{};\n    while (N--) {\n        int x, y, w;\n        std::cin >> x >> y\
+    \ >> w;\n        fen.operation(x, y, w);\n    }\n    while (Q--) {\n        int\
+    \ t;\n        std::cin >> t;\n        if (t == 0) {\n            int x, y, w;\n\
+    \            std::cin >> x >> y >> w;\n            fen.operation(x, y, w);\n \
+    \       }\n        else {\n            int l, d, r, u;\n            std::cin >>\
+    \ l >> d >> r >> u;\n            fen.product(l, d, r, u);\n        }\n    }\n\
+    \    for (auto [ans, _] : fen.execute()) {\n        std::cout << ans << '\\n';\n\
+    \    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -205,15 +205,15 @@ data:
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
-  path: Test/LC/point_add_rectangle_sum.test.cpp
+  path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 17:41:48+09:00'
+  timestamp: '2024-11-19 19:41:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/point_add_rectangle_sum.test.cpp
+documentation_of: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/point_add_rectangle_sum.test.cpp
-- /verify/Test/LC/point_add_rectangle_sum.test.cpp.html
-title: Test/LC/point_add_rectangle_sum.test.cpp
+- /verify/Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+- /verify/Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp.html
+title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
 ---

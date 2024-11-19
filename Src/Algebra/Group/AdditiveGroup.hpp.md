@@ -37,8 +37,8 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_add_rectangle_sum.test.cpp
-    title: Test/LC/point_add_rectangle_sum.test.cpp
+    path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
@@ -87,7 +87,7 @@ data:
   - Test/AtCoder/abc172_c.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp

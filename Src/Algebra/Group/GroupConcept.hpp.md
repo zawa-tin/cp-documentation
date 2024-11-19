@@ -25,8 +25,8 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_add_rectangle_sum.test.cpp
-    title: Test/LC/point_add_rectangle_sum.test.cpp
+    path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
@@ -72,7 +72,7 @@ data:
   - Test/Manual/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp

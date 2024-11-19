@@ -318,8 +318,11 @@ data:
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_add_rectangle_sum.test.cpp
-    title: Test/LC/point_add_rectangle_sum.test.cpp
+    path: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
+    title: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
@@ -584,7 +587,8 @@ data:
   - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/unionfind.test.cpp
-  - Test/LC/point_add_rectangle_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
   - Test/LC/jump_on_tree.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
