@@ -1,6 +1,6 @@
 ---
 title: ABC340-F S = 1
-documentation_of: //Test/AtCoder/abc340_f.test.cpp
+documentation_of: //Test/Manual/abc340_f.test.cpp
 ---
 
 三点 $(a, b), (x, y), (p, q)$ からなる三角形の面積は $\frac{1}{2}\text{abs}((x - a)(q - b) - (y - b)(p - a))$ である。
