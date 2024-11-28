@@ -412,6 +412,9 @@ data:
       path: Src/Number/EratosthenesSieve.hpp
       title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
     - icon: ':heavy_check_mark:'
+      path: Src/Number/ExtendGCD.hpp
+      title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
+    - icon: ':heavy_check_mark:'
       path: Src/Number/IntegerDivision.hpp
       title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
         \u3052\u9664\u7B97"
@@ -689,6 +692,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ITP2_4_A.test.cpp
       title: Test/AOJ/ITP2_4_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/NTL_1_E.test.cpp
+      title: Test/AOJ/NTL_1_E.test.cpp
   - name: Test/AOJ/CGL_1_C
     pages:
     - icon: ':heavy_check_mark:'
@@ -1055,6 +1061,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc317_g.test.cpp
       title: ABC317-G Rearranging
+    - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc340_f.test.cpp
+      title: ABC340-F S = 1
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc359_g.test.cpp
       title: ABC359-F Sum of Tree Distance
