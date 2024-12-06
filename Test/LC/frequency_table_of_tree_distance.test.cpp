@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/frequency_table_of_tree_distance"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/Centroid.hpp"
 
 #include <algorithm>
@@ -16,11 +15,12 @@ int main() {
     SetFastIO();
     int N;
     std::cin >> N;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int i{} ; i < N - 1 ; i++) {
         int a, b;
         std::cin >> a >> b;
-        AddEdge(T, a, b);
+        T[a].push_back(b);
+        T[b].push_back(a);
     }
     Centroid C(std::move(T));
     std::vector<int> dep(N);
@@ -35,7 +35,7 @@ int main() {
         v = C.rooting(v);
         calc_dep(calc_dep, v, -1, 0);
         C.remove(v);
-        std::vector<std::vector<u32>> subtree;
+        std::vector<std::vector<int>> subtree;
         for (auto x : C.adjlist(v)) {
             subtree.push_back(C.component(x));
         }

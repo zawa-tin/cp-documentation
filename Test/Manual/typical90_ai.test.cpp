@@ -2,7 +2,7 @@
 
 /*
  * 競プロ典型 90問 035- Preserve Connectivity
- * https://atcoder.jp/contests/typical90/submissions/55137635
+ * https://atcoder.jp/contests/typical90/submissions/60473771
  */
 
 #include "../../Src/Template/IOSetting.hpp"
@@ -19,11 +19,13 @@ int main() {
 
     int N;
     std::cin >> N;
-    Tree g(N);
+    std::vector<std::vector<int>> g(N);
     for (int i{1} ; i < N ; i++) {
         int A, B;
         std::cin >> A >> B;
-        AddEdge(g, A - 1, B - 1);
+        A--; B--;
+        g[A].push_back(B);
+        g[B].push_back(A);
     }
     AuxiliaryTree AT(g);
     int Q;
@@ -31,12 +33,12 @@ int main() {
     while (Q--) {
         int K;
         std::cin >> K;
-        std::vector<AuxiliaryTree::V> V(K);
+        std::vector<int> V(K);
         for (auto& v : V) {
             std::cin >> v;
             v--;
         }
-        u32 r{AT.construct(V)};
+        int r{AT.construct(V)};
         auto dfs{[&](auto dfs, int v, int p) -> u32 {
             u32 res{};
             if (p != -1) {

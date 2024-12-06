@@ -1,18 +1,19 @@
 #pragma once
 
-#include "./Tree.hpp"
 #include "./LowestCommonAncestor.hpp"
 
 #include <algorithm>
 
 namespace zawa {
 
-class AuxiliaryTree : public LowestCommonAncestor {
+template <class V>
+class AuxiliaryTree : public LowestCommonAncestor<V> {
 public:
-    using V = u32;
+    using Super = LowestCommonAncestor<V>;
+
     AuxiliaryTree() = default;
-    AuxiliaryTree(const Tree& T, V r = 0u) 
-        : LowestCommonAncestor{ T, r }, T_(T.size()), dist_(T.size()), used_(T.size()) {}
+    AuxiliaryTree(const std::vector<std::vector<V>>& T, V r = 0u) 
+        : Super{ T, r }, T_(T.size()), dist_(T.size()), used_(T.size()) {}
 
     V construct(const std::vector<V>& vs) {
         assert(vs.size());
@@ -22,12 +23,12 @@ public:
     }
 
     const std::vector<V>& operator[](V v) const {
-        verify(v);
+        assert(Super::verify(v));
         return T_[v];
     }
 
     inline bool contains(V v) const {
-        assert(verify(v));
+        assert(Super::verify(v));
         return used_[v];
     }
 
@@ -41,32 +42,33 @@ public:
     }
 
 private:
-    Tree T_{}; 
+    std::vector<std::vector<V>> T_{}; 
     std::vector<V> vs_{};
     std::vector<u32> dist_{};
     std::vector<bool> used_{};
 
     void addEdge(V p, V v) {
-        assert(depth(p) < depth(v));
-        AddEdge(T_, p, v);
-        dist_[v] = depth(v) - depth(p);
+        assert(Super::depth(p) < Super::depth(v));
+        T_[p].push_back(v);
+        T_[v].push_back(p);
+        dist_[v] = Super::depth(v) - Super::depth(p);
     }
 
     V build() {
         std::sort(vs_.begin(), vs_.end(), [&](V u, V v) -> bool {
-                return left(u) < left(v);
+                return Super::left(u) < Super::left(v);
                 });
         vs_.erase(std::unique(vs_.begin(), vs_.end()), vs_.end());
-        V k{(V)vs_.size()};
+        usize k{vs_.size()};
         std::vector<V> stack;
         stack.reserve(2u * vs_.size());
         stack.emplace_back(vs_[0]);
-        for (u32 i{} ; i + 1 < k ; i++) {
-            if (!LowestCommonAncestor::isAncestor(vs_[i], vs_[i + 1])) {
-                V w{LowestCommonAncestor::lca(vs_[i], vs_[i + 1])};
+        for (usize i{} ; i + 1 < k ; i++) {
+            if (!Super::isAncestor(vs_[i], vs_[i + 1])) {
+                V w{Super::lca(vs_[i], vs_[i + 1])};
                 V l{stack.back()};
                 stack.pop_back();
-                while (stack.size() and LowestCommonAncestor::depth(w) < LowestCommonAncestor::depth(stack.back())) {
+                while (stack.size() and LowestCommonAncestor<V>::depth(w) < LowestCommonAncestor<V>::depth(stack.back())) {
                     addEdge(stack.back(), l);
                     l = stack.back();
                     stack.pop_back();

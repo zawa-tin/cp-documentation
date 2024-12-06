@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/jump_on_tree"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/HeavyLightDecomposition.hpp"
 
 #include <iostream>
@@ -12,11 +11,12 @@ int main() {
     SetFastIO();
     int N, Q;
     std::cin >> N >> Q;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int i{} ; i < N - 1 ; i++) {
         int a, b;
         std::cin >> a >> b;
-        AddEdge(T, a, b);
+        T[a].push_back(b);
+        T[b].push_back(a);
     }
     HeavyLightDecomposition hld(T);
     while (Q--) {

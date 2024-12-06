@@ -21,11 +21,13 @@ int main() {
     std::cin >> N;
     std::vector<char> K(N);
     for (auto& k : K) std::cin >> k;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int i{} ; i < N - 1 ; i++) {
         int u, v;
         std::cin >> u >> v;
-        AddEdge(T, u - 1, v - 1);
+        u--; v--;
+        T[u].push_back(v);
+        T[v].push_back(u);
     }
     HeavyLightDecomposition hld{T};
     std::vector<RollingHashMonoidData> init(N), tini(N);

@@ -15,19 +15,20 @@ using mint = atcoder::modint998244353;
 int main() {
     int N;
     std::cin >> N;
-    std::vector<std::vector<AuxiliaryTree::V>> A(N);
+    std::vector<std::vector<int>> A(N);
     std::vector<int> col(N);
     for (int i{} ; i < N ; i++) {
         std::cin >> col[i];
         col[i]--;
         A[col[i]].push_back(i);
     }
-    Tree g(N);
+    std::vector<std::vector<int>> g(N);
     for (int i{} ; i < N - 1 ; i++) {
         int u, v;
         std::cin >> u >> v;
         u--; v--;
-        AddEdge(g, u, v);
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
     AuxiliaryTree AT{g};
     mint ans{};

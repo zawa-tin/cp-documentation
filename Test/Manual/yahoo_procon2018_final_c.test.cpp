@@ -2,11 +2,10 @@
 
 /*
  * 「みんなのプロコン 2018」決勝 オープンコンテスト - C 木の問題
- * https://atcoder.jp/contests/yahoo-procon2018-final-open/submissions/55629303
+ * https://atcoder.jp/contests/yahoo-procon2018-final-open/submissions/60475048
  */
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/Centroid.hpp"
 
 #include <iostream>
@@ -18,11 +17,13 @@ using namespace zawa;
 void solve() {
     int N, Q;
     std::cin >> N >> Q;
-    Tree g(N);
+    std::vector<std::vector<int>> g(N);
     for (int _{} ; _ < N - 1 ; _++) {
         int A, B;
         std::cin >> A >> B;
-        AddEdge(g, A - 1, B - 1);
+        A--; B--;
+        g[A].push_back(B);
+        g[B].push_back(A);
     }
     std::vector<std::vector<std::pair<int, int>>> query(N);
     for (int i{} ; i < Q ; i++) {
@@ -44,7 +45,7 @@ void solve() {
         v = C.rooting(v);
         calc_dep(calc_dep, v, -1, 0);
         C.remove(v);
-        std::vector<std::vector<u32>> comp;
+        std::vector<std::vector<int>> comp;
         for (auto x : C.adjlist(v)) {
             comp.push_back(C.component(x));
         }

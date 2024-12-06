@@ -3,25 +3,25 @@
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/ChminMonoid.hpp"
 #include "../../DataStructure/SparseTable/SparseTable.hpp"
-#include "./Tree.hpp"
 
 #include <cassert>
 #include <vector>
 
 namespace zawa {
 
+template <class V>
 class LowestCommonAncestor {
 private:
-    using Monoid = ChminMonoid<u32, u32>;
+    using Monoid = ChminMonoid<u32, V>;
 
 public:
     LowestCommonAncestor() = default;
 
-    LowestCommonAncestor(const Tree& tree, u32 r = 0u) 
+    LowestCommonAncestor(const std::vector<std::vector<V>>& tree, V r = V{}) 
         : n_{tree.size()}, depth_(tree.size()), L_(tree.size()), R_(tree.size()), st_{} {
-            std::vector<Monoid::Element> init;
+            std::vector<typename Monoid::Element> init;
             init.reserve(2 * size());
-            auto dfs{[&](auto dfs, u32 v, u32 p) -> void {
+            auto dfs{[&](auto dfs, V v, V p) -> void {
                 depth_[v] = (p == INVALID ? 0u : depth_[p] + 1);
                 L_[v] = (u32)init.size();
                 for (auto x : tree[v]) {
@@ -37,7 +37,7 @@ public:
             st_ = SparseTable<Monoid>(init);
     }
 
-    u32 operator()(u32 u, u32 v) const {
+    V operator()(V u, V v) const {
         assert(verify(u));
         assert(verify(v));
         if (L_[u] > L_[v]) {
@@ -46,29 +46,29 @@ public:
         return st_.product(L_[u], R_[v]).value();
     }
 
-    u32 lca(u32 u, u32 v) const {
+    V lca(V u, V v) const {
         return (*this)(u, v);
     }
 
-    inline u32 depth(u32 v) const noexcept {
+    inline u32 depth(V v) const noexcept {
         assert(verify(v));
         return depth_[v];
     }
 
-    u32 distance(u32 u, u32 v) const {
+    u32 distance(V u, V v) const {
         assert(verify(u));
         assert(verify(v));
         return depth(u) + depth(v) - 2u * depth((*this)(u, v));
     }
 
-    bool isAncestor(u32 p, u32 v) const {
+    bool isAncestor(V p, V v) const {
         assert(verify(p));
         assert(verify(v));
         return L_[p] <= L_[v] and R_[v] <= R_[p];
     }
 
 protected:
-    u32 left(u32 v) const noexcept {
+    u32 left(V v) const noexcept {
         return L_[v];
     }
 
@@ -76,12 +76,12 @@ protected:
         return n_;
     }
 
-    inline bool verify(u32 v) const {
-        return v < size();
+    inline bool verify(V v) const {
+        return v < (V)size();
     }
 
 private:
-    static constexpr u32 INVALID{static_cast<u32>(-1)};
+    static constexpr V INVALID{static_cast<V>(-1)};
     usize n_{};
     std::vector<u32> depth_, L_, R_;
     SparseTable<Monoid> st_;
