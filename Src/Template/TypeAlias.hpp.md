@@ -714,7 +714,7 @@ data:
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc359_g.test.cpp
-    title: Test/AtCoder/abc359_g.test.cpp
+    title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges

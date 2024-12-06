@@ -20,7 +20,7 @@ data:
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc359_g.test.cpp
-    title: Test/AtCoder/abc359_g.test.cpp
+    title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
