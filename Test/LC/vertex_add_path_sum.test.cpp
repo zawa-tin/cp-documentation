@@ -3,7 +3,6 @@
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/HeavyLightDecomposition.hpp"
 
 #include <cassert>
@@ -19,11 +18,13 @@ int main() {
     std::cin >> N >> Q;
     std::vector<int> A(N);
     for (int& a : A) std::cin >> a;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int _{} ; _ < N - 1 ; _++) {
         int u, v;
         std::cin >> u >> v;
-        AddEdge(T, u, v);
+        T[u].push_back(v);
+        T[v].push_back(u);
+        // AddEdge(T, u, v);
     }
     HeavyLightDecomposition hld(T);
     std::vector<long long> init(N);

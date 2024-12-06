@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
-#include "./Tree.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -12,21 +11,21 @@
 
 namespace zawa {
 
+template <class V>
 class HeavyLightDecomposition {
 public:
-    using Vertex = u32;
 
-    static constexpr Vertex Invalid() noexcept {
+    static constexpr V Invalid() noexcept {
         return INVALID;
     }
 
     HeavyLightDecomposition() = default;
 
-    HeavyLightDecomposition(Tree T, Vertex root = 0u) 
+    HeavyLightDecomposition(std::vector<std::vector<V>> T, V root = 0u) 
         : n_{T.size()}, par_(n_), top_(n_), idx_(n_), 
         inv_(n_), size_(n_, usize{1}), dep_(n_) {
 
-            auto dfs1{[&](auto dfs, Vertex v, Vertex p, usize d) -> usize {
+            auto dfs1{[&](auto dfs, V v, V p, usize d) -> usize {
                 par_[v] = p;
                 dep_[v] = d;
                 if (p != INVALID) {
@@ -37,7 +36,7 @@ public:
                     assert(T[v].back() == p);
                     T[v].pop_back();
                 }
-                for (Vertex x : T[v]) {
+                for (V x : T[v]) {
                     size_[v] += dfs(dfs, x, v, d + 1);
                 }
                 for (u32 i{1} ; i < T[v].size() ; i++) if (size_[T[v][0]] < size_[T[v][i]]) {
@@ -46,7 +45,7 @@ public:
                 return size_[v];
             }};
 
-            auto dfs2{[&](auto dfs, Vertex v, Vertex idx, Vertex top) -> Vertex {
+            auto dfs2{[&](auto dfs, V v, V idx, V top) -> V {
                 idx_[v] = idx++;
                 inv_[idx_[v]] = v;
                 top_[v] = top;
@@ -67,36 +66,35 @@ public:
         return n_;
     }
 
-    usize size(Vertex v) const noexcept {
-        assert(v < size());
+    usize size(V v) const noexcept {
+        assert(v < (V)size());
         return size_[v];
     }
 
-    usize depth(Vertex v) const noexcept {
-        assert(v < size());
+    usize depth(V v) const noexcept {
+        assert(v < (V)size());
         return dep_[v];
     }
 
-    Vertex parent(Vertex v) const noexcept {
-        assert(v < size());
+    V parent(V v) const noexcept {
+        assert(v < (V)size());
         return par_[v];
     }
 
-    Vertex index(Vertex v) const noexcept {
-        assert(v < size());
+    V index(V v) const noexcept {
+        assert(v < (V)size());
         return idx_[v];
     }
 
-    Vertex operator[](Vertex v) const noexcept {
-        assert(v < size());
+    V operator[](V v) const noexcept {
+        assert(v < (V)size());
         return idx_[v];
     }
 
-
-    std::vector<std::pair<Vertex, Vertex>> decomp(Vertex s, Vertex t) const {
-        assert(s < size());
-        assert(t < size());
-        std::vector<std::pair<Vertex, Vertex>> res, ser;
+    std::vector<std::pair<V, V>> decomp(V s, V t) const {
+        assert(s < (V)size());
+        assert(t < (V)size());
+        std::vector<std::pair<V, V>> res, ser;
         while (top_[s] != top_[t]) {
             if (dep_[top_[s]] >= dep_[top_[t]]) {
                 res.emplace_back(s, top_[s]);
@@ -115,13 +113,13 @@ public:
         return res;
     }
 
-    std::vector<std::pair<Vertex, Vertex>> operator()(Vertex s, Vertex t) const {
+    std::vector<std::pair<V, V>> operator()(V s, V t) const {
         return decomp(s, t);
     }
 
-    Vertex lca(u32 u, u32 v) const {
-        assert(u < size());
-        assert(v < size());
+    V lca(V u, V v) const {
+        assert(u < (V)size());
+        assert(v < (V)size());
         while (top_[u] != top_[v]) {
             if (dep_[top_[u]] >= dep_[top_[v]]) {
                 u = top_[u];
@@ -136,7 +134,7 @@ public:
     }
 
     // pはvの祖先か？
-    bool isAncestor(Vertex v, Vertex p) {
+    bool isAncestor(V v, V p) {
         assert(v < size());
         assert(p < size());
         if (dep_[v] < dep_[p]) return false;
@@ -146,8 +144,8 @@ public:
         return v != INVALID;
     }
 
-    Vertex levelAncestor(Vertex v, usize step) const {
-        assert(v < size());
+    V levelAncestor(V v, usize step) const {
+        assert(v < (V)size());
         if (step > dep_[v]) return INVALID;
         while (true) {
             usize dist{dep_[v] - dep_[top_[v]]};
@@ -159,10 +157,10 @@ public:
         return inv_[idx_[top_[v]] + step];
     }
 
-    Vertex jump(Vertex s, Vertex t, usize step) const {
-        assert(s < size());
-        assert(t < size());
-        Vertex uu{INVALID}, vv{INVALID};
+    V jump(V s, V t, usize step) const {
+        assert(s < (V)size());
+        assert(t < (V)size());
+        V uu{INVALID}, vv{INVALID};
         usize d{};
         for (auto [u, v] : decomp(s, t)) {
             usize dist{std::max(dep_[u], dep_[v]) - std::min(dep_[u], dep_[v])};
@@ -183,9 +181,9 @@ public:
         }
     }
 
-    usize distance(Vertex s, Vertex t) const {
-        assert(s < size());
-        assert(t < size());
+    usize distance(V s, V t) const {
+        assert(s < (V)size());
+        assert(t < (V)size());
         usize res{};
         for (auto [u, v] : decomp(s, t)) {
             if (dep_[u] > dep_[v]) std::swap(u, v);
@@ -195,9 +193,9 @@ public:
     }
 
 private:
-    static constexpr Vertex INVALID{static_cast<Vertex>(-1)};
+    static constexpr V INVALID{static_cast<V>(-1)};
     usize n_{};
-    std::vector<Vertex> par_{}, top_{}, idx_{}, inv_{};
+    std::vector<V> par_{}, top_{}, idx_{}, inv_{};
     std::vector<usize> size_{}, dep_{};
 };
 

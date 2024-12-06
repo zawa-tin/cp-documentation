@@ -8,11 +8,12 @@ int main() {
     SetFastIO();
     int N, Q;
     std::cin >> N >> Q;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int i{1} ; i < N ; i++) {
         int p;
         std::cin >> p;
-        AddDirectedEdge(T, p, i);
+        T[p].push_back(i);
+        // AddDirectedEdge(T, p, i);
     }
     LowestCommonAncestor lca{T, 0};
     while (Q--) {

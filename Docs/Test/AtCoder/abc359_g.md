@@ -1,5 +1,5 @@
 ---
-title: ABC359-F Sum of Tree Distance
+title: ABC359-G Sum of Tree Distance
 documentation_of: //Test/Manual/abc359_g.test.cpp
 ---
 

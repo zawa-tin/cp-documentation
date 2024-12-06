@@ -2,11 +2,10 @@
 
 /*
  * AtCoder Beginner Contest 291 - Ex Balanced Tree
- * https://atcoder.jp/contests/abc291/submissions/55627835
+ * https://atcoder.jp/contests/abc291/submissions/60474986
  */
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/Centroid.hpp"
 
 #include <iostream>
@@ -20,11 +19,13 @@ int main() {
 #ifdef ATCODER
     int N;
     std::cin >> N;
-    Tree g(N);
+    std::vector<std::vector<int>> g(N);
     for (int _{} ; _ < N - 1 ; _++) {
         int A, B;
         std::cin >> A >> B;
-        AddEdge(g, A - 1, B - 1);
+        A--; B--;
+        g[A].push_back(B);
+        g[B].push_back(A);
     }
     Centroid C(std::move(g));
     std::vector<int> ans(N, -1);

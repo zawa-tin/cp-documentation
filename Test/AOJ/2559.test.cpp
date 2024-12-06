@@ -50,10 +50,14 @@ int main() {
         for (int i{} ; i < M ; i++) std::cout << -1 << '\n';
         return 0;
     }
-    Tree T(N + N - 1);
+    std::vector<std::vector<int>> T(N + N - 1);
     for (auto [_, a, b, i] : E) if (id[i] != -1) {
-        AddEdge(T, a, id[i]);
-        AddEdge(T, b, id[i]);
+        T[a].push_back(id[i]);
+        T[id[i]].push_back(a);
+        // AddEdge(T, a, id[i]);
+        T[b].push_back(id[i]);
+        T[id[i]].push_back(b);
+        // AddEdge(T, b, id[i]);
     }
     HeavyLightDecomposition hld{T};
     const int INF{MIN::identity()};

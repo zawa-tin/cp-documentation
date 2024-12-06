@@ -1,10 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
-
-/*
- * ABC359-G Sum of Tree Distance
- * TODO: Dropboxにテストケースが登録されたら自動verifyに移行する
- * https://atcoder.jp/contests/abc359/submissions/55138867
- */
+#define PROBLEM "https://atcoder.jp/contests/abc359/tasks/abc359_g"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Tree/AuxiliaryTree.hpp"
@@ -13,22 +7,22 @@
 #include <vector>
 
 using namespace zawa;
-using vertex = AuxiliaryTree::V;
 
 int main() {
-#ifdef ATCODER
     SetFastIO();
 
     int N;
     std::cin >> N;
-    Tree g(N);
+    std::vector<std::vector<int>> g(N);
     for (int i{1} ; i < N ; i++) {
         int u, v;
         std::cin >> u >> v;
-        AddEdge(g, u - 1, v - 1);
+        u--; v--;
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
     std::vector<int> A(N);
-    std::vector<std::vector<vertex>> B(N);
+    std::vector<std::vector<int>> B(N);
     for (int i{} ; i < N ; i++) {
         std::cin >> A[i];
         A[i]--;
@@ -63,7 +57,4 @@ int main() {
         }
     }
     std::cout << ans << '\n';
-#else
-    std::cout << "Hello World" << '\n';
-#endif
 }

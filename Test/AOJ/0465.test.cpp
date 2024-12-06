@@ -1,7 +1,6 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/0465"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Graph/Tree/Tree.hpp"
 #include "../../Src/Graph/Tree/HeavyLightDecomposition.hpp"
 
 #include <cassert>
@@ -18,12 +17,13 @@ int main() {
 
     int N;
     std::cin >> N;
-    Tree T(N);
+    std::vector<std::vector<int>> T(N);
     for (int _{} ; _ < N - 1 ; _++) {
         int s, t;
         std::cin >> s >> t;
         s--; t--;
-        AddEdge(T, s, t);
+        T[s].push_back(t);
+        T[t].push_back(s);
     }
     HeavyLightDecomposition hld(T, 0);
     std::vector<mint> prod(N), invprod(N);
