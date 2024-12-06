@@ -17,9 +17,6 @@ data:
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/Tree.hpp
-    title: Src/Graph/Tree/Tree.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -48,34 +45,34 @@ data:
     #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
     \n#include \"atcoder/modint\"\n\n#include <array>\n#include <algorithm>\n#include\
     \ <iostream>\n#include <set>\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\n\
-    \nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<AuxiliaryTree::V>>\
+    \nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
     \ A(N);\n    std::vector<int> col(N);\n    for (int i{} ; i < N ; i++) {\n   \
     \     std::cin >> col[i];\n        col[i]--;\n        A[col[i]].push_back(i);\n\
-    \    }\n    Tree g(N);\n    for (int i{} ; i < N - 1 ; i++) {\n        int u,\
-    \ v;\n        std::cin >> u >> v;\n        u--; v--;\n        AddEdge(g, u, v);\n\
-    \    }\n    AuxiliaryTree AT{g};\n    mint ans{};\n    for (int c{} ; c < N ;\
-    \ c++) {\n        if (A[c].empty()) {\n            continue;\n        }\n    \
-    \    int r{(int)AT.construct(A[c])};\n        auto dfs{[&](auto dfs, int v, int\
-    \ p) -> mint {\n            std::array<mint, 3> dp{ mint{1}, mint{0}, mint{0}\
-    \ };\n            for (auto x : AT[v]) {\n                if ((int)x == p) continue;\n\
-    \                std::array<mint, 3> next{ dp };\n                mint chval{dfs(dfs,\
-    \ x, v)};\n                for (int i{} ; i < 3 ; i++) {\n                   \
-    \ next[std::min(2, i + 1)] += dp[i] * chval;\n                }\n            \
-    \    dp = next;\n            }\n            ans += dp[2];\n            if (col[v]\
-    \ == c) {\n                dp[1]++;\n                ans += dp[1];\n         \
-    \   }\n            return dp[1] + dp[2];\n        }};\n        dfs(dfs, r, -1);\n\
-    \    }\n    std::cout << ans.val() << '\\n';\n}\n"
+    \    }\n    std::vector<std::vector<int>> g(N);\n    for (int i{} ; i < N - 1\
+    \ ; i++) {\n        int u, v;\n        std::cin >> u >> v;\n        u--; v--;\n\
+    \        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    AuxiliaryTree\
+    \ AT{g};\n    mint ans{};\n    for (int c{} ; c < N ; c++) {\n        if (A[c].empty())\
+    \ {\n            continue;\n        }\n        int r{(int)AT.construct(A[c])};\n\
+    \        auto dfs{[&](auto dfs, int v, int p) -> mint {\n            std::array<mint,\
+    \ 3> dp{ mint{1}, mint{0}, mint{0} };\n            for (auto x : AT[v]) {\n  \
+    \              if ((int)x == p) continue;\n                std::array<mint, 3>\
+    \ next{ dp };\n                mint chval{dfs(dfs, x, v)};\n                for\
+    \ (int i{} ; i < 3 ; i++) {\n                    next[std::min(2, i + 1)] += dp[i]\
+    \ * chval;\n                }\n                dp = next;\n            }\n   \
+    \         ans += dp[2];\n            if (col[v] == c) {\n                dp[1]++;\n\
+    \                ans += dp[1];\n            }\n            return dp[1] + dp[2];\n\
+    \        }};\n        dfs(dfs, r, -1);\n    }\n    std::cout << ans.val() << '\\\
+    n';\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
-  - Src/Graph/Tree/Tree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc340_g.test.cpp
   requiredBy: []
-  timestamp: '2024-07-02 11:54:33+09:00'
+  timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc340_g.test.cpp

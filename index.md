@@ -389,9 +389,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Sack.hpp
       title: Sack
-    - icon: ':heavy_check_mark:'
-      path: Src/Graph/Tree/Tree.hpp
-      title: Src/Graph/Tree/Tree.hpp
   - name: Src/LinearAlgebra
     pages:
     - icon: ':heavy_check_mark:'
@@ -881,6 +878,9 @@ data:
       path: Test/AtCoder/abc349_f.test.cpp
       title: ABC349-F Subsequence LCM
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc359_g.test.cpp
+      title: Test/AtCoder/abc359_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
     - icon: ':heavy_check_mark:'
@@ -1064,9 +1064,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc340_f.test.cpp
       title: ABC340-F S = 1
-    - icon: ':heavy_check_mark:'
-      path: Test/Manual/abc359_g.test.cpp
-      title: ABC359-F Sum of Tree Distance
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp

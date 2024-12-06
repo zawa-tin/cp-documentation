@@ -50,9 +50,9 @@ data:
     \ RollingHashMonoidData() = default;\n    constexpr RollingHashMonoidData(Value\
     \ h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n    template <class T>\n\
     \    constexpr RollingHashMonoidData(const T& v) \n        : hash{static_cast<Value>(v)},\
-    \ pow{base}, len{1} {}\n    RollingHashMonoidData(const RollingHashMonoidData&\
-    \ data)\n        : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n  \
-    \  static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
+    \ pow{base}, len{1} {}\n    // RollingHashMonoidData(const RollingHashMonoidData&\
+    \ data)\n    //     : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n\
+    \    static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
     \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
     \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
     \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
@@ -72,9 +72,9 @@ data:
     \ RollingHashMonoidData() = default;\n    constexpr RollingHashMonoidData(Value\
     \ h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n    template <class T>\n\
     \    constexpr RollingHashMonoidData(const T& v) \n        : hash{static_cast<Value>(v)},\
-    \ pow{base}, len{1} {}\n    RollingHashMonoidData(const RollingHashMonoidData&\
-    \ data)\n        : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n  \
-    \  static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
+    \ pow{base}, len{1} {}\n    // RollingHashMonoidData(const RollingHashMonoidData&\
+    \ data)\n    //     : hash{data.hash}, pow{data.pow}, len{data.len} {}\n    \n\
+    \    static Value randomValue(const Value& sigma) {\n        return std::mt19937{std::random_device{}()}()\
     \ % (Mersenne61ModInt::Mod() - sigma) + sigma + 1;\n    }\n\n    friend constexpr\
     \ bool operator==(const RollingHashMonoidData& lhs, const RollingHashMonoidData&\
     \ rhs) {\n        return lhs.hash == rhs.hash and lhs.len == rhs.len;\n    }\n\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Monoid/RollingHashMonoid.hpp
   requiredBy: []
-  timestamp: '2024-07-27 03:11:15+09:00'
+  timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0478.test.cpp

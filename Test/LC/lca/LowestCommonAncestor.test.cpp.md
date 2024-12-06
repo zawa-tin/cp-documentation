@@ -11,9 +11,6 @@ data:
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/Tree.hpp
-    title: Src/Graph/Tree/Tree.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
@@ -78,64 +75,58 @@ data:
     \        for (u32 j{} ; j + len - 1 < spt.dat[i].size() ; j++) {\n           \
     \     os << spt.dat[i][j] << (j + len == spt.dat[i].size() ? '\\n' : ' ');\n \
     \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n\
-    #line 2 \"Src/Graph/Tree/Tree.hpp\"\n\n#line 4 \"Src/Graph/Tree/Tree.hpp\"\n\n\
-    #line 7 \"Src/Graph/Tree/Tree.hpp\"\n\nnamespace zawa {\n\nusing Tree = std::vector<std::vector<u32>>;\n\
-    \nvoid AddEdge(Tree& T, u32 u, u32 v) {\n    assert(u < T.size());\n    assert(v\
-    \ < T.size());\n    T[u].emplace_back(v);\n    T[v].emplace_back(u);\n}\n\nvoid\
-    \ AddDirectedEdge(Tree& T, u32 from, u32 to) {\n    assert(from < T.size());\n\
-    \    assert(to < T.size());\n    T[from].emplace_back(to);\n}\n\n} // namespace\
-    \ zawa\n#line 7 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 10 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
-    \n\nnamespace zawa {\n\nclass LowestCommonAncestor {\nprivate:\n    using Monoid\
-    \ = ChminMonoid<u32, u32>;\n\npublic:\n    LowestCommonAncestor() = default;\n\
-    \n    LowestCommonAncestor(const Tree& tree, u32 r = 0u) \n        : n_{tree.size()},\
-    \ depth_(tree.size()), L_(tree.size()), R_(tree.size()), st_{} {\n           \
-    \ std::vector<Monoid::Element> init;\n            init.reserve(2 * size());\n\
-    \            auto dfs{[&](auto dfs, u32 v, u32 p) -> void {\n                depth_[v]\
-    \ = (p == INVALID ? 0u : depth_[p] + 1);\n                L_[v] = (u32)init.size();\n\
-    \                for (auto x : tree[v]) {\n                    if (x == p) {\n\
-    \                        continue;\n                    }\n                  \
-    \  init.emplace_back(depth_[v], v);\n                    dfs(dfs, x, v);\n   \
-    \             }\n                R_[v] = (u32)init.size();\n            }};\n\
-    \            dfs(dfs, r, INVALID);\n            st_ = SparseTable<Monoid>(init);\n\
-    \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(verify(u));\n\
-    \        assert(verify(v));\n        if (L_[u] > L_[v]) {\n            std::swap(u,\
-    \ v);\n        }\n        return st_.product(L_[u], R_[v]).value();\n    }\n\n\
-    \    u32 lca(u32 u, u32 v) const {\n        return (*this)(u, v);\n    }\n\n \
-    \   inline u32 depth(u32 v) const noexcept {\n        assert(verify(v));\n   \
-    \     return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n   \
-    \     assert(verify(u));\n        assert(verify(v));\n        return depth(u)\
-    \ + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool isAncestor(u32 p,\
-    \ u32 v) const {\n        assert(verify(p));\n        assert(verify(v));\n   \
-    \     return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
-    \ left(u32 v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
-    \ size() const {\n        return n_;\n    }\n\n    inline bool verify(u32 v) const\
-    \ {\n        return v < size();\n    }\n\nprivate:\n    static constexpr u32 INVALID{static_cast<u32>(-1)};\n\
-    \    usize n_{};\n    std::vector<u32> depth_, L_, R_;\n    SparseTable<Monoid>\
-    \ st_;\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/lca/LowestCommonAncestor.test.cpp\"\
-    \nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n   \
-    \ std::cin >> N >> Q;\n    Tree T(N);\n    for (int i{1} ; i < N ; i++) {\n  \
-    \      int p;\n        std::cin >> p;\n        AddDirectedEdge(T, p, i);\n   \
-    \ }\n    LowestCommonAncestor lca{T, 0};\n    while (Q--) {\n        int u, v;\n\
-    \        std::cin >> u >> v;\n        std::cout << lca(u, v) << '\\n';\n    }\n\
-    }\n"
+    #line 6 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 9 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class V>\nclass LowestCommonAncestor {\nprivate:\n\
+    \    using Monoid = ChminMonoid<u32, V>;\n\npublic:\n    LowestCommonAncestor()\
+    \ = default;\n\n    LowestCommonAncestor(const std::vector<std::vector<V>>& tree,\
+    \ V r = V{}) \n        : n_{tree.size()}, depth_(tree.size()), L_(tree.size()),\
+    \ R_(tree.size()), st_{} {\n            std::vector<typename Monoid::Element>\
+    \ init;\n            init.reserve(2 * size());\n            auto dfs{[&](auto\
+    \ dfs, V v, V p) -> void {\n                depth_[v] = (p == INVALID ? 0u : depth_[p]\
+    \ + 1);\n                L_[v] = (u32)init.size();\n                for (auto\
+    \ x : tree[v]) {\n                    if (x == p) {\n                        continue;\n\
+    \                    }\n                    init.emplace_back(depth_[v], v);\n\
+    \                    dfs(dfs, x, v);\n                }\n                R_[v]\
+    \ = (u32)init.size();\n            }};\n            dfs(dfs, r, INVALID);\n  \
+    \          st_ = SparseTable<Monoid>(init);\n    }\n\n    V operator()(V u, V\
+    \ v) const {\n        assert(verify(u));\n        assert(verify(v));\n       \
+    \ if (L_[u] > L_[v]) {\n            std::swap(u, v);\n        }\n        return\
+    \ st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v) const {\n \
+    \       return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const noexcept\
+    \ {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n    u32 distance(V\
+    \ u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n  \
+    \      return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool\
+    \ isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
+    \        return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
+    \ left(V v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
+    \ size() const {\n        return n_;\n    }\n\n    inline bool verify(V v) const\
+    \ {\n        return v < (V)size();\n    }\n\nprivate:\n    static constexpr V\
+    \ INVALID{static_cast<V>(-1)};\n    usize n_{};\n    std::vector<u32> depth_,\
+    \ L_, R_;\n    SparseTable<Monoid> st_;\n};\n\n} // namespace zawa\n#line 5 \"\
+    Test/LC/lca/LowestCommonAncestor.test.cpp\"\nusing namespace zawa;\n\nint main()\
+    \ {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<std::vector<int>>\
+    \ T(N);\n    for (int i{1} ; i < N ; i++) {\n        int p;\n        std::cin\
+    \ >> p;\n        T[p].push_back(i);\n    }\n    LowestCommonAncestor lca{T, 0};\n\
+    \    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout\
+    \ << lca(u, v) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\nusing namespace\
     \ zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >>\
-    \ Q;\n    Tree T(N);\n    for (int i{1} ; i < N ; i++) {\n        int p;\n   \
-    \     std::cin >> p;\n        AddDirectedEdge(T, p, i);\n    }\n    LowestCommonAncestor\
-    \ lca{T, 0};\n    while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n\
-    \        std::cout << lca(u, v) << '\\n';\n    }\n}\n"
+    \ Q;\n    std::vector<std::vector<int>> T(N);\n    for (int i{1} ; i < N ; i++)\
+    \ {\n        int p;\n        std::cin >> p;\n        T[p].push_back(i);\n    }\n\
+    \    LowestCommonAncestor lca{T, 0};\n    while (Q--) {\n        int u, v;\n \
+    \       std::cin >> u >> v;\n        std::cout << lca(u, v) << '\\n';\n    }\n\
+    }\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
-  - Src/Graph/Tree/Tree.hpp
   isVerificationFile: true
   path: Test/LC/lca/LowestCommonAncestor.test.cpp
   requiredBy: []
-  timestamp: '2024-07-17 11:37:50+09:00'
+  timestamp: '2024-12-06 16:59:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/lca/LowestCommonAncestor.test.cpp

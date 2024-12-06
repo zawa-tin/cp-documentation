@@ -17,9 +17,6 @@ data:
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/Tree.hpp
-    title: Src/Graph/Tree/Tree.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
@@ -34,11 +31,11 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/typical90/submissions/55137635
+    - https://atcoder.jp/contests/typical90/submissions/60473771
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/typical90_ai.test.cpp\"\n#define PROBLEM \"\
     https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n/*\n *\
-    \ \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n * https://atcoder.jp/contests/typical90/submissions/55137635\n\
+    \ \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n * https://atcoder.jp/contests/typical90/submissions/60473771\n\
     \ */\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -48,13 +45,7 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\n\n#line\
-    \ 2 \"Src/Graph/Tree/Tree.hpp\"\n\n#line 4 \"Src/Graph/Tree/Tree.hpp\"\n\n#include\
-    \ <cassert>\n#include <vector>\n\nnamespace zawa {\n\nusing Tree = std::vector<std::vector<u32>>;\n\
-    \nvoid AddEdge(Tree& T, u32 u, u32 v) {\n    assert(u < T.size());\n    assert(v\
-    \ < T.size());\n    T[u].emplace_back(v);\n    T[v].emplace_back(u);\n}\n\nvoid\
-    \ AddDirectedEdge(Tree& T, u32 from, u32 to) {\n    assert(from < T.size());\n\
-    \    assert(to < T.size());\n    T[from].emplace_back(to);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
+    \ 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
     \n\n#line 4 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\n\n#include <algorithm>\n#include\
     \ <optional>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass ChminMonoidData\
     \ {\nprivate:\n    std::optional<T> priority_{};\n    U value_{};\npublic:\n \
@@ -73,10 +64,10 @@ data:
     \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
     \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
     \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#line 7 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
-    \n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class Structure>\nclass\
-    \ SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n  \
-    \  std::vector<u32> L;\n    std::vector<std::vector<Value>> dat;\npublic:\n\n\
+    \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <vector>\n\
+    #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
+    \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
+    \    std::vector<u32> L;\n    std::vector<std::vector<Value>> dat;\npublic:\n\n\
     \    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
     \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
     \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
@@ -93,56 +84,59 @@ data:
     \        for (u32 j{} ; j + len - 1 < spt.dat[i].size() ; j++) {\n           \
     \     os << spt.dat[i][j] << (j + len == spt.dat[i].size() ? '\\n' : ' ');\n \
     \           }\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n\
-    #line 7 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 10 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
-    \n\nnamespace zawa {\n\nclass LowestCommonAncestor {\nprivate:\n    using Monoid\
-    \ = ChminMonoid<u32, u32>;\n\npublic:\n    LowestCommonAncestor() = default;\n\
-    \n    LowestCommonAncestor(const Tree& tree, u32 r = 0u) \n        : n_{tree.size()},\
-    \ depth_(tree.size()), L_(tree.size()), R_(tree.size()), st_{} {\n           \
-    \ std::vector<Monoid::Element> init;\n            init.reserve(2 * size());\n\
-    \            auto dfs{[&](auto dfs, u32 v, u32 p) -> void {\n                depth_[v]\
-    \ = (p == INVALID ? 0u : depth_[p] + 1);\n                L_[v] = (u32)init.size();\n\
-    \                for (auto x : tree[v]) {\n                    if (x == p) {\n\
-    \                        continue;\n                    }\n                  \
-    \  init.emplace_back(depth_[v], v);\n                    dfs(dfs, x, v);\n   \
-    \             }\n                R_[v] = (u32)init.size();\n            }};\n\
-    \            dfs(dfs, r, INVALID);\n            st_ = SparseTable<Monoid>(init);\n\
-    \    }\n\n    u32 operator()(u32 u, u32 v) const {\n        assert(verify(u));\n\
-    \        assert(verify(v));\n        if (L_[u] > L_[v]) {\n            std::swap(u,\
-    \ v);\n        }\n        return st_.product(L_[u], R_[v]).value();\n    }\n\n\
-    \    u32 lca(u32 u, u32 v) const {\n        return (*this)(u, v);\n    }\n\n \
-    \   inline u32 depth(u32 v) const noexcept {\n        assert(verify(v));\n   \
-    \     return depth_[v];\n    }\n\n    u32 distance(u32 u, u32 v) const {\n   \
-    \     assert(verify(u));\n        assert(verify(v));\n        return depth(u)\
-    \ + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool isAncestor(u32 p,\
-    \ u32 v) const {\n        assert(verify(p));\n        assert(verify(v));\n   \
-    \     return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
-    \ left(u32 v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
-    \ size() const {\n        return n_;\n    }\n\n    inline bool verify(u32 v) const\
-    \ {\n        return v < size();\n    }\n\nprivate:\n    static constexpr u32 INVALID{static_cast<u32>(-1)};\n\
-    \    usize n_{};\n    std::vector<u32> depth_, L_, R_;\n    SparseTable<Monoid>\
-    \ st_;\n};\n\n} // namespace zawa\n#line 5 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\
-    \n\n#line 7 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\n\nnamespace zawa {\n\nclass\
-    \ AuxiliaryTree : public LowestCommonAncestor {\npublic:\n    using V = u32;\n\
-    \    AuxiliaryTree() = default;\n    AuxiliaryTree(const Tree& T, V r = 0u) \n\
-    \        : LowestCommonAncestor{ T, r }, T_(T.size()), dist_(T.size()), used_(T.size())\
-    \ {}\n\n    V construct(const std::vector<V>& vs) {\n        assert(vs.size());\n\
-    \        clear();\n        vs_ = vs;\n        return build();\n    }\n\n    const\
-    \ std::vector<V>& operator[](V v) const {\n        verify(v);\n        return\
-    \ T_[v];\n    }\n\n    inline bool contains(V v) const {\n        assert(verify(v));\n\
-    \        return used_[v];\n    }\n\n    inline u32 parentEdgeLength(V v) const\
-    \ {\n        assert(contains(v));\n        return dist_[v];\n    }\n\n    std::vector<V>\
-    \ current() const {\n        return vs_;\n    }\n\nprivate:\n    Tree T_{}; \n\
-    \    std::vector<V> vs_{};\n    std::vector<u32> dist_{};\n    std::vector<bool>\
-    \ used_{};\n\n    void addEdge(V p, V v) {\n        assert(depth(p) < depth(v));\n\
-    \        AddEdge(T_, p, v);\n        dist_[v] = depth(v) - depth(p);\n    }\n\n\
-    \    V build() {\n        std::sort(vs_.begin(), vs_.end(), [&](V u, V v) -> bool\
-    \ {\n                return left(u) < left(v);\n                });\n        vs_.erase(std::unique(vs_.begin(),\
-    \ vs_.end()), vs_.end());\n        V k{(V)vs_.size()};\n        std::vector<V>\
+    #line 6 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 9 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class V>\nclass LowestCommonAncestor {\nprivate:\n\
+    \    using Monoid = ChminMonoid<u32, V>;\n\npublic:\n    LowestCommonAncestor()\
+    \ = default;\n\n    LowestCommonAncestor(const std::vector<std::vector<V>>& tree,\
+    \ V r = V{}) \n        : n_{tree.size()}, depth_(tree.size()), L_(tree.size()),\
+    \ R_(tree.size()), st_{} {\n            std::vector<typename Monoid::Element>\
+    \ init;\n            init.reserve(2 * size());\n            auto dfs{[&](auto\
+    \ dfs, V v, V p) -> void {\n                depth_[v] = (p == INVALID ? 0u : depth_[p]\
+    \ + 1);\n                L_[v] = (u32)init.size();\n                for (auto\
+    \ x : tree[v]) {\n                    if (x == p) {\n                        continue;\n\
+    \                    }\n                    init.emplace_back(depth_[v], v);\n\
+    \                    dfs(dfs, x, v);\n                }\n                R_[v]\
+    \ = (u32)init.size();\n            }};\n            dfs(dfs, r, INVALID);\n  \
+    \          st_ = SparseTable<Monoid>(init);\n    }\n\n    V operator()(V u, V\
+    \ v) const {\n        assert(verify(u));\n        assert(verify(v));\n       \
+    \ if (L_[u] > L_[v]) {\n            std::swap(u, v);\n        }\n        return\
+    \ st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v) const {\n \
+    \       return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const noexcept\
+    \ {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n    u32 distance(V\
+    \ u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n  \
+    \      return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool\
+    \ isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
+    \        return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
+    \ left(V v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
+    \ size() const {\n        return n_;\n    }\n\n    inline bool verify(V v) const\
+    \ {\n        return v < (V)size();\n    }\n\nprivate:\n    static constexpr V\
+    \ INVALID{static_cast<V>(-1)};\n    usize n_{};\n    std::vector<u32> depth_,\
+    \ L_, R_;\n    SparseTable<Monoid> st_;\n};\n\n} // namespace zawa\n#line 4 \"\
+    Src/Graph/Tree/AuxiliaryTree.hpp\"\n\n#line 6 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class V>\nclass AuxiliaryTree : public LowestCommonAncestor<V>\
+    \ {\npublic:\n    using Super = LowestCommonAncestor<V>;\n\n    AuxiliaryTree()\
+    \ = default;\n    AuxiliaryTree(const std::vector<std::vector<V>>& T, V r = 0u)\
+    \ \n        : Super{ T, r }, T_(T.size()), dist_(T.size()), used_(T.size()) {}\n\
+    \n    V construct(const std::vector<V>& vs) {\n        assert(vs.size());\n  \
+    \      clear();\n        vs_ = vs;\n        return build();\n    }\n\n    const\
+    \ std::vector<V>& operator[](V v) const {\n        assert(Super::verify(v));\n\
+    \        return T_[v];\n    }\n\n    inline bool contains(V v) const {\n     \
+    \   assert(Super::verify(v));\n        return used_[v];\n    }\n\n    inline u32\
+    \ parentEdgeLength(V v) const {\n        assert(contains(v));\n        return\
+    \ dist_[v];\n    }\n\n    std::vector<V> current() const {\n        return vs_;\n\
+    \    }\n\nprivate:\n    std::vector<std::vector<V>> T_{}; \n    std::vector<V>\
+    \ vs_{};\n    std::vector<u32> dist_{};\n    std::vector<bool> used_{};\n\n  \
+    \  void addEdge(V p, V v) {\n        assert(Super::depth(p) < Super::depth(v));\n\
+    \        T_[p].push_back(v);\n        T_[v].push_back(p);\n        dist_[v] =\
+    \ Super::depth(v) - Super::depth(p);\n    }\n\n    V build() {\n        std::sort(vs_.begin(),\
+    \ vs_.end(), [&](V u, V v) -> bool {\n                return Super::left(u) <\
+    \ Super::left(v);\n                });\n        vs_.erase(std::unique(vs_.begin(),\
+    \ vs_.end()), vs_.end());\n        usize k{vs_.size()};\n        std::vector<V>\
     \ stack;\n        stack.reserve(2u * vs_.size());\n        stack.emplace_back(vs_[0]);\n\
-    \        for (u32 i{} ; i + 1 < k ; i++) {\n            if (!LowestCommonAncestor::isAncestor(vs_[i],\
-    \ vs_[i + 1])) {\n                V w{LowestCommonAncestor::lca(vs_[i], vs_[i\
-    \ + 1])};\n                V l{stack.back()};\n                stack.pop_back();\n\
-    \                while (stack.size() and LowestCommonAncestor::depth(w) < LowestCommonAncestor::depth(stack.back()))\
+    \        for (usize i{} ; i + 1 < k ; i++) {\n            if (!Super::isAncestor(vs_[i],\
+    \ vs_[i + 1])) {\n                V w{Super::lca(vs_[i], vs_[i + 1])};\n     \
+    \           V l{stack.back()};\n                stack.pop_back();\n          \
+    \      while (stack.size() and LowestCommonAncestor<V>::depth(w) < LowestCommonAncestor<V>::depth(stack.back()))\
     \ {\n                    addEdge(stack.back(), l);\n                    l = stack.back();\n\
     \                    stack.pop_back();\n                }\n                if\
     \ (stack.empty() or stack.back() != w) {\n                    stack.emplace_back(w);\n\
@@ -156,48 +150,49 @@ data:
     \ = 0u;\n        }\n        vs_.clear();\n    }\n};\n\n} // namespace zawa\n#line\
     \ 10 \"Test/Manual/typical90_ai.test.cpp\"\n\n#line 13 \"Test/Manual/typical90_ai.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n#ifdef ATCODER\n    SetFastIO(); \n\
-    \n    int N;\n    std::cin >> N;\n    Tree g(N);\n    for (int i{1} ; i < N ;\
-    \ i++) {\n        int A, B;\n        std::cin >> A >> B;\n        AddEdge(g, A\
-    \ - 1, B - 1);\n    }\n    AuxiliaryTree AT(g);\n    int Q;\n    std::cin >> Q;\n\
-    \    while (Q--) {\n        int K;\n        std::cin >> K;\n        std::vector<AuxiliaryTree::V>\
-    \ V(K);\n        for (auto& v : V) {\n            std::cin >> v;\n           \
-    \ v--;\n        }\n        u32 r{AT.construct(V)};\n        auto dfs{[&](auto\
-    \ dfs, int v, int p) -> u32 {\n            u32 res{};\n            if (p != -1)\
-    \ {\n                res += AT.parentEdgeLength(v);\n            }\n         \
-    \   for (auto x : AT[v]) {\n                if ((int)x != p) {\n             \
-    \       res += dfs(dfs, x, v);\n                }\n            }\n           \
-    \ return res;\n        }};\n        std::cout << dfs(dfs, r, -1) << '\\n';\n \
-    \   }\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>> g(N);\n  \
+    \  for (int i{1} ; i < N ; i++) {\n        int A, B;\n        std::cin >> A >>\
+    \ B;\n        A--; B--;\n        g[A].push_back(B);\n        g[B].push_back(A);\n\
+    \    }\n    AuxiliaryTree AT(g);\n    int Q;\n    std::cin >> Q;\n    while (Q--)\
+    \ {\n        int K;\n        std::cin >> K;\n        std::vector<int> V(K);\n\
+    \        for (auto& v : V) {\n            std::cin >> v;\n            v--;\n \
+    \       }\n        int r{AT.construct(V)};\n        auto dfs{[&](auto dfs, int\
+    \ v, int p) -> u32 {\n            u32 res{};\n            if (p != -1) {\n   \
+    \             res += AT.parentEdgeLength(v);\n            }\n            for (auto\
+    \ x : AT[v]) {\n                if ((int)x != p) {\n                    res +=\
+    \ dfs(dfs, x, v);\n                }\n            }\n            return res;\n\
+    \        }};\n        std::cout << dfs(dfs, r, -1) << '\\n';\n    }\n#else\n \
+    \   std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n * \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n\
-    \ * https://atcoder.jp/contests/typical90/submissions/55137635\n */\n\n#include\
+    \ * https://atcoder.jp/contests/typical90/submissions/60473771\n */\n\n#include\
     \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nint main()\
     \ {\n#ifdef ATCODER\n    SetFastIO(); \n\n    int N;\n    std::cin >> N;\n   \
-    \ Tree g(N);\n    for (int i{1} ; i < N ; i++) {\n        int A, B;\n        std::cin\
-    \ >> A >> B;\n        AddEdge(g, A - 1, B - 1);\n    }\n    AuxiliaryTree AT(g);\n\
-    \    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        int K;\n        std::cin\
-    \ >> K;\n        std::vector<AuxiliaryTree::V> V(K);\n        for (auto& v : V)\
-    \ {\n            std::cin >> v;\n            v--;\n        }\n        u32 r{AT.construct(V)};\n\
-    \        auto dfs{[&](auto dfs, int v, int p) -> u32 {\n            u32 res{};\n\
-    \            if (p != -1) {\n                res += AT.parentEdgeLength(v);\n\
-    \            }\n            for (auto x : AT[v]) {\n                if ((int)x\
-    \ != p) {\n                    res += dfs(dfs, x, v);\n                }\n   \
-    \         }\n            return res;\n        }};\n        std::cout << dfs(dfs,\
+    \ std::vector<std::vector<int>> g(N);\n    for (int i{1} ; i < N ; i++) {\n  \
+    \      int A, B;\n        std::cin >> A >> B;\n        A--; B--;\n        g[A].push_back(B);\n\
+    \        g[B].push_back(A);\n    }\n    AuxiliaryTree AT(g);\n    int Q;\n   \
+    \ std::cin >> Q;\n    while (Q--) {\n        int K;\n        std::cin >> K;\n\
+    \        std::vector<int> V(K);\n        for (auto& v : V) {\n            std::cin\
+    \ >> v;\n            v--;\n        }\n        int r{AT.construct(V)};\n      \
+    \  auto dfs{[&](auto dfs, int v, int p) -> u32 {\n            u32 res{};\n   \
+    \         if (p != -1) {\n                res += AT.parentEdgeLength(v);\n   \
+    \         }\n            for (auto x : AT[v]) {\n                if ((int)x !=\
+    \ p) {\n                    res += dfs(dfs, x, v);\n                }\n      \
+    \      }\n            return res;\n        }};\n        std::cout << dfs(dfs,\
     \ r, -1) << '\\n';\n    }\n#else\n    std::cout << \"Hello World\" << '\\n';\n\
     #endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
-  - Src/Graph/Tree/Tree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   isVerificationFile: true
   path: Test/Manual/typical90_ai.test.cpp
   requiredBy: []
-  timestamp: '2024-07-02 11:54:33+09:00'
+  timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/typical90_ai.test.cpp

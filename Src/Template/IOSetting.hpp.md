@@ -246,6 +246,9 @@ data:
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc359_g.test.cpp
+    title: Test/AtCoder/abc359_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc070_e.test.cpp
     title: Test/AtCoder/arc070_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -390,9 +393,6 @@ data:
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc359_g.test.cpp
-    title: ABC359-F Sum of Tree Distance
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -526,7 +526,6 @@ data:
   - Test/CF/CF923-F.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
-  - Test/Manual/abc359_g.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/practice2_l.test.cpp
@@ -552,6 +551,7 @@ data:
   - Test/Manual/aoj3369.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc346_g.test.cpp

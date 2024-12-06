@@ -123,8 +123,8 @@ data:
     \    usize len{};\n\n    constexpr RollingHashMonoidData() = default;\n    constexpr\
     \ RollingHashMonoidData(Value h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n\
     \    template <class T>\n    constexpr RollingHashMonoidData(const T& v) \n  \
-    \      : hash{static_cast<Value>(v)}, pow{base}, len{1} {}\n    RollingHashMonoidData(const\
-    \ RollingHashMonoidData& data)\n        : hash{data.hash}, pow{data.pow}, len{data.len}\
+    \      : hash{static_cast<Value>(v)}, pow{base}, len{1} {}\n    // RollingHashMonoidData(const\
+    \ RollingHashMonoidData& data)\n    //     : hash{data.hash}, pow{data.pow}, len{data.len}\
     \ {}\n    \n    static Value randomValue(const Value& sigma) {\n        return\
     \ std::mt19937{std::random_device{}()}() % (Mersenne61ModInt::Mod() - sigma) +\
     \ sigma + 1;\n    }\n\n    friend constexpr bool operator==(const RollingHashMonoidData&\
@@ -183,7 +183,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 19:45:45+09:00'
+  timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc331_f.test.cpp

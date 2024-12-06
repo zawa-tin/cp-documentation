@@ -8,33 +8,41 @@ data:
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/AuxiliaryTree.hpp
+    title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\
+      \u306E\u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\
+      \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
+      \u6728)"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/IOSetting.hpp
+    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc340_g.test.cpp
-    title: Test/AtCoder/abc340_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc359_g.test.cpp
-    title: Test/AtCoder/abc359_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/typical90_ai.test.cpp
-    title: Test/Manual/typical90_ai.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\n\n#line 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://atcoder.jp/contests/abc359/tasks/abc359_g
+    links:
+    - https://atcoder.jp/contests/abc359/tasks/abc359_g
+  bundledCode: "#line 1 \"Test/AtCoder/abc359_g.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\
+    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
+    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/AuxiliaryTree.hpp\"\n\n#line\
+    \ 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\
     \n\n#line 4 \"Src/Algebra/Monoid/ChminMonoid.hpp\"\n\n#include <algorithm>\n#include\
     \ <optional>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass ChminMonoidData\
     \ {\nprivate:\n    std::optional<T> priority_{};\n    U value_{};\npublic:\n \
@@ -136,66 +144,64 @@ data:
     \  }\n        for (V v : vs_) {\n            used_[v] = true;\n        }\n   \
     \     return stack.back();\n    }\n\n    void clear() {\n        for (V v : vs_)\
     \ {\n            T_[v].clear();\n            used_[v] = false;\n            dist_[v]\
-    \ = 0u;\n        }\n        vs_.clear();\n    }\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./LowestCommonAncestor.hpp\"\n\n#include <algorithm>\n\
-    \nnamespace zawa {\n\ntemplate <class V>\nclass AuxiliaryTree : public LowestCommonAncestor<V>\
-    \ {\npublic:\n    using Super = LowestCommonAncestor<V>;\n\n    AuxiliaryTree()\
-    \ = default;\n    AuxiliaryTree(const std::vector<std::vector<V>>& T, V r = 0u)\
-    \ \n        : Super{ T, r }, T_(T.size()), dist_(T.size()), used_(T.size()) {}\n\
-    \n    V construct(const std::vector<V>& vs) {\n        assert(vs.size());\n  \
-    \      clear();\n        vs_ = vs;\n        return build();\n    }\n\n    const\
-    \ std::vector<V>& operator[](V v) const {\n        assert(Super::verify(v));\n\
-    \        return T_[v];\n    }\n\n    inline bool contains(V v) const {\n     \
-    \   assert(Super::verify(v));\n        return used_[v];\n    }\n\n    inline u32\
-    \ parentEdgeLength(V v) const {\n        assert(contains(v));\n        return\
-    \ dist_[v];\n    }\n\n    std::vector<V> current() const {\n        return vs_;\n\
-    \    }\n\nprivate:\n    std::vector<std::vector<V>> T_{}; \n    std::vector<V>\
-    \ vs_{};\n    std::vector<u32> dist_{};\n    std::vector<bool> used_{};\n\n  \
-    \  void addEdge(V p, V v) {\n        assert(Super::depth(p) < Super::depth(v));\n\
-    \        T_[p].push_back(v);\n        T_[v].push_back(p);\n        dist_[v] =\
-    \ Super::depth(v) - Super::depth(p);\n    }\n\n    V build() {\n        std::sort(vs_.begin(),\
-    \ vs_.end(), [&](V u, V v) -> bool {\n                return Super::left(u) <\
-    \ Super::left(v);\n                });\n        vs_.erase(std::unique(vs_.begin(),\
-    \ vs_.end()), vs_.end());\n        usize k{vs_.size()};\n        std::vector<V>\
-    \ stack;\n        stack.reserve(2u * vs_.size());\n        stack.emplace_back(vs_[0]);\n\
-    \        for (usize i{} ; i + 1 < k ; i++) {\n            if (!Super::isAncestor(vs_[i],\
-    \ vs_[i + 1])) {\n                V w{Super::lca(vs_[i], vs_[i + 1])};\n     \
-    \           V l{stack.back()};\n                stack.pop_back();\n          \
-    \      while (stack.size() and LowestCommonAncestor<V>::depth(w) < LowestCommonAncestor<V>::depth(stack.back()))\
-    \ {\n                    addEdge(stack.back(), l);\n                    l = stack.back();\n\
-    \                    stack.pop_back();\n                }\n                if\
-    \ (stack.empty() or stack.back() != w) {\n                    stack.emplace_back(w);\n\
-    \                    vs_.emplace_back(w);\n                }\n               \
-    \ addEdge(w, l);\n            }\n            stack.emplace_back(vs_[i + 1]);\n\
-    \        }\n        while (stack.size() > 1u) {\n            V l{stack.back()};\n\
-    \            stack.pop_back();\n            addEdge(stack.back(), l);\n      \
-    \  }\n        for (V v : vs_) {\n            used_[v] = true;\n        }\n   \
-    \     return stack.back();\n    }\n\n    void clear() {\n        for (V v : vs_)\
-    \ {\n            T_[v].clear();\n            used_[v] = false;\n            dist_[v]\
-    \ = 0u;\n        }\n        vs_.clear();\n    }\n};\n\n} // namespace zawa\n"
+    \ = 0u;\n        }\n        vs_.clear();\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 5 \"Test/AtCoder/abc359_g.test.cpp\"\n\n#line 8 \"Test/AtCoder/abc359_g.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n\n    int N;\n  \
+    \  std::cin >> N;\n    std::vector<std::vector<int>> g(N);\n    for (int i{1}\
+    \ ; i < N ; i++) {\n        int u, v;\n        std::cin >> u >> v;\n        u--;\
+    \ v--;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    std::vector<int>\
+    \ A(N);\n    std::vector<std::vector<int>> B(N);\n    for (int i{} ; i < N ; i++)\
+    \ {\n        std::cin >> A[i];\n        A[i]--;\n        B[A[i]].push_back(i);\n\
+    \    }\n    AuxiliaryTree AT(g);\n    long long ans{};\n    std::vector<int> size(N);\n\
+    \    std::vector<long long> dp(N);\n    for (int c{} ; c < N ; c++) {\n      \
+    \  if (B[c].empty()) {\n            continue;\n        }\n        int r{(int)AT.construct(B[c])};\n\
+    \        auto dfs{[&](auto dfs, int v, int p) -> long long {\n            if (A[v]\
+    \ == c) size[v]++; \n            long long res{};\n            for (auto x : AT[v])\
+    \ {\n                if ((int)x == p) continue;\n                res += dfs(dfs,\
+    \ x, v);\n                res += dp[v] * size[x] + size[v] * (size[x] * AT.parentEdgeLength(x)\
+    \ + dp[x]);\n                dp[v] += dp[x] + AT.parentEdgeLength(x) * size[x];\n\
+    \                size[v] += size[x];\n            }\n            return res;\n\
+    \        }}; \n        long long val{dfs(dfs, r, -1)};\n        ans += val;\n\
+    \        for (auto v : AT.current()) {\n            size[v] = 0;\n           \
+    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\n\
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nint main()\
+    \ {\n    SetFastIO();\n\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
+    \ g(N);\n    for (int i{1} ; i < N ; i++) {\n        int u, v;\n        std::cin\
+    \ >> u >> v;\n        u--; v--;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
+    \    }\n    std::vector<int> A(N);\n    std::vector<std::vector<int>> B(N);\n\
+    \    for (int i{} ; i < N ; i++) {\n        std::cin >> A[i];\n        A[i]--;\n\
+    \        B[A[i]].push_back(i);\n    }\n    AuxiliaryTree AT(g);\n    long long\
+    \ ans{};\n    std::vector<int> size(N);\n    std::vector<long long> dp(N);\n \
+    \   for (int c{} ; c < N ; c++) {\n        if (B[c].empty()) {\n            continue;\n\
+    \        }\n        int r{(int)AT.construct(B[c])};\n        auto dfs{[&](auto\
+    \ dfs, int v, int p) -> long long {\n            if (A[v] == c) size[v]++; \n\
+    \            long long res{};\n            for (auto x : AT[v]) {\n          \
+    \      if ((int)x == p) continue;\n                res += dfs(dfs, x, v);\n  \
+    \              res += dp[v] * size[x] + size[v] * (size[x] * AT.parentEdgeLength(x)\
+    \ + dp[x]);\n                dp[v] += dp[x] + AT.parentEdgeLength(x) * size[x];\n\
+    \                size[v] += size[x];\n            }\n            return res;\n\
+    \        }}; \n        long long val{dfs(dfs, r, -1)};\n        ans += val;\n\
+    \        for (auto v : AT.current()) {\n            size[v] = 0;\n           \
+    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
   dependsOn:
-  - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Graph/Tree/AuxiliaryTree.hpp
+  - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
-  isVerificationFile: false
-  path: Src/Graph/Tree/AuxiliaryTree.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/abc359_g.test.cpp
   requiredBy: []
   timestamp: '2024-12-06 16:40:42+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/Manual/typical90_ai.test.cpp
-  - Test/AtCoder/abc359_g.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
-documentation_of: Src/Graph/Tree/AuxiliaryTree.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/abc359_g.test.cpp
 layout: document
-title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\u306E\
-  \u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\u6728\u3092\
-  \u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\u6728)"
+redirect_from:
+- /verify/Test/AtCoder/abc359_g.test.cpp
+- /verify/Test/AtCoder/abc359_g.test.cpp.html
+title: Test/AtCoder/abc359_g.test.cpp
 ---
-
-## 概要
-
-無気力。実装例を見てくれ。
-
-## ライブラリの使い方

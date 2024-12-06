@@ -5,9 +5,6 @@ data:
     path: Src/Graph/Tree/Centroid.hpp
     title: "\u6728\u306E\u91CD\u5FC3"
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/Tree.hpp
-    title: Src/Graph/Tree/Tree.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
@@ -36,19 +33,19 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/convolution:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/frequency_table_of_tree_distance\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/Tree.hpp\"\
-    \n#include \"../../Src/Graph/Tree/Centroid.hpp\"\n\n#include <algorithm>\n#include\
-    \ <iostream>\n#include <vector>\n\nusing namespace zawa;\n\n#include \"atcoder/convolution\"\
-    \n\nint main() {\n    SetFastIO();\n    int N;\n    std::cin >> N;\n    Tree T(N);\n\
-    \    for (int i{} ; i < N - 1 ; i++) {\n        int a, b;\n        std::cin >>\
-    \ a >> b;\n        AddEdge(T, a, b);\n    }\n    Centroid C(std::move(T));\n \
-    \   std::vector<int> dep(N);\n    auto calc_dep{[&](auto dfs, int v, int p, int\
-    \ d) -> void {\n        dep[v] = d;\n        for (auto x : C[v]) if ((int)x !=\
-    \ p and !C.isRemoved(x)) {\n            dfs(dfs, x, v, d + 1);\n        }\n  \
-    \  }};\n    std::vector<long long> ans(N);\n    auto dfs{[&](auto dfs, int v)\
-    \ -> void {\n        v = C.rooting(v);\n        calc_dep(calc_dep, v, -1, 0);\n\
-    \        C.remove(v);\n        std::vector<std::vector<u32>> subtree;\n      \
-    \  for (auto x : C.adjlist(v)) {\n            subtree.push_back(C.component(x));\n\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/Centroid.hpp\"\
+    \n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\nusing namespace\
+    \ zawa;\n\n#include \"atcoder/convolution\"\n\nint main() {\n    SetFastIO();\n\
+    \    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>> T(N);\n   \
+    \ for (int i{} ; i < N - 1 ; i++) {\n        int a, b;\n        std::cin >> a\
+    \ >> b;\n        T[a].push_back(b);\n        T[b].push_back(a);\n    }\n    Centroid\
+    \ C(std::move(T));\n    std::vector<int> dep(N);\n    auto calc_dep{[&](auto dfs,\
+    \ int v, int p, int d) -> void {\n        dep[v] = d;\n        for (auto x : C[v])\
+    \ if ((int)x != p and !C.isRemoved(x)) {\n            dfs(dfs, x, v, d + 1);\n\
+    \        }\n    }};\n    std::vector<long long> ans(N);\n    auto dfs{[&](auto\
+    \ dfs, int v) -> void {\n        v = C.rooting(v);\n        calc_dep(calc_dep,\
+    \ v, -1, 0);\n        C.remove(v);\n        std::vector<std::vector<int>> subtree;\n\
+    \        for (auto x : C.adjlist(v)) {\n            subtree.push_back(C.component(x));\n\
     \        }\n        std::vector<long long> sq_sum, sum_sq;\n        for (const\
     \ auto& comp : subtree) {\n            int max_d{};\n            for (auto x :\
     \ comp) max_d = std::max(max_d, dep[x]);\n            std::vector<long long> cur(max_d\
@@ -69,12 +66,11 @@ data:
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/Graph/Tree/Tree.hpp
   - Src/Graph/Tree/Centroid.hpp
   isVerificationFile: true
   path: Test/LC/frequency_table_of_tree_distance.test.cpp
   requiredBy: []
-  timestamp: '2024-07-15 16:23:46+09:00'
+  timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/frequency_table_of_tree_distance.test.cpp

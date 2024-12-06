@@ -19,14 +19,14 @@ data:
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc359_g.test.cpp
+    title: Test/AtCoder/abc359_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc359_g.test.cpp
-    title: ABC359-F Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -87,8 +87,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF923-D.test.cpp
-  - Test/Manual/abc359_g.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
 documentation_of: Src/Algebra/Monoid/ChminMonoid.hpp

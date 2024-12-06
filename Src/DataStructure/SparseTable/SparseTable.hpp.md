@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc359_g.test.cpp
+    title: Test/AtCoder/abc359_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -33,9 +36,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq.test.cpp
     title: Test/LC/staticrmq.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc359_g.test.cpp
-    title: ABC359-F Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -101,8 +101,8 @@ data:
   verifiedWith:
   - Test/CF/CF923-D.test.cpp
   - Test/CF/EC162-D.test.cpp
-  - Test/Manual/abc359_g.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
