@@ -13,7 +13,6 @@ int main() {
         int p;
         std::cin >> p;
         T[p].push_back(i);
-        // AddDirectedEdge(T, p, i);
     }
     LowestCommonAncestor lca{T, 0};
     while (Q--) {
