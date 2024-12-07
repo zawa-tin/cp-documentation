@@ -43,7 +43,7 @@ public:
         if (L_[u] > L_[v]) {
             std::swap(u, v);
         }
-        return st_.product(L_[u], R_[v]).value();
+        return u == v ? u : st_.product(L_[u], R_[v]).value();
     }
 
     V lca(V u, V v) const {

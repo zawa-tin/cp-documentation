@@ -2,7 +2,7 @@
 
 /*
  * 競プロ典型 90問 035- Preserve Connectivity
- * https://atcoder.jp/contests/typical90/submissions/60473771
+ * https://atcoder.jp/contests/typical90/submissions/60501262
  */
 
 #include "../../Src/Template/IOSetting.hpp"
