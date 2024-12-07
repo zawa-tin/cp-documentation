@@ -31,11 +31,11 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/typical90/submissions/60473771
+    - https://atcoder.jp/contests/typical90/submissions/60501262
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/Manual/typical90_ai.test.cpp\"\n#define PROBLEM \"\
     https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n/*\n *\
-    \ \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n * https://atcoder.jp/contests/typical90/submissions/60473771\n\
+    \ \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n * https://atcoder.jp/contests/typical90/submissions/60501262\n\
     \ */\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -100,12 +100,12 @@ data:
     \          st_ = SparseTable<Monoid>(init);\n    }\n\n    V operator()(V u, V\
     \ v) const {\n        assert(verify(u));\n        assert(verify(v));\n       \
     \ if (L_[u] > L_[v]) {\n            std::swap(u, v);\n        }\n        return\
-    \ st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v) const {\n \
-    \       return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const noexcept\
-    \ {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n    u32 distance(V\
-    \ u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n  \
-    \      return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool\
-    \ isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
+    \ u == v ? u : st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v)\
+    \ const {\n        return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const\
+    \ noexcept {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n\
+    \    u32 distance(V u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n\
+    \        return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n  \
+    \  bool isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
     \        return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
     \ left(V v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
     \ size() const {\n        return n_;\n    }\n\n    inline bool verify(V v) const\
@@ -165,7 +165,7 @@ data:
     \   std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n * \u7AF6\u30D7\u30ED\u5178\u578B 90\u554F 035- Preserve Connectivity\n\
-    \ * https://atcoder.jp/contests/typical90/submissions/60473771\n */\n\n#include\
+    \ * https://atcoder.jp/contests/typical90/submissions/60501262\n */\n\n#include\
     \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nint main()\
     \ {\n#ifdef ATCODER\n    SetFastIO(); \n\n    int N;\n    std::cin >> N;\n   \
@@ -192,7 +192,7 @@ data:
   isVerificationFile: true
   path: Test/Manual/typical90_ai.test.cpp
   requiredBy: []
-  timestamp: '2024-12-06 16:40:42+09:00'
+  timestamp: '2024-12-07 19:29:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/typical90_ai.test.cpp

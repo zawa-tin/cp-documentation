@@ -89,12 +89,12 @@ data:
     \          st_ = SparseTable<Monoid>(init);\n    }\n\n    V operator()(V u, V\
     \ v) const {\n        assert(verify(u));\n        assert(verify(v));\n       \
     \ if (L_[u] > L_[v]) {\n            std::swap(u, v);\n        }\n        return\
-    \ st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v) const {\n \
-    \       return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const noexcept\
-    \ {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n    u32 distance(V\
-    \ u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n  \
-    \      return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n    bool\
-    \ isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
+    \ u == v ? u : st_.product(L_[u], R_[v]).value();\n    }\n\n    V lca(V u, V v)\
+    \ const {\n        return (*this)(u, v);\n    }\n\n    inline u32 depth(V v) const\
+    \ noexcept {\n        assert(verify(v));\n        return depth_[v];\n    }\n\n\
+    \    u32 distance(V u, V v) const {\n        assert(verify(u));\n        assert(verify(v));\n\
+    \        return depth(u) + depth(v) - 2u * depth((*this)(u, v));\n    }\n\n  \
+    \  bool isAncestor(V p, V v) const {\n        assert(verify(p));\n        assert(verify(v));\n\
     \        return L_[p] <= L_[v] and R_[v] <= R_[p];\n    }\n\nprotected:\n    u32\
     \ left(V v) const noexcept {\n        return L_[v];\n    }\n\n    inline usize\
     \ size() const {\n        return n_;\n    }\n\n    inline bool verify(V v) const\
@@ -181,7 +181,7 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/AuxiliaryTree.hpp
   requiredBy: []
-  timestamp: '2024-12-06 16:40:42+09:00'
+  timestamp: '2024-12-07 19:29:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/typical90_ai.test.cpp

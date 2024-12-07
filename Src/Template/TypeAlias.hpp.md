@@ -938,6 +938,9 @@ data:
     path: Test/Manual/yahoo_procon2018_final_c.test.cpp
     title: Test/Manual/yahoo_procon2018_final_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+    title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1307,6 +1310,7 @@ data:
   - Test/yukicoder/117.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
+  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/many_aplusb.test.cpp

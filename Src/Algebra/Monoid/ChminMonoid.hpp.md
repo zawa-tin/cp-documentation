@@ -30,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+    title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -90,6 +93,7 @@ data:
   - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
+  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
 documentation_of: Src/Algebra/Monoid/ChminMonoid.hpp
 layout: document

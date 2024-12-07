@@ -1115,6 +1115,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/yahoo_procon2018_final_c.test.cpp
       title: Test/Manual/yahoo_procon2018_final_c.test.cpp
+  - name: Test/My/Graph/Tree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+      title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'
