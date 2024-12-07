@@ -5,7 +5,6 @@
 #include <vector>
 #include <random>
 #include <iostream>
-
 bool check() {
     std::mt19937 mt{std::random_device{}()};
     int N{static_cast<int>(mt() % 1000 + 1)};
@@ -23,7 +22,6 @@ bool check() {
     }
     return true;
 }
-
 int main() {
     int T{1000};
     while (T--) {
