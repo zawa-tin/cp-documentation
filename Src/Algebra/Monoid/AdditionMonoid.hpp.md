@@ -44,10 +44,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_E.test.cpp
-  - Test/AtCoder/abc346_g.test.cpp
-  - Test/AtCoder/abc292_h.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document
 redirect_from:

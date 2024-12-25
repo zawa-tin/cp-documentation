@@ -250,8 +250,8 @@ data:
   verifiedWith:
   - Test/AOJ/2828.test.cpp
   - Test/AOJ/GRL_6_B.test.cpp
-  - Test/Manual/practice2_e.test.cpp
   - Test/Manual/abc004_d.test.cpp
+  - Test/Manual/practice2_e.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
 documentation_of: Src/Graph/Flow/SuccessiveShortestPath.hpp
 layout: document

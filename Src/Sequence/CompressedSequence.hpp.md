@@ -22,6 +22,9 @@ data:
     path: Test/LC/range_kth_smallest.test.cpp
     title: Test/LC/range_kth_smallest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/static_range_frequency.test.cpp
+    title: Test/LC/static_range_frequency.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
   _isVerificationFailed: false
@@ -77,15 +80,16 @@ data:
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Sequence/RangeKthSmallest.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/abc287_g.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
+  - Test/LC/static_range_frequency.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

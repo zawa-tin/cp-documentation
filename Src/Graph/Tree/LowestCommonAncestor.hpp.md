@@ -151,10 +151,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/typical90_ai.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
-  - Test/LC/lca/LowestCommonAncestor.test.cpp
 documentation_of: Src/Graph/Tree/LowestCommonAncestor.hpp
 layout: document
 title: Lowest Common Ancestor

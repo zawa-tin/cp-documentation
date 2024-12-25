@@ -172,9 +172,9 @@ data:
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/aoj3226.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
 title: Segment Tree
