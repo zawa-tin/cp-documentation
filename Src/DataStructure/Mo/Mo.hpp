@@ -34,10 +34,7 @@ u64 hilbertOrder(u64 x, u64 y, usize dim) {
 template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
 std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {
     usize log{};
-    for (const T& lr : qs) {
-        assert(lr.l <= lr.r);
-        log = std::max<usize>(log, std::bit_width(lr.r));
-    }
+    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));
     std::vector<std::pair<T, usize>> ord(qs.size());
     std::vector<u64> h(qs.size());
     for (usize i{} ; i < qs.size() ; i++) {
