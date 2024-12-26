@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc384_g.test.cpp
+    title: Test/Manual/abc384_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -85,6 +88,7 @@ data:
   timestamp: '2024-04-30 19:27:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/Manual/abc384_g.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp

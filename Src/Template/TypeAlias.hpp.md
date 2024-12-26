@@ -893,6 +893,9 @@ data:
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc384_g.test.cpp
+    title: Test/Manual/abc384_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1221,6 +1224,7 @@ data:
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/2201.test.cpp
   - Test/AOJ/GRL_6_B.test.cpp
+  - Test/Manual/abc384_g.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/abc239_g.test.cpp

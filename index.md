@@ -1073,6 +1073,9 @@ data:
       path: Test/Manual/abc340_f.test.cpp
       title: ABC340-F S = 1
     - icon: ':heavy_check_mark:'
+      path: Test/Manual/abc384_g.test.cpp
+      title: Test/Manual/abc384_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp
     - icon: ':heavy_check_mark:'

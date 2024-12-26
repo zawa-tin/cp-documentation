@@ -76,6 +76,9 @@ data:
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc384_g.test.cpp
+    title: Test/Manual/abc384_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,6 +120,7 @@ data:
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/2559.test.cpp
+  - Test/Manual/abc384_g.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/Manual/aoj3226.test.cpp
   - Test/Manual/abc287_g.test.cpp

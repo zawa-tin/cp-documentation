@@ -46,24 +46,24 @@ data:
     \ <class T, class AddL, class AddR, class DelL, class DelR, class Eval>\nstd::vector<typename\
     \ std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR,\
     \ DelL delL, DelR delR, Eval eval) {\n    usize log{};\n    for (const T& lr :\
-    \ qs) {\n        assert(lr.l <= lr.r);\n        log = std::max<usize>(log, std::bit_width(lr.r));\n\
-    \    }\n    std::vector<std::pair<T, usize>> ord(qs.size());\n    std::vector<u64>\
-    \ h(qs.size());\n    for (usize i{} ; i < qs.size() ; i++) {\n        ord[i] =\
-    \ {qs[i], i};\n        h[i] = internal::hilbertOrder(qs[i].l, qs[i].r, log);\n\
-    \    }\n    std::sort(ord.begin(), ord.end(), [&](const auto& L, const auto& R)\
-    \ -> bool {\n            return h[L.second] < h[R.second];\n            });\n\
-    \    std::vector<typename std::invoke_result_t<Eval, usize>> res(qs.size());\n\
-    \    usize L{}, R{};\n    for (const auto& [lr, id] : ord) {\n        while (R\
-    \ < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n        while (R >\
-    \ lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n        res[id] = eval(id);\n\
-    \    }\n    return res;\n}\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n#include <iterator>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
-    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
-    \    CompressedSequence() = default;\n\n    template <class InputIterator>\n \
-    \   CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
-    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
-    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ qs) log = std::max<usize>(log, std::bit_width(lr.r));\n    std::vector<std::pair<T,\
+    \ usize>> ord(qs.size());\n    std::vector<u64> h(qs.size());\n    for (usize\
+    \ i{} ; i < qs.size() ; i++) {\n        ord[i] = {qs[i], i};\n        h[i] = internal::hilbertOrder(qs[i].l,\
+    \ qs[i].r, log);\n    }\n    std::sort(ord.begin(), ord.end(), [&](const auto&\
+    \ L, const auto& R) -> bool {\n            return h[L.second] < h[R.second];\n\
+    \            });\n    std::vector<typename std::invoke_result_t<Eval, usize>>\
+    \ res(qs.size());\n    usize L{}, R{};\n    for (const auto& [lr, id] : ord) {\n\
+    \        while (R < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n  \
+    \      while (R > lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n    \
+    \    res[id] = eval(id);\n    }\n    return res;\n}\n\n} // namespace zawa\n#line\
+    \ 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\n#include <iterator>\n\nnamespace\
+    \ zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T>\
+    \ comped_;\n    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
     \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
@@ -108,7 +108,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2024-12-26 03:03:05+09:00'
+  timestamp: '2024-12-27 00:38:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_frequency.test.cpp

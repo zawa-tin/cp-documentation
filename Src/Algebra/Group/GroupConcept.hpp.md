@@ -36,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/abc287_g.test.cpp
     title: Test/Manual/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/abc384_g.test.cpp
+    title: Test/Manual/abc384_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,6 +71,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/Manual/abc384_g.test.cpp
   - Test/Manual/abc287_g.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
