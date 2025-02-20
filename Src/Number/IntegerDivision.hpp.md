@@ -60,8 +60,8 @@ data:
   timestamp: '2023-08-11 15:55:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2957.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/AOJ/2957.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc132_f.test.cpp

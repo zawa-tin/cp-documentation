@@ -16,6 +16,12 @@ data:
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc287_g.test.cpp
+    title: Test/AtCoder/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc384_g.test.cpp
+    title: Test/AtCoder/abc384_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,12 +30,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_frequency.test.cpp
     title: Test/LC/static_range_frequency.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc287_g.test.cpp
-    title: Test/Manual/abc287_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc384_g.test.cpp
-    title: Test/Manual/abc384_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -41,10 +41,11 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include\
-    \ <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n\n\
-    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
-    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence()\
-    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n#include\
+    \ <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
+    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
+    \n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n   \
+    \ CompressedSequence() = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
     \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
     \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
@@ -53,16 +54,22 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
-    #include <algorithm>\n#include <cassert>\n#include <iterator>\n\nnamespace zawa\
-    \ {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T>\
-    \ comped_;\n    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence()\
+    #include <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\
+    \nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
+    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\n    static\
+    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
     \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
     \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
@@ -72,28 +79,33 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
-  - Src/Sequence/RangeKthSmallest.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
-  timestamp: '2024-04-30 19:27:16+09:00'
+  - Src/Sequence/RangeKthSmallest.hpp
+  timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/abc384_g.test.cpp
-  - Test/Manual/abc287_g.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"
@@ -166,6 +178,33 @@ operator[]と一緒ですが、 $v$ が $\\{\ x \mid \exists i_{1\le i\le N}\ x 
 
 <br />
 
+#### contains
+
+```cpp
+bool contains(const T& v) const
+```
+
+$v$ が含まれるか判定します。
+
+**計算量:** $O(\log N)$
+
+<br />
+
+#### find
+
+```cpp
+u32 find(const T& v) const
+```
+
+$v$ が含まれるなら`(*self)[v]`を、そうでないなら`CompressedSequence<T>::NotFound`を返します。
+
+`CompressedSequence<T>::NotFound`は`std::numeric_limits<u32>::max()`と同じ値です。
+
+**計算量:** $O(\log N)$
+
+<br />
+
+
 #### map
 ```cpp
 inline u32 map(u32 i) const noexcept
@@ -186,7 +225,7 @@ inline T inverse(u32 i) const noexcept
 ```
 集合 $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ で $i$ 番目に小さい要素を返します。
 
-**制約**: $i\ \le\ <\ \text{size()}$
+**制約**: $0\ \le\ i\ <\ \text{size()}$
 
 **計算量**: 定数時間
 

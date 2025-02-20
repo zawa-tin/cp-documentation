@@ -34,8 +34,9 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc384/submissions/62949320
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/abc384_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc384_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -132,10 +133,11 @@ data:
     \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\
     };\n\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\
     \n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n#include <iterator>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
-    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
-    \    CompressedSequence() = default;\n\n    template <class InputIterator>\n \
-    \   CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \n#include <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class\
+    \ T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
+    \ f_;\n    \npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
     \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
     \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -143,26 +145,31 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
     \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
     \ return T{};\n    }\n    static constexpr T operation(const T& l, const T& r)\
     \ noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(const\
     \ T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 8 \"Test/Manual/abc384_g.test.cpp\"\n\nusing namespace zawa;\n\nint N, K, A[100000],\
-    \ B[100000];\nstruct query {\n    usize l, r;\n};\nquery Q[10000];\n\nvoid solve()\
-    \ {\n    CompressedSequence a{std::vector(A, A + N)}, b{std::vector(B, B + N)};\n\
-    \    FenwickTree<AdditiveGroup<int>> ca(a.size()), cb(b.size());\n    FenwickTree<AdditiveGroup<long\
-    \ long>> sa(a.size()), sb(b.size());\n    long long ans = 0;\n    auto addA =\
-    \ [&](int i) -> void {\n        // std::cout << \"addA \" << i << std::endl;\n\
-    \        int sm = cb.prefixProduct(b[A[i]]); \n        ans += (long long)A[i]\
-    \ * sm;\n        ans += (long long)-A[i] * (cb.prefixProduct(b.size()) - sm);\n\
-    \        ans += sb.prefixProduct(b.size()) - 2LL * sb.prefixProduct(b[A[i]]);\n\
+    \ 8 \"Test/AtCoder/abc384_g.test.cpp\"\n\n// https://atcoder.jp/contests/abc384/submissions/62949320\n\
+    \nusing namespace zawa;\n\nint N, K, A[100000], B[100000];\nstruct query {\n \
+    \   usize l, r;\n};\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence\
+    \ a{std::vector(A, A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>>\
+    \ ca(a.size()), cb(b.size());\n    FenwickTree<AdditiveGroup<long long>> sa(a.size()),\
+    \ sb(b.size());\n    long long ans = 0;\n    auto addA = [&](int i) -> void {\n\
+    \        // std::cout << \"addA \" << i << std::endl;\n        int sm = cb.prefixProduct(b[A[i]]);\
+    \ \n        ans += (long long)A[i] * sm;\n        ans += (long long)-A[i] * (cb.prefixProduct(b.size())\
+    \ - sm);\n        ans += sb.prefixProduct(b.size()) - 2LL * sb.prefixProduct(b[A[i]]);\n\
     \        sa.operation(a.map(i), A[i]);\n        ca.operation(a.map(i), 1);\n \
     \   };\n    auto addB = [&](int i) -> void {\n        // std::cout << \"addB \"\
     \ << i << std::endl;\n        int sm = ca.prefixProduct(a[B[i]]);\n        ans\
@@ -191,12 +198,13 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/Mo/Mo.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
-    \n\nusing namespace zawa;\n\nint N, K, A[100000], B[100000];\nstruct query {\n\
-    \    usize l, r;\n};\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence\
-    \ a{std::vector(A, A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>>\
-    \ ca(a.size()), cb(b.size());\n    FenwickTree<AdditiveGroup<long long>> sa(a.size()),\
-    \ sb(b.size());\n    long long ans = 0;\n    auto addA = [&](int i) -> void {\n\
-    \        // std::cout << \"addA \" << i << std::endl;\n        int sm = cb.prefixProduct(b[A[i]]);\
+    \n\n// https://atcoder.jp/contests/abc384/submissions/62949320\n\nusing namespace\
+    \ zawa;\n\nint N, K, A[100000], B[100000];\nstruct query {\n    usize l, r;\n\
+    };\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence a{std::vector(A,\
+    \ A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>> ca(a.size()),\
+    \ cb(b.size());\n    FenwickTree<AdditiveGroup<long long>> sa(a.size()), sb(b.size());\n\
+    \    long long ans = 0;\n    auto addA = [&](int i) -> void {\n        // std::cout\
+    \ << \"addA \" << i << std::endl;\n        int sm = cb.prefixProduct(b[A[i]]);\
     \ \n        ans += (long long)A[i] * sm;\n        ans += (long long)-A[i] * (cb.prefixProduct(b.size())\
     \ - sm);\n        ans += sb.prefixProduct(b.size()) - 2LL * sb.prefixProduct(b[A[i]]);\n\
     \        sa.operation(a.map(i), A[i]);\n        ca.operation(a.map(i), 1);\n \
@@ -233,15 +241,15 @@ data:
   - Src/Sequence/CompressedSequence.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
-  path: Test/Manual/abc384_g.test.cpp
+  path: Test/AtCoder/abc384_g.test.cpp
   requiredBy: []
-  timestamp: '2024-12-27 00:38:23+09:00'
+  timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/abc384_g.test.cpp
+documentation_of: Test/AtCoder/abc384_g.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Manual/abc384_g.test.cpp
-- /verify/Test/Manual/abc384_g.test.cpp.html
-title: Test/Manual/abc384_g.test.cpp
+- /verify/Test/AtCoder/abc384_g.test.cpp
+- /verify/Test/AtCoder/abc384_g.test.cpp.html
+title: Test/AtCoder/abc384_g.test.cpp
 ---

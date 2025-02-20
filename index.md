@@ -819,6 +819,9 @@ data:
       path: Test/AtCoder/abc284_f.test.cpp
       title: Test/AtCoder/abc284_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc287_g.test.cpp
+      title: Test/AtCoder/abc287_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc288_c.test.cpp
       title: Test/AtCoder/abc288_c.test.cpp
     - icon: ':heavy_check_mark:'
@@ -885,6 +888,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc359_g.test.cpp
       title: ABC359-G Sum of Tree Distance
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc384_g.test.cpp
+      title: Test/AtCoder/abc384_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges
@@ -1061,9 +1067,6 @@ data:
       path: Test/Manual/abc272_g.test.cpp
       title: ABC272-G Yet Another mod M
     - icon: ':heavy_check_mark:'
-      path: Test/Manual/abc287_g.test.cpp
-      title: Test/Manual/abc287_g.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/Manual/abc291_h.test.cpp
       title: Test/Manual/abc291_h.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1072,9 +1075,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/abc340_f.test.cpp
       title: ABC340-F S = 1
-    - icon: ':heavy_check_mark:'
-      path: Test/Manual/abc384_g.test.cpp
-      title: Test/Manual/abc384_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/agc005_b.test.cpp
       title: Test/Manual/agc005_b.test.cpp

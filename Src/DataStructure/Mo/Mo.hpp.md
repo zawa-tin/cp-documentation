@@ -7,11 +7,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc384_g.test.cpp
+    title: Test/AtCoder/abc384_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_frequency.test.cpp
     title: Test/LC/static_range_frequency.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc384_g.test.cpp
-    title: Test/Manual/abc384_g.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -75,8 +75,8 @@ data:
   timestamp: '2024-12-27 00:38:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/abc384_g.test.cpp
   - Test/LC/static_range_frequency.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
 documentation_of: Src/DataStructure/Mo/Mo.hpp
 layout: document
 title: Mo's algorithm

@@ -87,8 +87,8 @@ data:
   timestamp: '2024-11-18 05:20:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
   - Test/LC/rectangle_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
 documentation_of: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
 layout: document
 title: Static Point Add Rectangle Sum

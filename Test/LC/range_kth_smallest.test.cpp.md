@@ -35,11 +35,12 @@ data:
     \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
     \ zawa\n#line 2 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
     \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <iterator>\n\nnamespace zawa {\n\n\
-    template <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n\
-    \    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence() = default;\n\
-    \n    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
-    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\n\
+    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
+    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\n    static\
+    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
     \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -47,11 +48,16 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\
     \n\n#line 7 \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"\
     Src/Sequence/RangeKthSmallest.hpp\"\n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\
@@ -97,7 +103,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2024-11-15 02:44:00+09:00'
+  timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_kth_smallest.test.cpp

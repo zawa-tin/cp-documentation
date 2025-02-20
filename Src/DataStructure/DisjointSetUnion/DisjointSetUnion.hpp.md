@@ -73,10 +73,10 @@ data:
   timestamp: '2024-07-07 02:41:05+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2559.test.cpp
-  - Test/CF/ECR167-F.test.cpp
-  - Test/LC/unionfind.test.cpp
   - Test/LC/incremental_scc.test.cpp
+  - Test/LC/unionfind.test.cpp
+  - Test/CF/ECR167-F.test.cpp
+  - Test/AOJ/2559.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

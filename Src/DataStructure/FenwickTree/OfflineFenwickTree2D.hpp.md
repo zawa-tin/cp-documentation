@@ -97,10 +97,11 @@ data:
     };\n\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\
     \n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 6 \"Src/Sequence/CompressedSequence.hpp\"\
     \n#include <algorithm>\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\n#include\
-    \ <iterator>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
-    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
-    \    CompressedSequence() = default;\n\n    template <class InputIterator>\n \
-    \   CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \ <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass\
+    \ CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
+    \ f_;\n    \npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
     \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
     \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -108,11 +109,16 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n\n#include <utility>\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n#include <tuple>\n\nnamespace zawa {\n\ntemplate <class T, class G>\nclass OfflineFenwickTree2D\
@@ -200,7 +206,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   requiredBy: []
-  timestamp: '2024-09-10 17:41:48+09:00'
+  timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp

@@ -31,9 +31,9 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc287/submissions/57621802
+    - https://atcoder.jp/contests/abc287/submissions/62949373
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/Manual/abc287_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc287_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -44,11 +44,12 @@ data:
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n\
     #line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <iterator>\n\nnamespace zawa {\n\n\
-    template <class T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n\
-    \    std::vector<u32> f_;\n    \npublic:\n    CompressedSequence() = default;\n\
-    \n    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
-    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\n\
+    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
+    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\n    static\
+    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
     \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -56,11 +57,16 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 at(const\
-    \ T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size() and\
-    \ comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32 i)\
-    \ const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n  \
-    \  }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
+    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
+    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
+    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
+    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
+    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
+    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
+    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
+    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
     \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
@@ -130,8 +136,8 @@ data:
     \ T{};\n    }\n    static constexpr T operation(const T& l, const T& r) noexcept\
     \ {\n        return l + r;\n    }\n    static constexpr T inverse(const T& v)\
     \ noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"\
-    Test/Manual/abc287_g.test.cpp\"\n\n#line 11 \"Test/Manual/abc287_g.test.cpp\"\n\
-    \n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/57621802\n\
+    Test/AtCoder/abc287_g.test.cpp\"\n\n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\
+    \n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/62949373\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -172,7 +178,7 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/CompressedSequence.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
-    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/57621802\n\
+    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/62949373\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -218,15 +224,15 @@ data:
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
-  path: Test/Manual/abc287_g.test.cpp
+  path: Test/AtCoder/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 17:41:48+09:00'
+  timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/abc287_g.test.cpp
+documentation_of: Test/AtCoder/abc287_g.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Manual/abc287_g.test.cpp
-- /verify/Test/Manual/abc287_g.test.cpp.html
-title: Test/Manual/abc287_g.test.cpp
+- /verify/Test/AtCoder/abc287_g.test.cpp
+- /verify/Test/AtCoder/abc287_g.test.cpp.html
+title: Test/AtCoder/abc287_g.test.cpp
 ---

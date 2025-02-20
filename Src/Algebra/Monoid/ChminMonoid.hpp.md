@@ -89,9 +89,9 @@ data:
   timestamp: '2024-02-10 00:53:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/typical90_ai.test.cpp
-  - Test/CF/CF923-D.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
+  - Test/CF/CF923-D.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp

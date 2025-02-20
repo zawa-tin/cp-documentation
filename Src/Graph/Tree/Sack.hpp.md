@@ -101,9 +101,9 @@ data:
   timestamp: '2024-02-11 01:31:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/EC2-E.test.cpp
-  - Test/CF/CF316-D.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/CF/CF316-D.test.cpp
+  - Test/CF/EC2-E.test.cpp
 documentation_of: Src/Graph/Tree/Sack.hpp
 layout: document
 title: Sack

@@ -46,11 +46,17 @@ data:
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc287_g.test.cpp
+    title: Test/AtCoder/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc384_g.test.cpp
+    title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
@@ -72,12 +78,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc287_g.test.cpp
-    title: Test/Manual/abc287_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/abc384_g.test.cpp
-    title: Test/Manual/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
@@ -107,33 +107,33 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   timestamp: '2024-09-10 17:27:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/0478.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
-  - Test/AOJ/DSL_2_D.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/DSL_2_A.test.cpp
-  - Test/AOJ/2559.test.cpp
-  - Test/Manual/abc384_g.test.cpp
-  - Test/Manual/agc005_b.test.cpp
-  - Test/Manual/aoj3226.test.cpp
-  - Test/Manual/abc287_g.test.cpp
-  - Test/CF/EC2-E.test.cpp
-  - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/LC/vertex_add_path_sum.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/CF/EC2-E.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/0478.test.cpp
+  - Test/AOJ/2559.test.cpp
+  - Test/AOJ/DSL_2_A.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
+  - Test/Manual/agc005_b.test.cpp
+  - Test/Manual/aoj3226.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidConcept.hpp
 layout: document
 redirect_from:
