@@ -33,8 +33,8 @@ int main() {
         cnt[comp.map(i)]--;
     }};
     auto eval{[&](int i) -> int {
-        auto j{comp[X[i]]};
-        if (j == comp.size() or comp.inverse(j) != X[i]) return 0;
+        auto j = comp.find(X[i]);
+        if (j == decltype(comp)::NotFound) return 0;
         else return cnt[j];
     }};
     for (int ans : Mo(q, add, add, del, del, eval)) std::cout << ans << '\n';

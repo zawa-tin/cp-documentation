@@ -6,6 +6,8 @@
 #include "../../Src/Sequence/CompressedSequence.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
+// https://atcoder.jp/contests/abc384/submissions/62949320
+
 using namespace zawa;
 
 int N, K, A[100000], B[100000];

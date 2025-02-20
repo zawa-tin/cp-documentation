@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cassert>
 #include <iterator>
+#include <limits>
 
 namespace zawa {
 
@@ -16,6 +17,9 @@ private:
     std::vector<u32> f_;
     
 public:
+
+    static constexpr u32 NotFound = std::numeric_limits<u32>::max();
+
     CompressedSequence() = default;
 
     template <class InputIterator>
@@ -37,6 +41,16 @@ public:
 
     u32 operator[](const T& v) const {
         return std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
+    }
+
+    u32 find(const T& v) const {
+        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
+        return i == comped_.size() or comped_[i] != v ? NotFound : i;
+    }
+
+    bool contains(const T& v) const {
+        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
+        return i < comped_.size() and comped_[i] == v;
     }
 
     u32 at(const T& v) const {
