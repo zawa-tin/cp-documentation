@@ -70,6 +70,33 @@ operator[]と一緒ですが、 $v$ が $\\{\ x \mid \exists i_{1\le i\le N}\ x 
 
 <br />
 
+#### contains
+
+```cpp
+bool contains(const T& v) const
+```
+
+$v$ が含まれるか判定します。
+
+**計算量:** $O(\log N)$
+
+<br />
+
+#### find
+
+```cpp
+u32 find(const T& v) const
+```
+
+$v$ が含まれるなら`(*self)[v]`を、そうでないなら`CompressedSequence<T>::NotFound`を返します。
+
+`CompressedSequence<T>::NotFound`は`std::numeric_limits<u32>::max()`と同じ値です。
+
+**計算量:** $O(\log N)$
+
+<br />
+
+
 #### map
 ```cpp
 inline u32 map(u32 i) const noexcept
@@ -90,7 +117,7 @@ inline T inverse(u32 i) const noexcept
 ```
 集合 $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ で $i$ 番目に小さい要素を返します。
 
-**制約**: $i\ \le\ <\ \text{size()}$
+**制約**: $0\ \le\ i\ <\ \text{size()}$
 
 **計算量**: 定数時間
 
