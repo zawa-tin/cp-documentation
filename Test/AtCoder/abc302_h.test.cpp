@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc302/tasks/abc302_ex"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://atcoder.jp/contests/abc302/tasks/abc302_ex"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp"
@@ -9,7 +10,13 @@
 #include <iostream>
 using namespace zawa;
 
+/*
+ * ABC302-Ex Ball Collector
+ * https://atcoder.jp/contests/abc302/submissions/63090738
+ */
+
 int main() {
+#ifdef ATCODER
     SetFastIO();
 
     int N;
@@ -60,4 +67,7 @@ int main() {
     for (int i{1} ; i < N ; i++) {
         std::cout << ans[i] << (i + 1 == N ? '\n' : ' ');
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }

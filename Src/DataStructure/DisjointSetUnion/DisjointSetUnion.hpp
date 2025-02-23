@@ -13,7 +13,7 @@ class DisjointSetUnion {
 public:
     DisjointSetUnion() = default;
 
-    DisjointSetUnion(usize n) : n_{n}, data_(n, -1) {
+    DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1) {
         data_.shrink_to_fit();
     }
     
@@ -31,6 +31,7 @@ public:
         u = leader(u);
         v = leader(v);
         if (u == v) return false;
+        comps_--;
         if (data_[u] > data_[v]) std::swap(u, v);
         data_[u] += data_[v];
         data_[v] = u;
@@ -46,6 +47,10 @@ public:
         return static_cast<usize>(-data_[leader(v)]);
     }
 
+    inline usize components() const noexcept {
+        return comps_;
+    }
+
     std::vector<std::vector<u32>> enumerate() {
         std::vector<std::vector<u32>> res(n_);
         for (u32 v{} ; v < n_ ; v++) {
@@ -57,7 +62,7 @@ public:
     }
 
 private:
-    usize n_{};
+    usize n_{}, comps_{};
     std::vector<i32> data_;
 };
 

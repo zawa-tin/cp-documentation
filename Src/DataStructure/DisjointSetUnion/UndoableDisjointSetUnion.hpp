@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../Undoable/UndoableValue.hpp"
 #include "../Undoable/UndoableVector.hpp"
 
 #include <algorithm>
@@ -12,19 +13,23 @@ class UndoableDisjointSetUnion {
 public:
     UndoableDisjointSetUnion() = default;
 
-    UndoableDisjointSetUnion(usize n) : n_{n}, data_(n, -1) {}
+    UndoableDisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1) {}
 
     u32 leader(u32 v) const {
         return data_[v] < 0 ? v : leader(data_[v]);
     }
 
-    inline usize size() const {
+    inline usize size() const noexcept {
         return n_;
     }
 
     inline usize size(u32 v) const {
         assert(v < size());
         return static_cast<usize>(-data_[leader(v)]);
+    }
+
+    inline usize components() const noexcept {
+        return comps_.value();
     }
 
     bool same(u32 u, u32 v) const {
@@ -39,12 +44,14 @@ public:
         if (u == v) {
             data_.assign(u, data_[u]);
             data_.assign(v, data_[v]);
+            comps_.assign(comps_.value());
             return false;
         }
         else {
             if (data_[u] > data_[v]) std::swap(u, v);
             data_.assign(u, data_[u] + data_[v]);
             data_.assign(v, u);
+            comps_.assign(comps_.value() - 1);
             return true;
         }
     }
@@ -52,6 +59,7 @@ public:
     void undo() {
         data_.undo();
         data_.undo();
+        comps_.undo();
     }
 
     std::vector<std::vector<u32>> enumerate() const {
@@ -66,6 +74,7 @@ public:
 
 private:
     usize n_{};
+    UndoableValue<usize> comps_{};
     UndoableVector<i32> data_{};
 };
 

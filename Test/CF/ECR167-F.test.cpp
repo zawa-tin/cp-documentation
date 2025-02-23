@@ -2,7 +2,7 @@
 
 /*
  * Educational Codeforces Round 167 - F Simultaneous Coloring
- * https://codeforces.com/contest/1989/submission/269109756
+ * https://codeforces.com/contest/1989/submission/307380988
  */
 
 #include "../../Src/Template/IOSetting.hpp"

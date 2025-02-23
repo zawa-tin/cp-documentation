@@ -14,7 +14,7 @@ class PotentializedDisjointSetUnion {
 public:
     using Value = typename Group::Element;
 private:
-    usize n_{};
+    usize n_{}, comps_{};
     std::vector<u32> parent_{};
     std::vector<u32> size_{};
     std::vector<Value> potential_{};
@@ -33,20 +33,27 @@ private:
         leader(v);
         return potential_[v];
     }
-    u32 size(u32 v) {
-        leader(v);
-        return size_[v];
-    }
 
 public:
+
     PotentializedDisjointSetUnion() = default;
+
     PotentializedDisjointSetUnion(u32 n) 
-        : n_{n}, parent_(n), size_(n, u32{1}), potential_(n, Group::identity()) {
+        : n_{n}, comps_{n}, parent_(n), size_(n, u32{1}), potential_(n, Group::identity()) {
         std::iota(parent_.begin(), parent_.end(), u32{});
     }
 
     constexpr u32 size() const noexcept {
         return n_;
+    }
+
+    u32 size(u32 v) {
+        leader(v);
+        return size_[v];
+    }
+
+    inline u32 components() const noexcept {
+        return comps_;
     }
 
     bool isDefined(u32 u, u32 v) {
@@ -63,6 +70,7 @@ public:
         if (isDefined(u, v)) {
             return distance(u, v) == value;
         }
+        comps_--;
         value = Group::operation(potential(u), value);
         value = Group::operation(Group::inverse(potential(v)), value);
         u = leader(u);
