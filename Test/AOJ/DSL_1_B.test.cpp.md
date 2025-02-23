@@ -42,37 +42,40 @@ data:
     \n\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n\
     \nnamespace zawa {\n\ntemplate <class Group>\nclass PotentializedDisjointSetUnion\
     \ {\npublic:\n    using Value = typename Group::Element;\nprivate:\n    usize\
-    \ n_{};\n    std::vector<u32> parent_{};\n    std::vector<u32> size_{};\n    std::vector<Value>\
-    \ potential_{};\n\n    u32 leader(u32 v) {\n        if (parent_[v] == v) {\n \
-    \           return v;\n        }\n        else {\n            u32 res{leader(parent_[v])};\n\
+    \ n_{}, comps_{};\n    std::vector<u32> parent_{};\n    std::vector<u32> size_{};\n\
+    \    std::vector<Value> potential_{};\n\n    u32 leader(u32 v) {\n        if (parent_[v]\
+    \ == v) {\n            return v;\n        }\n        else {\n            u32 res{leader(parent_[v])};\n\
     \            potential_[v] = Group::operation(potential_[parent_[v]], potential_[v]);\n\
     \            return parent_[v] = res;\n        }\n    }\n    Value potential(u32\
-    \ v) {\n        leader(v);\n        return potential_[v];\n    }\n    u32 size(u32\
-    \ v) {\n        leader(v);\n        return size_[v];\n    }\n\npublic:\n    PotentializedDisjointSetUnion()\
-    \ = default;\n    PotentializedDisjointSetUnion(u32 n) \n        : n_{n}, parent_(n),\
-    \ size_(n, u32{1}), potential_(n, Group::identity()) {\n        std::iota(parent_.begin(),\
-    \ parent_.end(), u32{});\n    }\n\n    constexpr u32 size() const noexcept {\n\
-    \        return n_;\n    }\n\n    bool isDefined(u32 u, u32 v) {\n        return\
-    \ leader(u) == leader(v);\n    }\n\n    Value distance(u32 u, u32 v) {\n     \
-    \   assert(u < size());\n        assert(v < size());\n        return Group::operation(Group::inverse(potential(u)),\
+    \ v) {\n        leader(v);\n        return potential_[v];\n    }\n\npublic:\n\n\
+    \    PotentializedDisjointSetUnion() = default;\n\n    PotentializedDisjointSetUnion(u32\
+    \ n) \n        : n_{n}, comps_{n}, parent_(n), size_(n, u32{1}), potential_(n,\
+    \ Group::identity()) {\n        std::iota(parent_.begin(), parent_.end(), u32{});\n\
+    \    }\n\n    constexpr u32 size() const noexcept {\n        return n_;\n    }\n\
+    \n    u32 size(u32 v) {\n        leader(v);\n        return size_[v];\n    }\n\
+    \n    inline u32 components() const noexcept {\n        return comps_;\n    }\n\
+    \n    bool isDefined(u32 u, u32 v) {\n        return leader(u) == leader(v);\n\
+    \    }\n\n    Value distance(u32 u, u32 v) {\n        assert(u < size());\n  \
+    \      assert(v < size());\n        return Group::operation(Group::inverse(potential(u)),\
     \ potential(v));\n    }\n\n    bool merge(u32 u, u32 v, Value value) {\n     \
     \   if (isDefined(u, v)) {\n            return distance(u, v) == value;\n    \
-    \    }\n        value = Group::operation(potential(u), value);\n        value\
-    \ = Group::operation(Group::inverse(potential(v)), value);\n        u = leader(u);\n\
-    \        v = leader(v);\n        if (size_[u] > size_[v]) {\n            value\
-    \ = Group::inverse(value);\n            std::swap(u, v);\n        }\n        size_[u]\
-    \ += size_[v];\n        parent_[v] = u;\n        potential_[v] = value;\n    \
-    \    return true;\n    }\n};\n\n} // namespace zawa\n#line 7 \"Test/AOJ/DSL_1_B.test.cpp\"\
-    \n\n#line 10 \"Test/AOJ/DSL_1_B.test.cpp\"\n\nint main() {\n    using namespace\
-    \ zawa;\n    SetFastIO();\n    u32 n, q; std::cin >> n >> q;\n    PotentializedDisjointSetUnion<AdditiveGroup<i32>>\
-    \ dsu(n);\n    for (u32 _{} ; _ < q ; _++) {\n        u32 t; std::cin >> t;\n\
-    \        if (t == 0) {\n            u32 x, y; std::cin >> x >> y;\n          \
-    \  i32 z; std::cin >> z;\n            assert(dsu.merge(x, y, z));\n        }\n\
-    \        else if (t == 1) {\n            u32 x, y; std::cin >> x >> y;\n     \
-    \       if (dsu.isDefined(x, y)) {\n                std::cout << dsu.distance(x,\
-    \ y) << '\\n';\n            }\n            else {\n                std::cout <<\
-    \ '?' << '\\n';\n            }\n        }\n        else {\n            assert(false);\n\
-    \        }\n    }\n}\n"
+    \    }\n        comps_--;\n        value = Group::operation(potential(u), value);\n\
+    \        value = Group::operation(Group::inverse(potential(v)), value);\n    \
+    \    u = leader(u);\n        v = leader(v);\n        if (size_[u] > size_[v])\
+    \ {\n            value = Group::inverse(value);\n            std::swap(u, v);\n\
+    \        }\n        size_[u] += size_[v];\n        parent_[v] = u;\n        potential_[v]\
+    \ = value;\n        return true;\n    }\n};\n\n} // namespace zawa\n#line 7 \"\
+    Test/AOJ/DSL_1_B.test.cpp\"\n\n#line 10 \"Test/AOJ/DSL_1_B.test.cpp\"\n\nint main()\
+    \ {\n    using namespace zawa;\n    SetFastIO();\n    u32 n, q; std::cin >> n\
+    \ >> q;\n    PotentializedDisjointSetUnion<AdditiveGroup<i32>> dsu(n);\n    for\
+    \ (u32 _{} ; _ < q ; _++) {\n        u32 t; std::cin >> t;\n        if (t == 0)\
+    \ {\n            u32 x, y; std::cin >> x >> y;\n            i32 z; std::cin >>\
+    \ z;\n            assert(dsu.merge(x, y, z));\n        }\n        else if (t ==\
+    \ 1) {\n            u32 x, y; std::cin >> x >> y;\n            if (dsu.isDefined(x,\
+    \ y)) {\n                std::cout << dsu.distance(x, y) << '\\n';\n         \
+    \   }\n            else {\n                std::cout << '?' << '\\n';\n      \
+    \      }\n        }\n        else {\n            assert(false);\n        }\n \
+    \   }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/1/DSL_1_B\"\
     \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp\"\
@@ -94,7 +97,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_1_B.test.cpp
   requiredBy: []
-  timestamp: '2023-11-13 14:40:54+09:00'
+  timestamp: '2025-02-23 17:42:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_1_B.test.cpp

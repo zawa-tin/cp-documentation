@@ -22,7 +22,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://codeforces.com/contest/1989/submission/269109756
+    - https://codeforces.com/contest/1989/submission/307380988
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.2/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
@@ -41,7 +41,7 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/scc.hpp:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * Educational Codeforces Round 167 - F Simultaneous Coloring\n * https://codeforces.com/contest/1989/submission/269109756\n\
+    \n\n/*\n * Educational Codeforces Round 167 - F Simultaneous Coloring\n * https://codeforces.com/contest/1989/submission/307380988\n\
     \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
     \n#include \"../../Src/Graph/Components/IncrementalSCC.hpp\"\n\nusing namespace\
     \ zawa;\n\nvoid solve() {\n    SetFastIO();\n    int N, M, Q;\n    std::cin >>\
@@ -68,7 +68,7 @@ data:
   isVerificationFile: true
   path: Test/CF/ECR167-F.test.cpp
   requiredBy: []
-  timestamp: '2024-07-07 02:41:05+09:00'
+  timestamp: '2025-02-23 17:42:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/CF/ECR167-F.test.cpp
