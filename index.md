@@ -514,6 +514,9 @@ data:
         10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\
         \u3064"
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/ParallelBinarySearch.hpp
+      title: "\u4E26\u5217\u4E8C\u5206\u63A2\u7D22"
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/SlopeTrick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
@@ -894,6 +897,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc384_g.test.cpp
       title: Test/AtCoder/abc384_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/agc002_d.test.cpp
+      title: Test/AtCoder/agc002_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/agc023_a.test.cpp
       title: AGC023-A Zero-Sum Ranges

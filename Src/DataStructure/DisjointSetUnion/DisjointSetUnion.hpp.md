@@ -10,6 +10,9 @@ data:
     path: Test/AOJ/2559.test.cpp
     title: Test/AOJ/2559.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc002_d.test.cpp
+    title: Test/AtCoder/agc002_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -80,6 +83,7 @@ data:
   - Test/LC/unionfind.test.cpp
   - Test/CF/ECR167-F.test.cpp
   - Test/AOJ/2559.test.cpp
+  - Test/AtCoder/agc002_d.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:
