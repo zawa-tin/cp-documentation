@@ -1,53 +1,46 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F"
 
+#include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
-#include "../../Src/Algebra/Monoid/MinMonoid.hpp"
+#include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
+using namespace zawa;
 
-using vM = zawa::MinMonoid<int>;
-using vD = vM::Element;
-
-struct oM {
-    using Element = vD;
-    static vD identity() {
-        return std::nullopt;
-    }
-    static vD operation(const vD& a, const vD& b) {
-        return (b ? b : a);
-    }
-};
-
-struct Structure {
-    using ValueMonoid = vM;
-    using OperatorMonoid = oM;
-    static vD mapping(const vD& a, const vD& b) {
-        return oM::operation(a, b);
-    }
-};
-
+#include <cassert>
 #include <iostream>
+#include <algorithm>
+#include <limits>
+
+struct vM {
+    using Element = int;
+    static constexpr Element identity() {
+        return std::numeric_limits<Element>::max();
+    } 
+    static constexpr Element operation(Element L, Element R) {
+        return std::min(L, R);
+    }
+    static constexpr Element power(Element L, u32 op) {
+        return (op == 0 ? identity() : L);
+    }
+};
 
 int main() {
-    using namespace zawa;
-    using vD = vM::Element;
     SetFastIO();
-
-    int n, q; std::cin >> n >> q;
-    LazySegmentTree<Structure> seg(std::vector<vD>(n, (1LL << 31) - 1));
-    for (int _{} ; _ < q ; _++) {
-        int t; std::cin >> t;
+    int N, Q;
+    std::cin >> N >> Q;
+    AssignmentSegmentTree<vM> seg(N);
+    while (Q--) {
+        int t;
+        int l, r;
+        std::cin >> t >> l >> r;
+        r++;
         if (t == 0) {
-            int s, t, x; std::cin >> s >> t >> x;
-            t++;
-            seg.operation(s, t, x);
+            int x;
+            std::cin >> x;
+            seg.assign(l, r, x);
         }
         else if (t == 1) {
-            int s, t; std::cin >> s >> t;
-            t++;
-            std::cout << seg.product(s, t).value() << '\n';
+            std::cout << seg.product(l, r) << '\n';
         }
-        else {
-            assert(false);
-        }
+        else assert(false);
     }
 }

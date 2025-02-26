@@ -1,0 +1,42 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/range_set_range_composite"
+
+#include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
+#include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
+#include "../../Src/Number/ModInt.hpp"
+#include "../../Src/Template/IOSetting.hpp"
+using namespace zawa;
+using mint = StaticModInt<int, 998244353>;
+
+#include <cassert>
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <cstring>
+
+int main() {
+    SetFastIO();
+    int N, Q;
+    std::cin >> N >> Q;
+    std::vector<Affine<mint>> init(N);
+    for (int i = 0 ; i < N ; i++) {
+        int a, b;
+        std::cin >> a >> b;
+        init[i] = Affine{mint{a}, mint{b}};
+    }
+    AssignmentSegmentTree<AffineMonoid<mint>> seg{init};
+    while (Q--) {
+        int t;
+        std::cin >> t;
+        if (t == 0) {
+            int l, r, c, d;
+            std::cin >> l >> r >> c >> d;
+            seg.assign(l, r, Affine{mint{c}, mint{d}});
+        }
+        else if (t == 1) {
+            int l, r, x;
+            std::cin >> l >> r >> x;
+            std::cout << seg.product(l, r).mapping(x) << '\n';
+        }
+        else assert(false);
+    }
+}
