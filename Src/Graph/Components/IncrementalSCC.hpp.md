@@ -82,8 +82,8 @@ data:
   timestamp: '2024-06-28 18:38:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/incremental_scc.test.cpp
   - Test/CF/ECR167-F.test.cpp
+  - Test/LC/incremental_scc.test.cpp
 documentation_of: Src/Graph/Components/IncrementalSCC.hpp
 layout: document
 title: offline incremental SCC

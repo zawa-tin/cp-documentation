@@ -114,6 +114,9 @@ data:
   - name: Src/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+      title: Assignment Segment Tree
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
       title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
     - icon: ':heavy_check_mark:'
@@ -671,6 +674,9 @@ data:
       path: Test/AOJ/DSL_2_F.test.cpp
       title: Test/AOJ/DSL_2_F.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_2_I.test.cpp
+      title: Test/AOJ/DSL_2_I.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
     - icon: ':heavy_check_mark:'
@@ -791,6 +797,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc236_e.test.cpp
       title: Test/AtCoder/abc236_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc237_g.test.cpp
+      title: Test/AtCoder/abc237_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc238_c.test.cpp
       title: Test/AtCoder/abc238_c.test.cpp
@@ -1003,6 +1012,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_kth_smallest.test.cpp
       title: Test/LC/range_kth_smallest.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_set_range_composite.test.cpp
+      title: Test/LC/range_set_range_composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/rectangle_sum.test.cpp
       title: Test/LC/rectangle_sum.test.cpp

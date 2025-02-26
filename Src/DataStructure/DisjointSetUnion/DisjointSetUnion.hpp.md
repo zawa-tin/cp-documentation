@@ -79,10 +79,10 @@ data:
   timestamp: '2025-02-23 17:42:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/incremental_scc.test.cpp
-  - Test/LC/unionfind.test.cpp
   - Test/CF/ECR167-F.test.cpp
   - Test/AOJ/2559.test.cpp
+  - Test/LC/unionfind.test.cpp
+  - Test/LC/incremental_scc.test.cpp
   - Test/AtCoder/agc002_d.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document

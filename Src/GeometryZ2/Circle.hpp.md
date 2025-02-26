@@ -169,8 +169,8 @@ data:
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2609.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - Test/AOJ/2609.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/GeometryZ2/Circle.hpp
 layout: document

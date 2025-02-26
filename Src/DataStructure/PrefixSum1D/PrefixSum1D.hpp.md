@@ -109,8 +109,8 @@ data:
   timestamp: '2023-07-22 13:55:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_range_sum.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/LC/static_range_sum.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc172_c.test.cpp

@@ -23,25 +23,23 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
-  bundledCode: "#line 1 \"Test/AOJ/DSL_2_F.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    - https://atcoder.jp/contests/abc237/tasks/abc237_g
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc237_g.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
-    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
-    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
     \nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass SegmentTree {\n\
@@ -147,50 +145,71 @@ data:
     \    static V power(V v, u32 p) {\n        V res{M::identity()};\n        while\
     \ (p) {\n            if (p & 1) res = M::operation(res, v);\n            v = M::operation(v,\
     \ v);\n            p >>= 1; \n        }\n        return res;\n    }\n};\n\n} //\
-    \ namespace zawa\n#line 6 \"Test/AOJ/DSL_2_F.test.cpp\"\nusing namespace zawa;\n\
-    \n#line 10 \"Test/AOJ/DSL_2_F.test.cpp\"\n#include <algorithm>\n#include <limits>\n\
-    \nstruct vM {\n    using Element = int;\n    static constexpr Element identity()\
-    \ {\n        return std::numeric_limits<Element>::max();\n    } \n    static constexpr\
-    \ Element operation(Element L, Element R) {\n        return std::min(L, R);\n\
-    \    }\n    static constexpr Element power(Element L, u32 op) {\n        return\
-    \ (op == 0 ? identity() : L);\n    }\n};\n\nint main() {\n    SetFastIO();\n \
-    \   int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM> seg(N);\n\
-    \    while (Q--) {\n        int t;\n        int l, r;\n        std::cin >> t >>\
-    \ l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n         \
-    \   std::cin >> x;\n            seg.assign(l, r, x);\n        }\n        else\
-    \ if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n      \
-    \  }\n        else assert(false);\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\
-    using namespace zawa;\n\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n\
-    #include <limits>\n\nstruct vM {\n    using Element = int;\n    static constexpr\
-    \ Element identity() {\n        return std::numeric_limits<Element>::max();\n\
-    \    } \n    static constexpr Element operation(Element L, Element R) {\n    \
-    \    return std::min(L, R);\n    }\n    static constexpr Element power(Element\
-    \ L, u32 op) {\n        return (op == 0 ? identity() : L);\n    }\n};\n\nint main()\
-    \ {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM>\
-    \ seg(N);\n    while (Q--) {\n        int t;\n        int l, r;\n        std::cin\
-    \ >> t >> l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n \
-    \           std::cin >> x;\n            seg.assign(l, r, x);\n        }\n    \
-    \    else if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n\
-    \        }\n        else assert(false);\n    }\n}\n"
+    \ namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"Src/Template/IOSetting.hpp\"\
+    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
+    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
+    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
+    \ zawa\n#line 7 \"Test/AtCoder/abc237_g.test.cpp\"\nusing namespace zawa;\n\n\
+    struct M {\n    using Element = int;\n    static constexpr int identity() {\n\
+    \        return 0;\n    }\n    static constexpr int operation(int l, int r) {\n\
+    \        return l + r;\n    }\n    static constexpr int power(int v, u64 exp)\
+    \ {\n        return v * (int)exp;\n    }\n};\nvoid solve() {\n    int N, Q, X;\n\
+    \    std::cin >> N >> Q >> X;\n    std::vector<int> init(N);\n    for (int i =\
+    \ 0 ; i < N ; i++) {\n        int P;\n        std::cin >> P;\n        init[i]\
+    \ = (P < X ? 0 : (P == X ? 1 : 2));\n    }\n    AssignmentSegmentTree<M> seg{init};\n\
+    \    int z = 0, o = 0, t = 0;\n    auto prod = [&](int l, int r) -> void {\n \
+    \       int sum = seg.product(l, r);\n        o = sum % 2;\n        t = sum /\
+    \ 2;\n        z = r - l - o - t;\n        assert(o + t + z == r - l);\n    };\n\
+    \    while (Q--) {\n        int C, L, R;\n        std::cin >> C >> L >> R;\n \
+    \       L--;\n        prod(L, R);\n        if (C == 1) {\n            seg.assign(L,\
+    \ L + z, 0);\n            seg.assign(L + z, L + z + o, 1);\n            seg.assign(L\
+    \ + z + o, L + z + o + t, 2);\n        }\n        else if (C == 2) {\n       \
+    \     seg.assign(L, L + t, 2);\n            seg.assign(L + t, L + t + o, 1);\n\
+    \            seg.assign(L + t + o, L + t + o + z, 0);\n        }\n        else\
+    \ assert(false);\n    }\n    for (int i = 0 ; i < N ; i++) if (seg.product(0,\
+    \ i + 1) % 2) {\n        std::cout << i + 1 << '\\n';\n        return;\n    }\n\
+    }\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    solve();\n#else\n   \
+    \ std::cout << \"Hello World\\n\";\n#endif    \n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
+    \nusing namespace zawa;\n\nstruct M {\n    using Element = int;\n    static constexpr\
+    \ int identity() {\n        return 0;\n    }\n    static constexpr int operation(int\
+    \ l, int r) {\n        return l + r;\n    }\n    static constexpr int power(int\
+    \ v, u64 exp) {\n        return v * (int)exp;\n    }\n};\nvoid solve() {\n   \
+    \ int N, Q, X;\n    std::cin >> N >> Q >> X;\n    std::vector<int> init(N);\n\
+    \    for (int i = 0 ; i < N ; i++) {\n        int P;\n        std::cin >> P;\n\
+    \        init[i] = (P < X ? 0 : (P == X ? 1 : 2));\n    }\n    AssignmentSegmentTree<M>\
+    \ seg{init};\n    int z = 0, o = 0, t = 0;\n    auto prod = [&](int l, int r)\
+    \ -> void {\n        int sum = seg.product(l, r);\n        o = sum % 2;\n    \
+    \    t = sum / 2;\n        z = r - l - o - t;\n        assert(o + t + z == r -\
+    \ l);\n    };\n    while (Q--) {\n        int C, L, R;\n        std::cin >> C\
+    \ >> L >> R;\n        L--;\n        prod(L, R);\n        if (C == 1) {\n     \
+    \       seg.assign(L, L + z, 0);\n            seg.assign(L + z, L + z + o, 1);\n\
+    \            seg.assign(L + z + o, L + z + o + t, 2);\n        }\n        else\
+    \ if (C == 2) {\n            seg.assign(L, L + t, 2);\n            seg.assign(L\
+    \ + t, L + t + o, 1);\n            seg.assign(L + t + o, L + t + o + z, 0);\n\
+    \        }\n        else assert(false);\n    }\n    for (int i = 0 ; i < N ; i++)\
+    \ if (seg.product(0, i + 1) % 2) {\n        std::cout << i + 1 << '\\n';\n   \
+    \     return;\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n  \
+    \  solve();\n#else\n    std::cout << \"Hello World\\n\";\n#endif    \n}\n"
   dependsOn:
-  - Src/Template/TypeAlias.hpp
-  - Src/Template/IOSetting.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/AOJ/DSL_2_F.test.cpp
+  path: Test/AtCoder/abc237_g.test.cpp
   requiredBy: []
   timestamp: '2025-02-26 21:14:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/DSL_2_F.test.cpp
+documentation_of: Test/AtCoder/abc237_g.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/DSL_2_F.test.cpp
-- /verify/Test/AOJ/DSL_2_F.test.cpp.html
-title: Test/AOJ/DSL_2_F.test.cpp
+- /verify/Test/AtCoder/abc237_g.test.cpp
+- /verify/Test/AtCoder/abc237_g.test.cpp.html
+title: Test/AtCoder/abc237_g.test.cpp
 ---

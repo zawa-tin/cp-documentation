@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/AffineMonoid.hpp
+    title: Src/Algebra/Monoid/AffineMonoid.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -10,6 +13,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/ModInt.hpp
+    title: Src/Number/ModInt.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -23,25 +29,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
+    PROBLEM: https://judge.yosupo.jp/problem/range_set_range_composite
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F
-  bundledCode: "#line 1 \"Test/AOJ/DSL_2_F.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
-    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
-    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    - https://judge.yosupo.jp/problem/range_set_range_composite
+  bundledCode: "#line 1 \"Test/LC/range_set_range_composite.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/range_set_range_composite\"\n\n#line 2 \"\
+    Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include\
+    \ <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\n\
+    concept Monoid = requires {\n    typename T::Element;\n    { T::identity() } ->\
+    \ std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
     \nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass SegmentTree {\n\
@@ -147,50 +150,111 @@ data:
     \    static V power(V v, u32 p) {\n        V res{M::identity()};\n        while\
     \ (p) {\n            if (p & 1) res = M::operation(res, v);\n            v = M::operation(v,\
     \ v);\n            p >>= 1; \n        }\n        return res;\n    }\n};\n\n} //\
-    \ namespace zawa\n#line 6 \"Test/AOJ/DSL_2_F.test.cpp\"\nusing namespace zawa;\n\
-    \n#line 10 \"Test/AOJ/DSL_2_F.test.cpp\"\n#include <algorithm>\n#include <limits>\n\
-    \nstruct vM {\n    using Element = int;\n    static constexpr Element identity()\
-    \ {\n        return std::numeric_limits<Element>::max();\n    } \n    static constexpr\
-    \ Element operation(Element L, Element R) {\n        return std::min(L, R);\n\
-    \    }\n    static constexpr Element power(Element L, u32 op) {\n        return\
-    \ (op == 0 ? identity() : L);\n    }\n};\n\nint main() {\n    SetFastIO();\n \
-    \   int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM> seg(N);\n\
-    \    while (Q--) {\n        int t;\n        int l, r;\n        std::cin >> t >>\
-    \ l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n         \
-    \   std::cin >> x;\n            seg.assign(l, r, x);\n        }\n        else\
-    \ if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n      \
-    \  }\n        else assert(false);\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
-    \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\
-    using namespace zawa;\n\n#include <cassert>\n#include <iostream>\n#include <algorithm>\n\
-    #include <limits>\n\nstruct vM {\n    using Element = int;\n    static constexpr\
-    \ Element identity() {\n        return std::numeric_limits<Element>::max();\n\
-    \    } \n    static constexpr Element operation(Element L, Element R) {\n    \
-    \    return std::min(L, R);\n    }\n    static constexpr Element power(Element\
-    \ L, u32 op) {\n        return (op == 0 ? identity() : L);\n    }\n};\n\nint main()\
-    \ {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM>\
-    \ seg(N);\n    while (Q--) {\n        int t;\n        int l, r;\n        std::cin\
-    \ >> t >> l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n \
-    \           std::cin >> x;\n            seg.assign(l, r, x);\n        }\n    \
-    \    else if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n\
-    \        }\n        else assert(false);\n    }\n}\n"
+    \ namespace zawa\n#line 2 \"Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#line 4 \"\
+    Src/Algebra/Monoid/AffineMonoid.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
+    class Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr Affine()\
+    \ {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n    T a()\
+    \ const noexcept {\n        return a_;\n    }\n    T b() const noexcept {\n  \
+    \      return b_;\n    }\n    constexpr T mapping(const T& x) const {\n      \
+    \  return a_ * x + b_;\n    }\n    constexpr T operator()(const T& x) const {\n\
+    \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
+    \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
+    \ {\n    using Element = Affine<T>;\n    static constexpr Element identity() noexcept\
+    \ {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ Element& l, const Element& r) noexcept {\n        return Element{ l.a() * r.a(),\
+    \ l.b() * r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Number/ModInt.hpp\"\
+    \n\n#line 4 \"Src/Number/ModInt.hpp\"\n\n#line 6 \"Src/Number/ModInt.hpp\"\n#include\
+    \ <iostream>\n#include <utility>\n#line 9 \"Src/Number/ModInt.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T, T mod>\nclass StaticModInt {\nprivate:\n    using\
+    \ mint = StaticModInt;\n\n    T v_{};\n\n    static constexpr void templateTypeAssert()\
+    \ {\n        static_assert(std::is_integral_v<T>, \"ModInt template argument must\
+    \ be integral\");\n        static_assert(mod > 0, \"mod must be positive\");\n\
+    \    }\n\n    i64 extendGCD(i64 a, i64 b, i64& x, i64& y) const {\n       i64\
+    \ d{a};\n       if (b) {\n           d = extendGCD(b, a % b, y, x);\n        \
+    \   y -= (a / b) * x;\n       }\n       else {\n           x = 1;\n          \
+    \ y = 0;\n       }\n       return d;\n    }\n\npublic:\n\n    constexpr StaticModInt()\
+    \ {\n        templateTypeAssert();\n    }\n    template <class ArgType>\n    constexpr\
+    \ StaticModInt(ArgType v) : v_{ static_cast<T>(((v % mod) + mod) % mod) } {\n\
+    \        templateTypeAssert();\n        static_assert(std::is_integral_v<ArgType>,\
+    \ \"ModInt constructor Argument Must Be Integral\");\n    }\n\n    friend std::istream&\
+    \ operator>>(std::istream& is, mint& value) {\n        is >> value.v_;\n     \
+    \   return is;\n    }\n    friend std::ostream& operator<<(std::ostream& os, const\
+    \ mint& value) {\n        os << value.v_;\n        return os;\n    }\n\n    T\
+    \ v() const {\n        return v_;\n    }\n\n    bool operator==(const mint& rhs)\
+    \ const {\n        return v_ == rhs.v_;\n    }\n\n    mint operator+() const {\n\
+    \        return *this;\n    }\n    mint& operator+=(const mint& rhs) {\n     \
+    \   v_ = (v_ < mod - rhs.v_ ? v_ + rhs.v_ : v_ + rhs.v_ - mod);\n        return\
+    \ *this;\n    }\n    friend mint operator+(const mint& lhs, const mint& rhs) {\n\
+    \        return mint{lhs} += rhs;\n    }\n    mint& operator++() {\n        v_\
+    \ = (v_ + 1 == mod ? 0 : v_ + 1);\n        return *this;\n    }\n    mint operator++(int)\
+    \ {\n        mint res{*this};\n        ++*this;\n        return res;\n    }\n\n\
+    \    mint operator-() const {\n        return mod - v_;\n    }\n    mint& operator-=(const\
+    \ mint& rhs) {\n        v_ = (v_ >= rhs.v_ ? v_ - rhs.v_ : v_ + (mod - rhs.v_));\n\
+    \        return *this;\n    }\n    friend mint operator-(const mint& lhs, const\
+    \ mint& rhs) {\n        return mint{lhs} -= rhs;\n    }\n    mint& operator--()\
+    \ {\n        v_ = (v_ ? v_ - 1 : mod - 1);\n        return *this;\n    }\n   \
+    \ mint operator--(int) {\n        mint res{*this};\n        --*this;\n       \
+    \ return res;\n    }\n\n    mint& operator*=(const mint& rhs) {\n        u64 mult{\
+    \ static_cast<u64>(v_) * static_cast<u64>(rhs.v_) };\n        v_ = static_cast<T>(mult\
+    \ % mod);\n        return *this;\n    }\n    friend mint operator*(const mint&\
+    \ lhs, const mint& rhs) {\n        return mint{lhs} *= rhs;\n    }\n\n    mint\
+    \ inverse() const {\n        i64 res{}, hoge{};\n        assert(extendGCD(static_cast<i64>(v_),\
+    \ static_cast<i64>(mod), res, hoge) == 1);\n        return mint{res};\n    }\n\
+    \    mint& operator/=(const mint& rhs) {\n        return *this *= rhs.inverse();\n\
+    \    }\n    friend mint operator/(const mint& lhs, const mint& rhs) {\n      \
+    \  return mint{lhs} /= rhs;\n    }\n\n    mint pow(u64 k) const {\n        mint\
+    \ res{1}, base{k};\n        while (k) {\n            if (k & 1) res *= base;\n\
+    \            base *= base; \n            k >>= 1;\n        }\n        return res;\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n\
+    #line 4 \"Src/Template/IOSetting.hpp\"\n\n#line 6 \"Src/Template/IOSetting.hpp\"\
+    \n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 7 \"Test/LC/range_set_range_composite.test.cpp\"\
+    \nusing namespace zawa;\nusing mint = StaticModInt<int, 998244353>;\n\n#line 14\
+    \ \"Test/LC/range_set_range_composite.test.cpp\"\n#include <cstring>\n\nint main()\
+    \ {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<Affine<mint>>\
+    \ init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int a, b;\n        std::cin\
+    \ >> a >> b;\n        init[i] = Affine{mint{a}, mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>>\
+    \ seg{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
+    \    if (t == 0) {\n            int l, r, c, d;\n            std::cin >> l >>\
+    \ r >> c >> d;\n            seg.assign(l, r, Affine{mint{c}, mint{d}});\n    \
+    \    }\n        else if (t == 1) {\n            int l, r, x;\n            std::cin\
+    \ >> l >> r >> x;\n            std::cout << seg.product(l, r).mapping(x) << '\\\
+    n';\n        }\n        else assert(false);\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_set_range_composite\"\
+    \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Number/ModInt.hpp\"\
+    \n#include \"../../Src/Template/IOSetting.hpp\"\nusing namespace zawa;\nusing\
+    \ mint = StaticModInt<int, 998244353>;\n\n#include <cassert>\n#include <iostream>\n\
+    #include <iomanip>\n#include <vector>\n#include <cstring>\n\nint main() {\n  \
+    \  SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<Affine<mint>>\
+    \ init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int a, b;\n        std::cin\
+    \ >> a >> b;\n        init[i] = Affine{mint{a}, mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>>\
+    \ seg{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
+    \    if (t == 0) {\n            int l, r, c, d;\n            std::cin >> l >>\
+    \ r >> c >> d;\n            seg.assign(l, r, Affine{mint{c}, mint{d}});\n    \
+    \    }\n        else if (t == 1) {\n            int l, r, x;\n            std::cin\
+    \ >> l >> r >> x;\n            std::cout << seg.product(l, r).mapping(x) << '\\\
+    n';\n        }\n        else assert(false);\n    }\n}\n"
   dependsOn:
-  - Src/Template/TypeAlias.hpp
-  - Src/Template/IOSetting.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Algebra/Monoid/AffineMonoid.hpp
+  - Src/Number/ModInt.hpp
+  - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/AOJ/DSL_2_F.test.cpp
+  path: Test/LC/range_set_range_composite.test.cpp
   requiredBy: []
   timestamp: '2025-02-26 21:14:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/DSL_2_F.test.cpp
+documentation_of: Test/LC/range_set_range_composite.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/DSL_2_F.test.cpp
-- /verify/Test/AOJ/DSL_2_F.test.cpp.html
-title: Test/AOJ/DSL_2_F.test.cpp
+- /verify/Test/LC/range_set_range_composite.test.cpp
+- /verify/Test/LC/range_set_range_composite.test.cpp.html
+title: Test/LC/range_set_range_composite.test.cpp
 ---

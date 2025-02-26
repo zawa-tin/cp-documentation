@@ -12,6 +12,9 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+    title: Assignment Segment Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
@@ -43,6 +46,15 @@ data:
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_F.test.cpp
+    title: Test/AOJ/DSL_2_F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_I.test.cpp
+    title: Test/AOJ/DSL_2_I.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc237_g.test.cpp
+    title: Test/AtCoder/abc237_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -72,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_set_range_composite.test.cpp
+    title: Test/LC/range_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
@@ -104,36 +119,41 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Monoid/MonoidConcept.hpp
   requiredBy:
+  - Src/Algebra/Group/GroupConcept.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
-  - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/FenwickTree/FenwickTree.hpp
   timestamp: '2024-09-10 17:27:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_point_get.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
+  - Test/CF/EC2-E.test.cpp
+  - Test/AOJ/DSL_2_F.test.cpp
+  - Test/AOJ/DSL_2_I.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
+  - Test/AOJ/DSL_2_A.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/2559.test.cpp
+  - Test/AOJ/0478.test.cpp
+  - Test/Manual/aoj3226.test.cpp
+  - Test/Manual/agc005_b.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
-  - Test/CF/EC2-E.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/0478.test.cpp
-  - Test/AOJ/2559.test.cpp
-  - Test/AOJ/DSL_2_A.test.cpp
-  - Test/AOJ/DSL_2_D.test.cpp
-  - Test/Manual/agc005_b.test.cpp
-  - Test/Manual/aoj3226.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidConcept.hpp
 layout: document
 redirect_from:

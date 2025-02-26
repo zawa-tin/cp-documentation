@@ -95,8 +95,8 @@ data:
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Sequence/RangeKthSmallest.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   timestamp: '2025-02-20 23:00:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

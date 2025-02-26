@@ -120,9 +120,9 @@ data:
   timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_point_get.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
 layout: document
 title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"

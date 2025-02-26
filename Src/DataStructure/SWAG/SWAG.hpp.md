@@ -68,8 +68,8 @@ data:
   timestamp: '2024-07-15 23:06:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/Manual/aoj3548.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
 documentation_of: Src/DataStructure/SWAG/SWAG.hpp
 layout: document
 redirect_from:

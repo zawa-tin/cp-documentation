@@ -180,15 +180,15 @@ data:
   timestamp: '2024-09-10 17:41:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
-  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document
 title: Fenwick Tree

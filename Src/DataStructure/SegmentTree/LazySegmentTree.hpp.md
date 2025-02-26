@@ -10,9 +10,6 @@ data:
     title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_F.test.cpp
-    title: Test/AOJ/DSL_2_F.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
   - icon: ':heavy_check_mark:'
@@ -200,13 +197,12 @@ data:
   timestamp: '2024-09-10 19:45:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/Manual/CF895-E.test.cpp
+  - Test/Manual/practice2_l.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
-  - Test/AOJ/DSL_2_F.test.cpp
-  - Test/Manual/practice2_l.test.cpp
-  - Test/Manual/CF895-E.test.cpp
-  - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document
 title: Lazy Segment Tree
