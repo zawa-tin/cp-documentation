@@ -4,7 +4,10 @@
 #include "../../Src/Sequence/CompressedSequence.hpp"
 #include "../../Src/Template/TypeAlias.hpp"
 
-// https://atcoder.jp/contests/abc213/submissions/62949125
+/*
+ * ABC213-C Reorder Cards
+ * https://atcoder.jp/contests/abc213/submissions/63197885
+ */
 
 #include <iostream>
 #include <vector>
