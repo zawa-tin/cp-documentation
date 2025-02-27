@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc332_f.test.cpp
+    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -32,11 +35,13 @@ data:
     \ T operator()(const T& x) const {\n        return a_ * x + b_;\n    }\n    friend\
     \ std::ostream& operator<<(std::ostream& os, const Affine& affine) {\n       \
     \ os << '(' << affine.a_ << ',' << affine.b_ << ')';\n        return os;\n   \
-    \ }\n};\n\ntemplate <class T>\nstruct AffineMonoid {\n    using Element = Affine<T>;\n\
-    \    static constexpr Element identity() noexcept {\n        return Element{};\n\
-    \    }\n    static constexpr Element operation(const Element& l, const Element&\
-    \ r) noexcept {\n        return Element{ l.a() * r.a(), l.b() * r.a() + r.b()\
-    \ };\n    }\n};\n\n} // namespace zawa\n"
+    \ }\n    friend bool operator==(const Affine& lhs, const Affine& rhs) {\n    \
+    \    return lhs.a_ == rhs.a_ and lhs.b_ == rhs.b_;\n    }\n};\n\ntemplate <class\
+    \ T>\nstruct AffineMonoid {\n    using Element = Affine<T>;\n    static constexpr\
+    \ Element identity() noexcept {\n        return Element{};\n    }\n    // f_r(f_l(x)):\
+    \ a_r(a_lx+b_l)+b_r\n    static constexpr Element operation(const Element& l,\
+    \ const Element& r) noexcept {\n        return Element{ l.a() * r.a(), l.b() *\
+    \ r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
     \ T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr Affine()\
     \ {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n    T a()\
@@ -45,16 +50,18 @@ data:
     \  return a_ * x + b_;\n    }\n    constexpr T operator()(const T& x) const {\n\
     \        return a_ * x + b_;\n    }\n    friend std::ostream& operator<<(std::ostream&\
     \ os, const Affine& affine) {\n        os << '(' << affine.a_ << ',' << affine.b_\
-    \ << ')';\n        return os;\n    }\n};\n\ntemplate <class T>\nstruct AffineMonoid\
-    \ {\n    using Element = Affine<T>;\n    static constexpr Element identity() noexcept\
-    \ {\n        return Element{};\n    }\n    static constexpr Element operation(const\
+    \ << ')';\n        return os;\n    }\n    friend bool operator==(const Affine&\
+    \ lhs, const Affine& rhs) {\n        return lhs.a_ == rhs.a_ and lhs.b_ == rhs.b_;\n\
+    \    }\n};\n\ntemplate <class T>\nstruct AffineMonoid {\n    using Element = Affine<T>;\n\
+    \    static constexpr Element identity() noexcept {\n        return Element{};\n\
+    \    }\n    // f_r(f_l(x)): a_r(a_lx+b_l)+b_r\n    static constexpr Element operation(const\
     \ Element& l, const Element& r) noexcept {\n        return Element{ l.a() * r.a(),\
     \ l.b() * r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n"
   dependsOn: []
   isVerificationFile: false
   path: Src/Algebra/Monoid/AffineMonoid.hpp
   requiredBy: []
-  timestamp: '2024-07-15 23:06:53+09:00'
+  timestamp: '2025-02-27 21:25:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_affine_point_get.test.cpp
@@ -62,6 +69,7 @@ data:
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
 documentation_of: Src/Algebra/Monoid/AffineMonoid.hpp
 layout: document
 redirect_from:

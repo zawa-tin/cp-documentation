@@ -57,7 +57,7 @@ data:
   isVerificationFile: true
   path: Test/LC/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2024-07-15 23:06:53+09:00'
+  timestamp: '2025-02-27 21:25:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/queue_operate_all_composite.test.cpp

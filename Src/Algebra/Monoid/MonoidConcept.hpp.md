@@ -67,6 +67,9 @@ data:
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc332_f.test.cpp
+    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -152,6 +155,7 @@ data:
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidConcept.hpp

@@ -19,6 +19,9 @@ data:
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc332_f.test.cpp
+    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   _isVerificationFailed: false
@@ -123,6 +126,7 @@ data:
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
 layout: document
 title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"

@@ -8,11 +8,11 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
-    title: Assignment Segment Tree
+    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SegmentTree/SegmentTree.hpp
-    title: Segment Tree
+    path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -26,9 +26,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_set_range_composite
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://judge.yosupo.jp/problem/range_set_range_composite
+    - https://atcoder.jp/contests/abc332/tasks/abc332_f
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.2/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -42,38 +43,46 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_set_range_composite\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc332/tasks/abc332_f\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
+    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
-    \n#include <cassert>\n#include <iostream>\n#include <iomanip>\n#include <vector>\n\
-    #include <cstring>\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    std::vector<Affine<mint>> init(N);\n    for (int i = 0 ; i <\
-    \ N ; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        init[i]\
-    \ = Affine{mint{a}, mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>>\
-    \ seg{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
-    \    if (t == 0) {\n            int l, r, c, d;\n            std::cin >> l >>\
-    \ r >> c >> d;\n            seg.assign(l, r, Affine{mint{c}, mint{d}});\n    \
-    \    }\n        else if (t == 1) {\n            int l, r, x;\n            std::cin\
-    \ >> l >> r >> x;\n            std::cout << seg.product(l, r)(x).val() << '\\\
-    n';\n        }\n        else assert(false);\n    }\n}\n"
+    void solve() {\n    int N, M;\n    std::cin >> N >> M;\n    std::vector<Affine<mint>>\
+    \ init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int A;\n        std::cin\
+    \ >> A;\n        init[i] = Affine{mint{}, mint{A}};\n    }\n    DualSegmentTree<AffineMonoid<mint>>\
+    \ seg{init};\n    while (M--) {\n        int L, R, X;\n        std::cin >> L >>\
+    \ R >> X;\n        L--;\n        mint inv = mint::raw(R - L).inv();\n        seg.operation(L,\
+    \ R, Affine{mint::raw(R-L-1)*inv, mint::raw(X)*inv});\n    }\n    for (int i =\
+    \ 0 ; i < N ; i++) std::cout << seg[i].b().val() << (i + 1 == N ? '\\n' : ' ');\n\
+    }\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    solve();\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
-  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
-  - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/LC/range_set_range_composite.test.cpp
+  path: Test/AtCoder/abc332_f.test.cpp
   requiredBy: []
   timestamp: '2025-02-27 21:25:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/range_set_range_composite.test.cpp
+documentation_of: Test/AtCoder/abc332_f.test.cpp
 layout: document
-redirect_from:
-- /verify/Test/LC/range_set_range_composite.test.cpp
-- /verify/Test/LC/range_set_range_composite.test.cpp.html
-title: Test/LC/range_set_range_composite.test.cpp
+title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
 ---
+
+簡単な考察を踏むと、以下の様な処理ができれば良いことがわかる。
+
+- 長さ $N$ のmintの列 $A$ がある
+- $M$ 個のクエリが与えられる
+- 各クエリでは、mint $p, q$ が与えられるので、 $A_{i} (l\le i\lt r)$ について $A_{i} \leftarrow A_{i}\times p+q$ せよ
+
+双対セグ木にAffineMonoidを載せると、これが楽に処理できる。
+
+- $i$ 番目の要素を $0x + A_{i}$ で初期化する
+- 区間に $px + q$ をoperationする
+- 答えは定数項に入っている。はじめ $0x + A_{i}$ で初期化しているため、一次の係数は $0$ になっている。
