@@ -43,6 +43,10 @@ public:
         return std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
     }
 
+    u32 upper_bound(const T& v) const {
+        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(), comped_.end(), v));
+    }
+
     u32 find(const T& v) const {
         u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(), v));
         return i == comped_.size() or comped_[i] != v ? NotFound : i;
@@ -54,8 +58,8 @@ public:
     }
 
     u32 at(const T& v) const {
-        u32 res{(*this)[v]};
-        assert(res < size() and comped_[res] == v);
+        u32 res = find(v);
+        assert(res != NotFound);
         return res;
     }
 

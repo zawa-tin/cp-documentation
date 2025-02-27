@@ -11,7 +11,7 @@
 
 /*
  * ABC287-G Balance Update Query
- * https://atcoder.jp/contests/abc287/submissions/62949373
+ * https://atcoder.jp/contests/abc287/submissions/63198012
  */
 
 void solve() {

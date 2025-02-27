@@ -6,7 +6,10 @@
 #include "../../Src/Sequence/CompressedSequence.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
-// https://atcoder.jp/contests/abc384/submissions/62949320
+/*
+ * ABC384-G Abs Sum
+ * https://atcoder.jp/contests/abc384/submissions/63198068
+ */
 
 using namespace zawa;
 
