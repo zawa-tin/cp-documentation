@@ -54,17 +54,19 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
-    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
-    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
-    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
-    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
-    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
-    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
-    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
-    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
-    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\
     \nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
@@ -79,17 +81,19 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
-    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
-    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
-    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
-    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
-    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
-    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
-    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
-    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
-    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n"
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
@@ -97,7 +101,7 @@ data:
   requiredBy:
   - Src/Sequence/RangeKthSmallest.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
-  timestamp: '2025-02-20 23:00:00+09:00'
+  timestamp: '2025-02-27 21:44:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/static_range_frequency.test.cpp

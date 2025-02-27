@@ -16,7 +16,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc213/submissions/62949125
+    - https://atcoder.jp/contests/abc213/submissions/63197885
     - https://atcoder.jp/contests/abc213/tasks/abc213_c
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc213_c.test.cpp\"\n// #define PROBLEM \"\
@@ -40,43 +40,47 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
-    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
-    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
-    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
-    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
-    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
-    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
-    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
-    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
-    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\
-    \n\n// https://atcoder.jp/contests/abc213/submissions/62949125\n\n#include <iostream>\n\
-    #line 11 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing namespace zawa;\n\ni32 main()\
-    \ {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin >> H >> W >> N; \n    std::vector<u32>\
-    \ A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cin >> A[i] >>\
-    \ B[i];\n    }\n\n    CompressedSequence compY(A);\n    CompressedSequence<u32>\
-    \ compX(B.begin(), B.end());\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cout\
-    \ << compY.map(i) + 1 << ' ' << compX.map(i) + 1 << std::endl;\n    }\n#else\n\
-    \    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\n\n/*\n * ABC213-C Reorder\
+    \ Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n */\n\n#include\
+    \ <iostream>\n#line 14 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing namespace zawa;\n\
+    \ni32 main() {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin >> H >> W >>\
+    \ N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n\
+    \        std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence compY(A);\n\
+    \    CompressedSequence<u32> compX(B.begin(), B.end());\n    for (u32 i = 0 ;\
+    \ i < N ; i++) {\n        std::cout << compY.map(i) + 1 << ' ' << compX.map(i)\
+    \ + 1 << std::endl;\n    }\n#else\n    std::cout << \"Hello World\" << '\\n';\n\
+    #endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc213/tasks/abc213_c\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Template/TypeAlias.hpp\"\
-    \n\n// https://atcoder.jp/contests/abc213/submissions/62949125\n\n#include <iostream>\n\
-    #include <vector>\n\nusing namespace zawa;\n\ni32 main() {\n#ifdef ATCODER\n \
-    \   usize H, W, N;\n    std::cin >> H >> W >> N; \n    std::vector<u32> A(N),\
-    \ B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cin >> A[i] >> B[i];\n\
-    \    }\n\n    CompressedSequence compY(A);\n    CompressedSequence<u32> compX(B.begin(),\
-    \ B.end());\n    for (u32 i = 0 ; i < N ; i++) {\n        std::cout << compY.map(i)\
-    \ + 1 << ' ' << compX.map(i) + 1 << std::endl;\n    }\n#else\n    std::cout <<\
-    \ \"Hello World\" << '\\n';\n#endif\n}\n"
+    \n\n/*\n * ABC213-C Reorder Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n\
+    \ */\n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\ni32\
+    \ main() {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin >> H >> W >> N; \n\
+    \    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n     \
+    \   std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence compY(A);\n   \
+    \ CompressedSequence<u32> compX(B.begin(), B.end());\n    for (u32 i = 0 ; i <\
+    \ N ; i++) {\n        std::cout << compY.map(i) + 1 << ' ' << compX.map(i) + 1\
+    \ << std::endl;\n    }\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
+    }\n"
   dependsOn:
   - Src/Sequence/CompressedSequence.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc213_c.test.cpp
   requiredBy: []
-  timestamp: '2025-02-20 23:00:00+09:00'
+  timestamp: '2025-02-27 21:44:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc213_c.test.cpp

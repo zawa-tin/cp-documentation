@@ -70,28 +70,30 @@ data:
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
     \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
     \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 find(const\
-    \ T& v) const {\n        u32 i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(),\
-    \ comped_.end(), v));\n        return i == comped_.size() or comped_[i] != v ?\
-    \ NotFound : i;\n    }\n\n    bool contains(const T& v) const {\n        u32 i\
-    \ = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
-    \ v));\n        return i < comped_.size() and comped_[i] == v;\n    }\n\n    u32\
-    \ at(const T& v) const {\n        u32 res{(*this)[v]};\n        assert(res < size()\
-    \ and comped_[res] == v);\n        return res;\n    }\n\n    inline u32 map(u32\
-    \ i) const noexcept {\n        assert(i < f_.size());\n        return f_[i];\n\
-    \    }\n\n    inline T inverse(u32 i) const noexcept {\n        assert(i < size());\n\
-    \        return comped_[i];\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/static_range_frequency.test.cpp\"\
-    \n\n#line 9 \"Test/LC/static_range_frequency.test.cpp\"\n\nusing namespace zawa;\n\
-    \nint N, Q, X[500050];\nstruct query {\n    usize l, r;\n};\nint main() {\n  \
-    \  SetFastIO();\n\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for\
-    \ (int& a : A) std::cin >> a;\n    CompressedSequence comp{A};\n    std::vector<query>\
-    \ q(Q);\n    for (int i{} ; auto& [l, r] : q) {\n        std::cin >> l >> r >>\
-    \ X[i];\n        i++;\n    }\n    std::vector<int> cnt(comp.size());\n    auto\
-    \ add{[&](int i) -> void {\n        cnt[comp.map(i)]++;\n    }};\n    auto del{[&](int\
-    \ i) -> void {\n        cnt[comp.map(i)]--;\n    }};\n    auto eval{[&](int i)\
-    \ -> int {\n        auto j = comp.find(X[i]);\n        if (j == decltype(comp)::NotFound)\
-    \ return 0;\n        else return cnt[j];\n    }};\n    for (int ans : Mo(q, add,\
-    \ add, del, del, eval)) std::cout << ans << '\\n';\n}\n"
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 6 \"Test/LC/static_range_frequency.test.cpp\"\n\n#line 9 \"Test/LC/static_range_frequency.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint N, Q, X[500050];\nstruct query {\n    usize l,\
+    \ r;\n};\nint main() {\n    SetFastIO();\n\n    std::cin >> N >> Q;\n    std::vector<int>\
+    \ A(N);\n    for (int& a : A) std::cin >> a;\n    CompressedSequence comp{A};\n\
+    \    std::vector<query> q(Q);\n    for (int i{} ; auto& [l, r] : q) {\n      \
+    \  std::cin >> l >> r >> X[i];\n        i++;\n    }\n    std::vector<int> cnt(comp.size());\n\
+    \    auto add{[&](int i) -> void {\n        cnt[comp.map(i)]++;\n    }};\n   \
+    \ auto del{[&](int i) -> void {\n        cnt[comp.map(i)]--;\n    }};\n    auto\
+    \ eval{[&](int i) -> int {\n        auto j = comp.find(X[i]);\n        if (j ==\
+    \ decltype(comp)::NotFound) return 0;\n        else return cnt[j];\n    }};\n\
+    \    for (int ans : Mo(q, add, add, del, del, eval)) std::cout << ans << '\\n';\n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/Mo/Mo.hpp\"\
     \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n\n#include <iostream>\n\
@@ -114,7 +116,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2025-02-20 23:00:00+09:00'
+  timestamp: '2025-02-27 21:44:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_frequency.test.cpp
