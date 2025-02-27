@@ -27,6 +27,9 @@ public:
         os << '(' << affine.a_ << ',' << affine.b_ << ')';
         return os;
     }
+    friend bool operator==(const Affine& lhs, const Affine& rhs) {
+        return lhs.a_ == rhs.a_ and lhs.b_ == rhs.b_;
+    }
 };
 
 template <class T>
@@ -35,6 +38,7 @@ struct AffineMonoid {
     static constexpr Element identity() noexcept {
         return Element{};
     }
+    // f_r(f_l(x)): a_r(a_lx+b_l)+b_r
     static constexpr Element operation(const Element& l, const Element& r) noexcept {
         return Element{ l.a() * r.a(), l.b() * r.a() + r.b() };
     }

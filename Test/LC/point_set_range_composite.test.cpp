@@ -3,11 +3,12 @@
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
-#include "../../Src/Number/ModInt.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
 
+#include "atcoder/modint"
+
 using namespace zawa;
-using mint = StaticModInt<u32, 998244353>;
+using mint = atcoder::modint998244353;
 using Monoid = AffineMonoid<mint>;
 
 #include <iostream>
@@ -30,7 +31,7 @@ int main() {
         }
         else if (t == 1) {
             int l, r, x; std::cin >> l >> r >> x;
-            std::cout << seg.product(l, r).mapping(x) << std::endl;
+            std::cout << seg.product(l, r)(x).val() << '\n';
         }
         else {
             assert(false);

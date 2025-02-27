@@ -2,10 +2,10 @@
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
-#include "../../Src/Number/ModInt.hpp"
 #include "../../Src/Template/IOSetting.hpp"
 using namespace zawa;
-using mint = StaticModInt<int, 998244353>;
+#include "atcoder/modint"
+using mint = atcoder::modint998244353;
 
 #include <cassert>
 #include <iostream>
@@ -35,7 +35,7 @@ int main() {
         else if (t == 1) {
             int l, r, x;
             std::cin >> l >> r >> x;
-            std::cout << seg.product(l, r).mapping(x) << '\n';
+            std::cout << seg.product(l, r)(x).val() << '\n';
         }
         else assert(false);
     }
