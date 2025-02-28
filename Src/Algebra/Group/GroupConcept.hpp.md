@@ -6,6 +6,9 @@ data:
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
+    title: Dual Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -22,8 +25,14 @@ data:
     path: Test/AtCoder/abc287_g.test.cpp
     title: Test/AtCoder/abc287_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_e.test.cpp
+    title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc088_e.test.cpp
+    title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
@@ -65,6 +74,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
+  - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   timestamp: '2024-09-10 17:27:21+09:00'
@@ -77,8 +87,10 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp
 layout: document
 redirect_from:

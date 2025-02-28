@@ -22,6 +22,9 @@ data:
     path: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
     title: Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
+    title: Dual Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -725,6 +728,9 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_e.test.cpp
+    title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -754,6 +760,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc070_e.test.cpp
     title: Test/AtCoder/arc070_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc088_e.test.cpp
+    title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc123_d.test.cpp
     title: Test/AtCoder/arc123_d.test.cpp
@@ -1155,6 +1164,7 @@ data:
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/GeometryZ2/Zahlen.hpp
@@ -1356,6 +1366,7 @@ data:
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc165_f.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
@@ -1387,6 +1398,7 @@ data:
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
 documentation_of: Src/Template/TypeAlias.hpp
 layout: document
 title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

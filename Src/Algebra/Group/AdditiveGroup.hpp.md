@@ -28,11 +28,17 @@ data:
     path: Test/AtCoder/abc287_g.test.cpp
     title: Test/AtCoder/abc287_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_e.test.cpp
+    title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc088_e.test.cpp
+    title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
@@ -94,11 +100,13 @@ data:
   - Test/LC/aplusb.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document
 title: "\u52A0\u6CD5\u7FA4"

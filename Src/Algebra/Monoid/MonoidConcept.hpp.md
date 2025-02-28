@@ -6,6 +6,9 @@ data:
     path: Src/Algebra/Group/GroupConcept.hpp
     title: Src/Algebra/Group/GroupConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
+    title: Dual Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -70,11 +73,17 @@ data:
     path: Test/AtCoder/abc332_f.test.cpp
     title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_e.test.cpp
+    title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc088_e.test.cpp
+    title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
@@ -131,6 +140,7 @@ data:
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   timestamp: '2024-09-10 17:27:21+09:00'
@@ -156,12 +166,14 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidConcept.hpp
 layout: document
 redirect_from:

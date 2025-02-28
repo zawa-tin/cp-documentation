@@ -74,6 +74,9 @@ data:
   - name: Src/DataStructure/FenwickTree
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
+      title: Dual Fenwick Tree
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/FenwickTree/FenwickTree.hpp
       title: Fenwick Tree
     - icon: ':heavy_check_mark:'
@@ -895,6 +898,9 @@ data:
       path: Test/AtCoder/abc334_g.test.cpp
       title: Test/AtCoder/abc334_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc340_e.test.cpp
+      title: Test/AtCoder/abc340_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc340_g.test.cpp
       title: Test/AtCoder/abc340_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -924,6 +930,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc070_e.test.cpp
       title: Test/AtCoder/arc070_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc088_e.test.cpp
+      title: Test/AtCoder/arc088_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc123_d.test.cpp
       title: Test/AtCoder/arc123_d.test.cpp

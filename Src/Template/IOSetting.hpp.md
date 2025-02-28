@@ -255,6 +255,9 @@ data:
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc340_e.test.cpp
+    title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc346_g.test.cpp
     title: Test/AtCoder/abc346_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -646,6 +649,7 @@ data:
   - Test/AtCoder/arc070_e.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document
 title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
