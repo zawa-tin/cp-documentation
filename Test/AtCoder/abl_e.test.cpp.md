@@ -2,9 +2,6 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/AffineMonoid.hpp
-    title: Src/Algebra/Monoid/AffineMonoid.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -26,9 +23,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_set_range_composite
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://judge.yosupo.jp/problem/range_set_range_composite
+    - https://atcoder.jp/contests/abl/submissions/63211812
+    - https://atcoder.jp/contests/abl/tasks/abl_e
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.2/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -42,38 +41,42 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_set_range_composite\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
-    \n#include <cassert>\n#include <iostream>\n#include <iomanip>\n#include <vector>\n\
-    #include <cstring>\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    std::vector<Affine<mint>> init(N);\n    for (int i = 0 ; i <\
-    \ N ; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        init[i]\
-    \ = Affine{mint{a}, mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>>\
-    \ seg{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
-    \    if (t == 0) {\n            int l, r, c, d;\n            std::cin >> l >>\
-    \ r >> c >> d;\n            seg.assign(l, r, Affine{mint{c}, mint{d}});\n    \
-    \    }\n        else if (t == 1) {\n            int l, r, x;\n            std::cin\
-    \ >> l >> r >> x;\n            std::cout << seg.product(l, r)(x).val() << '\\\
-    n';\n        }\n        else assert(false);\n    }\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abl/tasks/abl_e\"\n#define\
+    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n#include \"atcoder/modint\"\n\n#include <iostream>\n#include <vector>\n\n/*\n\
+    \ * ACL Beginner Contest - E Replace Digits\n * https://atcoder.jp/contests/abl/submissions/63211812\n\
+    \ */\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\nint N,\
+    \ Q;\nmint p10[2*200020];\nmint rep[10][2*200020];\n\nstruct M {\n    using Element\
+    \ = std::pair<mint, int>;\n    static Element identity() {\n        return {mint{},\
+    \ 0};\n    }\n    static Element operation(const Element& l, const Element& r)\
+    \ {\n        return {p10[r.second]*l.first+r.first, l.second+r.second};\n    }\n\
+    \    static Element power(Element v, u64 exp) {\n        return {rep[v.first.val()][exp],\
+    \ (int)exp};\n    }\n};\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    std::cin\
+    \ >> N >> Q; \n    p10[0] = mint::raw(1);\n    for (int i = 1 ; i <= N ; i++)\
+    \ p10[i] = p10[i - 1] * mint::raw(10);\n    for (int i = 0 ; i < 10 ; i++) {\n\
+    \        // rep[i][0] = mint::raw(i);\n        for (int j = 1 ; j <= N ; j++)\
+    \ rep[i][j] = rep[i][j - 1] * mint::raw(10) + mint::raw(i);\n    }\n    AssignmentSegmentTree<M>\
+    \ seg(N);\n    seg.assign(0, N, {mint::raw(1), 1});\n    while (Q--) {\n     \
+    \   int L, R, D;\n        std::cin >> L >> R >> D;\n        L--;\n        seg.assign(L,\
+    \ R, {mint::raw(D), 1});\n        std::cout << seg.product(0, N).first.val() <<\
+    \ '\\n';\n    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
-  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
-  - Src/Algebra/Monoid/AffineMonoid.hpp
-  - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/LC/range_set_range_composite.test.cpp
+  path: Test/AtCoder/abl_e.test.cpp
   requiredBy: []
-  timestamp: '2025-02-28 17:31:16+09:00'
+  timestamp: '2025-02-28 17:34:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/range_set_range_composite.test.cpp
+documentation_of: Test/AtCoder/abl_e.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/range_set_range_composite.test.cpp
-- /verify/Test/LC/range_set_range_composite.test.cpp.html
-title: Test/LC/range_set_range_composite.test.cpp
+- /verify/Test/AtCoder/abl_e.test.cpp
+- /verify/Test/AtCoder/abl_e.test.cpp.html
+title: Test/AtCoder/abl_e.test.cpp
 ---

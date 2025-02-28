@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/abc237_g.test.cpp
     title: Test/AtCoder/abc237_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abl_e.test.cpp
+    title: Test/AtCoder/abl_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_set_range_composite.test.cpp
     title: Test/LC/range_set_range_composite.test.cpp
   _isVerificationFailed: false
@@ -122,30 +125,30 @@ data:
     \        }\n        ls_.insert(dat.size());\n        seg_ = decltype(seg_){dat};\n\
     \    }\n\n    inline usize size() const noexcept {\n        return dat_.size();\n\
     \    }\n\n    V product(usize l, usize r) const {\n        assert(l <= r and r\
-    \ <= dat_.size());\n        auto second_l = ls_.upper_bound(l);\n        auto\
-    \ first_l = std::prev(second_l);\n        if (second_l != ls_.end() and r <= *second_l)\
-    \ { // \u4E00\u3064\u306E\u533A\u9593\u306B\u542B\u307E\u308C\u3066\u3044\u308B\
-    \n            return power(dat_[*first_l], r - l);\n        }\n        auto last_l\
-    \ = std::prev(ls_.upper_bound(r));\n        return M::operation(\n           \
-    \     M::operation(\n                    power(dat_[*first_l], *second_l - l),\n\
-    \                    seg_.product(*second_l, *last_l)\n                    ),\n\
-    \                power(dat_[*last_l], r - *last_l)\n                );\n    }\n\
-    \n    void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= dat_.size());\n\
-    \        if (l == r) return;\n        // assert(*it_l < n);\n        auto it_l\
-    \ = std::prev(ls_.upper_bound(l)), it_r = std::prev(ls_.upper_bound(r)); \n  \
-    \      if (*it_l < l) seg_.set(*it_l, power(dat_[*it_l], l - *it_l));\n      \
-    \  seg_.set(l, power(v, r - l));\n        if (*it_r < r and r < dat_.size()) {\n\
-    \            dat_[r] = dat_[*it_r];\n            seg_.set(r, power(dat_[r], *std::next(it_r)\
-    \ - r));\n            ls_.insert(r);\n        }\n        dat_[l] = v;\n      \
-    \  for (it_l++ ; *it_l < r ; it_l = ls_.erase(it_l)) {\n            seg_.set(*it_l,\
-    \ M::identity());\n            dat_[*it_l] = M::identity();\n        }\n     \
-    \   ls_.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<M> seg_;\n\n    std::vector<V>\
-    \ dat_;\n\n    std::set<usize> ls_; \n\n    static V power(V v, u32 p) requires\
-    \ Concept::FastPowerableMonoid<M> {\n        return M::power(v, p);\n    }\n\n\
-    \    static V power(V v, u32 p) {\n        V res{M::identity()};\n        while\
-    \ (p) {\n            if (p & 1) res = M::operation(res, v);\n            v = M::operation(v,\
-    \ v);\n            p >>= 1; \n        }\n        return res;\n    }\n};\n\n} //\
-    \ namespace zawa\n"
+    \ <= dat_.size());\n        if (l == r) return M::identity();\n        auto second_l\
+    \ = ls_.upper_bound(l);\n        auto first_l = std::prev(second_l);\n       \
+    \ if (second_l != ls_.end() and r <= *second_l) { // \u4E00\u3064\u306E\u533A\u9593\
+    \u306B\u542B\u307E\u308C\u3066\u3044\u308B\n            return power(dat_[*first_l],\
+    \ r - l);\n        }\n        auto last_l = std::prev(ls_.upper_bound(r));\n \
+    \       V res = M::operation(\n                power(dat_[*first_l], *second_l\
+    \ - l),\n                seg_.product(*second_l, *last_l)\n                );\n\
+    \        if (r == *last_l) return res;\n        return M::operation(res, power(dat_[*last_l],\
+    \ r - *last_l));\n    }\n\n    void assign(usize l, usize r, V v) {\n        assert(l\
+    \ <= r and r <= dat_.size());\n        if (l == r) return;\n        // assert(*it_l\
+    \ < n);\n        auto it_l = std::prev(ls_.upper_bound(l)), it_r = std::prev(ls_.upper_bound(r));\
+    \ \n        if (*it_l < l) seg_.set(*it_l, power(dat_[*it_l], l - *it_l));\n \
+    \       seg_.set(l, power(v, r - l));\n        if (*it_r < r and r < dat_.size())\
+    \ {\n            dat_[r] = dat_[*it_r];\n            seg_.set(r, power(dat_[r],\
+    \ *std::next(it_r) - r));\n            ls_.insert(r);\n        }\n        dat_[l]\
+    \ = v;\n        for (it_l++ ; *it_l < r ; it_l = ls_.erase(it_l)) {\n        \
+    \    seg_.set(*it_l, M::identity());\n            dat_[*it_l] = M::identity();\n\
+    \        }\n        ls_.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<M> seg_;\n\
+    \n    std::vector<V> dat_;\n\n    std::set<usize> ls_; \n\n    static V power(V\
+    \ v, u32 p) requires Concept::FastPowerableMonoid<M> {\n        return M::power(v,\
+    \ p);\n    }\n\n    static V power(V v, u32 p) {\n        V res{M::identity()};\n\
+    \        while (p) {\n            if (p & 1) res = M::operation(res, v);\n   \
+    \         v = M::operation(v, v);\n            p >>= 1; \n        }\n        return\
+    \ res;\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
     \n#include \"./SegmentTree.hpp\"\n\n#include <cassert>\n#include <vector>\n#include\
     \ <set>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T, class\
@@ -172,30 +175,30 @@ data:
     \        }\n        ls_.insert(dat.size());\n        seg_ = decltype(seg_){dat};\n\
     \    }\n\n    inline usize size() const noexcept {\n        return dat_.size();\n\
     \    }\n\n    V product(usize l, usize r) const {\n        assert(l <= r and r\
-    \ <= dat_.size());\n        auto second_l = ls_.upper_bound(l);\n        auto\
-    \ first_l = std::prev(second_l);\n        if (second_l != ls_.end() and r <= *second_l)\
-    \ { // \u4E00\u3064\u306E\u533A\u9593\u306B\u542B\u307E\u308C\u3066\u3044\u308B\
-    \n            return power(dat_[*first_l], r - l);\n        }\n        auto last_l\
-    \ = std::prev(ls_.upper_bound(r));\n        return M::operation(\n           \
-    \     M::operation(\n                    power(dat_[*first_l], *second_l - l),\n\
-    \                    seg_.product(*second_l, *last_l)\n                    ),\n\
-    \                power(dat_[*last_l], r - *last_l)\n                );\n    }\n\
-    \n    void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= dat_.size());\n\
-    \        if (l == r) return;\n        // assert(*it_l < n);\n        auto it_l\
-    \ = std::prev(ls_.upper_bound(l)), it_r = std::prev(ls_.upper_bound(r)); \n  \
-    \      if (*it_l < l) seg_.set(*it_l, power(dat_[*it_l], l - *it_l));\n      \
-    \  seg_.set(l, power(v, r - l));\n        if (*it_r < r and r < dat_.size()) {\n\
-    \            dat_[r] = dat_[*it_r];\n            seg_.set(r, power(dat_[r], *std::next(it_r)\
-    \ - r));\n            ls_.insert(r);\n        }\n        dat_[l] = v;\n      \
-    \  for (it_l++ ; *it_l < r ; it_l = ls_.erase(it_l)) {\n            seg_.set(*it_l,\
-    \ M::identity());\n            dat_[*it_l] = M::identity();\n        }\n     \
-    \   ls_.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<M> seg_;\n\n    std::vector<V>\
-    \ dat_;\n\n    std::set<usize> ls_; \n\n    static V power(V v, u32 p) requires\
-    \ Concept::FastPowerableMonoid<M> {\n        return M::power(v, p);\n    }\n\n\
-    \    static V power(V v, u32 p) {\n        V res{M::identity()};\n        while\
-    \ (p) {\n            if (p & 1) res = M::operation(res, v);\n            v = M::operation(v,\
-    \ v);\n            p >>= 1; \n        }\n        return res;\n    }\n};\n\n} //\
-    \ namespace zawa\n"
+    \ <= dat_.size());\n        if (l == r) return M::identity();\n        auto second_l\
+    \ = ls_.upper_bound(l);\n        auto first_l = std::prev(second_l);\n       \
+    \ if (second_l != ls_.end() and r <= *second_l) { // \u4E00\u3064\u306E\u533A\u9593\
+    \u306B\u542B\u307E\u308C\u3066\u3044\u308B\n            return power(dat_[*first_l],\
+    \ r - l);\n        }\n        auto last_l = std::prev(ls_.upper_bound(r));\n \
+    \       V res = M::operation(\n                power(dat_[*first_l], *second_l\
+    \ - l),\n                seg_.product(*second_l, *last_l)\n                );\n\
+    \        if (r == *last_l) return res;\n        return M::operation(res, power(dat_[*last_l],\
+    \ r - *last_l));\n    }\n\n    void assign(usize l, usize r, V v) {\n        assert(l\
+    \ <= r and r <= dat_.size());\n        if (l == r) return;\n        // assert(*it_l\
+    \ < n);\n        auto it_l = std::prev(ls_.upper_bound(l)), it_r = std::prev(ls_.upper_bound(r));\
+    \ \n        if (*it_l < l) seg_.set(*it_l, power(dat_[*it_l], l - *it_l));\n \
+    \       seg_.set(l, power(v, r - l));\n        if (*it_r < r and r < dat_.size())\
+    \ {\n            dat_[r] = dat_[*it_r];\n            seg_.set(r, power(dat_[r],\
+    \ *std::next(it_r) - r));\n            ls_.insert(r);\n        }\n        dat_[l]\
+    \ = v;\n        for (it_l++ ; *it_l < r ; it_l = ls_.erase(it_l)) {\n        \
+    \    seg_.set(*it_l, M::identity());\n            dat_[*it_l] = M::identity();\n\
+    \        }\n        ls_.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<M> seg_;\n\
+    \n    std::vector<V> dat_;\n\n    std::set<usize> ls_; \n\n    static V power(V\
+    \ v, u32 p) requires Concept::FastPowerableMonoid<M> {\n        return M::power(v,\
+    \ p);\n    }\n\n    static V power(V v, u32 p) {\n        V res{M::identity()};\n\
+    \        while (p) {\n            if (p & 1) res = M::operation(res, v);\n   \
+    \         v = M::operation(v, v);\n            p >>= 1; \n        }\n        return\
+    \ res;\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -203,13 +206,14 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2025-02-26 21:14:45+09:00'
+  timestamp: '2025-02-28 17:31:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
+  - Test/AtCoder/abl_e.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
 layout: document
 title: Assignment Segment Tree

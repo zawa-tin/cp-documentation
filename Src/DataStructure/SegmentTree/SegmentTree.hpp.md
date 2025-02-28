@@ -34,6 +34,9 @@ data:
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abl_e.test.cpp
+    title: Test/AtCoder/abl_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -194,6 +197,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTree.hpp
 layout: document
