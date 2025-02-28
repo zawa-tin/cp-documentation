@@ -31,8 +31,8 @@ struct M {
         return {rep[v.first.val()][exp], (int)exp};
     }
 };
-#include <random>
 int main() {
+#ifdef ATCODER
     SetFastIO();
     std::cin >> N >> Q; 
     p10[0] = mint::raw(1);
@@ -50,4 +50,7 @@ int main() {
         seg.assign(L, R, {mint::raw(D), 1});
         std::cout << seg.product(0, N).first.val() << '\n';
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }
