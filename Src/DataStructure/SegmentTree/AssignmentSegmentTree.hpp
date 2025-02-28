@@ -69,19 +69,19 @@ public:
 
     V product(usize l, usize r) const {
         assert(l <= r and r <= dat_.size());
+        if (l == r) return M::identity();
         auto second_l = ls_.upper_bound(l);
         auto first_l = std::prev(second_l);
         if (second_l != ls_.end() and r <= *second_l) { // 一つの区間に含まれている
             return power(dat_[*first_l], r - l);
         }
         auto last_l = std::prev(ls_.upper_bound(r));
-        return M::operation(
-                M::operation(
-                    power(dat_[*first_l], *second_l - l),
-                    seg_.product(*second_l, *last_l)
-                    ),
-                power(dat_[*last_l], r - *last_l)
+        V res = M::operation(
+                power(dat_[*first_l], *second_l - l),
+                seg_.product(*second_l, *last_l)
                 );
+        if (r == *last_l) return res;
+        return M::operation(res, power(dat_[*last_l], r - *last_l));
     }
 
     void assign(usize l, usize r, V v) {
