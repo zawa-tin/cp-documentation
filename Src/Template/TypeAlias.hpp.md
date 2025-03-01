@@ -991,6 +991,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3044.test.cpp
+    title: Test/yukicoder/3044.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -1301,6 +1304,7 @@ data:
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/yukicoder/117.test.cpp
+  - Test/yukicoder/3044.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/rectangle_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp

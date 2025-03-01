@@ -12,6 +12,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/tdpc_fibonacci.test.cpp
     title: Test/Manual/tdpc_fibonacci.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3044.test.cpp
+    title: Test/yukicoder/3044.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -83,6 +86,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/tdpc_fibonacci.test.cpp
+  - Test/yukicoder/3044.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: Src/FPS/KthTerm.hpp
 layout: document
