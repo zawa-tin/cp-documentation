@@ -14,6 +14,9 @@ data:
     path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
     title: Dual Fenwick Tree
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/CompressedSequence.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -25,11 +28,11 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/arc088/submissions/63367117
-    - https://atcoder.jp/contests/arc088/tasks/arc088_c
+    - https://atcoder.jp/contests/abc389/submissions/63369989
+    - https://atcoder.jp/contests/abc389/tasks/abc389_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/AtCoder/arc088_e.test.cpp\"\n// #define PROBLEM \"\
-    https://atcoder.jp/contests/arc088/tasks/arc088_c\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc389_f.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc389/tasks/abc389_f\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
@@ -101,76 +104,87 @@ data:
     \n    std::vector<V> dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept {\n\
     \        return x & -x;\n    }\n\n    void add(i32 i, const V& v) {\n        for\
     \ (i++ ; i <= (i32)size() ; i += lsb(i)) dat_[i] = G::operation(dat_[i], v);\n\
-    \    }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/arc088_e.test.cpp\"\n\
-    \n/*\n * AtCoder Regular Contest 088 - E Papple Sort\n * https://atcoder.jp/contests/arc088/submissions/63367117\n\
-    \ */\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include\
-    \ <numeric>\nusing namespace zawa;\nstd::string S;\nstd::vector<int> pos[26];\n\
-    std::vector<std::pair<int, int>> match[26];\nbool is_palin() {\n    int odd =\
-    \ 0;\n    for (int i = 0 ; i < 26 ; i++) odd += pos[i].size() & 1;\n    return\
-    \ odd <= 1;\n}\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n   \
-    \ std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    std::cin\
-    \ >> S;\n    for (int i = 0 ; i < (int)S.size() ; i++) pos[S[i] - 'a'].push_back(i);\n\
-    \    if (is_palin()) {\n        for (int i = 0 ; i < 26 ; i++) {\n           \
-    \ match[i].reserve(pos[i].size() / 2);\n            for (int j = 0, k = (int)pos[i].size()\
-    \ - 1 ; j < k ; j++, k--) {\n                match[i].push_back({ pos[i][j], pos[i][k]\
-    \ });\n            }\n            std::reverse(match[i].begin(), match[i].end());\n\
-    \        }\n        std::vector<int> init(S.size());\n        std::iota(init.begin(),\
-    \ init.end(), 0);\n        DualFenwickTree<AdditiveGroup<int>> fen{init};\n  \
-    \      long long ans = 0;\n        for (int l = 0, r = (int)S.size() - 1 ; l <\
-    \ r ; l++, r--) {\n            int min = (int)1e9, arg = -1;\n            for\
-    \ (int i = 0 ; i < 26 ; i++) if (match[i].size()) {\n                auto [ll,\
-    \ rr] = match[i].back();\n                int cost = fen[ll] - l + r - fen[rr];\n\
-    \                if (min > cost) {\n                    min = cost;\n        \
-    \            arg = i;\n                }\n            }\n            assert(arg\
-    \ != -1);\n            auto [ll, rr] = match[arg].back();\n            match[arg].pop_back();\n\
-    \            ans += min;\n            fen.operation(0, ll, 1);\n            fen.operation(rr\
-    \ + 1, S.size(), -1);\n        }\n        std::cout << ans << '\\n';\n    }\n\
-    \    else {\n        std::cout << -1 << '\\n';\n    }\n#else\n    std::cout <<\
-    \ \"Hello World\\n\";\n#endif\n}\n"
-  code: "// #define PROBLEM \"https://atcoder.jp/contests/arc088/tasks/arc088_c\"\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 6 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n#include <algorithm>\n#line 9 \"Src/Sequence/CompressedSequence.hpp\"\n#include\
+    \ <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
+    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
+    \n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n   \
+    \ CompressedSequence() = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 7 \"Test/AtCoder/abc389_f.test.cpp\"\n\n/*\n * AtCoder Beginner\
+    \ Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63369989\n\
+    \ */\n\n#line 15 \"Test/AtCoder/abc389_f.test.cpp\"\n#include <iostream>\n#line\
+    \ 17 \"Test/AtCoder/abc389_f.test.cpp\"\nusing namespace zawa;\nint N, L[200020],\
+    \ R[200020], Q, X[300030];\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    \n  \
+    \  std::cin >> N;\n    for (int i = 0 ; i < N ; i++) {\n        std::cin >> L[i]\
+    \ >> R[i];\n        R[i]++;\n    }\n    std::cin >> Q;\n    for (int i = 0 ; i\
+    \ < Q ; i++) std::cin >> X[i];\n    CompressedSequence<int> comp(X, X + Q);  \
+    \  \n    std::vector<int> init(comp.size());\n    for (int i = 0 ; i < (int)comp.size()\
+    \ ; i++) init[i] = comp.inverse(i);\n    DualFenwickTree<AdditiveGroup<int>> fen{init.begin(),\
+    \ init.end()};\n    auto idx = [&](int v) -> int {\n        auto it = fen.maxRight(0,\
+    \ [&](int x) -> bool { return x < v; });\n        return it ? it.value() : (int)comp.size();\
+    \    \n    };\n    for (int i = 0 ; i < N ; i++) {\n        int l = idx(L[i]),\
+    \ r = idx(R[i]);\n        fen.operation(l, r, 1);\n    }\n    for (int i = 0 ;\
+    \ i < Q ; i++) {\n        std::cout << fen[comp.at(X[i])] << '\\n';\n    }\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc389/tasks/abc389_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/DualFenwickTree.hpp\"\
-    \n\n/*\n * AtCoder Regular Contest 088 - E Papple Sort\n * https://atcoder.jp/contests/arc088/submissions/63367117\n\
-    \ */\n\n#include <algorithm>\n#include <iostream>\n#include <string>\n#include\
-    \ <numeric>\nusing namespace zawa;\nstd::string S;\nstd::vector<int> pos[26];\n\
-    std::vector<std::pair<int, int>> match[26];\nbool is_palin() {\n    int odd =\
-    \ 0;\n    for (int i = 0 ; i < 26 ; i++) odd += pos[i].size() & 1;\n    return\
-    \ odd <= 1;\n}\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n   \
-    \ std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    std::cin\
-    \ >> S;\n    for (int i = 0 ; i < (int)S.size() ; i++) pos[S[i] - 'a'].push_back(i);\n\
-    \    if (is_palin()) {\n        for (int i = 0 ; i < 26 ; i++) {\n           \
-    \ match[i].reserve(pos[i].size() / 2);\n            for (int j = 0, k = (int)pos[i].size()\
-    \ - 1 ; j < k ; j++, k--) {\n                match[i].push_back({ pos[i][j], pos[i][k]\
-    \ });\n            }\n            std::reverse(match[i].begin(), match[i].end());\n\
-    \        }\n        std::vector<int> init(S.size());\n        std::iota(init.begin(),\
-    \ init.end(), 0);\n        DualFenwickTree<AdditiveGroup<int>> fen{init};\n  \
-    \      long long ans = 0;\n        for (int l = 0, r = (int)S.size() - 1 ; l <\
-    \ r ; l++, r--) {\n            int min = (int)1e9, arg = -1;\n            for\
-    \ (int i = 0 ; i < 26 ; i++) if (match[i].size()) {\n                auto [ll,\
-    \ rr] = match[i].back();\n                int cost = fen[ll] - l + r - fen[rr];\n\
-    \                if (min > cost) {\n                    min = cost;\n        \
-    \            arg = i;\n                }\n            }\n            assert(arg\
-    \ != -1);\n            auto [ll, rr] = match[arg].back();\n            match[arg].pop_back();\n\
-    \            ans += min;\n            fen.operation(0, ll, 1);\n            fen.operation(rr\
-    \ + 1, S.size(), -1);\n        }\n        std::cout << ans << '\\n';\n    }\n\
-    \    else {\n        std::cout << -1 << '\\n';\n    }\n#else\n    std::cout <<\
-    \ \"Hello World\\n\";\n#endif\n}\n"
+    \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n\n/*\n * AtCoder Beginner\
+    \ Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63369989\n\
+    \ */\n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include\
+    \ <vector>\nusing namespace zawa;\nint N, L[200020], R[200020], Q, X[300030];\n\
+    int main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    \n    std::cin >> N;\n    for (int\
+    \ i = 0 ; i < N ; i++) {\n        std::cin >> L[i] >> R[i];\n        R[i]++;\n\
+    \    }\n    std::cin >> Q;\n    for (int i = 0 ; i < Q ; i++) std::cin >> X[i];\n\
+    \    CompressedSequence<int> comp(X, X + Q);    \n    std::vector<int> init(comp.size());\n\
+    \    for (int i = 0 ; i < (int)comp.size() ; i++) init[i] = comp.inverse(i);\n\
+    \    DualFenwickTree<AdditiveGroup<int>> fen{init.begin(), init.end()};\n    auto\
+    \ idx = [&](int v) -> int {\n        auto it = fen.maxRight(0, [&](int x) -> bool\
+    \ { return x < v; });\n        return it ? it.value() : (int)comp.size();    \n\
+    \    };\n    for (int i = 0 ; i < N ; i++) {\n        int l = idx(L[i]), r = idx(R[i]);\n\
+    \        fen.operation(l, r, 1);\n    }\n    for (int i = 0 ; i < Q ; i++) {\n\
+    \        std::cout << fen[comp.at(X[i])] << '\\n';\n    }\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
-  path: Test/AtCoder/arc088_e.test.cpp
+  path: Test/AtCoder/abc389_f.test.cpp
   requiredBy: []
   timestamp: '2025-03-03 23:11:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AtCoder/arc088_e.test.cpp
+documentation_of: Test/AtCoder/abc389_f.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AtCoder/arc088_e.test.cpp
-- /verify/Test/AtCoder/arc088_e.test.cpp.html
-title: Test/AtCoder/arc088_e.test.cpp
+- /verify/Test/AtCoder/abc389_f.test.cpp
+- /verify/Test/AtCoder/abc389_f.test.cpp.html
+title: Test/AtCoder/abc389_f.test.cpp
 ---

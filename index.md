@@ -916,6 +916,9 @@ data:
       path: Test/AtCoder/abc384_g.test.cpp
       title: Test/AtCoder/abc384_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc389_f.test.cpp
+      title: Test/AtCoder/abc389_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'

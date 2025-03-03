@@ -79,6 +79,9 @@ data:
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc389_f.test.cpp
+    title: Test/AtCoder/abc389_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -165,6 +168,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc292_h.test.cpp

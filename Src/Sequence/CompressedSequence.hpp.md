@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc389_f.test.cpp
+    title: Test/AtCoder/abc389_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -109,6 +112,7 @@ data:
   - Test/LC/range_kth_smallest.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
