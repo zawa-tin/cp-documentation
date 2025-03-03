@@ -7,7 +7,7 @@
 
 /*
  * Atcoder Beginner Contest 340 - E Mancala 2
- *
+ * https://atcoder.jp/contests/abc340/submissions/63367056
  */
 
 #include <iostream>
