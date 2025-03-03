@@ -6,7 +6,7 @@
 
 /*
  * AtCoder Regular Contest 088 - E Papple Sort
- * https://atcoder.jp/contests/arc088/submissions/63213121
+ * https://atcoder.jp/contests/arc088/submissions/63367117
  */
 
 #include <algorithm>
