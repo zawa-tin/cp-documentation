@@ -7,7 +7,7 @@
 
 /*
  * AtCoder Beginner Contest 389 - F Rated Range
- * https://atcoder.jp/contests/abc389/submissions/63369989
+ * https://atcoder.jp/contests/abc389/submissions/63396294
  */
 
 #include <algorithm>
@@ -30,8 +30,7 @@ int main() {
     std::cin >> Q;
     for (int i = 0 ; i < Q ; i++) std::cin >> X[i];
     CompressedSequence<int> comp(X, X + Q);    
-    std::vector<int> init(comp.size());
-    for (int i = 0 ; i < (int)comp.size() ; i++) init[i] = comp.inverse(i);
+    auto init = comp.comped();
     DualFenwickTree<AdditiveGroup<int>> fen{init.begin(), init.end()};
     auto idx = [&](int v) -> int {
         auto it = fen.maxRight(0, [&](int x) -> bool { return x < v; });
