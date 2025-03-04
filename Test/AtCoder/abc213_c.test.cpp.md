@@ -29,12 +29,11 @@ data:
     \n} // namespace zawa\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include\
     \ <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n#include\
     \ <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
-    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
-    \n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n   \
-    \ CompressedSequence() = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
-    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
-    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ {\npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
+    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
     \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
@@ -51,15 +50,17 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\n\n/*\n * ABC213-C Reorder\
-    \ Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n */\n\n#include\
-    \ <iostream>\n#line 14 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing namespace zawa;\n\
-    \ni32 main() {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin >> H >> W >>\
-    \ N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i < N ; i++) {\n\
-    \        std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence compY(A);\n\
-    \    CompressedSequence<u32> compX(B.begin(), B.end());\n    for (u32 i = 0 ;\
-    \ i < N ; i++) {\n        std::cout << compY.map(i) + 1 << ' ' << compX.map(i)\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\n\n/*\n * ABC213-C\
+    \ Reorder Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n\
+    \ */\n\n#include <iostream>\n#line 14 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing\
+    \ namespace zawa;\n\ni32 main() {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin\
+    \ >> H >> W >> N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i <\
+    \ N ; i++) {\n        std::cin >> A[i] >> B[i];\n    }\n\n    CompressedSequence\
+    \ compY(A);\n    CompressedSequence<u32> compX(B.begin(), B.end());\n    for (u32\
+    \ i = 0 ; i < N ; i++) {\n        std::cout << compY.map(i) + 1 << ' ' << compX.map(i)\
     \ + 1 << std::endl;\n    }\n#else\n    std::cout << \"Hello World\" << '\\n';\n\
     #endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc213/tasks/abc213_c\"\n\
@@ -80,7 +81,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc213_c.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:44:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc213_c.test.cpp

@@ -118,8 +118,7 @@ data:
     \n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 6 \"Src/Sequence/CompressedSequence.hpp\"\
     \n#include <algorithm>\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\n#include\
     \ <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass\
-    \ CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
-    \ f_;\n    \npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \ CompressedSequence {\npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
     \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
     \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
     \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
@@ -140,9 +139,11 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 6 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\n\n\
-    #include <utility>\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 6 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \n\n#include <utility>\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n#include <tuple>\n\nnamespace zawa {\n\ntemplate <class T, class G>\nclass OfflineFenwickTree2D\
     \ {\npublic:\n    using V = typename G::Element;\n\n    OfflineFenwickTree2D()\
     \ = default;\n\n    u32 operation(T x, T y, const V& v) {\n        u32 res{(u32)idx_.size()};\n\
@@ -215,7 +216,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:44:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp

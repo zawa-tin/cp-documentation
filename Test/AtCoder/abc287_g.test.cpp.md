@@ -45,9 +45,8 @@ data:
     }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n\
     #line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\n\
-    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
-    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\n    static\
-    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
+    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\n\
+    \    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
     \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
     \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
@@ -68,9 +67,11 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 2 \"\
-    Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
     \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
     \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
@@ -228,7 +229,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:44:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc287_g.test.cpp

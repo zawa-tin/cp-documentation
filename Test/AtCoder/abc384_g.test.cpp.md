@@ -134,12 +134,12 @@ data:
     };\n\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\
     \n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
     \n#include <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class\
-    \ T>\nclass CompressedSequence {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32>\
-    \ f_;\n    \npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
-    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
-    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
-    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
-    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ T>\nclass CompressedSequence {\npublic:\n\n    static constexpr u32 NotFound\
+    \ = std::numeric_limits<u32>::max();\n\n    CompressedSequence() = default;\n\n\
+    \    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
+    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
     \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
@@ -156,13 +156,15 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\n\
-    template <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n \
-    \   static constexpr T identity() noexcept {\n        return T{};\n    }\n   \
-    \ static constexpr T operation(const T& l, const T& r) noexcept {\n        return\
-    \ l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept {\n     \
-    \   return -v;\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/AtCoder/abc384_g.test.cpp\"\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
+    \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
+    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
+    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
+    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/AtCoder/abc384_g.test.cpp\"\
     \n\n/*\n * ABC384-G Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/63198068\n\
     \ */\n\nusing namespace zawa;\n\nint N, K, A[100000], B[100000];\nstruct query\
     \ {\n    usize l, r;\n};\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence\
@@ -245,7 +247,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc384_g.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:44:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc384_g.test.cpp

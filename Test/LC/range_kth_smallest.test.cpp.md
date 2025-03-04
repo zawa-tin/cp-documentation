@@ -36,9 +36,8 @@ data:
     \ zawa\n#line 2 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
     \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
     \ <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\n\
-    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\nprivate:\n\
-    \    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\n    static\
-    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
+    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\n\
+    \    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
     \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
     \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
@@ -59,15 +58,17 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 7 \"Src/Sequence/RangeKthSmallest.hpp\"\
-    \n#include <bit>\n#line 9 \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <utility>\n\
-    #line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class T, class U>\nstd::vector<T> RangeKthSmallest(const std::vector<T>& A,\
-    \ const std::vector<U>& Q) {\n    assert(A.size());\n    CompressedSequence comp{A};\n\
-    \    std::vector<std::vector<std::pair<usize, bool>>> event(A.size() + 1);\n \
-    \   for (usize i{} ; i < Q.size() ; i++) {\n        const U& q{Q[i]};\n      \
-    \  assert(q.l < q.r and q.r <= A.size());\n        assert(q.k < q.r - q.l);\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 7\
+    \ \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"Src/Sequence/RangeKthSmallest.hpp\"\
+    \n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T, class U>\nstd::vector<T> RangeKthSmallest(const\
+    \ std::vector<T>& A, const std::vector<U>& Q) {\n    assert(A.size());\n    CompressedSequence\
+    \ comp{A};\n    std::vector<std::vector<std::pair<usize, bool>>> event(A.size()\
+    \ + 1);\n    for (usize i{} ; i < Q.size() ; i++) {\n        const U& q{Q[i]};\n\
+    \        assert(q.l < q.r and q.r <= A.size());\n        assert(q.k < q.r - q.l);\n\
     \        event[q.l].emplace_back(i, true);\n        event[q.r].emplace_back(i,\
     \ false);\n    }\n    std::vector<usize> x(Q.size()), cnt(Q.size());\n    const\
     \ usize LOG{(usize)(std::bit_width(comp.size()) -\n            (std::has_single_bit(comp.size())\
@@ -105,7 +106,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:44:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_kth_smallest.test.cpp

@@ -28,7 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc389/submissions/63369989
+    - https://atcoder.jp/contests/abc389/submissions/63396294
     - https://atcoder.jp/contests/abc389/tasks/abc389_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc389_f.test.cpp\"\n// #define PROBLEM \"\
@@ -108,12 +108,11 @@ data:
     \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 6 \"Src/Sequence/CompressedSequence.hpp\"\
     \n#include <algorithm>\n#line 9 \"Src/Sequence/CompressedSequence.hpp\"\n#include\
     \ <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
-    \ {\nprivate:\n    std::vector<T> comped_;\n    std::vector<u32> f_;\n    \npublic:\n\
-    \n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n   \
-    \ CompressedSequence() = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
-    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
-    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ {\npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
+    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
     \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
@@ -130,9 +129,11 @@ data:
     \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
     \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 7 \"Test/AtCoder/abc389_f.test.cpp\"\n\n/*\n * AtCoder Beginner\
-    \ Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63369989\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 7 \"Test/AtCoder/abc389_f.test.cpp\"\n\n/*\n * AtCoder\
+    \ Beginner Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63396294\n\
     \ */\n\n#line 15 \"Test/AtCoder/abc389_f.test.cpp\"\n#include <iostream>\n#line\
     \ 17 \"Test/AtCoder/abc389_f.test.cpp\"\nusing namespace zawa;\nint N, L[200020],\
     \ R[200020], Q, X[300030];\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
@@ -140,8 +141,7 @@ data:
     \  std::cin >> N;\n    for (int i = 0 ; i < N ; i++) {\n        std::cin >> L[i]\
     \ >> R[i];\n        R[i]++;\n    }\n    std::cin >> Q;\n    for (int i = 0 ; i\
     \ < Q ; i++) std::cin >> X[i];\n    CompressedSequence<int> comp(X, X + Q);  \
-    \  \n    std::vector<int> init(comp.size());\n    for (int i = 0 ; i < (int)comp.size()\
-    \ ; i++) init[i] = comp.inverse(i);\n    DualFenwickTree<AdditiveGroup<int>> fen{init.begin(),\
+    \  \n    auto init = comp.comped();\n    DualFenwickTree<AdditiveGroup<int>> fen{init.begin(),\
     \ init.end()};\n    auto idx = [&](int v) -> int {\n        auto it = fen.maxRight(0,\
     \ [&](int x) -> bool { return x < v; });\n        return it ? it.value() : (int)comp.size();\
     \    \n    };\n    for (int i = 0 ; i < N ; i++) {\n        int l = idx(L[i]),\
@@ -152,15 +152,14 @@ data:
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/DualFenwickTree.hpp\"\
     \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n\n/*\n * AtCoder Beginner\
-    \ Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63369989\n\
+    \ Contest 389 - F Rated Range\n * https://atcoder.jp/contests/abc389/submissions/63396294\n\
     \ */\n\n#include <algorithm>\n#include <cassert>\n#include <iostream>\n#include\
     \ <vector>\nusing namespace zawa;\nint N, L[200020], R[200020], Q, X[300030];\n\
     int main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n    \n    std::cin >> N;\n    for (int\
     \ i = 0 ; i < N ; i++) {\n        std::cin >> L[i] >> R[i];\n        R[i]++;\n\
     \    }\n    std::cin >> Q;\n    for (int i = 0 ; i < Q ; i++) std::cin >> X[i];\n\
-    \    CompressedSequence<int> comp(X, X + Q);    \n    std::vector<int> init(comp.size());\n\
-    \    for (int i = 0 ; i < (int)comp.size() ; i++) init[i] = comp.inverse(i);\n\
+    \    CompressedSequence<int> comp(X, X + Q);    \n    auto init = comp.comped();\n\
     \    DualFenwickTree<AdditiveGroup<int>> fen{init.begin(), init.end()};\n    auto\
     \ idx = [&](int v) -> int {\n        auto it = fen.maxRight(0, [&](int x) -> bool\
     \ { return x < v; });\n        return it ? it.value() : (int)comp.size();    \n\
@@ -178,7 +177,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc389_f.test.cpp
   requiredBy: []
-  timestamp: '2025-03-03 23:11:45+09:00'
+  timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc389_f.test.cpp
