@@ -60,6 +60,18 @@ u32 operator[](const T& v) const
 
 <br />
 
+#### upper_bound
+
+```cpp
+u32 upper_bound(const T& v) const
+```
+
+集合 $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ 上で`v`で`upper_bound`します。
+
+`upper_bound - begin()`を返します。
+
+**計算量:** $O(\log N)$
+
 #### at
 
 ```cpp
@@ -122,6 +134,17 @@ inline T inverse(u32 i) const noexcept
 **計算量**: 定数時間
 
 <br />
+
+
+#### comped
+
+```cpp
+inline std::vector<T> comped() const noexcept
+```
+
+集合 $\\{\ x \mid \exists i_{1\le i\le N}\ x = A_i\ \\}$ に属する値を小さい順に入れたvectorを返します。
+
+**計算量**: 集合サイズ
 
 ## アルゴリズム、そもそも座標圧縮とは
 

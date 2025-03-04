@@ -12,10 +12,6 @@ namespace zawa {
 
 template <class T>
 class CompressedSequence {
-private:
-    std::vector<T> comped_;
-    std::vector<u32> f_;
-    
 public:
 
     static constexpr u32 NotFound = std::numeric_limits<u32>::max();
@@ -72,6 +68,17 @@ public:
         assert(i < size());
         return comped_[i];
     }
+
+    inline std::vector<T> comped() const noexcept {
+        return comped_;
+    }
+
+private:
+
+    std::vector<T> comped_;
+
+    std::vector<u32> f_;
+
 };
 
 } // namespace zawa
