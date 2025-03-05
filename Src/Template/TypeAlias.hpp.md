@@ -373,9 +373,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
-  - icon: ':warning:'
-    path: Test/AOJ/3079.cpp
-    title: Test/AOJ/3079.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -450,6 +447,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
     title: AOJ2957 MOD Rush
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3079.test.cpp
+    title: Test/AOJ/3079.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3168.test.cpp
     title: Test/AOJ/3168.test.cpp
@@ -1079,7 +1079,6 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
-  - Test/AOJ/3079.cpp
   - Src/Template/VectorIO.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/PairIO.hpp
@@ -1240,6 +1239,7 @@ data:
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
+  - Test/AOJ/3079.test.cpp
   - Test/AOJ/GRL_3_A.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp

@@ -528,11 +528,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Utility/U32Pair.hpp
       title: Src/Utility/U32Pair.hpp
-  - name: Test/AOJ
-    pages:
-    - icon: ':warning:'
-      path: Test/AOJ/3079.cpp
-      title: Test/AOJ/3079.cpp
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -609,6 +604,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2957.test.cpp
       title: AOJ2957 MOD Rush
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/3079.test.cpp
+      title: Test/AOJ/3079.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3168.test.cpp
       title: Test/AOJ/3168.test.cpp
