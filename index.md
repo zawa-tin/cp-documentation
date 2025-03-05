@@ -528,6 +528,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Utility/U32Pair.hpp
       title: Src/Utility/U32Pair.hpp
+  - name: Test/AOJ
+    pages:
+    - icon: ':warning:'
+      path: Test/AOJ/3079.cpp
+      title: Test/AOJ/3079.cpp
   verificationCategories:
   - name: Test/AOJ
     pages:

@@ -373,6 +373,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
+  - icon: ':warning:'
+    path: Test/AOJ/3079.cpp
+    title: Test/AOJ/3079.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -1076,6 +1079,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Test/AOJ/3079.cpp
   - Src/Template/VectorIO.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/PairIO.hpp

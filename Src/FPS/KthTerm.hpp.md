@@ -4,7 +4,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Test/AOJ/3079.cpp
+    title: Test/AOJ/3079.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
@@ -81,7 +84,8 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/KthTerm.hpp
-  requiredBy: []
+  requiredBy:
+  - Test/AOJ/3079.cpp
   timestamp: '2024-11-13 00:58:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -104,6 +108,8 @@ template <class T, class F>
 T KthTerm(u64 K, std::vector<T> A, std::vector<T> C, F mult)
 ```
 
+**引数の順番注意！: K -> A -> C -> multです！**
+
 #### T (template)
 
 基本的にはmintを入れることになるだろう。
@@ -120,7 +126,7 @@ T KthTerm(u64 K, std::vector<T> A, std::vector<T> C, F mult)
 
 #### C
 
-線形漸化式の係数
+線形漸化式の係数 $(C_{1}, C_{2}, \dots, C_{d})$
 
 #### mult
 
