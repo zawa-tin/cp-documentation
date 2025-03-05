@@ -14,6 +14,8 @@ template <class T, class F>
 T KthTerm(u64 K, std::vector<T> A, std::vector<T> C, F mult)
 ```
 
+**引数の順番注意！: K -> A -> C -> multです！**
+
 #### T (template)
 
 基本的にはmintを入れることになるだろう。
@@ -30,7 +32,7 @@ T KthTerm(u64 K, std::vector<T> A, std::vector<T> C, F mult)
 
 #### C
 
-線形漸化式の係数
+線形漸化式の係数 $(C_{1}, C_{2}, \dots, C_{d})$
 
 #### mult
 
