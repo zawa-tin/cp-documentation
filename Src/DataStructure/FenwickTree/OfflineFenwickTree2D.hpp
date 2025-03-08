@@ -1,100 +1,111 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "../../Algebra/Group/GroupConcept.hpp"
 #include "./FenwickTree.hpp"
 #include "../../Sequence/CompressedSequence.hpp"
 
+#include <cassert>
 #include <utility>
 #include <vector>
 #include <tuple>
 
 namespace zawa {
 
-template <class T, class G>
-class OfflineFenwickTree2D {
+namespace internal {
+
+template <class T, Concept::Group G>
+class FenwickTree2D {
 public:
-    using V = typename G::Element;
 
-    OfflineFenwickTree2D() = default;
+    using V = G::Element;
 
-    u32 operation(T x, T y, const V& v) {
-        u32 res{(u32)idx_.size()};
-        idx_.emplace_back(false, op_.size());
-        op_.emplace_back(x, y, v);
+    FenwickTree2D() = default;
+
+    FenwickTree2D(const std::vector<T>& px, const std::vector<T>& py) 
+        : xs_{px}, ys_(xs_.size() + 1), fen_(xs_.size() + 1) {
+        assert(px.size());
+        assert(px.size() == py.size());
+        std::vector<std::vector<T>> appy(xs_.size() + 1);
+        for (usize i = 0 ; i < px.size() ; i++) {
+            auto x = xs_[px[i]];
+            for (x++ ; x < appy.size() ; x += lsb(x)) {
+                appy[x].push_back(py[i]);
+            }
+        }
+        for (usize i = 1 ; i < fen_.size() ; i++) {
+            ys_[i] = CompressedSequence{appy[i]};
+            fen_[i] = FenwickTree<G>{ys_[i].size()};
+        }
+    }
+
+    void operation(const T& x, const T& y, const T& v) {
+        auto i = xs_.find(x);
+        assert(i != CompressedSequence<T>::NotFound);
+        for ( i++ ; i < fen_.size() ; i += lsb(i)) {
+            auto j = ys_[i].find(y);
+            assert(j != CompressedSequence<T>::NotFound);
+            fen_[i].operation(j, v);
+        }
+    }
+
+    [[nodiscard]] V prefixProduct(const T& x, const T& y) const {
+        V res = G::identity();
+        for (u32 i = xs_[x] ; i ; i &= i - 1) {
+            res = G::operation(res, fen_[i].prefixProduct(ys_[i][y])); 
+        }
         return res;
     }
 
-    u32 product(T lx, T ly, T rx, T ry) {
-        u32 res{(u32)idx_.size()};
-        idx_.emplace_back(true, prod_.size());
-        prod_.emplace_back(lx, ly, rx, ry);
-        return res;
-    }
-
-    inline usize size() const noexcept {
-        return idx_.size();
-    }
-
-    std::vector<std::pair<V, u32>> execute() const {
-        std::vector<T> appX;
-        appX.reserve(op_.size());
-        for (u32 i{} ; i < op_.size() ; i++) {
-            appX.push_back(std::get<0>(op_[i]));
-        }
-        CompressedSequence<T> compX{appX};
-        std::vector<std::vector<T>> appY(compX.size() + 1);
-        for (u32 i{} ; i < op_.size() ; i++) {
-            T x{std::get<0>(op_[i])}, y{std::get<1>(op_[i])};
-            for (u32 j{compX[x] + 1} ; j < appY.size() ; j += lsb(j)) {
-                appY[j].push_back(y);
-            }
-        }
-        std::vector<CompressedSequence<T>> compY(compX.size() + 1);
-        for (u32 i{1} ; i < compY.size() ; i++) {
-            compY[i] = CompressedSequence{appY[i]};
-        }
-        std::vector<FenwickTree<G>> fen(compX.size() + 1); 
-        for (u32 i{1} ; i < fen.size() ; i++) {
-            fen[i] = FenwickTree<G>(compY[i].size() + 1);
-        }
-        std::vector<std::pair<V, u32>> res(prod_.size());
-
-        auto prefix{[&](T x, T y) -> V {
-            V res{G::identity()};
-            for (u32 i{compX[x]} ; i ; i -= lsb(i)) {
-                res = G::operation(res, fen[i].prefixProduct(compY[i][y]));
-            }
-            return res;
-        }};
-
-        for (u32 i{} ; i < size() ; i++) {
-            if (idx_[i].first) { // product
-                auto [lx, ly, rx, ry]{prod_[idx_[i].second]};
-                V prod{G::identity()}; 
-                prod = G::operation(prod, prefix(rx, ry));
-                prod = G::operation(prod, G::inverse(prefix(lx, ry)));
-                prod = G::operation(prod, G::inverse(prefix(rx, ly)));
-                prod = G::operation(prod, prefix(lx, ly));
-                res[idx_[i].second] = std::pair{ prod, i }; 
-            }
-            else { // operation
-                auto [x, y, v]{op_[idx_[i].second]};
-                for (u32 j{compX[x] + 1} ; j < fen.size() ; j += lsb(j)) {
-                    fen[j].operation(compY[j][y], v);
-                }
-            }
-        }
-        return res;
+    [[nodiscard]] V product(const T& lx, const T& ly, const T& rx, const T& ry) const {
+        assert(lx <= rx);
+        assert(ly <= ry);
+        V add = G::operation(prefixProduct(rx, ry), prefixProduct(lx, ly));
+        V sub = G::operation(prefixProduct(rx, ly), prefixProduct(lx, ry));
+        return G::operation(add, G::inverse(sub));
     }
 
 private:
-    std::vector<std::tuple<T, T, T>> op_;
-    std::vector<std::tuple<T, T, T, T>> prod_;
-    std::vector<std::pair<bool, u32>> idx_;
 
-    constexpr i32 lsb(i32 v) const noexcept {
+    CompressedSequence<T> xs_;
+
+    std::vector<CompressedSequence<T>> ys_;
+
+    std::vector<FenwickTree<G>> fen_;
+
+    static constexpr i32 lsb(i32 v) {
         return v & -v;
     }
+};
+
+} // namespace internal
+
+template <class T, Concept::Group G>
+class OfflineFenwickTree2D {
+public:
+
+    OfflineFenwickTree2D(usize q = 0) {
+        xs_.reserve(q);
+        ys_.reserve(q);
+    }
+
+    void operation(const T& x, const T& y) {
+        xs_.push_back(x);
+        ys_.push_back(y);
+    }
+
+    void operation(T&& x, T&& y) {
+        xs_.push_back(std::move(x));
+        ys_.push_back(std::move(y));
+    }
+
+    [[nodiscard]] internal::FenwickTree2D<T, G> build() const {
+        return internal::FenwickTree2D<T, G>{xs_, ys_};
+    }
+
+private:
+
+    std::vector<T> xs_{}, ys_{};
 };
 
 } // namespace zawa
