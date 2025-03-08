@@ -7,6 +7,8 @@ documentation_of: //Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
 
 二次元FenwickTree!!
 
+一点加算が行われる点がどこか、先に要求される。(オフライン)
+
 ## ライブラリの使い方
 
 #### テンプレート引数
@@ -17,41 +19,65 @@ template <class T, class G>
 
 `T`: 座標の型
 
-`G`: データ構造に乗せる代数的構造
+`G`: データ構造に乗せる代数的構造。雛形は下から
+
+```cpp
+class G {
+public:
+    using Element = ;
+    static T identity() noexcept {
+    }
+    static T operation(const T& l, const T& r) noexcept {
+    }
+    static T inverse(const T& v) noexcept {
+    }
+};
+```
 
 #### operation
 
 ```cpp
-u32 operation(T x, T y, const V& v)
+void operation(T x, T y)
 ```
 
-$(x, y)$ に $v$ を加算する。これが何番目のクエリかを返す。
+$(x, y)$ に点が加算されることを知らせる。
+
+**計算量:** $O(1)$
+
+<br />
+
+以下、登録された点の数が $N$ 個であるとする。
+
+#### build
+
+```cpp
+[[nodiscard]] internal::FenwickTree2D<T, G> build()
+```
+
+二次元FenwickTreeを構築する。構築されたFenwickTreeを返す。
+
+**計算量:** $O(N\log N)$
+
+以下で説明するものは、`build`の返り値が持つメンバである。
+
+#### operation
+
+```cpp
+void operation(const T& x, const T& y, const V& v);
+```
+
+$(x, y)$ に $v$ を加算する。x, yは`OfflineFenwickTree2D`のoperationで登録された点である必要がある。
+
+**計算量:** $O(\log^2 N)$
 
 <br />
 
 #### product
 
 ```cpp
-u32 product(T lx, T ly, T rx, T ry)
+[[nodiscard]] V product(const T& lx, const T& ly, const T& rx, const T& ry)
 ```
 
-$\sum_{x = lx}^{rx - 1} \sum_{y = ly}^{ry - 1} A_{x, y}$ を計算する。
+$\displaystyle \sum_{i=lx}^{rx-1}\sum_{j=ly}^{ry-1} A_{ij}$ を計算する。
 
-一度も`operation`で呼ばれていない場所からは`G::identity()`が加算される。
-
-これが何番目のクエリかを返す。
-
-<br />
-
-#### execute
-
-```cpp
-std::vector<std::pair<V, u32>> execute() const
-```
-
-`operation`と`product`で登録されたクエリを登録された順に処理する。
-
-`product`の解が登録された順番に保管された列を返す。
-
-- first: 解
-- second: それが何番目に呼び出されたクエリか？
+**計算量:** $O(\log^2 N)$

@@ -5,32 +5,24 @@
 #include "../../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp"
 
 using namespace zawa;
-
+int N, Q, X[100010], Y[100010], W[100010], T[100010], A[100010], B[100010], C[100010], D[100010];
 int main() {
     SetFastIO();
     int N, Q;
     std::cin >> N >> Q;
+    for (int i = 0 ; i < N ; i++) std::cin >> X[i] >> Y[i] >> W[i];
+    for (int i = 0 ; i < Q ; i++) {
+        std::cin >> T[i];
+        if (T[i] == 0) std::cin >> A[i] >> B[i] >> C[i];
+        else if (T[i] == 1) std::cin >> A[i] >> B[i] >> C[i] >> D[i];
+    }
     OfflineFenwickTree2D<int, AdditiveGroup<long long>> fen{};
-    while (N--) {
-        int x, y, w;
-        std::cin >> x >> y >> w;
-        fen.operation(x, y, w);
-    }
-    while (Q--) {
-        int t;
-        std::cin >> t;
-        if (t == 0) {
-            int x, y, w;
-            std::cin >> x >> y >> w;
-            fen.operation(x, y, w);
-        }
-        else {
-            int l, d, r, u;
-            std::cin >> l >> d >> r >> u;
-            fen.product(l, d, r, u);
-        }
-    }
-    for (auto [ans, _] : fen.execute()) {
-        std::cout << ans << '\n';
+    for (int i = 0 ; i < N ; i++) fen.operation(X[i], Y[i]);
+    for (int i = 0 ; i < Q ; i++) if (T[i] == 0) fen.operation(A[i], B[i]);
+    auto exe = fen.build();
+    for (int i = 0 ; i < N ; i++) exe.operation(X[i], Y[i], W[i]);
+    for (int i = 0 ; i < Q ; i++) {
+        if (T[i] == 0) exe.operation(A[i], B[i], C[i]);
+        else std::cout << exe.product(A[i], B[i], C[i], D[i]) << '\n';
     }
 }
