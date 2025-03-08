@@ -51,18 +51,18 @@ data:
     \    }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n\
     \        return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
     \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
-    \n\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
-    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible = requires\
-    \ {\n    typename T::Element;\n    { T::inverse(std::declval<typename T::Element>())\
-    \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Group\
-    \ = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#include <vector>\n\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <ostream>\n#include <functional>\n#include <type_traits>\n\
     \nnamespace zawa {\n\ntemplate <Concept::Group Group>\nclass FenwickTree {\nprivate:\n\
     \    using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
@@ -142,81 +142,82 @@ data:
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
     private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 6 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
-    \n\n#include <utility>\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
-    \n#include <tuple>\n\nnamespace zawa {\n\ntemplate <class T, class G>\nclass OfflineFenwickTree2D\
-    \ {\npublic:\n    using V = typename G::Element;\n\n    OfflineFenwickTree2D()\
-    \ = default;\n\n    u32 operation(T x, T y, const V& v) {\n        u32 res{(u32)idx_.size()};\n\
-    \        idx_.emplace_back(false, op_.size());\n        op_.emplace_back(x, y,\
-    \ v);\n        return res;\n    }\n\n    u32 product(T lx, T ly, T rx, T ry) {\n\
-    \        u32 res{(u32)idx_.size()};\n        idx_.emplace_back(true, prod_.size());\n\
-    \        prod_.emplace_back(lx, ly, rx, ry);\n        return res;\n    }\n\n \
-    \   inline usize size() const noexcept {\n        return idx_.size();\n    }\n\
-    \n    std::vector<std::pair<V, u32>> execute() const {\n        std::vector<T>\
-    \ appX;\n        appX.reserve(op_.size());\n        for (u32 i{} ; i < op_.size()\
-    \ ; i++) {\n            appX.push_back(std::get<0>(op_[i]));\n        }\n    \
-    \    CompressedSequence<T> compX{appX};\n        std::vector<std::vector<T>> appY(compX.size()\
-    \ + 1);\n        for (u32 i{} ; i < op_.size() ; i++) {\n            T x{std::get<0>(op_[i])},\
-    \ y{std::get<1>(op_[i])};\n            for (u32 j{compX[x] + 1} ; j < appY.size()\
-    \ ; j += lsb(j)) {\n                appY[j].push_back(y);\n            }\n   \
-    \     }\n        std::vector<CompressedSequence<T>> compY(compX.size() + 1);\n\
-    \        for (u32 i{1} ; i < compY.size() ; i++) {\n            compY[i] = CompressedSequence{appY[i]};\n\
-    \        }\n        std::vector<FenwickTree<G>> fen(compX.size() + 1); \n    \
-    \    for (u32 i{1} ; i < fen.size() ; i++) {\n            fen[i] = FenwickTree<G>(compY[i].size()\
-    \ + 1);\n        }\n        std::vector<std::pair<V, u32>> res(prod_.size());\n\
-    \n        auto prefix{[&](T x, T y) -> V {\n            V res{G::identity()};\n\
-    \            for (u32 i{compX[x]} ; i ; i -= lsb(i)) {\n                res =\
-    \ G::operation(res, fen[i].prefixProduct(compY[i][y]));\n            }\n     \
-    \       return res;\n        }};\n\n        for (u32 i{} ; i < size() ; i++) {\n\
-    \            if (idx_[i].first) { // product\n                auto [lx, ly, rx,\
-    \ ry]{prod_[idx_[i].second]};\n                V prod{G::identity()}; \n     \
-    \           prod = G::operation(prod, prefix(rx, ry));\n                prod =\
-    \ G::operation(prod, G::inverse(prefix(lx, ry)));\n                prod = G::operation(prod,\
-    \ G::inverse(prefix(rx, ly)));\n                prod = G::operation(prod, prefix(lx,\
-    \ ly));\n                res[idx_[i].second] = std::pair{ prod, i }; \n      \
-    \      }\n            else { // operation\n                auto [x, y, v]{op_[idx_[i].second]};\n\
-    \                for (u32 j{compX[x] + 1} ; j < fen.size() ; j += lsb(j)) {\n\
-    \                    fen[j].operation(compY[j][y], v);\n                }\n  \
-    \          }\n        }\n        return res;\n    }\n\nprivate:\n    std::vector<std::tuple<T,\
-    \ T, T>> op_;\n    std::vector<std::tuple<T, T, T, T>> prod_;\n    std::vector<std::pair<bool,\
-    \ u32>> idx_;\n\n    constexpr i32 lsb(i32 v) const noexcept {\n        return\
-    \ v & -v;\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp\"\
-    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n \
-    \   std::cin >> N >> Q;\n    OfflineFenwickTree2D<int, AdditiveGroup<long long>>\
-    \ fen{};\n    while (N--) {\n        int x, y, w;\n        std::cin >> x >> y\
-    \ >> w;\n        fen.operation(x, y, w);\n    }\n    while (Q--) {\n        int\
-    \ t;\n        std::cin >> t;\n        if (t == 0) {\n            int x, y, w;\n\
-    \            std::cin >> x >> y >> w;\n            fen.operation(x, y, w);\n \
-    \       }\n        else {\n            int l, d, r, u;\n            std::cin >>\
-    \ l >> d >> r >> u;\n            fen.product(l, d, r, u);\n        }\n    }\n\
-    \    for (auto [ans, _] : fen.execute()) {\n        std::cout << ans << '\\n';\n\
-    \    }\n}\n"
+    } // namespace zawa\n#line 7 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \n\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\n#include\
+    \ <utility>\n#line 11 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \n#include <tuple>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <class\
+    \ T, Concept::Group G>\nclass FenwickTree2D {\npublic:\n\n    using V = G::Element;\n\
+    \n    FenwickTree2D() = default;\n\n    FenwickTree2D(const std::vector<T>& px,\
+    \ const std::vector<T>& py) \n        : xs_{px}, ys_(xs_.size() + 1), fen_(xs_.size()\
+    \ + 1) {\n        assert(px.size());\n        assert(px.size() == py.size());\n\
+    \        std::vector<std::vector<T>> appy(xs_.size() + 1);\n        for (usize\
+    \ i = 0 ; i < px.size() ; i++) {\n            auto x = xs_[px[i]];\n         \
+    \   for (x++ ; x < appy.size() ; x += lsb(x)) {\n                appy[x].push_back(py[i]);\n\
+    \            }\n        }\n        for (usize i = 1 ; i < fen_.size() ; i++) {\n\
+    \            ys_[i] = CompressedSequence{appy[i]};\n            fen_[i] = FenwickTree<G>{ys_[i].size()};\n\
+    \        }\n    }\n\n    void operation(const T& x, const T& y, const T& v) {\n\
+    \        auto i = xs_.find(x);\n        assert(i != CompressedSequence<T>::NotFound);\n\
+    \        for ( i++ ; i < fen_.size() ; i += lsb(i)) {\n            auto j = ys_[i].find(y);\n\
+    \            assert(j != CompressedSequence<T>::NotFound);\n            fen_[i].operation(j,\
+    \ v);\n        }\n    }\n\n    [[nodiscard]] V prefixProduct(const T& x, const\
+    \ T& y) const {\n        V res = G::identity();\n        for (u32 i = xs_[x] ;\
+    \ i ; i &= i - 1) {\n            res = G::operation(res, fen_[i].prefixProduct(ys_[i][y]));\
+    \ \n        }\n        return res;\n    }\n\n    [[nodiscard]] V product(const\
+    \ T& lx, const T& ly, const T& rx, const T& ry) const {\n        assert(lx <=\
+    \ rx);\n        assert(ly <= ry);\n        V add = G::operation(prefixProduct(rx,\
+    \ ry), prefixProduct(lx, ly));\n        V sub = G::operation(prefixProduct(rx,\
+    \ ly), prefixProduct(lx, ry));\n        return G::operation(add, G::inverse(sub));\n\
+    \    }\n\nprivate:\n\n    CompressedSequence<T> xs_;\n\n    std::vector<CompressedSequence<T>>\
+    \ ys_;\n\n    std::vector<FenwickTree<G>> fen_;\n\n    static constexpr i32 lsb(i32\
+    \ v) {\n        return v & -v;\n    }\n};\n\n} // namespace internal\n\ntemplate\
+    \ <class T, Concept::Group G>\nclass OfflineFenwickTree2D {\npublic:\n\n    OfflineFenwickTree2D(usize\
+    \ q = 0) {\n        xs_.reserve(q);\n        ys_.reserve(q);\n    }\n\n    void\
+    \ operation(const T& x, const T& y) {\n        xs_.push_back(x);\n        ys_.push_back(y);\n\
+    \    }\n\n    void operation(T&& x, T&& y) {\n        xs_.push_back(std::move(x));\n\
+    \        ys_.push_back(std::move(y));\n    }\n\n    [[nodiscard]] internal::FenwickTree2D<T,\
+    \ G> build() const {\n        return internal::FenwickTree2D<T, G>{xs_, ys_};\n\
+    \    }\n\nprivate:\n\n    std::vector<T> xs_{}, ys_{};\n};\n\n} // namespace zawa\n\
+    #line 6 \"Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp\"\n\n\
+    using namespace zawa;\nint N, Q, X[100010], Y[100010], W[100010], T[100010], A[100010],\
+    \ B[100010], C[100010], D[100010];\nint main() {\n    SetFastIO();\n    int N,\
+    \ Q;\n    std::cin >> N >> Q;\n    for (int i = 0 ; i < N ; i++) std::cin >> X[i]\
+    \ >> Y[i] >> W[i];\n    for (int i = 0 ; i < Q ; i++) {\n        std::cin >> T[i];\n\
+    \        if (T[i] == 0) std::cin >> A[i] >> B[i] >> C[i];\n        else if (T[i]\
+    \ == 1) std::cin >> A[i] >> B[i] >> C[i] >> D[i];\n    }\n    OfflineFenwickTree2D<int,\
+    \ AdditiveGroup<long long>> fen{};\n    for (int i = 0 ; i < N ; i++) fen.operation(X[i],\
+    \ Y[i]);\n    for (int i = 0 ; i < Q ; i++) if (T[i] == 0) fen.operation(A[i],\
+    \ B[i]);\n    auto exe = fen.build();\n    for (int i = 0 ; i < N ; i++) exe.operation(X[i],\
+    \ Y[i], W[i]);\n    for (int i = 0 ; i < Q ; i++) {\n        if (T[i] == 0) exe.operation(A[i],\
+    \ B[i], C[i]);\n        else std::cout << exe.product(A[i], B[i], C[i], D[i])\
+    \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\n#include \"../../../Src/Template/IOSetting.hpp\"\n#include \"../../../Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n#include \"../../../Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
-    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n \
-    \   std::cin >> N >> Q;\n    OfflineFenwickTree2D<int, AdditiveGroup<long long>>\
-    \ fen{};\n    while (N--) {\n        int x, y, w;\n        std::cin >> x >> y\
-    \ >> w;\n        fen.operation(x, y, w);\n    }\n    while (Q--) {\n        int\
-    \ t;\n        std::cin >> t;\n        if (t == 0) {\n            int x, y, w;\n\
-    \            std::cin >> x >> y >> w;\n            fen.operation(x, y, w);\n \
-    \       }\n        else {\n            int l, d, r, u;\n            std::cin >>\
-    \ l >> d >> r >> u;\n            fen.product(l, d, r, u);\n        }\n    }\n\
-    \    for (auto [ans, _] : fen.execute()) {\n        std::cout << ans << '\\n';\n\
-    \    }\n}\n"
+    \n\nusing namespace zawa;\nint N, Q, X[100010], Y[100010], W[100010], T[100010],\
+    \ A[100010], B[100010], C[100010], D[100010];\nint main() {\n    SetFastIO();\n\
+    \    int N, Q;\n    std::cin >> N >> Q;\n    for (int i = 0 ; i < N ; i++) std::cin\
+    \ >> X[i] >> Y[i] >> W[i];\n    for (int i = 0 ; i < Q ; i++) {\n        std::cin\
+    \ >> T[i];\n        if (T[i] == 0) std::cin >> A[i] >> B[i] >> C[i];\n       \
+    \ else if (T[i] == 1) std::cin >> A[i] >> B[i] >> C[i] >> D[i];\n    }\n    OfflineFenwickTree2D<int,\
+    \ AdditiveGroup<long long>> fen{};\n    for (int i = 0 ; i < N ; i++) fen.operation(X[i],\
+    \ Y[i]);\n    for (int i = 0 ; i < Q ; i++) if (T[i] == 0) fen.operation(A[i],\
+    \ B[i]);\n    auto exe = fen.build();\n    for (int i = 0 ; i < N ; i++) exe.operation(X[i],\
+    \ Y[i], W[i]);\n    for (int i = 0 ; i < Q ; i++) {\n        if (T[i] == 0) exe.operation(A[i],\
+    \ B[i], C[i]);\n        else std::cout << exe.product(A[i], B[i], C[i], D[i])\
+    \ << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
-  - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
   path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2025-03-08 19:53:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
