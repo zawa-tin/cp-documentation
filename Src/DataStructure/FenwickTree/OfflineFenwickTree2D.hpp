@@ -39,7 +39,7 @@ public:
         }
     }
 
-    void operation(const T& x, const T& y, const T& v) {
+    void operation(const T& x, const T& y, const V& v) {
         auto i = xs_.find(x);
         assert(i != CompressedSequence<T>::NotFound);
         for ( i++ ; i < fen_.size() ; i += lsb(i)) {
