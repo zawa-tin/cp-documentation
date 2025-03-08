@@ -135,7 +135,7 @@ data:
     \   for (x++ ; x < appy.size() ; x += lsb(x)) {\n                appy[x].push_back(py[i]);\n\
     \            }\n        }\n        for (usize i = 1 ; i < fen_.size() ; i++) {\n\
     \            ys_[i] = CompressedSequence{appy[i]};\n            fen_[i] = FenwickTree<G>{ys_[i].size()};\n\
-    \        }\n    }\n\n    void operation(const T& x, const T& y, const T& v) {\n\
+    \        }\n    }\n\n    void operation(const T& x, const T& y, const V& v) {\n\
     \        auto i = xs_.find(x);\n        assert(i != CompressedSequence<T>::NotFound);\n\
     \        for ( i++ ; i < fen_.size() ; i += lsb(i)) {\n            auto j = ys_[i].find(y);\n\
     \            assert(j != CompressedSequence<T>::NotFound);\n            fen_[i].operation(j,\
@@ -170,7 +170,7 @@ data:
     \ lsb(x)) {\n                appy[x].push_back(py[i]);\n            }\n      \
     \  }\n        for (usize i = 1 ; i < fen_.size() ; i++) {\n            ys_[i]\
     \ = CompressedSequence{appy[i]};\n            fen_[i] = FenwickTree<G>{ys_[i].size()};\n\
-    \        }\n    }\n\n    void operation(const T& x, const T& y, const T& v) {\n\
+    \        }\n    }\n\n    void operation(const T& x, const T& y, const V& v) {\n\
     \        auto i = xs_.find(x);\n        assert(i != CompressedSequence<T>::NotFound);\n\
     \        for ( i++ ; i < fen_.size() ; i += lsb(i)) {\n            auto j = ys_[i].find(y);\n\
     \            assert(j != CompressedSequence<T>::NotFound);\n            fen_[i].operation(j,\
@@ -201,7 +201,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   requiredBy: []
-  timestamp: '2025-03-08 19:53:21+09:00'
+  timestamp: '2025-03-08 20:53:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
