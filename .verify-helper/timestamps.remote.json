@@ -208,5 +208,6 @@
 "Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp": "2023-08-12 14:28:20 +0900",
 "Test/My/Utility/U32Pair.test.cpp": "2023-12-16 19:11:08 +0900",
 "Test/yukicoder/117.test.cpp": "2024-06-30 16:42:17 +0900",
-"Test/yukicoder/3044.test.cpp": "2025-03-01 17:46:32 +0900"
+"Test/yukicoder/3044.test.cpp": "2025-03-01 17:46:32 +0900",
+"Test/yukicoder/3090.test.cpp": "2025-04-05 14:16:27 +0900"
 }
