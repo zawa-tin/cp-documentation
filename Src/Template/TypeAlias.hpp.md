@@ -370,15 +370,12 @@ data:
     path: Src/Utility/FloatingMarkerShift.hpp
     title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
       10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/MisereNim.hpp
     title: Misere Nim
   - icon: ':heavy_check_mark:'
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
-  - icon: ':warning:'
-    path: Test/yukicoder/3090.cpp
-    title: Test/yukicoder/3090.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -1006,6 +1003,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3044.test.cpp
     title: Test/yukicoder/3044.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3090.test.cpp
+    title: Test/yukicoder/3090.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -1085,7 +1085,6 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
-  - Test/yukicoder/3090.cpp
   - Src/Template/VectorIO.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/PairIO.hpp
@@ -1320,6 +1319,7 @@ data:
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/yukicoder/117.test.cpp
   - Test/yukicoder/3044.test.cpp
+  - Test/yukicoder/3090.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/rectangle_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp

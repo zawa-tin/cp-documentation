@@ -519,7 +519,7 @@ data:
       title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
         10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\
         \u3064"
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/MisereNim.hpp
       title: Misere Nim
     - icon: ':heavy_check_mark:'
@@ -531,11 +531,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Utility/U32Pair.hpp
       title: Src/Utility/U32Pair.hpp
-  - name: Test/yukicoder
-    pages:
-    - icon: ':warning:'
-      path: Test/yukicoder/3090.cpp
-      title: Test/yukicoder/3090.cpp
   verificationCategories:
   - name: Test/AOJ
     pages:
@@ -1199,5 +1194,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/yukicoder/3044.test.cpp
       title: Test/yukicoder/3044.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/yukicoder/3090.test.cpp
+      title: Test/yukicoder/3090.test.cpp
 layout: toppage
 ---
