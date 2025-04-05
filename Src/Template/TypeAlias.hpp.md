@@ -370,9 +370,15 @@ data:
     path: Src/Utility/FloatingMarkerShift.hpp
     title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
       10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
+  - icon: ':warning:'
+    path: Src/Utility/MisereNim.hpp
+    title: Misere Nim
   - icon: ':heavy_check_mark:'
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
+  - icon: ':warning:'
+    path: Test/yukicoder/3090.cpp
+    title: Test/yukicoder/3090.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -1079,6 +1085,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Test/yukicoder/3090.cpp
   - Src/Template/VectorIO.hpp
   - Src/Template/IOSetting.hpp
   - Src/Template/PairIO.hpp
@@ -1090,6 +1097,7 @@ data:
   - Src/Utility/BinarySearch.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Utility/FloatingMarkerShift.hpp
+  - Src/Utility/MisereNim.hpp
   - Src/Graph/ShortestPath/Dijkstra.hpp
   - Src/Graph/ShortestPath/Edge.hpp
   - Src/Graph/ShortestPath/BFS.hpp
