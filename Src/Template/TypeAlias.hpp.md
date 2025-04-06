@@ -331,6 +331,10 @@ data:
     path: Src/Sequence/MajorityVote.hpp
     title: "Boyer-Moore\u306EMajority vote algorithm"
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/PermutationSwapSort.hpp
+    title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\
+      \u30C8\u3059\u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RangeKthSmallest.hpp
     title: Range Kth Smallest
   - icon: ':heavy_check_mark:'
@@ -746,6 +750,9 @@ data:
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc350_c.test.cpp
+    title: Test/AtCoder/abc350_c.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc359_g.test.cpp
     title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
@@ -778,6 +785,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1015-C.test.cpp
+    title: Test/CF/CF1015-C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
@@ -1154,6 +1164,7 @@ data:
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Sequence/InversionNumber.hpp
   - Src/Sequence/MajorityVote.hpp
+  - Src/Sequence/PermutationSwapSort.hpp
   - Src/Sequence/RangeKthSmallest.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/RunLengthEncoding.hpp
@@ -1212,6 +1223,7 @@ data:
   verifiedWith:
   - Test/CF/CF316-D.test.cpp
   - Test/CF/CF902-B.test.cpp
+  - Test/CF/CF1015-C.test.cpp
   - Test/CF/CF923-F.test.cpp
   - Test/CF/ECR167-F.test.cpp
   - Test/CF/EC2-E.test.cpp
@@ -1354,6 +1366,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/staticrmq.test.cpp
+  - Test/AtCoder/abc350_c.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
