@@ -34,6 +34,9 @@ data:
     path: Src/DataStructure/Mo/Mo.hpp
     title: Mo's algorithm
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Other/PriorityProductSet.hpp
+    title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
     title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
       \u3092\u7BA1\u7406\u3059\u308B"
@@ -786,6 +789,9 @@ data:
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc196_a.test.cpp
+    title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1015-C.test.cpp
     title: Test/CF/CF1015-C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1016,6 +1022,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3090.test.cpp
     title: Test/yukicoder/3090.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/649.test.cpp
+    title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -1185,6 +1194,7 @@ data:
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/Other/SortedAdjacentProduct.hpp
+  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/Undoable/UndoableVector.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -1330,6 +1340,7 @@ data:
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/yukicoder/117.test.cpp
+  - Test/yukicoder/649.test.cpp
   - Test/yukicoder/3044.test.cpp
   - Test/yukicoder/3090.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
@@ -1393,6 +1404,7 @@ data:
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc261_f.test.cpp
   - Test/AtCoder/arc123_d.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc247_f.test.cpp

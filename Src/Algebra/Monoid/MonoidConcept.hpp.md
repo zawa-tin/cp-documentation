@@ -15,6 +15,9 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Other/PriorityProductSet.hpp
+    title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
   - icon: ':heavy_check_mark:'
@@ -88,6 +91,9 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc196_a.test.cpp
+    title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,6 +123,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3226.test.cpp
     title: Test/Manual/aoj3226.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/649.test.cpp
+    title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -139,6 +148,7 @@ data:
   requiredBy:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
+  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
@@ -160,6 +170,7 @@ data:
   - Test/AOJ/0478.test.cpp
   - Test/Manual/aoj3226.test.cpp
   - Test/Manual/agc005_b.test.cpp
+  - Test/yukicoder/649.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -169,6 +180,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc292_h.test.cpp

@@ -43,6 +43,9 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc196_a.test.cpp
+    title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -104,6 +107,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc287_g.test.cpp

@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Other/PriorityProductSet.hpp
+    title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
@@ -37,6 +40,9 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc196_a.test.cpp
+    title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -51,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/649.test.cpp
+    title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -77,6 +86,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
+  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
@@ -85,12 +95,14 @@ data:
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/yukicoder/649.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp

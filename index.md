@@ -90,6 +90,9 @@ data:
   - name: Src/DataStructure/Other
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Other/PriorityProductSet.hpp
+      title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
       title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
         \u3092\u7BA1\u7406\u3059\u308B"
@@ -955,6 +958,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc165_c.test.cpp
       title: Test/AtCoder/arc165_c.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc196_a.test.cpp
+      title: Test/AtCoder/arc196_a.test.cpp
   - name: Test/CF
     pages:
     - icon: ':heavy_check_mark:'
@@ -1207,5 +1213,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/yukicoder/3090.test.cpp
       title: Test/yukicoder/3090.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/yukicoder/649.test.cpp
+      title: Test/yukicoder/649.test.cpp
 layout: toppage
 ---
