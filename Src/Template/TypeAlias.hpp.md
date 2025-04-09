@@ -289,6 +289,10 @@ data:
     path: Src/Graph/Tree/Sack.hpp
     title: Sack
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/SubtreesHash.hpp
+    title: "\u6839\u4ED8\u304D\u6728\u306E\u5404\u90E8\u5206\u6728\u3092\u30CF\u30C3\
+      \u30B7\u30E5\u5024\u306B\u5909\u63DB\u3057\u305F\u5217"
+  - icon: ':heavy_check_mark:'
     path: Src/LinearAlgebra/Matrix.hpp
     title: Src/LinearAlgebra/Matrix.hpp
   - icon: ':heavy_check_mark:'
@@ -789,6 +793,9 @@ data:
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc194_d.test.cpp
+    title: Test/AtCoder/arc194_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -896,6 +903,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/rectangle_sum.test.cpp
     title: Test/LC/rectangle_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/rooted_tree_isomorphism_classification.test.cpp
+    title: Test/LC/rooted_tree_isomorphism_classification.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
@@ -1133,6 +1143,7 @@ data:
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/HeavyLightDecomposition.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
+  - Src/Graph/Tree/SubtreesHash.hpp
   - Src/Graph/Tree/EulerTour.hpp
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/Parallel/LineAndLine.hpp
@@ -1361,6 +1372,7 @@ data:
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/rooted_tree_isomorphism_classification.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/LC/cartesian_tree.test.cpp
@@ -1406,6 +1418,7 @@ data:
   - Test/AtCoder/arc123_d.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
+  - Test/AtCoder/arc194_d.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc237_g.test.cpp

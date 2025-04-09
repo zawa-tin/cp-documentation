@@ -403,6 +403,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Sack.hpp
       title: Sack
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/SubtreesHash.hpp
+      title: "\u6839\u4ED8\u304D\u6728\u306E\u5404\u90E8\u5206\u6728\u3092\u30CF\u30C3\
+        \u30B7\u30E5\u5024\u306B\u5909\u63DB\u3057\u305F\u5217"
   - name: Src/LinearAlgebra
     pages:
     - icon: ':heavy_check_mark:'
@@ -959,6 +963,9 @@ data:
       path: Test/AtCoder/arc165_c.test.cpp
       title: Test/AtCoder/arc165_c.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc194_d.test.cpp
+      title: Test/AtCoder/arc194_d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc196_a.test.cpp
       title: Test/AtCoder/arc196_a.test.cpp
   - name: Test/CF
@@ -1058,6 +1065,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/rectangle_sum.test.cpp
       title: Test/LC/rectangle_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/rooted_tree_isomorphism_classification.test.cpp
+      title: Test/LC/rooted_tree_isomorphism_classification.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/shortest_path.test.cpp
       title: Test/LC/shortest_path.test.cpp
