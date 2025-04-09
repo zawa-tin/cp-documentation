@@ -171,6 +171,7 @@
 "Test/LC/range_kth_smallest.test.cpp": "2025-03-04 23:23:46 +0900",
 "Test/LC/range_set_range_composite.test.cpp": "2025-02-28 17:31:16 +0900",
 "Test/LC/rectangle_sum.test.cpp": "2024-11-18 05:20:43 +0900",
+"Test/LC/rooted_tree_isomorphism_classification.test.cpp": "2025-04-09 18:54:17 +0900",
 "Test/LC/shortest_path.test.cpp": "2023-12-14 22:32:29 +0900",
 "Test/LC/sort_by_argument.test.cpp": "2024-06-26 14:51:43 +0900",
 "Test/LC/static_convex_hull.test.cpp": "2024-06-26 18:12:18 +0900",
