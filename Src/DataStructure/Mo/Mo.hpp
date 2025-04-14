@@ -32,7 +32,7 @@ u64 hilbertOrder(u64 x, u64 y, usize dim) {
 } // namespace internal
 
 template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
-std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {
+std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
     usize log{};
     for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));
     std::vector<std::pair<T, usize>> ord(qs.size());
@@ -53,6 +53,7 @@ std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, Ad
         while (L < lr.l) delL(L++);
         res[id] = eval(id);
     }
+    if (reset) while (R > L) delR(--R);
     return res;
 }
 

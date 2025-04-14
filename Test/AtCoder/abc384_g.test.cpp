@@ -8,7 +8,7 @@
 
 /*
  * ABC384-G Abs Sum
- * https://atcoder.jp/contests/abc384/submissions/63198068
+ * https://atcoder.jp/contests/abc384/submissions/64837621
  */
 
 using namespace zawa;
@@ -60,7 +60,7 @@ void solve() {
         sb.operation(b.map(i), -B[i]);
         cb.operation(b.map(i), -1);
     };
-    auto eval = [&](int i) -> long long {
+    auto eval = [&](int) -> long long {
         // std::cout << "eval " << i << std::endl;
         return ans;
     };
