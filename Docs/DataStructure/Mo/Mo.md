@@ -11,7 +11,7 @@ Mo's Algorithm
 
 ```cpp
 template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
-std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {
+std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
 ```
 
 #### T
@@ -52,6 +52,12 @@ auto add = [&](int i) { cnt[A[i]]++; } // cnt[i]++は間違い
 $i$ 番目のクエリを処理する際の関数オブジェクト
 
 - 返り値を持つ必要がある
+
+#### reset
+
+データ処理の最後に、残った要素をすべて`del`したいときにtrueを指定する。
+
+- 例えばmulti test caseの問題で利用する(CF974-H.test)
 
 #### 参考
 
