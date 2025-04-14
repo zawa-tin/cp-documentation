@@ -10,6 +10,9 @@ data:
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF974-H.test.cpp
+    title: Test/CF/CF974-H.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_frequency.test.cpp
     title: Test/LC/static_range_frequency.test.cpp
   _isVerificationFailed: false
@@ -34,8 +37,8 @@ data:
     \            std::swap(x, y);\n        }\n    }\n    return res;\n}\n\n} // namespace\
     \ internal\n\ntemplate <class T, class AddL, class AddR, class DelL, class DelR,\
     \ class Eval>\nstd::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T>\
-    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {\n    usize log{};\n\
-    \    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
+    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false)\
+    \ {\n    usize log{};\n    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
     \    std::vector<std::pair<T, usize>> ord(qs.size());\n    std::vector<u64> h(qs.size());\n\
     \    for (usize i{} ; i < qs.size() ; i++) {\n        ord[i] = {qs[i], i};\n \
     \       h[i] = internal::hilbertOrder(qs[i].l, qs[i].r, log);\n    }\n    std::sort(ord.begin(),\
@@ -44,7 +47,8 @@ data:
     \ usize>> res(qs.size());\n    usize L{}, R{};\n    for (const auto& [lr, id]\
     \ : ord) {\n        while (R < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n\
     \        while (R > lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n  \
-    \      res[id] = eval(id);\n    }\n    return res;\n}\n\n} // namespace zawa\n"
+    \      res[id] = eval(id);\n    }\n    if (reset) while (R > L) delR(--R);\n \
+    \   return res;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <bit>\n#include <cassert>\n#include <vector>\n#include <type_traits>\n\
     \nnamespace zawa {\n\nnamespace internal {\n\n// reference: https://codeforces.com/blog/entry/61203?#comment-1064868\n\
@@ -56,8 +60,8 @@ data:
     \            std::swap(x, y);\n        }\n    }\n    return res;\n}\n\n} // namespace\
     \ internal\n\ntemplate <class T, class AddL, class AddR, class DelL, class DelR,\
     \ class Eval>\nstd::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T>\
-    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {\n    usize log{};\n\
-    \    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
+    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false)\
+    \ {\n    usize log{};\n    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
     \    std::vector<std::pair<T, usize>> ord(qs.size());\n    std::vector<u64> h(qs.size());\n\
     \    for (usize i{} ; i < qs.size() ; i++) {\n        ord[i] = {qs[i], i};\n \
     \       h[i] = internal::hilbertOrder(qs[i].l, qs[i].r, log);\n    }\n    std::sort(ord.begin(),\
@@ -66,15 +70,17 @@ data:
     \ usize>> res(qs.size());\n    usize L{}, R{};\n    for (const auto& [lr, id]\
     \ : ord) {\n        while (R < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n\
     \        while (R > lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n  \
-    \      res[id] = eval(id);\n    }\n    return res;\n}\n\n} // namespace zawa\n"
+    \      res[id] = eval(id);\n    }\n    if (reset) while (R > L) delR(--R);\n \
+    \   return res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/Mo/Mo.hpp
   requiredBy: []
-  timestamp: '2024-12-27 00:38:23+09:00'
+  timestamp: '2025-04-14 13:20:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/CF/CF974-H.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
 documentation_of: Src/DataStructure/Mo/Mo.hpp
@@ -90,7 +96,7 @@ Mo's Algorithm
 
 ```cpp
 template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
-std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {
+std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
 ```
 
 #### T
@@ -131,6 +137,12 @@ auto add = [&](int i) { cnt[A[i]]++; } // cnt[i]++は間違い
 $i$ 番目のクエリを処理する際の関数オブジェクト
 
 - 返り値を持つ必要がある
+
+#### reset
+
+データ処理の最後に、残った要素をすべて`del`したいときにtrueを指定する。
+
+- 例えばmulti test caseの問題で利用する(CF974-H.test)
 
 #### 参考
 

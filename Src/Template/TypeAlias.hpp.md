@@ -817,6 +817,9 @@ data:
     path: Test/CF/CF956-F.test.cpp
     title: Test/CF/CF956-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF974-H.test.cpp
+    title: Test/CF/CF974-H.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1243,6 +1246,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF316-D.test.cpp
+  - Test/CF/CF974-H.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/CF1015-C.test.cpp
   - Test/CF/CF923-F.test.cpp

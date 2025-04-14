@@ -989,6 +989,9 @@ data:
       path: Test/CF/CF956-F.test.cpp
       title: Test/CF/CF956-F.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/CF/CF974-H.test.cpp
+      title: Test/CF/CF974-H.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/EC162-D.test.cpp
       title: Test/CF/EC162-D.test.cpp
     - icon: ':heavy_check_mark:'

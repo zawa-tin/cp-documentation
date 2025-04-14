@@ -34,7 +34,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc384/submissions/63198068
+    - https://atcoder.jp/contests/abc384/submissions/64837621
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc384_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -57,8 +57,8 @@ data:
     \            std::swap(x, y);\n        }\n    }\n    return res;\n}\n\n} // namespace\
     \ internal\n\ntemplate <class T, class AddL, class AddR, class DelL, class DelR,\
     \ class Eval>\nstd::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T>\
-    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval) {\n    usize log{};\n\
-    \    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
+    \ qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false)\
+    \ {\n    usize log{};\n    for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
     \    std::vector<std::pair<T, usize>> ord(qs.size());\n    std::vector<u64> h(qs.size());\n\
     \    for (usize i{} ; i < qs.size() ; i++) {\n        ord[i] = {qs[i], i};\n \
     \       h[i] = internal::hilbertOrder(qs[i].l, qs[i].r, log);\n    }\n    std::sort(ord.begin(),\
@@ -67,20 +67,21 @@ data:
     \ usize>> res(qs.size());\n    usize L{}, R{};\n    for (const auto& [lr, id]\
     \ : ord) {\n        while (R < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n\
     \        while (R > lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n  \
-    \      res[id] = eval(id);\n    }\n    return res;\n}\n\n} // namespace zawa\n\
-    #line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
-    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible = requires\
-    \ {\n    typename T::Element;\n    { T::inverse(std::declval<typename T::Element>())\
-    \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Group\
-    \ = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n#include <ostream>\n#include <functional>\n#line 11 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \      res[id] = eval(id);\n    }\n    if (reset) while (R > L) delR(--R);\n \
+    \   return res;\n}\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
+    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <ostream>\n\
+    #include <functional>\n#line 11 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <Concept::Group Group>\nclass FenwickTree {\n\
     private:\n    using Value = typename Group::Element;\n\n    usize n_;\n    u32\
     \ bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x)\
@@ -165,7 +166,7 @@ data:
     \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
     \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
     \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/AtCoder/abc384_g.test.cpp\"\
-    \n\n/*\n * ABC384-G Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/63198068\n\
+    \n\n/*\n * ABC384-G Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/64837621\n\
     \ */\n\nusing namespace zawa;\n\nint N, K, A[100000], B[100000];\nstruct query\
     \ {\n    usize l, r;\n};\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence\
     \ a{std::vector(A, A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>>\
@@ -190,19 +191,19 @@ data:
     \ ans -= (long long)B[i] * sm;\n        ans -= (long long)-B[i] * (ca.prefixProduct(a.size())\
     \ - sm);\n        ans -= sa.prefixProduct(a.size()) - 2LL * sa.prefixProduct(a[B[i]]);\n\
     \        sb.operation(b.map(i), -B[i]);\n        cb.operation(b.map(i), -1);\n\
-    \    };\n    auto eval = [&](int i) -> long long {\n        // std::cout << \"\
-    eval \" << i << std::endl;\n        return ans;\n    };\n    for (long long a\
-    \ : Mo(std::vector<query>(Q, Q + K), addA, addB, delA, delB, eval)) {\n      \
-    \  std::cout << -a << '\\n';\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n\
-    \    std::cin >> N;\n    for (int i = 0 ; i < N ; i++) std::cin >> A[i];\n   \
-    \ for (int i = 0 ; i < N ; i++) std::cin >> B[i];\n    std::cin >> K;\n    for\
-    \ (int i = 0 ; i < K ; i++) {\n        std::cin >> Q[i].l >> Q[i].r;\n    }\n\
-    \    solve();\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \    };\n    auto eval = [&](int) -> long long {\n        // std::cout << \"eval\
+    \ \" << i << std::endl;\n        return ans;\n    };\n    for (long long a : Mo(std::vector<query>(Q,\
+    \ Q + K), addA, addB, delA, delB, eval)) {\n        std::cout << -a << '\\n';\n\
+    \    }\n}\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    std::cin >> N;\n\
+    \    for (int i = 0 ; i < N ; i++) std::cin >> A[i];\n    for (int i = 0 ; i <\
+    \ N ; i++) std::cin >> B[i];\n    std::cin >> K;\n    for (int i = 0 ; i < K ;\
+    \ i++) {\n        std::cin >> Q[i].l >> Q[i].r;\n    }\n    solve();\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/Mo/Mo.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
-    \n\n/*\n * ABC384-G Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/63198068\n\
+    \n\n/*\n * ABC384-G Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/64837621\n\
     \ */\n\nusing namespace zawa;\n\nint N, K, A[100000], B[100000];\nstruct query\
     \ {\n    usize l, r;\n};\nquery Q[10000];\n\nvoid solve() {\n    CompressedSequence\
     \ a{std::vector(A, A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>>\
@@ -227,14 +228,14 @@ data:
     \ ans -= (long long)B[i] * sm;\n        ans -= (long long)-B[i] * (ca.prefixProduct(a.size())\
     \ - sm);\n        ans -= sa.prefixProduct(a.size()) - 2LL * sa.prefixProduct(a[B[i]]);\n\
     \        sb.operation(b.map(i), -B[i]);\n        cb.operation(b.map(i), -1);\n\
-    \    };\n    auto eval = [&](int i) -> long long {\n        // std::cout << \"\
-    eval \" << i << std::endl;\n        return ans;\n    };\n    for (long long a\
-    \ : Mo(std::vector<query>(Q, Q + K), addA, addB, delA, delB, eval)) {\n      \
-    \  std::cout << -a << '\\n';\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n\
-    \    std::cin >> N;\n    for (int i = 0 ; i < N ; i++) std::cin >> A[i];\n   \
-    \ for (int i = 0 ; i < N ; i++) std::cin >> B[i];\n    std::cin >> K;\n    for\
-    \ (int i = 0 ; i < K ; i++) {\n        std::cin >> Q[i].l >> Q[i].r;\n    }\n\
-    \    solve();\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \    };\n    auto eval = [&](int) -> long long {\n        // std::cout << \"eval\
+    \ \" << i << std::endl;\n        return ans;\n    };\n    for (long long a : Mo(std::vector<query>(Q,\
+    \ Q + K), addA, addB, delA, delB, eval)) {\n        std::cout << -a << '\\n';\n\
+    \    }\n}\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    std::cin >> N;\n\
+    \    for (int i = 0 ; i < N ; i++) std::cin >> A[i];\n    for (int i = 0 ; i <\
+    \ N ; i++) std::cin >> B[i];\n    std::cin >> K;\n    for (int i = 0 ; i < K ;\
+    \ i++) {\n        std::cin >> Q[i].l >> Q[i].r;\n    }\n    solve();\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -247,7 +248,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc384_g.test.cpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2025-04-14 13:20:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc384_g.test.cpp
