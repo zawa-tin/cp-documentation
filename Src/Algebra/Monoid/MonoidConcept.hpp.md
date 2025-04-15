@@ -30,6 +30,9 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
+    title: Disjoint Sparse Table
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DualSparseTable.hpp
     title: Dual Sparse Table
   _extendedVerifiedWith:
@@ -112,6 +115,9 @@ data:
     path: Test/LC/range_set_range_composite.test.cpp
     title: Test/LC/range_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+    title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -147,6 +153,7 @@ data:
   path: Src/Algebra/Monoid/MonoidConcept.hpp
   requiredBy:
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -171,6 +178,7 @@ data:
   - Test/Manual/aoj3226.test.cpp
   - Test/Manual/agc005_b.test.cpp
   - Test/yukicoder/649.test.cpp
+  - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_affine_point_get.test.cpp

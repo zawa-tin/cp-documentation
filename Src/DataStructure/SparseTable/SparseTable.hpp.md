@@ -34,8 +34,8 @@ data:
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/staticrmq.test.cpp
-    title: Test/LC/staticrmq.test.cpp
+    path: Test/LC/staticrmq/SparseTable.test.cpp
+    title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -106,8 +106,8 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/Manual/typical90_ai.test.cpp
+  - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/LC/staticrmq.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc340_g.test.cpp

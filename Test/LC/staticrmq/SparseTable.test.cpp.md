@@ -23,13 +23,13 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/staticrmq
     links:
     - https://judge.yosupo.jp/problem/staticrmq
-  bundledCode: "#line 1 \"Test/LC/staticrmq.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\
-    \n\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+  bundledCode: "#line 1 \"Test/LC/staticrmq/SparseTable.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n\nnamespace zawa\
     \ {\n\ntemplate <class Structure>\nclass SparseTable {\nprivate:\n    using Value\
     \ = typename Structure::Element;\n    std::vector<u32> L;\n    std::vector<std::vector<Value>>\
@@ -61,17 +61,17 @@ data:
     Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\nnamespace\
     \ zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 6 \"Test/LC/staticrmq.test.cpp\"\n\n#line 9 \"\
-    Test/LC/staticrmq.test.cpp\"\n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n\
-    \    using M = MinMonoid<int>;\n    using MD = M::Element;\n    int n, q; std::cin\
-    \ >> n >> q;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n        int\
-    \ v; std::cin >> v;\n        x = v;\n    }\n    SparseTable<M> spt(a);\n    for\
-    \ (int _{} ; _ < q ; _++) {\n        int l, r; std::cin >> l >> r;\n        MD\
-    \ ans{spt.product(l, r)};\n        std::cout << ans.value() << '\\n';\n    }\n\
-    }\n"
+    }\n\n} // namespace zawa\n#line 6 \"Test/LC/staticrmq/SparseTable.test.cpp\"\n\
+    \n#line 9 \"Test/LC/staticrmq/SparseTable.test.cpp\"\n\nint main() {\n    using\
+    \ namespace zawa;\n    SetFastIO();\n    using M = MinMonoid<int>;\n    using\
+    \ MD = M::Element;\n    int n, q; std::cin >> n >> q;\n    std::vector<MD> a(n);\n\
+    \    for (auto& x : a) {\n        int v; std::cin >> v;\n        x = v;\n    }\n\
+    \    SparseTable<M> spt(a);\n    for (int _{} ; _ < q ; _++) {\n        int l,\
+    \ r; std::cin >> l >> r;\n        MD ans{spt.product(l, r)};\n        std::cout\
+    \ << ans.value() << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n\n#include\
-    \ \"../../Src/DataStructure/SparseTable/SparseTable.hpp\"\n#include \"../../Src/Algebra/Monoid/MinMonoid.hpp\"\
-    \n#include \"../../Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include\
+    \ \"../../../Src/DataStructure/SparseTable/SparseTable.hpp\"\n#include \"../../../Src/Algebra/Monoid/MinMonoid.hpp\"\
+    \n#include \"../../../Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include\
     \ <vector>\n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    using\
     \ M = MinMonoid<int>;\n    using MD = M::Element;\n    int n, q; std::cin >> n\
     \ >> q;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n        int v; std::cin\
@@ -84,15 +84,15 @@ data:
   - Src/Algebra/Monoid/MinMonoid.hpp
   - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/LC/staticrmq.test.cpp
+  path: Test/LC/staticrmq/SparseTable.test.cpp
   requiredBy: []
-  timestamp: '2024-02-09 19:34:18+09:00'
+  timestamp: '2025-04-15 14:25:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/staticrmq.test.cpp
+documentation_of: Test/LC/staticrmq/SparseTable.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/staticrmq.test.cpp
-- /verify/Test/LC/staticrmq.test.cpp.html
-title: Test/LC/staticrmq.test.cpp
+- /verify/Test/LC/staticrmq/SparseTable.test.cpp
+- /verify/Test/LC/staticrmq/SparseTable.test.cpp.html
+title: Test/LC/staticrmq/SparseTable.test.cpp
 ---

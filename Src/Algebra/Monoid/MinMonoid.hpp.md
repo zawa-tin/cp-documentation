@@ -7,8 +7,8 @@ data:
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/staticrmq.test.cpp
-    title: Test/LC/staticrmq.test.cpp
+    path: Test/LC/staticrmq/SparseTable.test.cpp
+    title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/agc005_b.test.cpp
     title: Test/Manual/agc005_b.test.cpp
@@ -43,7 +43,7 @@ data:
   verifiedWith:
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/Manual/agc005_b.test.cpp
-  - Test/LC/staticrmq.test.cpp
+  - Test/LC/staticrmq/SparseTable.test.cpp
 documentation_of: Src/Algebra/Monoid/MinMonoid.hpp
 layout: document
 title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"

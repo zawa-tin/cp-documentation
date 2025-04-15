@@ -137,6 +137,9 @@ data:
   - name: Src/DataStructure/SparseTable
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
+      title: Disjoint Sparse Table
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SparseTable/DualSparseTable.hpp
       title: Dual Sparse Table
     - icon: ':heavy_check_mark:'
@@ -1087,9 +1090,6 @@ data:
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/LC/staticrmq.test.cpp
-      title: Test/LC/staticrmq.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/LC/unionfind.test.cpp
       title: Test/LC/unionfind.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1114,6 +1114,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
       title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - name: Test/LC/staticrmq
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+      title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/staticrmq/SparseTable.test.cpp
+      title: Test/LC/staticrmq/SparseTable.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

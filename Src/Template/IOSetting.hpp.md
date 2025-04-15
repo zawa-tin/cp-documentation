@@ -387,8 +387,8 @@ data:
     path: Test/LC/static_range_frequency.test.cpp
     title: Test/LC/static_range_frequency.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/staticrmq.test.cpp
-    title: Test/LC/staticrmq.test.cpp
+    path: Test/LC/staticrmq/SparseTable.test.cpp
+    title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/unionfind.test.cpp
     title: Test/LC/unionfind.test.cpp
@@ -581,6 +581,7 @@ data:
   - Test/Manual/abc239_g.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/yukicoder/117.test.cpp
+  - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/rectangle_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp
@@ -611,7 +612,6 @@ data:
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/bipartitematching.test.cpp
-  - Test/LC/staticrmq.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
