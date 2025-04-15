@@ -1,8 +1,8 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
-#include "../../Src/DataStructure/SparseTable/SparseTable.hpp"
-#include "../../Src/Algebra/Monoid/MinMonoid.hpp"
-#include "../../Src/Template/IOSetting.hpp"
+#include "../../../Src/DataStructure/SparseTable/SparseTable.hpp"
+#include "../../../Src/Algebra/Monoid/MinMonoid.hpp"
+#include "../../../Src/Template/IOSetting.hpp"
 
 #include <iostream>
 #include <vector>
