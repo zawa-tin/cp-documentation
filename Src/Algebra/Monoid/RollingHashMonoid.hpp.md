@@ -13,11 +13,11 @@ data:
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3548.test.cpp
+    title: AOJ3548 String Puzzle
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3548.test.cpp
-    title: AOJ3548 String Puzzle
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -96,8 +96,8 @@ data:
   timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/3548.test.cpp
   - Test/AOJ/0478.test.cpp
-  - Test/Manual/aoj3548.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
 documentation_of: Src/Algebra/Monoid/RollingHashMonoid.hpp
 layout: document

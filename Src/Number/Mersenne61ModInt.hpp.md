@@ -17,6 +17,9 @@ data:
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3548.test.cpp
+    title: AOJ3548 String Puzzle
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_14_B.test.cpp
     title: Test/AOJ/ALDS1_14_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -28,9 +31,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3548.test.cpp
-    title: AOJ3548 String Puzzle
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -82,9 +82,9 @@ data:
   timestamp: '2023-12-04 20:18:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/3548.test.cpp
   - Test/AOJ/0478.test.cpp
   - Test/AOJ/ALDS1_14_B.test.cpp
-  - Test/Manual/aoj3548.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc284_f.test.cpp

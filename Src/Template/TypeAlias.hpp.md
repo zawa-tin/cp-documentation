@@ -53,8 +53,8 @@ data:
     path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
     title: Static Point Add Rectangle Sum
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SWAG/SWAG.hpp
-    title: Src/DataStructure/SWAG/SWAG.hpp
+    path: Src/DataStructure/SWAG/FoldableQueue.hpp
+    title: Foldable Queue
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
@@ -470,6 +470,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3168.test.cpp
     title: Test/AOJ/3168.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3548.test.cpp
+    title: AOJ3548 String Puzzle
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ALDS1_11_D.test.cpp
     title: Test/AOJ/ALDS1_11_D.test.cpp
@@ -985,9 +988,6 @@ data:
     path: Test/Manual/aoj3369.test.cpp
     title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3548.test.cpp
-    title: AOJ3548 String Puzzle
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1211,7 +1211,7 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
   - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
-  - Src/DataStructure/SWAG/SWAG.hpp
+  - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/Other/SortedAdjacentProduct.hpp
@@ -1292,6 +1292,7 @@ data:
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/3079.test.cpp
   - Test/AOJ/GRL_3_A.test.cpp
+  - Test/AOJ/3548.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
@@ -1352,7 +1353,6 @@ data:
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/kupc2016_h.test.cpp
   - Test/Manual/abc004_d.test.cpp
-  - Test/Manual/aoj3548.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/abc252_e.test.cpp
   - Test/Manual/practice2_l.test.cpp

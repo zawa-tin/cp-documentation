@@ -60,6 +60,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Ring/UsualRing.hpp
       title: Src/Algebra/Ring/UsualRing.hpp
+  - name: Src/Algebra/Semigroup
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+      title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -115,8 +120,8 @@ data:
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/SWAG/SWAG.hpp
-      title: Src/DataStructure/SWAG/SWAG.hpp
+      path: Src/DataStructure/SWAG/FoldableQueue.hpp
+      title: Foldable Queue
   - name: Src/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -627,6 +632,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3168.test.cpp
       title: Test/AOJ/3168.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/3548.test.cpp
+      title: AOJ3548 String Puzzle
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
@@ -1169,9 +1177,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/aoj3369.test.cpp
       title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
-    - icon: ':heavy_check_mark:'
-      path: Test/Manual/aoj3548.test.cpp
-      title: AOJ3548 String Puzzle
     - icon: ':heavy_check_mark:'
       path: Test/Manual/dwango2016qual_e.test.cpp
       title: Test/Manual/dwango2016qual_e.test.cpp

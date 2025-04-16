@@ -5,8 +5,11 @@ data:
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SWAG/SWAG.hpp
-    title: Src/DataStructure/SWAG/SWAG.hpp
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/FoldableQueue.hpp
+    title: Foldable Queue
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
@@ -37,27 +40,28 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SWAG/SWAG.hpp\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SWAG/FoldableQueue.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#include <cassert>\n\
     #include <iostream>\n\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
     \nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int Q;\n    std::cin\
-    \ >> Q;\n    SlidingWindowAggregation<AffineMonoid<mint>> swag{};\n    using V\
-    \ = typename decltype(swag)::V;\n    while (Q--) {\n        int t;\n        std::cin\
+    \ >> Q;\n    FoldableQueue<AffineMonoid<mint>> que{};\n    using V = typename\
+    \ AffineMonoid<mint>::Element;\n    while (Q--) {\n        int t;\n        std::cin\
     \ >> t;\n        if (t == 0) {\n            int a, b;\n            std::cin >>\
-    \ a >> b;\n            swag.push(V{a, b});\n        }\n        else if (t == 1)\
-    \ {\n            swag.pop();\n        }\n        else if (t == 2) {\n        \
-    \    int x;\n            std::cin >> x;\n            std::cout << (swag.empty()\
-    \ ? V{} : swag.product())(x).val() << '\\n';\n        }\n        else {\n    \
-    \        assert(false);\n        }\n    }\n}\n"
+    \ a >> b;\n            que.push(V{a, b});\n        }\n        else if (t == 1)\
+    \ {\n            que.pop();\n        }\n        else if (t == 2) {\n         \
+    \   int x;\n            std::cin >> x;\n            std::cout << (que.empty()\
+    \ ? V{} : que.product())(x).val() << '\\n';\n        }\n        else {\n     \
+    \       assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/DataStructure/SWAG/SWAG.hpp
+  - Src/DataStructure/SWAG/FoldableQueue.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:25:38+09:00'
+  timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/queue_operate_all_composite.test.cpp

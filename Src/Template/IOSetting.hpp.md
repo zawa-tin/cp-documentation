@@ -432,9 +432,6 @@ data:
     path: Test/Manual/aoj3369.test.cpp
     title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3548.test.cpp
-    title: AOJ3548 String Puzzle
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -571,7 +568,6 @@ data:
   - Test/Manual/abc271_d.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/kupc2016_h.test.cpp
-  - Test/Manual/aoj3548.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/abc252_e.test.cpp
   - Test/Manual/practice2_l.test.cpp
