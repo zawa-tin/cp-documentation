@@ -1,5 +1,6 @@
 #pragma once
 
+#include "../../Algebra/Semigroup/SemigroupConcept.hpp"
 #include "../../Template/TypeAlias.hpp"
 
 #include <cassert>
@@ -7,12 +8,12 @@
 
 namespace zawa {
 
-template <class S>
-class SlidingWindowAggregation {
+template <concepts::Semigroup S>
+class FoldableQueue {
 public:
     using V = typename S::Element;
 
-    SlidingWindowAggregation() = default;
+    FoldableQueue() = default;
 
     usize size() const noexcept {
         return front_.size() + back_.size();
@@ -45,13 +46,12 @@ private:
     std::vector<V> raw_{};
 
     void move() {
-        if (front_.empty()) {
-            while (back_.size()) {
-                back_.pop_back();
-                V v{raw_.back()};
-                raw_.pop_back();
-                front_.push_back(front_.size() ? S::operation(v, front_.back()) : v);
-            }
+        if (front_.size()) return;
+        while (back_.size()) {
+            back_.pop_back();
+            V v{raw_.back()};
+            raw_.pop_back();
+            front_.push_back(front_.size() ? S::operation(v, front_.back()) : v);
         }
     }
 };

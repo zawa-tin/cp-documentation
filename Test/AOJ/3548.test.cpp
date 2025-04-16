@@ -2,14 +2,13 @@
 
 /*
  * AOJ3548 String Puzzle
- * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3548/judge/9504003/C++17
+ * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3548/judge/10386552/C++20
  */
 
 #include <iostream>
 #include <string>
 #include <unordered_set>
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Sequence/EnumerateStaticLengthProduct.hpp"
 #include "../../Src/Algebra/Monoid/RollingHashMonoid.hpp"
 
@@ -66,10 +65,9 @@ int solve() {
 }
 
 int main() {
-// #ifdef ONLINE_JUDGE
-    // SetFastIO();
-    // std::cout << solve() << '\n';
-// #else
+#ifdef ONLINE_JUDGE
+    std::cout << solve() << '\n';
+#else
     std::cout << "Hello World" << '\n';
-// #endif
+#endif
 }
