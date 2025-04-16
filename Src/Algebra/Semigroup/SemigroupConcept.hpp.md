@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/FoldableDeque.hpp
+    title: Foldable Deque
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableQueue.hpp
     title: Foldable Queue
   - icon: ':heavy_check_mark:'
@@ -12,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3548.test.cpp
     title: AOJ3548 String Puzzle
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/deque_operate_all_composite.test.cpp
+    title: Test/LC/deque_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
@@ -35,11 +41,13 @@ data:
   path: Src/Algebra/Semigroup/SemigroupConcept.hpp
   requiredBy:
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/3548.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp
 layout: document

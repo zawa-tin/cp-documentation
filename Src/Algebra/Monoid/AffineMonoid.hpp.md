@@ -7,6 +7,9 @@ data:
     path: Test/AtCoder/abc332_f.test.cpp
     title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
   - icon: ':heavy_check_mark:'
+    path: Test/LC/deque_operate_all_composite.test.cpp
+    title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -65,6 +68,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp

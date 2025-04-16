@@ -53,6 +53,9 @@ data:
     path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
     title: Static Point Add Rectangle Sum
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/FoldableDeque.hpp
+    title: Foldable Deque
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableQueue.hpp
     title: Foldable Queue
   - icon: ':heavy_check_mark:'
@@ -853,6 +856,9 @@ data:
     path: Test/LC/cartesian_tree.test.cpp
     title: Test/LC/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/deque_operate_all_composite.test.cpp
+    title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1211,6 +1217,7 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
   - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+  - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
@@ -1380,6 +1387,7 @@ data:
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/range_set_range_composite.test.cpp

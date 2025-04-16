@@ -120,6 +120,9 @@ data:
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SWAG/FoldableDeque.hpp
+      title: Foldable Deque
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SWAG/FoldableQueue.hpp
       title: Foldable Queue
   - name: Src/DataStructure/SegmentTree
@@ -1031,6 +1034,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/cartesian_tree.test.cpp
       title: Test/LC/cartesian_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/deque_operate_all_composite.test.cpp
+      title: Test/LC/deque_operate_all_composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_primes.test.cpp
       title: Test/LC/enumerate_primes.test.cpp

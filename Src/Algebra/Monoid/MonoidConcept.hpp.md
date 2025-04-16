@@ -18,6 +18,9 @@ data:
     path: Src/DataStructure/Other/PriorityProductSet.hpp
     title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/FoldableDeque.hpp
+    title: Foldable Deque
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
   - icon: ':heavy_check_mark:'
@@ -100,6 +103,9 @@ data:
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/deque_operate_all_composite.test.cpp
+    title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -155,6 +161,7 @@ data:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
+  - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -182,6 +189,7 @@ data:
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
