@@ -24,6 +24,9 @@ data:
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/FoldableQueue.hpp
+    title: Foldable Queue
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/SWAGable.hpp
     title: Src/DataStructure/SWAG/SWAGable.hpp
   - icon: ':heavy_check_mark:'
@@ -44,6 +47,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DualSparseTable.hpp
     title: Dual Sparse Table
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/EnumerateStaticLengthProduct.hpp
+    title: Src/Sequence/EnumerateStaticLengthProduct.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0478.test.cpp
@@ -51,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2559.test.cpp
     title: Test/AOJ/2559.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3548.test.cpp
+    title: AOJ3548 String Puzzle
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
@@ -124,6 +133,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/queue_operate_all_composite.test.cpp
+    title: Test/LC/queue_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
@@ -173,10 +185,12 @@ data:
   path: Src/Algebra/Monoid/MonoidConcept.hpp
   requiredBy:
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
+  - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -194,6 +208,7 @@ data:
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
+  - Test/AOJ/3548.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/2559.test.cpp
@@ -208,6 +223,7 @@ data:
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
