@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_ex"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_ex"
 #define ERROR 1e-9
 
 #include "../../Src/Template/IOSetting.hpp"
@@ -29,6 +30,7 @@ struct oM {
 using M = PrefixProductMonoid<oM, vM>;
 
 int main() {
+#ifdef ATCODER
     SetFastIO();
     SetPrecision(10);
 
@@ -54,4 +56,7 @@ int main() {
         long double ans{(long double)(sum + b * (long long)r) / (long double)r};
         std::cout << ans << '\n';
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }

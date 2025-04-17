@@ -1,17 +1,24 @@
-#define PROBLEM "https://atcoder.jp/contests/abc276/tasks/abc276_f"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://atcoder.jp/contests/abc276/tasks/abc276_f"
+
+/*
+ * AtCoder Beginner Contest 276 F - Double Chance
+ * https://atcoder.jp/contests/abc276/submissions/64948085
+ */
 
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Number/ModInt.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
 #include <iostream>
 
 using namespace zawa;
-using m32 = StaticModInt<u32, 998244353>;
+#include "atcoder/modint"
+using m32 = atcoder::modint998244353;
 
 int main() {
+#ifdef ATCODER
     SetFastIO();
     usize n; std::cin >> n;
 
@@ -21,14 +28,19 @@ int main() {
     m32 now{};
     m32 ans{};
     for (u32 k{1} ; k <= n ; k++) {
-        m32 a; std::cin >> a;
-        now += (m32{2} * ft1.prefixProduct(a.v() + 1) + m32{1}) * a;
-        now += m32{2} * ft2.product(a.v() + 1, sz);
+        int in;
+        std::cin >> in;
+        m32 a = m32::raw(in);
+        now += (m32{2} * ft1.prefixProduct(a.val() + 1) + m32{1}) * a;
+        now += m32{2} * ft2.product(a.val() + 1, sz);
         ans = now / (m32{k} * m32{k});
 
-        std::cout << ans << '\n';
+        std::cout << ans.val() << '\n';
 
-        ft1.operation(a.v(), m32{1});
-        ft2.operation(a.v(), a);
+        ft1.operation(a.val(), m32{1});
+        ft2.operation(a.val(), a);
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }

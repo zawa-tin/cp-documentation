@@ -5,13 +5,14 @@
 
 #include <bit>
 #include <cassert>
+#include <concepts>
 #include <iterator>
 #include <optional>
 #include <vector>
 
 namespace zawa {
 
-namespace Concept {
+namespace concepts {
 
 template <class F, class V>
 concept Predicate = requires {
@@ -20,7 +21,7 @@ concept Predicate = requires {
 
 } // namespace Concept
 
-template <Concept::Group G>
+template <concepts::Group G>
 class DualFenwickTree {
 public:
 
@@ -89,8 +90,7 @@ public:
     }
 
     template <class F>
-    requires Concept::Predicate<F, V>
-    std::optional<usize> maxRight(usize l, F f) {
+    std::optional<usize> maxRight(usize l, F f) const requires concepts::Predicate<F, V> {
         assert(l < size());
         V sum = l ? (*this)[l - 1] : G::identity();
         usize r = 0;

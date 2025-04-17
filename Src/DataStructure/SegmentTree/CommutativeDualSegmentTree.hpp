@@ -10,7 +10,7 @@
 
 namespace zawa {
 
-template <Concept::Monoid Monoid>
+template <concepts::Monoid Monoid>
 class CommutativeDualSegmentTree {
 public:
     using Operator = typename Monoid::Element;

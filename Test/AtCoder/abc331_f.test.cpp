@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc331/tasks/abc331_f"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://atcoder.jp/contests/abc331/tasks/abc331_f"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
@@ -18,6 +19,7 @@ Value RollingHashMonoidData::base{
 };
 
 int main() {
+#ifdef ATCODER
     SetFastIO();
     int N, Q; 
     std::cin >> N >> Q;
@@ -52,4 +54,7 @@ int main() {
             assert(!"input fail");
         }
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }

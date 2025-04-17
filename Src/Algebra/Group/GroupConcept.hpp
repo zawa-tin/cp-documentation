@@ -4,7 +4,7 @@
 
 namespace zawa {
 
-namespace Concept {
+namespace concepts {
 
 template <class T>
 concept Inversible = requires {

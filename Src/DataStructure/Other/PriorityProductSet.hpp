@@ -11,7 +11,7 @@
 namespace zawa {
 
 // 1-indexed
-template <Concept::Group G>
+template <concepts::Group G>
 class PriorityProductSet {
 public:
 

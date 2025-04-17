@@ -11,7 +11,7 @@
 
 namespace zawa {
 
-template <Concept::Group Group>
+template <concepts::Group Group>
 class FenwickTree {
 private:
     using Value = typename Group::Element;

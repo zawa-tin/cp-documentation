@@ -1,6 +1,11 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc237/tasks/abc237_g"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * AtCoder Beginner Contest 237 G - Range Sort Query
+ * https://atcoder.jp/contests/abc237/submissions/64948041
+ */
+
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Template/IOSetting.hpp"
