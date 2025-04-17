@@ -832,6 +832,9 @@ data:
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC171-F.test.cpp
+    title: Test/CF/EC171-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1261,6 +1264,7 @@ data:
   verifiedWith:
   - Test/CF/CF316-D.test.cpp
   - Test/CF/CF974-H.test.cpp
+  - Test/CF/EC171-F.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/CF1015-C.test.cpp
   - Test/CF/CF923-F.test.cpp

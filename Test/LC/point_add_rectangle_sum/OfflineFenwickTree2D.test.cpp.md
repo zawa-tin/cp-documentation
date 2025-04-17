@@ -11,6 +11,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -52,23 +55,28 @@ data:
     \        return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
     \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
-    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
-    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
     \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
     \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
     \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
     \n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <ostream>\n#include <functional>\n#include <type_traits>\n\
-    \nnamespace zawa {\n\ntemplate <Concept::Group Group>\nclass FenwickTree {\nprivate:\n\
-    \    using Value = typename Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n\
-    \    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept\
-    \ {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32\
-    \ i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
+    \nnamespace zawa {\n\ntemplate <concepts::Group Group>\nclass FenwickTree {\n\
+    private:\n    using Value = typename Group::Element;\n\n    usize n_;\n    u32\
+    \ bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    constexpr i32 lsb(i32 x)\
+    \ const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i] +\
+    \ v\n    void addDat(i32 i, const Value& v) {\n        assert(0 <= i and i < static_cast<i32>(n_));\n\
     \        for ( i++ ; i < static_cast<i32>(dat_.size()) ; i += lsb(i)) {\n    \
     \        dat_[i] = Group::operation(dat_[i], v);\n        }\n    }\n\n    // return\
     \ a[0] + a[1] + .. + a[i - 1]\n    Value product(i32 i) const {\n        assert(0\
@@ -146,7 +154,7 @@ data:
     \n\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\n#include\
     \ <utility>\n#line 11 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n#include <tuple>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <class\
-    \ T, Concept::Group G>\nclass FenwickTree2D {\npublic:\n\n    using V = G::Element;\n\
+    \ T, concepts::Group G>\nclass FenwickTree2D {\npublic:\n\n    using V = G::Element;\n\
     \n    FenwickTree2D() = default;\n\n    FenwickTree2D(const std::vector<T>& px,\
     \ const std::vector<T>& py) \n        : xs_{px}, ys_(xs_.size() + 1), fen_(xs_.size()\
     \ + 1) {\n        assert(px.size());\n        assert(px.size() == py.size());\n\
@@ -170,7 +178,7 @@ data:
     \    }\n\nprivate:\n\n    CompressedSequence<T> xs_;\n\n    std::vector<CompressedSequence<T>>\
     \ ys_;\n\n    std::vector<FenwickTree<G>> fen_;\n\n    static constexpr i32 lsb(i32\
     \ v) {\n        return v & -v;\n    }\n};\n\n} // namespace internal\n\ntemplate\
-    \ <class T, Concept::Group G>\nclass OfflineFenwickTree2D {\npublic:\n\n    OfflineFenwickTree2D(usize\
+    \ <class T, concepts::Group G>\nclass OfflineFenwickTree2D {\npublic:\n\n    OfflineFenwickTree2D(usize\
     \ q = 0) {\n        xs_.reserve(q);\n        ys_.reserve(q);\n    }\n\n    void\
     \ operation(const T& x, const T& y) {\n        xs_.push_back(x);\n        ys_.push_back(y);\n\
     \    }\n\n    void operation(T&& x, T&& y) {\n        xs_.push_back(std::move(x));\n\
@@ -212,12 +220,13 @@ data:
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
   path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   requiredBy: []
-  timestamp: '2025-03-08 20:53:07+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp

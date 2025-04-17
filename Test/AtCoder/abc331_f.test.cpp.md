@@ -9,6 +9,9 @@ data:
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -27,11 +30,13 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc331/tasks/abc331_f
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://atcoder.jp/contests/abc331/tasks/abc331_f
-  bundledCode: "#line 1 \"Test/AtCoder/abc331_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc331_f.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
+    #line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -40,14 +45,18 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
-    #include <ostream>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\n\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\n\
     class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
     \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
     \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
@@ -137,12 +146,12 @@ data:
     \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
     \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
     \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
-    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 6\
-    \ \"Test/AtCoder/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 11 \"Test/AtCoder/abc331_f.test.cpp\"\
-    \n#include <string>\n#line 13 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value\
+    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 7\
+    \ \"Test/AtCoder/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 12 \"Test/AtCoder/abc331_f.test.cpp\"\
+    \n#include <string>\n#line 14 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value\
     \ = RollingHashMonoidData::Value;\n\nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
-    };\n\nint main() {\n    SetFastIO();\n    int N, Q; \n    std::cin >> N >> Q;\n\
-    \    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
+    };\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    int N, Q; \n    std::cin\
+    \ >> N >> Q;\n    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
     \ init(N), tini(N); \n    for (int i{} ; i < N ; i++) {\n        init[i] = RollingHashMonoidData{S[i]};\n\
     \        tini[N - i - 1] = RollingHashMonoidData{S[i]};\n    }\n    SegmentTree<RollingHashMonoid>\
     \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
@@ -153,15 +162,16 @@ data:
     \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
     \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
     \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
+    \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
     #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/RollingHashMonoid.hpp\"\nusing namespace\
     \ zawa;\n\n#include <cassert>\n#include <iostream>\n#include <random>\n#include\
     \ <string>\n#include <vector>\n\nusing Value = RollingHashMonoidData::Value;\n\
     \nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
-    };\n\nint main() {\n    SetFastIO();\n    int N, Q; \n    std::cin >> N >> Q;\n\
-    \    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
+    };\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    int N, Q; \n    std::cin\
+    \ >> N >> Q;\n    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
     \ init(N), tini(N); \n    for (int i{} ; i < N ; i++) {\n        init[i] = RollingHashMonoidData{S[i]};\n\
     \        tini[N - i - 1] = RollingHashMonoidData{S[i]};\n    }\n    SegmentTree<RollingHashMonoid>\
     \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
@@ -172,18 +182,19 @@ data:
     \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
     \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
     \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n}\n"
+    \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Number/Mersenne61ModInt.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2024-12-06 16:40:42+09:00'
+  timestamp: '2025-04-17 19:56:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc331_f.test.cpp

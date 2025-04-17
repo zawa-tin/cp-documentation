@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
     title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
@@ -33,13 +36,18 @@ data:
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
-    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
-    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp\"\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp\"\
     \n\n#include <vector>\n#include <iterator>\n#include <ostream>\n#include <cassert>\n\
-    \nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass CommutativeDualSegmentTree\
+    \nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass CommutativeDualSegmentTree\
     \ {\npublic:\n    using Operator = typename Monoid::Element;\nprotected:\n\n \
     \   static constexpr u32 parent(u32 v) noexcept {\n        return v >> 1;\n  \
     \  }\n    static constexpr u32 left(u32 v) noexcept {\n        return v << 1;\n\
@@ -75,7 +83,7 @@ data:
     \ size ; i++) {\n            os << seg.dat_[i] << (i + 1 == size ? \"\" : \" \"\
     );\n        }\n        return os;\n    }\n};\n\n} // namespace zawa\n#line 4 \"\
     Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <Concept::Monoid Monoid>\nclass DualSegmentTree : public CommutativeDualSegmentTree<Monoid>\
+    \ <concepts::Monoid Monoid>\nclass DualSegmentTree : public CommutativeDualSegmentTree<Monoid>\
     \ {\nprivate:\n    using Base = CommutativeDualSegmentTree<Monoid>;\npublic:\n\
     \    using Operator = typename Base::Operator;\n    DualSegmentTree() : Base()\
     \ {}\n    DualSegmentTree(u32 n) : Base(n) {}\n    DualSegmentTree(const std::vector<Operator>&\
@@ -86,7 +94,7 @@ data:
     \  Operator operator[](u32 i) override {\n        Base::push(i);\n        return\
     \ Base::operator[](i);\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./CommutativeDualSegmentTree.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass DualSegmentTree : public\
+    \ zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass DualSegmentTree : public\
     \ CommutativeDualSegmentTree<Monoid> {\nprivate:\n    using Base = CommutativeDualSegmentTree<Monoid>;\n\
     public:\n    using Operator = typename Base::Operator;\n    DualSegmentTree()\
     \ : Base() {}\n    DualSegmentTree(u32 n) : Base(n) {}\n    DualSegmentTree(const\
@@ -100,10 +108,11 @@ data:
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   requiredBy: []
-  timestamp: '2024-09-10 19:45:45+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_D.test.cpp

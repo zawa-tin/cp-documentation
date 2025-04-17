@@ -14,6 +14,9 @@ data:
     path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
     title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -30,11 +33,13 @@ data:
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     ERROR: 1e-9
-    PROBLEM: https://atcoder.jp/contests/abc292/tasks/abc292_ex
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://atcoder.jp/contests/abc292/tasks/abc292_ex
-  bundledCode: "#line 1 \"Test/AtCoder/abc292_h.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc292/tasks/abc292_ex\"\
-    \n#define ERROR 1e-9\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc292_h.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define PROBLEM \"https://atcoder.jp/contests/abc292/tasks/abc292_ex\"\n\
+    #define ERROR 1e-9\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -69,15 +74,19 @@ data:
     \  O::operation(l.product(), r.product()),\n            F::operation(l.prefix(),\
     \ O::operation(l.product(), r.prefix()))\n        };\n    }\n};\n\n} // namespace\
     \ zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"\
-    Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\nnamespace zawa\
-    \ {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid = requires {\n\
-    \    typename T::Element;\n    { T::identity() } -> std::same_as<typename T::Element>;\n\
-    \    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#line 10 \"\
     Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include <ostream>\n\nnamespace\
-    \ zawa {\n\ntemplate <Concept::Monoid Monoid>\nclass SegmentTree {\npublic:\n\
+    \ zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass SegmentTree {\npublic:\n\
     \    using Value = typename Monoid::Element;\nprivate:\n    constexpr u32 left(u32\
     \ v) const {\n        return v << 1;\n    }\n    constexpr u32 right(u32 v) const\
     \ {\n        return v << 1 | 1;\n    }\n    constexpr u32 parent(u32 v) const\
@@ -131,14 +140,14 @@ data:
     \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
     \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
     \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 9 \"Test/AtCoder/abc292_h.test.cpp\"\n\n#line 15 \"Test/AtCoder/abc292_h.test.cpp\"\
+    \ zawa\n#line 10 \"Test/AtCoder/abc292_h.test.cpp\"\n\n#line 16 \"Test/AtCoder/abc292_h.test.cpp\"\
     \n\nusing namespace zawa; \nusing D = std::optional<long long>;\nusing vM = MaxMonoid<long\
     \ long>;\nstruct oM {\n    using Element = D;\n    static D identity() noexcept\
     \ {\n        return 0LL;\n    }\n    static D operation(const D& l, const D& r)\
     \ noexcept {\n        if (l and r) return l.value() + r.value();\n        else\
     \ return (l ? l : (r ? r : 0LL));\n    }\n};\nusing M = PrefixProductMonoid<oM,\
-    \ vM>;\n\nint main() {\n    SetFastIO();\n    SetPrecision(10);\n\n    int n,\
-    \ q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
+    \ vM>;\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    SetPrecision(10);\n\
+    \n    int n, q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
     \ a(n);\n    for (int i{} ; i < n ; i++) {\n        long long v; std::cin >> v;\n\
     \        a[i] = M::Element{D{v - b}, D{v - b}};\n    }\n    SegmentTree<M> seg(a);\n\
     \    for (int _{} ; _ < q ; _++) {\n        int c; std::cin >> c;\n        c--;\n\
@@ -148,8 +157,9 @@ data:
     \ + 1, n);\n        assert(seg.product(0, r).product().has_value());\n       \
     \ long long sum{seg.product(0, r).product().value()};\n        long double ans{(long\
     \ double)(sum + b * (long long)r) / (long double)r};\n        std::cout << ans\
-    \ << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc292/tasks/abc292_ex\"\n\
+    \ << '\\n';\n    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define PROBLEM \"https://atcoder.jp/contests/abc292/tasks/abc292_ex\"\n\
     #define ERROR 1e-9\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/AdditionMonoid.hpp\"\n#include \"../../Src/Algebra/Monoid/MaxMonoid.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/PrefixProductMonoid.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
@@ -159,8 +169,8 @@ data:
     \ D identity() noexcept {\n        return 0LL;\n    }\n    static D operation(const\
     \ D& l, const D& r) noexcept {\n        if (l and r) return l.value() + r.value();\n\
     \        else return (l ? l : (r ? r : 0LL));\n    }\n};\nusing M = PrefixProductMonoid<oM,\
-    \ vM>;\n\nint main() {\n    SetFastIO();\n    SetPrecision(10);\n\n    int n,\
-    \ q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
+    \ vM>;\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    SetPrecision(10);\n\
+    \n    int n, q;\n    long long b;\n    std::cin >> n >> b >> q;\n    std::vector<M::Element>\
     \ a(n);\n    for (int i{} ; i < n ; i++) {\n        long long v; std::cin >> v;\n\
     \        a[i] = M::Element{D{v - b}, D{v - b}};\n    }\n    SegmentTree<M> seg(a);\n\
     \    for (int _{} ; _ < q ; _++) {\n        int c; std::cin >> c;\n        c--;\n\
@@ -170,7 +180,7 @@ data:
     \ + 1, n);\n        assert(seg.product(0, r).product().has_value());\n       \
     \ long long sum{seg.product(0, r).product().value()};\n        long double ans{(long\
     \ double)(sum + b * (long long)r) / (long double)r};\n        std::cout << ans\
-    \ << '\\n';\n    }\n}\n"
+    \ << '\\n';\n    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -179,10 +189,11 @@ data:
   - Src/Algebra/Monoid/PrefixProductMonoid.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc292_h.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 19:45:45+09:00'
+  timestamp: '2025-04-17 19:54:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc292_h.test.cpp

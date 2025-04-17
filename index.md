@@ -125,6 +125,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SWAG/FoldableQueue.hpp
       title: Foldable Queue
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SWAG/SWAGable.hpp
+      title: Src/DataStructure/SWAG/SWAGable.hpp
   - name: Src/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -1008,6 +1011,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC162-D.test.cpp
       title: Test/CF/EC162-D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/EC171-F.test.cpp
+      title: Test/CF/EC171-F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC2-E.test.cpp
       title: Test/CF/EC2-E.test.cpp

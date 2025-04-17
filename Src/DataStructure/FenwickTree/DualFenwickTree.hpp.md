@@ -8,6 +8,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -32,21 +35,26 @@ data:
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible = requires\
-    \ {\n    typename T::Element;\n    { T::inverse(std::declval<typename T::Element>())\
-    \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Group\
-    \ = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/FenwickTree/DualFenwickTree.hpp\"\n\n#include <bit>\n\
-    #include <cassert>\n#include <iterator>\n#include <optional>\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class F, class V>\nconcept\
-    \ Predicate = requires {\n    { std::declval<F>()(std::declval<V>()) } -> std::same_as<bool>;\
-    \ \n};\n\n} // namespace Concept\n\ntemplate <Concept::Group G>\nclass DualFenwickTree\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/DualFenwickTree.hpp\"\
+    \n\n#include <bit>\n#include <cassert>\n#line 9 \"Src/DataStructure/FenwickTree/DualFenwickTree.hpp\"\
+    \n#include <iterator>\n#include <optional>\n#include <vector>\n\nnamespace zawa\
+    \ {\n\nnamespace concepts {\n\ntemplate <class F, class V>\nconcept Predicate\
+    \ = requires {\n    { std::declval<F>()(std::declval<V>()) } -> std::same_as<bool>;\
+    \ \n};\n\n} // namespace Concept\n\ntemplate <concepts::Group G>\nclass DualFenwickTree\
     \ {\npublic:\n\n    using V = typename G::Element;\n\n    constexpr static u32\
     \ Log2(usize n) noexcept {\n        return static_cast<u32>(\n               \
     \     std::bit_width(n) - (std::has_single_bit(n) ? 1 : 0)\n                );\n\
@@ -70,34 +78,34 @@ data:
     \        V res = G::identity();\n        for (i++ ; i ; i -= lsb(i)) res = G::operation(dat_[i],\
     \ res);\n        return res;\n    }\n\n    void set(usize i, V v) {\n        assert(0\
     \ <= i and i < size());\n        v = G::operation(G::inverse((*this)[i]), v);\n\
-    \        operation(i, v);\n    }\n\n    template <class F>\n    requires Concept::Predicate<F,\
-    \ V>\n    std::optional<usize> maxRight(usize l, F f) {\n        assert(l < size());\n\
-    \        V sum = l ? (*this)[l - 1] : G::identity();\n        usize r = 0;\n \
-    \       for (u32 w = lg_ ; w <= lg_ ; w--) {\n            usize next = r | (1u\
-    \ << w);\n            if (next >= dat_.size()) continue;\n            V nsum =\
-    \ G::operation(sum, dat_[next]);\n            if (f(nsum)) {\n               \
-    \ sum = std::move(nsum);\n                r = std::move(next);\n            }\n\
-    \        }\n        assert(l <= r);\n        return r == size() and f(sum) ? std::nullopt\
-    \ : std::optional{r};\n    }\n\n    // \u5B9F\u88C5\u304C\u5408\u3044\u307E\u305B\
-    \u3093\u3002\u982D\u304C\u60AA\u3044\u306E\u3067\n    // template <class F>\n\
-    \    // requires Concept::Predicate<F, V>\n    // std::optional<usize> minLeft(usize\
-    \ r, F f) const {\n    //     assert(r <= n_);\n    //     V sum = G::identity();\n\
-    \    //     usize l = 0;\n    //     for (u32 w = lg_ ; w <= lg_ ; w--) {\n  \
-    \  //         u32 next = l | (1u << w);\n    //         if (next >= r) continue;\n\
-    \    //         V nsum = G::operation(dat_[next], sum);\n    //         if (!f(nsum))\
-    \ {\n    //             sum = std::move(nsum);\n    //             l = std::move(next);\n\
-    \    //         }\n    //     }\n    //     assert(l <= r);\n    //     if (l\
-    \ + 1 == r and !f(sum)) return r;\n    //     return l == 0u and f(sum) ? std::nullopt\
-    \ : std::optional{l};\n    // }\n\nprivate:\n\n    usize n_;\n\n    u32 lg_;\n\
-    \n    std::vector<V> dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept {\n\
-    \        return x & -x;\n    }\n\n    void add(i32 i, const V& v) {\n        for\
-    \ (i++ ; i <= (i32)size() ; i += lsb(i)) dat_[i] = G::operation(dat_[i], v);\n\
-    \    }\n};\n\n} // namespace zawa\n"
+    \        operation(i, v);\n    }\n\n    template <class F>\n    std::optional<usize>\
+    \ maxRight(usize l, F f) const requires concepts::Predicate<F, V> {\n        assert(l\
+    \ < size());\n        V sum = l ? (*this)[l - 1] : G::identity();\n        usize\
+    \ r = 0;\n        for (u32 w = lg_ ; w <= lg_ ; w--) {\n            usize next\
+    \ = r | (1u << w);\n            if (next >= dat_.size()) continue;\n         \
+    \   V nsum = G::operation(sum, dat_[next]);\n            if (f(nsum)) {\n    \
+    \            sum = std::move(nsum);\n                r = std::move(next);\n  \
+    \          }\n        }\n        assert(l <= r);\n        return r == size() and\
+    \ f(sum) ? std::nullopt : std::optional{r};\n    }\n\n    // \u5B9F\u88C5\u304C\
+    \u5408\u3044\u307E\u305B\u3093\u3002\u982D\u304C\u60AA\u3044\u306E\u3067\n   \
+    \ // template <class F>\n    // requires Concept::Predicate<F, V>\n    // std::optional<usize>\
+    \ minLeft(usize r, F f) const {\n    //     assert(r <= n_);\n    //     V sum\
+    \ = G::identity();\n    //     usize l = 0;\n    //     for (u32 w = lg_ ; w <=\
+    \ lg_ ; w--) {\n    //         u32 next = l | (1u << w);\n    //         if (next\
+    \ >= r) continue;\n    //         V nsum = G::operation(dat_[next], sum);\n  \
+    \  //         if (!f(nsum)) {\n    //             sum = std::move(nsum);\n   \
+    \ //             l = std::move(next);\n    //         }\n    //     }\n    //\
+    \     assert(l <= r);\n    //     if (l + 1 == r and !f(sum)) return r;\n    //\
+    \     return l == 0u and f(sum) ? std::nullopt : std::optional{l};\n    // }\n\
+    \nprivate:\n\n    usize n_;\n\n    u32 lg_;\n\n    std::vector<V> dat_;\n\n  \
+    \  constexpr i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n\n\
+    \    void add(i32 i, const V& v) {\n        for (i++ ; i <= (i32)size() ; i +=\
+    \ lsb(i)) dat_[i] = G::operation(dat_[i], v);\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Group/GroupConcept.hpp\"\
-    \n\n#include <bit>\n#include <cassert>\n#include <iterator>\n#include <optional>\n\
-    #include <vector>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class\
-    \ F, class V>\nconcept Predicate = requires {\n    { std::declval<F>()(std::declval<V>())\
-    \ } -> std::same_as<bool>; \n};\n\n} // namespace Concept\n\ntemplate <Concept::Group\
+    \n\n#include <bit>\n#include <cassert>\n#include <concepts>\n#include <iterator>\n\
+    #include <optional>\n#include <vector>\n\nnamespace zawa {\n\nnamespace concepts\
+    \ {\n\ntemplate <class F, class V>\nconcept Predicate = requires {\n    { std::declval<F>()(std::declval<V>())\
+    \ } -> std::same_as<bool>; \n};\n\n} // namespace Concept\n\ntemplate <concepts::Group\
     \ G>\nclass DualFenwickTree {\npublic:\n\n    using V = typename G::Element;\n\
     \n    constexpr static u32 Log2(usize n) noexcept {\n        return static_cast<u32>(\n\
     \                    std::bit_width(n) - (std::has_single_bit(n) ? 1 : 0)\n  \
@@ -121,37 +129,38 @@ data:
     \        V res = G::identity();\n        for (i++ ; i ; i -= lsb(i)) res = G::operation(dat_[i],\
     \ res);\n        return res;\n    }\n\n    void set(usize i, V v) {\n        assert(0\
     \ <= i and i < size());\n        v = G::operation(G::inverse((*this)[i]), v);\n\
-    \        operation(i, v);\n    }\n\n    template <class F>\n    requires Concept::Predicate<F,\
-    \ V>\n    std::optional<usize> maxRight(usize l, F f) {\n        assert(l < size());\n\
-    \        V sum = l ? (*this)[l - 1] : G::identity();\n        usize r = 0;\n \
-    \       for (u32 w = lg_ ; w <= lg_ ; w--) {\n            usize next = r | (1u\
-    \ << w);\n            if (next >= dat_.size()) continue;\n            V nsum =\
-    \ G::operation(sum, dat_[next]);\n            if (f(nsum)) {\n               \
-    \ sum = std::move(nsum);\n                r = std::move(next);\n            }\n\
-    \        }\n        assert(l <= r);\n        return r == size() and f(sum) ? std::nullopt\
-    \ : std::optional{r};\n    }\n\n    // \u5B9F\u88C5\u304C\u5408\u3044\u307E\u305B\
-    \u3093\u3002\u982D\u304C\u60AA\u3044\u306E\u3067\n    // template <class F>\n\
-    \    // requires Concept::Predicate<F, V>\n    // std::optional<usize> minLeft(usize\
-    \ r, F f) const {\n    //     assert(r <= n_);\n    //     V sum = G::identity();\n\
-    \    //     usize l = 0;\n    //     for (u32 w = lg_ ; w <= lg_ ; w--) {\n  \
-    \  //         u32 next = l | (1u << w);\n    //         if (next >= r) continue;\n\
-    \    //         V nsum = G::operation(dat_[next], sum);\n    //         if (!f(nsum))\
-    \ {\n    //             sum = std::move(nsum);\n    //             l = std::move(next);\n\
-    \    //         }\n    //     }\n    //     assert(l <= r);\n    //     if (l\
-    \ + 1 == r and !f(sum)) return r;\n    //     return l == 0u and f(sum) ? std::nullopt\
-    \ : std::optional{l};\n    // }\n\nprivate:\n\n    usize n_;\n\n    u32 lg_;\n\
-    \n    std::vector<V> dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept {\n\
-    \        return x & -x;\n    }\n\n    void add(i32 i, const V& v) {\n        for\
-    \ (i++ ; i <= (i32)size() ; i += lsb(i)) dat_[i] = G::operation(dat_[i], v);\n\
-    \    }\n};\n\n} // namespace zawa\n"
+    \        operation(i, v);\n    }\n\n    template <class F>\n    std::optional<usize>\
+    \ maxRight(usize l, F f) const requires concepts::Predicate<F, V> {\n        assert(l\
+    \ < size());\n        V sum = l ? (*this)[l - 1] : G::identity();\n        usize\
+    \ r = 0;\n        for (u32 w = lg_ ; w <= lg_ ; w--) {\n            usize next\
+    \ = r | (1u << w);\n            if (next >= dat_.size()) continue;\n         \
+    \   V nsum = G::operation(sum, dat_[next]);\n            if (f(nsum)) {\n    \
+    \            sum = std::move(nsum);\n                r = std::move(next);\n  \
+    \          }\n        }\n        assert(l <= r);\n        return r == size() and\
+    \ f(sum) ? std::nullopt : std::optional{r};\n    }\n\n    // \u5B9F\u88C5\u304C\
+    \u5408\u3044\u307E\u305B\u3093\u3002\u982D\u304C\u60AA\u3044\u306E\u3067\n   \
+    \ // template <class F>\n    // requires Concept::Predicate<F, V>\n    // std::optional<usize>\
+    \ minLeft(usize r, F f) const {\n    //     assert(r <= n_);\n    //     V sum\
+    \ = G::identity();\n    //     usize l = 0;\n    //     for (u32 w = lg_ ; w <=\
+    \ lg_ ; w--) {\n    //         u32 next = l | (1u << w);\n    //         if (next\
+    \ >= r) continue;\n    //         V nsum = G::operation(dat_[next], sum);\n  \
+    \  //         if (!f(nsum)) {\n    //             sum = std::move(nsum);\n   \
+    \ //             l = std::move(next);\n    //         }\n    //     }\n    //\
+    \     assert(l <= r);\n    //     if (l + 1 == r and !f(sum)) return r;\n    //\
+    \     return l == 0u and f(sum) ? std::nullopt : std::optional{l};\n    // }\n\
+    \nprivate:\n\n    usize n_;\n\n    u32 lg_;\n\n    std::vector<V> dat_;\n\n  \
+    \  constexpr i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n\n\
+    \    void add(i32 i, const V& v) {\n        for (i++ ; i <= (i32)size() ; i +=\
+    \ lsb(i)) dat_[i] = G::operation(dat_[i], v);\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   requiredBy: []
-  timestamp: '2025-03-03 23:11:45+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc389_f.test.cpp

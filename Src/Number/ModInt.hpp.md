@@ -13,9 +13,6 @@ data:
     path: Test/AtCoder/abc247_f.test.cpp
     title: Test/AtCoder/abc247_f.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc276_f.test.cpp
-    title: Test/AtCoder/abc276_f.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc307_e.test.cpp
     title: Test/AtCoder/abc307_e.test.cpp
   _isVerificationFailed: false
@@ -125,7 +122,6 @@ data:
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/abc238_c.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
 documentation_of: Src/Number/ModInt.hpp
 layout: document
 redirect_from:

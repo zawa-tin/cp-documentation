@@ -8,6 +8,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -37,14 +40,18 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
-    #include <ostream>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid Monoid>\n\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\n\
     class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
     \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
     \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
@@ -139,11 +146,12 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Monoid/MinMonoid.hpp
   isVerificationFile: true
   path: Test/Manual/agc005_b.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 19:45:45+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/Manual/agc005_b.test.cpp

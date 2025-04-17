@@ -1,6 +1,9 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Group/GroupConcept.hpp
@@ -20,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/SWAGable.hpp
+    title: Src/DataStructure/SWAG/SWAGable.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
@@ -100,6 +106,9 @@ data:
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC171-F.test.cpp
+    title: Test/CF/EC171-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -143,24 +152,30 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\
-    \nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
-    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n"
-  code: "#pragma once\n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept\
-    \ {\n\ntemplate <class T>\nconcept Monoid = requires {\n    typename T::Element;\n\
-    \    { T::identity() } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+  bundledCode: "#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n"
-  dependsOn: []
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Semigroup/SemigroupConcept.hpp\"\n\n#include\
+    \ <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\n\
+    concept Identitiable = requires {\n    typename T::Element;\n    { T::identity()\
+    \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid\
+    \ = Semigroup<T> and Identitiable<T>;\n\n} // namespace\n\n} // namespace zawa\n"
+  dependsOn:
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/Algebra/Monoid/MonoidConcept.hpp
   requiredBy:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
+  - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -170,9 +185,10 @@ data:
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
-  timestamp: '2024-09-10 17:27:21+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/CF/EC171-F.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp

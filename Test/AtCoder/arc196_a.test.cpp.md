@@ -11,6 +11,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Other/PriorityProductSet.hpp
     title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
   - icon: ':heavy_check_mark:'
@@ -37,39 +40,43 @@ data:
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#include <concepts>\n\n\
-    namespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Monoid\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
-    \ T::Element>;\n    { T::operation(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n} // namespace\n\
-    \n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible = requires\
-    \ {\n    typename T::Element;\n    { T::inverse(std::declval<typename T::Element>())\
-    \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Group\
-    \ = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\n} // namespace zawa\n\
-    #line 5 \"Src/DataStructure/Other/PriorityProductSet.hpp\"\n\n#include <cassert>\n\
-    #include <optional>\n#include <utility>\n#include <queue>\n\nnamespace zawa {\n\
-    \n// 1-indexed\ntemplate <Concept::Group G>\nclass PriorityProductSet {\npublic:\n\
-    \n    using V = G::Element;\n\n    PriorityProductSet() = default;\n\n    PriorityProductSet(usize\
-    \ K) : m_K{K} {}\n\n    void insert(V&& v) {\n        pushSmall(std::move(v));\n\
-    \        adjust();\n    }\n\n    void insert(const V& v) {\n        insert(V{v});\n\
-    \    }\n\n    usize size() const {\n        return m_small.size() + m_big.size();\n\
-    \    }\n\n    inline usize K() const {\n        return m_K;\n    }\n\n    void\
-    \ setK(usize K) {\n        m_K = K;\n        adjust();\n    }\n\n    std::optional<V>\
-    \ product() const {\n        return m_small.size() == m_K ? std::optional<V>{m_sv}\
-    \ : std::nullopt;\n    }\n\n    std::optional<V> productRemain() const {\n   \
-    \     return m_small.size() == m_K ? std::optional<V>{m_bv} : std::nullopt;\n\
-    \    }\n\n    V productAll() const {\n        return G::operation(m_sv, m_bv);\n\
-    \    }\n\n    V popK() {\n        assert(m_K >= 1u and size() >= m_K);\n     \
-    \   V res = popSmall(); \n        adjust();\n        return res;\n    }\n\nprivate:\n\
-    \n    std::priority_queue<V> m_small;\n\n    std::priority_queue<V, std::vector<V>,\
-    \ std::greater<V>> m_big;\n\n    V m_sv = G::identity(), m_bv = G::identity();\n\
-    \n    usize m_K = 0;\n\n    void pushSmall(V&& v) {\n        m_sv = G::operation(m_sv,\
-    \ v);\n        m_small.push(std::move(v));\n    }\n\n    V popSmall() {\n    \
-    \    assert(m_small.size());\n        V res = m_small.top();\n        m_small.pop();\n\
-    \        m_sv = G::operation(m_sv, G::inverse(res));\n        return res;\n  \
-    \  }\n\n    void pushBig(V&& v) {\n        m_bv = G::operation(m_bv, v);\n   \
-    \     m_big.push(std::move(v));\n    }\n\n    V popBig() {\n        assert(m_big.size());\n\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/Other/PriorityProductSet.hpp\"\
+    \n\n#include <cassert>\n#include <optional>\n#include <utility>\n#include <queue>\n\
+    \nnamespace zawa {\n\n// 1-indexed\ntemplate <concepts::Group G>\nclass PriorityProductSet\
+    \ {\npublic:\n\n    using V = G::Element;\n\n    PriorityProductSet() = default;\n\
+    \n    PriorityProductSet(usize K) : m_K{K} {}\n\n    void insert(V&& v) {\n  \
+    \      pushSmall(std::move(v));\n        adjust();\n    }\n\n    void insert(const\
+    \ V& v) {\n        insert(V{v});\n    }\n\n    usize size() const {\n        return\
+    \ m_small.size() + m_big.size();\n    }\n\n    inline usize K() const {\n    \
+    \    return m_K;\n    }\n\n    void setK(usize K) {\n        m_K = K;\n      \
+    \  adjust();\n    }\n\n    std::optional<V> product() const {\n        return\
+    \ m_small.size() == m_K ? std::optional<V>{m_sv} : std::nullopt;\n    }\n\n  \
+    \  std::optional<V> productRemain() const {\n        return m_small.size() ==\
+    \ m_K ? std::optional<V>{m_bv} : std::nullopt;\n    }\n\n    V productAll() const\
+    \ {\n        return G::operation(m_sv, m_bv);\n    }\n\n    V popK() {\n     \
+    \   assert(m_K >= 1u and size() >= m_K);\n        V res = popSmall(); \n     \
+    \   adjust();\n        return res;\n    }\n\nprivate:\n\n    std::priority_queue<V>\
+    \ m_small;\n\n    std::priority_queue<V, std::vector<V>, std::greater<V>> m_big;\n\
+    \n    V m_sv = G::identity(), m_bv = G::identity();\n\n    usize m_K = 0;\n\n\
+    \    void pushSmall(V&& v) {\n        m_sv = G::operation(m_sv, v);\n        m_small.push(std::move(v));\n\
+    \    }\n\n    V popSmall() {\n        assert(m_small.size());\n        V res =\
+    \ m_small.top();\n        m_small.pop();\n        m_sv = G::operation(m_sv, G::inverse(res));\n\
+    \        return res;\n    }\n\n    void pushBig(V&& v) {\n        m_bv = G::operation(m_bv,\
+    \ v);\n        m_big.push(std::move(v));\n    }\n\n    V popBig() {\n        assert(m_big.size());\n\
     \        V res = m_big.top();\n        m_big.pop();\n        m_bv = G::operation(m_bv,\
     \ G::inverse(res));\n        return res;\n    }\n\n    void adjust() {\n     \
     \   while (m_small.size() > m_K) pushBig(popSmall());\n        while (m_small.size()\
@@ -131,11 +138,12 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/AtCoder/arc196_a.test.cpp
   requiredBy: []
-  timestamp: '2025-04-07 22:52:36+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/arc196_a.test.cpp

@@ -11,6 +11,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -31,7 +34,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc287/submissions/63198012
+    - https://atcoder.jp/contests/abc287/submissions/64948115
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc287_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -72,19 +75,24 @@ data:
     private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
     } // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
-    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
-    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
     \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
     \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
     \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
     \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <ostream>\n\
     #include <functional>\n#include <type_traits>\n\nnamespace zawa {\n\ntemplate\
-    \ <Concept::Group Group>\nclass FenwickTree {\nprivate:\n    using Value = typename\
+    \ <concepts::Group Group>\nclass FenwickTree {\nprivate:\n    using Value = typename\
     \ Group::Element;\n\n    usize n_;\n    u32 bitWidth_;\n    std::vector<Value>\
     \ a_, dat_;\n\n    constexpr i32 lsb(i32 x) const noexcept {\n        return x\
     \ & -x;\n    }\n    \n    // a[i] <- a[i] + v\n    void addDat(i32 i, const Value&\
@@ -140,7 +148,7 @@ data:
     \ {\n        return l + r;\n    }\n    static constexpr T inverse(const T& v)\
     \ noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"\
     Test/AtCoder/abc287_g.test.cpp\"\n\n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\
-    \n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/63198012\n\
+    \n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/64948115\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -181,7 +189,7 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/CompressedSequence.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <cassert>\n#include <iostream>\n\
-    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/63198012\n\
+    #include <vector>\n\n/*\n * ABC287-G Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/64948115\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -225,11 +233,12 @@ data:
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc287_g.test.cpp

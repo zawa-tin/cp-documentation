@@ -4,6 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
@@ -66,23 +69,29 @@ data:
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
-    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
-    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
     \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
     \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
     \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
     \n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Monoid/MonoidConcept.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace Concept {\n\ntemplate <class T>\nconcept Inversible = requires\
+    \ {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible = requires\
     \ {\n    typename T::Element;\n    { T::inverse(std::declval<typename T::Element>())\
     \ } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class T>\nconcept Group\
     \ = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
@@ -90,7 +99,7 @@ data:
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
-  timestamp: '2024-09-10 17:27:21+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp

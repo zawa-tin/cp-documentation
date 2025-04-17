@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -23,12 +26,17 @@ data:
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace Concept {\n\ntemplate\
-    \ <class T>\nconcept Monoid = requires {\n    typename T::Element;\n    { T::identity()\
-    \ } -> std::same_as<typename T::Element>;\n    { T::operation(std::declval<typename\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n};\n\n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SparseTable/DualSparseTable.hpp\"\
-    \n\n#include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SparseTable/DualSparseTable.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid\
     \ S>\nclass DualSparseTable {\npublic:\n    using Value = typename S::Element;\n\
     \n    DualSparseTable() = default;\n    \n    DualSparseTable(const std::vector<Value>&\
     \ A)\n        : n_{A.size()}, L_(A.size() + 1), dat_{} {\n        \n        assert(A.size());\n\
@@ -50,7 +58,7 @@ data:
     \    }\n\nprivate:\n    \n    usize n_{};\n    std::vector<u32> L_;\n    std::vector<std::vector<Value>>\
     \ dat_{};\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <Concept::Monoid\
+    \n\n#include <vector>\n#include <cassert>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid\
     \ S>\nclass DualSparseTable {\npublic:\n    using Value = typename S::Element;\n\
     \n    DualSparseTable() = default;\n    \n    DualSparseTable(const std::vector<Value>&\
     \ A)\n        : n_{A.size()}, L_(A.size() + 1), dat_{} {\n        \n        assert(A.size());\n\
@@ -74,10 +82,11 @@ data:
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/DualSparseTable.hpp
   requiredBy: []
-  timestamp: '2024-10-29 23:39:43+09:00'
+  timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/2559.test.cpp
