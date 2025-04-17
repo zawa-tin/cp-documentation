@@ -56,8 +56,8 @@ data:
     \      std::cin >> a >> b;\n            que.push(V{a, b});\n        }\n      \
     \  else if (t == 1) {\n            que.pop();\n        }\n        else if (t ==\
     \ 2) {\n            int x;\n            std::cin >> x;\n            std::cout\
-    \ << (que.empty() ? V{} : que.product())(x).val() << '\\n';\n        }\n     \
-    \   else {\n            assert(false);\n        }\n    }\n}\n"
+    \ << que.product()(x).val() << '\\n';\n        }\n        else {\n           \
+    \ assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -69,7 +69,7 @@ data:
   isVerificationFile: true
   path: Test/LC/queue_operate_all_composite.test.cpp
   requiredBy: []
-  timestamp: '2025-04-17 21:24:54+09:00'
+  timestamp: '2025-04-17 21:32:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/queue_operate_all_composite.test.cpp
