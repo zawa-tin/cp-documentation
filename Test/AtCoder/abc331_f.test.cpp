@@ -19,7 +19,7 @@ Value RollingHashMonoidData::base{
 };
 
 int main() {
-#ifdef
+#ifdef ATCODER
     SetFastIO();
     int N, Q; 
     std::cin >> N >> Q;
