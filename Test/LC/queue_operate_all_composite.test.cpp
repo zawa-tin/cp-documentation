@@ -33,7 +33,7 @@ int main() {
         else if (t == 2) {
             int x;
             std::cin >> x;
-            std::cout << (que.empty() ? V{} : que.product())(x).val() << '\n';
+            std::cout << que.product()(x).val() << '\n';
         }
         else {
             assert(false);
