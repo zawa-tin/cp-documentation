@@ -2,7 +2,7 @@
 
 /*
  * AOJ3548 String Puzzle
- * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3548/judge/10386552/C++20
+ * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3548/judge/10394036/C++20
  */
 
 #include <iostream>

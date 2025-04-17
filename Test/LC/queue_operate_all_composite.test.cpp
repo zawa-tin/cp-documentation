@@ -16,8 +16,9 @@ int main() {
     SetFastIO();
     int Q;
     std::cin >> Q;
-    FoldableQueue<AffineMonoid<mint>> que{};
-    using V = typename AffineMonoid<mint>::Element;
+    using M = AffineMonoid<mint>;
+    FoldableQueue<MonoidSWAGable<M>> que{};
+    using V = typename M::Element;
     while (Q--) {
         int t;
         std::cin >> t;

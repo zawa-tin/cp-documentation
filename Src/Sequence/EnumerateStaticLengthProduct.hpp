@@ -16,7 +16,7 @@ std::vector<typename S::Element> EnumerateStaticLengthProduct(const std::vector<
     assert(K > 0);
     if (A.size() < K) return {};
     std::vector<typename S::Element> res(A.size() - K + 1);
-    FoldableQueue<S> que{};
+    FoldableQueue<SemigroupSWAGable<S>> que{};
     for (usize i{} ; i < K ; i++) {
         que.push(A[i]);
     }
