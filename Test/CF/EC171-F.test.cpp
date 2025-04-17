@@ -3,6 +3,7 @@
 
 /*
  * Educational Codeforces Round 171 (Div. 2) F. Bermart Ice Cream
+ * https://codeforces.com/contest/2026/submission/315943049
  */
 
 #include "../../Src/DataStructure/SWAG/FoldableDeque.hpp"
