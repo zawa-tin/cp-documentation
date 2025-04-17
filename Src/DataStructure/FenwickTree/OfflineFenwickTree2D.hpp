@@ -14,7 +14,7 @@ namespace zawa {
 
 namespace internal {
 
-template <class T, Concept::Group G>
+template <class T, concepts::Group G>
 class FenwickTree2D {
 public:
 
@@ -80,7 +80,7 @@ private:
 
 } // namespace internal
 
-template <class T, Concept::Group G>
+template <class T, concepts::Group G>
 class OfflineFenwickTree2D {
 public:
 

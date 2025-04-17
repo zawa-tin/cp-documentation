@@ -10,7 +10,7 @@
 
 namespace zawa {
 
-namespace Concept {
+namespace concepts {
 
 template <class T, class U>
 concept Powerable = requires {
@@ -27,9 +27,9 @@ concept EqualCompare = requires(T a, T b) {
 template <class T>
 concept FastPowerableMonoid = Monoid<T> and Powerable<T, u64>;
 
-} // namespace
+} // namespace concepts
 
-template <Concept::Monoid M>
+template <concepts::Monoid M>
 class AssignmentSegmentTree {
 public:
 
@@ -48,7 +48,7 @@ public:
         // dat: 区間の左端lにa_{l}^{r-l}, それ以外のiはidentity()にする -> セグ木にこれをのせる
         // dat_: 区間の左端lにa_{l}, それ以外のiはidentity()にする
         dat_.shrink_to_fit();
-        if constexpr (Concept::EqualCompare<V>) {
+        if constexpr (concepts::EqualCompare<V>) {
             for (usize i{}, j{} ; i < dat_.size() ; ) {
                 while (j < dat.size() and dat[i] == dat[j]) j++;
                 ls_.insert(i);
@@ -112,7 +112,7 @@ private:
 
     std::set<usize> ls_; 
 
-    static V power(V v, u32 p) requires Concept::FastPowerableMonoid<M> {
+    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<M> {
         return M::power(v, p);
     }
 

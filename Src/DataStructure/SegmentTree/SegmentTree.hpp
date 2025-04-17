@@ -11,7 +11,7 @@
 
 namespace zawa {
 
-template <Concept::Monoid Monoid>
+template <concepts::Monoid Monoid>
 class SegmentTree {
 public:
     using Value = typename Monoid::Element;

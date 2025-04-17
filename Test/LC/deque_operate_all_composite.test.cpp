@@ -14,8 +14,9 @@ int main() {
     std::ios::sync_with_stdio(false);
     int Q;
     std::cin >> Q;
-    FoldableDeque<AffineMonoid<mint>> deq;
-    using V = AffineMonoid<mint>::Element;
+    using M = AffineMonoid<mint>;
+    using V = M::Element;
+    FoldableDeque<MonoidSWAGable<M>> deq;
     while (Q--) {
         int t;
         std::cin >> t;

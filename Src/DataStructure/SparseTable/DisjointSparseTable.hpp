@@ -10,7 +10,7 @@
 
 namespace zawa {
 
-template <Concept::Monoid M>
+template <concepts::Monoid M>
 class DisjointSparseTable {
 public:
 

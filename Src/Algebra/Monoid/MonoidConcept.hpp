@@ -1,17 +1,21 @@
 #pragma once
 
+#include "../Semigroup/SemigroupConcept.hpp"
+
 #include <concepts>
 
 namespace zawa {
 
-namespace Concept {
+namespace concepts {
 
 template <class T>
-concept Monoid = requires {
+concept Identitiable = requires {
     typename T::Element;
     { T::identity() } -> std::same_as<typename T::Element>;
-    { T::operation(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
 };
+
+template <class T>
+concept Monoid = Semigroup<T> and Identitiable<T>;
 
 } // namespace
 

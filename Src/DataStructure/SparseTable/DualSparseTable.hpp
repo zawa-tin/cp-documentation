@@ -8,7 +8,7 @@
 
 namespace zawa {
 
-template <Concept::Monoid S>
+template <concepts::Monoid S>
 class DualSparseTable {
 public:
     using Value = typename S::Element;
