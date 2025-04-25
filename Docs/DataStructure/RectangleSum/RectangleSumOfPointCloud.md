@@ -1,19 +1,18 @@
 ---
-title: Static Point Add Rectangle Sum
-documentation_of: //Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+title: Rectangle Sum of PointCloud
+documentation_of: //Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
 ---
 
 ## 概要
 
-以下のようなクエリを処理する
-
-始めに $N$ 個の重み付きの点が与えられる。その次に $Q$ 個の矩形領域が与えられる。各矩形領域の中にある点の重みの総和を求めよ。
+二次元平面上の $N$ 点 (重み付き)と $Q$ 個の矩形領域が与えられるので、各矩形領域内に属する点の重みの総和を計算する
 
 ## ライブラリの使い方
 
 ```cpp
 template <class T, class U>
-std::vector<typename T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::vector<U> qs) {
+requires concepts::RSOPCQuery
+std::vector<typename T::W> RectangleSumOfPointCloud(std::vector<T> ps, std::vector<U> qs) {
 ```
 
 #### ps
@@ -22,10 +21,12 @@ std::vector<typename T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::ve
 
 `T`は基本的には以下をコピれば問題無いはず。
 
+- `P`が点の座標の型で、`W`が重みの型を表す
+
 ```cpp
 struct Point {
-    using P = int; // 座標の型、int, long long 
-    using W = long long; // 重みの型、int, long long, mint
+    using P = int; 
+    using W = long long;
     P x, y;
     W w;
 };
@@ -39,9 +40,10 @@ P型のメンバ変数`x, y`とW型のメンバ変数`w`が必要。
 
 矩形領域の`std::vector`
 
-基本的には以下をコピれば問題無い
+基本的には以下をコピれば問題無い。`P`が座標の型を表す。
 
 ```cpp
+// [l, r)x[d, u)
 struct Rect {
     using P = int;
     int l, d, r, u;

@@ -1,6 +1,6 @@
 ---
-title: Dynamic Point Add Rectangle Sum
-documentation_of: //Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
+title: Point Add Rectangle Sum
+documentation_of: //Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
 ---
 
 ## 概要
@@ -10,11 +10,14 @@ documentation_of: //Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.h
 1. 二次元平面上に重み付きの点を追加する
 2. 矩形領域が与えられる。矩形領域の中にある点の重みの総和を求める
 
+ただし、オフライン処理である。すなわち全てのクエリは処理前に与えられている必要がある。
+
 ## ライブラリの使い方
 
 ```cpp
 template <class T, class U>
-DynamicPointAddRectangleSum()
+requires concepts::RSOPCQuery
+PointAddRectangleSum()
 ```
 
 #### T
@@ -23,10 +26,12 @@ DynamicPointAddRectangleSum()
 
 `T`は基本的には以下をコピれば問題無いはず。
 
+- `P`が点の座標の型で、`W`が重みの型を表す
+
 ```cpp
 struct Point {
-    using P = int; // 座標の型、int, long long 
-    using W = long long; // 重みの型、int, long long, mint
+    using P = int; 
+    using W = long long;
     P x, y;
     W w;
 };
@@ -40,9 +45,10 @@ P型のメンバ変数`x, y`とW型のメンバ変数`w`が必要。
 
 矩形領域型
 
-基本的には以下をコピれば問題無い
+基本的には以下をコピれば問題無い。`P`が座標の型を表す。
 
 ```cpp
+// [l, r)x[d, u)
 struct Rect {
     using P = int;
     int l, d, r, u;

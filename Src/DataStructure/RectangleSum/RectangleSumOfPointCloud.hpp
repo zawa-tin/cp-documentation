@@ -10,13 +10,35 @@
 
 namespace zawa {
 
-// P...座標の型
-// W...重みの型
+namespace concepts {
+
+template <class T>
+concept Point = requires (T p) {
+    typename T::P;
+    typename T::W;
+    { p.x } -> std::same_as<typename T::P&>;
+    { p.y } -> std::same_as<typename T::P&>;
+    { p.w } -> std::same_as<typename T::W&>;
+};
+
+template <class T>
+concept Rectangle = requires (T r) {
+    typename T::P;
+    { r.l } -> std::same_as<typename T::P&>;
+    { r.d } -> std::same_as<typename T::P&>;
+    { r.r } -> std::same_as<typename T::P&>;
+    { r.u } -> std::same_as<typename T::P&>;
+};
+
 template <class T, class U>
-std::vector<typename T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::vector<U> qs) {
+concept RSOPCQuery = Point<T> and Rectangle<U> and std::same_as<typename T::P, typename U::P>;
+
+} // namespace concepts
+
+template <class T, class U>
+std::vector<typename T::W> RectangleSumOfPointCloud(std::vector<T> ps, std::vector<U> qs) requires concepts::RSOPCQuery<T, U> {
     using P = typename T::P;
     using W = typename T::W;
-    static_assert(std::same_as<typename T::P, typename U::P>, "T::P and U::P must be same");
     usize n{ps.size()}, q{qs.size()};
     std::vector<P> xs(n);
     for (usize i{} ; i < n ; i++) xs[i] = ps[i].x;
@@ -26,7 +48,7 @@ std::vector<typename T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::ve
             return L.y < R.y;
             });
     using Q = std::pair<P, usize>;
-    std::vector<Q> query(2 * qs.size());
+    std::vector<Q> query(qs.size() << 1);
     for (usize i{} ; i < qs.size() ; i++) {
         qs[i].l = (P)std::distance(xs.begin(), std::lower_bound(xs.begin(), xs.end(), qs[i].l));
         qs[i].r = (P)std::distance(xs.begin(), std::lower_bound(xs.begin(), xs.end(), qs[i].r));

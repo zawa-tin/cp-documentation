@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/point_add_rectangle_sum"
 
 #include "../../../Src/Template/IOSetting.hpp"
-#include "../../../Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp"
+#include "../../../Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp"
 
 #include <cassert>
 #include <iostream>
@@ -24,7 +24,7 @@ int main() {
     SetFastIO();
     int N, Q;
     std::cin >> N >> Q;
-    DynamicPointAddRectangleSum<Point, Rect> solver;
+    PointAddRectangleSum<Point, Rect> solver;
     for (int i{} ; i < N ; i++) {
         int x, y, w;
         std::cin >> x >> y >> w;
