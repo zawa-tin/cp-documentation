@@ -2,40 +2,47 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
-    title: Static Point Add Rectangle Sum
+    path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
+    title: Rectangle Sum of PointCloud
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
-    title: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
+    path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+    title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp\"\
-    \n\n#line 2 \"Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp\"\n\
-    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 2 \"Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp\"\
+    \n\n#line 2 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\n\n\
+    #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\
     \n\n#include <algorithm>\n#include <concepts>\n#include <utility>\n#include <vector>\n\
-    #include <type_traits>\n\nnamespace zawa {\n\n// P...\u5EA7\u6A19\u306E\u578B\n\
-    // W...\u91CD\u307F\u306E\u578B\ntemplate <class T, class U>\nstd::vector<typename\
-    \ T::W> StaticPointAddRectangleSum(std::vector<T> ps, std::vector<U> qs) {\n \
-    \   using P = typename T::P;\n    using W = typename T::W;\n    static_assert(std::same_as<typename\
-    \ T::P, typename U::P>, \"T::P and U::P must be same\");\n    usize n{ps.size()},\
-    \ q{qs.size()};\n    std::vector<P> xs(n);\n    for (usize i{} ; i < n ; i++)\
-    \ xs[i] = ps[i].x;\n    std::sort(xs.begin(), xs.end());\n    xs.erase(std::unique(xs.begin(),\
-    \ xs.end()), xs.end());\n    std::sort(ps.begin(), ps.end(), [&](const auto& L,\
-    \ const auto& R) -> bool {\n            return L.y < R.y;\n            });\n \
-    \   using Q = std::pair<P, usize>;\n    std::vector<Q> query(2 * qs.size());\n\
-    \    for (usize i{} ; i < qs.size() ; i++) {\n        qs[i].l = (P)std::distance(xs.begin(),\
+    #include <type_traits>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Point = requires (T p) {\n    typename T::P;\n    typename\
+    \ T::W;\n    { p.x } -> std::same_as<typename T::P&>;\n    { p.y } -> std::same_as<typename\
+    \ T::P&>;\n    { p.w } -> std::same_as<typename T::W&>;\n};\n\ntemplate <class\
+    \ T>\nconcept Rectangle = requires (T r) {\n    typename T::P;\n    { r.l } ->\
+    \ std::same_as<typename T::P&>;\n    { r.d } -> std::same_as<typename T::P&>;\n\
+    \    { r.r } -> std::same_as<typename T::P&>;\n    { r.u } -> std::same_as<typename\
+    \ T::P&>;\n};\n\ntemplate <class T, class U>\nconcept RSOPCQuery = Point<T> and\
+    \ Rectangle<U> and std::same_as<typename T::P, typename U::P>;\n\n} // namespace\
+    \ concepts\n\ntemplate <class T, class U>\nstd::vector<typename T::W> RectangleSumOfPointCloud(std::vector<T>\
+    \ ps, std::vector<U> qs) requires concepts::RSOPCQuery<T, U> {\n    using P =\
+    \ typename T::P;\n    using W = typename T::W;\n    usize n{ps.size()}, q{qs.size()};\n\
+    \    std::vector<P> xs(n);\n    for (usize i{} ; i < n ; i++) xs[i] = ps[i].x;\n\
+    \    std::sort(xs.begin(), xs.end());\n    xs.erase(std::unique(xs.begin(), xs.end()),\
+    \ xs.end());\n    std::sort(ps.begin(), ps.end(), [&](const auto& L, const auto&\
+    \ R) -> bool {\n            return L.y < R.y;\n            });\n    using Q =\
+    \ std::pair<P, usize>;\n    std::vector<Q> query(qs.size() << 1);\n    for (usize\
+    \ i{} ; i < qs.size() ; i++) {\n        qs[i].l = (P)std::distance(xs.begin(),\
     \ std::lower_bound(xs.begin(), xs.end(), qs[i].l));\n        qs[i].r = (P)std::distance(xs.begin(),\
     \ std::lower_bound(xs.begin(), xs.end(), qs[i].r));\n        query[i] = std::pair{qs[i].d,\
     \ i};\n        query[i + q] = std::pair{qs[i].u, i + q};\n    }\n    std::sort(query.begin(),\
@@ -49,12 +56,11 @@ data:
     \        if (idx < q) {\n            res[idx] += pref(qs[idx].l) - pref(qs[idx].r);\n\
     \        }\n        else {\n            idx -= q;\n            res[idx] += -pref(qs[idx].l)\
     \ + pref(qs[idx].r);\n        }\n    } \n    return res;\n}\n\n} // namespace\
-    \ zawa\n#line 5 \"Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp\"\
-    \n\n#include <cassert>\n#line 9 \"Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass DynamicPointAddRectangleSum\
-    \ {\npublic:\n    using P = typename T::P;\n    using W = typename T::W;\n   \
-    \ static_assert(std::same_as<typename T::P, typename U::P>, \"T::P and U::P must\
-    \ be same\");\n\n    usize add(const T& P) {\n        usize res{m_ps.size()};\n\
+    \ zawa\n#line 5 \"Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp\"\n\n\
+    #include <cassert>\n#line 9 \"Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T, class U>\nrequires concepts::RSOPCQuery<T,\
+    \ U>\nclass PointAddRectangleSum {\npublic:\n    using P = typename T::P;\n  \
+    \  using W = typename T::W;\n\n    usize add(const T& P) {\n        usize res{m_ps.size()};\n\
     \        m_pos.emplace_back(false, res);\n        m_ps.push_back(P);\n       \
     \ return res;\n    }\n\n    usize add(T&& P) {\n        usize res{m_ps.size()};\n\
     \        m_pos.emplace_back(false, res);\n        m_ps.push_back(std::move(P));\n\
@@ -72,7 +78,7 @@ data:
     \             }\n                for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
     \ {\n                    q.push_back(m_pos[i].second);\n                }\n  \
     \              if (p.empty() or q.empty()) return;\n                std::vector<W>\
-    \ kiyo{StaticPointAddRectangleSum<T, U>(\n                        std::vector<T>(m_ps.begin()\
+    \ kiyo{RectangleSumOfPointCloud<T, U>(\n                        std::vector<T>(m_ps.begin()\
     \ + p.front(), m_ps.begin() + p.back() + 1),\n                        std::vector<U>(m_qs.begin()\
     \ + q.front(), m_qs.begin() + q.back() + 1)\n                        )};\n   \
     \             for (usize i{} ; i < q.size() ; i++) {\n                    res[q[i]]\
@@ -87,12 +93,11 @@ data:
     \    }\n\nprivate:\n\n    static constexpr usize THRESHOLD{200};\n\n    std::vector<T>\
     \ m_ps;\n    std::vector<U> m_qs;\n    std::vector<std::pair<bool, usize>> m_pos;\n\
     };\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./StaticPointAddRectangleSum.hpp\"\n#include \"\
+  code: "#pragma once\n\n#include \"./RectangleSumOfPointCloud.hpp\"\n#include \"\
     ../../Template/TypeAlias.hpp\"\n\n#include <cassert>\n#include <utility>\n#include\
-    \ <vector>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass DynamicPointAddRectangleSum\
-    \ {\npublic:\n    using P = typename T::P;\n    using W = typename T::W;\n   \
-    \ static_assert(std::same_as<typename T::P, typename U::P>, \"T::P and U::P must\
-    \ be same\");\n\n    usize add(const T& P) {\n        usize res{m_ps.size()};\n\
+    \ <vector>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nrequires concepts::RSOPCQuery<T,\
+    \ U>\nclass PointAddRectangleSum {\npublic:\n    using P = typename T::P;\n  \
+    \  using W = typename T::W;\n\n    usize add(const T& P) {\n        usize res{m_ps.size()};\n\
     \        m_pos.emplace_back(false, res);\n        m_ps.push_back(P);\n       \
     \ return res;\n    }\n\n    usize add(T&& P) {\n        usize res{m_ps.size()};\n\
     \        m_pos.emplace_back(false, res);\n        m_ps.push_back(std::move(P));\n\
@@ -110,7 +115,7 @@ data:
     \             }\n                for (usize i{m} ; i < r ; i++) if (m_pos[i].first)\
     \ {\n                    q.push_back(m_pos[i].second);\n                }\n  \
     \              if (p.empty() or q.empty()) return;\n                std::vector<W>\
-    \ kiyo{StaticPointAddRectangleSum<T, U>(\n                        std::vector<T>(m_ps.begin()\
+    \ kiyo{RectangleSumOfPointCloud<T, U>(\n                        std::vector<T>(m_ps.begin()\
     \ + p.front(), m_ps.begin() + p.back() + 1),\n                        std::vector<U>(m_qs.begin()\
     \ + q.front(), m_qs.begin() + q.back() + 1)\n                        )};\n   \
     \             for (usize i{} ; i < q.size() ; i++) {\n                    res[q[i]]\
@@ -126,18 +131,18 @@ data:
     \ m_ps;\n    std::vector<U> m_qs;\n    std::vector<std::pair<bool, usize>> m_pos;\n\
     };\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
+  - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
-  path: Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
+  path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
   requiredBy: []
-  timestamp: '2024-11-19 21:09:31+09:00'
+  timestamp: '2025-04-25 15:47:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
-documentation_of: Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
+  - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+documentation_of: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
 layout: document
-title: Dynamic Point Add Rectangle Sum
+title: Point Add Rectangle Sum
 ---
 
 ## 概要
@@ -147,11 +152,14 @@ title: Dynamic Point Add Rectangle Sum
 1. 二次元平面上に重み付きの点を追加する
 2. 矩形領域が与えられる。矩形領域の中にある点の重みの総和を求める
 
+ただし、オフライン処理である。すなわち全てのクエリは処理前に与えられている必要がある。
+
 ## ライブラリの使い方
 
 ```cpp
 template <class T, class U>
-DynamicPointAddRectangleSum()
+requires concepts::RSOPCQuery
+PointAddRectangleSum()
 ```
 
 #### T
@@ -160,10 +168,12 @@ DynamicPointAddRectangleSum()
 
 `T`は基本的には以下をコピれば問題無いはず。
 
+- `P`が点の座標の型で、`W`が重みの型を表す
+
 ```cpp
 struct Point {
-    using P = int; // 座標の型、int, long long 
-    using W = long long; // 重みの型、int, long long, mint
+    using P = int; 
+    using W = long long;
     P x, y;
     W w;
 };
@@ -177,9 +187,10 @@ P型のメンバ変数`x, y`とW型のメンバ変数`w`が必要。
 
 矩形領域型
 
-基本的には以下をコピれば問題無い
+基本的には以下をコピれば問題無い。`P`が座標の型を表す。
 
 ```cpp
+// [l, r)x[d, u)
 struct Rect {
     using P = int;
     int l, d, r, u;

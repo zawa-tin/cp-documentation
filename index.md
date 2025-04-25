@@ -112,11 +112,11 @@ data:
   - name: Src/DataStructure/RectangleSum
     pages:
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/RectangleSum/DynamicPointAddRectangleSum.hpp
-      title: Dynamic Point Add Rectangle Sum
+      path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
+      title: Point Add Rectangle Sum
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp
-      title: Static Point Add Rectangle Sum
+      path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
+      title: Rectangle Sum of PointCloud
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
@@ -787,6 +787,9 @@ data:
       path: Test/AtCoder/abc132_f.test.cpp
       title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc136_f.test.cpp
+      title: Test/AtCoder/abc136_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc139_f.test.cpp
       title: Test/AtCoder/abc139_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1129,11 +1132,11 @@ data:
   - name: Test/LC/point_add_rectangle_sum
     pages:
     - icon: ':heavy_check_mark:'
-      path: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
-      title: Test/LC/point_add_rectangle_sum/DynamicPointAddRectangleSum.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
       title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+      title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - name: Test/LC/staticrmq
     pages:
     - icon: ':heavy_check_mark:'

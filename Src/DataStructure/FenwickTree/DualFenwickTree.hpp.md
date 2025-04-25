@@ -163,9 +163,9 @@ data:
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
 layout: document
 title: Dual Fenwick Tree

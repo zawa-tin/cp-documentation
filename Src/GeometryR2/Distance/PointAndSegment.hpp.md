@@ -203,8 +203,8 @@ data:
   verifiedWith:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2003.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/2003.test.cpp
   - Test/AOJ/2862.test.cpp
 documentation_of: Src/GeometryR2/Distance/PointAndSegment.hpp
 layout: document

@@ -68,16 +68,16 @@ data:
   isVerificationFile: false
   path: Src/Number/PrimeFactor.hpp
   requiredBy:
-  - Src/Number/PrimeFactorize.hpp
   - Src/Number/LinearSieve.hpp
+  - Src/Number/PrimeFactorize.hpp
   timestamp: '2024-06-30 19:07:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF902-B.test.cpp
   - Test/AOJ/2706.test.cpp
-  - Test/AtCoder/abc170_d.test.cpp
-  - Test/AtCoder/abc177_e.test.cpp
+  - Test/CF/CF902-B.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
+  - Test/AtCoder/abc177_e.test.cpp
+  - Test/AtCoder/abc170_d.test.cpp
 documentation_of: Src/Number/PrimeFactor.hpp
 layout: document
 redirect_from:

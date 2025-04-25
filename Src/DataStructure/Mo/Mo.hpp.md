@@ -80,8 +80,8 @@ data:
   timestamp: '2025-04-14 13:20:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF974-H.test.cpp
   - Test/LC/static_range_frequency.test.cpp
+  - Test/CF/CF974-H.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
 documentation_of: Src/DataStructure/Mo/Mo.hpp
 layout: document

@@ -102,15 +102,15 @@ data:
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF923-D.test.cpp
-  - Test/CF/EC162-D.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
-  - Test/Manual/typical90_ai.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/AtCoder/abc359_g.test.cpp
+  - Test/CF/EC162-D.test.cpp
+  - Test/CF/CF923-D.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

@@ -112,9 +112,9 @@ data:
   timestamp: '2024-06-30 15:57:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF923-F.test.cpp
-  - Test/AOJ/GRL_3_A.test.cpp
   - Test/AOJ/GRL_3_B.test.cpp
+  - Test/AOJ/GRL_3_A.test.cpp
+  - Test/CF/CF923-F.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
 documentation_of: Src/Graph/Components/Lowlink.hpp
 layout: document

@@ -92,8 +92,8 @@ data:
   verifiedWith:
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/LC/many_aplusb.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
 documentation_of: Src/Template/Output.hpp
 layout: document
 title: "\u6A19\u6E96\u51FA\u529B"
