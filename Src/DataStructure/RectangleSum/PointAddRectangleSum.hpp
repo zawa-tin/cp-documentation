@@ -1,6 +1,6 @@
 #pragma once
 
-#include "./StaticPointAddRectangleSum.hpp"
+#include "./RectangleSumOfPointCloud.hpp"
 #include "../../Template/TypeAlias.hpp"
 
 #include <cassert>
@@ -10,11 +10,11 @@
 namespace zawa {
 
 template <class T, class U>
-class DynamicPointAddRectangleSum {
+requires concepts::RSOPCQuery<T, U>
+class PointAddRectangleSum {
 public:
     using P = typename T::P;
     using W = typename T::W;
-    static_assert(std::same_as<typename T::P, typename U::P>, "T::P and U::P must be same");
 
     usize add(const T& P) {
         usize res{m_ps.size()};
@@ -62,7 +62,7 @@ public:
                     q.push_back(m_pos[i].second);
                 }
                 if (p.empty() or q.empty()) return;
-                std::vector<W> kiyo{StaticPointAddRectangleSum<T, U>(
+                std::vector<W> kiyo{RectangleSumOfPointCloud<T, U>(
                         std::vector<T>(m_ps.begin() + p.front(), m_ps.begin() + p.back() + 1),
                         std::vector<U>(m_qs.begin() + q.front(), m_qs.begin() + q.back() + 1)
                         )};

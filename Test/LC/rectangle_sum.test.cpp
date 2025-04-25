@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 
-#include "../../Src/DataStructure/RectangleSum/StaticPointAddRectangleSum.hpp"
-#include "../../Src/Template/IOSetting.hpp"
+#include "../../Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp"
 
 #include <iostream>
 #include <vector>
@@ -21,7 +20,9 @@ struct Rect {
 };
 
 int main() {
-    std::cin.tie(nullptr)->sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int N, Q;
     std::cin >> N >> Q;
     std::vector<Point> ps(N);
@@ -36,7 +37,7 @@ int main() {
         std::cin >> l >> d >> r >> u;
         qs[i] = {l, d, r, u};
     }
-    for (auto ans : StaticPointAddRectangleSum(ps, qs)) {
+    for (auto ans : RectangleSumOfPointCloud(ps, qs)) {
         std::cout << ans << '\n';
     }
 }
