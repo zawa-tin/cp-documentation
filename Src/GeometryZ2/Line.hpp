@@ -68,6 +68,9 @@ public:
     }
 
     /* member function */
+    bool valid() const {
+        return p0_ != p1_;
+    }
     Vector positiveDir() const {
         Vector res{p1_ - p0_};
         if (Negative(res.x())) {
