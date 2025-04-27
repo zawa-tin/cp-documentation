@@ -340,6 +340,9 @@ data:
       title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - name: Src/GeometryZ2/Intersect
     pages:
+    - icon: ':warning:'
+      path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
+      title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
       title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp

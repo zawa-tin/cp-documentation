@@ -23,6 +23,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - icon: ':warning:'
+    path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
     title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
@@ -253,6 +256,7 @@ data:
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
   - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp

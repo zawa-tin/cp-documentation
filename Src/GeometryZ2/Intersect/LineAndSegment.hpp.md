@@ -11,49 +11,43 @@ data:
     path: Src/GeometryZ2/Relation.hpp
     title: Src/GeometryZ2/Relation.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Segment.hpp
+    title: Src/GeometryZ2/Segment.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _pathExtension: hpp
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/0388
-    links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/0388
-  bundledCode: "#line 1 \"Test/AOJ/0388.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/0388\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n\
-    #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
-    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
-    \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
-    \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
-    \ < 0) return internal::negative;\n    if (value > 0) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen value) {\n  \
-    \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
-    \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
-    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
-    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
-    #include <algorithm>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\n#include <limits>\n\
-    \nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point {\nprivate:\n    Zahlen\
-    \ x_{}, y_{};\n    static constexpr i32 origin{0};\n    static constexpr i32 firstQuadrant{1};\n\
+    links: []
+  bundledCode: "#line 2 \"Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\n#line 2\
+    \ \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
+    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
+    \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
+    \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
+    \ i32 Sign(Zahlen value) {\n    if (value < 0) return internal::negative;\n  \
+    \  if (value > 0) return internal::positive;\n    return internal::zero;\n}\n\n\
+    constexpr bool Positive(Zahlen value) {\n    return Sign(value) == internal::positive;\n\
+    }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
+    }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
+    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n#include <algorithm>\n#include <iostream>\n\
+    #line 9 \"Src/GeometryZ2/Point.hpp\"\n#include <limits>\n\nnamespace zawa {\n\n\
+    namespace geometryZ2 {\n\nclass Point {\nprivate:\n    Zahlen x_{}, y_{};\n  \
+    \  static constexpr i32 origin{0};\n    static constexpr i32 firstQuadrant{1};\n\
     \    static constexpr i32 secondQuadrant{2};\n    static constexpr i32 thirdQuadrant{-2};\n\
     \    static constexpr i32 forthQuadrant{-1};\npublic:\n    /* constructor */\n\
     \    Point() = default;\n    Point(const Point& p) : x_{p.x()}, y_{p.y()} {}\n\
@@ -107,28 +101,28 @@ data:
     \ Point& p1) {\n        return p0.x() * p1.x() + p0.y() * p1.y();\n    }\n   \
     \ friend Zahlen Cross(const Point& p0, const Point& p1) {\n        return p0.x()\
     \ * p1.y() - p0.y() * p1.x();\n    }\n};\nusing Vector = Point;\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line\
-    \ 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
-    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
-    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
-    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n   \
-    \ Point p0_{}, p1_{};\n\npublic:\n    /* constructor */\n    Line() = default;\n\
-    \    Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y =\
-    \ ax + b\n    Line(const Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a,\
-    \ a + b} {}\n    Line(const Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter,\
+    \ geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\
+    \n#line 5 \"Src/GeometryZ2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT        = -2,\n    // (p1\
+    \ - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\
+    \u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT       \
+    \   =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\
+    \u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE   = +1,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK         = +2\n};\n\nRELATION\
+    \ Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1\
+    \ - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
+    \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\n\n\
+    namespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n    Point\
+    \ p0_{}, p1_{};\n\npublic:\n    /* constructor */\n    Line() = default;\n   \
+    \ Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax\
+    \ + b\n    Line(const Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a\
+    \ + b} {}\n    Line(const Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter,\
     \ setter */\n    const Point& p0() const {\n        return p0_;\n    }\n    Point&\
     \ p0() {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
     \ p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator\
@@ -150,49 +144,54 @@ data:
     \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
     \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
     \ *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n\n#line 6 \"Test/AOJ/0388.test.cpp\"\n\n#line 8 \"Test/AOJ/0388.test.cpp\"\
-    \n#include <vector>\n\nint main() {\n    using namespace zawa;\n    using namespace\
-    \ geometryZ2;\n    SetFastIO();\n    int n, k; std::cin >> n >> k;\n    std::vector<Point>\
-    \ p(n);\n    for (auto& v : p) std::cin >> v;\n    std::vector<Line> all;\n  \
-    \  for (int i{} ; i < n ; i++) {\n        std::vector<Line> now;\n        for\
-    \ (int j{i + 1} ; j < n ; j++) {\n            now.emplace_back(p[i], p[j]);\n\
-    \        }\n        std::sort(now.begin(), now.end());\n        auto m{std::distance(now.begin(),\
-    \ std::unique(now.begin(), now.end()))};\n        for (int j{} ; j < m ; j++)\
-    \ {\n            all.push_back(now[j]);\n        }\n    }\n    std::sort(all.begin(),\
-    \ all.end());\n    bool ans{};\n    int r{};\n    for (int l{} ; l < (int)all.size()\
-    \ ; l = r) {\n        while (r < (int)all.size() and all[l] == all[r]) r++;\n\
-    \        ans |= (r - l + 1) >= k;\n    }\n    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/0388\"\n\n#include\
-    \ \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
-    \n#include \"../../Src/GeometryZ2/Line.hpp\"\n\n#include <algorithm>\n#include\
-    \ <vector>\n\nint main() {\n    using namespace zawa;\n    using namespace geometryZ2;\n\
-    \    SetFastIO();\n    int n, k; std::cin >> n >> k;\n    std::vector<Point> p(n);\n\
-    \    for (auto& v : p) std::cin >> v;\n    std::vector<Line> all;\n    for (int\
-    \ i{} ; i < n ; i++) {\n        std::vector<Line> now;\n        for (int j{i +\
-    \ 1} ; j < n ; j++) {\n            now.emplace_back(p[i], p[j]);\n        }\n\
-    \        std::sort(now.begin(), now.end());\n        auto m{std::distance(now.begin(),\
-    \ std::unique(now.begin(), now.end()))};\n        for (int j{} ; j < m ; j++)\
-    \ {\n            all.push_back(now[j]);\n        }\n    }\n    std::sort(all.begin(),\
-    \ all.end());\n    bool ans{};\n    int r{};\n    for (int l{} ; l < (int)all.size()\
-    \ ; l = r) {\n        while (r < (int)all.size() and all[l] == all[r]) r++;\n\
-    \        ans |= (r - l + 1) >= k;\n    }\n    std::cout << ans << '\\n';\n}\n"
+    \n} // namespace zawa\n\n#line 2 \"Src/GeometryZ2/Segment.hpp\"\n\n#line 6 \"\
+    Src/GeometryZ2/Segment.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\n\
+    class Segment {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
+    \ */\n    Segment() = default;\n    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_}\
+    \ {}\n    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n\
+    \    /* getter, setter */ \n    const Point& p0() const {\n        return p0_;\n\
+    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
+    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
+    \n    /* operator */\n    Segment& operator=(const Segment& s) {\n        p0_\
+    \ = s.p0();\n        p1_ = s.p1();\n        return *this;\n    }\n    friend bool\
+    \ operator==(const Segment& s0, const Segment& s1) {\n        return (s0.p0()\
+    \ == s1.p0() and s0.p1() == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1()\
+    \ == s1.p0());\n    }\n    friend bool operator!=(const Segment& s0, const Segment&\
+    \ s1) {\n        return !(s0 == s1);\n    }\n\n    /* member function */\n   \
+    \ bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
+    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
+    \ p1_, s.p1()) <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n#line 6 \"Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\n#line 8 \"\
+    Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryZ2 {\n\nbool Intersect(const Line& l, const Segment& s, bool straddle\
+    \ = false) {\n    assert(l.valid());\n    assert(s.valid());\n    RELATION r0\
+    \ = Relation(l.p0(), l.p1(), s.p0());\n    if (Abs(r0) != 1) return !straddle;\n\
+    \    RELATION r1 = Relation(l.p0(), l.p1(), s.p1());\n    if (Abs(r1) != 1) return\
+    \ !straddle;\n    return r0 != r1;\n}\n\n}\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Line.hpp\"\n#include \"../Segment.hpp\"\n#include\
+    \ \"../Relation.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nbool Intersect(const Line& l, const Segment& s, bool straddle = false)\
+    \ {\n    assert(l.valid());\n    assert(s.valid());\n    RELATION r0 = Relation(l.p0(),\
+    \ l.p1(), s.p0());\n    if (Abs(r0) != 1) return !straddle;\n    RELATION r1 =\
+    \ Relation(l.p0(), l.p1(), s.p1());\n    if (Abs(r1) != 1) return !straddle;\n\
+    \    return r0 != r1;\n}\n\n}\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/Template/IOSetting.hpp
+  - Src/GeometryZ2/Line.hpp
+  - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
-  - Src/GeometryZ2/Zahlen.hpp
-  - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Relation.hpp
-  isVerificationFile: true
-  path: Test/AOJ/0388.test.cpp
+  - Src/GeometryZ2/Segment.hpp
+  isVerificationFile: false
+  path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
   requiredBy: []
   timestamp: '2025-04-27 17:14:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Test/AOJ/0388.test.cpp
+documentation_of: Src/GeometryZ2/Intersect/LineAndSegment.hpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/0388.test.cpp
-- /verify/Test/AOJ/0388.test.cpp.html
-title: Test/AOJ/0388.test.cpp
+- /library/Src/GeometryZ2/Intersect/LineAndSegment.hpp
+- /library/Src/GeometryZ2/Intersect/LineAndSegment.hpp.html
+title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
 ---

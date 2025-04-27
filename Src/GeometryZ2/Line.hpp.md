@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0388.test.cpp
@@ -136,10 +139,11 @@ data:
     \ l1.p0()) == CLOCKWISE;\n        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
     \ l1.positiveDir());\n        }\n    }\n    friend bool operator>=(const Line&\
     \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 > l1);\n    }\n\n  \
-    \  /* member function */\n    Vector positiveDir() const {\n        Vector res{p1_\
-    \ - p0_};\n        if (Negative(res.x())) {\n            res.x() *= -1;\n    \
-    \        res.y() *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n\n"
+    \  /* member function */\n    bool valid() const {\n        return p0_ != p1_;\n\
+    \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
+    \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
+    \ *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n\n"
   code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n#include\
     \ \"./Relation.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2\
     \ {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\n\npublic:\n    /* constructor\
@@ -164,10 +168,11 @@ data:
     \        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
     \ l1.positiveDir());\n        }\n    }\n    friend bool operator>=(const Line&\
     \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 > l1);\n    }\n\n  \
-    \  /* member function */\n    Vector positiveDir() const {\n        Vector res{p1_\
-    \ - p0_};\n        if (Negative(res.x())) {\n            res.x() *= -1;\n    \
-    \        res.y() *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n\n"
+    \  /* member function */\n    bool valid() const {\n        return p0_ != p1_;\n\
+    \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
+    \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
+    \ *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n\n"
   dependsOn:
   - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
@@ -175,8 +180,9 @@ data:
   - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
   path: Src/GeometryZ2/Line.hpp
-  requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  requiredBy:
+  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
+  timestamp: '2025-04-27 17:14:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0388.test.cpp

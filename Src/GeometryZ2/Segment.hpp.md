@@ -14,6 +14,9 @@ data:
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
+    title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
     title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
@@ -170,6 +173,7 @@ data:
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
