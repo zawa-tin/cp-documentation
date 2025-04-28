@@ -43,16 +43,25 @@ public:
         // calc m_cover
         for (usize i = 0 ; i < m_a.size() ; i++) {
             std::vector<std::pair<Point, usize>> dj;
-            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[i] != m_a[j]) {
-                // j > 0
-                dj.push_back({m_a[j]-m_a[i], j});
-            }
             std::vector<Vector> dirs;
-            for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
-                dj.push_back({q-m_a[i],usize{0}});
-                dirs.push_back(q-m_a[i]);
+            {
+                std::vector<std::pair<Point, usize>> da, db;
+                for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[i] != m_a[j]) {
+                    da.push_back({m_a[j]-m_a[i], j});
+                }
+                for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
+                    db.push_back({q-m_a[i],usize{0}});
+                    dirs.push_back(q-m_a[i]);
+                }
+                std::ranges::sort(db);
+                dj.resize(db.size() + da.size());
+                for (usize j = 0, k = 0, t = 0 ; t < dj.size() ; t++) {
+                    if (k == db.size()) dj[t] = std::move(da[j++]);
+                    else if (j == da.size()) dj[t] = std::move(db[k++]);
+                    else if (da[j] < db[k]) dj[t] = std::move(da[j++]);
+                    else dj[t] = std::move(db[k++]);
+                }
             }
-            std::ranges::sort(dj);
             std::ranges::sort(dirs, Point::ArgComp);
             dirs.erase(std::unique(dirs.begin(), dirs.end()), dirs.end());
             std::vector<u32> fen(dirs.size() + 1);

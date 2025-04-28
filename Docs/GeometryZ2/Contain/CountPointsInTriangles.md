@@ -14,3 +14,5 @@ u32 operator()(usize i, usize j, usize k) const
 ```
 
 で`A`の $3$ 点を指定し、三角形の**真に内部に**存在するような`B`上の点の個数を`u32`で返す。
+
+計算量は`|A|`を $N$ 、 `|B|`を $M$ とすると前計算 $\Theta(N(N+M)\log M)$ 、クエリ毎 $\Theta(1)$ 
