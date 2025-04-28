@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../PointCloud.hpp"
-#include "../Relation.hpp"
 
 #include <limits>
 #include <numeric>
@@ -98,11 +97,11 @@ public:
         if (m_a[i] > m_a[j]) std::swap(i, j);
         if (m_a[j] > m_a[k]) std::swap(j, k);
         if (m_a[i] > m_a[j]) std::swap(i, j);
-        RELATION r = Relation(m_a[i], m_a[j], m_a[k]);
-        if (r == RELATION::ONLINE_BACK or r == RELATION::ONLINE_FRONT or r == RELATION::ON_SEGMENT) {
+        const Zahlen crs = Cross(m_a[j] - m_a[i], m_a[k] - m_a[i]);
+        if (crs == 0) {
             return 0;
         }
-        else if (r == RELATION::COUNTER_CLOCKWISE) {
+        else if (crs > 0) {
             return cover(i, k) - cover(i, j) - cover(j, k) - m_eq[j] + m_under[j] - on(i, k);
         }
         else {

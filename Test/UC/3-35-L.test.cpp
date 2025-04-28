@@ -1,8 +1,9 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://contest.ucup.ac/contest/1993/problem/10712"
 
 /*
  * The 3rd Universal Cup. Stage 35: Krakow - L Empty Triangles
- * https://contest.ucup.ac/submission/1003756
+ * https://contest.ucup.ac/submission/1003835
  */
 
 #include "../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp"
