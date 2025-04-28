@@ -17,33 +17,38 @@ public:
 
     CountPointsInTriangles(PointCloud a, PointCloud b) 
         : m_a(a.size()), m_under(a.size()), m_eq(a.size()), m_on(a.size()), m_cover(a.size()), m_inv(a.size()) {
-        for (u32 i = 0 ; i < m_a.size() ; i++) {
-            m_on[i].resize(m_a.size() - i);
-            m_cover[i].resize(m_a.size() - i);
-            m_a[i].first = std::move(a[i]);
-            m_a[i].second = i;
+        {
+            std::vector<std::pair<Point, usize>> idxs(m_a.size());
+            for (usize i = 0 ; i < m_a.size() ; i++) {
+                m_on[i].resize(m_a.size() - i);
+                m_cover[i].resize(m_a.size() - i);
+                idxs[i].first = std::move(a[i]);
+                idxs[i].second = i;
+            }
+            std::sort(idxs.begin(), idxs.end());
+            for (usize i = 0 ; i < m_a.size() ; i++) {
+                m_a[i] = std::move(idxs[i].first);
+                m_inv[idxs[i].second] = i;
+            }
         }
-        std::sort(m_a.begin(), m_a.end());
-        for (usize i = 0 ; i < m_a.size() ; i++) m_inv[m_a[i].second] = i;
         std::sort(b.begin(), b.end());
         // calc m_under and m_eq
-        for (const auto& [p, i] : m_a) {
-            for (usize j = 0 ; j < b.size() and b[j].x() <= p.x() ; j++) {
-                if (b[j].x() == p.x()) {
-                    if (b[j].y() < p.y()) m_under[i]++;
-                    else if (b[j].y() == p.y()) m_eq[i]++;
+        for (usize i = 0 ; i < m_a.size() ; i++) {
+            for (usize j = 0 ; j < b.size() and b[j].x() <= m_a[i].x() ; j++) {
+                if (b[j].x() == m_a[i].x()) {
+                    if (b[j].y() < m_a[i].y()) m_under[i]++;
+                    else if (b[j].y() == m_a[i].y()) m_eq[i]++;
                 }
             } 
         }
         // calc m_on
         for (usize i = 0 ; i < m_a.size() ; i++) {
-            const auto& [p, idx] = m_a[i];
             std::vector<std::pair<Point, usize>> dj;
-            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[j].first != p) {
-                dj.push_back({m_a[j].first-p, m_a[j].second+1});
+            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[j] != m_a[i]) {
+                dj.push_back({m_a[j]-m_a[i], j});
             }
-            for (const auto& q : b) if (p.x() <= q.x() and p != q) {
-                dj.push_back({q-p,usize{0}});
+            for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
+                dj.push_back({q-m_a[i],usize{0}});
             }
             std::ranges::sort(dj, [&](const auto& l, const auto& r) {
                     if (l.first != r.first) return Point::ArgComp(l.first, r.first);
@@ -52,34 +57,32 @@ public:
             for (usize j = 0, k = 0 ; j < dj.size() ; j = k) {
                 while (k < dj.size() and Zero(Cross(dj[j].first, dj[k].first)) and !Negative(Dot(dj[j].first, dj[k].first))) k++;
                 for (usize t = j, cnt = 0 ; t < k ; t++) {
-                    auto [pdx, qdx] = std::minmax({idx, dj[t].second-1});
-                    if (dj[t].second) m_on[pdx][qdx - pdx] += cnt - m_eq[dj[t].second - 1];
+                    if (dj[t].second) m_on[i][dj[t].second - i] += cnt - m_eq[dj[t].second];
                     else cnt++;
                 }
             }
         }
         // calc m_cover
         for (usize i = 0 ; i < m_a.size() ; i++) {
-            const auto& [p, idx] = m_a[i];
             std::vector<std::pair<Point, usize>> dj;
-            for (usize j = i + 1 ; j < m_a.size() ; j++) if (p != m_a[j].first) {
-                dj.push_back({m_a[j].first-p, m_a[j].second+1});
+            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[i] != m_a[j]) {
+                // j > 0
+                dj.push_back({m_a[j]-m_a[i], j});
             }
             std::vector<Vector> dirs;
-            for (const auto& q : b) if (p.x() <= q.x() and p != q) {
-                dj.push_back({q-p,usize{0}});
-                dirs.push_back(q-p);
+            for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
+                dj.push_back({q-m_a[i],usize{0}});
+                dirs.push_back(q-m_a[i]);
             }
             std::ranges::sort(dj);
             std::ranges::sort(dirs, Point::ArgComp);
             dirs.erase(std::unique(dirs.begin(), dirs.end()), dirs.end());
             std::vector<u32> fen(dirs.size() + 1);
-            for (const auto [d, j] : dj) {
+            for (const auto& [d, j] : dj) {
                 if (j) {
                     auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs, d, Point::ArgComp));
-                    const auto [pdx, qdx] = std::minmax({idx, j-1});
-                    for ( ; it ; it -= it & -it) m_cover[pdx][qdx - pdx] += fen[it];
-                    m_cover[pdx][qdx - pdx] -= m_eq[j - 1];
+                    for ( ; it ; it -= it & -it) m_cover[i][j - i] += fen[it];
+                    m_cover[i][j - i] -= m_eq[j];
                 }
                 else {
                     auto it = std::distance(dirs.begin(), std::ranges::lower_bound(dirs, d, Point::ArgComp));
@@ -97,11 +100,14 @@ public:
     u32 operator()(usize i, usize j, usize k) const {
         assert(i < size() and j < size() and k < size());
         if (i == j or j == k or i == k) return 0;
-        if (m_a[m_inv[i]].first == m_a[m_inv[j]].first or m_a[m_inv[j]].first == m_a[m_inv[k]].first or m_a[m_inv[k]].first == m_a[m_inv[i]].first) return 0;
-        if (m_a[m_inv[i]].first > m_a[m_inv[j]].first) std::swap(i, j);
-        if (m_a[m_inv[j]].first > m_a[m_inv[k]].first) std::swap(j, k);
-        if (m_a[m_inv[i]].first > m_a[m_inv[j]].first) std::swap(i, j);
-        RELATION r = Relation(m_a[m_inv[i]].first, m_a[m_inv[j]].first, m_a[m_inv[k]].first);
+        i = m_inv[i];
+        j = m_inv[j];
+        k = m_inv[k];
+        if (m_a[i] == m_a[j] or m_a[j] == m_a[k] or m_a[k] == m_a[i]) return 0;
+        if (m_a[i] > m_a[j]) std::swap(i, j);
+        if (m_a[j] > m_a[k]) std::swap(j, k);
+        if (m_a[i] > m_a[j]) std::swap(i, j);
+        RELATION r = Relation(m_a[i], m_a[j], m_a[k]);
         if (r == RELATION::ONLINE_BACK or r == RELATION::ONLINE_FRONT or r == RELATION::ON_SEGMENT) {
             return 0;
         }
@@ -115,7 +121,7 @@ public:
     
 private:
 
-    std::vector<std::pair<Point, usize>> m_a;
+    std::vector<Point> m_a;
 
     std::vector<u32> m_under, m_eq;
 
