@@ -15,9 +15,6 @@ data:
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-    title: Count Points in Triangles
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
     title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - icon: ':heavy_check_mark:'
@@ -82,20 +79,11 @@ data:
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Baekjoon/23249.test.cpp
-    title: Test/Baekjoon/23249.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/count_points_in_triangle.test.cpp
-    title: Test/LC/count_points_in_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_convex_hull.test.cpp
     title: Test/LC/static_convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/UC/3-35-L.test.cpp
-    title: Test/UC/3-35-L.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -222,7 +210,6 @@ data:
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Line.hpp
-  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
@@ -237,14 +224,11 @@ data:
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/1379.test.cpp
-  - Test/UC/3-35-L.test.cpp
   - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/count_points_in_triangle.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
-  - Test/Baekjoon/23249.test.cpp
 documentation_of: Src/GeometryZ2/Relation.hpp
 layout: document
 redirect_from:
