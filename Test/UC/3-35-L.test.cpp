@@ -2,6 +2,7 @@
 
 /*
  * The 3rd Universal Cup. Stage 35: Krakow - L Empty Triangles
+ * https://contest.ucup.ac/submission/1003756
  */
 
 #include "../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp"

@@ -41,27 +41,6 @@ public:
                 }
             } 
         }
-        // calc m_on
-        for (usize i = 0 ; i < m_a.size() ; i++) {
-            std::vector<std::pair<Point, usize>> dj;
-            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[j] != m_a[i]) {
-                dj.push_back({m_a[j]-m_a[i], j});
-            }
-            for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
-                dj.push_back({q-m_a[i],usize{0}});
-            }
-            std::ranges::sort(dj, [&](const auto& l, const auto& r) {
-                    if (l.first != r.first) return Point::ArgComp(l.first, r.first);
-                    else return l.second < r.second;
-                    });
-            for (usize j = 0, k = 0 ; j < dj.size() ; j = k) {
-                while (k < dj.size() and Zero(Cross(dj[j].first, dj[k].first)) and !Negative(Dot(dj[j].first, dj[k].first))) k++;
-                for (usize t = j, cnt = 0 ; t < k ; t++) {
-                    if (dj[t].second) m_on[i][dj[t].second - i] += cnt - m_eq[dj[t].second];
-                    else cnt++;
-                }
-            }
-        }
         // calc m_cover
         for (usize i = 0 ; i < m_a.size() ; i++) {
             std::vector<std::pair<Point, usize>> dj;
@@ -87,6 +66,18 @@ public:
                 else {
                     auto it = std::distance(dirs.begin(), std::ranges::lower_bound(dirs, d, Point::ArgComp));
                     for (it++ ; it < std::ssize(fen) ; it += it & -it) fen[it]++;
+                }
+            }
+            // calc m_on
+            std::ranges::sort(dj, [&](const auto& l, const auto& r) {
+                    if (l.first != r.first) return Point::ArgComp(l.first, r.first);
+                    else return l.second < r.second;
+                    });
+            for (usize j = 0, k = 0 ; j < dj.size() ; j = k) {
+                while (k < dj.size() and Zero(Cross(dj[j].first, dj[k].first)) and !Negative(Dot(dj[j].first, dj[k].first))) k++;
+                for (usize t = j, cnt = 0 ; t < k ; t++) {
+                    if (dj[t].second) m_on[i][dj[t].second - i] += cnt - m_eq[dj[t].second];
+                    else cnt++;
                 }
             }
         }
