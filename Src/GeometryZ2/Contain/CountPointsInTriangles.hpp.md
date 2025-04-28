@@ -128,17 +128,23 @@ data:
     \ < m_a[i].y()) m_under[i]++;\n                    else if (b[j].y() == m_a[i].y())\
     \ m_eq[i]++;\n                }\n            } \n        }\n        // calc m_cover\n\
     \        for (usize i = 0 ; i < m_a.size() ; i++) {\n            std::vector<std::pair<Point,\
-    \ usize>> dj;\n            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[i]\
-    \ != m_a[j]) {\n                // j > 0\n                dj.push_back({m_a[j]-m_a[i],\
-    \ j});\n            }\n            std::vector<Vector> dirs;\n            for\
+    \ usize>> dj;\n            std::vector<Vector> dirs;\n            {\n        \
+    \        std::vector<std::pair<Point, usize>> da, db;\n                for (usize\
+    \ j = i + 1 ; j < m_a.size() ; j++) if (m_a[i] != m_a[j]) {\n                \
+    \    da.push_back({m_a[j]-m_a[i], j});\n                }\n                for\
     \ (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {\n           \
-    \     dj.push_back({q-m_a[i],usize{0}});\n                dirs.push_back(q-m_a[i]);\n\
-    \            }\n            std::ranges::sort(dj);\n            std::ranges::sort(dirs,\
-    \ Point::ArgComp);\n            dirs.erase(std::unique(dirs.begin(), dirs.end()),\
-    \ dirs.end());\n            std::vector<u32> fen(dirs.size() + 1);\n         \
-    \   for (const auto& [d, j] : dj) {\n                if (j) {\n              \
-    \      auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs, d,\
-    \ Point::ArgComp));\n                    for ( ; it ; it -= it & -it) m_cover[i][j\
+    \         db.push_back({q-m_a[i],usize{0}});\n                    dirs.push_back(q-m_a[i]);\n\
+    \                }\n                std::ranges::sort(db);\n                dj.resize(db.size()\
+    \ + da.size());\n                for (usize j = 0, k = 0, t = 0 ; t < dj.size()\
+    \ ; t++) {\n                    if (k == db.size()) dj[t] = std::move(da[j++]);\n\
+    \                    else if (j == da.size()) dj[t] = std::move(db[k++]);\n  \
+    \                  else if (da[j] < db[k]) dj[t] = std::move(da[j++]);\n     \
+    \               else dj[t] = std::move(db[k++]);\n                }\n        \
+    \    }\n            std::ranges::sort(dirs, Point::ArgComp);\n            dirs.erase(std::unique(dirs.begin(),\
+    \ dirs.end()), dirs.end());\n            std::vector<u32> fen(dirs.size() + 1);\n\
+    \            for (const auto& [d, j] : dj) {\n                if (j) {\n     \
+    \               auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs,\
+    \ d, Point::ArgComp));\n                    for ( ; it ; it -= it & -it) m_cover[i][j\
     \ - i] += fen[it];\n                    m_cover[i][j - i] -= m_eq[j];\n      \
     \          }\n                else {\n                    auto it = std::distance(dirs.begin(),\
     \ std::ranges::lower_bound(dirs, d, Point::ArgComp));\n                    for\
@@ -189,12 +195,19 @@ data:
     \          else if (b[j].y() == m_a[i].y()) m_eq[i]++;\n                }\n  \
     \          } \n        }\n        // calc m_cover\n        for (usize i = 0 ;\
     \ i < m_a.size() ; i++) {\n            std::vector<std::pair<Point, usize>> dj;\n\
-    \            for (usize j = i + 1 ; j < m_a.size() ; j++) if (m_a[i] != m_a[j])\
-    \ {\n                // j > 0\n                dj.push_back({m_a[j]-m_a[i], j});\n\
-    \            }\n            std::vector<Vector> dirs;\n            for (const\
-    \ auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {\n                dj.push_back({q-m_a[i],usize{0}});\n\
-    \                dirs.push_back(q-m_a[i]);\n            }\n            std::ranges::sort(dj);\n\
-    \            std::ranges::sort(dirs, Point::ArgComp);\n            dirs.erase(std::unique(dirs.begin(),\
+    \            std::vector<Vector> dirs;\n            {\n                std::vector<std::pair<Point,\
+    \ usize>> da, db;\n                for (usize j = i + 1 ; j < m_a.size() ; j++)\
+    \ if (m_a[i] != m_a[j]) {\n                    da.push_back({m_a[j]-m_a[i], j});\n\
+    \                }\n                for (const auto& q : b) if (m_a[i].x() <=\
+    \ q.x() and m_a[i] != q) {\n                    db.push_back({q-m_a[i],usize{0}});\n\
+    \                    dirs.push_back(q-m_a[i]);\n                }\n          \
+    \      std::ranges::sort(db);\n                dj.resize(db.size() + da.size());\n\
+    \                for (usize j = 0, k = 0, t = 0 ; t < dj.size() ; t++) {\n   \
+    \                 if (k == db.size()) dj[t] = std::move(da[j++]);\n          \
+    \          else if (j == da.size()) dj[t] = std::move(db[k++]);\n            \
+    \        else if (da[j] < db[k]) dj[t] = std::move(da[j++]);\n               \
+    \     else dj[t] = std::move(db[k++]);\n                }\n            }\n   \
+    \         std::ranges::sort(dirs, Point::ArgComp);\n            dirs.erase(std::unique(dirs.begin(),\
     \ dirs.end()), dirs.end());\n            std::vector<u32> fen(dirs.size() + 1);\n\
     \            for (const auto& [d, j] : dj) {\n                if (j) {\n     \
     \               auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs,\
@@ -238,7 +251,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
   requiredBy: []
-  timestamp: '2025-04-28 14:47:41+09:00'
+  timestamp: '2025-04-28 23:06:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/UC/3-35-L.test.cpp
@@ -260,3 +273,5 @@ u32 operator()(usize i, usize j, usize k) const
 ```
 
 で`A`の $3$ 点を指定し、三角形の**真に内部に**存在するような`B`上の点の個数を`u32`で返す。
+
+計算量は`|A|`を $N$ 、 `|B|`を $M$ とすると前計算 $\Theta(N(N+M)\log M)$ 、クエリ毎 $\Theta(1)$ 
