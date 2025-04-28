@@ -201,6 +201,12 @@ data:
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
+    title: Count Points in Triangles
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+    title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
@@ -814,6 +820,9 @@ data:
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/Baekjoon/23249.test.cpp
+    title: Test/Baekjoon/23249.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1015-C.test.cpp
     title: Test/CF/CF1015-C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -865,6 +874,9 @@ data:
     path: Test/LC/cartesian_tree.test.cpp
     title: Test/LC/cartesian_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/count_points_in_triangle.test.cpp
+    title: Test/LC/count_points_in_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -897,6 +909,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/matrix_det.test.cpp
     title: Test/LC/matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/naive_count_points_in_triangle.test.cpp
+    title: Test/LC/naive_count_points_in_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
@@ -1048,6 +1063,9 @@ data:
     path: Test/My/Utility/U32Pair.test.cpp
     title: Test/My/Utility/U32Pair.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/UC/3-35-L.test.cpp
+    title: Test/UC/3-35-L.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1156,8 +1174,10 @@ data:
   - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Line.hpp
+  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
@@ -1342,6 +1362,7 @@ data:
   - Test/AOJ/3548.test.cpp
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/ALDS1_5_D.test.cpp
+  - Test/UC/3-35-L.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
@@ -1356,6 +1377,7 @@ data:
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/bipartitematching.test.cpp
+  - Test/LC/count_points_in_triangle.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/sort_by_argument.test.cpp
@@ -1379,6 +1401,7 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/LC/jump_on_tree.test.cpp
   - Test/LC/cartesian_tree.test.cpp
   - Test/LC/incremental_scc.test.cpp
@@ -1463,6 +1486,7 @@ data:
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
+  - Test/Baekjoon/23249.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/dwango2016qual_e.test.cpp

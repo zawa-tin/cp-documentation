@@ -331,6 +331,12 @@ data:
       path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
       title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
+      title: Count Points in Triangles
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+      title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Contain/State.hpp
       title: Src/GeometryZ2/Contain/State.hpp
   - name: Src/GeometryZ2/Distance
@@ -991,6 +997,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc196_a.test.cpp
       title: Test/AtCoder/arc196_a.test.cpp
+  - name: Test/Baekjoon
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/Baekjoon/23249.test.cpp
+      title: Test/Baekjoon/23249.test.cpp
   - name: Test/CF
     pages:
     - icon: ':heavy_check_mark:'
@@ -1047,6 +1058,9 @@ data:
       path: Test/LC/cartesian_tree.test.cpp
       title: Test/LC/cartesian_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/count_points_in_triangle.test.cpp
+      title: Test/LC/count_points_in_triangle.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/deque_operate_all_composite.test.cpp
       title: Test/LC/deque_operate_all_composite.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1073,6 +1087,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/matrix_det.test.cpp
       title: Test/LC/matrix_det.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/naive_count_points_in_triangle.test.cpp
+      title: Test/LC/naive_count_points_in_triangle.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_range_sum.test.cpp
       title: Test/LC/point_add_range_sum.test.cpp
@@ -1246,6 +1263,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/Utility/U32Pair.test.cpp
       title: Test/My/Utility/U32Pair.test.cpp
+  - name: Test/UC
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/UC/3-35-L.test.cpp
+      title: Test/UC/3-35-L.test.cpp
   - name: Test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

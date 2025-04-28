@@ -5,58 +5,29 @@ data:
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/PointCloud.hpp
+    title: Src/GeometryZ2/PointCloud.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Relation.hpp
+    title: Src/GeometryZ2/Relation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-    title: Count Points in Triangles
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-    title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/ConvexHull.hpp
-    title: Src/GeometryZ2/ConvexHull.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1298.test.cpp
-    title: Test/AOJ/1298.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_A.test.cpp
-    title: Test/AOJ/CGL_4_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc139_f.test.cpp
-    title: Test/AtCoder/abc139_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc225_e.test.cpp
-    title: Test/AtCoder/abc225_e.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Baekjoon/23249.test.cpp
-    title: Test/Baekjoon/23249.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/count_points_in_triangle.test.cpp
-    title: Test/LC/count_points_in_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/sort_by_argument.test.cpp
-    title: Test/LC/sort_by_argument.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/static_convex_hull.test.cpp
-    title: Test/LC/static_convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/UC/3-35-L.test.cpp
-    title: Test/UC/3-35-L.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp\"\
+    \n\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -134,39 +105,71 @@ data:
     \n\n#line 6 \"Src/GeometryZ2/PointCloud.hpp\"\n#include <vector>\n\nnamespace\
     \ zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud = std::vector<Point>;\n\
     \nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(), p.end(), Point::ArgComp);\n\
-    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\n#include <algorithm>\n#include\
-    \ <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud =\
-    \ std::vector<Point>;\n\nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(),\
-    \ p.end(), Point::ArgComp);\n}\n\n} // namespace geometryZ2 \n\n} // namespace\
-    \ zawa\n"
+    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT        = -2,\n    // (p1\
+    \ - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\
+    \u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT       \
+    \   =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\
+    \u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE   = +1,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK         = +2\n};\n\nRELATION\
+    \ Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1\
+    \ - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
+    \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 5 \"Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\nclass NaiveCountPointsInTriangles {\npublic:\n\
+    \n    NaiveCountPointsInTriangles(PointCloud a, PointCloud b) : m_a{std::move(a)},\
+    \ m_b{std::move(b)} {}\n\n    u32 operator()(u32 p, u32 q, u32 r) const {\n  \
+    \      assert(p < size() and q < size() and r < size());\n        if (m_a[p] >\
+    \ m_a[q]) std::swap(p, q);\n        if (m_a[q] > m_a[r]) std::swap(q, r);\n  \
+    \      if (m_a[p] > m_a[q]) std::swap(p, q);\n        RELATION R = Relation(m_a[p],\
+    \ m_a[q], m_a[r]);\n        if (R == RELATION::ONLINE_FRONT or R == RELATION::ONLINE_BACK\
+    \ or R == RELATION::ON_SEGMENT) return 0;\n        bool ctr = R == RELATION::COUNTER_CLOCKWISE;\n\
+    \        u32 res = 0;\n        for (const Point& i : m_b) {\n            Zahlen\
+    \ a = Cross(m_a[q] - m_a[p], i - m_a[p]), b = Cross(m_a[r] - m_a[q], i - m_a[q]),\
+    \ c = Cross(m_a[p] - m_a[r], i - m_a[r]);\n            if (ctr and a > 0 and b\
+    \ > 0 and c > 0) res++;\n            else if (!ctr and a < 0 and b < 0 and c <\
+    \ 0) res++;\n        }\n        return res;\n    }\n\n    inline usize size()\
+    \ const {\n        return m_a.size();\n    }\n\nprivate:\n\n    std::vector<Point>\
+    \ m_a, m_b;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../PointCloud.hpp\"\n#include \"../Relation.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass NaiveCountPointsInTriangles\
+    \ {\npublic:\n\n    NaiveCountPointsInTriangles(PointCloud a, PointCloud b) :\
+    \ m_a{std::move(a)}, m_b{std::move(b)} {}\n\n    u32 operator()(u32 p, u32 q,\
+    \ u32 r) const {\n        assert(p < size() and q < size() and r < size());\n\
+    \        if (m_a[p] > m_a[q]) std::swap(p, q);\n        if (m_a[q] > m_a[r]) std::swap(q,\
+    \ r);\n        if (m_a[p] > m_a[q]) std::swap(p, q);\n        RELATION R = Relation(m_a[p],\
+    \ m_a[q], m_a[r]);\n        if (R == RELATION::ONLINE_FRONT or R == RELATION::ONLINE_BACK\
+    \ or R == RELATION::ON_SEGMENT) return 0;\n        bool ctr = R == RELATION::COUNTER_CLOCKWISE;\n\
+    \        u32 res = 0;\n        for (const Point& i : m_b) {\n            Zahlen\
+    \ a = Cross(m_a[q] - m_a[p], i - m_a[p]), b = Cross(m_a[r] - m_a[q], i - m_a[q]),\
+    \ c = Cross(m_a[p] - m_a[r], i - m_a[r]);\n            if (ctr and a > 0 and b\
+    \ > 0 and c > 0) res++;\n            else if (!ctr and a < 0 and b < 0 and c <\
+    \ 0) res++;\n        }\n        return res;\n    }\n\n    inline usize size()\
+    \ const {\n        return m_a.size();\n    }\n\nprivate:\n\n    std::vector<Point>\
+    \ m_a, m_b;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
+  - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/PointCloud.hpp
-  requiredBy:
-  - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-  timestamp: '2024-06-26 14:51:43+09:00'
+  path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  requiredBy: []
+  timestamp: '2025-04-28 13:40:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1298.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/UC/3-35-L.test.cpp
-  - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/count_points_in_triangle.test.cpp
-  - Test/LC/sort_by_argument.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
-  - Test/AtCoder/abc225_e.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
-  - Test/Baekjoon/23249.test.cpp
-documentation_of: Src/GeometryZ2/PointCloud.hpp
+documentation_of: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/PointCloud.hpp
-- /library/Src/GeometryZ2/PointCloud.hpp.html
-title: Src/GeometryZ2/PointCloud.hpp
+- /library/Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+- /library/Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp.html
+title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
 ---
