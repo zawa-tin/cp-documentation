@@ -40,7 +40,7 @@ public:
                 }
             } 
         }
-        // calc m_cover
+        // calc m_cover, m_on
         for (usize i = 0 ; i < m_a.size() ; i++) {
             std::vector<std::pair<Point, usize>> dj;
             std::vector<Vector> dirs;
@@ -50,7 +50,7 @@ public:
                     da.push_back({m_a[j]-m_a[i], j});
                 }
                 for (const auto& q : b) if (m_a[i].x() <= q.x() and m_a[i] != q) {
-                    db.push_back({q-m_a[i],usize{0}});
+                    db.emplace_back(q-m_a[i],std::numeric_limits<usize>::max());
                     dirs.push_back(q-m_a[i]);
                 }
                 std::ranges::sort(db);
@@ -63,29 +63,28 @@ public:
                 }
             }
             std::ranges::sort(dirs, Point::ArgComp);
-            dirs.erase(std::unique(dirs.begin(), dirs.end()), dirs.end());
-            std::vector<u32> fen(dirs.size() + 1);
+            dirs.erase(
+                    std::unique(dirs.begin(), dirs.end(), [&](const auto& l, const auto& r) { return Zero(Cross(l, r)) and !Negative(Dot(l, r)); }), 
+                    dirs.end());
+            std::vector<u32> fen(dirs.size() + 1), dat(dirs.size());
             for (const auto& [d, j] : dj) {
-                if (j) {
-                    auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs, d, Point::ArgComp));
-                    for ( ; it ; it -= it & -it) m_cover[i][j - i] += fen[it];
-                    m_cover[i][j - i] -= m_eq[j];
-                }
-                else {
-                    auto it = std::distance(dirs.begin(), std::ranges::lower_bound(dirs, d, Point::ArgComp));
+                if (j == std::numeric_limits<usize>::max()) {
+                    auto it = std::distance(
+                            dirs.begin(), 
+                            std::ranges::lower_bound(dirs, d, [](const Point& l, const Point& r) {
+                                    if (l.area() != r.area()) return l.area() < r.area();
+                                    return Positive(Cross(l, r));
+                                })
+                            );
+                    dat[it]++;
                     for (it++ ; it < std::ssize(fen) ; it += it & -it) fen[it]++;
                 }
-            }
-            // calc m_on
-            std::ranges::sort(dj, [&](const auto& l, const auto& r) {
-                    if (l.first != r.first) return Point::ArgComp(l.first, r.first);
-                    else return l.second < r.second;
-                    });
-            for (usize j = 0, k = 0 ; j < dj.size() ; j = k) {
-                while (k < dj.size() and Zero(Cross(dj[j].first, dj[k].first)) and !Negative(Dot(dj[j].first, dj[k].first))) k++;
-                for (usize t = j, cnt = 0 ; t < k ; t++) {
-                    if (dj[t].second) m_on[i][dj[t].second - i] += cnt - m_eq[dj[t].second];
-                    else cnt++;
+                else {
+                    auto it = std::distance(dirs.begin(), std::ranges::upper_bound(dirs, d, Point::ArgComp));
+                    if (it and Zero(Cross(d, dirs[it - 1])) and !Negative(Dot(d, dirs[it - 1]))) {
+                        m_on[i][j - i] = dat[it - 1];
+                    }
+                    for ( ; it ; it -= it & -it) m_cover[i][j - i] += fen[it];
                 }
             }
         }
@@ -106,6 +105,7 @@ public:
         if (m_a[i] > m_a[j]) std::swap(i, j);
         if (m_a[j] > m_a[k]) std::swap(j, k);
         if (m_a[i] > m_a[j]) std::swap(i, j);
+        // std::cout << i << ' ' << j << ' ' << k << std::endl;
         const Zahlen crs = Cross(m_a[j] - m_a[i], m_a[k] - m_a[i]);
         if (crs == 0) {
             return 0;
