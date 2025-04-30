@@ -5,11 +5,17 @@ data:
     path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
     title: Count Points in Triangles
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+    title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/PointCloud.hpp
     title: Src/GeometryZ2/PointCloud.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Relation.hpp
+    title: Src/GeometryZ2/Relation.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
@@ -26,14 +32,11 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-    - https://www.acmicpc.net/problem/23249
-    - https://www.acmicpc.net/source/93754296
-  bundledCode: "#line 1 \"Test/Baekjoon/23249.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://www.acmicpc.net/problem/23249\"\n\n/*\n * Seoul\
-    \ Nationalwide Internet Competition 2021 - L Triangles\n * https://www.acmicpc.net/source/93754296\n\
-    \ */\n\n#line 2 \"Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\n#line\
-    \ 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\
-    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 1 \"Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#line 2 \"Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\n#line 2 \"\
+    Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -179,43 +182,110 @@ data:
     \ m_inv;\n\n    u32 cover(usize i, usize j) const {\n        if (i > j) std::swap(i,\
     \ j);\n        return m_cover[i][j - i];\n    }\n\n    u32 on(usize i, usize j)\
     \ const {\n        if (i > j) std::swap(i, j);\n        return m_on[i][j - i];\n\
-    \    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 10 \"Test/Baekjoon/23249.test.cpp\"\
-    \n\n#line 13 \"Test/Baekjoon/23249.test.cpp\"\nusing namespace zawa;\nusing namespace\
-    \ geometryZ2;\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n#ifdef ONLINE_JUDGE\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<Point> A(n);\n    for (auto& a : A) std::cin >> a;\n\
-    \    CountPointsInTriangles solver(A, A);\n    int ans = 0;\n    for (int i =\
-    \ 0 ; i < n ; i++) for (int j = i + 1 ; j < n ; j++) for (int k = j + 1 ; k <\
-    \ n ; k++) {\n        ans += solver(i, j, k) > 0;\n    }\n    std::cout << ans\
-    \ << '\\n';\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp\"\
+    \n\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
+    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
+    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
+    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
+    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
+    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
+    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
+    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
+    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
+    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
+    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
+    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
+    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass NaiveCountPointsInTriangles\
+    \ {\npublic:\n\n    NaiveCountPointsInTriangles(PointCloud a, PointCloud b) :\
+    \ m_a{std::move(a)}, m_b{std::move(b)} {}\n\n    u32 operator()(u32 p, u32 q,\
+    \ u32 r) const {\n        assert(p < size() and q < size() and r < size());\n\
+    \        if (m_a[p] > m_a[q]) std::swap(p, q);\n        if (m_a[q] > m_a[r]) std::swap(q,\
+    \ r);\n        if (m_a[p] > m_a[q]) std::swap(p, q);\n        RELATION R = Relation(m_a[p],\
+    \ m_a[q], m_a[r]);\n        if (R == RELATION::ONLINE_FRONT or R == RELATION::ONLINE_BACK\
+    \ or R == RELATION::ON_SEGMENT) return 0;\n        bool ctr = R == RELATION::COUNTER_CLOCKWISE;\n\
+    \        u32 res = 0;\n        for (const Point& i : m_b) {\n            Zahlen\
+    \ a = Cross(m_a[q] - m_a[p], i - m_a[p]), b = Cross(m_a[r] - m_a[q], i - m_a[q]),\
+    \ c = Cross(m_a[p] - m_a[r], i - m_a[r]);\n            if (ctr and a > 0 and b\
+    \ > 0 and c > 0) res++;\n            else if (!ctr and a < 0 and b < 0 and c <\
+    \ 0) res++;\n        }\n        return res;\n    }\n\n    inline usize size()\
+    \ const {\n        return m_a.size();\n    }\n\nprivate:\n\n    std::vector<Point>\
+    \ m_a, m_b;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"\
+    Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp\"\n\n\
+    #line 8 \"Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp\"\
+    \n#include <random>\nusing namespace zawa;\nusing namespace geometryZ2;\n\nstd::mt19937\
+    \ mt{std::random_device{}()};\n\nbool test(const int N, const int M, const int\
+    \ X, const int Y) {\n    const int n = mt() % (N - 2) + 3;\n    const int m =\
+    \ mt() % (M - 2) + 3;\n    std::vector<Point> a(n), b(m);\n    for (int i = 0\
+    \ ; i < n ; i++) {\n        a[i].x() = mt() % (X + 1);\n        a[i].y() = mt()\
+    \ % (Y + 1);\n    }\n    for (int i = 0 ; i < m ; i++) {\n        b[i].x() = mt()\
+    \ % (X + 1);\n        b[i].y() = mt() % (Y + 1);\n    }\n    NaiveCountPointsInTriangles\
+    \ ans(a, b);\n    CountPointsInTriangles my(a, b);\n    auto query = [&](int i,\
+    \ int j, int k) -> bool {\n        int p = ans(i, j, k), q = my(i, j, k);\n  \
+    \      if (p != q) {\n            std::cout << n << '\\n';\n            for (const\
+    \ Point& v : a) std::cout << v.x() << ' ' << v.y() << '\\n';\n            std::cout\
+    \ << m << '\\n';\n            for (const Point& v : b) std::cout << v.x() << '\
+    \ ' << v.y() << '\\n';\n            std::cout << 1 << '\\n';\n            std::cout\
+    \ << i << ' ' << j << ' ' << k << std::endl;\n            std::cerr << p << \"\
+    \ but you output \" << q << std::endl;\n            return false;\n        }\n\
+    \        return true;\n    };\n    for (int i = 0 ; i < std::ssize(a) ; i++) {\n\
+    \        for (int j = 0 ; j < std::ssize(a) ; j++) {\n            for (int k =\
+    \ 0 ; k < std::ssize(a) ; k++) {\n                if (!query(i, j, k)) return\
+    \ false;\n            }\n        }\n    }\n    return true;\n}\n\nint main() {\n\
+    \    for (int t = 0 ; t < 1000 ; t++) { // tiny\n        assert(test(5, 5, 5,\
+    \ 5));\n    }\n    for (int t = 0 ; t < 100 ; t++) { // small dense\n        assert(test(20,\
+    \ 20, 10, 10));\n    }\n    for (int t = 0 ; t < 100 ; t++) { // small\n     \
+    \   assert(test(20, 20, 100, 100));\n    }\n    assert(test(50, 100, 100, 100));\n\
+    \    std::cout << \"Hello World\\n\";\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://www.acmicpc.net/problem/23249\"\n\n/*\n * Seoul\
-    \ Nationalwide Internet Competition 2021 - L Triangles\n * https://www.acmicpc.net/source/93754296\n\
-    \ */\n\n#include \"../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\
-    \n#include <iostream>\n#include <vector>\nusing namespace zawa;\nusing namespace\
-    \ geometryZ2;\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n#ifdef ONLINE_JUDGE\n    int n;\n    std::cin\
-    \ >> n;\n    std::vector<Point> A(n);\n    for (auto& a : A) std::cin >> a;\n\
-    \    CountPointsInTriangles solver(A, A);\n    int ans = 0;\n    for (int i =\
-    \ 0 ; i < n ; i++) for (int j = i + 1 ; j < n ; j++) for (int k = j + 1 ; k <\
-    \ n ; k++) {\n        ans += solver(i, j, k) > 0;\n    }\n    std::cout << ans\
-    \ << '\\n';\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \n\n#include \"../../../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\
+    \n#include \"../../../../Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp\"\
+    \n\n#include <iostream>\n#include <vector>\n#include <random>\nusing namespace\
+    \ zawa;\nusing namespace geometryZ2;\n\nstd::mt19937 mt{std::random_device{}()};\n\
+    \nbool test(const int N, const int M, const int X, const int Y) {\n    const int\
+    \ n = mt() % (N - 2) + 3;\n    const int m = mt() % (M - 2) + 3;\n    std::vector<Point>\
+    \ a(n), b(m);\n    for (int i = 0 ; i < n ; i++) {\n        a[i].x() = mt() %\
+    \ (X + 1);\n        a[i].y() = mt() % (Y + 1);\n    }\n    for (int i = 0 ; i\
+    \ < m ; i++) {\n        b[i].x() = mt() % (X + 1);\n        b[i].y() = mt() %\
+    \ (Y + 1);\n    }\n    NaiveCountPointsInTriangles ans(a, b);\n    CountPointsInTriangles\
+    \ my(a, b);\n    auto query = [&](int i, int j, int k) -> bool {\n        int\
+    \ p = ans(i, j, k), q = my(i, j, k);\n        if (p != q) {\n            std::cout\
+    \ << n << '\\n';\n            for (const Point& v : a) std::cout << v.x() << '\
+    \ ' << v.y() << '\\n';\n            std::cout << m << '\\n';\n            for\
+    \ (const Point& v : b) std::cout << v.x() << ' ' << v.y() << '\\n';\n        \
+    \    std::cout << 1 << '\\n';\n            std::cout << i << ' ' << j << ' ' <<\
+    \ k << std::endl;\n            std::cerr << p << \" but you output \" << q <<\
+    \ std::endl;\n            return false;\n        }\n        return true;\n   \
+    \ };\n    for (int i = 0 ; i < std::ssize(a) ; i++) {\n        for (int j = 0\
+    \ ; j < std::ssize(a) ; j++) {\n            for (int k = 0 ; k < std::ssize(a)\
+    \ ; k++) {\n                if (!query(i, j, k)) return false;\n            }\n\
+    \        }\n    }\n    return true;\n}\n\nint main() {\n    for (int t = 0 ; t\
+    \ < 1000 ; t++) { // tiny\n        assert(test(5, 5, 5, 5));\n    }\n    for (int\
+    \ t = 0 ; t < 100 ; t++) { // small dense\n        assert(test(20, 20, 10, 10));\n\
+    \    }\n    for (int t = 0 ; t < 100 ; t++) { // small\n        assert(test(20,\
+    \ 20, 100, 100));\n    }\n    assert(test(50, 100, 100, 100));\n    std::cout\
+    \ << \"Hello World\\n\";\n}\n"
   dependsOn:
   - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
   - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - Src/GeometryZ2/Relation.hpp
   isVerificationFile: true
-  path: Test/Baekjoon/23249.test.cpp
+  path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   requiredBy: []
   timestamp: '2025-04-30 16:41:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Baekjoon/23249.test.cpp
+documentation_of: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Baekjoon/23249.test.cpp
-- /verify/Test/Baekjoon/23249.test.cpp.html
-title: Test/Baekjoon/23249.test.cpp
+- /verify/Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+- /verify/Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp.html
+title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
 ---

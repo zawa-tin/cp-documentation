@@ -1248,6 +1248,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/yahoo_procon2018_final_c.test.cpp
       title: Test/Manual/yahoo_procon2018_final_c.test.cpp
+  - name: Test/My/GeometryZ2/Contain
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+      title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - name: Test/My/Graph/Tree
     pages:
     - icon: ':heavy_check_mark:'

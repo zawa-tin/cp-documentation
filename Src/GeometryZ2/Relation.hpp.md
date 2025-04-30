@@ -84,6 +84,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_convex_hull.test.cpp
     title: Test/LC/static_convex_hull.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+    title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -224,6 +227,7 @@ data:
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/1379.test.cpp
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/AtCoder/abc296_g.test.cpp

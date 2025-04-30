@@ -1054,6 +1054,9 @@ data:
     path: Test/Manual/yahoo_procon2018_final_c.test.cpp
     title: Test/Manual/yahoo_procon2018_final_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+    title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
     title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1363,6 +1366,7 @@ data:
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/ALDS1_5_D.test.cpp
   - Test/UC/3-35-L.test.cpp
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp

@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+    title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -165,6 +168,7 @@ data:
   timestamp: '2025-04-28 13:40:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
 documentation_of: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
 layout: document
