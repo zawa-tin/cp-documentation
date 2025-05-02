@@ -145,6 +145,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
+      title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
+        \u30B0\u30E1\u30F3\u30C8\u6728"
   - name: Src/DataStructure/SparseTable
     pages:
     - icon: ':heavy_check_mark:'
@@ -968,6 +972,9 @@ data:
       path: Test/AtCoder/abc389_f.test.cpp
       title: Test/AtCoder/abc389_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc403_g.test.cpp
+      title: Test/AtCoder/abc403_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1096,6 +1103,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_set_range_composite.test.cpp
       title: Test/LC/point_set_range_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_set_range_composite_large_array.test.cpp
+      title: Test/LC/point_set_range_composite_large_array.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/queue_operate_all_composite.test.cpp
       title: Test/LC/queue_operate_all_composite.test.cpp
@@ -1248,6 +1258,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/yahoo_procon2018_final_c.test.cpp
       title: Test/Manual/yahoo_procon2018_final_c.test.cpp
+  - name: Test/My/DataStructure/SegmentTree
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+      title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - name: Test/My/GeometryZ2/Contain
     pages:
     - icon: ':heavy_check_mark:'

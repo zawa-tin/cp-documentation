@@ -13,6 +13,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_set_range_composite_large_array.test.cpp
+    title: Test/LC/point_set_range_composite_large_array.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -67,6 +70,7 @@ data:
   timestamp: '2025-02-27 21:25:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp

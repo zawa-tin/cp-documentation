@@ -74,6 +74,10 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
+    title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
+      \u30B0\u30E1\u30F3\u30C8\u6728"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
     title: Disjoint Sparse Table
   - icon: ':heavy_check_mark:'
@@ -790,6 +794,9 @@ data:
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc403_g.test.cpp
+    title: Test/AtCoder/abc403_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -925,6 +932,9 @@ data:
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_set_range_composite_large_array.test.cpp
+    title: Test/LC/point_set_range_composite_large_array.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1053,6 +1063,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/yahoo_procon2018_final_c.test.cpp
     title: Test/Manual/yahoo_procon2018_final_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+    title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
     title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
@@ -1257,6 +1270,7 @@ data:
   - Src/Number/BinomalCoefficients.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -1370,6 +1384,8 @@ data:
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+  - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/matrix_det.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
@@ -1449,6 +1465,7 @@ data:
   - Test/AtCoder/abc296_f.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/arc123_d.test.cpp
+  - Test/AtCoder/abc403_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
