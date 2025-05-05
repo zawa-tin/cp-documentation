@@ -1004,6 +1004,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc196_a.test.cpp
       title: Test/AtCoder/arc196_a.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc197_d.test.cpp
+      title: Test/AtCoder/arc197_d.test.cpp
   - name: Test/Baekjoon
     pages:
     - icon: ':heavy_check_mark:'

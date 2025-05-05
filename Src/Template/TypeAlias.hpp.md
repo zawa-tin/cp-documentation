@@ -827,6 +827,9 @@ data:
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc197_d.test.cpp
+    title: Test/AtCoder/arc197_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Baekjoon/23249.test.cpp
     title: Test/Baekjoon/23249.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1453,6 +1456,7 @@ data:
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/arc197_d.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
   - Test/AtCoder/abc284_f.test.cpp

@@ -52,7 +52,7 @@ data:
     \ zawa\n#line 2 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\n\n\
     #line 4 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\n\n#include\
     \ <algorithm>\n#line 7 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
-    \n#include <numeric>\n#line 9 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
+    \n#include <numeric>\n#line 10 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
     \n\nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n    DisjointSetUnion()\
     \ = default;\n\n    DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1)\
     \ {\n        data_.shrink_to_fit();\n    }\n    \n    u32 leader(u32 v) {\n  \
@@ -65,12 +65,12 @@ data:
     \    }\n\n    inline usize size() const noexcept {\n        return n_;\n    }\n\
     \n    usize size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
     \    }\n\n    inline usize components() const noexcept {\n        return comps_;\n\
-    \    }\n\n    std::vector<std::vector<u32>> enumerate() {\n        std::vector<std::vector<u32>>\
-    \ res(n_);\n        for (u32 v{} ; v < n_ ; v++) {\n            res[leader(v)].push_back(v);\n\
-    \        }\n        res.erase(std::remove_if(res.begin(), res.end(),\n       \
-    \             [](const auto& arr) -> bool { return arr.empty(); }), res.end());\n\
-    \        return res;\n    }\n\nprivate:\n    usize n_{}, comps_{};\n    std::vector<i32>\
-    \ data_;\n};\n\n} // namespace zawa\n#line 7 \"Test/AtCoder/agc002_d.test.cpp\"\
+    \    }\n\n    template <class T = usize>\n    std::vector<std::vector<T>> enumerate()\
+    \ requires std::convertible_to<usize, T> {\n        std::vector<std::vector<T>>\
+    \ res(n_);\n        for (usize v{} ; v < n_ ; v++) {\n            res[leader(v)].push_back(static_cast<T>(v));\n\
+    \        }\n        std::erase_if(res, [](const auto& arr) -> bool { return arr.empty();\
+    \ });\n        return res;\n    }\n\nprivate:\n    usize n_{}, comps_{};\n   \
+    \ std::vector<i32> data_;\n};\n\n} // namespace zawa\n#line 7 \"Test/AtCoder/agc002_d.test.cpp\"\
     \n\n/*\n * AGC002-D Stampl Rally\n * https://atcoder.jp/contests/agc002/submissions/63106870\n\
     \ */\n\n#line 15 \"Test/AtCoder/agc002_d.test.cpp\"\n\nusing namespace zawa;\n\
     int N, M, A[100010], B[100010], Q, X[100010], Y[100010], Z[100010];\nvoid solve()\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/agc002_d.test.cpp
   requiredBy: []
-  timestamp: '2025-02-24 03:31:13+09:00'
+  timestamp: '2025-05-05 21:42:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/agc002_d.test.cpp

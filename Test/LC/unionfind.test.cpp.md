@@ -31,31 +31,31 @@ data:
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
     \n\n#line 4 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\n\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n\nnamespace\
-    \ zawa {\n\nclass DisjointSetUnion {\npublic:\n    DisjointSetUnion() = default;\n\
-    \n    DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1) {\n        data_.shrink_to_fit();\n\
-    \    }\n    \n    u32 leader(u32 v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v]\
-    \ = leader(data_[v]));\n    }\n\n    bool same(u32 u, u32 v) {\n        return\
-    \ leader(u) == leader(v);\n    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u\
-    \ < n_);\n        assert(v < n_);\n        u = leader(u);\n        v = leader(v);\n\
-    \        if (u == v) return false;\n        comps_--;\n        if (data_[u] >\
-    \ data_[v]) std::swap(u, v);\n        data_[u] += data_[v];\n        data_[v]\
-    \ = u;\n        return true;\n    }\n\n    inline usize size() const noexcept\
-    \ {\n        return n_;\n    }\n\n    usize size(u32 v) {\n        assert(v <\
-    \ n_);\n        return static_cast<usize>(-data_[leader(v)]);\n    }\n\n    inline\
-    \ usize components() const noexcept {\n        return comps_;\n    }\n\n    std::vector<std::vector<u32>>\
-    \ enumerate() {\n        std::vector<std::vector<u32>> res(n_);\n        for (u32\
-    \ v{} ; v < n_ ; v++) {\n            res[leader(v)].push_back(v);\n        }\n\
-    \        res.erase(std::remove_if(res.begin(), res.end(),\n                  \
-    \  [](const auto& arr) -> bool { return arr.empty(); }), res.end());\n       \
-    \ return res;\n    }\n\nprivate:\n    usize n_{}, comps_{};\n    std::vector<i32>\
-    \ data_;\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/unionfind.test.cpp\"\n\n\
-    #line 8 \"Test/LC/unionfind.test.cpp\"\n\nint main() {\n    using namespace zawa;\n\
-    \    SetFastIO();\n    u32 n, q; std::cin >> n >> q;\n    DisjointSetUnion dsu(n);\n\
-    \    for (u32 _{} ; _ < q ; _++) {\n        u32 t, u, v; std::cin >> t >> u >>\
-    \ v;\n        if (t == 0) {\n            dsu.merge(u, v);\n        }\n       \
-    \ else {\n            std::cout << dsu.same(u, v) << '\\n';\n        }\n    }\n\
-    }\n"
+    \ <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n#include\
+    \ <concepts>\n\nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n    DisjointSetUnion()\
+    \ = default;\n\n    DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1)\
+    \ {\n        data_.shrink_to_fit();\n    }\n    \n    u32 leader(u32 v) {\n  \
+    \      return data_[v] < 0 ? v : static_cast<u32>(data_[v] = leader(data_[v]));\n\
+    \    }\n\n    bool same(u32 u, u32 v) {\n        return leader(u) == leader(v);\n\
+    \    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u < n_);\n        assert(v\
+    \ < n_);\n        u = leader(u);\n        v = leader(v);\n        if (u == v)\
+    \ return false;\n        comps_--;\n        if (data_[u] > data_[v]) std::swap(u,\
+    \ v);\n        data_[u] += data_[v];\n        data_[v] = u;\n        return true;\n\
+    \    }\n\n    inline usize size() const noexcept {\n        return n_;\n    }\n\
+    \n    usize size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
+    \    }\n\n    inline usize components() const noexcept {\n        return comps_;\n\
+    \    }\n\n    template <class T = usize>\n    std::vector<std::vector<T>> enumerate()\
+    \ requires std::convertible_to<usize, T> {\n        std::vector<std::vector<T>>\
+    \ res(n_);\n        for (usize v{} ; v < n_ ; v++) {\n            res[leader(v)].push_back(static_cast<T>(v));\n\
+    \        }\n        std::erase_if(res, [](const auto& arr) -> bool { return arr.empty();\
+    \ });\n        return res;\n    }\n\nprivate:\n    usize n_{}, comps_{};\n   \
+    \ std::vector<i32> data_;\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/unionfind.test.cpp\"\
+    \n\n#line 8 \"Test/LC/unionfind.test.cpp\"\n\nint main() {\n    using namespace\
+    \ zawa;\n    SetFastIO();\n    u32 n, q; std::cin >> n >> q;\n    DisjointSetUnion\
+    \ dsu(n);\n    for (u32 _{} ; _ < q ; _++) {\n        u32 t, u, v; std::cin >>\
+    \ t >> u >> v;\n        if (t == 0) {\n            dsu.merge(u, v);\n        }\n\
+    \        else {\n            std::cout << dsu.same(u, v) << '\\n';\n        }\n\
+    \    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/unionfind\"\n\n#include\
     \ \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\n\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: Test/LC/unionfind.test.cpp
   requiredBy: []
-  timestamp: '2025-02-23 17:42:37+09:00'
+  timestamp: '2025-05-05 21:42:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/unionfind.test.cpp
