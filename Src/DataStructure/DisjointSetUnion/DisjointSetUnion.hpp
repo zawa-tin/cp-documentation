@@ -6,6 +6,7 @@
 #include <cassert>
 #include <numeric>
 #include <vector>
+#include <concepts>
 
 namespace zawa {
 
@@ -51,13 +52,13 @@ public:
         return comps_;
     }
 
-    std::vector<std::vector<u32>> enumerate() {
-        std::vector<std::vector<u32>> res(n_);
-        for (u32 v{} ; v < n_ ; v++) {
-            res[leader(v)].push_back(v);
+    template <class T = usize>
+    std::vector<std::vector<T>> enumerate() requires std::convertible_to<usize, T> {
+        std::vector<std::vector<T>> res(n_);
+        for (usize v{} ; v < n_ ; v++) {
+            res[leader(v)].push_back(static_cast<T>(v));
         }
-        res.erase(std::remove_if(res.begin(), res.end(),
-                    [](const auto& arr) -> bool { return arr.empty(); }), res.end());
+        std::erase_if(res, [](const auto& arr) -> bool { return arr.empty(); });
         return res;
     }
 
