@@ -662,7 +662,7 @@ data:
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc215_g.test.cpp
-    title: Test/AtCoder/abc215_g.test.cpp
+    title: ABC215-G Colorful Candies 2
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc217_h.test.cpp
     title: Test/AtCoder/abc217_h.test.cpp

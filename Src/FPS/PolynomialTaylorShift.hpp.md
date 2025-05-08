@@ -8,7 +8,7 @@ data:
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc215_g.test.cpp
-    title: Test/AtCoder/abc215_g.test.cpp
+    title: ABC215-G Colorful Candies 2
   - icon: ':heavy_check_mark:'
     path: Test/LC/polynomial_taylor_shift.test.cpp
     title: Test/LC/polynomial_taylor_shift.test.cpp
