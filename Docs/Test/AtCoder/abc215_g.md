@@ -1,6 +1,6 @@
 ---
 title: ABC215-G Colorful Candies 2
-documentation_of: //Test/AtCoder/abc215_f.test.cpp
+documentation_of: //Test/AtCoder/abc215_g.test.cpp
 ---
 
 $C$ は座圧されているものとし、 種類 $i (1 \le i \le N)$ のキャンディの個数が $n_{i}$ であるとする。
