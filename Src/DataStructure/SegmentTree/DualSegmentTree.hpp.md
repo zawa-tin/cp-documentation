@@ -116,8 +116,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_D.test.cpp
-  - Test/LC/range_affine_point_get.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 layout: document
 title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"

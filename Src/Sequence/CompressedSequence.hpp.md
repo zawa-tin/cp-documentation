@@ -109,13 +109,13 @@ data:
   timestamp: '2025-03-04 23:23:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/static_range_frequency.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/AtCoder/abc389_f.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

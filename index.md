@@ -174,6 +174,9 @@ data:
       path: Src/FPS/KthTerm.hpp
       title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
         \u308B"
+    - icon: ':heavy_check_mark:'
+      path: Src/FPS/PolynomialTaylorShift.hpp
+      title: Polynomial Taylor Shift
   - name: Src/GeometryR2
     pages:
     - icon: ':heavy_check_mark:'
@@ -836,6 +839,9 @@ data:
       path: Test/AtCoder/abc213_c.test.cpp
       title: Test/AtCoder/abc213_c.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc215_g.test.cpp
+      title: Test/AtCoder/abc215_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc217_h.test.cpp
       title: Test/AtCoder/abc217_h.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1109,6 +1115,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_set_range_composite_large_array.test.cpp
       title: Test/LC/point_set_range_composite_large_array.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/polynomial_taylor_shift.test.cpp
+      title: Test/LC/polynomial_taylor_shift.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/queue_operate_all_composite.test.cpp
       title: Test/LC/queue_operate_all_composite.test.cpp

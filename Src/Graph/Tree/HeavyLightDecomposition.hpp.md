@@ -191,8 +191,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0465.test.cpp
-  - Test/AOJ/2559.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/2559.test.cpp
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/jump_on_tree.test.cpp

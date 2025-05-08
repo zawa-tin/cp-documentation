@@ -103,9 +103,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/3548.test.cpp
+  - Test/CF/EC171-F.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
-  - Test/CF/EC171-F.test.cpp
 documentation_of: Src/DataStructure/SWAG/SWAGable.hpp
 layout: document
 redirect_from:
