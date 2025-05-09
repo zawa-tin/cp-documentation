@@ -7,8 +7,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/LC/enumerate_primes.test.cpp
-    title: Test/LC/enumerate_primes.test.cpp
+    path: Test/My/Number/EnumeratePrimes.test.cpp
+    title: Test/My/Number/EnumeratePrimes.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,7 +63,7 @@ data:
   timestamp: '2023-06-13 11:55:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/enumerate_primes.test.cpp
+  - Test/My/Number/EnumeratePrimes.test.cpp
 documentation_of: Src/Number/EratosthenesSieve.hpp
 layout: document
 title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"

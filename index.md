@@ -451,6 +451,9 @@ data:
       path: Src/Number/Divisor.hpp
       title: "\u7D04\u6570\u5217\u6319"
     - icon: ':heavy_check_mark:'
+      path: Src/Number/EnumeratePrimes.hpp
+      title: Enumerate Primes
+    - icon: ':heavy_check_mark:'
       path: Src/Number/EnumerateQuotients.hpp
       title: "\u5546\u5217\u6319"
     - icon: ':heavy_check_mark:'
@@ -1056,6 +1059,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/ECR167-F.test.cpp
       title: Test/CF/ECR167-F.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/ECR178-D.test.cpp
+      title: Test/CF/ECR178-D.test.cpp
   - name: Test/LC
     pages:
     - icon: ':heavy_check_mark:'
@@ -1285,6 +1291,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
       title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - name: Test/My/Number
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/Number/EnumeratePrimes.test.cpp
+      title: Test/My/Number/EnumeratePrimes.test.cpp
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'

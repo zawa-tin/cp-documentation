@@ -324,6 +324,9 @@ data:
     path: Src/Number/Divisor.hpp
     title: "\u7D04\u6570\u5217\u6319"
   - icon: ':heavy_check_mark:'
+    path: Src/Number/EnumeratePrimes.hpp
+    title: Enumerate Primes
+  - icon: ':heavy_check_mark:'
     path: Src/Number/EnumerateQuotients.hpp
     title: "\u5546\u5217\u6319"
   - icon: ':heavy_check_mark:'
@@ -875,6 +878,9 @@ data:
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR178-D.test.cpp
+    title: Test/CF/ECR178-D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1084,6 +1090,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
     title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/Number/EnumeratePrimes.test.cpp
+    title: Test/My/Number/EnumeratePrimes.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
@@ -1314,6 +1323,7 @@ data:
   - Src/Number/BinomalCoefficients.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/PrimeFactor.hpp
+  - Src/Number/EnumeratePrimes.hpp
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/Mersenne61ModInt.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
@@ -1392,6 +1402,7 @@ data:
   - Test/UC/3-35-L.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/EC2-E.test.cpp
+  - Test/CF/ECR178-D.test.cpp
   - Test/CF/CF974-H.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF956-F.test.cpp
@@ -1504,6 +1515,7 @@ data:
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
+  - Test/My/Number/EnumeratePrimes.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/yukicoder/3090.test.cpp
   - Test/yukicoder/649.test.cpp
