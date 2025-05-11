@@ -49,8 +49,8 @@ public:
 
     std::pair<std::optional<F>, std::optional<F>> get() const {
         return {
-            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back().first},
-            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back().first}
+            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back()},
+            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back()}
         };
     }
 
@@ -61,9 +61,9 @@ public:
 
     F product() const requires concepts::Semigroup<typename S::Fold> {
         assert(m_front.size() or m_back.size());
-        if (m_front.empty()) return m_back.back().first;
-        if (m_back.empty()) return m_front.back().first;
-        return S::Fold::operation(m_front.back().first, m_back.back().first);
+        if (m_front.empty()) return m_back.back();
+        if (m_back.empty()) return m_front.back();
+        return S::Fold::operation(m_front.back(), m_back.back());
     }
     
 private:
