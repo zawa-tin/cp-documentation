@@ -570,6 +570,10 @@ data:
       path: Src/Utility/ParallelBinarySearch.hpp
       title: "\u4E26\u5217\u4E8C\u5206\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/SeparatedFamilySet.hpp
+      title: "2\u8981\u7D20\u306E\u5206\u96E2\u3092\u7DB2\u7F85\u3059\u308B\u30C6\u30AF\
+        \u30CB\u30C3\u30AF"
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/SlopeTrick.hpp
       title: Slope Trick
     - icon: ':heavy_check_mark:'
@@ -1311,6 +1315,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/UC/3-35-L.test.cpp
       title: Test/UC/3-35-L.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/UC/3-36-F.test.cpp
+      title: Test/UC/3-36-F.test.cpp
   - name: Test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

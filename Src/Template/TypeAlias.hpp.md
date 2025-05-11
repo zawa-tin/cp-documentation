@@ -410,6 +410,10 @@ data:
     path: Src/Utility/MisereNim.hpp
     title: Misere Nim
   - icon: ':heavy_check_mark:'
+    path: Src/Utility/SeparatedFamilySet.hpp
+    title: "2\u8981\u7D20\u306E\u5206\u96E2\u3092\u7DB2\u7F85\u3059\u308B\u30C6\u30AF\
+      \u30CB\u30C3\u30AF"
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/U32Pair.hpp
     title: Src/Utility/U32Pair.hpp
   _extendedVerifiedWith:
@@ -1103,6 +1107,9 @@ data:
     path: Test/UC/3-35-L.test.cpp
     title: Test/UC/3-35-L.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/UC/3-36-F.test.cpp
+    title: Test/UC/3-36-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1316,6 +1323,7 @@ data:
   - Src/Utility/U32Pair.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Utility/MisereNim.hpp
+  - Src/Utility/SeparatedFamilySet.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/Divisor.hpp
   - Src/Number/LinearSieve.hpp
@@ -1400,6 +1408,7 @@ data:
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/0388.test.cpp
   - Test/UC/3-35-L.test.cpp
+  - Test/UC/3-36-F.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/CF/ECR178-D.test.cpp
