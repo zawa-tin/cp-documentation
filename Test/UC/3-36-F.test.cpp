@@ -1,5 +1,10 @@
 // #define PROBLEM "https://contest.ucup.ac/contest/2021/problem/10728"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+
+/*
+ * The 3rd Universal Cup. Stage 36: Wulin F. Challenge NPC III
+ * https://contest.ucup.ac/submission/1046445
+ */
 
 #include "../../Src/Utility/SeparatedFamilySet.hpp"
 
