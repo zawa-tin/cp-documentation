@@ -300,6 +300,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Tangent/TangentToCircle.hpp
       title: Src/GeometryR2/Tangent/TangentToCircle.hpp
+  - name: Src/GeometryR3
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR3/Plane.hpp
+      title: Src/GeometryR3/Plane.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR3/Point.hpp
+      title: Src/GeometryR3/Point.hpp
   - name: Src/GeometryZ2
     pages:
     - icon: ':heavy_check_mark:'
@@ -1318,6 +1326,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/UC/3-36-F.test.cpp
       title: Test/UC/3-36-F.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/UC/3-37-M.test.cpp
+      title: Test/UC/3-37-M.test.cpp
   - name: Test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

@@ -70,14 +70,14 @@ data:
   timestamp: '2025-02-27 21:25:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc332_f.test.cpp
-  - Test/LC/queue_operate_all_composite.test.cpp
-  - Test/LC/deque_operate_all_composite.test.cpp
-  - Test/LC/range_set_range_composite.test.cpp
+  - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
-  - Test/LC/point_set_range_composite_large_array.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
+  - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
 documentation_of: Src/Algebra/Monoid/AffineMonoid.hpp
 layout: document
 redirect_from:

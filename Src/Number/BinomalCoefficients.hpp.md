@@ -65,8 +65,8 @@ data:
   timestamp: '2024-06-30 16:42:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/yukicoder/117.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
+  - Test/yukicoder/117.test.cpp
 documentation_of: Src/Number/BinomalCoefficients.hpp
 layout: document
 title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"

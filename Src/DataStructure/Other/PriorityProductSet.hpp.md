@@ -111,8 +111,8 @@ data:
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc196_a.test.cpp
   - Test/yukicoder/649.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
 documentation_of: Src/DataStructure/Other/PriorityProductSet.hpp
 layout: document
 title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
