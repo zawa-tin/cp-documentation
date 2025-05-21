@@ -205,6 +205,12 @@ data:
     path: Src/GeometryR3/Point.hpp
     title: Src/GeometryR3/Point.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR3/Segment.hpp
+    title: Src/GeometryR3/Segment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR3/Sphere.hpp
+    title: Src/GeometryR3/Sphere.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Circle.hpp
     title: Src/GeometryZ2/Circle.hpp
   - icon: ':heavy_check_mark:'
@@ -477,6 +483,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2609.test.cpp
     title: Test/AOJ/2609.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2641.test.cpp
+    title: Test/AOJ/2641.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2706.test.cpp
     title: "AOJ2706 \u5E7E\u4F55\u554F\u984C\u3092\u89E3\u3053\u3046"
@@ -1210,6 +1219,8 @@ data:
   path: Src/Template/TypeAlias.hpp
   requiredBy:
   - Src/GeometryR3/Point.hpp
+  - Src/GeometryR3/Sphere.hpp
+  - Src/GeometryR3/Segment.hpp
   - Src/GeometryR3/Plane.hpp
   - Src/Template/VectorIO.hpp
   - Src/Template/IOSetting.hpp
@@ -1430,6 +1441,7 @@ data:
   - Test/AOJ/GRL_6_A.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/DPL_3_C.test.cpp
+  - Test/AOJ/2641.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/ITP2_4_A.test.cpp

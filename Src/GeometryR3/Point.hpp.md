@@ -8,7 +8,16 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR3/Plane.hpp
     title: Src/GeometryR3/Plane.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR3/Segment.hpp
+    title: Src/GeometryR3/Segment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR3/Sphere.hpp
+    title: Src/GeometryR3/Sphere.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2641.test.cpp
+    title: Test/AOJ/2641.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/UC/3-37-M.test.cpp
     title: Test/UC/3-37-M.test.cpp
@@ -124,10 +133,13 @@ data:
   isVerificationFile: false
   path: Src/GeometryR3/Point.hpp
   requiredBy:
+  - Src/GeometryR3/Sphere.hpp
+  - Src/GeometryR3/Segment.hpp
   - Src/GeometryR3/Plane.hpp
   timestamp: '2025-05-21 20:07:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/2641.test.cpp
   - Test/UC/3-37-M.test.cpp
 documentation_of: Src/GeometryR3/Point.hpp
 layout: document

@@ -308,6 +308,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR3/Point.hpp
       title: Src/GeometryR3/Point.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR3/Segment.hpp
+      title: Src/GeometryR3/Segment.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR3/Sphere.hpp
+      title: Src/GeometryR3/Sphere.hpp
   - name: Src/GeometryZ2
     pages:
     - icon: ':heavy_check_mark:'
@@ -644,6 +650,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2609.test.cpp
       title: Test/AOJ/2609.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2641.test.cpp
+      title: Test/AOJ/2641.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2706.test.cpp
       title: "AOJ2706 \u5E7E\u4F55\u554F\u984C\u3092\u89E3\u3053\u3046"
