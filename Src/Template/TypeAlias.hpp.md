@@ -274,6 +274,9 @@ data:
     path: Src/Graph/Components/Lowlink.hpp
     title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/EulerianTrail.hpp
+    title: "Eulerian Trail (\u30AA\u30A4\u30E9\u30FC\u8DEF)"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Flow/BurnBury.hpp
     title: Src/Graph/Flow/BurnBury.hpp
   - icon: ':heavy_check_mark:'
@@ -864,6 +867,9 @@ data:
     path: Test/CF/CF1015-C.test.cpp
     title: Test/CF/CF1015-C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1026-E.test.cpp
+    title: Test/CF/CF1026-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -926,6 +932,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/eulerian_trail_directed.test.cpp
+    title: Test/LC/eulerian_trail_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/eulerian_trail_undirected.test.cpp
+    title: Test/LC/eulerian_trail_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/frequency_table_of_tree_distance.test.cpp
     title: Test/LC/frequency_table_of_tree_distance.test.cpp
@@ -1267,6 +1279,7 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/KthTerm.hpp
+  - Src/Graph/EulerianTrail.hpp
   - Src/Graph/Flow/Dinic.hpp
   - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/BurnBury.hpp
@@ -1362,6 +1375,7 @@ data:
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
+  - Test/LC/eulerian_trail_undirected.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
@@ -1384,6 +1398,7 @@ data:
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/jump_on_tree.test.cpp
+  - Test/LC/eulerian_trail_directed.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
@@ -1510,6 +1525,7 @@ data:
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF316-D.test.cpp
   - Test/CF/CF1015-C.test.cpp
+  - Test/CF/CF1026-E.test.cpp
   - Test/CF/EC171-F.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/EC2-E.test.cpp

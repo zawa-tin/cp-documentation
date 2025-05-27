@@ -392,6 +392,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/Lowlink.hpp
       title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"
+  - name: Src/Graph
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/EulerianTrail.hpp
+      title: "Eulerian Trail (\u30AA\u30A4\u30E9\u30FC\u8DEF)"
   - name: Src/Graph/Flow
     pages:
     - icon: ':heavy_check_mark:'
@@ -1048,6 +1053,9 @@ data:
       path: Test/CF/CF1015-C.test.cpp
       title: Test/CF/CF1015-C.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/CF/CF1026-E.test.cpp
+      title: Test/CF/CF1026-E.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/CF316-D.test.cpp
       title: Test/CF/CF316-D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1112,6 +1120,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_quotients.test.cpp
       title: Test/LC/enumerate_quotients.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/eulerian_trail_directed.test.cpp
+      title: Test/LC/eulerian_trail_directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/eulerian_trail_undirected.test.cpp
+      title: Test/LC/eulerian_trail_undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/frequency_table_of_tree_distance.test.cpp
       title: Test/LC/frequency_table_of_tree_distance.test.cpp
