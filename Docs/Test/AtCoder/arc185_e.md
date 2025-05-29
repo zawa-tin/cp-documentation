@@ -1,6 +1,6 @@
 ---
 title: ABC185-E Adjacent GCD (約数・倍数関係の高速ゼータ・メビウス変換)
-documentation_of: //Test/AtCoder/abc185_e.test.cpp
+documentation_of: //Test/AtCoder/arc185_e.test.cpp
 ---
 
 整数 $a, b$ に関して $a$ が $b$ の約数であることを $a\mid b$ と表記する。
