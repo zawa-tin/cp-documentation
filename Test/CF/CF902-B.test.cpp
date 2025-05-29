@@ -1,8 +1,9 @@
+// #define PROBLEM "https://codeforces.com/contest/1876/problem/B"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 /*
  * CF902-B Effects of Anti Pimples
- * https://codeforces.com/contest/1876/submission/268094339
+ * https://codeforces.com/contest/1876/submission/321867982
  */
 
 #include "../../Src/Number/LinearSieve.hpp"

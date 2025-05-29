@@ -3,6 +3,7 @@
 #include "../Template/TypeAlias.hpp"
 #include "./PrimeFactor.hpp"
 
+#include <concepts>
 #include <vector>
 #include <utility>
 #include <cassert>
@@ -11,13 +12,18 @@ namespace zawa {
 
 class LinearSieve {
 public:
+
     using V = u32;
     using F = PrimeFactor<V>;
+
 private:
+
     std::vector<V> primes_;
     std::vector<V> lpf_;
+
 public:
-    LinearSieve(V n) : primes_{}, lpf_(n + 1) {
+
+    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {
         for (V i{2} ; i <= n ; i++) {
             if (!lpf_[i]) {
                 lpf_[i] = i;
@@ -49,9 +55,10 @@ public:
     }
 
     // @note: response array is not sorted.
-    std::vector<u32> divisor(V x) const {
+    template <std::integral T = V>
+    std::vector<T> divisor(V x) const {
         assert(0u < x and x < lpf_.size());
-        std::vector<V> res(1, 1u);
+        std::vector<T> res(1, 1u);
         while (x > 1) {
             V factor{lpf_[x]};
             u32 exponent{};
@@ -64,7 +71,7 @@ public:
             for (u32 i{} ; i < exponent ; i++) {
                 now *= factor;
                 for (usize j{} ; j < line ; j++) {
-                    res.emplace_back(res[j] * now);
+                    res.emplace_back(static_cast<T>(res[j] * now));
                 }
             }
         }
@@ -82,6 +89,22 @@ public:
                 x /= lpf_[x];
             }
             res.emplace_back(factor, exponent);
+        }
+        return res;
+    }
+
+    i32 mobius(V x) const {
+        assert(0u < x and x < lpf_.size());
+        i32 res = 1;
+        while (x > 1u) {
+            V factor = lpf_[x];
+            u32 exp = 0;
+            while (lpf_[x] == factor) {
+                x /= factor;
+                exp++;
+            }
+            if (exp >= 2u) return 0;
+            res *= -1;
         }
         return res;
     }
