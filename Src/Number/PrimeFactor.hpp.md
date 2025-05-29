@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc185_e.test.cpp
+    title: Test/AtCoder/arc185_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF902-B.test.cpp
     title: Test/CF/CF902-B.test.cpp
   _isVerificationFailed: false
@@ -75,6 +78,7 @@ data:
   verifiedWith:
   - Test/AOJ/2706.test.cpp
   - Test/CF/CF902-B.test.cpp
+  - Test/AtCoder/arc185_e.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc170_d.test.cpp

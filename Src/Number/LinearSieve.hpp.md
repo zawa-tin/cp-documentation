@@ -16,6 +16,9 @@ data:
     path: Test/AtCoder/abc177_e.test.cpp
     title: Test/AtCoder/abc177_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc185_e.test.cpp
+    title: Test/AtCoder/arc185_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF902-B.test.cpp
     title: Test/CF/CF902-B.test.cpp
   _isVerificationFailed: false
@@ -41,71 +44,85 @@ data:
     \ bool operator>(const PrimeFactor<T>& lhs, const PrimeFactor<T>& rhs) {\n   \
     \     return lhs.factor() != rhs.factor() ?\n            lhs.factor() > rhs.factor()\
     \ :\n            lhs.exponent() > rhs.exponent();\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Src/Number/LinearSieve.hpp\"\n\n#include <vector>\n#include\
-    \ <utility>\n#include <cassert>\n\nnamespace zawa {\n\nclass LinearSieve {\npublic:\n\
-    \    using V = u32;\n    using F = PrimeFactor<V>;\nprivate:\n    std::vector<V>\
-    \ primes_;\n    std::vector<V> lpf_;\npublic:\n    LinearSieve(V n) : primes_{},\
-    \ lpf_(n + 1) {\n        for (V i{2} ; i <= n ; i++) {\n            if (!lpf_[i])\
-    \ {\n                lpf_[i] = i;\n                primes_.emplace_back(i);\n\
-    \            }\n            for (V p : primes_) {\n                if (static_cast<u64>(p)\
-    \ * i > n) break;\n                lpf_[p * i] = p;\n            }\n        }\n\
+    \ zawa\n#line 5 \"Src/Number/LinearSieve.hpp\"\n\n#include <concepts>\n#include\
+    \ <vector>\n#include <utility>\n#include <cassert>\n\nnamespace zawa {\n\nclass\
+    \ LinearSieve {\npublic:\n\n    using V = u32;\n    using F = PrimeFactor<V>;\n\
+    \nprivate:\n\n    std::vector<V> primes_;\n    std::vector<V> lpf_;\n\npublic:\n\
+    \n    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n        for (V i{2}\
+    \ ; i <= n ; i++) {\n            if (!lpf_[i]) {\n                lpf_[i] = i;\n\
+    \                primes_.emplace_back(i);\n            }\n            for (V p\
+    \ : primes_) {\n                if (static_cast<u64>(p) * i > n) break;\n    \
+    \            lpf_[p * i] = p;\n            }\n        }\n    }\n\n    V size()\
+    \ const noexcept {\n        return static_cast<V>(lpf_.size()) - 1;\n    }\n\n\
+    \    bool isPrime(V x) const noexcept {\n        assert(x < lpf_.size());\n  \
+    \      return lpf_[x] == x;\n    }\n\n    bool operator[](V x) const noexcept\
+    \ {\n        assert(x < lpf_.size());\n        return lpf_[x] == x;\n    }\n\n\
+    \    std::vector<V> primes() const {\n        return primes_;\n    }\n\n    //\
+    \ @note: response array is not sorted.\n    template <std::integral T = V>\n \
+    \   std::vector<T> divisor(V x) const {\n        assert(0u < x and x < lpf_.size());\n\
+    \        std::vector<T> res(1, 1u);\n        while (x > 1) {\n            V factor{lpf_[x]};\n\
+    \            u32 exponent{};\n            while (lpf_[x] == factor) {\n      \
+    \          exponent++;\n                x /= lpf_[x];\n            }\n       \
+    \     usize line{res.size()};\n            V now{1};\n            for (u32 i{}\
+    \ ; i < exponent ; i++) {\n                now *= factor;\n                for\
+    \ (usize j{} ; j < line ; j++) {\n                    res.emplace_back(static_cast<T>(res[j]\
+    \ * now));\n                }\n            }\n        }\n        return res;\n\
+    \    }\n\n    std::vector<F> factorize(V x) const {\n        assert(0u < x and\
+    \ x < lpf_.size());\n        std::vector<F> res;\n        while (x > 1) {\n  \
+    \          V factor{lpf_[x]};\n            u32 exponent{};\n            while\
+    \ (lpf_[x] == factor) {\n                exponent++;\n                x /= lpf_[x];\n\
+    \            }\n            res.emplace_back(factor, exponent);\n        }\n \
+    \       return res;\n    }\n\n    i32 mobius(V x) const {\n        assert(0u <\
+    \ x and x < lpf_.size());\n        i32 res = 1;\n        while (x > 1u) {\n  \
+    \          V factor = lpf_[x];\n            u32 exp = 0;\n            while (lpf_[x]\
+    \ == factor) {\n                x /= factor;\n                exp++;\n       \
+    \     }\n            if (exp >= 2u) return 0;\n            res *= -1;\n      \
+    \  }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./PrimeFactor.hpp\"\
+    \n\n#include <concepts>\n#include <vector>\n#include <utility>\n#include <cassert>\n\
+    \nnamespace zawa {\n\nclass LinearSieve {\npublic:\n\n    using V = u32;\n   \
+    \ using F = PrimeFactor<V>;\n\nprivate:\n\n    std::vector<V> primes_;\n    std::vector<V>\
+    \ lpf_;\n\npublic:\n\n    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n\
+    \        for (V i{2} ; i <= n ; i++) {\n            if (!lpf_[i]) {\n        \
+    \        lpf_[i] = i;\n                primes_.emplace_back(i);\n            }\n\
+    \            for (V p : primes_) {\n                if (static_cast<u64>(p) *\
+    \ i > n) break;\n                lpf_[p * i] = p;\n            }\n        }\n\
     \    }\n\n    V size() const noexcept {\n        return static_cast<V>(lpf_.size())\
     \ - 1;\n    }\n\n    bool isPrime(V x) const noexcept {\n        assert(x < lpf_.size());\n\
     \        return lpf_[x] == x;\n    }\n\n    bool operator[](V x) const noexcept\
     \ {\n        assert(x < lpf_.size());\n        return lpf_[x] == x;\n    }\n\n\
     \    std::vector<V> primes() const {\n        return primes_;\n    }\n\n    //\
-    \ @note: response array is not sorted.\n    std::vector<u32> divisor(V x) const\
-    \ {\n        assert(0u < x and x < lpf_.size());\n        std::vector<V> res(1,\
-    \ 1u);\n        while (x > 1) {\n            V factor{lpf_[x]};\n            u32\
-    \ exponent{};\n            while (lpf_[x] == factor) {\n                exponent++;\n\
-    \                x /= lpf_[x];\n            }\n            usize line{res.size()};\n\
-    \            V now{1};\n            for (u32 i{} ; i < exponent ; i++) {\n   \
-    \             now *= factor;\n                for (usize j{} ; j < line ; j++)\
-    \ {\n                    res.emplace_back(res[j] * now);\n                }\n\
-    \            }\n        }\n        return res;\n    }\n\n    std::vector<F> factorize(V\
-    \ x) const {\n        assert(0u < x and x < lpf_.size());\n        std::vector<F>\
-    \ res;\n        while (x > 1) {\n            V factor{lpf_[x]};\n            u32\
-    \ exponent{};\n            while (lpf_[x] == factor) {\n                exponent++;\n\
-    \                x /= lpf_[x];\n            }\n            res.emplace_back(factor,\
-    \ exponent);\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./PrimeFactor.hpp\"\
-    \n\n#include <vector>\n#include <utility>\n#include <cassert>\n\nnamespace zawa\
-    \ {\n\nclass LinearSieve {\npublic:\n    using V = u32;\n    using F = PrimeFactor<V>;\n\
-    private:\n    std::vector<V> primes_;\n    std::vector<V> lpf_;\npublic:\n   \
-    \ LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n        for (V i{2} ; i <= n ;\
-    \ i++) {\n            if (!lpf_[i]) {\n                lpf_[i] = i;\n        \
-    \        primes_.emplace_back(i);\n            }\n            for (V p : primes_)\
-    \ {\n                if (static_cast<u64>(p) * i > n) break;\n               \
-    \ lpf_[p * i] = p;\n            }\n        }\n    }\n\n    V size() const noexcept\
-    \ {\n        return static_cast<V>(lpf_.size()) - 1;\n    }\n\n    bool isPrime(V\
-    \ x) const noexcept {\n        assert(x < lpf_.size());\n        return lpf_[x]\
-    \ == x;\n    }\n\n    bool operator[](V x) const noexcept {\n        assert(x\
-    \ < lpf_.size());\n        return lpf_[x] == x;\n    }\n\n    std::vector<V> primes()\
-    \ const {\n        return primes_;\n    }\n\n    // @note: response array is not\
-    \ sorted.\n    std::vector<u32> divisor(V x) const {\n        assert(0u < x and\
-    \ x < lpf_.size());\n        std::vector<V> res(1, 1u);\n        while (x > 1)\
-    \ {\n            V factor{lpf_[x]};\n            u32 exponent{};\n           \
-    \ while (lpf_[x] == factor) {\n                exponent++;\n                x\
-    \ /= lpf_[x];\n            }\n            usize line{res.size()};\n          \
-    \  V now{1};\n            for (u32 i{} ; i < exponent ; i++) {\n             \
-    \   now *= factor;\n                for (usize j{} ; j < line ; j++) {\n     \
-    \               res.emplace_back(res[j] * now);\n                }\n         \
-    \   }\n        }\n        return res;\n    }\n\n    std::vector<F> factorize(V\
-    \ x) const {\n        assert(0u < x and x < lpf_.size());\n        std::vector<F>\
-    \ res;\n        while (x > 1) {\n            V factor{lpf_[x]};\n            u32\
-    \ exponent{};\n            while (lpf_[x] == factor) {\n                exponent++;\n\
-    \                x /= lpf_[x];\n            }\n            res.emplace_back(factor,\
-    \ exponent);\n        }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+    \ @note: response array is not sorted.\n    template <std::integral T = V>\n \
+    \   std::vector<T> divisor(V x) const {\n        assert(0u < x and x < lpf_.size());\n\
+    \        std::vector<T> res(1, 1u);\n        while (x > 1) {\n            V factor{lpf_[x]};\n\
+    \            u32 exponent{};\n            while (lpf_[x] == factor) {\n      \
+    \          exponent++;\n                x /= lpf_[x];\n            }\n       \
+    \     usize line{res.size()};\n            V now{1};\n            for (u32 i{}\
+    \ ; i < exponent ; i++) {\n                now *= factor;\n                for\
+    \ (usize j{} ; j < line ; j++) {\n                    res.emplace_back(static_cast<T>(res[j]\
+    \ * now));\n                }\n            }\n        }\n        return res;\n\
+    \    }\n\n    std::vector<F> factorize(V x) const {\n        assert(0u < x and\
+    \ x < lpf_.size());\n        std::vector<F> res;\n        while (x > 1) {\n  \
+    \          V factor{lpf_[x]};\n            u32 exponent{};\n            while\
+    \ (lpf_[x] == factor) {\n                exponent++;\n                x /= lpf_[x];\n\
+    \            }\n            res.emplace_back(factor, exponent);\n        }\n \
+    \       return res;\n    }\n\n    i32 mobius(V x) const {\n        assert(0u <\
+    \ x and x < lpf_.size());\n        i32 res = 1;\n        while (x > 1u) {\n  \
+    \          V factor = lpf_[x];\n            u32 exp = 0;\n            while (lpf_[x]\
+    \ == factor) {\n                x /= factor;\n                exp++;\n       \
+    \     }\n            if (exp >= 2u) return 0;\n            res *= -1;\n      \
+    \  }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Number/PrimeFactor.hpp
   isVerificationFile: false
   path: Src/Number/LinearSieve.hpp
   requiredBy: []
-  timestamp: '2024-06-30 19:07:00+09:00'
+  timestamp: '2025-05-29 15:37:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF902-B.test.cpp
+  - Test/AtCoder/arc185_e.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
 documentation_of: Src/Number/LinearSieve.hpp
@@ -180,7 +197,8 @@ $x$ が素数か判定します。
 #### divisor
 
 ```cpp
-std::vector<u32> divisor(u32 x) const
+template <std::integral T = u32>
+std::vector<T> divisor(u32 x) const
 ```
 
 $x$ の約数を列挙する。**ソートされていないことに注意**
