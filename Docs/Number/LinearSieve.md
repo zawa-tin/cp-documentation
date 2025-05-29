@@ -70,7 +70,8 @@ $x$ が素数か判定します。
 #### divisor
 
 ```cpp
-std::vector<u32> divisor(u32 x) const
+template <std::integral T = u32>
+std::vector<T> divisor(u32 x) const
 ```
 
 $x$ の約数を列挙する。**ソートされていないことに注意**
