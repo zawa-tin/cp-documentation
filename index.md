@@ -503,6 +503,9 @@ data:
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/BitwiseXORConvolution.hpp
+      title: Bitwise XOR Convolution
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/CartesianTree.hpp
       title: Cartesian Tree
     - icon: ':heavy_check_mark:'
@@ -1007,6 +1010,9 @@ data:
       path: Test/AtCoder/abc389_f.test.cpp
       title: Test/AtCoder/abc389_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc396_g.test.cpp
+      title: ABC396-G Flip Row or Col
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc403_g.test.cpp
       title: Test/AtCoder/abc403_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1109,6 +1115,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/bipartitematching.test.cpp
       title: Test/LC/bipartitematching.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/bitwise_xor_convolution.test.cpp
+      title: Test/LC/bitwise_xor_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/cartesian_tree.test.cpp
       title: Test/LC/cartesian_tree.test.cpp

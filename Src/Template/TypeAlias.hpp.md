@@ -363,6 +363,9 @@ data:
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/BitwiseXORConvolution.hpp
+    title: Bitwise XOR Convolution
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/CartesianTree.hpp
     title: Cartesian Tree
   - icon: ':heavy_check_mark:'
@@ -825,6 +828,9 @@ data:
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc396_g.test.cpp
+    title: ABC396-G Flip Row or Col
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc403_g.test.cpp
     title: Test/AtCoder/abc403_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -921,6 +927,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/bitwise_xor_convolution.test.cpp
+    title: Test/LC/bitwise_xor_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/cartesian_tree.test.cpp
     title: Test/LC/cartesian_tree.test.cpp
@@ -1363,6 +1372,7 @@ data:
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/Sequence/InversionNumber.hpp
   - Src/Sequence/CompressedSequence.hpp
+  - Src/Sequence/BitwiseXORConvolution.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/MajorityVote.hpp
   - Src/Sequence/PermutationSwapSort.hpp
@@ -1394,6 +1404,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/cartesian_tree.test.cpp
   - Test/LC/static_range_frequency.test.cpp
+  - Test/LC/bitwise_xor_convolution.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
@@ -1568,6 +1579,7 @@ data:
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
+  - Test/AtCoder/abc396_g.test.cpp
   - Test/AtCoder/agc047_a.test.cpp
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
