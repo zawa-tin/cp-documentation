@@ -106,6 +106,9 @@ data:
     path: Src/GeometryR2/Circle.hpp
     title: Src/GeometryR2/Circle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CircumscribedCircle.hpp
+    title: Src/GeometryR2/CircumscribedCircle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
     title: Src/GeometryR2/Contain/CircleContainsPoint.hpp
   - icon: ':heavy_check_mark:'
@@ -580,6 +583,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_C.test.cpp
+    title: Test/AOJ/CGL_7_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
@@ -1357,6 +1363,7 @@ data:
   - Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
   - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/CircumscribedCircle.hpp
   - Src/GeometryR2/Polygon.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
@@ -1490,6 +1497,7 @@ data:
   - Test/AOJ/0465.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/2009.test.cpp
+  - Test/AOJ/CGL_7_C.test.cpp
   - Test/AOJ/3079.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/2957.test.cpp

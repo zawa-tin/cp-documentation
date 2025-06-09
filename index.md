@@ -186,6 +186,9 @@ data:
       path: Src/GeometryR2/Circle.hpp
       title: Src/GeometryR2/Circle.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CircumscribedCircle.hpp
+      title: Src/GeometryR2/CircumscribedCircle.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Line.hpp
       title: Src/GeometryR2/Line.hpp
     - icon: ':heavy_check_mark:'
@@ -725,6 +728,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_4_A.test.cpp
       title: Test/AOJ/CGL_4_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_C.test.cpp
+      title: Test/AOJ/CGL_7_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_D.test.cpp
       title: Test/AOJ/CGL_7_D.test.cpp

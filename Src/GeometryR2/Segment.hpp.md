@@ -24,6 +24,9 @@ data:
     path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
     title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CircumscribedCircle.hpp
+    title: Src/GeometryR2/CircumscribedCircle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -72,6 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_C.test.cpp
+    title: Test/AOJ/CGL_7_C.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -228,6 +234,7 @@ data:
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/CircumscribedCircle.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
@@ -243,6 +250,7 @@ data:
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AOJ/CGL_7_C.test.cpp
   - Test/AOJ/2862.test.cpp
 documentation_of: Src/GeometryR2/Segment.hpp
 layout: document
