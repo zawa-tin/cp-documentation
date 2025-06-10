@@ -20,9 +20,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc334/tasks/abc334_g
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc334/submissions/66615159
     - https://atcoder.jp/contests/abc334/tasks/abc334_g
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -36,29 +38,33 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc334/tasks/abc334_g\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Components/ConnectedComponents.hpp\"\
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc334/tasks/abc334_g\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 334 G - Christmas Color Grid 2\n * https://atcoder.jp/contests/abc334/submissions/66615159\n\
+    \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Components/ConnectedComponents.hpp\"\
     \n#include \"../../Src/Graph/Components/Lowlink.hpp\"\n#include \"atcoder/modint\"\
     \n\n#include <iostream>\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\n\
-    \nint main() {\n    SetFastIO();\n    int h, w; std::cin >> h >> w;\n    std::vector\
-    \ s(h, std::string{});\n    for (auto& c : s) std::cin >> c;\n    auto f{[w](int\
-    \ x, int y) -> int {\n        return x * w + y;\n    }};\n    auto in{[&](int\
-    \ x, int y) -> bool {\n        return 0 <= x and x < h and 0 <= y and y < w and\
-    \ s[x][y] == '#';\n    }};\n    const int dx[4]{ 1, 0, -1, 0 };\n    const int\
-    \ dy[4]{ 0, 1, 0, -1 };\n    ConnectedComponents cc(h * w);\n    Lowlink g(h *\
-    \ w);\n    int red{}, green{};\n    for (int x{} ; x < h ; x++) {\n        for\
-    \ (int y{} ; y < w ; y++) {\n            if (!in(x, y)) {\n                red++;\n\
-    \                continue;\n            }\n            else {\n              \
-    \  green++;\n            }\n            for (int d{} ; d < 4 ; d++) {\n      \
-    \          int nx{x + dx[d]}, ny{y + dy[d]};\n                if (!in(nx, ny))\
-    \ continue;\n                if (f(x, y) > f(nx, ny)) continue;\n            \
-    \    cc.addEdge(f(x, y), f(nx, ny));\n                g.addEdge(f(x, y), f(nx,\
-    \ ny));\n            }\n        }\n    } \n    cc.build();\n    auto info{g.build()};\n\
-    \    mint res{};\n    for (int x{} ; x < h ; x++) {\n        for (int y{} ; y\
-    \ < w ; y++) {\n            if (!in(x, y)) continue;\n            int num{(int)cc.size()\
-    \ - red + (int)info.cut(f(x, y)) - 1};\n            int den{green};\n        \
-    \    res += mint{num} / mint{den};\n        }\n    }\n    std::cout << res.val()\
-    \ << '\\n';\n}\n"
+    \nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    int h, w; std::cin >> h >> w;\n  \
+    \  std::vector s(h, std::string{});\n    for (auto& c : s) std::cin >> c;\n  \
+    \  auto f{[w](int x, int y) -> int {\n        return x * w + y;\n    }};\n   \
+    \ auto in{[&](int x, int y) -> bool {\n        return 0 <= x and x < h and 0 <=\
+    \ y and y < w and s[x][y] == '#';\n    }};\n    const int dx[4]{ 1, 0, -1, 0 };\n\
+    \    const int dy[4]{ 0, 1, 0, -1 };\n    ConnectedComponents cc(h * w);\n   \
+    \ Lowlink g(h * w);\n    int red{}, green{};\n    for (int x{} ; x < h ; x++)\
+    \ {\n        for (int y{} ; y < w ; y++) {\n            if (!in(x, y)) {\n   \
+    \             red++;\n                continue;\n            }\n            else\
+    \ {\n                green++;\n            }\n            for (int d{} ; d < 4\
+    \ ; d++) {\n                int nx{x + dx[d]}, ny{y + dy[d]};\n              \
+    \  if (!in(nx, ny)) continue;\n                if (f(x, y) > f(nx, ny)) continue;\n\
+    \                cc.addEdge(f(x, y), f(nx, ny));\n                g.addEdge(f(x,\
+    \ y), f(nx, ny));\n            }\n        }\n    } \n    cc.build();\n    auto\
+    \ info{g.build()};\n    mint res{};\n    mint inv_green = mint{green}.inv();\n\
+    \    for (int x{} ; x < h ; x++) {\n        for (int y{} ; y < w ; y++) {\n  \
+    \          if (!in(x, y)) continue;\n            int num{(int)cc.size() - red\
+    \ + (int)info.cut(f(x, y)) - 1};\n            res += mint{num} * inv_green;\n\
+    \        }\n    }\n    std::cout << res.val() << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -67,7 +73,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc334_g.test.cpp
   requiredBy: []
-  timestamp: '2024-06-30 15:57:14+09:00'
+  timestamp: '2025-06-09 10:00:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc334_g.test.cpp

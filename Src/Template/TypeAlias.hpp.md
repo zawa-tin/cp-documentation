@@ -268,6 +268,10 @@ data:
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Components/BlockCutTree.hpp
+    title: "Block-Cut tree (+ \u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\
+      \u89E3)"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Components/ConnectedComponents.hpp
     title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - icon: ':heavy_check_mark:'
@@ -514,6 +518,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2957.test.cpp
     title: AOJ2957 MOD Rush
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3022.test.cpp
+    title: Test/AOJ/3022.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3079.test.cpp
     title: Test/AOJ/3079.test.cpp
@@ -928,6 +935,9 @@ data:
     path: Test/LC/area_of_union_of_rectangles.test.cpp
     title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/biconnected_components.test.cpp
+    title: Test/LC/biconnected_components.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/binomial_coefficient_prime_mod.test.cpp
     title: Test/LC/binomial_coefficient_prime_mod.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1315,6 +1325,7 @@ data:
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/Sack.hpp
+  - Src/Graph/Components/BlockCutTree.hpp
   - Src/Graph/Components/ConnectedComponents.hpp
   - Src/Graph/Components/Lowlink.hpp
   - Src/Graph/Components/IncrementalSCC.hpp
@@ -1397,6 +1408,7 @@ data:
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/LC/eulerian_trail_undirected.test.cpp
+  - Test/LC/biconnected_components.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
@@ -1493,6 +1505,7 @@ data:
   - Test/AOJ/3548.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/3022.test.cpp
   - Test/AOJ/2706.test.cpp
   - Test/AOJ/0465.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp

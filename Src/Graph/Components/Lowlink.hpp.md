@@ -30,57 +30,21 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Graph/Components/Lowlink.hpp\"\n\n#include\
     \ <algorithm>\n#include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace\
-    \ zawa {\n\nclass LowlinkResponse {\npublic:\n    LowlinkResponse() = default;\n\
-    \n    LowlinkResponse(const std::vector<u32>& articulation, const std::vector<bool>&\
-    \ bridge)\n        : articulation_{articulation}, bridge_{bridge} {}\n\n    inline\
-    \ bool isArticulation(u32 v) const {\n        assert(v < articulation_.size());\n\
-    \        return articulation_[v] > 1u;\n    }\n\n    inline u32 cut(u32 v) const\
-    \ {\n        assert(v < articulation_.size());\n        return articulation_[v];\n\
-    \    }\n\n    inline bool isBridge(u32 i) const {\n        assert(i < bridge_.size());\n\
-    \        return bridge_[i];\n    }\n\nprivate:\n    std::vector<u32> articulation_;\n\
-    \    std::vector<bool> bridge_;\n};\n\nclass Lowlink {\nprivate:\n    static constexpr\
-    \ u32 INVALID{static_cast<u32>(-1)};\n    usize n_{}, m_{};\n    std::vector<std::vector<std::pair<u32,\
-    \ u32>>> g_;\n    std::vector<std::pair<u32, u32>> e_;\n\n    void dfs(u32 v,\
-    \ u32 p, u32& t, std::vector<u32>& articulation, \n            std::vector<bool>&\
-    \ bridge, std::vector<u32>& in, std::vector<u32>& low) const {\n        low[v]\
-    \ = in[v] = t++;\n        u32 deg{}; \n        for (const auto& [x, i] : g_[v])\
-    \ {\n            if (in[x] == INVALID) {\n                deg++;\n           \
-    \     dfs(x, v, t, articulation, bridge, in, low);\n                low[v] = std::min(low[v],\
-    \ low[x]);\n                if (p != INVALID and low[x] >= in[v]) {\n        \
-    \            articulation[v]++;\n                }\n                if (low[x]\
-    \ > in[v]) {\n                    bridge[i] = true;\n                }\n     \
-    \       }\n            else if (x != p) {\n                low[v] = std::min(low[v],\
-    \ in[x]);\n            }\n        }\n        if (p == INVALID) {\n           \
-    \ articulation[v] = deg;\n        }\n    }\n\npublic:\n    constexpr usize size()\
-    \ const noexcept {\n        return n_;\n    }\n\n    constexpr usize edgeSize()\
-    \ const noexcept {\n        return m_;\n    }\n\n    Lowlink() = default;\n\n\
-    \    Lowlink(usize n) \n        : n_{n}, m_{}, g_(n) {\n        g_.shrink_to_fit();\n\
-    \    }\n    \n    usize addEdge(u32 u, u32 v) {\n        usize res{m_++};\n  \
-    \      e_.emplace_back(u, v);\n        g_[u].emplace_back(v, res);\n        g_[v].emplace_back(u,\
-    \ res);\n        return res;\n    }\n\n    const std::vector<std::pair<u32, u32>>&\
-    \ operator[](u32 v) const noexcept {\n        assert(v < size());\n        return\
-    \ g_[v];\n    }\n    const std::pair<u32, u32>& edge(u32 i) const noexcept {\n\
-    \        assert(i < edgeSize());\n        return e_[i];\n    }\n\n    LowlinkResponse\
-    \ build() const {\n        u32 t{};\n        std::vector<u32> articulation(size(),\
-    \ 1u), in(size(), INVALID), low(size());\n        std::vector<bool> bridge(edgeSize());\n\
-    \        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID) {\n          \
-    \  dfs(v, INVALID, t, articulation, bridge, in, low);\n        }\n        return\
-    \ LowlinkResponse{ articulation, bridge };\n    }\n\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
-    \nclass LowlinkResponse {\npublic:\n    LowlinkResponse() = default;\n\n    LowlinkResponse(const\
-    \ std::vector<u32>& articulation, const std::vector<bool>& bridge)\n        :\
-    \ articulation_{articulation}, bridge_{bridge} {}\n\n    inline bool isArticulation(u32\
-    \ v) const {\n        assert(v < articulation_.size());\n        return articulation_[v]\
-    \ > 1u;\n    }\n\n    inline u32 cut(u32 v) const {\n        assert(v < articulation_.size());\n\
-    \        return articulation_[v];\n    }\n\n    inline bool isBridge(u32 i) const\
-    \ {\n        assert(i < bridge_.size());\n        return bridge_[i];\n    }\n\n\
-    private:\n    std::vector<u32> articulation_;\n    std::vector<bool> bridge_;\n\
-    };\n\nclass Lowlink {\nprivate:\n    static constexpr u32 INVALID{static_cast<u32>(-1)};\n\
-    \    usize n_{}, m_{};\n    std::vector<std::vector<std::pair<u32, u32>>> g_;\n\
-    \    std::vector<std::pair<u32, u32>> e_;\n\n    void dfs(u32 v, u32 p, u32& t,\
-    \ std::vector<u32>& articulation, \n            std::vector<bool>& bridge, std::vector<u32>&\
-    \ in, std::vector<u32>& low) const {\n        low[v] = in[v] = t++;\n        u32\
+    \ zawa {\n\nclass Lowlink {\npublic:\n\n    using V = usize;\n\n    using ID =\
+    \ usize;\n\nprivate:\n\n    class LowlinkResponse {\n    public:\n\n        LowlinkResponse()\
+    \ = default;\n\n        LowlinkResponse(std::vector<u32>&& articulation, std::vector<bool>&&\
+    \ bridge)\n            : articulation_{std::move(articulation)}, bridge_{std::move(bridge)}\
+    \ {}\n\n        inline bool isArticulation(V v) const {\n            assert(v\
+    \ < articulation_.size());\n            return articulation_[v] > 1u;\n      \
+    \  }\n\n        inline u32 cut(V v) const {\n            assert(v < articulation_.size());\n\
+    \            return articulation_[v];\n        }\n\n        inline bool isBridge(ID\
+    \ i) const {\n            assert(i < bridge_.size());\n            return bridge_[i];\n\
+    \        }\n\n    private:\n\n        std::vector<u32> articulation_;\n\n    \
+    \    std::vector<bool> bridge_;\n\n    };\n\n    static constexpr usize INVALID{static_cast<usize>(-1)};\n\
+    \n    usize n_{}, m_{};\n\n    std::vector<std::vector<std::pair<V, ID>>> g_;\n\
+    \n    std::vector<std::pair<V, V>> e_;\n\n    void dfs(V v, V p, u32& t, std::vector<u32>&\
+    \ articulation, \n            std::vector<bool>& bridge, std::vector<usize>& in,\
+    \ std::vector<usize>& low) const {\n        low[v] = in[v] = t++;\n        u32\
     \ deg{}; \n        for (const auto& [x, i] : g_[v]) {\n            if (in[x] ==\
     \ INVALID) {\n                deg++;\n                dfs(x, v, t, articulation,\
     \ bridge, in, low);\n                low[v] = std::min(low[v], low[x]);\n    \
@@ -89,27 +53,69 @@ data:
     \  bridge[i] = true;\n                }\n            }\n            else if (x\
     \ != p) {\n                low[v] = std::min(low[v], in[x]);\n            }\n\
     \        }\n        if (p == INVALID) {\n            articulation[v] = deg;\n\
-    \        }\n    }\n\npublic:\n    constexpr usize size() const noexcept {\n  \
-    \      return n_;\n    }\n\n    constexpr usize edgeSize() const noexcept {\n\
-    \        return m_;\n    }\n\n    Lowlink() = default;\n\n    Lowlink(usize n)\
-    \ \n        : n_{n}, m_{}, g_(n) {\n        g_.shrink_to_fit();\n    }\n    \n\
-    \    usize addEdge(u32 u, u32 v) {\n        usize res{m_++};\n        e_.emplace_back(u,\
+    \        }\n    }\n\npublic:\n\n    constexpr usize size() const noexcept {\n\
+    \        return n_;\n    }\n\n    constexpr usize edgeSize() const noexcept {\n\
+    \        return m_;\n    }\n\n    Lowlink() = default;\n\n    explicit Lowlink(usize\
+    \ n) \n        : n_{n}, m_{}, g_(n) {\n        g_.shrink_to_fit();\n    }\n  \
+    \  \n    ID addEdge(V u, V v) {\n        ID res{m_++};\n        e_.emplace_back(u,\
     \ v);\n        g_[u].emplace_back(v, res);\n        g_[v].emplace_back(u, res);\n\
-    \        return res;\n    }\n\n    const std::vector<std::pair<u32, u32>>& operator[](u32\
+    \        return res;\n    }\n\n    const std::vector<std::pair<V, ID>>& operator[](V\
     \ v) const noexcept {\n        assert(v < size());\n        return g_[v];\n  \
-    \  }\n    const std::pair<u32, u32>& edge(u32 i) const noexcept {\n        assert(i\
+    \  }\n    const std::pair<V, V>& edge(ID i) const noexcept {\n        assert(i\
     \ < edgeSize());\n        return e_[i];\n    }\n\n    LowlinkResponse build()\
-    \ const {\n        u32 t{};\n        std::vector<u32> articulation(size(), 1u),\
-    \ in(size(), INVALID), low(size());\n        std::vector<bool> bridge(edgeSize());\n\
-    \        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID) {\n          \
-    \  dfs(v, INVALID, t, articulation, bridge, in, low);\n        }\n        return\
-    \ LowlinkResponse{ articulation, bridge };\n    }\n\n};\n\n} // namespace zawa\n"
+    \ const {\n        u32 t{};\n        std::vector<u32> articulation(size(), 1u);\n\
+    \        std::vector<usize> in(size(), INVALID), low(size());\n        std::vector<bool>\
+    \ bridge(edgeSize());\n        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID)\
+    \ {\n            dfs(v, INVALID, t, articulation, bridge, in, low);\n        }\n\
+    \        return LowlinkResponse{ std::move(articulation), std::move(bridge) };\n\
+    \    }\n\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
+    \nclass Lowlink {\npublic:\n\n    using V = usize;\n\n    using ID = usize;\n\n\
+    private:\n\n    class LowlinkResponse {\n    public:\n\n        LowlinkResponse()\
+    \ = default;\n\n        LowlinkResponse(std::vector<u32>&& articulation, std::vector<bool>&&\
+    \ bridge)\n            : articulation_{std::move(articulation)}, bridge_{std::move(bridge)}\
+    \ {}\n\n        inline bool isArticulation(V v) const {\n            assert(v\
+    \ < articulation_.size());\n            return articulation_[v] > 1u;\n      \
+    \  }\n\n        inline u32 cut(V v) const {\n            assert(v < articulation_.size());\n\
+    \            return articulation_[v];\n        }\n\n        inline bool isBridge(ID\
+    \ i) const {\n            assert(i < bridge_.size());\n            return bridge_[i];\n\
+    \        }\n\n    private:\n\n        std::vector<u32> articulation_;\n\n    \
+    \    std::vector<bool> bridge_;\n\n    };\n\n    static constexpr usize INVALID{static_cast<usize>(-1)};\n\
+    \n    usize n_{}, m_{};\n\n    std::vector<std::vector<std::pair<V, ID>>> g_;\n\
+    \n    std::vector<std::pair<V, V>> e_;\n\n    void dfs(V v, V p, u32& t, std::vector<u32>&\
+    \ articulation, \n            std::vector<bool>& bridge, std::vector<usize>& in,\
+    \ std::vector<usize>& low) const {\n        low[v] = in[v] = t++;\n        u32\
+    \ deg{}; \n        for (const auto& [x, i] : g_[v]) {\n            if (in[x] ==\
+    \ INVALID) {\n                deg++;\n                dfs(x, v, t, articulation,\
+    \ bridge, in, low);\n                low[v] = std::min(low[v], low[x]);\n    \
+    \            if (p != INVALID and low[x] >= in[v]) {\n                    articulation[v]++;\n\
+    \                }\n                if (low[x] > in[v]) {\n                  \
+    \  bridge[i] = true;\n                }\n            }\n            else if (x\
+    \ != p) {\n                low[v] = std::min(low[v], in[x]);\n            }\n\
+    \        }\n        if (p == INVALID) {\n            articulation[v] = deg;\n\
+    \        }\n    }\n\npublic:\n\n    constexpr usize size() const noexcept {\n\
+    \        return n_;\n    }\n\n    constexpr usize edgeSize() const noexcept {\n\
+    \        return m_;\n    }\n\n    Lowlink() = default;\n\n    explicit Lowlink(usize\
+    \ n) \n        : n_{n}, m_{}, g_(n) {\n        g_.shrink_to_fit();\n    }\n  \
+    \  \n    ID addEdge(V u, V v) {\n        ID res{m_++};\n        e_.emplace_back(u,\
+    \ v);\n        g_[u].emplace_back(v, res);\n        g_[v].emplace_back(u, res);\n\
+    \        return res;\n    }\n\n    const std::vector<std::pair<V, ID>>& operator[](V\
+    \ v) const noexcept {\n        assert(v < size());\n        return g_[v];\n  \
+    \  }\n    const std::pair<V, V>& edge(ID i) const noexcept {\n        assert(i\
+    \ < edgeSize());\n        return e_[i];\n    }\n\n    LowlinkResponse build()\
+    \ const {\n        u32 t{};\n        std::vector<u32> articulation(size(), 1u);\n\
+    \        std::vector<usize> in(size(), INVALID), low(size());\n        std::vector<bool>\
+    \ bridge(edgeSize());\n        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID)\
+    \ {\n            dfs(v, INVALID, t, articulation, bridge, in, low);\n        }\n\
+    \        return LowlinkResponse{ std::move(articulation), std::move(bridge) };\n\
+    \    }\n\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Graph/Components/Lowlink.hpp
   requiredBy: []
-  timestamp: '2024-06-30 15:57:14+09:00'
+  timestamp: '2025-06-09 10:00:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/GRL_3_B.test.cpp

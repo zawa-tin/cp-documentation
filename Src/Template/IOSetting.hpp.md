@@ -152,12 +152,6 @@ data:
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/GRL_3_A.test.cpp
-    title: Test/AOJ/GRL_3_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/GRL_3_B.test.cpp
-    title: Test/AOJ/GRL_3_B.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_6_A.test.cpp
     title: Test/AOJ/GRL_6_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -287,9 +281,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/CF/CF923-F.test.cpp
-    title: CF923(Div. 3)-F Microcycle
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF956-F.test.cpp
     title: Test/CF/CF956-F.test.cpp
@@ -522,7 +513,6 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
-  - Test/AOJ/GRL_3_B.test.cpp
   - Test/AOJ/2609.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
@@ -531,7 +521,6 @@ data:
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/2201.test.cpp
-  - Test/AOJ/GRL_3_A.test.cpp
   - Test/AOJ/0478.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
   - Test/AOJ/1132.test.cpp
@@ -598,7 +587,6 @@ data:
   - Test/CF/ECR167-F.test.cpp
   - Test/CF/CF956-F.test.cpp
   - Test/CF/CF923-D.test.cpp
-  - Test/CF/CF923-F.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF316-D.test.cpp
   - Test/CF/EC2-E.test.cpp
