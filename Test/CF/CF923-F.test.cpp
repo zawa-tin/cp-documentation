@@ -1,6 +1,6 @@
+// #define PROBLEM "https://codeforces.com/contest/1927/problem/F"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Components/Lowlink.hpp"
 
 using namespace zawa;
@@ -11,7 +11,7 @@ using namespace zawa;
 
 /*
  * Codeforces Round 923 (Div. 3) - F Microcycle
- * https://codeforces.com/contest/1927/submission/268079140
+ * https://codeforces.com/contest/1927/submission/323560243
  */
 
 void solve() {
@@ -62,7 +62,9 @@ void solve() {
 
 int main() {
 #ifdef ONLINE_JUDGE
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     solve();
 #else
     std::cout << "Hello World" << '\n';

@@ -1,6 +1,5 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/3/GRL_3_B"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Components/Lowlink.hpp"
 
 #include <algorithm>
@@ -11,10 +10,15 @@
 using namespace zawa;
 
 int main() {
-    int n, m; std::cin >> n >> m;
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    int n, m; 
+    std::cin >> n >> m;
     Lowlink g(n);
     for (int _{} ; _ < m ; _++) {
-        int s, t; std::cin >> s >> t;
+        int s, t; 
+        std::cin >> s >> t;
         g.addEdge(s, t);
     }
     auto info{g.build()};
