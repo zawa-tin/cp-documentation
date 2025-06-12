@@ -96,26 +96,26 @@ data:
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
   - Src/DataStructure/Other/PriorityProductSet.hpp
-  - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
-  - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/yukicoder/649.test.cpp
+  - Test/CF/EC2-E.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/CF/EC2-E.test.cpp
-  - Test/yukicoder/649.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/AtCoder/arc196_a.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
-  - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp
 layout: document
 redirect_from:

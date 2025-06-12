@@ -391,6 +391,10 @@ data:
       title: "Block-Cut tree (+ \u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\
         \u89E3)"
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Components/BridgeTree.hpp
+      title: "Bridge tree (+ \u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3\
+        )"
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Components/ConnectedComponents.hpp
       title: "\u7121\u5411\u30B0\u30E9\u30D5\u306E\u9023\u7D50\u6210\u5206\u5206\u89E3"
     - icon: ':heavy_check_mark:'
@@ -1224,6 +1228,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/two_edge_connected_components.test.cpp
+      title: Test/LC/two_edge_connected_components.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/unionfind.test.cpp
       title: Test/LC/unionfind.test.cpp
