@@ -203,6 +203,7 @@
 "Test/LC/static_range_sum.test.cpp": "2023-07-22 13:55:49 +0900",
 "Test/LC/staticrmq/DisjointSparseTable.test.cpp": "2025-04-17 19:44:48 +0900",
 "Test/LC/staticrmq/SparseTable.test.cpp": "2025-04-15 14:25:45 +0900",
+"Test/LC/two_edge_connected_components.test.cpp": "2025-06-12 16:53:31 +0900",
 "Test/LC/unionfind.test.cpp": "2025-05-05 21:42:21 +0900",
 "Test/LC/vertex_add_path_sum.test.cpp": "2025-04-17 19:44:48 +0900",
 "Test/LC/vertex_add_subtree_sum.test.cpp": "2025-04-17 19:44:48 +0900",
