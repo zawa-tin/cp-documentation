@@ -49,6 +49,15 @@ public:
         return dat_[i + n_];
     }
 
+    void operation(u32 i, const Value& value) {
+        assert(i < n_);
+        i += n_;
+        dat_[i] = Monoid::operation(dat_[i], value);
+        while (i = parent(i), i) {
+            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);
+        }
+    }
+
     void set(u32 i, const Value& value) {
         assert(i < n_);
         i += n_;
