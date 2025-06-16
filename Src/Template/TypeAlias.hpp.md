@@ -71,6 +71,9 @@ data:
     path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+    title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -887,6 +890,9 @@ data:
     path: Test/AtCoder/arc197_d.test.cpp
     title: Test/AtCoder/arc197_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_target.test.cpp
+    title: Test/AtCoder/tdpc_target.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Baekjoon/23249.test.cpp
     title: Test/Baekjoon/23249.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1003,6 +1009,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
     title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
@@ -1300,6 +1309,7 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
@@ -1436,6 +1446,7 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
@@ -1543,6 +1554,7 @@ data:
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
   - Test/AtCoder/abc302_h.test.cpp
   - Test/AtCoder/abc340_e.test.cpp

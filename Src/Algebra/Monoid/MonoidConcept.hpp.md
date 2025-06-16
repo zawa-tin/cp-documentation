@@ -39,6 +39,9 @@ data:
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+    title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
@@ -122,6 +125,9 @@ data:
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_target.test.cpp
+    title: Test/AtCoder/tdpc_target.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -136,6 +142,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_range_composite.test.cpp
     title: Test/LC/point_set_range_composite.test.cpp
@@ -202,6 +211,7 @@ data:
   - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
@@ -222,6 +232,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
@@ -242,6 +253,7 @@ data:
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp

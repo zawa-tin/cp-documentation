@@ -9,6 +9,9 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+    title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RangeKthSmallest.hpp
     title: Range Kth Smallest
   _extendedVerifiedWith:
@@ -25,11 +28,17 @@ data:
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_target.test.cpp
+    title: Test/AtCoder/tdpc_target.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1026-E.test.cpp
     title: Test/CF/CF1026-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+    title: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_kth_smallest.test.cpp
     title: Test/LC/range_kth_smallest.test.cpp
@@ -107,6 +116,7 @@ data:
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
+  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Sequence/RangeKthSmallest.hpp
   timestamp: '2025-03-04 23:23:46+09:00'
@@ -114,12 +124,14 @@ data:
   verifiedWith:
   - Test/CF/CF1026-E.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

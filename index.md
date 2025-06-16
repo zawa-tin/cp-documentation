@@ -143,6 +143,9 @@ data:
       path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
       title: Lazy Segment Tree
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+      title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
@@ -1069,6 +1072,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc197_d.test.cpp
       title: Test/AtCoder/arc197_d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/tdpc_target.test.cpp
+      title: Test/AtCoder/tdpc_target.test.cpp
   - name: Test/Baekjoon
     pages:
     - icon: ':heavy_check_mark:'
@@ -1253,6 +1259,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
       title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+      title: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
       title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp

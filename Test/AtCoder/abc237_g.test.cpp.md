@@ -64,7 +64,10 @@ data:
     \ dat_[i + n_] = dat[i];\n        }\n        for (u32 i{static_cast<u32>(n_) -\
     \ 1} ; i ; i--) {\n            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);\n\
     \        }\n    }\n\n    Value get(u32 i) const {\n        assert(i < n_);\n \
-    \       return dat_[i + n_];\n    }\n\n    void set(u32 i, const Value& value)\
+    \       return dat_[i + n_];\n    }\n\n    void operation(u32 i, const Value&\
+    \ value) {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = Monoid::operation(dat_[i],\
+    \ value);\n        while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
+    \ dat_[right(i)]);\n        }\n    }\n\n    void set(u32 i, const Value& value)\
     \ {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = value;\n   \
     \     while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
     \ dat_[right(i)]);\n        }\n    }\n\n    Value product(u32 l, u32 r) const\
@@ -215,7 +218,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc237_g.test.cpp
   requiredBy: []
-  timestamp: '2025-04-17 19:44:48+09:00'
+  timestamp: '2025-06-16 14:43:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc237_g.test.cpp
