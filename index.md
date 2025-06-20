@@ -149,6 +149,9 @@ data:
       path: Src/DataStructure/SegmentTree/SegmentTree.hpp
       title: Segment Tree
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+      title: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
       title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
         \u30B0\u30E1\u30F3\u30C8\u6728"
@@ -926,6 +929,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc250_f.test.cpp
       title: Test/AtCoder/abc250_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc256_h.test.cpp
+      title: Test/AtCoder/abc256_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc259_b.test.cpp
       title: Test/AtCoder/abc259_b.test.cpp
