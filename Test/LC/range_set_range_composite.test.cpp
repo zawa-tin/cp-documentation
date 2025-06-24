@@ -2,7 +2,6 @@
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 using namespace zawa;
 #include "atcoder/modint"
 using mint = atcoder::modint998244353;
@@ -14,7 +13,9 @@ using mint = atcoder::modint998244353;
 #include <cstring>
 
 int main() {
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int N, Q;
     std::cin >> N >> Q;
     std::vector<Affine<mint>> init(N);

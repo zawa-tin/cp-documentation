@@ -29,98 +29,100 @@ concept FastPowerableMonoid = Monoid<T> and Powerable<T, u64>;
 
 } // namespace concepts
 
-template <concepts::Monoid M>
+template <concepts::Monoid Monoid>
 class AssignmentSegmentTree {
 public:
 
-    using V = typename M::Element;
+    using VM = Monoid;
+
+    using V = typename VM::Element;
 
     AssignmentSegmentTree() = default;
 
-    AssignmentSegmentTree(usize n) : seg_{(u32)n}, dat_(n, M::identity()), ls_{} {
-        dat_.shrink_to_fit();
+    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{} {
+        m_dat.shrink_to_fit();
         assert(n);
-        ls_.insert(0u);
-        ls_.insert(n);
+        m_ls.insert(0u);
+        m_ls.insert(n);
     }
 
-    AssignmentSegmentTree(std::vector<V> dat) : seg_{}, dat_{dat}, ls_{} {
+    explicit AssignmentSegmentTree(std::vector<V> dat) : m_seg{}, m_dat{dat}, m_ls{} {
         // dat: 区間の左端lにa_{l}^{r-l}, それ以外のiはidentity()にする -> セグ木にこれをのせる
-        // dat_: 区間の左端lにa_{l}, それ以外のiはidentity()にする
-        dat_.shrink_to_fit();
+        // m_dat: 区間の左端lにa_{l}, それ以外のiはidentity()にする
+        m_dat.shrink_to_fit();
         if constexpr (concepts::EqualCompare<V>) {
-            for (usize i{}, j{} ; i < dat_.size() ; ) {
+            for (usize i{}, j{} ; i < m_dat.size() ; ) {
                 while (j < dat.size() and dat[i] == dat[j]) j++;
-                ls_.insert(i);
-                dat[i] = power(dat_[i], j - i);
-                for ( ; ++i < j ; dat[i] = dat_[i] = M::identity()) ;
+                m_ls.insert(i);
+                dat[i] = power(m_dat[i], j - i);
+                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity()) ;
             }
         }
         else {
-            for (usize i{} ; i < dat_.size() ; i++) ls_.insert(i);
+            for (usize i{} ; i < m_dat.size() ; i++) m_ls.insert(i);
         }
-        ls_.insert(dat.size());
-        seg_ = decltype(seg_){dat};
+        m_ls.insert(dat.size());
+        m_seg = decltype(m_seg){dat};
     }
 
-    inline usize size() const noexcept {
-        return dat_.size();
+    [[nodiscard]] inline usize size() const noexcept {
+        return m_dat.size();
     }
 
-    V product(usize l, usize r) const {
-        assert(l <= r and r <= dat_.size());
-        if (l == r) return M::identity();
-        auto second_l = ls_.upper_bound(l);
-        auto first_l = std::prev(second_l);
-        if (second_l != ls_.end() and r <= *second_l) { // 一つの区間に含まれている
-            return power(dat_[*first_l], r - l);
+    [[nodiscard]] V product(usize l, usize r) const {
+        assert(l <= r and r <= size());
+        if (l == r) return VM::identity();
+        const auto second_l = m_ls.upper_bound(l);
+        const auto first_l = std::prev(second_l);
+        if (second_l != m_ls.end() and r <= *second_l) { // 一つの区間に含まれている
+            return power(m_dat[*first_l], r - l);
         }
-        auto last_l = std::prev(ls_.upper_bound(r));
-        V res = M::operation(
-                power(dat_[*first_l], *second_l - l),
-                seg_.product(*second_l, *last_l)
+        const auto last_l = std::prev(m_ls.upper_bound(r));
+        V res = VM::operation(
+                power(m_dat[*first_l], *second_l - l),
+                m_seg.product(*second_l, *last_l)
                 );
         if (r == *last_l) return res;
-        return M::operation(res, power(dat_[*last_l], r - *last_l));
+        return VM::operation(res, power(m_dat[*last_l], r - *last_l));
     }
 
     void assign(usize l, usize r, V v) {
-        assert(l <= r and r <= dat_.size());
+        assert(l <= r and r <= m_dat.size());
         if (l == r) return;
         // assert(*it_l < n);
-        auto it_l = std::prev(ls_.upper_bound(l)), it_r = std::prev(ls_.upper_bound(r)); 
-        if (*it_l < l) seg_.set(*it_l, power(dat_[*it_l], l - *it_l));
-        seg_.set(l, power(v, r - l));
-        if (*it_r < r and r < dat_.size()) {
-            dat_[r] = dat_[*it_r];
-            seg_.set(r, power(dat_[r], *std::next(it_r) - r));
-            ls_.insert(r);
+        auto it_l = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r)); 
+        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));
+        m_seg.assign(l, power(v, r - l));
+        if (*it_r < r and r < m_dat.size()) {
+            m_dat[r] = m_dat[*it_r];
+            m_seg.assign(r, power(m_dat[r], *std::next(it_r) - r));
+            m_ls.insert(r);
         }
-        dat_[l] = v;
-        for (it_l++ ; *it_l < r ; it_l = ls_.erase(it_l)) {
-            seg_.set(*it_l, M::identity());
-            dat_[*it_l] = M::identity();
+        m_dat[l] = v;
+        for (it_l++ ; *it_l < r ; it_l = m_ls.erase(it_l)) {
+            m_seg.assign(*it_l, VM::identity());
+            m_dat[*it_l] = VM::identity();
         }
-        ls_.insert(l);
+        m_ls.insert(l);
     }
 
 private:
 
-    SegmentTree<M> seg_;
+    SegmentTree<VM> m_seg;
 
-    std::vector<V> dat_;
+    std::vector<V> m_dat;
 
-    std::set<usize> ls_; 
+    std::set<usize> m_ls; 
 
-    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<M> {
-        return M::power(v, p);
+    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM> {
+        return VM::power(v, p);
     }
 
     static V power(V v, u32 p) {
-        V res{M::identity()};
+        V res{VM::identity()};
         while (p) {
-            if (p & 1) res = M::operation(res, v);
-            v = M::operation(v, v);
+            if (p & 1) res = VM::operation(res, v);
+            v = VM::operation(v, v);
             p >>= 1; 
         }
         return res;
