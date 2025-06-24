@@ -60,8 +60,8 @@ int main() {
             char c;
             std::cin >> k >> c;
             k--;
-            seg.set(hld[k], RollingHashMonoidData{c});
-            ges.set(N - hld[k] - 1, RollingHashMonoidData{c});
+            seg.assign(hld[k], RollingHashMonoidData{c});
+            ges.assign(N - hld[k] - 1, RollingHashMonoidData{c});
         }
         else {
             assert(false);

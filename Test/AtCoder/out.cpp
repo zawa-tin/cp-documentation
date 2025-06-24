@@ -1,7 +1,60 @@
-#pragma once
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Template/TypeAlias.hpp"
-#include "../../Algebra/Monoid/MonoidConcept.hpp"
+
+
+#include <cstdint>
+#include <cstddef>
+
+namespace zawa {
+
+using i16 = std::int16_t;
+using i32 = std::int32_t;
+using i64 = std::int64_t;
+using i128 = __int128_t;
+
+using u8 = std::uint8_t;
+using u16 = std::uint16_t;
+using u32 = std::uint32_t;
+using u64 = std::uint64_t;
+
+using usize = std::size_t;
+
+} // namespace zawa
+
+
+#include <concepts>
+
+namespace zawa {
+
+namespace concepts {
+
+template <class T>
+concept Semigroup = requires {
+    typename T::Element;
+    { T::operation(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
+};
+
+} // namespace concepts
+
+} // namespace zawa
+
+
+namespace zawa {
+
+namespace concepts {
+
+template <class T>
+concept Identitiable = requires {
+    typename T::Element;
+    { T::identity() } -> std::same_as<typename T::Element>;
+};
+
+template <class T>
+concept Monoid = Semigroup<T> and Identitiable<T>;
+
+} // namespace
+
+} // namespace zawa
 
 #include <vector>
 #include <cassert>
@@ -155,3 +208,48 @@ private:
 };
 
 } // namespace zawa
+
+/*
+ * AGC005-B Minimum Sum
+ */
+
+#include <iostream>
+
+struct M {
+    using Element = int;
+    static Element identity() { return (int)1e9; }
+    static Element operation(Element L, Element R) { return std::min(L, R); }
+};
+
+long long solve() {
+    using namespace zawa;
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
+    using MD = M::Element;
+    int n; 
+    std::cin >> n;
+    std::vector<MD> a(n);
+    for (auto& x : a) {
+        int v; std::cin >> v;
+        x = v;
+    }
+    SegmentTree<M> seg(a);
+    long long ans{};
+    for (int i{} ; i < n ; i++) {
+        auto f{[&](MD v) -> bool {
+            return v >= a[i];
+        }};
+        auto left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };
+        ans += (long long)(right - i) * (long long)(i - left + 1) * (long long)a[i];
+    }
+    return ans;
+}
+
+int main() {
+#ifdef ATCODER
+    std::cout << solve() << '\n';
+#else
+    std::cout << "Hello World" << '\n';
+#endif
+}
