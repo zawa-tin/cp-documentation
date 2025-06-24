@@ -3,11 +3,10 @@
 
 /*
  * AtCoder Beginner Contest 276 F - Double Chance
- * https://atcoder.jp/contests/abc276/submissions/64948085
+ * https://atcoder.jp/contests/abc276/submissions/67045295
  */
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
@@ -19,7 +18,9 @@ using m32 = atcoder::modint998244353;
 
 int main() {
 #ifdef ATCODER
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     usize n; std::cin >> n;
 
     const usize sz{ 200200 };

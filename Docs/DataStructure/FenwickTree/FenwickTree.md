@@ -99,10 +99,10 @@ $A_i$ を $A_i \circ v$ に置き換えます。
 
 <br />
 
-#### set
+#### assign
 
 ```cpp
-void set(usize i, const Value& v)
+void assign(usize i, const Value& v)
 ```
 $A_i$ を $v$ を置き換えます。
 
@@ -204,3 +204,5 @@ $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaysty
 2023/12/03: 一部のメンバの引数の型`u32`を`usize`へ変更
 
 2023/12/28: minLeftをverify
+
+2025/06/24: 値の型名を`Value`から`V`へ変更

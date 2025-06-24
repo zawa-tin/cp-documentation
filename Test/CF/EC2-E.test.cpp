@@ -1,6 +1,6 @@
+// #define PROBLEM "https://codeforces.com/contest/600/problem/E"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Tree/Sack.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
@@ -12,11 +12,13 @@ using namespace zawa;
 
 /*
  * Educational Codeforces Round 2 - E Lomsat general
- * https://codeforces.com/contest/600/submission/280543477
+ * https://codeforces.com/contest/600/submission/325866149
  */
 
 void solve() {
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int n; std::cin >> n;
     std::vector<int> c(n);
     for (auto& x : c) {
