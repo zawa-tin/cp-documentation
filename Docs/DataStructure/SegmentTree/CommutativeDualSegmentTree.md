@@ -7,12 +7,26 @@ documentation_of: //Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
 
 [テンプレート引数](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Monoid.html)
 
-`using Operator = Monoid::Element`
+```cpp
+struct M {
+    using Element = ;
+    static Element identity() {
+    }
+    static Element operation(Element L, Element R) {
+    }
+};
+```
 
-`operation(u32 l, u32 r, const Operator& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
+`using O = Monoid::Element`
+
+`operation(u32 l, u32 r, const O& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
 - $O(\log n)$
 
-`set(u32 i, const Operator& v)` $i$ 番目の要素に $v$ を「代入」
+`operation(u32 i, const O& v)` 
+- $O(\log n)$
+- 未verify
+
+`assign(u32 i, const O& v)` $i$ 番目の要素に $v$ を「代入」
 - $O(\log n)$
 
 `Operator operator[](u32 i)`

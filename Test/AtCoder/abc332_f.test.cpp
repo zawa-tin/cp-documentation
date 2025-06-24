@@ -3,7 +3,15 @@
 
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
-#include "../../Src/Template/IOSetting.hpp"
+
+/*
+ * AtCoder Beginner Contest 332 F - Random Update Query
+ * https://atcoder.jp/contests/abc332/submissions/67039166
+ */
+
+#include <iostream>
+#include <vector>
+
 using namespace zawa;
 #include "atcoder/modint"
 using mint = atcoder::modint998244353;
@@ -28,7 +36,9 @@ void solve() {
 }
 int main() {
 #ifdef ATCODER
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     solve();
 #else
     std::cout << "Hello World\n";

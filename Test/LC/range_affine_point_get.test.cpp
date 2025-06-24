@@ -2,7 +2,6 @@
 
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 
 #include "atcoder/modint"
 
@@ -12,7 +11,9 @@
 int main() {
     using namespace zawa;
     using mint = atcoder::modint998244353;
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int n, q; std::cin >> n >> q;
     std::vector<mint> a(n);
     for (auto& x : a) {
