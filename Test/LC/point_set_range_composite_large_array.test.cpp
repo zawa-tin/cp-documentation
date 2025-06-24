@@ -24,7 +24,7 @@ int main() {
         if (t == 0) {
             int p, c, d;
             std::cin >> p >> c >> d;
-            seg.set(p, V{mint{c}, mint{d}});
+            seg.assign(p, V{mint{c}, mint{d}});
         }
         else if (t == 1) {
             int l, r, x;

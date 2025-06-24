@@ -1,6 +1,11 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc403/tasks/abc403_g"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * AtCoder Beginner Contest 403 G - Odd Position Sum Query
+ * https://atcoder.jp/contests/abc403/submissions/67039553
+ */
+
 #include "../../Src/DataStructure/SegmentTree/SparseSegmentTree.hpp"
 
 #include <iostream>
@@ -44,7 +49,7 @@ int main() {
         std::cin >> y;
         y = (z + y) % N + 1;
         auto v = seg.get(y);
-        seg.set(y, D{v.cnt + 1, y});
+        seg.assign(y, D{v.cnt + 1, y});
         z = seg.product(0, N + 1).sum[0];
         std::cout << z << '\n';
     }

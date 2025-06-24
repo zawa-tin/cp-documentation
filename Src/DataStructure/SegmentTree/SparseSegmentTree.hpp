@@ -10,11 +10,17 @@
 
 namespace zawa {
 
-template <concepts::Monoid M>
+template <concepts::Monoid Monoid>
 class SparseSegmentTree {
 public:
 
-    using V = typename M::Element;
+    using VM = Monoid;
+
+    using V = typename VM::Element;
+
+    using OM = Monoid;
+
+    using O = typename OM::Element;
 
     SparseSegmentTree() = default;
 
@@ -22,22 +28,26 @@ public:
         m_pool.reserve(poolSize);
     }
 
-    void set(usize p, V v) {
+    inline usize size() const {
+        return m_n;
+    }
+
+    void assign(usize p, V v) {
         assert(p < size());
         set(0, p, v, 0, size());
     }
 
-    V get(usize p) const {
+    [[nodiscard]] V get(usize p) const {
         return get(0, p, 0, size());
     }
 
-    V product(usize l, usize r) const {
-        assert(l <= r and r <= size());
-        return product(0, l, r, 0, size());
+    [[nodiscard]] V operator[](usize p) const {
+        return get(0, p, 0, size());
     }
 
-    inline usize size() const {
-        return m_n;
+    [[nodiscard]] V product(usize l, usize r) const {
+        assert(l <= r and r <= size());
+        return product(0, l, r, 0, size());
     }
 
 private:
@@ -45,7 +55,7 @@ private:
     struct node {
         static constexpr usize INVALID = std::numeric_limits<usize>::max();
         usize lch{INVALID}, rch{INVALID};
-        V v{M::identity()};
+        V v{VM::identity()};
     };
 
     static constexpr usize mid(usize l, usize r) {
@@ -66,14 +76,14 @@ private:
             if (m_pool[i].rch == node::INVALID) m_pool[i].rch = makeNode();
             set(m_pool[i].rch, p, v, m, r);
         }
-        m_pool[i].v = M::operation(
-                m_pool[i].lch == node::INVALID ? M::identity() : m_pool[m_pool[i].lch].v,
-                m_pool[i].rch == node::INVALID ? M::identity() : m_pool[m_pool[i].rch].v
+        m_pool[i].v = VM::operation(
+                m_pool[i].lch == node::INVALID ? VM::identity() : m_pool[m_pool[i].lch].v,
+                m_pool[i].rch == node::INVALID ? VM::identity() : m_pool[m_pool[i].rch].v
                 );
     }
 
     V get(usize i, usize p, usize l, usize r) const {
-        if (i == node::INVALID) return M::identity();
+        if (i == node::INVALID) return VM::identity();
         if (l + 1 == r) return m_pool[i].v;
         const usize m = mid(l, r);
         if (p < m) return get(m_pool[i].lch, p, l, m);
@@ -81,12 +91,12 @@ private:
     }
 
     V product(usize i, usize l, usize r, usize curL, usize curR) const {
-        if (i == node::INVALID) return M::identity();
-        if (r <= curL or curR <= l) return M::identity();
+        if (i == node::INVALID) return VM::identity();
+        if (r <= curL or curR <= l) return VM::identity();
         if (l <= curL and curR <= r) return m_pool[i].v;
         else {
             const usize m = mid(curL, curR);
-            return M::operation(
+            return VM::operation(
                         product(m_pool[i].lch, l, r, curL, m),
                         product(m_pool[i].rch, l, r, m, curR)
                     );
