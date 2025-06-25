@@ -1,7 +1,6 @@
 // #define PROBLEM "https://atcoder.jp/contests/abl/tasks/abl_e"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "atcoder/modint"
 
@@ -10,7 +9,7 @@
 
 /*
  * ACL Beginner Contest - E Replace Digits
- * https://atcoder.jp/contests/abl/submissions/63211812
+ * https://atcoder.jp/contests/abl/submissions/67038204
  */
 
 using namespace zawa;
@@ -33,7 +32,9 @@ struct M {
 };
 int main() {
 #ifdef ATCODER
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     std::cin >> N >> Q; 
     p10[0] = mint::raw(1);
     for (int i = 1 ; i <= N ; i++) p10[i] = p10[i - 1] * mint::raw(10);

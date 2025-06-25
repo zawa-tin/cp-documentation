@@ -1,12 +1,22 @@
-#define PROBLEM "https://atcoder.jp/contests/abc346/tasks/abc346_g"
+// #define PROBLEM "https://atcoder.jp/contests/abc346/tasks/abc346_g"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Src/Template/IOSetting.hpp"
+/*
+ * AtCoder Beginner Contest 346 G - Alone
+ * https://atcoder.jp/contests/abc346/submissions/67059512
+ */
+
 #include "../../Src/Utility/AreaOfUnionOfRectangles.hpp"
+
+#include <iostream>
 
 using namespace zawa;
 
 int main() {
-    SetFastIO();
+#ifdef ATCODER
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int N;
     std::cin >> N;
     std::vector<int> A(N);
@@ -31,4 +41,7 @@ int main() {
         rect[i] = Rectangle<int>{ L[i], D[i], R[i], U[i] };
     }
     std::cout << AreaOfUnionOfRectangles<int>(rect.begin(), rect.end()) << '\n';
+#else
+    std::cout << "Hello World\n";
+#endif
 }

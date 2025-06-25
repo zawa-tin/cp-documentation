@@ -1,6 +1,5 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 
 #include <cassert>
@@ -20,10 +19,12 @@ struct M {
 };
 
 int main() {
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int n, q; std::cin >> n >> q;
     DualSegmentTree<M> seg(std::vector<int>(n, (1LL << 31) - 1));
-    for (int _{} ; _ < q ; _++) {
+    while (q--) {
         int t; std::cin >> t;
         if (t == 0) {
             int l, r, x; std::cin >> l >> r >> x;

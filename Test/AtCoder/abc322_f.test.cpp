@@ -1,4 +1,10 @@
-#define PROBLEM "https://atcoder.jp/contests/abc322/tasks/abc322_f"
+// #define PROBLEM "https://atcoder.jp/contests/abc322/tasks/abc322_f"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+
+/*
+ * https://atcoder.jp/contests/abc322/submissions/67058865
+ * AtCoder Beginner Contest 322 F - Vacation Query
+ */
 
 #include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
 #include "../../Src/Template/IOSetting.hpp"
@@ -81,6 +87,7 @@ struct Structure {
 };
 
 int main() {
+#ifdef ATCODER
     using namespace zawa;
     SetFastIO();
 
@@ -123,4 +130,7 @@ int main() {
             assert(false);
         }
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }

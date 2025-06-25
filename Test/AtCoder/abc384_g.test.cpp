@@ -7,8 +7,8 @@
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
 /*
- * ABC384-G Abs Sum
- * https://atcoder.jp/contests/abc384/submissions/64837621
+ * AtCoder Beginner Contest 384 G - Abs Sum
+ * https://atcoder.jp/contests/abc384/submissions/67045346
  */
 
 using namespace zawa;

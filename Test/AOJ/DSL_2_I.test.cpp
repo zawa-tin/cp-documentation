@@ -2,8 +2,9 @@
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 using namespace zawa;
+
+#include <iostream>
 
 struct M {
     using Element = int;
@@ -19,6 +20,9 @@ struct M {
 };
 
 int main() {
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int N, Q;
     std::cin >> N >> Q;
     AssignmentSegmentTree<M> seg(N);

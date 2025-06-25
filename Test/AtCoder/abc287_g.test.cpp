@@ -10,8 +10,8 @@
 #include <vector>
 
 /*
- * ABC287-G Balance Update Query
- * https://atcoder.jp/contests/abc287/submissions/64948115
+ * AtCoder Beginner Contest 287 G - Balance Update Query
+ * https://atcoder.jp/contests/abc287/submissions/67045318
  */
 
 void solve() {

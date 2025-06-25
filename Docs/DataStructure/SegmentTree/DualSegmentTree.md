@@ -7,14 +7,28 @@ documentation_of: //Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 
 [テンプレート引数](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Monoid.html)
 
-`CommutativeDualSegmentTree`より定数倍が若干悪い。
+```cpp
+struct M {
+    using Element = ;
+    static Element identity() {
+    }
+    static Element operation(Element L, Element R) {
+    }
+};
+```
 
-`Operator = Monoid::Element`
+`CommutativeDualSegmentTree`より定数倍が若干悪い(?)。
 
-`operation(u32 l, u32 r, const Operator& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
+`O = Monoid::Element`
+
+`operation(u32 l, u32 r, const O& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
 - $O(\log n)$
 
-`set(u32 i, const Operator& v)` $i$ 番目の要素に $v$ を「代入」
+`operation(u32 i, const O& v)` 
+- $O(\log n)$
+- 未verify
+
+`assign(u32 i, const O& v)` $i$ 番目の要素に $v$ を「代入」
 - $O(\log n)$
 
 `Operator operator[](u32 i)`

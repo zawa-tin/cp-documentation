@@ -14,125 +14,144 @@ namespace zawa {
 template <concepts::Monoid Monoid>
 class SegmentTree {
 public:
-    using Value = typename Monoid::Element;
-private:
-    constexpr u32 left(u32 v) const {
-        return v << 1;
-    }
-    constexpr u32 right(u32 v) const {
-        return v << 1 | 1;
-    }
-    constexpr u32 parent(u32 v) const {
-        return v >> 1;
-    }
 
-    usize n_;
-    std::vector<Value> dat_;
+    using VM = Monoid;
 
-public:
+    using V = typename VM::Element;
+
+    using OM = Monoid;
+
+    using O = typename OM::Element;
+
     SegmentTree() = default;
-    SegmentTree(u32 n) : n_{ n }, dat_(n << 1, Monoid::identity()) {
-        assert(n_);
-    }
-    SegmentTree(const std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity()) {
-        assert(n_);
-        for (u32 i{} ; i < n_ ; i++) {
-            dat_[i + n_] = dat[i];
+
+    explicit SegmentTree(usize n) : m_n{ n }, m_dat(n << 1, VM::identity()) {}
+
+    explicit SegmentTree(const std::vector<V>& dat) : m_n{ dat.size() }, m_dat(dat.size() << 1, VM::identity()) {
+        for (usize i{} ; i < m_n ; i++) {
+            m_dat[i + m_n] = dat[i];
         }
-        for (u32 i{static_cast<u32>(n_) - 1} ; i ; i--) {
-            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);
+        for (usize i{m_n} ; i-- ; i) {
+            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);
         }
     }
 
-    Value get(u32 i) const {
-        assert(i < n_);
-        return dat_[i + n_];
+    [[nodiscard]] inline usize size() const noexcept {
+        return m_n;
     }
 
-    void operation(u32 i, const Value& value) {
-        assert(i < n_);
-        i += n_;
-        dat_[i] = Monoid::operation(dat_[i], value);
+    [[nodiscard]] V get(usize i) const {
+        assert(i < size());
+        return m_dat[i + m_n];
+    }
+
+    [[nodiscard]] V operator[](usize i) const {
+        assert(i < size());
+        return m_dat[i + m_n];
+    }
+
+    void operation(usize i, const O& value) {
+        assert(i < size());
+        i += size();
+        m_dat[i] = OM::operation(m_dat[i], value);
         while (i = parent(i), i) {
-            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);
+            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);
         }
     }
 
-    void set(u32 i, const Value& value) {
-        assert(i < n_);
-        i += n_;
-        dat_[i] = value;
+    void assign(usize i, const V& value) {
+        assert(i < size());
+        i += size();
+        m_dat[i] = value;
         while (i = parent(i), i) {
-            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);
+            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);
         }
     }
 
-    Value product(u32 l, u32 r) const {
-        assert(l <= r and r <= n_);
-        Value leftValue{ Monoid::identity() }, rightValue{ Monoid::identity() };
-        for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {
+    [[nodiscard]] V product(u32 l, u32 r) const {
+        assert(l <= r and r <= size());
+        V L{ VM::identity() }, R{ VM::identity() };
+        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r)) {
             if (l & 1) {
-                leftValue = Monoid::operation(leftValue, dat_[l++]);
+                L = VM::operation(L, m_dat[l++]);
             }
             if (r & 1) {
-                rightValue = Monoid::operation(dat_[--r], rightValue);
+                R = VM::operation(m_dat[--r], R);
             }
         }
-        return Monoid::operation(leftValue, rightValue);
+        return VM::operation(L, R);
     }
 
     template <class Function>
-    u32 maxRight(u32 l, const Function& f) {
-        assert(l < n_);
-        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "maxRight's argument f must be function bool(T)");
-        assert(f(Monoid::identity()));
-        u32 res{l}, width{1};
-        Value prod{ Monoid::identity() };
+    [[nodiscard]] usize maxRight(usize l, const Function& f) {
+        assert(l < size());
+        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "maxRight's argument f must be function bool(T)");
+        assert(f(VM::identity()));
+        usize res{l}, width{1};
+        V prod{ VM::identity() };
         // 現在の見ている頂点の幅をwidthで持つ
         // 境界がある頂点を含む部分木の根を探す
         // (折り返す時は必要以上の幅を持つ根になるが、widthを持っているのでオーバーしない)
-        for (l += n_ ; res + width <= n_ ; l = parent(l), width <<= 1) if (l & 1) {
-            if (not f(Monoid::operation(prod, dat_[l]))) break; 
+        for (l += size() ; res + width <= size() ; l = parent(l), width <<= 1) if (l & 1) {
+            if (not f(VM::operation(prod, m_dat[l]))) break; 
             res += width;
-            prod = Monoid::operation(prod, dat_[l++]);
+            prod = VM::operation(prod, m_dat[l++]);
         }
         // 根から下って、境界を発見する
         while (l = left(l), width >>= 1) {
-            if (res + width <= n_ and f(Monoid::operation(prod, dat_[l]))) {
+            if (res + width <= size() and f(VM::operation(prod, m_dat[l]))) {
                 res += width;
-                prod = Monoid::operation(prod, dat_[l++]);
+                prod = VM::operation(prod, m_dat[l++]);
             } 
         }
         return res;
     }
 
     template <class Function>
-    u32 minLeft(u32 r, const Function& f) const {
-        assert(r <= n_);
-        static_assert(std::is_convertible_v<decltype(f), std::function<bool(Value)>>, "minLeft's argument f must be function bool(T)");
-        assert(f(Monoid::identity()));
-        u32 res{r}, width{1};
-        Value prod{ Monoid::identity() };
-        for (r += n_ ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {
-            if (not f(Monoid::operation(dat_[r - 1], prod))) break;
+    [[nodiscard]] usize minLeft(usize r, const Function& f) const {
+        assert(r <= size());
+        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "minLeft's argument f must be function bool(T)");
+        assert(f(VM::identity()));
+        usize res{r}, width{1};
+        V prod{ VM::identity() };
+        for (r += size() ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {
+            if (not f(VM::operation(m_dat[r - 1], prod))) break;
             res -= width;
-            prod = Monoid::operation(prod, dat_[--r]);
+            prod = VM::operation(prod, m_dat[--r]);
         }
         while (r = left(r), width >>= 1) {
-            if (res >= width and f(Monoid::operation(dat_[r - 1], prod))) {
+            if (res >= width and f(VM::operation(m_dat[r - 1], prod))) {
                 res -= width;
-                prod = Monoid::operation(dat_[--r], prod);
+                prod = VM::operation(m_dat[--r], prod);
             }
         }
         return res;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const SegmentTree& st) {
-        for (u32 i{1} ; i < 2 * st.n_ ; i++) {
-            os << st.dat_[i] << (i + 1 == 2 * st.n_ ? "" : " ");
+        for (usize i{1} ; i < 2 * st.size() ; i++) {
+            os << st.m_dat[i] << (i + 1 == 2 * st.size() ? "" : " ");
         }
         return os;
     }
+
+private:
+
+    constexpr u32 left(u32 v) const {
+        return v << 1;
+    }
+
+    constexpr u32 right(u32 v) const {
+        return v << 1 | 1;
+    }
+
+    constexpr u32 parent(u32 v) const {
+        return v >> 1;
+    }
+
+    usize m_n;
+
+    std::vector<V> m_dat;
 };
 
 } // namespace zawa

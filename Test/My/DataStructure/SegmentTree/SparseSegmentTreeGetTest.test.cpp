@@ -29,7 +29,7 @@ int main() {
         else {
             int i = mt() % size, v = mt() % 100;
             a[i] = v;
-            seg.set(i, v);
+            seg.assign(i, v);
         }
     }
     std::cout << "Hello World\n";

@@ -14,12 +14,12 @@ $x^{p}$ が効率的に計算できる場合(例: 加法 $xp$ なので、 $O(1)
 #### テンプレート引数要件、Monoid
 
 ```
-template <Concept::Monoid M>
+template <Concept::Monoid Monoid>
 ```
 
 普通のセグ木と同じものを使えば、コンパイルが通って問題なく使える。
 
-`M::Element power(M::Element x, u64 p)`というstaticメンバを定義すると、定数倍や場合によっては計算量が改善する実装に分岐する。中身は $x$ を`operation`で $p$ 乗した値を返すようにする。
+`Monoid::Element power(M::Element x, u64 p)`というstaticメンバを定義すると、定数倍や場合によっては計算量が改善する実装に分岐する。中身は $x$ を`operation`で $p$ 乗した値を返すようにする。
 
 `power`が無い場合は二分累乗法によって計算する。
 

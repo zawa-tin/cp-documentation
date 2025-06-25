@@ -3,12 +3,11 @@
 
 /*
  * AtCoder Beginner Contest 237 G - Range Sort Query
- * https://atcoder.jp/contests/abc237/submissions/64948041
+ * https://atcoder.jp/contests/abc237/submissions/67038132
  */
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 using namespace zawa;
 
 struct M {
@@ -23,7 +22,13 @@ struct M {
         return v * (int)exp;
     }
 };
+
+#include <iostream>
+
 void solve() {
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int N, Q, X;
     std::cin >> N >> Q >> X;
     std::vector<int> init(N);
@@ -66,7 +71,6 @@ void solve() {
 
 int main() {
 #ifdef ATCODER
-    SetFastIO();
     solve();
 #else
     std::cout << "Hello World\n";

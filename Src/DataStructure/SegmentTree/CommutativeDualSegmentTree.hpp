@@ -3,101 +3,126 @@
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/MonoidConcept.hpp"
 
+#include <bit>
+#include <cassert>
 #include <vector>
 #include <iterator>
 #include <ostream>
-#include <cassert>
 
 namespace zawa {
 
 template <concepts::Monoid Monoid>
 class CommutativeDualSegmentTree {
 public:
-    using Operator = typename Monoid::Element;
-protected:
 
-    static constexpr u32 parent(u32 v) noexcept {
-        return v >> 1;
-    }
-    static constexpr u32 left(u32 v) noexcept {
-        return v << 1;
-    }
-    static constexpr u32 right(u32 v) noexcept {
-        return v << 1 | 1;
-    }
+    using OM = Monoid;
 
-    usize n_;
-    std::vector<Operator> dat_;
+    using O = typename OM::Element;
 
-    template <class InputIterator>
-    inline void initDat(InputIterator first, InputIterator last) {
-        for (auto it{ first } ; it != last ; it++) {
-            dat_[n_ + std::distance(first, it)] = *it;
-        }
-    }
+    using VM = Monoid;
 
-    void push(u32 i) {
-        assert(i < n_);
-        i += n_;
-        u32 height{ 32u - __builtin_clz(i) };
-        for (u32 h{ height } ; --h ; ) {
-            u32 v{ i >> h };
-            dat_[left(v)] = Monoid::operation(dat_[left(v)], dat_[v]);
-            dat_[right(v)] = Monoid::operation(dat_[right(v)], dat_[v]);
-            dat_[v] = Monoid::identity();
-        }
-    }
+    using V = typename VM::Element;
 
-public:
     CommutativeDualSegmentTree() = default;
-    CommutativeDualSegmentTree(usize n) 
-        : n_{ n }, dat_((n << 1), Monoid::identity()) {}
-    CommutativeDualSegmentTree(const std::vector<Operator>& dat) 
-        : n_{ dat.size() }, dat_((n_ << 1), Monoid::identity()) {
+
+    explicit CommutativeDualSegmentTree(usize n) 
+        : m_n{ n }, m_dat((n << 1), VM::identity()) {}
+
+    explicit CommutativeDualSegmentTree(const std::vector<O>& dat) 
+        : m_n{ dat.size() }, m_dat((m_n << 1), VM::identity()) {
         initDat(dat.begin(), dat.end());
     }
+
     template <class InputIterator>
     CommutativeDualSegmentTree(InputIterator first, InputIterator last)
-        : n_{ static_cast<usize>(std::distance(first, last)) }, dat_((n_ << 1), Monoid::identity()) {
+        : m_n{ static_cast<usize>(std::distance(first, last)) }, m_dat((m_n << 1), OM::identity()) {
         initDat(first, last);
     }
 
-    virtual void operation(u32 l, u32 r, const Operator& v) {
-        assert(l <= r and r <= n_);
-        for (l += n_, r += n_ ; l < r ; l = parent(l), r = parent(r)) {
+    [[nodiscard]] inline usize size() const noexcept {
+        return m_n;
+    }
+
+    virtual void operation(usize l, usize r, const O& v) {
+        assert(l <= r and r <= size());
+        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r)) {
             if (l & 1) {
-                dat_[l] = Monoid::operation(dat_[l], v);
+                m_dat[l] = OM::operation(m_dat[l], v);
                 l++;
             }
             if (r & 1) {
                 r--;
-                dat_[r] = Monoid::operation(dat_[r], v);
+                m_dat[r] = OM::operation(m_dat[r], v);
             }
         }
     }
 
-    void set(u32 i, const Operator& v) {
-        assert(i < n_);
-        push(i);
-        dat_[i + n_] = v;
+    // 未verify
+    virtual void operation(usize i, const O& o) {
+        assert(i < size());
+        m_dat[i + size()] = OM::operation(m_dat[i + size()], o);
     }
 
-    virtual Operator operator[](u32 i) {
-        assert(i < n_);
-        Operator res{ Monoid::identity() };
-        for (i += n_ ; i ; i = parent(i)) {
-            res = Monoid::operation(res, dat_[i]);
+    void assign(usize i, const V& v) {
+        assert(i < size());
+        push(i);
+        m_dat[i + size()] = v;
+    }
+
+    [[nodiscard]] virtual V operator[](usize i) {
+        assert(i < size());
+        V res{ VM::identity() };
+        for (i += size() ; i ; i = parent(i)) {
+            res = VM::operation(res, m_dat[i]);
         }
         return res;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const CommutativeDualSegmentTree seg) {
-        usize size{ seg.dat_.size() };
-        for (u32 i{1} ; i < size ; i++) {
-            os << seg.dat_[i] << (i + 1 == size ? "" : " ");
+        usize size{ seg.m_dat.size() };
+        for (usize i{1} ; i < size ; i++) {
+            os << seg.m_dat[i] << (i + 1 == size ? "" : " ");
         }
         return os;
     }
+
+protected:
+
+    static constexpr usize parent(usize v) noexcept {
+        return v >> 1;
+    }
+
+    static constexpr usize left(usize v) noexcept {
+        return v << 1;
+    }
+
+    static constexpr usize right(usize v) noexcept {
+        return v << 1 | 1;
+    }
+
+    usize m_n;
+
+    std::vector<V> m_dat;
+
+    template <class InputIterator>
+    inline void initDat(InputIterator first, InputIterator last) {
+        for (auto it{ first } ; it != last ; it++) {
+            m_dat[size() + std::distance(first, it)] = *it;
+        }
+    }
+
+    void push(usize i) {
+        assert(i < size());
+        i += size();
+        usize height{ 64u - std::countl_zero(i) };
+        for (usize h{ height } ; --h ; ) {
+            usize v{ i >> h };
+            m_dat[left(v)] = OM::operation(m_dat[left(v)], m_dat[v]);
+            m_dat[right(v)] = OM::operation(m_dat[right(v)], m_dat[v]);
+            m_dat[v] = OM::identity();
+        }
+    }
+
 };
 
 } // namespace zawa
