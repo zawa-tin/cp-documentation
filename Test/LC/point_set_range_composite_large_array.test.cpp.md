@@ -48,7 +48,7 @@ data:
     \ Q;\n    std::cin >> N >> Q;\n    using M = AffineMonoid<mint>;\n    using V\
     \ = M::Element;\n    SparseSegmentTree<M> seg(N, Q);\n    while (Q--) {\n    \
     \    int t;\n        std::cin >> t;\n        if (t == 0) {\n            int p,\
-    \ c, d;\n            std::cin >> p >> c >> d;\n            seg.set(p, V{mint{c},\
+    \ c, d;\n            std::cin >> p >> c >> d;\n            seg.assign(p, V{mint{c},\
     \ mint{d}});\n        }\n        else if (t == 1) {\n            int l, r, x;\n\
     \            std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
     \ r)(x).val() << '\\n';\n        }\n        else assert(false);\n    }\n}\n"
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_set_range_composite_large_array.test.cpp
   requiredBy: []
-  timestamp: '2025-05-02 21:30:49+09:00'
+  timestamp: '2025-06-24 16:35:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_set_range_composite_large_array.test.cpp

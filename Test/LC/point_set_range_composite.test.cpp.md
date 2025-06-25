@@ -14,9 +14,6 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -43,23 +40,22 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_set_range_composite\"\
-    \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include \"\
-    ../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#include \"atcoder/modint\"\n\n\
-    using namespace zawa;\nusing mint = atcoder::modint998244353;\nusing Monoid =\
-    \ AffineMonoid<mint>;\n\n#include <iostream>\n#include <vector>\n\nint main()\
-    \ {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<Affine<mint>>\
-    \ init(n);\n    for (int i{} ; i < n ; i++) {\n        u64 a, b; std::cin >> a\
-    \ >> b;\n        init[i] = Affine<mint>{ a, b };\n    }\n    SegmentTree<Monoid>\
-    \ seg(init);\n    for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n\
-    \        if (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n  \
-    \          seg.set(p, { c, d });\n        }\n        else if (t == 1) {\n    \
-    \        int l, r, x; std::cin >> l >> r >> x;\n            std::cout << seg.product(l,\
-    \ r)(x).val() << '\\n';\n        }\n        else {\n            assert(false);\n\
-    \        }\n    }\n}\n"
+    \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#include \"atcoder/modint\"\
+    \n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\nusing Monoid\
+    \ = AffineMonoid<mint>;\n\n#include <iostream>\n#include <vector>\n\nint main()\
+    \ {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int n, q; std::cin >> n >> q;\n    std::vector<Affine<mint>> init(n);\n \
+    \   for (int i{} ; i < n ; i++) {\n        u64 a, b; std::cin >> a >> b;\n   \
+    \     init[i] = Affine<mint>{ a, b };\n    }\n    SegmentTree<Monoid> seg(init);\n\
+    \    for (int _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        if\
+    \ (t == 0) {\n            int p, c, d; std::cin >> p >> c >> d;\n            seg.assign(p,\
+    \ { c, d });\n        }\n        else if (t == 1) {\n            int l, r, x;\
+    \ std::cin >> l >> r >> x;\n            std::cout << seg.product(l, r)(x).val()\
+    \ << '\\n';\n        }\n        else {\n            assert(false);\n        }\n\
+    \    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
-  - Src/Template/IOSetting.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
@@ -67,7 +63,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2025-06-16 14:43:48+09:00'
+  timestamp: '2025-06-24 15:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_set_range_composite.test.cpp

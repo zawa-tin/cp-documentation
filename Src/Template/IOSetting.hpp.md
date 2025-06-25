@@ -137,20 +137,8 @@ data:
     path: Test/AOJ/DSL_1_B.test.cpp
     title: Test/AOJ/DSL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_B.test.cpp
-    title: Test/AOJ/DSL_2_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_D.test.cpp
-    title: Test/AOJ/DSL_2_D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_E.test.cpp
-    title: Test/AOJ/DSL_2_E.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_I.test.cpp
-    title: Test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_6_A.test.cpp
     title: Test/AOJ/GRL_6_A.test.cpp
@@ -191,9 +179,6 @@ data:
     path: Test/AtCoder/abc236_e.test.cpp
     title: Test/AtCoder/abc236_e.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc237_g.test.cpp
-    title: Test/AtCoder/abc237_g.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc247_g.test.cpp
     title: ABC247-G Dream Team
   - icon: ':heavy_check_mark:'
@@ -208,9 +193,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc263_g.test.cpp
     title: ABC263-G Erasing Prime Pairs
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc276_f.test.cpp
-    title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc284_f.test.cpp
     title: Test/AtCoder/abc284_f.test.cpp
@@ -243,17 +225,11 @@ data:
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc332_f.test.cpp
-    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc334_g.test.cpp
     title: Test/AtCoder/abc334_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_e.test.cpp
     title: Test/AtCoder/abc340_e.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc346_g.test.cpp
-    title: Test/AtCoder/abc346_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc349_f.test.cpp
     title: ABC349-F Subsequence LCM
@@ -263,9 +239,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abl_e.test.cpp
-    title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc002_d.test.cpp
     title: Test/AtCoder/agc002_d.test.cpp
@@ -287,9 +260,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/CF/EC2-E.test.cpp
-    title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
@@ -345,23 +315,11 @@ data:
     path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
     title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/point_set_range_composite.test.cpp
-    title: Test/LC/point_set_range_composite.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/range_affine_point_get.test.cpp
-    title: Test/LC/range_affine_point_get.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/range_affine_range_sum.test.cpp
-    title: Test/LC/range_affine_range_sum.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/LC/range_kth_smallest.test.cpp
     title: Test/LC/range_kth_smallest.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/range_set_range_composite.test.cpp
-    title: Test/LC/range_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
@@ -387,9 +345,6 @@ data:
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/CF895-E.test.cpp
-    title: Test/Manual/CF895-E.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc168_d.test.cpp
     title: Test/Manual/abc168_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -411,12 +366,6 @@ data:
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/agc005_b.test.cpp
-    title: Test/Manual/agc005_b.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3226.test.cpp
-    title: Test/Manual/aoj3226.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3369.test.cpp
     title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
@@ -434,9 +383,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_e.test.cpp
     title: AtCoder Library Practice Contest - E MinCostFlow
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/practice2_l.test.cpp
-    title: ALPC-L Lazy Segment Tree
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -484,7 +430,6 @@ data:
   - Test/yukicoder/117.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/EC162-D.test.cpp
-  - Test/CF/EC2-E.test.cpp
   - Test/CF/CF956-F.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/ECR167-F.test.cpp
@@ -497,13 +442,9 @@ data:
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/many_aplusb.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/unionfind.test.cpp
-  - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/sort_by_argument.test.cpp
-  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/bipartitematching.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
@@ -526,9 +467,7 @@ data:
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc193_f.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
-  - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc127_f.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
@@ -536,7 +475,6 @@ data:
   - Test/AtCoder/abc308_g.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc259_b.test.cpp
-  - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
@@ -550,13 +488,11 @@ data:
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
-  - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
   - Test/AtCoder/abc302_h.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/arc070_e.test.cpp
-  - Test/AtCoder/abc346_g.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
@@ -582,18 +518,14 @@ data:
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
-  - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/ALDS1_5_D.test.cpp
   - Test/AOJ/2706.test.cpp
   - Test/AOJ/CGL_7_G.test.cpp
-  - Test/AOJ/DSL_2_I.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/CGL_7_E.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/2828.test.cpp
@@ -611,10 +543,8 @@ data:
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/practice2_d.test.cpp
   - Test/Manual/abc271_d.test.cpp
-  - Test/Manual/aoj3226.test.cpp
   - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/aoj3369.test.cpp
-  - Test/Manual/CF895-E.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/typical90_an.test.cpp
@@ -622,11 +552,9 @@ data:
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/practice2_e.test.cpp
-  - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/abc239_g.test.cpp
-  - Test/Manual/practice2_l.test.cpp
   - Test/Manual/utpc2012_12.test.cpp
   - Test/Manual/abc252_e.test.cpp
   - Test/Manual/kupc2016_e.test.cpp

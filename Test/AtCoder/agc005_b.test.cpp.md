@@ -5,10 +5,6 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/SameMonoid.hpp
-    title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\
-      \u304B\u5224\u5B9A\u3059\u308B\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -26,9 +22,9 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/agc005/submissions/67037601
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-    - https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/10635768/C++20
-  bundledCode: "#line 1 \"Test/Manual/aoj3226.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+  bundledCode: "#line 1 \"Test/AtCoder/agc005_b.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -106,74 +102,53 @@ data:
     \n    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n\n   \
     \ constexpr u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n\n  \
     \  constexpr u32 parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize\
-    \ m_n;\n\n    std::vector<V> m_dat;\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/SameMonoid.hpp\"\
-    \n\n#include <optional>\n\nnamespace zawa {\n\ntemplate <class T>\nclass SameMonoidData\
-    \ {\nprivate:\n    std::optional<T> element_{};\n    bool same_{true};\npublic:\n\
-    \n    static std::optional<T> merge(const std::optional<T>& l, const std::optional<T>&\
-    \ r) noexcept {\n        if (l and r) return (l.value() == r.value() ? l : std::nullopt);\n\
-    \        if (l) return l;\n        if (r) return r;\n        return std::nullopt;\n\
-    \    }\n\n    SameMonoidData() = default;\n    SameMonoidData(const T& element)\
-    \ \n        : element_{element}, same_{true} {}\n    SameMonoidData(const std::optional<T>&\
-    \ element, bool same)\n        : element_{element}, same_{same} {}\n\n    bool\
-    \ empty() const noexcept {\n        return same_ and !element_.has_value();\n\
-    \    }\n    bool same() const noexcept {\n        return same_;\n    }\n    std::optional<T>\
-    \ element() const noexcept {\n        return element_;\n    }\n    T value() const\
-    \ noexcept {\n        return element_.value();\n    }\n};\n\ntemplate <class T>\n\
-    struct SameMonoid {\npublic:\n    using Element = SameMonoidData<T>;\n    static\
-    \ Element identity() noexcept {\n        return Element{}; \n    }\n    static\
-    \ Element operation(const Element& l, const Element& r) {\n        if (l.empty()\
-    \ and r.empty()) return identity();\n        if (l.empty()) return r;\n      \
-    \  if (r.empty()) return l;\n        std::optional<T> element{Element::merge(l.element(),\
-    \ r.element())};\n        return Element{element, l.same() and r.same() and element.has_value()};\n\
-    \    }\n};\n\n} // namespace zawa\n#line 5 \"Test/Manual/aoj3226.test.cpp\"\n\n\
-    #line 7 \"Test/Manual/aoj3226.test.cpp\"\n#include <iostream>\n#line 9 \"Test/Manual/aoj3226.test.cpp\"\
-    \n\nusing namespace zawa;\nusing M = SameMonoid<long long>;\nusing D = M::Element;\n\
-    \n/*\n * AOJ3226 Range Same Query\n * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/10635768/C++20\n\
-    \ */\n\nvoid solve() {\n    int n, q; std::cin >> n >> q;\n    std::vector<long\
-    \ long> a(n);\n    for (auto& x : a) std::cin >> x;\n    SegmentTree<M> seg(n);\n\
-    \    for (int i{} ; i < n ; i++) seg.assign(i, D{a[i]});\n    for (int _{} ; _\
-    \ < q ; _++) {\n        int t; std::cin >> t;\n        if (t == 1) {\n       \
-    \     int k; std::cin >> k;\n            long long x; std::cin >> x;\n       \
-    \     k--;\n            a[k] += x;\n            seg.assign(k, D{a[k]});\n    \
-    \    }\n        else if (t == 2) {\n            int l, r; std::cin >> l >> r;\n\
-    \            l--;\n            std::cout << (seg.product(l, r).same() ? \"Yes\"\
-    \ : \"No\") << '\\n';\n        }\n        else {\n            assert(false);\n\
-    \        }\n    } \n}\n\nint main() {\n#ifdef ONLINE_JUDGE\n    std::cin.tie(nullptr);\n\
-    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    solve();\n\
-    #else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \ m_n;\n\n    std::vector<V> m_dat;\n};\n\n} // namespace zawa\n#line 4 \"Test/AtCoder/agc005_b.test.cpp\"\
+    \n\n/*\n * AtCoder Grand Contest 005 B - Minimum Sum\n * https://atcoder.jp/contests/agc005/submissions/67037601\n\
+    \ */\n\n#include <iostream>\n#line 12 \"Test/AtCoder/agc005_b.test.cpp\"\n\nstruct\
+    \ M {\n    using Element = int;\n    static Element identity() { return (int)1e9;\
+    \ }\n    static Element operation(Element L, Element R) { return std::min(L, R);\
+    \ }\n};\n\nlong long solve() {\n    using namespace zawa;\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    using\
+    \ MD = M::Element;\n    int n; \n    std::cin >> n;\n    std::vector<MD> a(n);\n\
+    \    for (auto& x : a) {\n        int v; std::cin >> v;\n        x = v;\n    }\n\
+    \    SegmentTree<M> seg(a);\n    long long ans{};\n    for (int i{} ; i < n ;\
+    \ i++) {\n        auto f{[&](MD v) -> bool {\n            return v >= a[i];\n\
+    \        }};\n        auto left{ seg.minLeft(i, f) }, right{ seg.maxRight(i, f)\
+    \ };\n        ans += (long long)(right - i) * (long long)(i - left + 1) * (long\
+    \ long)a[i];\n    }\n    return ans;\n}\n\nint main() {\n#ifdef ATCODER\n    std::cout\
+    \ << solve() << '\\n';\n#else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n\
+    }\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/SameMonoid.hpp\"\n\n#include <cassert>\n#include\
-    \ <iostream>\n#include <vector>\n\nusing namespace zawa;\nusing M = SameMonoid<long\
-    \ long>;\nusing D = M::Element;\n\n/*\n * AOJ3226 Range Same Query\n * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/10635768/C++20\n\
-    \ */\n\nvoid solve() {\n    int n, q; std::cin >> n >> q;\n    std::vector<long\
-    \ long> a(n);\n    for (auto& x : a) std::cin >> x;\n    SegmentTree<M> seg(n);\n\
-    \    for (int i{} ; i < n ; i++) seg.assign(i, D{a[i]});\n    for (int _{} ; _\
-    \ < q ; _++) {\n        int t; std::cin >> t;\n        if (t == 1) {\n       \
-    \     int k; std::cin >> k;\n            long long x; std::cin >> x;\n       \
-    \     k--;\n            a[k] += x;\n            seg.assign(k, D{a[k]});\n    \
-    \    }\n        else if (t == 2) {\n            int l, r; std::cin >> l >> r;\n\
-    \            l--;\n            std::cout << (seg.product(l, r).same() ? \"Yes\"\
-    \ : \"No\") << '\\n';\n        }\n        else {\n            assert(false);\n\
-    \        }\n    } \n}\n\nint main() {\n#ifdef ONLINE_JUDGE\n    std::cin.tie(nullptr);\n\
-    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    solve();\n\
-    #else\n    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
+    \n\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n/*\n *\
+    \ AtCoder Grand Contest 005 B - Minimum Sum\n * https://atcoder.jp/contests/agc005/submissions/67037601\n\
+    \ */\n\n#include <iostream>\n#include <vector>\n\nstruct M {\n    using Element\
+    \ = int;\n    static Element identity() { return (int)1e9; }\n    static Element\
+    \ operation(Element L, Element R) { return std::min(L, R); }\n};\n\nlong long\
+    \ solve() {\n    using namespace zawa;\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    using MD = M::Element;\n    int n;\
+    \ \n    std::cin >> n;\n    std::vector<MD> a(n);\n    for (auto& x : a) {\n \
+    \       int v; std::cin >> v;\n        x = v;\n    }\n    SegmentTree<M> seg(a);\n\
+    \    long long ans{};\n    for (int i{} ; i < n ; i++) {\n        auto f{[&](MD\
+    \ v) -> bool {\n            return v >= a[i];\n        }};\n        auto left{\
+    \ seg.minLeft(i, f) }, right{ seg.maxRight(i, f) };\n        ans += (long long)(right\
+    \ - i) * (long long)(i - left + 1) * (long long)a[i];\n    }\n    return ans;\n\
+    }\n\nint main() {\n#ifdef ATCODER\n    std::cout << solve() << '\\n';\n#else\n\
+    \    std::cout << \"Hello World\" << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - Src/Algebra/Monoid/SameMonoid.hpp
   isVerificationFile: true
-  path: Test/Manual/aoj3226.test.cpp
+  path: Test/AtCoder/agc005_b.test.cpp
   requiredBy: []
   timestamp: '2025-06-24 15:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/Manual/aoj3226.test.cpp
+documentation_of: Test/AtCoder/agc005_b.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/Manual/aoj3226.test.cpp
-- /verify/Test/Manual/aoj3226.test.cpp.html
-title: Test/Manual/aoj3226.test.cpp
+- /verify/Test/AtCoder/agc005_b.test.cpp
+- /verify/Test/AtCoder/agc005_b.test.cpp.html
+title: Test/AtCoder/agc005_b.test.cpp
 ---

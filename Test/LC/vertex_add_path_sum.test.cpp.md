@@ -64,64 +64,65 @@ data:
     \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n#include <functional>\n\
     #include <type_traits>\n\nnamespace zawa {\n\ntemplate <concepts::Group Group>\n\
-    class FenwickTree {\nprivate:\n    using Value = typename Group::Element;\n\n\
-    \    usize n_;\n    u32 bitWidth_;\n    std::vector<Value> a_, dat_;\n\n    constexpr\
+    class FenwickTree {\npublic:\n\n    using VM = Group;\n    \n    using V = typename\
+    \ VM::Element;\n\n    FenwickTree() = default;\n\n    explicit FenwickTree(usize\
+    \ n) : m_n{ n }, m_bitwidth{ std::__lg(n) + 1 }, m_a(n), m_dat(n + 1, VM::identity())\
+    \ {\n        m_dat.shrink_to_fit();\n        m_a.shrink_to_fit();\n    }\n\n \
+    \   explicit FenwickTree(const std::vector<V>& a) : m_n{ a.size() }, m_bitwidth{\
+    \ std::__lg(a.size()) + 1 }, m_a(a), m_dat(a.size() + 1, VM::identity()) {\n \
+    \       m_dat.shrink_to_fit();  \n        m_a.shrink_to_fit();\n        for (i32\
+    \ i{} ; i < static_cast<i32>(m_n) ; i++) {\n            addDat(i, a[i]);\n   \
+    \     }\n    }\n\n    inline usize size() const noexcept {\n        return m_n;\n\
+    \    }\n\n    // return a[i]\n    const V& get(usize i) const noexcept {\n   \
+    \     assert(i < size());\n        return m_a[i];\n    }\n\n    // return a[i]\n\
+    \    const V& operator[](usize i) const noexcept {\n        assert(i < size());\n\
+    \        return m_a[i];\n    }\n\n    // a[i] <- a[i] + v\n    void operation(usize\
+    \ i, const V& v) {\n        assert(i < size());\n        addDat(i, v);\n     \
+    \   m_a[i] = VM::operation(m_a[i], v);\n    }\n\n    // a[i] <- v\n    void assign(usize\
+    \ i, const V& v) {\n        assert(i < size());\n        addDat(i, VM::operation(VM::inverse(m_a[i]),\
+    \ v));\n        m_a[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r -\
+    \ 1]\n    V prefixProduct(usize r) const {\n        assert(r <= size());\n   \
+    \     return product(r);\n    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n\
+    \    V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
+    \        return VM::operation(VM::inverse(product(l)), product(r));\n    }\n\n\
+    \    template <class Function>\n    usize maxRight(usize l, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l < size());\n\
+    \        V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize\
+    \ bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r\
+    \ | (1u << bit) };\n            if (nxt < m_dat.size() and f(VM::operation(sum,\
+    \ m_dat[nxt]))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n   \
+    \             r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
+    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
+    \        assert(r <= size());\n        V sum{ product(r) };\n        usize l{};\n\
+    \        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n      \
+    \      usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
+    \ sum))) {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n\
+    \                l = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const FenwickTree& ft) {\n        for (usize i{}\
+    \ ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i) << (i == ft.size()\
+    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\n    usize\
+    \ m_n{};\n\n    usize m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr\
     \ i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n    \n    //\
-    \ a[i] <- a[i] + v\n    void addDat(i32 i, const Value& v) {\n        assert(0\
-    \ <= i and i < static_cast<i32>(n_));\n        for ( i++ ; i < static_cast<i32>(dat_.size())\
-    \ ; i += lsb(i)) {\n            dat_[i] = Group::operation(dat_[i], v);\n    \
-    \    }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    Value product(i32\
-    \ i) const {\n        assert(0 <= i and i <= static_cast<i32>(n_));\n        Value\
-    \ res{ Group::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n        \
-    \    res = Group::operation(res, dat_[i]);\n        }\n        return res;\n \
-    \   }\n\npublic:\n    FenwickTree() : n_{}, bitWidth_{}, a_{}, dat_{} {}\n\n \
-    \   FenwickTree(usize n) : n_{ n }, bitWidth_{ std::__lg(static_cast<u32>(n))\
-    \ + 1 }, a_(n), dat_(n + 1, Group::identity()) {\n        dat_.shrink_to_fit();\n\
-    \    }\n\n    FenwickTree(const std::vector<Value>& a) : n_{ a.size() }, bitWidth_{\
-    \ std::__lg(static_cast<u32>(a.size())) + 1 }, a_(a), dat_(a.size() + 1, Group::identity())\
-    \ {\n        dat_.shrink_to_fit();  \n        for (i32 i{} ; i < static_cast<i32>(n_)\
-    \ ; i++) {\n            addDat(i, a[i]);\n        }\n    }\n\n    // return a[i]\n\
-    \    const Value& get(usize i) const noexcept {\n        assert(i < n_);\n   \
-    \     return a_[i];\n    }\n\n    // return a[i]\n    const Value& operator[](usize\
-    \ i) const noexcept {\n        assert(i < n_);\n        return a_[i];\n    }\n\
-    \n    usize size() const noexcept {\n        return n_;\n    }\n\n    // a[i]\
-    \ <- a[i] + v\n    void operation(usize i, const Value& v) {\n        assert(i\
-    \ < n_);\n        addDat(i, v);\n        a_[i] = Group::operation(a_[i], v);\n\
-    \    }\n\n    // a[i] <- v\n    void set(usize i, const Value& v) {\n        assert(i\
-    \ < n_);\n        addDat(i, Group::operation(Group::inverse(a_[i]), v));\n   \
-    \     a_[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r - 1]\n    Value\
-    \ prefixProduct(usize r) const {\n        assert(r <= n_);\n        return product(r);\n\
-    \    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n    Value product(usize\
-    \ l, usize r) const {\n        assert(l <= r and r <= n_);\n        return Group::operation(Group::inverse(product(l)),\
-    \ product(r));\n    }\n\n    template <class Function>\n    u32 maxRight(usize\
-    \ l, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(Value)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(l < n_);\n        Value sum{ Group::inverse(product(l)) };\
-    \ \n        u32 r{};\n        for (u32 bit{ bitWidth_ } ; bit ; ) {\n        \
-    \    bit--;\n            u32 nxt{ r | (1u << bit) };\n            if (nxt < dat_.size()\
-    \ and f(Group::operation(sum, dat_[nxt]))) {\n                sum = Group::operation(sum,\
-    \ dat_[nxt]);\n                r = std::move(nxt);\n            }\n        }\n\
-    \        assert(l <= r);\n        return r;\n    }\n\n    template <class Function>\n\
-    \    u32 minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(Value)>>, \"minLeft's argument f must be function bool(T)\"\
-    );\n        assert(r <= n_);\n        Value sum{ product(r) };\n        u32 l{};\n\
-    \        for (u32 bit{ bitWidth_ } ; bit ; ) {\n            bit--;\n         \
-    \   u32 nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(Group::operation(Group::inverse(dat_[nxt]),\
-    \ sum))) {\n                sum = Group::operation(Group::inverse(dat_[nxt]),\
-    \ sum);\n                l = std::move(nxt);\n            }\n        }\n     \
-    \   assert(l <= r);\n        return l;\n    }\n\n    // debug print\n    friend\
-    \ std::ostream& operator<<(std::ostream& os, const FenwickTree& ft) {\n      \
-    \  for (u32 i{} ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i)\
-    \ << (i == ft.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\
-    };\n\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\
-    \nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n   \
-    \ using Element = T;\n    static constexpr T identity() noexcept {\n        return\
-    \ T{};\n    }\n    static constexpr T operation(const T& l, const T& r) noexcept\
-    \ {\n        return l + r;\n    }\n    static constexpr T inverse(const T& v)\
-    \ noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"\
-    Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\n#line 4 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
-    \n\n#include <algorithm>\n#line 7 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
-    \n#include <cmath>\n#include <limits>\n#include <utility>\n#line 11 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
+    \ a[i] <- a[i] + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <=\
+    \ i and i < static_cast<i32>(m_n));\n        for ( i++ ; i < static_cast<i32>(m_dat.size())\
+    \ ; i += lsb(i)) {\n            m_dat[i] = VM::operation(m_dat[i], v);\n     \
+    \   }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i)\
+    \ const {\n        assert(0 <= i and i <= static_cast<i32>(m_n));\n        V res{\
+    \ VM::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n            res =\
+    \ VM::operation(res, m_dat[i]);\n        }\n        return res;\n    }\n\n};\n\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
+    \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
+    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
+    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
+    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
+    \n\n#line 4 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\n#include <algorithm>\n\
+    #line 7 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n#include <cmath>\n#include\
+    \ <limits>\n#include <utility>\n#line 11 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <class V>\nclass HeavyLightDecomposition {\n\
     public:\n\n    static constexpr V Invalid() noexcept {\n        return INVALID;\n\
     \    }\n\n    HeavyLightDecomposition() = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>>\
@@ -242,7 +243,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-04-17 19:44:48+09:00'
+  timestamp: '2025-06-24 20:48:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_add_path_sum.test.cpp

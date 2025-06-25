@@ -39,6 +39,9 @@ data:
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+    title: Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
     title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - icon: ':heavy_check_mark:'
@@ -47,6 +50,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
     title: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+    title: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
     title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
@@ -60,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/EnumerateStaticLengthProduct.hpp
     title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/AreaOfUnionOfRectangles.hpp
+    title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/0478.test.cpp
@@ -104,6 +113,9 @@ data:
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc322_f.test.cpp
+    title: ABC322-F Vacation Query
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc331_f.test.cpp
     title: Test/AtCoder/abc331_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -112,6 +124,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_e.test.cpp
     title: Test/AtCoder/abc340_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc346_g.test.cpp
+    title: Test/AtCoder/abc346_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc371_f.test.cpp
+    title: Test/AtCoder/abc371_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
@@ -125,20 +143,32 @@ data:
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc005_b.test.cpp
+    title: Test/AtCoder/agc005_b.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/practice2_l.test.cpp
+    title: Test/AtCoder/practice2_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF895-E.test.cpp
+    title: Test/CF/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/area_of_union_of_rectangles.test.cpp
+    title: Test/LC/area_of_union_of_rectangles.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
@@ -164,6 +194,9 @@ data:
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_range_sum.test.cpp
+    title: Test/LC/range_affine_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_set_range_composite.test.cpp
     title: Test/LC/range_set_range_composite.test.cpp
   - icon: ':heavy_check_mark:'
@@ -175,9 +208,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/agc005_b.test.cpp
-    title: Test/Manual/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3226.test.cpp
     title: Test/Manual/aoj3226.test.cpp
@@ -215,7 +245,9 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
@@ -228,6 +260,7 @@ data:
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
+  - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
@@ -236,11 +269,14 @@ data:
   - Test/yukicoder/649.test.cpp
   - Test/CF/EC171-F.test.cpp
   - Test/CF/EC2-E.test.cpp
+  - Test/CF/CF895-E.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -249,6 +285,7 @@ data:
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/AtCoder/abc403_g.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
@@ -260,9 +297,13 @@ data:
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
+  - Test/AtCoder/practice2_l.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
@@ -274,7 +315,6 @@ data:
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/0478.test.cpp
   - Test/Manual/aoj3226.test.cpp
-  - Test/Manual/agc005_b.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidConcept.hpp
 layout: document
 redirect_from:

@@ -847,6 +847,9 @@ data:
     path: Test/AtCoder/abc359_g.test.cpp
     title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc371_f.test.cpp
+    title: Test/AtCoder/abc371_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -864,6 +867,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc002_d.test.cpp
     title: Test/AtCoder/agc002_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/agc005_b.test.cpp
+    title: Test/AtCoder/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
@@ -896,6 +902,9 @@ data:
     path: Test/AtCoder/arc197_d.test.cpp
     title: Test/AtCoder/arc197_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/practice2_l.test.cpp
+    title: Test/AtCoder/practice2_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
@@ -910,6 +919,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF895-E.test.cpp
+    title: Test/CF/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF902-B.test.cpp
     title: Test/CF/CF902-B.test.cpp
@@ -1085,9 +1097,6 @@ data:
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/CF895-E.test.cpp
-    title: Test/Manual/CF895-E.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/abc004_d.test.cpp
     title: Test/Manual/abc004_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1115,9 +1124,6 @@ data:
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/agc005_b.test.cpp
-    title: Test/Manual/agc005_b.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/agc026_a.test.cpp
     title: Test/Manual/agc026_a.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1141,9 +1147,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/practice2_e.test.cpp
     title: AtCoder Library Practice Contest - E MinCostFlow
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/practice2_l.test.cpp
-    title: ALPC-L Lazy Segment Tree
   - icon: ':heavy_check_mark:'
     path: Test/Manual/tdpc_fibonacci.test.cpp
     title: Test/Manual/tdpc_fibonacci.test.cpp
@@ -1441,6 +1444,7 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/CF/ECR178-D.test.cpp
   - Test/CF/EC2-E.test.cpp
+  - Test/CF/CF895-E.test.cpp
   - Test/CF/CF956-F.test.cpp
   - Test/CF/CF1015-C.test.cpp
   - Test/CF/ECR157-F.test.cpp
@@ -1546,6 +1550,7 @@ data:
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc136_f.test.cpp
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
@@ -1564,10 +1569,12 @@ data:
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
+  - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc302_h.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/arc070_e.test.cpp
+  - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
   - Test/My/Number/EnumeratePrimes.test.cpp
@@ -1657,7 +1664,6 @@ data:
   - Test/Manual/dwango2016qual_e.test.cpp
   - Test/Manual/tdpc_fibonacci.test.cpp
   - Test/Manual/aoj3369.test.cpp
-  - Test/Manual/CF895-E.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/typical90_an.test.cpp
@@ -1665,12 +1671,10 @@ data:
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/typical90_by.test.cpp
   - Test/Manual/practice2_e.test.cpp
-  - Test/Manual/agc005_b.test.cpp
   - Test/Manual/abc272_g.test.cpp
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/abc239_g.test.cpp
-  - Test/Manual/practice2_l.test.cpp
   - Test/Manual/utpc2012_12.test.cpp
   - Test/Manual/abc252_e.test.cpp
   - Test/Manual/kupc2016_e.test.cpp

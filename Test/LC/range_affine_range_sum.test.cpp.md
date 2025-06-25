@@ -8,11 +8,17 @@ data:
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
+    path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+    title: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -42,33 +48,34 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_range_sum\"\
     \n\n#include \"atcoder/modint\"\n\nusing mint = atcoder::modint998244353;\nstd::pair<mint,\
     \ mint> operator+(const std::pair<mint, mint>& a, const std::pair<mint, mint>&\
-    \ b) {\n    return {a.first+b.first,a.second+b.second};\n}\n\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/AdditionMonoid.hpp\"\n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\
+    \ b) {\n    return {a.first+b.first,a.second+b.second};\n}\n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\
+    \n#include \"../../Src/Algebra/Monoid/AdditionMonoid.hpp\"\n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <cassert>\n#include <utility>\n\
-    \nusing namespace zawa;\n\nstruct Structure {\n    using ValueMonoid = AdditionMonoid<std::pair<mint,\
+    \nusing namespace zawa;\n\nstruct S {\n    using ValueMonoid = AdditionMonoid<std::pair<mint,\
     \ mint>>;\n    using OperatorMonoid = AffineMonoid<mint>;\n    static std::pair<mint,\
     \ mint> mapping(const std::pair<mint, mint>& v, const Affine<mint>& o) {\n   \
     \     return { o.a() * v.first + o.b() * v.second, v.second };\n    }\n};\n\n\n\
-    int main() {\n    SetFastIO();\n    int n, q; std::cin >> n >> q;\n    std::vector<std::pair<mint,\
-    \ mint>> a(n);\n    for (auto& x : a) {\n        int v;\n        std::cin >> v;\n\
-    \        x = {v, 1};\n    }\n    LazySegmentTree<Structure> seg(a);\n    for (int\
-    \ _{} ; _ < q ; _++) {\n        int t; std::cin >> t;\n        if (t == 0) {\n\
-    \            int l, r, b, c; \n            std::cin >> l >> r >> b >> c;\n   \
-    \         seg.operation(l, r, Affine{ mint{b}, mint{c} });\n        }\n      \
-    \  else if (t == 1) {\n            int l, r; std::cin >> l >> r;\n           \
-    \ std::cout << seg.product(l, r).first.val() << '\\n';\n        }\n        else\
-    \ {\n            assert(false);\n        }\n    }\n}\n"
+    int main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int n, q; \n    std::cin >> n >> q;\n    std::vector<std::pair<mint, mint>>\
+    \ a(n);\n    for (auto& x : a) {\n        int v;\n        std::cin >> v;\n   \
+    \     x = {v, 1};\n    }\n    LazySegmentTree<S> seg(a);\n    while (q--) {\n\
+    \        int t, l, r; \n        std::cin >> t >> l >> r;\n        if (t == 0)\
+    \ {\n            int b, c; \n            std::cin >> b >> c;\n            seg.operation(l,\
+    \ r, Affine{ mint{b}, mint{c} });\n        }\n        else if (t == 1) {\n   \
+    \         std::cout << seg.product(l, r).first.val() << '\\n';\n        }\n  \
+    \      else {\n            assert(false);\n        }\n    }\n}\n"
   dependsOn:
-  - Src/Template/IOSetting.hpp
-  - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Monoid/AdditionMonoid.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-02-27 21:25:38+09:00'
+  timestamp: '2025-06-25 16:48:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_range_sum.test.cpp

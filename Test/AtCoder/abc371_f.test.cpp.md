@@ -14,9 +14,6 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
     title: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -28,18 +25,17 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc322/submissions/67058865
-    - https://atcoder.jp/contests/abc322/tasks/abc322_f
+    - https://atcoder.jp/contests/abc371/submissions/67058774
+    - https://atcoder.jp/contests/abc371/tasks/abc371_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/AtCoder/abc322_f.test.cpp\"\n// #define PROBLEM \"\
-    https://atcoder.jp/contests/abc322/tasks/abc322_f\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * https://atcoder.jp/contests/abc322/submissions/67058865\n * AtCoder\
-    \ Beginner Contest 322 F - Vacation Query\n */\n\n#line 2 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp\"\
+  bundledCode: "#line 1 \"Test/AtCoder/abc371_f.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc371/tasks/abc371_f\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#line 2 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n#line 2 \"\
+    Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
+    \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
+    \ std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16\
+    \ = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\n\
+    using usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp\"\
     \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
     \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
@@ -145,120 +141,86 @@ data:
     \ usize m = (nl + nr) >> 1, lch = nd << 1 | 0, rch = nd << 1 | 1;\n        return\
     \ f(VM::operation(m_dat[rch], prod)) ? \n            minLeft(f, VM::operation(m_dat[rch],\
     \ prod), lch, nl, m) : minLeft(f, prod, rch, m, nr);\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
-    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
-    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 11 \"Test/AtCoder/abc322_f.test.cpp\"\n\n#include <utility>\n#line\
-    \ 17 \"Test/AtCoder/abc322_f.test.cpp\"\n\nusing pii = std::pair<int, int>;\n\n\
-    void chmax(int& a, int b) {\n    a = std::max(a, b);\n}\n\nstruct vD {\n    int\
-    \ max[2]{ 0, 0 };\n    pii left{}, right{};\n    bool allSame{true};\n\n    vD()\
-    \ = default;\n\n    vD flip() const {\n        vD res{};\n        res.max[0] =\
-    \ max[1];\n        res.max[1] = max[0];\n        res.left = pii{left.first ^ 1,\
-    \ left.second};\n        res.right = pii{right.first ^ 1, right.second};\n   \
-    \     res.allSame = allSame;\n        return res;\n    }\n};\n\nstruct vM {\n\
-    \    using Element = vD;\n    static vD identity() {\n        return vD{};\n \
-    \   }\n    static vD operation(const vD& L, const vD& R) {\n        vD res{};\n\
-    \n        res.max[0] = std::max(L.max[0], R.max[0]);\n        res.max[1] = std::max(L.max[1],\
-    \ R.max[1]);\n\n        res.left.first = L.left.first;\n        res.left.second\
-    \ = L.left.second;\n        if (L.allSame and L.left.first == R.left.first) res.left.second\
-    \ += R.left.second;\n\n        res.right.first = R.right.first;\n        res.right.second\
-    \ = R.right.second;\n        if (R.allSame and R.right.first == L.right.first)\
-    \ res.right.second += L.right.second;\n\n        res.allSame = L.allSame and R.allSame\
-    \ and L.left.first == R.right.first;\n\n        if (L.right.first == R.left.first)\
-    \ chmax(res.max[L.right.first], L.right.second + R.left.second);\n        chmax(res.max[res.left.first],\
-    \ res.left.second);\n        chmax(res.max[res.right.first], res.right.second);\n\
-    \n        return res;\n    }\n};\n\nstruct oM {\n    using Element = bool;\n \
-    \   static bool identity() {\n        return false;\n    }\n    static bool operation(bool\
-    \ l, bool r) {\n        return l ^ r;\n    }\n};\n\nstruct Structure {\n    using\
-    \ ValueMonoid = vM;\n    using OperatorMonoid = oM;\n    static vD mapping(const\
-    \ vD& a, bool b) {\n        return (b ? a.flip() : a);\n    }\n};\n\nint main()\
-    \ {\n#ifdef ATCODER\n    using namespace zawa;\n    SetFastIO();\n\n    int n,\
-    \ q; std::cin >> n >> q;\n    std::vector<vD> init(n);\n    for (int i{} ; i <\
-    \ n ; i++) {\n        char c; std::cin >> c;\n        if (c == '0') {\n      \
-    \      init[i].left = pii{0, 1};\n            init[i].right = pii{0, 1};\n   \
-    \         init[i].max[0] = 1;\n            init[i].max[1] = 0;\n            init[i].allSame\
-    \ = true;\n        }\n        else if (c == '1') {\n            init[i].left =\
-    \ pii{1, 1};\n            init[i].right = pii{1, 1};\n            init[i].max[0]\
-    \ = 0;\n            init[i].max[1] = 1;\n            init[i].allSame = true;\n\
-    \        }\n        else {\n            assert(false);\n        }\n    }\n\n \
-    \   LazySegmentTree<Structure> seg(init);\n    for (int _{} ; _ < q ; _++) {\n\
-    \        int c, l, r; std::cin >> c >> l >> r;\n        l--;\n        if (c ==\
-    \ 1) {\n            seg.operation(l, r, true);\n        }\n        else if (c\
-    \ == 2) {\n            auto prod{seg.product(l, r)};\n            int ans{prod.max[1]};\n\
-    \            std::cout << ans << '\\n';\n        }\n        else {\n         \
-    \   assert(false);\n        }\n    }\n#else\n    std::cout << \"Hello World\\\
-    n\";\n#endif\n}\n"
-  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc322/tasks/abc322_f\"\n\
+    \ zawa\n#line 5 \"Test/AtCoder/abc371_f.test.cpp\"\n\n/*\n * AtCoder Beginner\
+    \ Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/67058774\n\
+    \ */\n\n#include <iostream>\nconst int INF = (int)1e9;\nstruct VD {\n    long\
+    \ long sum = 0;\n    int cnt = 0, min = INF, max = -INF;\n    VD() = default;\n\
+    \    VD(int v) : sum{v}, cnt{1}, min{v}, max{v} {}\n    VD(int v, int c) : sum{(long\
+    \ long)v * c}, cnt{c}, min{v}, max{v} {}\n    VD(long long s, int c, int mn, int\
+    \ mx) : sum{s}, cnt{c}, min{mn}, max{mx} {}\n};\nstruct VM {\n    using Element\
+    \ = VD;\n    static Element identity() { return VD{}; }\n    static Element operation(Element\
+    \ L, Element R) {\n        L.sum += R.sum;\n        L.cnt += R.cnt;\n        L.min\
+    \ = std::min(L.min, R.min);\n        L.max = std::max(L.max, R.max);\n       \
+    \ return L;\n    }\n};\nstruct OM {\n    using Element = int;\n    static Element\
+    \ identity() { return INF; }\n    static Element operation(Element L, Element\
+    \ R) {\n        return R == INF ? L : R;\n    }\n};\nstruct S {\n    using ValueMonoid\
+    \ = VM;\n    using OperatorMonoid = OM;\n    static VM::Element mapping(VM::Element\
+    \ L, OM::Element R) {\n        if (R == INF) return L;\n        return VM::Element{R,\
+    \ L.cnt};\n    }\n};\nlong long solve() {\n    int N;\n    std::cin >> N;\n  \
+    \  std::vector<VD> init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int\
+    \ x;\n        std::cin >> x;\n        init[i] = VD{x - i};\n    }\n    zawa::LazySegmentTree<S>\
+    \ seg{init};\n    int Q;\n    std::cin >> Q;\n    long long ans = 0;\n    while\
+    \ (Q--) {\n        int T, G;\n        std::cin >> T >> G;\n        T--;\n    \
+    \    G -= T;\n        const int cur = seg[T].min;\n        if (G < cur) {\n  \
+    \          const auto l = seg.minLeft(T + 1, [&](const VD& v) { return G <= v.min;\
+    \ });\n            const auto prod = seg.product(l, T + 1);\n            ans +=\
+    \ prod.sum - (long long)G * prod.cnt;\n            seg.operation(l, T + 1, G);\n\
+    \        }\n        else if (cur < G) {\n            const auto r = seg.maxRight(T,\
+    \ [&](const VD& v) { return v.max <= G; });\n            const auto prod = seg.product(T,\
+    \ r);\n            ans += (long long)G * prod.cnt - prod.sum;\n            seg.operation(T,\
+    \ r, G);\n        }\n    }\n    return ans;\n}\nint main() {\n#ifdef ATCODER\n\
+    \    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    std::cout << solve() << '\\n';\n#else\n    std::cout << \"Hello World\\n\"\
+    ;\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc371/tasks/abc371_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * https://atcoder.jp/contests/abc322/submissions/67058865\n * AtCoder\
-    \ Beginner Contest 322 F - Vacation Query\n */\n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\
-    \n#include \"../../Src/Template/IOSetting.hpp\"\n\n#include <utility>\n#include\
-    \ <algorithm>\n#include <iostream>\n#include <vector>\n#include <cassert>\n\n\
-    using pii = std::pair<int, int>;\n\nvoid chmax(int& a, int b) {\n    a = std::max(a,\
-    \ b);\n}\n\nstruct vD {\n    int max[2]{ 0, 0 };\n    pii left{}, right{};\n \
-    \   bool allSame{true};\n\n    vD() = default;\n\n    vD flip() const {\n    \
-    \    vD res{};\n        res.max[0] = max[1];\n        res.max[1] = max[0];\n \
-    \       res.left = pii{left.first ^ 1, left.second};\n        res.right = pii{right.first\
-    \ ^ 1, right.second};\n        res.allSame = allSame;\n        return res;\n \
-    \   }\n};\n\nstruct vM {\n    using Element = vD;\n    static vD identity() {\n\
-    \        return vD{};\n    }\n    static vD operation(const vD& L, const vD& R)\
-    \ {\n        vD res{};\n\n        res.max[0] = std::max(L.max[0], R.max[0]);\n\
-    \        res.max[1] = std::max(L.max[1], R.max[1]);\n\n        res.left.first\
-    \ = L.left.first;\n        res.left.second = L.left.second;\n        if (L.allSame\
-    \ and L.left.first == R.left.first) res.left.second += R.left.second;\n\n    \
-    \    res.right.first = R.right.first;\n        res.right.second = R.right.second;\n\
-    \        if (R.allSame and R.right.first == L.right.first) res.right.second +=\
-    \ L.right.second;\n\n        res.allSame = L.allSame and R.allSame and L.left.first\
-    \ == R.right.first;\n\n        if (L.right.first == R.left.first) chmax(res.max[L.right.first],\
-    \ L.right.second + R.left.second);\n        chmax(res.max[res.left.first], res.left.second);\n\
-    \        chmax(res.max[res.right.first], res.right.second);\n\n        return\
-    \ res;\n    }\n};\n\nstruct oM {\n    using Element = bool;\n    static bool identity()\
-    \ {\n        return false;\n    }\n    static bool operation(bool l, bool r) {\n\
-    \        return l ^ r;\n    }\n};\n\nstruct Structure {\n    using ValueMonoid\
-    \ = vM;\n    using OperatorMonoid = oM;\n    static vD mapping(const vD& a, bool\
-    \ b) {\n        return (b ? a.flip() : a);\n    }\n};\n\nint main() {\n#ifdef\
-    \ ATCODER\n    using namespace zawa;\n    SetFastIO();\n\n    int n, q; std::cin\
-    \ >> n >> q;\n    std::vector<vD> init(n);\n    for (int i{} ; i < n ; i++) {\n\
-    \        char c; std::cin >> c;\n        if (c == '0') {\n            init[i].left\
-    \ = pii{0, 1};\n            init[i].right = pii{0, 1};\n            init[i].max[0]\
-    \ = 1;\n            init[i].max[1] = 0;\n            init[i].allSame = true;\n\
-    \        }\n        else if (c == '1') {\n            init[i].left = pii{1, 1};\n\
-    \            init[i].right = pii{1, 1};\n            init[i].max[0] = 0;\n   \
-    \         init[i].max[1] = 1;\n            init[i].allSame = true;\n        }\n\
-    \        else {\n            assert(false);\n        }\n    }\n\n    LazySegmentTree<Structure>\
-    \ seg(init);\n    for (int _{} ; _ < q ; _++) {\n        int c, l, r; std::cin\
-    \ >> c >> l >> r;\n        l--;\n        if (c == 1) {\n            seg.operation(l,\
-    \ r, true);\n        }\n        else if (c == 2) {\n            auto prod{seg.product(l,\
-    \ r)};\n            int ans{prod.max[1]};\n            std::cout << ans << '\\\
-    n';\n        }\n        else {\n            assert(false);\n        }\n    }\n\
-    #else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n/*\n\
+    \ * AtCoder Beginner Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/67058774\n\
+    \ */\n\n#include <iostream>\nconst int INF = (int)1e9;\nstruct VD {\n    long\
+    \ long sum = 0;\n    int cnt = 0, min = INF, max = -INF;\n    VD() = default;\n\
+    \    VD(int v) : sum{v}, cnt{1}, min{v}, max{v} {}\n    VD(int v, int c) : sum{(long\
+    \ long)v * c}, cnt{c}, min{v}, max{v} {}\n    VD(long long s, int c, int mn, int\
+    \ mx) : sum{s}, cnt{c}, min{mn}, max{mx} {}\n};\nstruct VM {\n    using Element\
+    \ = VD;\n    static Element identity() { return VD{}; }\n    static Element operation(Element\
+    \ L, Element R) {\n        L.sum += R.sum;\n        L.cnt += R.cnt;\n        L.min\
+    \ = std::min(L.min, R.min);\n        L.max = std::max(L.max, R.max);\n       \
+    \ return L;\n    }\n};\nstruct OM {\n    using Element = int;\n    static Element\
+    \ identity() { return INF; }\n    static Element operation(Element L, Element\
+    \ R) {\n        return R == INF ? L : R;\n    }\n};\nstruct S {\n    using ValueMonoid\
+    \ = VM;\n    using OperatorMonoid = OM;\n    static VM::Element mapping(VM::Element\
+    \ L, OM::Element R) {\n        if (R == INF) return L;\n        return VM::Element{R,\
+    \ L.cnt};\n    }\n};\nlong long solve() {\n    int N;\n    std::cin >> N;\n  \
+    \  std::vector<VD> init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int\
+    \ x;\n        std::cin >> x;\n        init[i] = VD{x - i};\n    }\n    zawa::LazySegmentTree<S>\
+    \ seg{init};\n    int Q;\n    std::cin >> Q;\n    long long ans = 0;\n    while\
+    \ (Q--) {\n        int T, G;\n        std::cin >> T >> G;\n        T--;\n    \
+    \    G -= T;\n        const int cur = seg[T].min;\n        if (G < cur) {\n  \
+    \          const auto l = seg.minLeft(T + 1, [&](const VD& v) { return G <= v.min;\
+    \ });\n            const auto prod = seg.product(l, T + 1);\n            ans +=\
+    \ prod.sum - (long long)G * prod.cnt;\n            seg.operation(l, T + 1, G);\n\
+    \        }\n        else if (cur < G) {\n            const auto r = seg.maxRight(T,\
+    \ [&](const VD& v) { return v.max <= G; });\n            const auto prod = seg.product(T,\
+    \ r);\n            ans += (long long)G * prod.cnt - prod.sum;\n            seg.operation(T,\
+    \ r, G);\n        }\n    }\n    return ans;\n}\nint main() {\n#ifdef ATCODER\n\
+    \    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    std::cout << solve() << '\\n';\n#else\n    std::cout << \"Hello World\\n\"\
+    ;\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - Src/Template/IOSetting.hpp
   isVerificationFile: true
-  path: Test/AtCoder/abc322_f.test.cpp
+  path: Test/AtCoder/abc371_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-25 16:48:25+09:00'
+  timestamp: '2025-06-25 17:03:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AtCoder/abc322_f.test.cpp
+documentation_of: Test/AtCoder/abc371_f.test.cpp
 layout: document
-title: ABC322-F Vacation Query
+redirect_from:
+- /verify/Test/AtCoder/abc371_f.test.cpp
+- /verify/Test/AtCoder/abc371_f.test.cpp.html
+title: Test/AtCoder/abc371_f.test.cpp
 ---
-
-遅延セグ木に乗せる構造を以下の様に設計する
-
-- 値が担当している区間における連続する0の長さの最大長
-- 値が担当している区間における連続する1の長さの最大長
-- 値が担当している区間における一番左に連続している値の種類とその長さ
-- 値が担当している区間における一番右に連続している値の種類とその長さ
-- 値が担当している区間で値の種類が全て同じか？
-
-`product` (値のマージ) では、この意味に沿うようによしなに頑張る。
-
-`operation`(値の更新)では、01列のflipなのでい つ も ので良い

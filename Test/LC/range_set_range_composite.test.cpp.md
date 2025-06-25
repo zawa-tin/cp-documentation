@@ -17,9 +17,6 @@ data:
     path: Src/DataStructure/SegmentTree/SegmentTree.hpp
     title: Segment Tree
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -47,19 +44,20 @@ data:
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_set_range_composite\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
-    \n#include <cassert>\n#include <iostream>\n#include <iomanip>\n#include <vector>\n\
-    #include <cstring>\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin\
-    \ >> N >> Q;\n    std::vector<Affine<mint>> init(N);\n    for (int i = 0 ; i <\
-    \ N ; i++) {\n        int a, b;\n        std::cin >> a >> b;\n        init[i]\
-    \ = Affine{mint{a}, mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>>\
-    \ seg{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
-    \    if (t == 0) {\n            int l, r, c, d;\n            std::cin >> l >>\
-    \ r >> c >> d;\n            seg.assign(l, r, Affine{mint{c}, mint{d}});\n    \
-    \    }\n        else if (t == 1) {\n            int l, r, x;\n            std::cin\
-    \ >> l >> r >> x;\n            std::cout << seg.product(l, r)(x).val() << '\\\
-    n';\n        }\n        else assert(false);\n    }\n}\n"
+    \n#include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\nusing namespace zawa;\n\
+    #include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\n#include\
+    \ <cassert>\n#include <iostream>\n#include <iomanip>\n#include <vector>\n#include\
+    \ <cstring>\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    int N, Q;\n    std::cin >> N >> Q;\n\
+    \    std::vector<Affine<mint>> init(N);\n    for (int i = 0 ; i < N ; i++) {\n\
+    \        int a, b;\n        std::cin >> a >> b;\n        init[i] = Affine{mint{a},\
+    \ mint{b}};\n    }\n    AssignmentSegmentTree<AffineMonoid<mint>> seg{init};\n\
+    \    while (Q--) {\n        int t;\n        std::cin >> t;\n        if (t == 0)\
+    \ {\n            int l, r, c, d;\n            std::cin >> l >> r >> c >> d;\n\
+    \            seg.assign(l, r, Affine{mint{c}, mint{d}});\n        }\n        else\
+    \ if (t == 1) {\n            int l, r, x;\n            std::cin >> l >> r >> x;\n\
+    \            std::cout << seg.product(l, r)(x).val() << '\\n';\n        }\n  \
+    \      else assert(false);\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
@@ -67,11 +65,10 @@ data:
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
-  - Src/Template/IOSetting.hpp
   isVerificationFile: true
   path: Test/LC/range_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2025-06-16 14:43:48+09:00'
+  timestamp: '2025-06-24 15:48:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_set_range_composite.test.cpp

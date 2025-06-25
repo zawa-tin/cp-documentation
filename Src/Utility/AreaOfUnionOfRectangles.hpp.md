@@ -8,8 +8,17 @@ data:
     path: Src/Algebra/Monoid/MinCountMonoid.hpp
     title: Src/Algebra/Monoid/MinCountMonoid.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
     title: Lazy Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+    title: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -43,102 +52,132 @@ data:
     \ operation(const Element& L, const Element& R) {\n        if (L.first < R.first)\
     \ return L;\n        else if (L.first > R.first) return R;\n        else return\
     \ Element{ L.first, L.second + R.second };\n    }\n\n};\n\n} // namespace \n#line\
-    \ 2 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n#line 4 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\
-    \n\n#include <vector>\n#include <iterator>\n#include <cassert>\n#include <ostream>\n\
-    \n#include <iostream>\n\nnamespace zawa {\n\ntemplate <class Structure>\nclass\
-    \ LazySegmentTree {\npublic:\n    using VM = typename Structure::ValueMonoid;\n\
-    \    using OM = typename Structure::OperatorMonoid;\n    using Value = typename\
-    \ VM::Element;\n    using Operator = typename OM::Element;\n\nprivate:\n    static\
-    \ constexpr u32 parent(u32 v) noexcept {\n        return v >> 1;\n    }\n    static\
-    \ constexpr u32 left(u32 v) noexcept {\n        return v << 1;\n    }\n    static\
-    \ constexpr u32 right(u32 v) noexcept {\n        return v << 1 | 1;\n    }\n \
-    \   static constexpr u32 depth(u32 v) noexcept {\n        return 31u - __builtin_clz(v);\n\
-    \    }\n    static constexpr u32 trailingZeros(u32 v) noexcept {\n        return\
-    \ __builtin_ctz(v);\n    }\n\n    struct Node {\n        Value v_{ VM::identity()\
-    \ };\n        Operator o_{ OM::identity() };\n        Node() = default;\n    \
-    \    Node(const Value& v, const Operator& o) : v_{v}, o_{o} {}\n    };\n\n   \
-    \ usize n_{};\n    std::vector<Node> dat_;\n\n    static Value action(const Node&\
-    \ node) {\n        return Structure::mapping(node.v_, node.o_);\n    }\n\n   \
-    \ // \u30CE\u30FC\u30C9v\u306E\u5B50\u306B\u4F5C\u7528\u3092\u4F1D\u64AD\u3055\
-    \u305B\u308B\n    void propagate(u32 v) {\n        dat_[left(v)].o_ = OM::operation(dat_[left(v)].o_,\
-    \ dat_[v].o_);\n        dat_[right(v)].o_ = OM::operation(dat_[right(v)].o_, dat_[v].o_);\n\
-    \        dat_[v].o_ = OM::identity();\n    }\n\n    // \u30CE\u30FC\u30C9v\u306E\
-    \u7956\u5148\u306E\u30CE\u30FC\u30C9\u306E\u4F5C\u7528\u7D20\u3092\u5168\u3066\
-    \u9069\u7528\u3059\u308B\n    void propagateAncestor(u32 v) {\n        u32 dep{depth(v)};\n\
-    \        u32 zeros{trailingZeros(v)};\n        for (u32 d{dep} ; d != zeros ;\
-    \ d--) {\n            propagate(v >> d);\n        }\n    }\n\n    // \u30CE\u30FC\
-    \u30C9v\u306E\u5024\u3092\u518D\u8A08\u7B97\u3059\u308B\n    void recalc(u32 v)\
-    \ {\n        dat_[v].v_ = VM::operation(action(dat_[left(v)]), action(dat_[right(v)]));\n\
-    \    }\n\n    // \u8981\u7D20v\u3092\u6301\u3064\u30CE\u30FC\u30C9\u306E\u7956\
-    \u5148\u3092\u518D\u8A08\u7B97\u3059\u308B\n    void recalcAncestor(u32 v) {\n\
-    \        v >>= trailingZeros(v);\n        for (v = parent(v) ; v ; v = parent(v))\
-    \ {\n            recalc(v);\n        }\n    }\n\n    template <class InputIterator>\n\
-    \    void datInit(InputIterator first) {\n        auto it{first};\n        for\
-    \ (u32 i{} ; i < n_ ; i++) {\n            dat_[i + n_].v_ = *it;\n           \
-    \ it++;\n        }\n        for (u32 i{static_cast<u32>(n_)} ; --i ; ) {\n   \
-    \         dat_[i].v_ = VM::operation(dat_[left(i)].v_, dat_[right(i)].v_);\n \
-    \       }\n    }\n\npublic:\n    \n    LazySegmentTree() = default;\n    LazySegmentTree(usize\
-    \ n) : n_{n}, dat_((n << 1)) {\n        assert(n_);\n    }\n    LazySegmentTree(const\
-    \ std::vector<Value>& a) : n_{a.size()}, dat_((a.size() << 1)) {\n        assert(!a.empty());\n\
-    \        datInit(a.begin());\n    }\n    template <class InputIterator>\n    LazySegmentTree(InputIterator\
-    \ first, InputIterator last) \n        : n_{static_cast<usize>(std::distance(first,\
-    \ last))}, dat_(std::distance(first, last) << 1) {\n        assert(n_);\n    \
-    \    datInit(first);\n    }\n\n    usize size() const noexcept {\n        return\
-    \ n_;\n    }\n\n    void operation(u32 i, const Operator& o) {\n        assert(i\
-    \ < n_);\n        i += size();\n        propagateAncestor(i);\n        dat_[i].o_\
-    \ = OM::operation(dat_[i].o_, o);\n        recalcAncestor(i);\n    }\n\n    void\
-    \ operation(u32 L, u32 R, const Operator& o) {\n        assert(L <= R and R <=\
-    \ n_);\n        L += size();\n        R += size();\n        propagateAncestor(L);\n\
-    \        propagateAncestor(R);\n        for (u32 l = L, r = R ; l < r ; l = parent(l),\
-    \ r = parent(r)) {\n            if (l & 1) {\n                dat_[l].o_ = OM::operation(dat_[l].o_,\
-    \ o);\n                l++;\n            }\n            if (r & 1) {\n       \
-    \         r--;\n                dat_[r].o_ = OM::operation(dat_[r].o_, o);\n \
-    \           }\n        }\n        recalcAncestor(L);\n        recalcAncestor(R);\n\
-    \    }\n\n    void set(u32 i, const Value& v) {\n        assert(i < n_);\n   \
-    \     i += size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
-    \ >> d);\n        }\n        dat_[i] = Node{ v, OM::identity() };\n        for\
-    \ (i = parent(i) ; i ; i = parent(i)) {\n            recalc(i);\n        }\n \
-    \   }\n\n    Value operator[](u32 i) {\n        assert(i < n_);\n        i +=\
-    \ size();\n        for (u32 d{depth(i)} ; d ; d--) {\n            propagate(i\
-    \ >> d);\n        }\n        return action(dat_[i]);\n    }\n\n    Value product(u32\
-    \ L, u32 R) {\n        assert(L <= R and R <= n_);\n        L += size();\n   \
-    \     R += size();\n        propagateAncestor(L);\n        propagateAncestor(R);\n\
-    \        recalcAncestor(L);\n        recalcAncestor(R);\n        Value l{VM::identity()},\
-    \ r{VM::identity()};\n        for ( ; L < R ; L = parent(L), R = parent(R)) {\n\
-    \            if (L & 1) {\n                l = VM::operation(l, action(dat_[L]));\n\
-    \                L++;\n            }\n            if (R & 1) {\n             \
-    \   R--;\n                r = VM::operation(action(dat_[R]), r);\n           \
-    \ }\n        }\n        return VM::operation(l, r);\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const LazySegmentTree& seg) {\n        usize size{seg.dat_.size()};\n\
-    \        os << \"Value :\\n\";\n        for (u32 i{1} ; i < size ; i++) {\n  \
-    \          os << seg.dat_[i].v_ << (i + 1 == size ? \"\\n\" : \" \");\n      \
-    \  }\n        os << \"Operator :\\n\";\n        for (u32 i{1} ; i < size ; i++)\
-    \ {\n            os << seg.dat_[i].o_ << (i + 1 == size ? \"\\n\" : \" \");\n\
-    \        }\n        os << \"Action :\\n\";\n        for (u32 i{1} ; i < size ;\
-    \ i++) {\n            os << action(seg.dat_[i]) << (i + 1 == size ? \"\\n\" :\
-    \ \" \");\n        }\n        return os;\n    }\n\n/*\n    template <class F>\n\
-    \    u32 maxRight(u32 l, const F& f) {\n\n    }\n\n    template <class F>\n  \
-    \  u32 minLeft(u32 r, const F& f) {\n\n    }\n*/\n};\n\n} // namespace zawa\n\
-    #line 7 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\n\n#include <algorithm>\n\
-    #line 10 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\n#include <type_traits>\n\
-    #line 12 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass Rectangle {\npublic:\n\n    Rectangle() = default;\n     \n\
-    \    Rectangle(T l, T d, T r, T u)\n        : l_{l}, d_{d}, r_{r}, u_{u} {\n \
-    \       assert(l <= r);\n        assert(d <= u);\n    }\n\n    Rectangle(const\
-    \ std::pair<T, T>& ld, const std::pair<T, T>& ru)\n        : l_{ld.first}, d_{ld.second},\
-    \ r_{ru.first}, u_{ru.second} {}\n\n    Rectangle(const std::pair<T, T>& ld, T\
-    \ w, T h)\n        : l_{ld.first}, d_{ld.second}, r_{l_ + w}, u_{d_ + h} {}\n\n\
-    \    inline T left() const noexcept {\n        return l_;\n    }\n\n    inline\
-    \ T right() const noexcept {\n        return r_;\n    }\n\n    inline T down()\
-    \ const noexcept {\n        return d_;\n    }\n\n    inline T up() const noexcept\
-    \ {\n        return u_;\n    }\n\nprivate:\n    // \u5DE6\u4E0B\u3001\u53F3\u4E0A\
-    \n    T l_{}, d_{}, r_{}, u_{};\n};\n\nnamespace internal {\n\nstruct AreaOfUnionOfRectanglesStructure\
-    \ {\n    using ValueMonoid = MinCountMonoid<i32, u64>;\n    using OperatorMonoid\
-    \ = AdditionMonoid<i32>;\n    static ValueMonoid::Element mapping(const ValueMonoid::Element&\
-    \ V, const OperatorMonoid::Element& R) {\n        return ValueMonoid::Element{\
-    \ V.first + R, V.second };\n    }\n    static ValueMonoid::Element generate(u64\
-    \ v) {\n        return ValueMonoid::Element{ 0, v };\n    }\n};\n\n} // namespace\
-    \ internal\n\ntemplate <class T, class InputIterator>\nu64 AreaOfUnionOfRectangles(InputIterator\
+    \ 2 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept MonoidWithAction\
+    \ = requires {\n    requires Monoid<typename T::ValueMonoid>;\n    requires Monoid<typename\
+    \ T::OperatorMonoid>;\n    { T::mapping(\n            std::declval<typename T::ValueMonoid::Element>(),\n\
+    \            std::declval<typename T::OperatorMonoid::Element>()\n           \
+    \ ) } -> std::same_as<typename T::ValueMonoid::Element>; \n};\n\n} // namespace\
+    \ concepts\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\
+    \n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n#include <ranges>\n\
+    #include <tuple>\n#include <vector>\n\nnamespace zawa {\n\ntemplate <concepts::MonoidWithAction\
+    \ S>\nclass LazySegmentTree {\npublic:\n\n    using VM = S::ValueMonoid;\n\n \
+    \   using V = typename VM::Element;\n\n    using OM = S::OperatorMonoid;\n\n \
+    \   using O = typename OM::Element;\n\n    LazySegmentTree() = default;\n\n  \
+    \  explicit LazySegmentTree(usize n) \n        : m_n{n}, m_sz{1u << (std::bit_width(n))},\
+    \ m_dat(m_sz << 1, VM::identity()), m_lazy(m_sz << 1, OM::identity()) {}\n\n \
+    \   explicit LazySegmentTree(const std::vector<V>& a)\n        : m_n{a.size()},\
+    \ m_sz{1u << (std::bit_width(a.size()))}, m_dat(m_sz << 1, VM::identity()), m_lazy(m_sz\
+    \ << 1, OM::identity()) {\n        std::ranges::copy(a, m_dat.begin() + inner_size());\n\
+    \        for (usize i = inner_size() ; --i ; ) recalc(i);\n    }\n\n    [[nodiscard]]\
+    \ inline usize size() const noexcept {\n        return m_n;\n    }\n\n    [[nodiscard]]\
+    \ V operator[](usize i) {\n        assert(i < size());\n        return get(i,\
+    \ 1, 0, inner_size());\n    }\n\n    [[nodiscard]] V get(usize i) {\n        return\
+    \ (*this)[i];\n    }\n\n    [[nodiscard]] V product(usize l, usize r) {\n    \
+    \    assert(l <= r and r <= size());\n        return product(l, r, 1, 0, inner_size());\n\
+    \    }\n\n    void operation(usize l, usize r, const O& o) {\n        assert(l\
+    \ <= r and r <= size());\n        return operation(l, r, o, 1, 0, inner_size());\n\
+    \    }\n\n    void assign(usize i, const V& v) {\n        assert(i < size());\n\
+    \        assign(i, v, 1, 0, inner_size());\n    }\n\n    void operation(usize\
+    \ i, const O& o) {\n        assert(i < size());\n        operation(i, o, 1, 0,\
+    \ inner_size());\n    }\n\nprivate:\n\n    using NodeInfo = std::tuple<usize,\
+    \ usize, usize>;\n\npublic:\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    usize maxRight(usize l, F f) {\n        assert(l <= size());\n     \
+    \   if (!f(VM::identity())) return l;\n        if (l == size()) return size();\n\
+    \        std::vector<NodeInfo> ranges;\n        partition_range(l, size(), ranges,\
+    \ 1, 0, inner_size());\n        V prod = VM::identity();\n        for (auto [nd,\
+    \ nl, nr] : ranges) {\n            if (!f(VM::operation(prod, m_dat[nd]))) {\n\
+    \                return maxRight(f, prod, nd, nl, nr);\n            }\n      \
+    \      else {\n                prod = VM::operation(prod, m_dat[nd]);\n      \
+    \      }\n        }\n        return size();\n    }\n\n    template <class F>\n\
+    \    requires std::predicate<F, V>\n    usize minLeft(usize r, F f) {\n      \
+    \  assert(r <= size());\n        if (!f(VM::identity())) return r;\n        if\
+    \ (!r) return 0;\n        std::vector<NodeInfo> ranges;\n        partition_range(0,\
+    \ r, ranges, 1, 0, inner_size());\n        V prod = VM::identity();\n        for\
+    \ (auto [nd, nl, nr] : ranges | std::views::reverse) {\n            if (!f(VM::operation(m_dat[nd],\
+    \ prod))) {\n                return minLeft(f, prod, nd, nl, nr);\n          \
+    \  }\n            else {\n                prod = VM::operation(prod, m_dat[nd]);\n\
+    \            }\n        }\n        return 0;\n    }\n\nprivate:\n\n    usize m_n{},\
+    \ m_sz{};\n\n    std::vector<V> m_dat;\n\n    std::vector<O> m_lazy;\n\n    inline\
+    \ usize inner_size() const noexcept {\n        return m_sz;\n    }\n    \n   \
+    \ void recalc(usize nd) {\n        // assert(nd < inner_size());\n        m_dat[nd]\
+    \ = VM::operation(m_dat[nd << 1 | 0], m_dat[nd << 1 | 1]);\n    }\n\n    void\
+    \ propagate(usize nd) {\n        // assert(nd < inner_size());\n        for (usize\
+    \ ch : {nd << 1 | 0, nd << 1 | 1}) {\n            m_dat[ch] = S::mapping(m_dat[ch],\
+    \ m_lazy[nd]);\n            m_lazy[ch] = OM::operation(m_lazy[ch], m_lazy[nd]);\n\
+    \        }\n        m_lazy[nd] = OM::identity();\n    }\n\n    V product(usize\
+    \ ql, usize qr, usize nd, usize nl, usize nr) {\n        if (qr <= nl or nr <=\
+    \ ql) return VM::identity();\n        if (ql <= nl and nr <= qr) return m_dat[nd];\n\
+    \        propagate(nd);\n        const usize m = (nl + nr) >> 1;\n        return\
+    \ VM::operation(\n                product(ql, qr, nd << 1 | 0, nl, m),\n     \
+    \           product(ql, qr, nd << 1 | 1, m, nr)\n                );\n    }\n\n\
+    \    V get(usize i, usize nd, usize nl, usize nr) {\n        if (nd >= inner_size())\
+    \ return m_dat[nd];\n        propagate(nd);\n        const usize m = (nl + nr)\
+    \ >> 1;\n        return i < m ? get(i, nd << 1 | 0, nl, m) : get(i, nd << 1 |\
+    \ 1, m, nr);\n    }\n\n    void operation(usize ql, usize qr, const O& o, usize\
+    \ nd, usize nl, usize nr) {\n        if (qr <= nl or nr <= ql) return;\n     \
+    \   if (ql <= nl and nr <= qr) {\n            m_dat[nd] = S::mapping(m_dat[nd],\
+    \ o);\n            m_lazy[nd] = OM::operation(m_lazy[nd], o);\n            return;\n\
+    \        }\n        propagate(nd);\n        const usize m = (nl + nr) >> 1;\n\
+    \        operation(ql, qr, o, nd << 1 | 0, nl, m);\n        operation(ql, qr,\
+    \ o, nd << 1 | 1, m, nr);\n        recalc(nd);\n    }\n\n    void operation(usize\
+    \ i, const O& o, usize nd, usize nl, usize nr) {\n        if (nl == i and i +\
+    \ 1 == nr) {\n            m_dat[nd] = S::mapping(m_dat[nd], o);\n            //\
+    \ \u8449\u9802\u70B9\u306A\u306E\u3067\u3001lazy\u3078\u306Eop\u306F\u4E0D\u8981\
+    \n            return;\n        }\n        propagate(nd); \n        const usize\
+    \ m = (nl + nr) >> 1;\n        i < m ? operation(i, o, nd << 1 | 0, nl, m) : operation(i,\
+    \ o, nd << 1 | 1, m, nr);\n        recalc(nd);\n    }\n\n    void assign(usize\
+    \ i, const V& v, usize nd, usize nl, usize nr) {\n        if (nl == i and i +\
+    \ 1 == nr) {\n            m_dat[nd] = v;\n            return;\n        }\n   \
+    \     propagate(nd); \n        const usize m = (nl + nr) >> 1;\n        i < m\
+    \ ? assign(i, v, nd << 1 | 0, nl, m) : assign(i, v, nd << 1 | 1, m, nr);\n   \
+    \     recalc(nd);\n    }\n\n    void partition_range(usize ql, usize qr, std::vector<NodeInfo>&\
+    \ res, usize nd, usize nl, usize nr) {\n        if (qr <= nl or nr <= ql) return;\n\
+    \        if (ql <= nl and nr <= qr) {\n            res.emplace_back(nd, nl, nr);\n\
+    \            return;\n        }\n        propagate(nd);\n        const usize m\
+    \ = (nl + nr) >> 1;\n        partition_range(ql, qr, res, nd << 1 | 0, nl, m);\n\
+    \        partition_range(ql, qr, res, nd << 1 | 1, m, nr);\n    }\n\n    template\
+    \ <class F>\n    requires std::predicate<F, V>\n    usize maxRight(F f, const\
+    \ V& prod, usize nd, usize nl, usize nr) {\n        if (nd >= inner_size()) return\
+    \ nl;\n        propagate(nd);\n        const usize m = (nl + nr) >> 1, lch = nd\
+    \ << 1 | 0, rch = nd << 1 | 1;\n        return f(VM::operation(prod, m_dat[lch]))\
+    \ ? \n            maxRight(f, VM::operation(prod, m_dat[lch]), rch, m, nr) : maxRight(f,\
+    \ prod, lch, nl, m);\n    }\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    usize minLeft(F f, const V& prod, usize nd, usize nl, usize nr) {\n\
+    \        if (nd >= inner_size()) return nr;\n        propagate(nd);\n        const\
+    \ usize m = (nl + nr) >> 1, lch = nd << 1 | 0, rch = nd << 1 | 1;\n        return\
+    \ f(VM::operation(m_dat[rch], prod)) ? \n            minLeft(f, VM::operation(m_dat[rch],\
+    \ prod), lch, nl, m) : minLeft(f, prod, rch, m, nr);\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 7 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\n\n#line 10 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\
+    \n#include <type_traits>\n#line 12 \"Src/Utility/AreaOfUnionOfRectangles.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nclass Rectangle {\npublic:\n\n   \
+    \ Rectangle() = default;\n     \n    Rectangle(T l, T d, T r, T u)\n        :\
+    \ l_{l}, d_{d}, r_{r}, u_{u} {\n        assert(l <= r);\n        assert(d <= u);\n\
+    \    }\n\n    Rectangle(const std::pair<T, T>& ld, const std::pair<T, T>& ru)\n\
+    \        : l_{ld.first}, d_{ld.second}, r_{ru.first}, u_{ru.second} {}\n\n   \
+    \ Rectangle(const std::pair<T, T>& ld, T w, T h)\n        : l_{ld.first}, d_{ld.second},\
+    \ r_{l_ + w}, u_{d_ + h} {}\n\n    inline T left() const noexcept {\n        return\
+    \ l_;\n    }\n\n    inline T right() const noexcept {\n        return r_;\n  \
+    \  }\n\n    inline T down() const noexcept {\n        return d_;\n    }\n\n  \
+    \  inline T up() const noexcept {\n        return u_;\n    }\n\nprivate:\n   \
+    \ // \u5DE6\u4E0B\u3001\u53F3\u4E0A\n    T l_{}, d_{}, r_{}, u_{};\n};\n\nnamespace\
+    \ internal {\n\nstruct AreaOfUnionOfRectanglesStructure {\n    using ValueMonoid\
+    \ = MinCountMonoid<i32, u64>;\n    using OperatorMonoid = AdditionMonoid<i32>;\n\
+    \    static ValueMonoid::Element mapping(const ValueMonoid::Element& V, const\
+    \ OperatorMonoid::Element& R) {\n        return ValueMonoid::Element{ V.first\
+    \ + R, V.second };\n    }\n    static ValueMonoid::Element generate(u64 v) {\n\
+    \        return ValueMonoid::Element{ 0, v };\n    }\n};\n\n} // namespace internal\n\
+    \ntemplate <class T, class InputIterator>\nu64 AreaOfUnionOfRectangles(InputIterator\
     \ first, InputIterator last) {\n    static_assert(std::is_same_v<std::remove_reference_t<decltype(*first)>,\
     \ Rectangle<T>>, \"*iterator 's type must be T\");\n    usize n{static_cast<usize>(std::distance(first,\
     \ last))};\n    if (n == 0u) return u64{};\n    std::vector<T> xs, ys;\n    xs.reserve(2u\
@@ -217,10 +256,13 @@ data:
   - Src/Algebra/Monoid/AdditionMonoid.hpp
   - Src/Algebra/Monoid/MinCountMonoid.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/Utility/AreaOfUnionOfRectangles.hpp
   requiredBy: []
-  timestamp: '2024-11-05 03:06:10+09:00'
+  timestamp: '2025-06-25 16:48:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/area_of_union_of_rectangles.test.cpp

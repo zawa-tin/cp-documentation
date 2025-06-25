@@ -17,9 +17,6 @@ data:
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -31,6 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc332/submissions/67039166
     - https://atcoder.jp/contests/abc332/tasks/abc332_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -49,17 +47,20 @@ data:
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc332/tasks/abc332_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
-    void solve() {\n    int N, M;\n    std::cin >> N >> M;\n    std::vector<Affine<mint>>\
-    \ init(N);\n    for (int i = 0 ; i < N ; i++) {\n        int A;\n        std::cin\
-    \ >> A;\n        init[i] = Affine{mint{}, mint{A}};\n    }\n    DualSegmentTree<AffineMonoid<mint>>\
+    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n/*\n * AtCoder Beginner Contest\
+    \ 332 F - Random Update Query\n * https://atcoder.jp/contests/abc332/submissions/67039166\n\
+    \ */\n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n#include\
+    \ \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\nvoid solve() {\n\
+    \    int N, M;\n    std::cin >> N >> M;\n    std::vector<Affine<mint>> init(N);\n\
+    \    for (int i = 0 ; i < N ; i++) {\n        int A;\n        std::cin >> A;\n\
+    \        init[i] = Affine{mint{}, mint{A}};\n    }\n    DualSegmentTree<AffineMonoid<mint>>\
     \ seg{init};\n    while (M--) {\n        int L, R, X;\n        std::cin >> L >>\
     \ R >> X;\n        L--;\n        mint inv = mint::raw(R - L).inv();\n        seg.operation(L,\
     \ R, Affine{mint::raw(R-L-1)*inv, mint::raw(X)*inv});\n    }\n    for (int i =\
     \ 0 ; i < N ; i++) std::cout << seg[i].b().val() << (i + 1 == N ? '\\n' : ' ');\n\
-    }\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    solve();\n#else\n    std::cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
+    }\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    solve();\n#else\n    std::cout <<\
+    \ \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -67,11 +68,10 @@ data:
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
-  - Src/Template/IOSetting.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc332_f.test.cpp
   requiredBy: []
-  timestamp: '2025-04-17 19:44:48+09:00'
+  timestamp: '2025-06-24 16:23:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc332_f.test.cpp

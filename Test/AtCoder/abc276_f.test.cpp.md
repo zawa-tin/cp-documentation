@@ -17,9 +17,6 @@ data:
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -31,7 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc276/submissions/64948085
+    - https://atcoder.jp/contests/abc276/submissions/67045295
     - https://atcoder.jp/contests/abc276/tasks/abc276_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.3/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -49,13 +46,13 @@ data:
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc276/tasks/abc276_f\"\n\n\
-    /*\n * AtCoder Beginner Contest 276 F - Double Chance\n * https://atcoder.jp/contests/abc276/submissions/64948085\n\
-    \ */\n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
-    \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
-    ../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <iostream>\n\nusing namespace\
-    \ zawa;\n#include \"atcoder/modint\"\nusing m32 = atcoder::modint998244353;\n\n\
-    int main() {\n#ifdef ATCODER\n    SetFastIO();\n    usize n; std::cin >> n;\n\n\
-    \    const usize sz{ 200200 };\n    FenwickTree<AdditiveGroup<m32>> ft1(sz), ft2(sz);\n\
+    /*\n * AtCoder Beginner Contest 276 F - Double Chance\n * https://atcoder.jp/contests/abc276/submissions/67045295\n\
+    \ */\n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n\n#include <iostream>\n\
+    \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing m32 = atcoder::modint998244353;\n\
+    \nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    usize n; std::cin >> n;\n\n    const\
+    \ usize sz{ 200200 };\n    FenwickTree<AdditiveGroup<m32>> ft1(sz), ft2(sz);\n\
     \n    m32 now{};\n    m32 ans{};\n    for (u32 k{1} ; k <= n ; k++) {\n      \
     \  int in;\n        std::cin >> in;\n        m32 a = m32::raw(in);\n        now\
     \ += (m32{2} * ft1.prefixProduct(a.val() + 1) + m32{1}) * a;\n        now += m32{2}\
@@ -65,7 +62,6 @@ data:
     n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
-  - Src/Template/IOSetting.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -74,7 +70,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc276_f.test.cpp
   requiredBy: []
-  timestamp: '2025-04-17 19:54:22+09:00'
+  timestamp: '2025-06-24 20:48:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc276_f.test.cpp

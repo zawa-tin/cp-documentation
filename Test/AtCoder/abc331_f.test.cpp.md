@@ -57,80 +57,83 @@ data:
     \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
     #include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\n\
-    class SegmentTree {\npublic:\n    using Value = typename Monoid::Element;\nprivate:\n\
-    \    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n    constexpr\
-    \ u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n    constexpr u32\
-    \ parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize n_;\n    std::vector<Value>\
-    \ dat_;\n\npublic:\n    SegmentTree() = default;\n    SegmentTree(u32 n) : n_{\
-    \ n }, dat_(n << 1, Monoid::identity()) {\n        assert(n_);\n    }\n    SegmentTree(const\
-    \ std::vector<Value>& dat) : n_{ dat.size() }, dat_(dat.size() << 1, Monoid::identity())\
-    \ {\n        assert(n_);\n        for (u32 i{} ; i < n_ ; i++) {\n           \
-    \ dat_[i + n_] = dat[i];\n        }\n        for (u32 i{static_cast<u32>(n_) -\
-    \ 1} ; i ; i--) {\n            dat_[i] = Monoid::operation(dat_[left(i)], dat_[right(i)]);\n\
-    \        }\n    }\n\n    Value get(u32 i) const {\n        assert(i < n_);\n \
-    \       return dat_[i + n_];\n    }\n\n    void operation(u32 i, const Value&\
-    \ value) {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = Monoid::operation(dat_[i],\
-    \ value);\n        while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
-    \ dat_[right(i)]);\n        }\n    }\n\n    void set(u32 i, const Value& value)\
-    \ {\n        assert(i < n_);\n        i += n_;\n        dat_[i] = value;\n   \
-    \     while (i = parent(i), i) {\n            dat_[i] = Monoid::operation(dat_[left(i)],\
-    \ dat_[right(i)]);\n        }\n    }\n\n    Value product(u32 l, u32 r) const\
-    \ {\n        assert(l <= r and r <= n_);\n        Value leftValue{ Monoid::identity()\
-    \ }, rightValue{ Monoid::identity() };\n        for (l += n_, r += n_ ; l < r\
-    \ ; l = parent(l), r = parent(r)) {\n            if (l & 1) {\n              \
-    \  leftValue = Monoid::operation(leftValue, dat_[l++]);\n            }\n     \
-    \       if (r & 1) {\n                rightValue = Monoid::operation(dat_[--r],\
-    \ rightValue);\n            }\n        }\n        return Monoid::operation(leftValue,\
-    \ rightValue);\n    }\n\n    template <class Function>\n    u32 maxRight(u32 l,\
-    \ const Function& f) {\n        assert(l < n_);\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(Value)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(f(Monoid::identity()));\n        u32 res{l}, width{1};\n  \
-    \      Value prod{ Monoid::identity() };\n        // \u73FE\u5728\u306E\u898B\u3066\
-    \u3044\u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\u6301\u3064\n        //\
-    \ \u5883\u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\u3080\u90E8\u5206\u6728\
-    \u306E\u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\u8FD4\u3059\u6642\u306F\
-    \u5FC5\u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\u6839\u306B\u306A\u308B\
-    \u304C\u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\u3067\u30AA\u30FC\u30D0\
-    \u30FC\u3057\u306A\u3044)\n        for (l += n_ ; res + width <= n_ ; l = parent(l),\
-    \ width <<= 1) if (l & 1) {\n            if (not f(Monoid::operation(prod, dat_[l])))\
-    \ break; \n            res += width;\n            prod = Monoid::operation(prod,\
-    \ dat_[l++]);\n        }\n        // \u6839\u304B\u3089\u4E0B\u3063\u3066\u3001\
-    \u5883\u754C\u3092\u767A\u898B\u3059\u308B\n        while (l = left(l), width\
-    \ >>= 1) {\n            if (res + width <= n_ and f(Monoid::operation(prod, dat_[l])))\
-    \ {\n                res += width;\n                prod = Monoid::operation(prod,\
-    \ dat_[l++]);\n            } \n        }\n        return res;\n    }\n\n    template\
-    \ <class Function>\n    u32 minLeft(u32 r, const Function& f) const {\n      \
-    \  assert(r <= n_);\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(Value)>>, \"minLeft's argument f must be function bool(T)\"\
-    );\n        assert(f(Monoid::identity()));\n        u32 res{r}, width{1};\n  \
-    \      Value prod{ Monoid::identity() };\n        for (r += n_ ; res >= width\
-    \ ; r = parent(r), width <<= 1) if (r & 1) {\n            if (not f(Monoid::operation(dat_[r\
-    \ - 1], prod))) break;\n            res -= width;\n            prod = Monoid::operation(prod,\
-    \ dat_[--r]);\n        }\n        while (r = left(r), width >>= 1) {\n       \
-    \     if (res >= width and f(Monoid::operation(dat_[r - 1], prod))) {\n      \
-    \          res -= width;\n                prod = Monoid::operation(dat_[--r],\
-    \ prod);\n            }\n        }\n        return res;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (u32 i{1}\
-    \ ; i < 2 * st.n_ ; i++) {\n            os << st.dat_[i] << (i + 1 == 2 * st.n_\
-    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\n#line 2 \"Src/Number/Mersenne61ModInt.hpp\"\
-    \n\n#line 4 \"Src/Number/Mersenne61ModInt.hpp\"\n\nnamespace zawa {\n\n// @reference:\
-    \ https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\nclass Mersenne61ModInt\
-    \ {\npublic:\n    using Value = u64;\nprivate:\n    static constexpr Value MOD{(1ull\
-    \ << 61) - 1}; // == MASK61\n    static constexpr Value MASK30{(1ull << 30) -\
-    \ 1};\n    static constexpr Value MASK31{(1ull << 31) - 1};\n    Value v_{};\n\
-    public:\n    constexpr Mersenne61ModInt() {}\n\n    static constexpr Value Mod()\
-    \ noexcept {\n        return MOD;\n    }\n    static constexpr Value Modulo(const\
-    \ Value& v) noexcept {\n        Value res{(v >> 61) + (v & MOD)};\n        res\
-    \ = (res >= MOD ? res - MOD : res);\n        return res;\n    }\n    static constexpr\
-    \ Value UnsafeMul(const Value& a, const Value& b) noexcept {\n        Value fa{a\
-    \ >> 31}, fb{b >> 31};\n        Value ba{a & MASK31}, bb{b & MASK31};\n      \
-    \  Value mid{fa * bb + fb * ba};\n        return Value{2}*fa*fb + (mid >> 30)\
-    \ + ((mid & MASK30) << 31) + ba*bb;\n    }\n    static constexpr Value Mul(const\
-    \ Value& a, const Value& b) noexcept {\n        return Modulo(UnsafeMul(a, b));\n\
-    \    }\n};\n\n};\n#line 5 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\n#include\
-    \ <random>\n#line 8 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\nnamespace\
-    \ zawa {\n\nstruct RollingHashMonoidData {\n    using Value = Mersenne61ModInt::Value;\n\
+    class SegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V = typename\
+    \ VM::Element;\n\n    using OM = Monoid;\n\n    using O = typename OM::Element;\n\
+    \n    SegmentTree() = default;\n\n    explicit SegmentTree(usize n) : m_n{ n },\
+    \ m_dat(n << 1, VM::identity()) {}\n\n    explicit SegmentTree(const std::vector<V>&\
+    \ dat) : m_n{ dat.size() }, m_dat(dat.size() << 1, VM::identity()) {\n       \
+    \ for (usize i{} ; i < m_n ; i++) {\n            m_dat[i + m_n] = dat[i];\n  \
+    \      }\n        for (usize i{m_n} ; i-- ; i) {\n            m_dat[i] = VM::operation(m_dat[left(i)],\
+    \ m_dat[right(i)]);\n        }\n    }\n\n    [[nodiscard]] inline usize size()\
+    \ const noexcept {\n        return m_n;\n    }\n\n    [[nodiscard]] V get(usize\
+    \ i) const {\n        assert(i < size());\n        return m_dat[i + m_n];\n  \
+    \  }\n\n    [[nodiscard]] V operator[](usize i) const {\n        assert(i < size());\n\
+    \        return m_dat[i + m_n];\n    }\n\n    void operation(usize i, const O&\
+    \ value) {\n        assert(i < size());\n        i += size();\n        m_dat[i]\
+    \ = OM::operation(m_dat[i], value);\n        while (i = parent(i), i) {\n    \
+    \        m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n        }\n\
+    \    }\n\n    void assign(usize i, const V& value) {\n        assert(i < size());\n\
+    \        i += size();\n        m_dat[i] = value;\n        while (i = parent(i),\
+    \ i) {\n            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n\
+    \        }\n    }\n\n    [[nodiscard]] V product(u32 l, u32 r) const {\n     \
+    \   assert(l <= r and r <= size());\n        V L{ VM::identity() }, R{ VM::identity()\
+    \ };\n        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r))\
+    \ {\n            if (l & 1) {\n                L = VM::operation(L, m_dat[l++]);\n\
+    \            }\n            if (r & 1) {\n                R = VM::operation(m_dat[--r],\
+    \ R);\n            }\n        }\n        return VM::operation(L, R);\n    }\n\n\
+    \    template <class Function>\n    [[nodiscard]] usize maxRight(usize l, const\
+    \ Function& f) {\n        assert(l < size());\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
+    );\n        assert(f(VM::identity()));\n        usize res{l}, width{1};\n    \
+    \    V prod{ VM::identity() };\n        // \u73FE\u5728\u306E\u898B\u3066\u3044\
+    \u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\u6301\u3064\n        // \u5883\
+    \u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\u3080\u90E8\u5206\u6728\u306E\
+    \u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\u8FD4\u3059\u6642\u306F\u5FC5\
+    \u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\u6839\u306B\u306A\u308B\u304C\
+    \u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\u3067\u30AA\u30FC\u30D0\u30FC\
+    \u3057\u306A\u3044)\n        for (l += size() ; res + width <= size() ; l = parent(l),\
+    \ width <<= 1) if (l & 1) {\n            if (not f(VM::operation(prod, m_dat[l])))\
+    \ break; \n            res += width;\n            prod = VM::operation(prod, m_dat[l++]);\n\
+    \        }\n        // \u6839\u304B\u3089\u4E0B\u3063\u3066\u3001\u5883\u754C\u3092\
+    \u767A\u898B\u3059\u308B\n        while (l = left(l), width >>= 1) {\n       \
+    \     if (res + width <= size() and f(VM::operation(prod, m_dat[l]))) {\n    \
+    \            res += width;\n                prod = VM::operation(prod, m_dat[l++]);\n\
+    \            } \n        }\n        return res;\n    }\n\n    template <class\
+    \ Function>\n    [[nodiscard]] usize minLeft(usize r, const Function& f) const\
+    \ {\n        assert(r <= size());\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
+    \        assert(f(VM::identity()));\n        usize res{r}, width{1};\n       \
+    \ V prod{ VM::identity() };\n        for (r += size() ; res >= width ; r = parent(r),\
+    \ width <<= 1) if (r & 1) {\n            if (not f(VM::operation(m_dat[r - 1],\
+    \ prod))) break;\n            res -= width;\n            prod = VM::operation(prod,\
+    \ m_dat[--r]);\n        }\n        while (r = left(r), width >>= 1) {\n      \
+    \      if (res >= width and f(VM::operation(m_dat[r - 1], prod))) {\n        \
+    \        res -= width;\n                prod = VM::operation(m_dat[--r], prod);\n\
+    \            }\n        }\n        return res;\n    }\n\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (usize i{1}\
+    \ ; i < 2 * st.size() ; i++) {\n            os << st.m_dat[i] << (i + 1 == 2 *\
+    \ st.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\
+    \n    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n\n   \
+    \ constexpr u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n\n  \
+    \  constexpr u32 parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize\
+    \ m_n;\n\n    std::vector<V> m_dat;\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\
+    \n\n#line 2 \"Src/Number/Mersenne61ModInt.hpp\"\n\n#line 4 \"Src/Number/Mersenne61ModInt.hpp\"\
+    \n\nnamespace zawa {\n\n// @reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\
+    class Mersenne61ModInt {\npublic:\n    using Value = u64;\nprivate:\n    static\
+    \ constexpr Value MOD{(1ull << 61) - 1}; // == MASK61\n    static constexpr Value\
+    \ MASK30{(1ull << 30) - 1};\n    static constexpr Value MASK31{(1ull << 31) -\
+    \ 1};\n    Value v_{};\npublic:\n    constexpr Mersenne61ModInt() {}\n\n    static\
+    \ constexpr Value Mod() noexcept {\n        return MOD;\n    }\n    static constexpr\
+    \ Value Modulo(const Value& v) noexcept {\n        Value res{(v >> 61) + (v &\
+    \ MOD)};\n        res = (res >= MOD ? res - MOD : res);\n        return res;\n\
+    \    }\n    static constexpr Value UnsafeMul(const Value& a, const Value& b) noexcept\
+    \ {\n        Value fa{a >> 31}, fb{b >> 31};\n        Value ba{a & MASK31}, bb{b\
+    \ & MASK31};\n        Value mid{fa * bb + fb * ba};\n        return Value{2}*fa*fb\
+    \ + (mid >> 30) + ((mid & MASK30) << 31) + ba*bb;\n    }\n    static constexpr\
+    \ Value Mul(const Value& a, const Value& b) noexcept {\n        return Modulo(UnsafeMul(a,\
+    \ b));\n    }\n};\n\n};\n#line 5 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\
+    \n#include <random>\n#line 8 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\n\n\
+    namespace zawa {\n\nstruct RollingHashMonoidData {\n    using Value = Mersenne61ModInt::Value;\n\
     \    using Size = usize;\n    static Value base;\n    Value hash{}, pow{1};\n\
     \    usize len{};\n\n    constexpr RollingHashMonoidData() = default;\n    constexpr\
     \ RollingHashMonoidData(Value h, Value p, usize l) : hash{h}, pow{p}, len{l} {}\n\
@@ -197,7 +200,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-16 14:43:48+09:00'
+  timestamp: '2025-06-24 15:30:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc331_f.test.cpp
