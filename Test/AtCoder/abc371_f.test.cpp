@@ -1,5 +1,5 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc371/tasks/abc371_f"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
 
