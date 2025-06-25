@@ -1,216 +1,231 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "./SegmentTreeConcept.hpp"
 
-#include <vector>
-#include <iterator>
+#include <algorithm>
+#include <bit>
 #include <cassert>
-#include <ostream>
-
-#include <iostream>
+#include <ranges>
+#include <tuple>
+#include <vector>
 
 namespace zawa {
 
-template <class Structure>
+template <concepts::MonoidWithAction S>
 class LazySegmentTree {
 public:
-    using VM = typename Structure::ValueMonoid;
-    using OM = typename Structure::OperatorMonoid;
-    using Value = typename VM::Element;
-    using Operator = typename OM::Element;
+
+    using VM = S::ValueMonoid;
+
+    using V = typename VM::Element;
+
+    using OM = S::OperatorMonoid;
+
+    using O = typename OM::Element;
+
+    LazySegmentTree() = default;
+
+    explicit LazySegmentTree(usize n) 
+        : m_n{n}, m_sz{1u << (std::bit_width(n))}, m_dat(m_sz << 1, VM::identity()), m_lazy(m_sz << 1, OM::identity()) {}
+
+    explicit LazySegmentTree(const std::vector<V>& a)
+        : m_n{a.size()}, m_sz{1u << (std::bit_width(a.size()))}, m_dat(m_sz << 1, VM::identity()), m_lazy(m_sz << 1, OM::identity()) {
+        std::ranges::copy(a, m_dat.begin() + inner_size());
+        for (usize i = inner_size() ; --i ; ) recalc(i);
+    }
+
+    [[nodiscard]] inline usize size() const noexcept {
+        return m_n;
+    }
+
+    [[nodiscard]] V operator[](usize i) {
+        assert(i < size());
+        return get(i, 1, 0, inner_size());
+    }
+
+    [[nodiscard]] V get(usize i) {
+        return (*this)[i];
+    }
+
+    [[nodiscard]] V product(usize l, usize r) {
+        assert(l <= r and r <= size());
+        return product(l, r, 1, 0, inner_size());
+    }
+
+    void operation(usize l, usize r, const O& o) {
+        assert(l <= r and r <= size());
+        return operation(l, r, o, 1, 0, inner_size());
+    }
+
+    void assign(usize i, const V& v) {
+        assert(i < size());
+        assign(i, v, 1, 0, inner_size());
+    }
+
+    void operation(usize i, const O& o) {
+        assert(i < size());
+        operation(i, o, 1, 0, inner_size());
+    }
 
 private:
-    static constexpr u32 parent(u32 v) noexcept {
-        return v >> 1;
-    }
-    static constexpr u32 left(u32 v) noexcept {
-        return v << 1;
-    }
-    static constexpr u32 right(u32 v) noexcept {
-        return v << 1 | 1;
-    }
-    static constexpr u32 depth(u32 v) noexcept {
-        return 31u - __builtin_clz(v);
-    }
-    static constexpr u32 trailingZeros(u32 v) noexcept {
-        return __builtin_ctz(v);
-    }
 
-    struct Node {
-        Value v_{ VM::identity() };
-        Operator o_{ OM::identity() };
-        Node() = default;
-        Node(const Value& v, const Operator& o) : v_{v}, o_{o} {}
-    };
-
-    usize n_{};
-    std::vector<Node> dat_;
-
-    static Value action(const Node& node) {
-        return Structure::mapping(node.v_, node.o_);
-    }
-
-    // ノードvの子に作用を伝播させる
-    void propagate(u32 v) {
-        dat_[left(v)].o_ = OM::operation(dat_[left(v)].o_, dat_[v].o_);
-        dat_[right(v)].o_ = OM::operation(dat_[right(v)].o_, dat_[v].o_);
-        dat_[v].o_ = OM::identity();
-    }
-
-    // ノードvの祖先のノードの作用素を全て適用する
-    void propagateAncestor(u32 v) {
-        u32 dep{depth(v)};
-        u32 zeros{trailingZeros(v)};
-        for (u32 d{dep} ; d != zeros ; d--) {
-            propagate(v >> d);
-        }
-    }
-
-    // ノードvの値を再計算する
-    void recalc(u32 v) {
-        dat_[v].v_ = VM::operation(action(dat_[left(v)]), action(dat_[right(v)]));
-    }
-
-    // 要素vを持つノードの祖先を再計算する
-    void recalcAncestor(u32 v) {
-        v >>= trailingZeros(v);
-        for (v = parent(v) ; v ; v = parent(v)) {
-            recalc(v);
-        }
-    }
-
-    template <class InputIterator>
-    void datInit(InputIterator first) {
-        auto it{first};
-        for (u32 i{} ; i < n_ ; i++) {
-            dat_[i + n_].v_ = *it;
-            it++;
-        }
-        for (u32 i{static_cast<u32>(n_)} ; --i ; ) {
-            dat_[i].v_ = VM::operation(dat_[left(i)].v_, dat_[right(i)].v_);
-        }
-    }
+    using NodeInfo = std::tuple<usize, usize, usize>;
 
 public:
+
+    template <class F>
+    requires std::predicate<F, V>
+    usize maxRight(usize l, F f) {
+        assert(l <= size());
+        if (!f(VM::identity())) return l;
+        if (l == size()) return size();
+        std::vector<NodeInfo> ranges;
+        partition_range(l, size(), ranges, 1, 0, inner_size());
+        V prod = VM::identity();
+        for (auto [nd, nl, nr] : ranges) {
+            if (!f(VM::operation(prod, m_dat[nd]))) {
+                return maxRight(f, prod, nd, nl, nr);
+            }
+            else {
+                prod = VM::operation(prod, m_dat[nd]);
+            }
+        }
+        return size();
+    }
+
+    template <class F>
+    requires std::predicate<F, V>
+    usize minLeft(usize r, F f) {
+        assert(r <= size());
+        if (!f(VM::identity())) return r;
+        if (!r) return 0;
+        std::vector<NodeInfo> ranges;
+        partition_range(0, r, ranges, 1, 0, inner_size());
+        V prod = VM::identity();
+        for (auto [nd, nl, nr] : ranges | std::views::reverse) {
+            if (!f(VM::operation(m_dat[nd], prod))) {
+                return minLeft(f, prod, nd, nl, nr);
+            }
+            else {
+                prod = VM::operation(prod, m_dat[nd]);
+            }
+        }
+        return 0;
+    }
+
+private:
+
+    usize m_n{}, m_sz{};
+
+    std::vector<V> m_dat;
+
+    std::vector<O> m_lazy;
+
+    inline usize inner_size() const noexcept {
+        return m_sz;
+    }
     
-    LazySegmentTree() = default;
-    LazySegmentTree(usize n) : n_{n}, dat_((n << 1)) {
-        assert(n_);
-    }
-    LazySegmentTree(const std::vector<Value>& a) : n_{a.size()}, dat_((a.size() << 1)) {
-        assert(!a.empty());
-        datInit(a.begin());
-    }
-    template <class InputIterator>
-    LazySegmentTree(InputIterator first, InputIterator last) 
-        : n_{static_cast<usize>(std::distance(first, last))}, dat_(std::distance(first, last) << 1) {
-        assert(n_);
-        datInit(first);
+    void recalc(usize nd) {
+        // assert(nd < inner_size());
+        m_dat[nd] = VM::operation(m_dat[nd << 1 | 0], m_dat[nd << 1 | 1]);
     }
 
-    usize size() const noexcept {
-        return n_;
-    }
-
-    void operation(u32 i, const Operator& o) {
-        assert(i < n_);
-        i += size();
-        propagateAncestor(i);
-        dat_[i].o_ = OM::operation(dat_[i].o_, o);
-        recalcAncestor(i);
-    }
-
-    void operation(u32 L, u32 R, const Operator& o) {
-        assert(L <= R and R <= n_);
-        L += size();
-        R += size();
-        propagateAncestor(L);
-        propagateAncestor(R);
-        for (u32 l = L, r = R ; l < r ; l = parent(l), r = parent(r)) {
-            if (l & 1) {
-                dat_[l].o_ = OM::operation(dat_[l].o_, o);
-                l++;
-            }
-            if (r & 1) {
-                r--;
-                dat_[r].o_ = OM::operation(dat_[r].o_, o);
-            }
+    void propagate(usize nd) {
+        // assert(nd < inner_size());
+        for (usize ch : {nd << 1 | 0, nd << 1 | 1}) {
+            m_dat[ch] = S::mapping(m_dat[ch], m_lazy[nd]);
+            m_lazy[ch] = OM::operation(m_lazy[ch], m_lazy[nd]);
         }
-        recalcAncestor(L);
-        recalcAncestor(R);
+        m_lazy[nd] = OM::identity();
     }
 
-    void set(u32 i, const Value& v) {
-        assert(i < n_);
-        i += size();
-        for (u32 d{depth(i)} ; d ; d--) {
-            propagate(i >> d);
-        }
-        dat_[i] = Node{ v, OM::identity() };
-        for (i = parent(i) ; i ; i = parent(i)) {
-            recalc(i);
-        }
+    V product(usize ql, usize qr, usize nd, usize nl, usize nr) {
+        if (qr <= nl or nr <= ql) return VM::identity();
+        if (ql <= nl and nr <= qr) return m_dat[nd];
+        propagate(nd);
+        const usize m = (nl + nr) >> 1;
+        return VM::operation(
+                product(ql, qr, nd << 1 | 0, nl, m),
+                product(ql, qr, nd << 1 | 1, m, nr)
+                );
     }
 
-    Value operator[](u32 i) {
-        assert(i < n_);
-        i += size();
-        for (u32 d{depth(i)} ; d ; d--) {
-            propagate(i >> d);
-        }
-        return action(dat_[i]);
+    V get(usize i, usize nd, usize nl, usize nr) {
+        if (nd >= inner_size()) return m_dat[nd];
+        propagate(nd);
+        const usize m = (nl + nr) >> 1;
+        return i < m ? get(i, nd << 1 | 0, nl, m) : get(i, nd << 1 | 1, m, nr);
     }
 
-    Value product(u32 L, u32 R) {
-        assert(L <= R and R <= n_);
-        L += size();
-        R += size();
-        propagateAncestor(L);
-        propagateAncestor(R);
-        recalcAncestor(L);
-        recalcAncestor(R);
-        Value l{VM::identity()}, r{VM::identity()};
-        for ( ; L < R ; L = parent(L), R = parent(R)) {
-            if (L & 1) {
-                l = VM::operation(l, action(dat_[L]));
-                L++;
-            }
-            if (R & 1) {
-                R--;
-                r = VM::operation(action(dat_[R]), r);
-            }
+    void operation(usize ql, usize qr, const O& o, usize nd, usize nl, usize nr) {
+        if (qr <= nl or nr <= ql) return;
+        if (ql <= nl and nr <= qr) {
+            m_dat[nd] = S::mapping(m_dat[nd], o);
+            m_lazy[nd] = OM::operation(m_lazy[nd], o);
+            return;
         }
-        return VM::operation(l, r);
+        propagate(nd);
+        const usize m = (nl + nr) >> 1;
+        operation(ql, qr, o, nd << 1 | 0, nl, m);
+        operation(ql, qr, o, nd << 1 | 1, m, nr);
+        recalc(nd);
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const LazySegmentTree& seg) {
-        usize size{seg.dat_.size()};
-        os << "Value :\n";
-        for (u32 i{1} ; i < size ; i++) {
-            os << seg.dat_[i].v_ << (i + 1 == size ? "\n" : " ");
+    void operation(usize i, const O& o, usize nd, usize nl, usize nr) {
+        if (nl == i and i + 1 == nr) {
+            m_dat[nd] = S::mapping(m_dat[nd], o);
+            // 葉頂点なので、lazyへのopは不要
+            return;
         }
-        os << "Operator :\n";
-        for (u32 i{1} ; i < size ; i++) {
-            os << seg.dat_[i].o_ << (i + 1 == size ? "\n" : " ");
-        }
-        os << "Action :\n";
-        for (u32 i{1} ; i < size ; i++) {
-            os << action(seg.dat_[i]) << (i + 1 == size ? "\n" : " ");
-        }
-        return os;
+        propagate(nd); 
+        const usize m = (nl + nr) >> 1;
+        i < m ? operation(i, o, nd << 1 | 0, nl, m) : operation(i, o, nd << 1 | 1, m, nr);
+        recalc(nd);
     }
 
-/*
-    template <class F>
-    u32 maxRight(u32 l, const F& f) {
+    void assign(usize i, const V& v, usize nd, usize nl, usize nr) {
+        if (nl == i and i + 1 == nr) {
+            m_dat[nd] = v;
+            return;
+        }
+        propagate(nd); 
+        const usize m = (nl + nr) >> 1;
+        i < m ? assign(i, v, nd << 1 | 0, nl, m) : assign(i, v, nd << 1 | 1, m, nr);
+        recalc(nd);
+    }
 
+    void partition_range(usize ql, usize qr, std::vector<NodeInfo>& res, usize nd, usize nl, usize nr) {
+        if (qr <= nl or nr <= ql) return;
+        if (ql <= nl and nr <= qr) {
+            res.emplace_back(nd, nl, nr);
+            return;
+        }
+        propagate(nd);
+        const usize m = (nl + nr) >> 1;
+        partition_range(ql, qr, res, nd << 1 | 0, nl, m);
+        partition_range(ql, qr, res, nd << 1 | 1, m, nr);
     }
 
     template <class F>
-    u32 minLeft(u32 r, const F& f) {
-
+    requires std::predicate<F, V>
+    usize maxRight(F f, const V& prod, usize nd, usize nl, usize nr) {
+        if (nd >= inner_size()) return nl;
+        propagate(nd);
+        const usize m = (nl + nr) >> 1, lch = nd << 1 | 0, rch = nd << 1 | 1;
+        return f(VM::operation(prod, m_dat[lch])) ? 
+            maxRight(f, VM::operation(prod, m_dat[lch]), rch, m, nr) : maxRight(f, prod, lch, nl, m);
     }
-*/
+
+    template <class F>
+    requires std::predicate<F, V>
+    usize minLeft(F f, const V& prod, usize nd, usize nl, usize nr) {
+        if (nd >= inner_size()) return nr;
+        propagate(nd);
+        const usize m = (nl + nr) >> 1, lch = nd << 1 | 0, rch = nd << 1 | 1;
+        return f(VM::operation(m_dat[rch], prod)) ? 
+            minLeft(f, VM::operation(m_dat[rch], prod), lch, nl, m) : minLeft(f, prod, rch, m, nr);
+    }
 };
 
 } // namespace zawa

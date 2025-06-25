@@ -1,12 +1,12 @@
+// #define PROBLEM "https://codeforces.com/contest/1872/problem/E"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 /*
  * CF895 (Div.3) - E Data Structures Fan
- * https://codeforces.com/contest/1872/submission/231885284
+ * https://codeforces.com/contest/1872/submission/325973113
  */
 
 #include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 
 #include <iostream>
 
@@ -93,7 +93,9 @@ void testCase() {
 
 void solve() {
     using namespace zawa;
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int t; std::cin >> t;
     for (int _{} ; _ < t ; _++) {
         testCase();

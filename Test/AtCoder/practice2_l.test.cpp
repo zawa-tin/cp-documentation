@@ -1,12 +1,12 @@
+// #define PROBLEM "https://atcoder.jp/contests/practice2/tasks/practice2_l"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 /*
  * AtCoder Library Practice Contest - L Lazy Segment Tree
- * https://atcoder.jp/contests/practice2/submissions/47372035
+ * https://atcoder.jp/contests/practice2/submissions/67059099
  */
 
 #include "../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp"
-#include "../../Src/Template/IOSetting.hpp"
 
 struct vDat {
     long long zero{}, one{}, inv{};
@@ -55,7 +55,9 @@ struct Structure {
 
 void solve() {
     using namespace zawa;
-    SetFastIO();
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    std::ios::sync_with_stdio(false);
     int n, q; std::cin >> n >> q;
     std::vector<vDat> a(n);
     for (auto& x : a) {
