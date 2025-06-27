@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 256 Ex - I like Query Problem
- * https://atcoder.jp/contests/abc256/submissions/66900851
+ * https://atcoder.jp/contests/abc256/submissions/67095836
  */
 
 #include "../../Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp"
@@ -59,9 +59,6 @@ struct ACT {
     using ValueMonoid = VM;
     using OperatorMonoid = OM;
     static VM::Element mapping(VM::Element v, OM::Element o) {
-        // if (o.first != -1) {
-        //     std::cout << "mapping " << v << "," << o << " : ";
-        // }
         if (o.first == 0) {
             v.val /= o.second;
             v.sum = (long long)v.val * v.cnt;
@@ -70,9 +67,6 @@ struct ACT {
             v.val = o.second;
             v.sum = (long long)v.val * v.cnt;
         }
-        // if (o.first != -1) {
-        //     std::cout << std::endl;
-        // }
         return v;
     }
 };
@@ -87,7 +81,6 @@ bool tag_condition(const VD& v, const OD&) {
 }
 
 void solve() {
-    // std::cout << std::boolalpha;
     int N, Q;
     std::cin >> N >> Q; 
     std::vector<VD> init(N);
@@ -104,26 +97,21 @@ void solve() {
             int L, R, x;
             std::cin >> L >> R >> x;
             L--;
-            // std::cout << "division query " << L << ' ' << R << ' ' << x << std::endl;
             seg.operation(L, R, {0,x}, division_break_condition, tag_condition);
         }
         else if (T == 2) {
             int L, R, x;
             std::cin >> L >> R >> x;
             L--;
-            // std::cout << "set query " << L << ' ' << R << ' ' << x << std::endl;
             seg.operation(L, R, {1,x}, set_break_condition, tag_condition);
         }
         else if (T == 3) {
             int L, R;
             std::cin >> L >> R;
             L--;
-            // std::cout << "prod query " << L << ' ' << R << std::endl;
             std::cout << seg.product(L, R).sum << '\n';
         }
         else assert(false);
-        // for (int i = 0 ; i < N ; i++) std::cout << seg[i];
-        // std::cout << std::endl;
     }
 }
 
