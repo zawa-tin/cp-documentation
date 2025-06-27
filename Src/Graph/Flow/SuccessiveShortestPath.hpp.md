@@ -248,11 +248,11 @@ data:
   timestamp: '2024-01-04 02:51:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc247_g.test.cpp
   - Test/AOJ/GRL_6_B.test.cpp
   - Test/AOJ/2828.test.cpp
-  - Test/Manual/abc004_d.test.cpp
+  - Test/AtCoder/abc247_g.test.cpp
   - Test/Manual/practice2_e.test.cpp
+  - Test/Manual/abc004_d.test.cpp
 documentation_of: Src/Graph/Flow/SuccessiveShortestPath.hpp
 layout: document
 title: "SuccessiveShortestPath (\u6700\u5C0F\u8CBB\u7528\u6D41\u3001\u6700\u77ED\u8DEF\

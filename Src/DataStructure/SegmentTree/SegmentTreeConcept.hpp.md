@@ -12,9 +12,15 @@ data:
     path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
     title: Lazy Segment Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+    title: Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/AreaOfUnionOfRectangles.hpp
     title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc256_h.test.cpp
+    title: Test/AtCoder/abc256_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
@@ -72,17 +78,19 @@ data:
   path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   requiredBy:
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   timestamp: '2025-06-25 16:48:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF895-E.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
-  - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
-  - Test/AtCoder/practice2_l.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/practice2_l.test.cpp
+  - Test/CF/CF895-E.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
 layout: document
 redirect_from:

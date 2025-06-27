@@ -120,8 +120,8 @@ data:
   timestamp: '2025-06-10 18:57:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/biconnected_components.test.cpp
   - Test/AOJ/3022.test.cpp
+  - Test/LC/biconnected_components.test.cpp
 documentation_of: Src/Graph/Components/BlockCutTree.hpp
 layout: document
 title: "Block-Cut tree (+ \u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3\

@@ -135,8 +135,8 @@ data:
   timestamp: '2025-04-17 21:24:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/AOJ/3548.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
 documentation_of: Src/DataStructure/SWAG/FoldableQueue.hpp
 layout: document
 title: Foldable Queue

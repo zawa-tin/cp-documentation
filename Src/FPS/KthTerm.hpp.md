@@ -89,8 +89,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/yukicoder/3044.test.cpp
-  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/AOJ/3079.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/Manual/tdpc_fibonacci.test.cpp
 documentation_of: Src/FPS/KthTerm.hpp
 layout: document

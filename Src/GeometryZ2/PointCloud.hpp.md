@@ -150,22 +150,22 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/PointCloud.hpp
   requiredBy:
-  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - Src/GeometryZ2/ConvexHull.hpp
+  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Baekjoon/23249.test.cpp
-  - Test/LC/naive_count_points_in_triangle.test.cpp
-  - Test/LC/sort_by_argument.test.cpp
-  - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/count_points_in_triangle.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
-  - Test/AtCoder/abc225_e.test.cpp
-  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
-  - Test/AOJ/1298.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
+  - Test/AOJ/1298.test.cpp
+  - Test/Baekjoon/23249.test.cpp
+  - Test/LC/count_points_in_triangle.test.cpp
+  - Test/LC/naive_count_points_in_triangle.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
+  - Test/LC/sort_by_argument.test.cpp
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - Test/AtCoder/abc225_e.test.cpp
+  - Test/AtCoder/abc139_f.test.cpp
   - Test/UC/3-35-L.test.cpp
 documentation_of: Src/GeometryZ2/PointCloud.hpp
 layout: document

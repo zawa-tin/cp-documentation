@@ -27,6 +27,9 @@ data:
       path: Src/Algebra/Monoid/ChminMonoid.hpp
       title: Src/Algebra/Monoid/ChminMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/ClampAddMonoid.hpp
+      title: Src/Algebra/Monoid/ClampAddMonoid.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MaxMonoid.hpp
       title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
@@ -890,6 +893,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc193_f.test.cpp
       title: ABC193-F Zebraness
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc196_e.test.cpp
+      title: Test/AtCoder/abc196_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc205_f.test.cpp
       title: ABC205-F Grid and Tokens

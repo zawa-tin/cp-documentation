@@ -236,80 +236,80 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Semigroup/SemigroupConcept.hpp
   requiredBy:
-  - Src/DataStructure/SparseTable/DualSparseTable.hpp
-  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
-  - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
-  - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
-  - Src/DataStructure/SegmentTree/SegmentTree.hpp
-  - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
-  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
-  - Src/DataStructure/Other/PriorityProductSet.hpp
-  - Src/DataStructure/SWAG/FoldableQueue.hpp
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/SWAG/FoldableQueue.hpp
+  - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
+  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
+  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
-  - Src/Utility/AreaOfUnionOfRectangles.hpp
-  - Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
+  - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Utility/AreaOfUnionOfRectangles.hpp
   timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/yukicoder/649.test.cpp
-  - Test/CF/EC171-F.test.cpp
-  - Test/CF/EC2-E.test.cpp
-  - Test/CF/CF895-E.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/area_of_union_of_rectangles.test.cpp
-  - Test/LC/point_set_range_composite_large_array.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
-  - Test/LC/deque_operate_all_composite.test.cpp
-  - Test/LC/range_affine_range_sum.test.cpp
-  - Test/LC/point_set_range_composite.test.cpp
-  - Test/LC/range_set_range_composite.test.cpp
-  - Test/LC/range_affine_point_get.test.cpp
-  - Test/LC/queue_operate_all_composite.test.cpp
-  - Test/LC/vertex_add_path_sum.test.cpp
-  - Test/LC/staticrmq/DisjointSparseTable.test.cpp
-  - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/AtCoder/abc403_g.test.cpp
-  - Test/AtCoder/abc322_f.test.cpp
-  - Test/AtCoder/abc237_g.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
-  - Test/AtCoder/arc196_a.test.cpp
-  - Test/AtCoder/abc389_f.test.cpp
-  - Test/AtCoder/arc088_e.test.cpp
-  - Test/AtCoder/abc331_f.test.cpp
-  - Test/AtCoder/abc292_h.test.cpp
-  - Test/AtCoder/abl_e.test.cpp
-  - Test/AtCoder/abc256_h.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/AtCoder/agc005_b.test.cpp
-  - Test/AtCoder/abc332_f.test.cpp
-  - Test/AtCoder/tdpc_target.test.cpp
-  - Test/AtCoder/abc371_f.test.cpp
-  - Test/AtCoder/abc340_e.test.cpp
-  - Test/AtCoder/practice2_l.test.cpp
-  - Test/AtCoder/abc346_g.test.cpp
-  - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
-  - Test/AOJ/DSL_2_F.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/3548.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/2559.test.cpp
-  - Test/AOJ/3548.test.cpp
-  - Test/AOJ/DSL_2_D.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
+  - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/staticrmq/DisjointSparseTable.test.cpp
+  - Test/LC/point_set_range_composite_large_array.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/LC/range_affine_range_sum.test.cpp
+  - Test/LC/deque_operate_all_composite.test.cpp
+  - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/LC/range_set_range_composite.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+  - Test/AtCoder/abc331_f.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/abc256_h.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abl_e.test.cpp
+  - Test/AtCoder/abc371_f.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/agc005_b.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc403_g.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/arc196_a.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/abc237_g.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
+  - Test/AtCoder/practice2_l.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
   - Test/Manual/aoj3226.test.cpp
+  - Test/CF/EC2-E.test.cpp
+  - Test/CF/EC171-F.test.cpp
+  - Test/CF/CF895-E.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp
 layout: document
 redirect_from:
