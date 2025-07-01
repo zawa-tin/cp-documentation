@@ -131,28 +131,29 @@ data:
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
     \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
     \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
-    \   /* getter setter */\n    const Point& center() const {\n        return center_;\n\
-    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
-    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
-    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
-    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
-    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
-    \ Circle& c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(),\
-    \ c1.center())};\n        Real down{Square(Abs(c0.radius() - c1.radius()))};\n\
-    \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
-    \ 1;\n        Real up{Square(c0.radius() + c1.radius())};\n        if (Smaller(dist,\
-    \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nstd::pair<Point, Point> CrossPoint(const Circle&\
-    \ lhs, const Circle& rhs) {\n    assert(lhs.center() != rhs.center());\n    assert(Intersect(lhs,\
-    \ rhs));\n    assert(!Zero(lhs.radius()) or !Zero(rhs.radius()));\n    if (Zero(lhs.radius()))\
-    \ return {lhs.center(), lhs.center()};\n    if (Zero(rhs.radius())) return {rhs.center(),\
-    \ rhs.center()};\n    Real d{Distance(lhs.center(), rhs.center())};\n    Real\
-    \ cosine{(Square(lhs.radius()) + Square(d) - Square(rhs.radius()))\n        /\
-    \ (static_cast<Real>(2)*lhs.radius()*d)};\n    Real rc{lhs.radius()*cosine};\n\
+    \   Circle(const Point& p0, const Point& p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0,\
+    \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
+    \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
+    \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
+    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
+    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
+    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
+    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
+    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
+    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
+    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
+    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
+    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 5 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n\n#line 7 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nstd::pair<Point, Point> CrossPoint(const\
+    \ Circle& lhs, const Circle& rhs) {\n    assert(lhs.center() != rhs.center());\n\
+    \    assert(Intersect(lhs, rhs));\n    assert(!Zero(lhs.radius()) or !Zero(rhs.radius()));\n\
+    \    if (Zero(lhs.radius())) return {lhs.center(), lhs.center()};\n    if (Zero(rhs.radius()))\
+    \ return {rhs.center(), rhs.center()};\n    Real d{Distance(lhs.center(), rhs.center())};\n\
+    \    Real cosine{(Square(lhs.radius()) + Square(d) - Square(rhs.radius()))\n \
+    \       / (static_cast<Real>(2)*lhs.radius()*d)};\n    Real rc{lhs.radius()*cosine};\n\
     \    Real rs{Sqrt(Square(lhs.radius()) - Square(rc))};\n    Vector lr{Vector{rhs.center()\
     \ - lhs.center()}.normalized()};\n    Vector h{lhs.center() + lr*rc};\n    std::pair<Point,\
     \ Point> res;\n    res.first = h + lr.rotatedByArc(90) * rs;\n    res.second =\
@@ -181,7 +182,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   requiredBy: []
-  timestamp: '2023-11-20 11:32:11+09:00'
+  timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_7_E.test.cpp

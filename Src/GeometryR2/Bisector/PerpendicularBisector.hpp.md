@@ -29,13 +29,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CircumscribedCircle.hpp
     title: Src/GeometryR2/CircumscribedCircle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -204,11 +213,14 @@ data:
   path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   requiredBy:
   - Src/GeometryR2/CircumscribedCircle.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
 layout: document
 redirect_from:

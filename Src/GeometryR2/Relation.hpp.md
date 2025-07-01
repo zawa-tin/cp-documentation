@@ -27,6 +27,9 @@ data:
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - icon: ':heavy_check_mark:'
@@ -151,6 +154,9 @@ data:
     path: Test/AOJ/CGL_3_C.test.cpp
     title: Test/AOJ/CGL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -162,6 +168,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_G.test.cpp
     title: Test/AOJ/CGL_7_G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -306,6 +315,7 @@ data:
   - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   - Src/GeometryR2/Orthgonal/LineAndLine.hpp
@@ -329,6 +339,7 @@ data:
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
   - Test/AOJ/2334.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1053.test.cpp
@@ -343,6 +354,7 @@ data:
   - Test/AOJ/CGL_7_F.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/Relation.hpp
 layout: document
 redirect_from:

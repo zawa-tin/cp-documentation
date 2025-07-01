@@ -5,12 +5,6 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Circle.hpp
-    title: Src/GeometryR2/Circle.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/PointAndPoint.hpp
-    title: Src/GeometryR2/Distance/PointAndPoint.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -19,40 +13,44 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
-    links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A
-  bundledCode: "#line 1 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\n\n#line\
-    \ 2 \"Src/GeometryR2/Circle.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n\
-    #include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
-    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
-    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
-    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n\
-    #include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
-    constexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
-    \n} // namespace internal\n\nReal& Eps() {\n    return internal::EPS;\n}\n\ni32\
-    \ Sign(Real value) {\n    if (value < -Eps()) return internal::negative;\n   \
-    \ if (value > Eps()) return internal::positive;\n    return internal::zero;\n\
-    }\n\nbool Zero(Real value) {\n    return Sign(value) == internal::zero;\n}\n\n\
-    bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n}\n\
-    \nbool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nbool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nbool Smaller(Real\
-    \ a, Real b) {\n    return Negative(a - b);\n}\n\nbool Bigger(Real a, Real b)\
-    \ {\n    return Positive(a - b);\n}\n\nReal Square(Real value) {\n    return (Zero(value)\
-    \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
-    \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
-    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\
+    links: []
+  bundledCode: "#line 2 \"Src/GeometryR2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n\
+    #include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing Real\
+    \ = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\nconstexpr i32 negative{-1};\n\
+    constexpr i32 zero{};\nconstexpr i32 positive{1};\n\n} // namespace internal\n\
+    \nReal& Eps() {\n    return internal::EPS;\n}\n\ni32 Sign(Real value) {\n    if\
+    \ (value < -Eps()) return internal::negative;\n    if (value > Eps()) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nbool Zero(Real value) {\n    return Sign(value)\
+    \ == internal::zero;\n}\n\nbool Positive(Real value) {\n    return Sign(value)\
+    \ == internal::positive;\n}\n\nbool Negative(Real value) {\n    return Sign(value)\
+    \ == internal::negative;\n}\n\nbool Equal(Real a, Real b) {\n    return Zero(a\
+    \ - b);\n}\n\nbool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\
+    \nbool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nReal Square(Real\
+    \ value) {\n    return (Zero(value) ? value : value * value);\n}\n\nReal Sqrt(Real\
+    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
+    }\n\nReal Abs(Real value) {\n    return (Negative(value) ? -value : value);\n\
+    }\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\
     \n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
     constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
@@ -117,59 +115,51 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
-    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Circle.hpp\"\n\n\
-    #line 9 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n \
-    \   Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
-    \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
-    \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
-    \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
-    \   Circle(const Point& p0, const Point& p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0,\
-    \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
-    \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
-    \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
-    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
-    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
-    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
-    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
-    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
-    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
-    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
-    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
-    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 4 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\n\n#line 6 \"Test/AOJ/CGL_7_A/GeometryR2.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n  \
-    \  std::cin >> a.center() >> a.radius();\n    std::cin >> b.center() >> b.radius();\n\
-    \    std::cout << NumberCommonTangent(a, b) << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/all/CGL_7_A\"\
-    \n\n#include \"../../../Src/GeometryR2/Circle.hpp\"\n\n#include <iostream>\n\n\
-    int main() {\n    using namespace zawa::geometryR2;\n    Circle a, b;\n    std::cin\
-    \ >> a.center() >> a.radius();\n    std::cin >> b.center() >> b.radius();\n  \
-    \  std::cout << NumberCommonTangent(a, b) << '\\n';\n}\n"
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/PointCloud.hpp\"\
+    \n\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing PointCloud\
+    \ = std::vector<Point>;\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: '#pragma once
+
+
+    #include "./Point.hpp"
+
+
+    #include <vector>
+
+
+    namespace zawa {
+
+
+    namespace geometryR2 {
+
+
+    using PointCloud = std::vector<Point>;
+
+
+    } // namespace geometryR2
+
+
+    } // namespace zawa
+
+    '
   dependsOn:
-  - Src/GeometryR2/Circle.hpp
-  - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Real.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Angle.hpp
-  - Src/GeometryR2/Distance/PointAndPoint.hpp
-  isVerificationFile: true
-  path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
-  requiredBy: []
+  isVerificationFile: false
+  path: Src/GeometryR2/PointCloud.hpp
+  requiredBy:
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   timestamp: '2025-07-01 18:28:26+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AOJ/CGL_5_B.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
+documentation_of: Src/GeometryR2/PointCloud.hpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_7_A/GeometryR2.test.cpp
-- /verify/Test/AOJ/CGL_7_A/GeometryR2.test.cpp.html
-title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+- /library/Src/GeometryR2/PointCloud.hpp
+- /library/Src/GeometryR2/PointCloud.hpp.html
+title: Src/GeometryR2/PointCloud.hpp
 ---

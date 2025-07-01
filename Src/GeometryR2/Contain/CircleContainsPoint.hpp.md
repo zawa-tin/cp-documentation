@@ -24,6 +24,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Tangent/TangentToCircle.hpp
     title: Src/GeometryR2/Tangent/TangentToCircle.hpp
   _extendedVerifiedWith:
@@ -31,8 +34,14 @@ data:
     path: Test/AOJ/1132.test.cpp
     title: AOJ1132 Circle and Points
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_F.test.cpp
     title: Test/AOJ/CGL_7_F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
@@ -142,26 +151,27 @@ data:
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
     \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
     \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
-    \   /* getter setter */\n    const Point& center() const {\n        return center_;\n\
-    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
-    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
-    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
-    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
-    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
-    \ Circle& c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(),\
-    \ c1.center())};\n        Real down{Square(Abs(c0.radius() - c1.radius()))};\n\
-    \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
-    \ 1;\n        Real up{Square(c0.radius() + c1.radius())};\n        if (Smaller(dist,\
-    \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
-    \ Circle& circle, const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n\
-    \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
-    \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
-    \   else {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n"
+    \   Circle(const Point& p0, const Point& p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0,\
+    \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
+    \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
+    \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
+    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
+    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
+    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
+    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
+    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
+    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
+    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
+    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
+    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const Circle& circle,\
+    \ const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n    if (Smaller(dist,\
+    \ circle.radius())) {\n        return INSIDE;\n    }\n    else if (Equal(dist,\
+    \ circle.radius())) {\n        return ONLINE;\n    }\n    else {\n        return\
+    \ OUTSIDE;\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./State.hpp\"\n#include \"../Real.hpp\"\n#include\
     \ \"../Circle.hpp\"\n#include \"../Point.hpp\"\n#include \"../Distance/PointAndPoint.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
@@ -181,13 +191,16 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Contain/CircleContainsPoint.hpp
   requiredBy:
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Tangent/TangentToCircle.hpp
-  timestamp: '2023-11-20 11:32:11+09:00'
+  timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_F.test.cpp
   - Test/AtCoder/abc157_f.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/Contain/CircleContainsPoint.hpp
 layout: document
 redirect_from:

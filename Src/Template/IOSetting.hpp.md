@@ -158,9 +158,6 @@ data:
     path: Test/AtCoder/abc141_e.test.cpp
     title: Test/AtCoder/abc141_e.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc157_f.test.cpp
-    title: ABC157-F Yakiniku Optimization Problem
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc165_f.test.cpp
     title: Test/AtCoder/abc165_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -507,7 +504,6 @@ data:
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
-  - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/agc002_d.test.cpp

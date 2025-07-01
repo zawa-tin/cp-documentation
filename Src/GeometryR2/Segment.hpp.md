@@ -27,6 +27,9 @@ data:
     path: Src/GeometryR2/CircumscribedCircle.hpp
     title: Src/GeometryR2/CircumscribedCircle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -76,8 +79,14 @@ data:
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -235,6 +244,7 @@ data:
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
@@ -247,11 +257,13 @@ data:
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/2334.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/1157.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/Segment.hpp
 layout: document
 redirect_from:

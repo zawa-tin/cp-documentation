@@ -168,21 +168,23 @@ data:
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
     \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
     \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
-    \   /* getter setter */\n    const Point& center() const {\n        return center_;\n\
-    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
-    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
-    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
-    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
-    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
-    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
-    \ Circle& c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(),\
-    \ c1.center())};\n        Real down{Square(Abs(c0.radius() - c1.radius()))};\n\
-    \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
-    \ 1;\n        Real up{Square(c0.radius() + c1.radius())};\n        if (Smaller(dist,\
-    \ up)) return 2;\n        if (Equal(dist, up)) return 3;\n        return 4;\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp\"\
-    \n\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n    std::vector<Line>\
+    \   Circle(const Point& p0, const Point& p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0,\
+    \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
+    \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
+    \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
+    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
+    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
+    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
+    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
+    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
+    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
+    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
+    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
+    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
+    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 8 \"Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp\"\n\n#include\
+    \ <vector>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n    std::vector<Line>\
     \ CommonTangentBetweenCircles(const Circle& c0, const Circle& c1) {\n        std::vector<Line>\
     \ res;\n        if (c0.center() == c1.center()) {\n            return res; \n\
     \        }\n        res.reserve(4);\n        Real g{Distance(c0.center(), c1.center())};\n\
@@ -230,7 +232,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
   requiredBy: []
-  timestamp: '2024-06-21 19:04:59+09:00'
+  timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_7_G.test.cpp

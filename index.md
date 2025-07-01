@@ -207,6 +207,9 @@ data:
       path: Src/GeometryR2/Point.hpp
       title: Src/GeometryR2/Point.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/PointCloud.hpp
+      title: Src/GeometryR2/PointCloud.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Polygon.hpp
       title: Src/GeometryR2/Polygon.hpp
     - icon: ':heavy_check_mark:'
@@ -240,6 +243,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
       title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+      title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/State.hpp
       title: Src/GeometryR2/Contain/State.hpp
@@ -758,6 +764,9 @@ data:
       path: Test/AOJ/CGL_5_A.test.cpp
       title: Test/AOJ/CGL_5_A.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_5_B.test.cpp
+      title: Test/AOJ/CGL_5_B.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_C.test.cpp
       title: Test/AOJ/CGL_7_C.test.cpp
     - icon: ':heavy_check_mark:'
@@ -878,6 +887,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc141_e.test.cpp
       title: Test/AtCoder/abc141_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc151_f.test.cpp
+      title: Test/AtCoder/abc151_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc157_f.test.cpp
       title: ABC157-F Yakiniku Optimization Problem

@@ -29,9 +29,6 @@ data:
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/Template/IOSetting.hpp
-    title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   - icon: ':heavy_check_mark:'
@@ -44,28 +41,28 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.000001'
-    PROBLEM: https://atcoder.jp/contests/abc157/tasks/abc157_f
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc157/submissions/67218966
     - https://atcoder.jp/contests/abc157/tasks/abc157_f
-  bundledCode: "#line 1 \"Test/AtCoder/abc157_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc157/tasks/abc157_f\"\
-    \n#define ERROR 0.000001\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2\
-    \ \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\n\
-    namespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
-    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
-    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Utility/BinarySearch.hpp\"\n\n#line 4 \"Src/Utility/BinarySearch.hpp\"\
-    \n\n#include <cmath>\n#include <functional>\n#include <type_traits>\n#include\
-    \ <utility>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <class T>\n\
-    T MidPoint(T a, T b) {\n    if (a > b) std::swap(a, b);\n    return a + ((b -\
-    \ a) >> 1);\n}\n\ntemplate <class T>\nT Abs(T a, T b) {\n    return (a >= b ?\
-    \ a - b : b - a);\n}\n\n} // namespace zawa::internal\n\ntemplate <class T, class\
-    \ Function>\nT BinarySearch(T ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>,\
-    \ \"T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc157_f.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc157/tasks/abc157_f\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define ERROR 0.000001\n\n/*\n * AtCoder Beginner Contest 157 F - Yakiniku\
+    \ Optimization Problem\n * https://atcoder.jp/contests/abc157/submissions/67218966\n\
+    \ */\n\n#line 2 \"Src/Utility/BinarySearch.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 4 \"Src/Utility/BinarySearch.hpp\"\n\n#include <cmath>\n\
+    #include <functional>\n#include <type_traits>\n#include <utility>\n\nnamespace\
+    \ zawa {\n\nnamespace internal {\n\ntemplate <class T>\nT MidPoint(T a, T b) {\n\
+    \    if (a > b) std::swap(a, b);\n    return a + ((b - a) >> 1);\n}\n\ntemplate\
+    \ <class T>\nT Abs(T a, T b) {\n    return (a >= b ? a - b : b - a);\n}\n\n} //\
+    \ namespace zawa::internal\n\ntemplate <class T, class Function>\nT BinarySearch(T\
+    \ ok, T ng, const Function& f) {\n    static_assert(std::is_integral_v<T>, \"\
+    T must be integral type\");\n    static_assert(std::is_convertible_v<Function,\
     \ std::function<bool(T)>>, \"f must be function bool(T)\");\n    while (internal::Abs(ok,\
     \ ng) > 1) {\n        T mid{ internal::MidPoint(ok, ng) };\n        (f(mid) ?\
     \ ok : ng) = mid;\n    }\n    return ok;\n}\n\ntemplate <class T, class Function>\n\
@@ -97,57 +94,57 @@ data:
     \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
     \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
     }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Point {\nprivate:\n    Real x_{}, y_{};\npublic:\n    /* constructor\
-    \ */\n    Point() = default;\n    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n\
-    \    /* getter, setter */\n    Real x() const {\n        return x_;\n    }\n \
-    \   Real& x() {\n        return x_;\n    }\n    Real y() const {\n        return\
-    \ y_;\n    }\n    Real& y() {\n        return y_;\n    }\n\n    /* operator */\n\
-    \    Point& operator+=(const Point& rhs) {\n        x_ += rhs.x();\n        y_\
-    \ += rhs.y();\n        return *this;\n    }\n    friend Point operator+(const\
-    \ Point& lhs, const Point& rhs) {\n        return Point{lhs} += rhs;\n    }\n\
-    \    Point operator+() const {\n        return *this;\n    }\n    Point& operator-=(const\
-    \ Point& rhs) {\n        x_ -= rhs.x();\n        y_ -= rhs.y();\n        return\
-    \ *this;\n    }\n    friend Point operator-(const Point& lhs, const Point& rhs)\
-    \ {\n        return Point{lhs} -= rhs;\n    }\n    Point operator-() const {\n\
-    \        return Point{} - *this;\n    }\n    Point& operator*=(Real k) {\n   \
-    \     x_ *= k;\n        y_ *= k;\n        return *this;\n    }\n    friend Point\
-    \ operator*(Real k, const Point& p) {\n        return Point{p} *= k;\n    }\n\
-    \    friend Point operator*(const Point& p, Real k) {\n        return Point{p}\
-    \ *= k;\n    }\n    Point& operator/=(Real k) {\n        assert(!Zero(k));\n \
-    \       x_ /= k;\n        y_ /= k;\n        return *this;\n    }\n    friend Point\
-    \ operator/(Real k, const Point& p) {\n        return Point{p} /= k;\n    }\n\
-    \    friend Point operator/(const Point& p, Real k) {\n        return Point{p}\
-    \ /= k;\n    }\n    friend bool operator==(const Point& lhs, const Point& rhs)\
-    \ {\n        return Equal(lhs.x(), rhs.x()) and Equal(lhs.y(), rhs.y());\n   \
-    \ }\n    friend bool operator!=(const Point& lhs, const Point& rhs) {\n      \
-    \  return !Equal(lhs.x(), rhs.x()) or !Equal(lhs.y(), rhs.y());\n    }\n    friend\
-    \ bool operator<(const Point& lhs, const Point& rhs) {\n        return Smaller(lhs.x(),\
-    \ rhs.x()) or \n            (Equal(lhs.x(), rhs.x()) and Smaller(lhs.y(), rhs.y()));\n\
-    \    }\n    friend bool operator<=(const Point& lhs, const Point& rhs) {\n   \
-    \     return Smaller(lhs.x(), rhs.x()) or \n            (Equal(lhs.x(), rhs.x())\
-    \ and (Smaller(lhs.y(), rhs.y()) or Equal(lhs.y(), rhs.y())));\n    }\n    friend\
-    \ bool operator>(const Point& lhs, const Point& rhs) {\n        return Bigger(lhs.x(),\
-    \ rhs.x()) or\n            (Equal(lhs.x(), rhs.x()) and Bigger(lhs.y(), rhs.y()));\n\
-    \    }\n    friend bool operator>=(const Point& lhs, const Point& rhs) {\n   \
-    \     return Bigger(lhs.x(), rhs.x()) or\n            (Equal(lhs.x(), rhs.x())\
-    \ and (Bigger(lhs.y(), rhs.y()) or Equal(lhs.y(), rhs.y())));\n    }\n    friend\
-    \ std::istream& operator>>(std::istream& is, Point& p) {\n        is >> p.x_ >>\
-    \ p.y_;\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Point& p) {\n        os << '(' << p.x_ << ',' << p.y_ << ')';\n  \
-    \      return os;\n    }\n    \n    /* member function */\n    Real normSquare()\
-    \ const {\n        return Square(x_) + Square(y_);\n    }\n    Real norm() const\
-    \ {\n        return Sqrt(normSquare());\n    }\n    void normalize() {\n     \
-    \   assert((*this) != Point{});\n        (*this) /= norm(); \n    }\n    Point\
-    \ normalized() const {\n        Point res{*this};\n        res.normalize();\n\
-    \        return res;\n    }\n    Point rotated(Real radian) const {\n        return\
-    \ Point{\n            x_ * cosl(radian) - y_ * sinl(radian),\n            x_ *\
-    \ sinl(radian) + y_ * cosl(radian)\n        };\n    }\n    void rotate(Real radian)\
-    \ {\n        *this = rotated(radian); \n    }\n    Point rotatedByArc(Real arc)\
-    \ const {\n        return rotated(ArcToRadian(arc));\n    }\n    void rotateByArc(Real\
-    \ arc) {\n        *this = rotatedByArc(arc);\n    }\n    Real argument() const\
-    \ {\n        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);\n\
-    \    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
+    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
+    \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
+    \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
+    \ Real x() const {\n        return x_;\n    }\n    Real& x() {\n        return\
+    \ x_;\n    }\n    Real y() const {\n        return y_;\n    }\n    Real& y() {\n\
+    \        return y_;\n    }\n\n    /* operator */\n    Point& operator+=(const\
+    \ Point& rhs) {\n        x_ += rhs.x();\n        y_ += rhs.y();\n        return\
+    \ *this;\n    }\n    friend Point operator+(const Point& lhs, const Point& rhs)\
+    \ {\n        return Point{lhs} += rhs;\n    }\n    Point operator+() const {\n\
+    \        return *this;\n    }\n    Point& operator-=(const Point& rhs) {\n   \
+    \     x_ -= rhs.x();\n        y_ -= rhs.y();\n        return *this;\n    }\n \
+    \   friend Point operator-(const Point& lhs, const Point& rhs) {\n        return\
+    \ Point{lhs} -= rhs;\n    }\n    Point operator-() const {\n        return Point{}\
+    \ - *this;\n    }\n    Point& operator*=(Real k) {\n        x_ *= k;\n       \
+    \ y_ *= k;\n        return *this;\n    }\n    friend Point operator*(Real k, const\
+    \ Point& p) {\n        return Point{p} *= k;\n    }\n    friend Point operator*(const\
+    \ Point& p, Real k) {\n        return Point{p} *= k;\n    }\n    Point& operator/=(Real\
+    \ k) {\n        assert(!Zero(k));\n        x_ /= k;\n        y_ /= k;\n      \
+    \  return *this;\n    }\n    friend Point operator/(Real k, const Point& p) {\n\
+    \        return Point{p} /= k;\n    }\n    friend Point operator/(const Point&\
+    \ p, Real k) {\n        return Point{p} /= k;\n    }\n    friend bool operator==(const\
+    \ Point& lhs, const Point& rhs) {\n        return Equal(lhs.x(), rhs.x()) and\
+    \ Equal(lhs.y(), rhs.y());\n    }\n    friend bool operator!=(const Point& lhs,\
+    \ const Point& rhs) {\n        return !Equal(lhs.x(), rhs.x()) or !Equal(lhs.y(),\
+    \ rhs.y());\n    }\n    friend bool operator<(const Point& lhs, const Point& rhs)\
+    \ {\n        return Smaller(lhs.x(), rhs.x()) or \n            (Equal(lhs.x(),\
+    \ rhs.x()) and Smaller(lhs.y(), rhs.y()));\n    }\n    friend bool operator<=(const\
+    \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.x(), rhs.x()) or\
+    \ \n            (Equal(lhs.x(), rhs.x()) and (Smaller(lhs.y(), rhs.y()) or Equal(lhs.y(),\
+    \ rhs.y())));\n    }\n    friend bool operator>(const Point& lhs, const Point&\
+    \ rhs) {\n        return Bigger(lhs.x(), rhs.x()) or\n            (Equal(lhs.x(),\
+    \ rhs.x()) and Bigger(lhs.y(), rhs.y()));\n    }\n    friend bool operator>=(const\
+    \ Point& lhs, const Point& rhs) {\n        return Bigger(lhs.x(), rhs.x()) or\n\
+    \            (Equal(lhs.x(), rhs.x()) and (Bigger(lhs.y(), rhs.y()) or Equal(lhs.y(),\
+    \ rhs.y())));\n    }\n    friend std::istream& operator>>(std::istream& is, Point&\
+    \ p) {\n        is >> p.x_ >> p.y_;\n        return is;\n    }\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const Point& p) {\n        os << '(' << p.x_ <<\
+    \ ',' << p.y_ << ')';\n        return os;\n    }\n    \n    /* member function\
+    \ */\n    Real normSquare() const {\n        return Square(x_) + Square(y_);\n\
+    \    }\n    Real norm() const {\n        return Sqrt(normSquare());\n    }\n \
+    \   void normalize() {\n        assert((*this) != Point{});\n        (*this) /=\
+    \ norm(); \n    }\n    Point normalized() const {\n        Point res{*this};\n\
+    \        res.normalize();\n        return res;\n    }\n    Point rotated(Real\
+    \ radian) const {\n        return Point{\n            x_ * cosl(radian) - y_ *\
+    \ sinl(radian),\n            x_ * sinl(radian) + y_ * cosl(radian)\n        };\n\
+    \    }\n    void rotate(Real radian) {\n        *this = rotated(radian); \n  \
+    \  }\n    Point rotatedByArc(Real arc) const {\n        return rotated(ArcToRadian(arc));\n\
+    \    }\n    void rotateByArc(Real arc) {\n        *this = rotatedByArc(arc);\n\
+    \    }\n    Real argument() const {\n        return (Negative(y_) ? TAU : static_cast<Real>(0))\
+    \ + atan2l(y_, x_);\n    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
     \    }\n\n    /* friend function */\n    friend Real Dot(const Point& lhs, const\
     \ Point& rhs) {\n        return lhs.x() * rhs.x() + lhs.y() * rhs.y();\n    }\n\
     \    friend Real Cross(const Point& lhs, const Point& rhs) {\n        return lhs.x()\
@@ -166,15 +163,16 @@ data:
     \    /* constructor */\n    Circle() = default;\n    Circle(const Point& center,\
     \ Real radius) : center_{center}, radius_{radius} {\n        assert(!Negative(radius));\n\
     \    }\n    Circle(Real x, Real y, Real r) : center_{x, y}, radius_{r} {\n   \
-    \     assert(!Negative(r));\n    }\n\n    /* getter setter */\n    const Point&\
-    \ center() const {\n        return center_;\n    }\n    Point& center() {\n  \
-    \      return center_;\n    }\n    Real radius() const {\n        return radius_;\n\
-    \    }\n    Real& radius() {\n        return radius_;\n    }\n\n    /* operator\
-    \ */\n    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n   \
-    \     return lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n\
-    \    }\n    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n \
-    \       return lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n\
-    \    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
+    \     assert(!Negative(r));\n    }\n\n    Circle(const Point& p0, const Point&\
+    \ p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0, p1) / 2} {}\n\n    /*\
+    \ getter setter */\n    const Point& center() const {\n        return center_;\n\
+    \    }\n    Point& center() {\n        return center_;\n    }\n    Real radius()\
+    \ const {\n        return radius_;\n    }\n    Real& radius() {\n        return\
+    \ radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const Circle&\
+    \ lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center() and Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n    friend bool operator!=(const Circle& lhs, const Circle&\
+    \ rhs) {\n        return lhs.center() != rhs.center() or !Equal(lhs.radius(),\
+    \ rhs.radius());\n    }\n\n    /* friend function */\n    friend u32 NumberCommonTangent(const\
     \ Circle& c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(),\
     \ c1.center())};\n        Real down{Square(Abs(c0.radius() - c1.radius()))};\n\
     \        if (Smaller(dist, down)) return 0;\n        if (Equal(dist, down)) return\
@@ -207,32 +205,10 @@ data:
     \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
     \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
     \   else {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n#line 11 \"Test/AtCoder/abc157_f.test.cpp\"\n\nusing namespace\
-    \ zawa;\nusing namespace geometryR2;\n\n#include <algorithm>\n#line 17 \"Test/AtCoder/abc157_f.test.cpp\"\
-    \n#include <vector>\n\nint main() {\n    SetFastIO();\n    SetPrecision(8);\n\
-    \    int n, k; std::cin >> n >> k;\n    std::vector<Point> p(n);\n    std::vector<Real>\
-    \ c(n);\n    for (int i{} ; i < n ; i++) {\n        std::cin >> p[i] >> c[i];\n\
-    \    }\n\n    if (k == 1) {\n        std::cout << 0 << '\\n';\n        return\
-    \ 0;\n    }\n\n    auto f{[&](Real t) -> bool {\n        std::vector<Circle> circles(n);\n\
-    \        for (int i{} ; i < n ; i++) {\n            circles[i] = Circle{p[i],\
-    \ t / c[i]};\n        }\n        std::vector<Point> cand{p};\n        for (int\
-    \ i{} ; i < n ; i++) for (int j{i + 1} ; j < n ; j++) {\n            if (!Intersect(circles[i],\
-    \ circles[j])) continue;\n            auto v{CrossPoint(circles[i], circles[j])};\n\
-    \            cand.push_back(v.first);\n            cand.push_back(v.second);\n\
-    \        }\n        int max{};\n        for (const auto& v : cand) {\n       \
-    \     int cnt{};\n            for (const auto& circle : circles) {\n         \
-    \       cnt += CircleContainsPoint(circle, v) != OUTSIDE;\n            }\n   \
-    \         max = std::max(max, cnt);\n        }\n        return max >= k;\n   \
-    \ }};\n\n    Real ans{BinarySearch(Real{4000 * 100}, Real{}, f, 80)};\n    std::cout\
-    \ << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc157/tasks/abc157_f\"\n#define\
-    \ ERROR 0.000001\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"\
-    ../../Src/Utility/BinarySearch.hpp\"\n#include \"../../Src/GeometryR2/Point.hpp\"\
-    \n#include \"../../Src/GeometryR2/Circle.hpp\"\n#include \"../../Src/GeometryR2/Intersect/CircleAndCircle.hpp\"\
-    \n#include \"../../Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n#include \"\
-    ../../Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\nusing namespace zawa;\n\
-    using namespace geometryR2;\n\n#include <algorithm>\n#include <iostream>\n#include\
-    \ <vector>\n\nint main() {\n    SetFastIO();\n    SetPrecision(8);\n    int n,\
+    } // namespace zawa\n#line 16 \"Test/AtCoder/abc157_f.test.cpp\"\n\nusing namespace\
+    \ zawa;\nusing namespace geometryR2;\n\n#include <algorithm>\n#line 22 \"Test/AtCoder/abc157_f.test.cpp\"\
+    \n#include <iomanip>\n#include <vector>\n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    int n,\
     \ k; std::cin >> n >> k;\n    std::vector<Point> p(n);\n    std::vector<Real>\
     \ c(n);\n    for (int i{} ; i < n ; i++) {\n        std::cin >> p[i] >> c[i];\n\
     \    }\n\n    if (k == 1) {\n        std::cout << 0 << '\\n';\n        return\
@@ -247,11 +223,38 @@ data:
     \       cnt += CircleContainsPoint(circle, v) != OUTSIDE;\n            }\n   \
     \         max = std::max(max, cnt);\n        }\n        return max >= k;\n   \
     \ }};\n\n    Real ans{BinarySearch(Real{4000 * 100}, Real{}, f, 80)};\n    std::cout\
-    \ << ans << '\\n';\n}\n"
+    \ << std::fixed << std::setprecision(8) << ans << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc157/tasks/abc157_f\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n// #define ERROR 0.000001\n\n/*\n * AtCoder Beginner Contest 157 F - Yakiniku\
+    \ Optimization Problem\n * https://atcoder.jp/contests/abc157/submissions/67218966\n\
+    \ */\n\n#include \"../../Src/Utility/BinarySearch.hpp\"\n#include \"../../Src/GeometryR2/Point.hpp\"\
+    \n#include \"../../Src/GeometryR2/Circle.hpp\"\n#include \"../../Src/GeometryR2/Intersect/CircleAndCircle.hpp\"\
+    \n#include \"../../Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n#include \"\
+    ../../Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\nusing namespace zawa;\n\
+    using namespace geometryR2;\n\n#include <algorithm>\n#include <iostream>\n#include\
+    \ <iomanip>\n#include <vector>\n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    int n,\
+    \ k; std::cin >> n >> k;\n    std::vector<Point> p(n);\n    std::vector<Real>\
+    \ c(n);\n    for (int i{} ; i < n ; i++) {\n        std::cin >> p[i] >> c[i];\n\
+    \    }\n\n    if (k == 1) {\n        std::cout << 0 << '\\n';\n        return\
+    \ 0;\n    }\n\n    auto f{[&](Real t) -> bool {\n        std::vector<Circle> circles(n);\n\
+    \        for (int i{} ; i < n ; i++) {\n            circles[i] = Circle{p[i],\
+    \ t / c[i]};\n        }\n        std::vector<Point> cand{p};\n        for (int\
+    \ i{} ; i < n ; i++) for (int j{i + 1} ; j < n ; j++) {\n            if (!Intersect(circles[i],\
+    \ circles[j])) continue;\n            auto v{CrossPoint(circles[i], circles[j])};\n\
+    \            cand.push_back(v.first);\n            cand.push_back(v.second);\n\
+    \        }\n        int max{};\n        for (const auto& v : cand) {\n       \
+    \     int cnt{};\n            for (const auto& circle : circles) {\n         \
+    \       cnt += CircleContainsPoint(circle, v) != OUTSIDE;\n            }\n   \
+    \         max = std::max(max, cnt);\n        }\n        return max >= k;\n   \
+    \ }};\n\n    Real ans{BinarySearch(Real{4000 * 100}, Real{}, f, 80)};\n    std::cout\
+    \ << std::fixed << std::setprecision(8) << ans << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
-  - Src/Template/IOSetting.hpp
-  - Src/Template/TypeAlias.hpp
   - Src/Utility/BinarySearch.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Angle.hpp
@@ -264,7 +267,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc157_f.test.cpp
   requiredBy: []
-  timestamp: '2023-11-20 11:32:11+09:00'
+  timestamp: '2025-07-01 18:35:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc157_f.test.cpp

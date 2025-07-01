@@ -124,6 +124,9 @@ data:
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+    title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
@@ -183,6 +186,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/PointCloud.hpp
+    title: Src/GeometryR2/PointCloud.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Polygon.hpp
     title: Src/GeometryR2/Polygon.hpp
@@ -600,6 +606,9 @@ data:
     path: Test/AOJ/CGL_5_A.test.cpp
     title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_B.test.cpp
+    title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -689,6 +698,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc141_e.test.cpp
     title: Test/AtCoder/abc141_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc151_f.test.cpp
+    title: Test/AtCoder/abc151_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc157_f.test.cpp
     title: ABC157-F Yakiniku Optimization Problem
@@ -1307,6 +1319,7 @@ data:
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/CrossPoint/LineAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+  - Src/GeometryR2/PointCloud.hpp
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Polygon.hpp
   - Src/GeometryR2/Angle.hpp
@@ -1314,6 +1327,7 @@ data:
   - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/CircleContainsPoint.hpp
   - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
@@ -1486,6 +1500,7 @@ data:
   - Test/AOJ/ITP1_1_A.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/1330.test.cpp
@@ -1589,6 +1604,7 @@ data:
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc215_g.test.cpp
