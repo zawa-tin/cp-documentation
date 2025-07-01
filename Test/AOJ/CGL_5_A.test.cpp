@@ -1,4 +1,5 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/5/CGL_5_A"
+#define ERROR 0.000001
 
 #include "../../Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp"
 #include "../../Src/GeometryZ2/Distance/PointAndPoint.hpp"
