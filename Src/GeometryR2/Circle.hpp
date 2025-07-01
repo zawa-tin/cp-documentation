@@ -26,6 +26,8 @@ public:
         assert(!Negative(r));
     }
 
+    Circle(const Point& p0, const Point& p1) : center_{p0 + (p1 - p0) / 2}, radius_{Distance(p0, p1) / 2} {}
+
     /* getter setter */
     const Point& center() const {
         return center_;
