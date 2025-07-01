@@ -24,6 +24,9 @@ data:
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':warning:'
@@ -88,6 +91,9 @@ data:
     path: Test/AOJ/CGL_4_A.test.cpp
     title: Test/AOJ/CGL_4_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_A.test.cpp
+    title: Test/AOJ/CGL_5_A.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
@@ -111,6 +117,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Baekjoon/23249.test.cpp
     title: Test/Baekjoon/23249.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/closest_pair.test.cpp
+    title: Test/LC/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/count_points_in_triangle.test.cpp
     title: Test/LC/count_points_in_triangle.test.cpp
@@ -170,6 +179,7 @@ data:
   requiredBy:
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Circle.hpp
@@ -194,6 +204,7 @@ data:
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_5_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
@@ -201,6 +212,7 @@ data:
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/Baekjoon/23249.test.cpp
   - Test/LC/count_points_in_triangle.test.cpp
+  - Test/LC/closest_pair.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/sort_by_argument.test.cpp

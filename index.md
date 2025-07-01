@@ -378,6 +378,9 @@ data:
   - name: Src/GeometryZ2/Distance
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+      title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Distance/PointAndPoint.hpp
       title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - name: Src/GeometryZ2/Intersect
@@ -751,6 +754,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_4_A.test.cpp
       title: Test/AOJ/CGL_4_A.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_5_A.test.cpp
+      title: Test/AOJ/CGL_5_A.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_C.test.cpp
       title: Test/AOJ/CGL_7_C.test.cpp
@@ -1174,6 +1180,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/cartesian_tree.test.cpp
       title: Test/LC/cartesian_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/closest_pair.test.cpp
+      title: Test/LC/closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/count_points_in_triangle.test.cpp
       title: Test/LC/count_points_in_triangle.test.cpp

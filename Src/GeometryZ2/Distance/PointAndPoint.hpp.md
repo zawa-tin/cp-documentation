@@ -17,16 +17,25 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
     title: Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2609.test.cpp
     title: Test/AOJ/2609.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_A.test.cpp
+    title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc191_d.test.cpp
     title: Test/AtCoder/abc191_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/closest_pair.test.cpp
+    title: Test/LC/closest_pair.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -122,6 +131,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Distance/PointAndPoint.hpp
   requiredBy:
+  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
@@ -129,6 +139,8 @@ data:
   verifiedWith:
   - Test/AOJ/2609.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_5_A.test.cpp
+  - Test/LC/closest_pair.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/GeometryZ2/Distance/PointAndPoint.hpp
 layout: document

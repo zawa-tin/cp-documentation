@@ -2,74 +2,37 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/PointCloud.hpp
+    title: Src/GeometryZ2/PointCloud.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Zahlen.hpp
     title: Src/GeometryZ2/Zahlen.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-    title: Count Points in Triangles
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-    title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/ConvexHull.hpp
-    title: Src/GeometryZ2/ConvexHull.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
-    title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1298.test.cpp
-    title: Test/AOJ/1298.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_A.test.cpp
-    title: Test/AOJ/CGL_4_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_5_A.test.cpp
-    title: Test/AOJ/CGL_5_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc139_f.test.cpp
-    title: Test/AtCoder/abc139_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc225_e.test.cpp
-    title: Test/AtCoder/abc225_e.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Baekjoon/23249.test.cpp
-    title: Test/Baekjoon/23249.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/closest_pair.test.cpp
-    title: Test/LC/closest_pair.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/count_points_in_triangle.test.cpp
-    title: Test/LC/count_points_in_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/naive_count_points_in_triangle.test.cpp
-    title: Test/LC/naive_count_points_in_triangle.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/sort_by_argument.test.cpp
-    title: Test/LC/sort_by_argument.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/static_convex_hull.test.cpp
-    title: Test/LC/static_convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
-    title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/UC/3-35-L.test.cpp
-    title: Test/UC/3-35-L.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/closest_pair
+    links:
+    - https://judge.yosupo.jp/problem/closest_pair
+  bundledCode: "#line 1 \"Test/LC/closest_pair.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/closest_pair\"\
+    \n\n#line 2 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n\n#line 2 \"\
+    Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line\
+    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -146,43 +109,67 @@ data:
     \n\n#line 6 \"Src/GeometryZ2/PointCloud.hpp\"\n#include <vector>\n\nnamespace\
     \ zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud = std::vector<Point>;\n\
     \nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(), p.end(), Point::ArgComp);\n\
-    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./Point.hpp\"\n\n#include <algorithm>\n#include\
-    \ <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud =\
-    \ std::vector<Point>;\n\nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(),\
-    \ p.end(), Point::ArgComp);\n}\n\n} // namespace geometryZ2 \n\n} // namespace\
-    \ zawa\n"
+    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
+    \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
+    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <ranges>\n\
+    #include <utility>\n#line 11 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nstd::pair<usize, usize> ClosestPairOfPoints(PointCloud\
+    \ P) {\n    assert(std::ssize(P) >= 2);\n    std::vector<std::pair<Point, usize>>\
+    \ ps(P.size());\n    for (usize i = 0 ; i < P.size() ; i++) {\n        ps[i].first\
+    \ = std::move(P[i]);\n        ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n\
+    \    usize mini = ps[0].second, minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first,\
+    \ ps[1].first);\n    auto rec = [&](auto rec, usize l, usize r) -> void {\n  \
+    \      if (r - l <= 1) return;\n        const usize m = (l + r) >> 1;\n      \
+    \  const Zahlen midx = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec,\
+    \ m, r);\n        std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin()\
+    \ + r,\n                [](const auto& i, const auto& j) { return i.first.y()\
+    \ < j.first.y(); });\n        std::vector<usize> near;\n        near.reserve(r\
+    \ - l);\n        for (usize i = l ; i < r ; i++) {\n            const Zahlen ix\
+    \ = ps[i].first.x(), iy = ps[i].first.y();\n            const usize idx = ps[i].second;\n\
+    \            if (Square(ix - midx) > mind) continue;\n            for (usize j\
+    \ : near | std::views::reverse) {\n                const Zahlen jx = ps[j].first.x(),\
+    \ jy = ps[j].first.y();\n                const usize jdx = ps[j].second;\n   \
+    \             if (Square(iy - jy) >= mind) break;\n                if (Square(ix\
+    \ - jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n       \
+    \             minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
+    \ - jy);\n                }\n            }\n            near.push_back(i);\n \
+    \       }\n    };\n    rec(rec, 0, ps.size());\n    return {mini, minj};\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 4 \"Test/LC/closest_pair.test.cpp\"\
+    \nusing namespace zawa;\nusing namespace geometryZ2;\n\n#line 9 \"Test/LC/closest_pair.test.cpp\"\
+    \n\nstd::pair<usize, usize> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud\
+    \ P(N);\n    for (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints(P);\n\
+    }\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n \
+    \   std::ios::sync_with_stdio(false);\n    int T;\n    std::cin >> T;\n    while\
+    \ (T--) {\n        auto [i, j] = solve();\n        std::cout << i << ' ' << j\
+    \ << '\\n';\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/closest_pair\"\n\n#include\
+    \ \"../../Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\nusing namespace zawa;\n\
+    using namespace geometryZ2;\n\n#include <iostream>\n#include <utility>\n\nstd::pair<usize,\
+    \ usize> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud P(N);\n   \
+    \ for (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints(P);\n}\n\n\
+    int main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int T;\n    std::cin >> T;\n    while (T--) {\n        auto [i, j] = solve();\n\
+    \        std::cout << i << ' ' << j << '\\n';\n    }\n}\n"
   dependsOn:
+  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Zahlen.hpp
-  isVerificationFile: false
-  path: Src/GeometryZ2/PointCloud.hpp
-  requiredBy:
-  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
-  - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-  timestamp: '2024-06-26 14:51:43+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/CGL_5_A.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/1298.test.cpp
-  - Test/Baekjoon/23249.test.cpp
-  - Test/LC/count_points_in_triangle.test.cpp
-  - Test/LC/closest_pair.test.cpp
-  - Test/LC/naive_count_points_in_triangle.test.cpp
-  - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/sort_by_argument.test.cpp
-  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
-  - Test/AtCoder/abc225_e.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
-  - Test/UC/3-35-L.test.cpp
-documentation_of: Src/GeometryZ2/PointCloud.hpp
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  isVerificationFile: true
+  path: Test/LC/closest_pair.test.cpp
+  requiredBy: []
+  timestamp: '2025-07-01 16:24:27+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/LC/closest_pair.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/PointCloud.hpp
-- /library/Src/GeometryZ2/PointCloud.hpp.html
-title: Src/GeometryZ2/PointCloud.hpp
+- /verify/Test/LC/closest_pair.test.cpp
+- /verify/Test/LC/closest_pair.test.cpp.html
+title: Test/LC/closest_pair.test.cpp
 ---

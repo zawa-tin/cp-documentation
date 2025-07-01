@@ -238,6 +238,9 @@ data:
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':warning:'
@@ -593,6 +596,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_4_A.test.cpp
     title: Test/AOJ/CGL_4_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_5_A.test.cpp
+    title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
@@ -976,6 +982,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/cartesian_tree.test.cpp
     title: Test/LC/cartesian_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/closest_pair.test.cpp
+    title: Test/LC/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/count_points_in_triangle.test.cpp
     title: Test/LC/count_points_in_triangle.test.cpp
@@ -1375,6 +1384,7 @@ data:
   - Src/Template/PairIO.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Line.hpp
@@ -1474,6 +1484,7 @@ data:
   - Test/AOJ/2334.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
+  - Test/AOJ/CGL_5_A.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
@@ -1519,6 +1530,7 @@ data:
   - Test/LC/cartesian_tree.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/LC/closest_pair.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/static_range_frequency.test.cpp
