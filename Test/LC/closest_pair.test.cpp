@@ -7,12 +7,12 @@ using namespace geometryZ2;
 #include <iostream>
 #include <utility>
 
-std::pair<usize, usize> solve() {
+std::pair<int, int> solve() {
     int N;
     std::cin >> N;
     PointCloud P(N);
     for (auto& p : P) std::cin >> p; 
-    return ClosestPairOfPoints(P);
+    return ClosestPairOfPoints<int>(P);
 }
 
 int main() {

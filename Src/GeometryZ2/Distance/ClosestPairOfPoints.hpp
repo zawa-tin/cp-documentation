@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <concepts>
 #include <ranges>
 #include <utility>
 #include <vector>
@@ -13,9 +14,10 @@ namespace zawa {
 
 namespace geometryZ2 {
 
-std::pair<usize, usize> ClosestPairOfPoints(PointCloud P) {
+template <std::integral T = usize>
+std::pair<T, T> ClosestPairOfPoints(PointCloud P) {
     assert(std::ssize(P) >= 2);
-    std::vector<std::pair<Point, usize>> ps(P.size());
+    std::vector<std::pair<Point, T>> ps(P.size());
     for (usize i = 0 ; i < P.size() ; i++) {
         ps[i].first = std::move(P[i]);
         ps[i].second = i;
@@ -35,11 +37,11 @@ std::pair<usize, usize> ClosestPairOfPoints(PointCloud P) {
         near.reserve(r - l);
         for (usize i = l ; i < r ; i++) {
             const Zahlen ix = ps[i].first.x(), iy = ps[i].first.y();
-            const usize idx = ps[i].second;
+            const T idx = ps[i].second;
             if (Square(ix - midx) > mind) continue;
             for (usize j : near | std::views::reverse) {
                 const Zahlen jx = ps[j].first.x(), jy = ps[j].first.y();
-                const usize jdx = ps[j].second;
+                const T jdx = ps[j].second;
                 if (Square(iy - jy) >= mind) break;
                 if (Square(ix - jx) + Square(iy - jy) < mind) {
                     mini = idx;
