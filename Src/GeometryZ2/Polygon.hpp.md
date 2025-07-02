@@ -21,6 +21,9 @@ data:
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
     title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   _extendedVerifiedWith:
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/furthest_pair.test.cpp
+    title: Test/LC/furthest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_convex_hull.test.cpp
     title: Test/LC/static_convex_hull.test.cpp
@@ -248,6 +254,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Polygon.hpp
   requiredBy:
+  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
@@ -260,6 +267,7 @@ data:
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - Test/LC/furthest_pair.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc266_c.test.cpp

@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/ConvexHull.hpp
+    title: Src/GeometryZ2/ConvexHull.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/PointAndPoint.hpp
+    title: Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -19,47 +25,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1298.test.cpp
-    title: Test/AOJ/1298.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_A.test.cpp
-    title: Test/AOJ/CGL_4_A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/static_convex_hull.test.cpp
-    title: Test/LC/static_convex_hull.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/ConvexHull.hpp\"\n\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\
-    \n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
-    \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
-    \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
-    \ i32 Sign(Zahlen value) {\n    if (value < 0) return internal::negative;\n  \
-    \  if (value > 0) return internal::positive;\n    return internal::zero;\n}\n\n\
-    constexpr bool Positive(Zahlen value) {\n    return Sign(value) == internal::positive;\n\
-    }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
-    }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
-    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
-    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
-    \n\n#include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp\"\n\n#line\
+    \ 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\
+    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
+    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
+    \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
+    \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
+    \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
+    \ < 0) return internal::negative;\n    if (value > 0) return internal::positive;\n\
+    \    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen value) {\n  \
+    \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
+    \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
+    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
+    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
+    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
+    \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
+    #include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
     \n#include <limits>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point\
     \ {\nprivate:\n    Zahlen x_{}, y_{};\n    static constexpr i32 origin{0};\n \
     \   static constexpr i32 firstQuadrant{1};\n    static constexpr i32 secondQuadrant{2};\n\
@@ -119,23 +114,24 @@ data:
     \n\n#line 6 \"Src/GeometryZ2/PointCloud.hpp\"\n#include <vector>\n\nnamespace\
     \ zawa {\n\nnamespace geometryZ2 {\n\nusing PointCloud = std::vector<Point>;\n\
     \nvoid ArgSort(PointCloud& p) {\n    std::sort(p.begin(), p.end(), Point::ArgComp);\n\
-    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\
-    \n\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT        = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\
-    \u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE           = -1,\n\
-    \    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\
-    \u3044\u308B\n    ON_SEGMENT          =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\
-    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE\
-    \   = +1,\n    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\
-    \u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\
-    \         = +2\n};\n\nRELATION Relation(const Point& p0, const Point& p1, const\
-    \ Point& p2) {\n    Point a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b)))\
-    \ return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a, b))) return CLOCKWISE;\n\
-    \    if (Negative(Dot(a, b))) return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare())\
-    \ return ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 9 \"Src/GeometryZ2/Polygon.hpp\"\
+    }\n\n} // namespace geometryZ2 \n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/ConvexHull.hpp\"\
+    \n\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 2 \"Src/GeometryZ2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT        = -2,\n    // (p1\
+    \ - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\
+    \u308B\n    CLOCKWISE           = -1,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT       \
+    \   =  0,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\u306B\
+    \u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE   = +1,\n    // p2 -> p0\
+    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK         = +2\n};\n\nRELATION\
+    \ Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1\
+    \ - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
+    \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 6 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 9 \"Src/GeometryZ2/Polygon.hpp\"\
     \n#include <iterator>\n#include <type_traits>\n#line 12 \"Src/GeometryZ2/Polygon.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Polygon {\nprivate:\n\
     \    std::vector<Point> data_;\npublic:\n    usize size() const {\n        return\
@@ -203,56 +199,74 @@ data:
     \    }\n\n    Polygon res;\n    res.reserve(lower.size() + upper.size() - 2);\n\
     \    res.insert(res.size(), lower.begin(), lower.end());\n    res.insert(res.size(),\
     \ std::next(upper.begin()), std::prev(upper.end()));\n    return res;\n}\n\n}\
-    \ // namespace geometryZ2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./PointCloud.hpp\"\n#include \"./Polygon.hpp\"\
-    \n#include \"./Zahlen.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <iterator>\n#include <type_traits>\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace geometryZ2 {\n\ntemplate <bool strictly>\nPolygon\
-    \ ConvexHull(const PointCloud& p) {\n    PointCloud cp{p};\n    std::sort(cp.begin(),\
-    \ cp.end());\n    cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n   \
-    \ if (cp.size() <= 2u) {\n        return Polygon{cp};\n    }\n    PointCloud lower;\n\
-    \    lower.reserve(p.size());\n    for (auto it{cp.begin()} ; it != cp.end() ;\
-    \ it++) {\n        lower.push_back(*it);\n        while (lower.size() >= 3u) {\n\
-    \            if (Relation(lower[lower.size() - 3], lower[lower.size() - 2], lower[lower.size()\
-    \ - 1]) == COUNTER_CLOCKWISE) {\n                break;\n            }\n     \
-    \       if constexpr (!strictly) {\n                if (Relation(lower[lower.size()\
-    \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n\
-    \                    break;\n                }\n            }\n            std::swap(lower[lower.size()\
-    \ - 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n\
-    \    }\n    PointCloud upper;\n    upper.reserve(p.size());\n    for (auto it{cp.rbegin()}\
-    \ ; it != cp.rend() ; it++) {\n        upper.push_back(*it);\n        while (upper.size()\
-    \ >= 3u) {\n            if (Relation(upper[upper.size() - 3], upper[upper.size()\
-    \ - 2], upper[upper.size() - 1]) == COUNTER_CLOCKWISE) {\n                break;\n\
-    \            }\n            if constexpr (!strictly) {\n                if (Relation(upper[upper.size()\
-    \ - 3], upper[upper.size() - 2], upper[upper.size() - 1]) == ONLINE_FRONT) {\n\
-    \                    break;\n                }\n            }\n            std::swap(upper[upper.size()\
-    \ - 2], upper[upper.size() - 1]);\n            upper.pop_back();\n        }\n\
-    \    }\n\n    Polygon res;\n    res.reserve(lower.size() + upper.size() - 2);\n\
-    \    res.insert(res.size(), lower.begin(), lower.end());\n    res.insert(res.size(),\
-    \ std::next(upper.begin()), std::prev(upper.end()));\n    return res;\n}\n\n}\
-    \ // namespace geometryZ2\n\n} // namespace zawa\n"
+    \ // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 5 \"Src/GeometryZ2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
+    \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
+    \n} // namespace zawa\n#line 6 \"Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp\"\
+    \n\n#line 8 \"Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\ntemplate <class T = usize>\nstd::pair<T,\
+    \ T> FurthestPairOfPoints(const PointCloud& P) {\n    assert(std::ssize(P) >=\
+    \ 2);\n    const auto ch = ConvexHull<true>(P);\n    if (std::ssize(ch) == 1)\
+    \ { // \u5168\u90E8\u306E\u70B9\u304C\u540C\u3058\u6240\u306B\u3042\u308B -> \u4F55\
+    \u3067\u3082\u826F\u3044\n        return {T{0}, T{1}};\n    }\n    usize mini\
+    \ = 0, minj = 1;\n    Zahlen mind = DistanceSquare(ch[mini], ch[minj]);\n    if\
+    \ (std::ssize(ch) > 2) {\n        usize idx = 0, jdx = 0;\n        for (usize\
+    \ i = 1 ; i < ch.size() ; i++) {\n            if (ch[idx].x() > ch[i].x()) idx\
+    \ = i;\n            if (ch[jdx].x() < ch[i].x()) jdx = i;\n        }\n       \
+    \ const usize sidx = idx, sjdx = jdx;\n        while (idx != sjdx or jdx != sidx)\
+    \ {\n            if (mind < DistanceSquare(ch[idx], ch[jdx])) {\n            \
+    \    mind = DistanceSquare(ch[idx], ch[jdx]);\n                mini = idx;\n \
+    \               minj = jdx;\n            }\n            if (Cross(ch[idx+1==ch.size()?0:idx+1]\
+    \ - ch[idx], ch[jdx+1==ch.size()?0:jdx+1] - ch[jdx]) < 0) {\n                idx\
+    \ = idx+1==ch.size()?0:idx+1;\n            }\n            else {\n           \
+    \     jdx = jdx+1==ch.size()?0:jdx+1;\n            }\n        }\n    }\n    const\
+    \ T n = static_cast<T>(P.size());\n    T i = n, j = n;\n    for (usize k = 0 ;\
+    \ k < P.size() ; k++) {\n        if (i == n and P[k] == ch[mini]) i = k;\n   \
+    \     if (j == n and P[k] == ch[minj]) j = k;\n    }\n    return {i, j};\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../PointCloud.hpp\"\n#include \"../ConvexHull.hpp\"\
+    \n#include \"../Distance/PointAndPoint.hpp\"\n\n#include <cassert>\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\ntemplate <class T = usize>\nstd::pair<T,\
+    \ T> FurthestPairOfPoints(const PointCloud& P) {\n    assert(std::ssize(P) >=\
+    \ 2);\n    const auto ch = ConvexHull<true>(P);\n    if (std::ssize(ch) == 1)\
+    \ { // \u5168\u90E8\u306E\u70B9\u304C\u540C\u3058\u6240\u306B\u3042\u308B -> \u4F55\
+    \u3067\u3082\u826F\u3044\n        return {T{0}, T{1}};\n    }\n    usize mini\
+    \ = 0, minj = 1;\n    Zahlen mind = DistanceSquare(ch[mini], ch[minj]);\n    if\
+    \ (std::ssize(ch) > 2) {\n        usize idx = 0, jdx = 0;\n        for (usize\
+    \ i = 1 ; i < ch.size() ; i++) {\n            if (ch[idx].x() > ch[i].x()) idx\
+    \ = i;\n            if (ch[jdx].x() < ch[i].x()) jdx = i;\n        }\n       \
+    \ const usize sidx = idx, sjdx = jdx;\n        while (idx != sjdx or jdx != sidx)\
+    \ {\n            if (mind < DistanceSquare(ch[idx], ch[jdx])) {\n            \
+    \    mind = DistanceSquare(ch[idx], ch[jdx]);\n                mini = idx;\n \
+    \               minj = jdx;\n            }\n            if (Cross(ch[idx+1==ch.size()?0:idx+1]\
+    \ - ch[idx], ch[jdx+1==ch.size()?0:jdx+1] - ch[jdx]) < 0) {\n                idx\
+    \ = idx+1==ch.size()?0:idx+1;\n            }\n            else {\n           \
+    \     jdx = jdx+1==ch.size()?0:jdx+1;\n            }\n        }\n    }\n    const\
+    \ T n = static_cast<T>(P.size());\n    T i = n, j = n;\n    for (usize k = 0 ;\
+    \ k < P.size() ; k++) {\n        if (i == n and P[k] == ch[mini]) i = k;\n   \
+    \     if (j == n and P[k] == ch[minj]) j = k;\n    }\n    return {i, j};\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Zahlen.hpp
+  - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Relation.hpp
+  - Src/GeometryZ2/Distance/PointAndPoint.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/ConvexHull.hpp
-  requiredBy:
-  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-  timestamp: '2024-06-26 18:12:18+09:00'
+  path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+  requiredBy: []
+  timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/1298.test.cpp
   - Test/LC/furthest_pair.test.cpp
-  - Test/LC/static_convex_hull.test.cpp
-documentation_of: Src/GeometryZ2/ConvexHull.hpp
+documentation_of: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/ConvexHull.hpp
-- /library/Src/GeometryZ2/ConvexHull.hpp.html
-title: Src/GeometryZ2/ConvexHull.hpp
+- /library/Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+- /library/Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp.html
+title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
 ---

@@ -114,42 +114,43 @@ data:
     \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
     \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
     \n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <ranges>\n\
-    #include <utility>\n#line 11 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nstd::pair<usize, usize> ClosestPairOfPoints(PointCloud\
-    \ P) {\n    assert(std::ssize(P) >= 2);\n    std::vector<std::pair<Point, usize>>\
-    \ ps(P.size());\n    for (usize i = 0 ; i < P.size() ; i++) {\n        ps[i].first\
-    \ = std::move(P[i]);\n        ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n\
-    \    usize mini = ps[0].second, minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first,\
-    \ ps[1].first);\n    auto rec = [&](auto rec, usize l, usize r) -> void {\n  \
-    \      if (r - l <= 1) return;\n        const usize m = (l + r) >> 1;\n      \
-    \  const Zahlen midx = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec,\
-    \ m, r);\n        std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin()\
-    \ + r,\n                [](const auto& i, const auto& j) { return i.first.y()\
-    \ < j.first.y(); });\n        std::vector<usize> near;\n        near.reserve(r\
-    \ - l);\n        for (usize i = l ; i < r ; i++) {\n            const Zahlen ix\
-    \ = ps[i].first.x(), iy = ps[i].first.y();\n            const usize idx = ps[i].second;\n\
-    \            if (Square(ix - midx) > mind) continue;\n            for (usize j\
-    \ : near | std::views::reverse) {\n                const Zahlen jx = ps[j].first.x(),\
-    \ jy = ps[j].first.y();\n                const usize jdx = ps[j].second;\n   \
-    \             if (Square(iy - jy) >= mind) break;\n                if (Square(ix\
-    \ - jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n       \
-    \             minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
-    \ - jy);\n                }\n            }\n            near.push_back(i);\n \
-    \       }\n    };\n    rec(rec, 0, ps.size());\n    return {mini, minj};\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 4 \"Test/LC/closest_pair.test.cpp\"\
-    \nusing namespace zawa;\nusing namespace geometryZ2;\n\n#line 9 \"Test/LC/closest_pair.test.cpp\"\
-    \n\nstd::pair<usize, usize> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud\
-    \ P(N);\n    for (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints(P);\n\
+    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <concepts>\n\
+    #include <ranges>\n#include <utility>\n#line 12 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\ntemplate <std::integral T =\
+    \ usize>\nstd::pair<T, T> ClosestPairOfPoints(PointCloud P) {\n    assert(std::ssize(P)\
+    \ >= 2);\n    std::vector<std::pair<Point, T>> ps(P.size());\n    for (usize i\
+    \ = 0 ; i < P.size() ; i++) {\n        ps[i].first = std::move(P[i]);\n      \
+    \  ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n    usize mini = ps[0].second,\
+    \ minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first, ps[1].first);\n\
+    \    auto rec = [&](auto rec, usize l, usize r) -> void {\n        if (r - l <=\
+    \ 1) return;\n        const usize m = (l + r) >> 1;\n        const Zahlen midx\
+    \ = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec, m, r);\n     \
+    \   std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin() + r,\n     \
+    \           [](const auto& i, const auto& j) { return i.first.y() < j.first.y();\
+    \ });\n        std::vector<usize> near;\n        near.reserve(r - l);\n      \
+    \  for (usize i = l ; i < r ; i++) {\n            const Zahlen ix = ps[i].first.x(),\
+    \ iy = ps[i].first.y();\n            const T idx = ps[i].second;\n           \
+    \ if (Square(ix - midx) > mind) continue;\n            for (usize j : near | std::views::reverse)\
+    \ {\n                const Zahlen jx = ps[j].first.x(), jy = ps[j].first.y();\n\
+    \                const T jdx = ps[j].second;\n                if (Square(iy -\
+    \ jy) >= mind) break;\n                if (Square(ix - jx) + Square(iy - jy) <\
+    \ mind) {\n                    mini = idx;\n                    minj = jdx;\n\
+    \                    mind = Square(ix - jx) + Square(iy - jy);\n             \
+    \   }\n            }\n            near.push_back(i);\n        }\n    };\n    rec(rec,\
+    \ 0, ps.size());\n    return {mini, minj};\n}\n\n} // namespace geometryZ2\n\n\
+    } // namespace zawa\n#line 4 \"Test/LC/closest_pair.test.cpp\"\nusing namespace\
+    \ zawa;\nusing namespace geometryZ2;\n\n#line 9 \"Test/LC/closest_pair.test.cpp\"\
+    \n\nstd::pair<int, int> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud\
+    \ P(N);\n    for (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints<int>(P);\n\
     }\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n \
     \   std::ios::sync_with_stdio(false);\n    int T;\n    std::cin >> T;\n    while\
     \ (T--) {\n        auto [i, j] = solve();\n        std::cout << i << ' ' << j\
     \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/closest_pair\"\n\n#include\
     \ \"../../Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\nusing namespace zawa;\n\
-    using namespace geometryZ2;\n\n#include <iostream>\n#include <utility>\n\nstd::pair<usize,\
-    \ usize> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud P(N);\n   \
-    \ for (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints(P);\n}\n\n\
+    using namespace geometryZ2;\n\n#include <iostream>\n#include <utility>\n\nstd::pair<int,\
+    \ int> solve() {\n    int N;\n    std::cin >> N;\n    PointCloud P(N);\n    for\
+    \ (auto& p : P) std::cin >> p; \n    return ClosestPairOfPoints<int>(P);\n}\n\n\
     int main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     \    int T;\n    std::cin >> T;\n    while (T--) {\n        auto [i, j] = solve();\n\
     \        std::cout << i << ' ' << j << '\\n';\n    }\n}\n"
@@ -163,7 +164,7 @@ data:
   isVerificationFile: true
   path: Test/LC/closest_pair.test.cpp
   requiredBy: []
-  timestamp: '2025-07-01 16:24:27+09:00'
+  timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/closest_pair.test.cpp

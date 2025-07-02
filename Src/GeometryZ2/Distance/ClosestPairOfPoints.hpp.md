@@ -113,10 +113,36 @@ data:
     \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
     \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
     \n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <ranges>\n\
-    #include <utility>\n#line 11 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nstd::pair<usize, usize> ClosestPairOfPoints(PointCloud\
-    \ P) {\n    assert(std::ssize(P) >= 2);\n    std::vector<std::pair<Point, usize>>\
+    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <concepts>\n\
+    #include <ranges>\n#include <utility>\n#line 12 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\ntemplate <std::integral T =\
+    \ usize>\nstd::pair<T, T> ClosestPairOfPoints(PointCloud P) {\n    assert(std::ssize(P)\
+    \ >= 2);\n    std::vector<std::pair<Point, T>> ps(P.size());\n    for (usize i\
+    \ = 0 ; i < P.size() ; i++) {\n        ps[i].first = std::move(P[i]);\n      \
+    \  ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n    usize mini = ps[0].second,\
+    \ minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first, ps[1].first);\n\
+    \    auto rec = [&](auto rec, usize l, usize r) -> void {\n        if (r - l <=\
+    \ 1) return;\n        const usize m = (l + r) >> 1;\n        const Zahlen midx\
+    \ = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec, m, r);\n     \
+    \   std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin() + r,\n     \
+    \           [](const auto& i, const auto& j) { return i.first.y() < j.first.y();\
+    \ });\n        std::vector<usize> near;\n        near.reserve(r - l);\n      \
+    \  for (usize i = l ; i < r ; i++) {\n            const Zahlen ix = ps[i].first.x(),\
+    \ iy = ps[i].first.y();\n            const T idx = ps[i].second;\n           \
+    \ if (Square(ix - midx) > mind) continue;\n            for (usize j : near | std::views::reverse)\
+    \ {\n                const Zahlen jx = ps[j].first.x(), jy = ps[j].first.y();\n\
+    \                const T jdx = ps[j].second;\n                if (Square(iy -\
+    \ jy) >= mind) break;\n                if (Square(ix - jx) + Square(iy - jy) <\
+    \ mind) {\n                    mini = idx;\n                    minj = jdx;\n\
+    \                    mind = Square(ix - jx) + Square(iy - jy);\n             \
+    \   }\n            }\n            near.push_back(i);\n        }\n    };\n    rec(rec,\
+    \ 0, ps.size());\n    return {mini, minj};\n}\n\n} // namespace geometryZ2\n\n\
+    } // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../PointCloud.hpp\"\n#include \"./PointAndPoint.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <concepts>\n#include <ranges>\n\
+    #include <utility>\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\ntemplate <std::integral T = usize>\nstd::pair<T, T> ClosestPairOfPoints(PointCloud\
+    \ P) {\n    assert(std::ssize(P) >= 2);\n    std::vector<std::pair<Point, T>>\
     \ ps(P.size());\n    for (usize i = 0 ; i < P.size() ; i++) {\n        ps[i].first\
     \ = std::move(P[i]);\n        ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n\
     \    usize mini = ps[0].second, minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first,\
@@ -127,38 +153,13 @@ data:
     \ + r,\n                [](const auto& i, const auto& j) { return i.first.y()\
     \ < j.first.y(); });\n        std::vector<usize> near;\n        near.reserve(r\
     \ - l);\n        for (usize i = l ; i < r ; i++) {\n            const Zahlen ix\
-    \ = ps[i].first.x(), iy = ps[i].first.y();\n            const usize idx = ps[i].second;\n\
+    \ = ps[i].first.x(), iy = ps[i].first.y();\n            const T idx = ps[i].second;\n\
     \            if (Square(ix - midx) > mind) continue;\n            for (usize j\
     \ : near | std::views::reverse) {\n                const Zahlen jx = ps[j].first.x(),\
-    \ jy = ps[j].first.y();\n                const usize jdx = ps[j].second;\n   \
-    \             if (Square(iy - jy) >= mind) break;\n                if (Square(ix\
-    \ - jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n       \
-    \             minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
-    \ - jy);\n                }\n            }\n            near.push_back(i);\n \
-    \       }\n    };\n    rec(rec, 0, ps.size());\n    return {mini, minj};\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../PointCloud.hpp\"\n#include \"./PointAndPoint.hpp\"\
-    \n\n#include <algorithm>\n#include <cassert>\n#include <ranges>\n#include <utility>\n\
-    #include <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nstd::pair<usize,\
-    \ usize> ClosestPairOfPoints(PointCloud P) {\n    assert(std::ssize(P) >= 2);\n\
-    \    std::vector<std::pair<Point, usize>> ps(P.size());\n    for (usize i = 0\
-    \ ; i < P.size() ; i++) {\n        ps[i].first = std::move(P[i]);\n        ps[i].second\
-    \ = i;\n    }\n    std::ranges::sort(ps);\n    usize mini = ps[0].second, minj\
-    \ = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first, ps[1].first);\n\
-    \    auto rec = [&](auto rec, usize l, usize r) -> void {\n        if (r - l <=\
-    \ 1) return;\n        const usize m = (l + r) >> 1;\n        const Zahlen midx\
-    \ = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec, m, r);\n     \
-    \   std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin() + r,\n     \
-    \           [](const auto& i, const auto& j) { return i.first.y() < j.first.y();\
-    \ });\n        std::vector<usize> near;\n        near.reserve(r - l);\n      \
-    \  for (usize i = l ; i < r ; i++) {\n            const Zahlen ix = ps[i].first.x(),\
-    \ iy = ps[i].first.y();\n            const usize idx = ps[i].second;\n       \
-    \     if (Square(ix - midx) > mind) continue;\n            for (usize j : near\
-    \ | std::views::reverse) {\n                const Zahlen jx = ps[j].first.x(),\
-    \ jy = ps[j].first.y();\n                const usize jdx = ps[j].second;\n   \
-    \             if (Square(iy - jy) >= mind) break;\n                if (Square(ix\
-    \ - jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n       \
-    \             minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
+    \ jy = ps[j].first.y();\n                const T jdx = ps[j].second;\n       \
+    \         if (Square(iy - jy) >= mind) break;\n                if (Square(ix -\
+    \ jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n         \
+    \           minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
     \ - jy);\n                }\n            }\n            near.push_back(i);\n \
     \       }\n    };\n    rec(rec, 0, ps.size());\n    return {mini, minj};\n}\n\n\
     } // namespace geometryZ2\n\n} // namespace zawa\n"
@@ -171,7 +172,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   requiredBy: []
-  timestamp: '2025-07-01 16:24:27+09:00'
+  timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_5_A.test.cpp

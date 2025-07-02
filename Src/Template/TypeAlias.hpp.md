@@ -250,6 +250,9 @@ data:
     path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
     title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Distance/PointAndPoint.hpp
     title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - icon: ':warning:'
@@ -1025,6 +1028,9 @@ data:
     path: Test/LC/frequency_table_of_tree_distance.test.cpp
     title: Test/LC/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/furthest_pair.test.cpp
+    title: Test/LC/furthest_pair.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/incremental_scc.test.cpp
     title: Test/LC/incremental_scc.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1404,6 +1410,7 @@ data:
   - Src/Template/Output.hpp
   - Src/Template/PairIO.hpp
   - Src/GeometryZ2/Segment.hpp
+  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
   - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Point.hpp
@@ -1551,6 +1558,7 @@ data:
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/count_points_in_triangle.test.cpp
   - Test/LC/cartesian_tree.test.cpp
+  - Test/LC/furthest_pair.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/LC/closest_pair.test.cpp

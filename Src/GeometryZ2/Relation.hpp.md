@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - icon: ':warning:'
     path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
     title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
@@ -78,6 +81,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/furthest_pair.test.cpp
+    title: Test/LC/furthest_pair.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
@@ -206,6 +212,7 @@ data:
   path: Src/GeometryZ2/Relation.hpp
   requiredBy:
   - Src/GeometryZ2/Segment.hpp
+  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/ConvexHull.hpp
@@ -227,6 +234,7 @@ data:
   - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/AOJ/0445.test.cpp
   - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - Test/LC/furthest_pair.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp

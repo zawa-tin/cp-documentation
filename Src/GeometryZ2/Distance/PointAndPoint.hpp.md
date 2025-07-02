@@ -20,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
     title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2609.test.cpp
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/closest_pair.test.cpp
     title: Test/LC/closest_pair.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/furthest_pair.test.cpp
+    title: Test/LC/furthest_pair.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -131,6 +137,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Distance/PointAndPoint.hpp
   requiredBy:
+  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
@@ -140,6 +147,7 @@ data:
   - Test/AOJ/2609.test.cpp
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
+  - Test/LC/furthest_pair.test.cpp
   - Test/LC/closest_pair.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/GeometryZ2/Distance/PointAndPoint.hpp

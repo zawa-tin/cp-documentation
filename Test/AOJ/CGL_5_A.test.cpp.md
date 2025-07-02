@@ -119,51 +119,51 @@ data:
     \nnamespace geometryZ2 {\n\nZahlen DistanceSquare(const Point& p0, const Point&\
     \ p1) {\n    return Vector{p1 - p0}.normSquare();\n}\n\n} // namespace geometryZ2\n\
     \n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <ranges>\n\
-    #include <utility>\n#line 11 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nstd::pair<usize, usize> ClosestPairOfPoints(PointCloud\
-    \ P) {\n    assert(std::ssize(P) >= 2);\n    std::vector<std::pair<Point, usize>>\
-    \ ps(P.size());\n    for (usize i = 0 ; i < P.size() ; i++) {\n        ps[i].first\
-    \ = std::move(P[i]);\n        ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n\
-    \    usize mini = ps[0].second, minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first,\
-    \ ps[1].first);\n    auto rec = [&](auto rec, usize l, usize r) -> void {\n  \
-    \      if (r - l <= 1) return;\n        const usize m = (l + r) >> 1;\n      \
-    \  const Zahlen midx = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec,\
-    \ m, r);\n        std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin()\
-    \ + r,\n                [](const auto& i, const auto& j) { return i.first.y()\
-    \ < j.first.y(); });\n        std::vector<usize> near;\n        near.reserve(r\
-    \ - l);\n        for (usize i = l ; i < r ; i++) {\n            const Zahlen ix\
-    \ = ps[i].first.x(), iy = ps[i].first.y();\n            const usize idx = ps[i].second;\n\
-    \            if (Square(ix - midx) > mind) continue;\n            for (usize j\
-    \ : near | std::views::reverse) {\n                const Zahlen jx = ps[j].first.x(),\
-    \ jy = ps[j].first.y();\n                const usize jdx = ps[j].second;\n   \
-    \             if (Square(iy - jy) >= mind) break;\n                if (Square(ix\
-    \ - jx) + Square(iy - jy) < mind) {\n                    mini = idx;\n       \
-    \             minj = jdx;\n                    mind = Square(ix - jx) + Square(iy\
-    \ - jy);\n                }\n            }\n            near.push_back(i);\n \
-    \       }\n    };\n    rec(rec, 0, ps.size());\n    return {mini, minj};\n}\n\n\
-    } // namespace geometryZ2\n\n} // namespace zawa\n#line 2 \"Src/Utility/FloatingMarkerShift.hpp\"\
-    \n\n#line 4 \"Src/Utility/FloatingMarkerShift.hpp\"\n\n#include <string>\n#line\
-    \ 8 \"Src/Utility/FloatingMarkerShift.hpp\"\n\nnamespace zawa {\n\ni64 FloatingMarkerShift(const\
-    \ std::string& S, u32 shift) {\n    static i64 lim10{std::numeric_limits<i64>::max()\
-    \ / 10};\n    assert(not S.empty());\n    i64 res{};\n    u32 moved{};\n    bool\
-    \ start{};\n    bool minus{S[0] == '-'};\n    for (u32 i{(u32)minus} ; i < S.size()\
-    \ ; i++) {\n        if (S[i] == '.') {\n            start = true;\n        }\n\
-    \        else {\n            if (start) moved++;\n            assert(res < lim10);\n\
-    \            res = res * 10;\n            assert(res < std::numeric_limits<i64>::max()\
-    \ - (S[i] - '0'));\n            res += S[i] - '0';\n        }\n    }\n    assert(moved\
-    \ <= shift);\n    while (moved < shift) {\n        moved++;\n        assert(res\
-    \ < lim10);\n        res = res * 10;\n    }\n    if (minus) res *= -1;\n    return\
-    \ res;\n}\n\n}// namespace zawa\n#line 7 \"Test/AOJ/CGL_5_A.test.cpp\"\nusing\
-    \ namespace zawa;\nusing namespace zawa::geometryZ2;\n\n#include <cmath>\n#line\
-    \ 12 \"Test/AOJ/CGL_5_A.test.cpp\"\n#include <iomanip>\n#line 14 \"Test/AOJ/CGL_5_A.test.cpp\"\
-    \n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n  \
-    \  std::ios::sync_with_stdio(false);\n    int N;\n    std::cin >> N;\n    std::vector<Point>\
-    \ P(N);\n    for (auto& p : P) {\n        std::string x, y;\n        std::cin\
-    \ >> x >> y;\n        p = {FloatingMarkerShift(x, 6), FloatingMarkerShift(y, 6)};\n\
-    \    }\n    auto [i, j] = ClosestPairOfPoints(P);\n    std::cout << std::fixed\
-    \ << std::setprecision(8) << sqrtl(DistanceSquare(P[i], P[j])) / 1000000 << '\\\
-    n';\n}\n"
+    \n\n#line 8 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\n#include <concepts>\n\
+    #include <ranges>\n#include <utility>\n#line 12 \"Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\ntemplate <std::integral T =\
+    \ usize>\nstd::pair<T, T> ClosestPairOfPoints(PointCloud P) {\n    assert(std::ssize(P)\
+    \ >= 2);\n    std::vector<std::pair<Point, T>> ps(P.size());\n    for (usize i\
+    \ = 0 ; i < P.size() ; i++) {\n        ps[i].first = std::move(P[i]);\n      \
+    \  ps[i].second = i;\n    }\n    std::ranges::sort(ps);\n    usize mini = ps[0].second,\
+    \ minj = ps[1].second;\n    Zahlen mind = DistanceSquare(ps[0].first, ps[1].first);\n\
+    \    auto rec = [&](auto rec, usize l, usize r) -> void {\n        if (r - l <=\
+    \ 1) return;\n        const usize m = (l + r) >> 1;\n        const Zahlen midx\
+    \ = ps[m].first.x();\n        rec(rec, l, m);\n        rec(rec, m, r);\n     \
+    \   std::inplace_merge(ps.begin() + l, ps.begin() + m, ps.begin() + r,\n     \
+    \           [](const auto& i, const auto& j) { return i.first.y() < j.first.y();\
+    \ });\n        std::vector<usize> near;\n        near.reserve(r - l);\n      \
+    \  for (usize i = l ; i < r ; i++) {\n            const Zahlen ix = ps[i].first.x(),\
+    \ iy = ps[i].first.y();\n            const T idx = ps[i].second;\n           \
+    \ if (Square(ix - midx) > mind) continue;\n            for (usize j : near | std::views::reverse)\
+    \ {\n                const Zahlen jx = ps[j].first.x(), jy = ps[j].first.y();\n\
+    \                const T jdx = ps[j].second;\n                if (Square(iy -\
+    \ jy) >= mind) break;\n                if (Square(ix - jx) + Square(iy - jy) <\
+    \ mind) {\n                    mini = idx;\n                    minj = jdx;\n\
+    \                    mind = Square(ix - jx) + Square(iy - jy);\n             \
+    \   }\n            }\n            near.push_back(i);\n        }\n    };\n    rec(rec,\
+    \ 0, ps.size());\n    return {mini, minj};\n}\n\n} // namespace geometryZ2\n\n\
+    } // namespace zawa\n#line 2 \"Src/Utility/FloatingMarkerShift.hpp\"\n\n#line\
+    \ 4 \"Src/Utility/FloatingMarkerShift.hpp\"\n\n#include <string>\n#line 8 \"Src/Utility/FloatingMarkerShift.hpp\"\
+    \n\nnamespace zawa {\n\ni64 FloatingMarkerShift(const std::string& S, u32 shift)\
+    \ {\n    static i64 lim10{std::numeric_limits<i64>::max() / 10};\n    assert(not\
+    \ S.empty());\n    i64 res{};\n    u32 moved{};\n    bool start{};\n    bool minus{S[0]\
+    \ == '-'};\n    for (u32 i{(u32)minus} ; i < S.size() ; i++) {\n        if (S[i]\
+    \ == '.') {\n            start = true;\n        }\n        else {\n          \
+    \  if (start) moved++;\n            assert(res < lim10);\n            res = res\
+    \ * 10;\n            assert(res < std::numeric_limits<i64>::max() - (S[i] - '0'));\n\
+    \            res += S[i] - '0';\n        }\n    }\n    assert(moved <= shift);\n\
+    \    while (moved < shift) {\n        moved++;\n        assert(res < lim10);\n\
+    \        res = res * 10;\n    }\n    if (minus) res *= -1;\n    return res;\n\
+    }\n\n}// namespace zawa\n#line 7 \"Test/AOJ/CGL_5_A.test.cpp\"\nusing namespace\
+    \ zawa;\nusing namespace zawa::geometryZ2;\n\n#include <cmath>\n#line 12 \"Test/AOJ/CGL_5_A.test.cpp\"\
+    \n#include <iomanip>\n#line 14 \"Test/AOJ/CGL_5_A.test.cpp\"\n\nint main() {\n\
+    \    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int N;\n    std::cin >> N;\n    std::vector<Point> P(N);\n    for (auto&\
+    \ p : P) {\n        std::string x, y;\n        std::cin >> x >> y;\n        p\
+    \ = {FloatingMarkerShift(x, 6), FloatingMarkerShift(y, 6)};\n    }\n    auto [i,\
+    \ j] = ClosestPairOfPoints(P);\n    std::cout << std::fixed << std::setprecision(8)\
+    \ << sqrtl(DistanceSquare(P[i], P[j])) / 1000000 << '\\n';\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/5/CGL_5_A\"\
     \n#define ERROR 0.000001\n\n#include \"../../Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp\"\
     \n#include \"../../Src/GeometryZ2/Distance/PointAndPoint.hpp\"\n#include \"../../Src/Utility/FloatingMarkerShift.hpp\"\
@@ -186,7 +186,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_5_A.test.cpp
   requiredBy: []
-  timestamp: '2025-07-01 16:26:38+09:00'
+  timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_5_A.test.cpp

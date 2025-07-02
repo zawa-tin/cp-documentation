@@ -390,6 +390,9 @@ data:
       path: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
       title: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+      title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Distance/PointAndPoint.hpp
       title: Src/GeometryZ2/Distance/PointAndPoint.hpp
   - name: Src/GeometryZ2/Intersect
@@ -1222,6 +1225,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/frequency_table_of_tree_distance.test.cpp
       title: Test/LC/frequency_table_of_tree_distance.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/furthest_pair.test.cpp
+      title: Test/LC/furthest_pair.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/incremental_scc.test.cpp
       title: Test/LC/incremental_scc.test.cpp
