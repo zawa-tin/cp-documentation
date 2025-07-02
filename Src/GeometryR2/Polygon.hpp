@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <cassert>
+#include <concepts>
 #include <vector>
 
 namespace zawa {
@@ -24,11 +25,8 @@ public:
 
     /* constructor */
     Polygon() = default;
-    Polygon(const Polygon& polygon) : data_{polygon.data_} {}
-    Polygon(const std::vector<Point>& data) : data_{data} {}
-    Polygon(usize n) : data_{n} {
-        assert(n >= static_cast<usize>(3));
-    }
+    explicit Polygon(const std::vector<Point>& data) : data_{data} {}
+    explicit Polygon(usize n) : data_(n) {}
 
     /* operator[] */
     Point& operator[](usize i) {
@@ -38,10 +36,6 @@ public:
     const Point& operator[](usize i) const {
         assert(i < size());
         return data_[i];
-    }
-    Polygon& operator=(const Polygon& polygon) {
-        data_ = polygon.data_;
-        return *this;
     }
     friend std::istream& operator>>(std::istream& is, Polygon& polygon) {
         for (size_t i{} ; i < polygon.size() ; i++) {
@@ -93,6 +87,14 @@ public:
     }
     void emplaceBack(Real x, Real y) {
         data_.emplace_back(x, y);
+    }
+    void reserve(usize n) {
+        data_.reserve(n);
+    }
+    template <std::input_iterator RandomAccessIterator>
+    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last) {
+        assert(n <= size());
+        data_.insert(std::next(data_.begin(), n), first, last);
     }
 };
 
