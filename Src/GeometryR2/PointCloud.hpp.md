@@ -17,7 +17,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
     title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/ConvexHull.hpp
+    title: Src/GeometryR2/ConvexHull.hpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2827.test.cpp
+    title: Test/AOJ/2827.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_B.test.cpp
     title: Test/AOJ/CGL_5_B.test.cpp
@@ -150,10 +156,12 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/PointCloud.hpp
   requiredBy:
+  - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/PointCloud.hpp

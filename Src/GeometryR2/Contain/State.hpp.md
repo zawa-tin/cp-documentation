@@ -31,6 +31,9 @@ data:
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2827.test.cpp
+    title: Test/AOJ/2827.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_C.test.cpp
     title: Test/AOJ/CGL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -69,6 +72,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0412.test.cpp
+  - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/1132.test.cpp

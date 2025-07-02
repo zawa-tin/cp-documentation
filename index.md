@@ -201,6 +201,9 @@ data:
       path: Src/GeometryR2/CircumscribedCircle.hpp
       title: Src/GeometryR2/CircumscribedCircle.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/ConvexHull.hpp
+      title: Src/GeometryR2/ConvexHull.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Line.hpp
       title: Src/GeometryR2/Line.hpp
     - icon: ':heavy_check_mark:'
@@ -696,6 +699,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2706.test.cpp
       title: "AOJ2706 \u5E7E\u4F55\u554F\u984C\u3092\u89E3\u3053\u3046"
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2827.test.cpp
+      title: Test/AOJ/2827.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2828.test.cpp
       title: "AOJ2828 \u30DE\u30C8\u30EA\u30E7\u30FC\u30B7\u30AB"

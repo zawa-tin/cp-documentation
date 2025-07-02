@@ -5,14 +5,11 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/PointAndPoint.hpp
-    title: Src/GeometryR2/Distance/PointAndPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-    title: Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/PointCloud.hpp
+    title: Src/GeometryR2/PointCloud.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Polygon.hpp
     title: Src/GeometryR2/Polygon.hpp
@@ -23,29 +20,25 @@ data:
     path: Src/GeometryR2/Relation.hpp
     title: Src/GeometryR2/Relation.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Segment.hpp
-    title: Src/GeometryR2/Segment.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1157.test.cpp
-    title: Test/AOJ/1157.test.cpp
+    path: Test/AOJ/2827.test.cpp
+    title: Test/AOJ/2827.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\n\n#line\
-    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 2 \"Src/GeometryR2/ConvexHull.hpp\"\n\n#line 2 \"Src/GeometryR2/PointCloud.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 4 \"Src/GeometryR2/Real.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\
     \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
     constexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
@@ -125,7 +118,10 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/PointCloud.hpp\"\
+    \n\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nusing PointCloud\
+    \ = std::vector<Point>;\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryR2/Polygon.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
     \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
     \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
@@ -140,34 +136,10 @@ data:
     \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
     \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
     \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
-    \ // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n\
-    #line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\n\
-    namespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
-    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 6 \"Src/GeometryR2/Segment.hpp\"\n\n\
-    #include <algorithm>\n#line 9 \"Src/GeometryR2/Segment.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\n\
-    public:\n    /* constructor */\n    Segment() = default;\n    Segment(const Point&\
-    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    Segment(Real x0, Real y0, Real\
-    \ x1, Real y1) : p0_{x0, y0}, p1_{x1, y1} {}\n\n    /* getter setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* member function */\n\
-    \    bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
-    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
-    \ p1_, s.p1()) <= 0;\n    }\n    Real length() const {\n        assert(valid());\n\
-    \        return Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n   \
-    \     assert(valid());\n        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\
-    \n\n#line 6 \"Src/GeometryR2/Intersect/SegmentAndSegment.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nbool Intersect(const Segment& s0, const Segment&\
-    \ s1) {\n    assert(s0.valid());\n    assert(s1.valid());\n    return s0.straddle(s1)\
-    \ and s1.straddle(s0);\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Polygon.hpp\"\n\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\
-    \n\n#line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <concepts>\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n  \
-    \  std::vector<Point> data_;\npublic:\n    /* member */\n    usize size() const\
+    \ // namespace zawa\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\n\n#include <algorithm>\n\
+    #line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <concepts>\n#line 12 \"Src/GeometryR2/Polygon.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n\
+    \    std::vector<Point> data_;\npublic:\n    /* member */\n    usize size() const\
     \ {\n        return data_.size();\n    }\n\n    /* constructor */\n    Polygon()\
     \ = default;\n    explicit Polygon(const std::vector<Point>& data) : data_{data}\
     \ {}\n    explicit Polygon(usize n) : data_(n) {}\n\n    /* operator[] */\n  \
@@ -199,43 +171,78 @@ data:
     \    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last)\
     \ {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
     \ n), first, last);\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n\n#line 7 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\n\n#line\
-    \ 9 \"Src/GeometryR2/Intersect/PolygonAndSegment.hpp\"\n\nnamespace zawa {\n\n\
-    namespace geometryR2 {\n\nbool Intersect(const Polygon& polygon, const Segment&\
-    \ segment) {\n    usize n{polygon.size()};\n    assert(n >= static_cast<usize>(3));\n\
-    \    assert(segment.valid());\n    for (usize i{} ; i < n ; i++) {\n        Segment\
-    \ edge{polygon[i], polygon[i+1==n?0:i+1]};\n        if (Intersect(edge, segment))\
-    \ {\n            return true;\n        }\n    }\n    return false;\n}\n\n} //\
-    \ namespace geometryR2\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"./SegmentAndSegment.hpp\"\
-    \n#include \"../Polygon.hpp\"\n#include \"../Segment.hpp\"\n\n#include <cassert>\n\
-    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Polygon&\
-    \ polygon, const Segment& segment) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    assert(segment.valid());\n    for (usize i{}\
-    \ ; i < n ; i++) {\n        Segment edge{polygon[i], polygon[i+1==n?0:i+1]};\n\
-    \        if (Intersect(edge, segment)) {\n            return true;\n        }\n\
-    \    }\n    return false;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ zawa\n\n#line 7 \"Src/GeometryR2/ConvexHull.hpp\"\n\n#line 10 \"Src/GeometryR2/ConvexHull.hpp\"\
+    \n#include <iterator>\n#line 12 \"Src/GeometryR2/ConvexHull.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryR2 {\n\ntemplate <bool strictly>\nPolygon ConvexHull(const\
+    \ PointCloud& p) {\n    PointCloud cp{p};\n    std::sort(cp.begin(), cp.end());\n\
+    \    cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    if (cp.size()\
+    \ <= 2u) {\n        return Polygon{cp};\n    }\n    PointCloud lower;\n    lower.reserve(p.size());\n\
+    \    for (auto it{cp.begin()} ; it != cp.end() ; it++) {\n        lower.push_back(*it);\n\
+    \        while (lower.size() >= 3u) {\n            if (Relation(lower[lower.size()\
+    \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == COUNTER_CLOCKWISE)\
+    \ {\n                break;\n            }\n            if constexpr (!strictly)\
+    \ {\n                if (Relation(lower[lower.size() - 3], lower[lower.size()\
+    \ - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n                    break;\n\
+    \                }\n            }\n            std::swap(lower[lower.size() -\
+    \ 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n  \
+    \  }\n    PointCloud upper;\n    upper.reserve(p.size());\n    for (auto it{cp.rbegin()}\
+    \ ; it != cp.rend() ; it++) {\n        upper.push_back(*it);\n        while (upper.size()\
+    \ >= 3u) {\n            if (Relation(upper[upper.size() - 3], upper[upper.size()\
+    \ - 2], upper[upper.size() - 1]) == COUNTER_CLOCKWISE) {\n                break;\n\
+    \            }\n            if constexpr (!strictly) {\n                if (Relation(upper[upper.size()\
+    \ - 3], upper[upper.size() - 2], upper[upper.size() - 1]) == ONLINE_FRONT) {\n\
+    \                    break;\n                }\n            }\n            std::swap(upper[upper.size()\
+    \ - 2], upper[upper.size() - 1]);\n            upper.pop_back();\n        }\n\
+    \    }\n\n    Polygon res;\n    res.reserve(lower.size() + upper.size() - 2);\n\
+    \    res.insert(res.size(), lower.begin(), lower.end());\n    res.insert(res.size(),\
+    \ std::next(upper.begin()), std::prev(upper.end()));\n    return res;\n}\n\n}\
+    \ // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./PointCloud.hpp\"\n#include \"./Polygon.hpp\"\
+    \n#include \"./Real.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <iterator>\n#include <vector>\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\ntemplate <bool strictly>\nPolygon ConvexHull(const\
+    \ PointCloud& p) {\n    PointCloud cp{p};\n    std::sort(cp.begin(), cp.end());\n\
+    \    cp.erase(std::unique(cp.begin(), cp.end()), cp.end());\n    if (cp.size()\
+    \ <= 2u) {\n        return Polygon{cp};\n    }\n    PointCloud lower;\n    lower.reserve(p.size());\n\
+    \    for (auto it{cp.begin()} ; it != cp.end() ; it++) {\n        lower.push_back(*it);\n\
+    \        while (lower.size() >= 3u) {\n            if (Relation(lower[lower.size()\
+    \ - 3], lower[lower.size() - 2], lower[lower.size() - 1]) == COUNTER_CLOCKWISE)\
+    \ {\n                break;\n            }\n            if constexpr (!strictly)\
+    \ {\n                if (Relation(lower[lower.size() - 3], lower[lower.size()\
+    \ - 2], lower[lower.size() - 1]) == ONLINE_FRONT) {\n                    break;\n\
+    \                }\n            }\n            std::swap(lower[lower.size() -\
+    \ 2], lower[lower.size() - 1]);\n            lower.pop_back();\n        }\n  \
+    \  }\n    PointCloud upper;\n    upper.reserve(p.size());\n    for (auto it{cp.rbegin()}\
+    \ ; it != cp.rend() ; it++) {\n        upper.push_back(*it);\n        while (upper.size()\
+    \ >= 3u) {\n            if (Relation(upper[upper.size() - 3], upper[upper.size()\
+    \ - 2], upper[upper.size() - 1]) == COUNTER_CLOCKWISE) {\n                break;\n\
+    \            }\n            if constexpr (!strictly) {\n                if (Relation(upper[upper.size()\
+    \ - 3], upper[upper.size() - 2], upper[upper.size() - 1]) == ONLINE_FRONT) {\n\
+    \                    break;\n                }\n            }\n            std::swap(upper[upper.size()\
+    \ - 2], upper[upper.size() - 1]);\n            upper.pop_back();\n        }\n\
+    \    }\n\n    Polygon res;\n    res.reserve(lower.size() + upper.size() - 2);\n\
+    \    res.insert(res.size(), lower.begin(), lower.end());\n    res.insert(res.size(),\
+    \ std::next(upper.begin()), std::prev(upper.end()));\n    return res;\n}\n\n}\
+    \ // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Segment.hpp
+  - Src/GeometryR2/PointCloud.hpp
   - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
+  - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Angle.hpp
-  - Src/GeometryR2/Relation.hpp
-  - Src/GeometryR2/Distance/PointAndPoint.hpp
   - Src/GeometryR2/Polygon.hpp
+  - Src/GeometryR2/Relation.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  path: Src/GeometryR2/ConvexHull.hpp
   requiredBy: []
   timestamp: '2025-07-02 17:21:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1157.test.cpp
-documentation_of: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  - Test/AOJ/2827.test.cpp
+documentation_of: Src/GeometryR2/ConvexHull.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-- /library/Src/GeometryR2/Intersect/PolygonAndSegment.hpp.html
-title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+- /library/Src/GeometryR2/ConvexHull.hpp
+- /library/Src/GeometryR2/ConvexHull.hpp.html
+title: Src/GeometryR2/ConvexHull.hpp
 ---

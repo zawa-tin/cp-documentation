@@ -24,6 +24,9 @@ data:
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/ConvexHull.hpp
+    title: Src/GeometryR2/ConvexHull.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
     title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   _extendedVerifiedWith:
@@ -36,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2009.test.cpp
     title: Test/AOJ/2009.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2827.test.cpp
+    title: Test/AOJ/2827.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
@@ -152,52 +158,15 @@ data:
     \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
     \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
     \ // namespace zawa\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\n\n#include <algorithm>\n\
-    #line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <vector>\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n    std::vector<Point>\
-    \ data_;\npublic:\n    /* member */\n    usize size() const {\n        return\
-    \ data_.size();\n    }\n\n    /* constructor */\n    Polygon() = default;\n  \
-    \  Polygon(const Polygon& polygon) : data_{polygon.data_} {}\n    Polygon(const\
-    \ std::vector<Point>& data) : data_{data} {}\n    Polygon(usize n) : data_{n}\
-    \ {\n        assert(n >= static_cast<usize>(3));\n    }\n\n    /* operator[] */\n\
-    \    Point& operator[](usize i) {\n        assert(i < size());\n        return\
-    \ data_[i];\n    }\n    const Point& operator[](usize i) const {\n        assert(i\
-    \ < size());\n        return data_[i];\n    }\n    Polygon& operator=(const Polygon&\
-    \ polygon) {\n        data_ = polygon.data_;\n        return *this;\n    }\n \
-    \   friend std::istream& operator>>(std::istream& is, Polygon& polygon) {\n  \
-    \      for (size_t i{} ; i < polygon.size() ; i++) {\n            is >> polygon[i];\n\
-    \        }\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const Polygon& polygon) {\n        for (usize i{} ; i < polygon.size() ;\
-    \ i++) {\n            std::cout << polygon[i] << (i + 1 == polygon.size() ? \"\
-    \" : \" \");\n        }\n        return os;\n    }\n\n    /* member function */\n\
-    \    void orderRotate(usize i) {\n        assert(i < size());\n        std::rotate(data_.begin(),\
-    \ data_.begin() + i, data_.end());\n    }\n    void normalForm() {\n        auto\
-    \ index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};\n\
-    \        orderRotate(index);\n    }\n    Polygon normalFormed() const {\n    \
-    \    Polygon res{*this};\n        res.normalForm();\n        return res;\n   \
-    \ }\n    bool isConvex() const {\n        assert(size() >= static_cast<usize>(3));\n\
-    \        for (usize i{} ; i < size() ; i++) {\n            if (Relation(data_[i],\
-    \ data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n             \
-    \       == CLOCKWISE) {\n                return false;\n            }\n      \
-    \  }\n        return true;\n    }\n    Real area() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        Real res{};\n        for (usize i{1} ; i\
-    \ < size() ; i++) {\n            res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1]\
-    \ - data_[0]);\n        }\n        return res / static_cast<Real>(2);\n    }\n\
-    \    void pushBack(const Point& p) {\n        data_.push_back(p);\n    }\n   \
-    \ void emplaceBack(Real x, Real y) {\n        data_.emplace_back(x, y);\n    }\n\
-    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Real.hpp\"\
-    \n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
-    #include <cassert>\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Polygon {\nprivate:\n    std::vector<Point> data_;\npublic:\n   \
-    \ /* member */\n    usize size() const {\n        return data_.size();\n    }\n\
-    \n    /* constructor */\n    Polygon() = default;\n    Polygon(const Polygon&\
-    \ polygon) : data_{polygon.data_} {}\n    Polygon(const std::vector<Point>& data)\
-    \ : data_{data} {}\n    Polygon(usize n) : data_{n} {\n        assert(n >= static_cast<usize>(3));\n\
-    \    }\n\n    /* operator[] */\n    Point& operator[](usize i) {\n        assert(i\
-    \ < size());\n        return data_[i];\n    }\n    const Point& operator[](usize\
-    \ i) const {\n        assert(i < size());\n        return data_[i];\n    }\n \
-    \   Polygon& operator=(const Polygon& polygon) {\n        data_ = polygon.data_;\n\
-    \        return *this;\n    }\n    friend std::istream& operator>>(std::istream&\
+    #line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <concepts>\n#include <vector>\n\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n  \
+    \  std::vector<Point> data_;\npublic:\n    /* member */\n    usize size() const\
+    \ {\n        return data_.size();\n    }\n\n    /* constructor */\n    Polygon()\
+    \ = default;\n    explicit Polygon(const std::vector<Point>& data) : data_{data}\
+    \ {}\n    explicit Polygon(usize n) : data_(n) {}\n\n    /* operator[] */\n  \
+    \  Point& operator[](usize i) {\n        assert(i < size());\n        return data_[i];\n\
+    \    }\n    const Point& operator[](usize i) const {\n        assert(i < size());\n\
+    \        return data_[i];\n    }\n    friend std::istream& operator>>(std::istream&\
     \ is, Polygon& polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++)\
     \ {\n            is >> polygon[i];\n        }\n        return is;\n    }\n   \
     \ friend std::ostream& operator<<(std::ostream& os, const Polygon& polygon) {\n\
@@ -218,8 +187,49 @@ data:
     \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
     \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
     \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Real x,\
-    \ Real y) {\n        data_.emplace_back(x, y);\n    }\n};\n\n} // namespace geometryR2\n\
-    \n} // namespace zawa\n\n"
+    \ Real y) {\n        data_.emplace_back(x, y);\n    }\n    void reserve(usize\
+    \ n) {\n        data_.reserve(n);\n    }\n    template <std::input_iterator RandomAccessIterator>\n\
+    \    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last)\
+    \ {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ n), first, last);\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n\n"
+  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Real.hpp\"\
+    \n#include \"./Point.hpp\"\n#include \"./Relation.hpp\"\n\n#include <algorithm>\n\
+    #include <cassert>\n#include <concepts>\n#include <vector>\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n    std::vector<Point>\
+    \ data_;\npublic:\n    /* member */\n    usize size() const {\n        return\
+    \ data_.size();\n    }\n\n    /* constructor */\n    Polygon() = default;\n  \
+    \  explicit Polygon(const std::vector<Point>& data) : data_{data} {}\n    explicit\
+    \ Polygon(usize n) : data_(n) {}\n\n    /* operator[] */\n    Point& operator[](usize\
+    \ i) {\n        assert(i < size());\n        return data_[i];\n    }\n    const\
+    \ Point& operator[](usize i) const {\n        assert(i < size());\n        return\
+    \ data_[i];\n    }\n    friend std::istream& operator>>(std::istream& is, Polygon&\
+    \ polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++) {\n        \
+    \    is >> polygon[i];\n        }\n        return is;\n    }\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const Polygon& polygon) {\n        for (usize i{}\
+    \ ; i < polygon.size() ; i++) {\n            std::cout << polygon[i] << (i + 1\
+    \ == polygon.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
+    \    /* member function */\n    void orderRotate(usize i) {\n        assert(i\
+    \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
+    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
+    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
+    \    }\n    Polygon normalFormed() const {\n        Polygon res{*this};\n    \
+    \    res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
+    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
+    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
+    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
+    \              return false;\n            }\n        }\n        return true;\n\
+    \    }\n    Real area() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
+    \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
+    \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
+    \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Real x,\
+    \ Real y) {\n        data_.emplace_back(x, y);\n    }\n    void reserve(usize\
+    \ n) {\n        data_.reserve(n);\n    }\n    template <std::input_iterator RandomAccessIterator>\n\
+    \    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last)\
+    \ {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ n), first, last);\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Real.hpp
@@ -229,14 +239,16 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Polygon.hpp
   requiredBy:
+  - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-  timestamp: '2023-11-20 11:32:11+09:00'
+  timestamp: '2025-07-02 17:21:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/1157.test.cpp
