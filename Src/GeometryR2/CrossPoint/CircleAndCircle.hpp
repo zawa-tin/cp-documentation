@@ -2,6 +2,7 @@
 
 #include "../Circle.hpp"
 #include "../Point.hpp"
+#include "../Intersect/CircleAndCircle.hpp"
 
 #include <cassert>
 
