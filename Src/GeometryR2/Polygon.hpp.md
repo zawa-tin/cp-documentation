@@ -27,6 +27,9 @@ data:
     path: Src/GeometryR2/ConvexHull.hpp
     title: Src/GeometryR2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/ConvexPolygonCut.hpp
+    title: Src/GeometryR2/ConvexPolygonCut.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
     title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   _extendedVerifiedWith:
@@ -51,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_3_C.test.cpp
     title: Test/AOJ/CGL_3_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_C.test.cpp
+    title: Test/AOJ/CGL_4_C.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -182,7 +188,7 @@ data:
     \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
     \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
     \              return false;\n            }\n        }\n        return true;\n\
-    \    }\n    Real area() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \    }\n    Real area() const {\n        if (std::ssize(data_) <= 2) return 0;\n\
     \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
     \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
     \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
@@ -219,7 +225,7 @@ data:
     \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
     \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
     \              return false;\n            }\n        }\n        return true;\n\
-    \    }\n    Real area() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \    }\n    Real area() const {\n        if (std::ssize(data_) <= 2) return 0;\n\
     \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
     \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
     \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
@@ -240,15 +246,17 @@ data:
   path: Src/GeometryR2/Polygon.hpp
   requiredBy:
   - Src/GeometryR2/ConvexHull.hpp
+  - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-  timestamp: '2025-07-02 17:21:37+09:00'
+  timestamp: '2025-07-03 17:15:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
   - Test/AOJ/2827.test.cpp
+  - Test/AOJ/CGL_4_C.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/1157.test.cpp

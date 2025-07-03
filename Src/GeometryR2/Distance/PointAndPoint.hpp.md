@@ -30,11 +30,17 @@ data:
     path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
     title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/ConvexPolygonCut.hpp
+    title: Src/GeometryR2/ConvexPolygonCut.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
+    title: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
@@ -56,6 +62,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndLine.hpp
     title: Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Intersect/LineAndSegment.hpp
+    title: Src/GeometryR2/Intersect/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
     title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
@@ -123,6 +132,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_2_D.test.cpp
     title: Test/AOJ/CGL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_C.test.cpp
+    title: Test/AOJ/CGL_4_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_B.test.cpp
     title: Test/AOJ/CGL_5_B.test.cpp
@@ -267,9 +279,11 @@ data:
   - Src/GeometryR2/Circle.hpp
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
   - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
@@ -280,6 +294,7 @@ data:
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/Intersect/LineAndSegment.hpp
   - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
@@ -293,6 +308,7 @@ data:
   - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_7_A/GeometryR2.test.cpp
   - Test/AOJ/2862.test.cpp
+  - Test/AOJ/CGL_4_C.test.cpp
   - Test/AOJ/2334.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp

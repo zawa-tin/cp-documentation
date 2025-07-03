@@ -163,7 +163,7 @@ data:
     \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
     \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
     \              return false;\n            }\n        }\n        return true;\n\
-    \    }\n    Real area() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \    }\n    Real area() const {\n        if (std::ssize(data_) <= 2) return 0;\n\
     \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
     \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
     \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
@@ -195,7 +195,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_3_A/GeometryR2.test.cpp
   requiredBy: []
-  timestamp: '2025-07-02 17:21:37+09:00'
+  timestamp: '2025-07-03 17:15:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_3_A/GeometryR2.test.cpp

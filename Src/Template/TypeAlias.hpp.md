@@ -120,6 +120,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Contain/LineContainsPoint.hpp
+    title: Src/GeometryR2/Contain/LineContainsPoint.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
@@ -130,6 +133,9 @@ data:
     path: Src/GeometryR2/ConvexHull.hpp
     title: Src/GeometryR2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/ConvexPolygonCut.hpp
+    title: Src/GeometryR2/ConvexPolygonCut.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
@@ -138,6 +144,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
     title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
+    title: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
@@ -165,6 +174,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/LineAndLine.hpp
     title: Src/GeometryR2/Intersect/LineAndLine.hpp
+  - icon: ':warning:'
+    path: Src/GeometryR2/Intersect/LineAndSegment.hpp
+    title: Src/GeometryR2/Intersect/LineAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
     title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
@@ -614,6 +626,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_4_B.test.cpp
     title: Test/AOJ/CGL_4_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_C.test.cpp
+    title: Test/AOJ/CGL_4_C.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_A.test.cpp
     title: Test/AOJ/CGL_5_A.test.cpp
@@ -1331,6 +1346,7 @@ data:
   - Src/GeometryR2/Reflection.hpp
   - Src/GeometryR2/Relation.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
   - Src/GeometryR2/CrossPoint/LineAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
@@ -1340,8 +1356,10 @@ data:
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/ConvexHull.hpp
+  - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/Projection.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
+  - Src/GeometryR2/Contain/LineContainsPoint.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
@@ -1354,6 +1372,7 @@ data:
   - Src/GeometryR2/Parallel/LineAndLine.hpp
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
   - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/Intersect/LineAndSegment.hpp
   - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryR2/Intersect/LineAndLine.hpp
   - Src/GeometryR2/Intersect/CircleAndCircle.hpp
@@ -1508,6 +1527,7 @@ data:
   - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - Test/AOJ/2862.test.cpp
   - Test/AOJ/3079.test.cpp
+  - Test/AOJ/CGL_4_C.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/2828.test.cpp
   - Test/AOJ/CGL_4_B.test.cpp

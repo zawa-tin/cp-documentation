@@ -204,6 +204,9 @@ data:
       path: Src/GeometryR2/ConvexHull.hpp
       title: Src/GeometryR2/ConvexHull.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/ConvexPolygonCut.hpp
+      title: Src/GeometryR2/ConvexPolygonCut.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Line.hpp
       title: Src/GeometryR2/Line.hpp
     - icon: ':heavy_check_mark:'
@@ -243,6 +246,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
       title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/Contain/LineContainsPoint.hpp
+      title: Src/GeometryR2/Contain/LineContainsPoint.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
       title: Src/GeometryR2/Contain/PolygonContainsPoint.hpp
@@ -263,6 +269,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
       title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
+      title: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
       title: Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
@@ -294,6 +303,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Intersect/LineAndLine.hpp
       title: Src/GeometryR2/Intersect/LineAndLine.hpp
+    - icon: ':warning:'
+      path: Src/GeometryR2/Intersect/LineAndSegment.hpp
+      title: Src/GeometryR2/Intersect/LineAndSegment.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
       title: Src/GeometryR2/Intersect/PolygonAndSegment.hpp
@@ -772,6 +784,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_4_B.test.cpp
       title: Test/AOJ/CGL_4_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_4_C.test.cpp
+      title: Test/AOJ/CGL_4_C.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_5_A.test.cpp
       title: Test/AOJ/CGL_5_A.test.cpp
