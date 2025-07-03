@@ -24,8 +24,14 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+    title: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Reflection.hpp
     title: Src/GeometryR2/Reflection.hpp
@@ -42,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_D.test.cpp
     title: Test/AOJ/CGL_7_D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_H.test.cpp
+    title: Test/AOJ/CGL_7_H.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -195,7 +204,9 @@ data:
   path: Src/GeometryR2/Projection.hpp
   requiredBy:
   - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -203,6 +214,7 @@ data:
   - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
 documentation_of: Src/GeometryR2/Projection.hpp
 layout: document
 redirect_from:

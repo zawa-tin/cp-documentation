@@ -74,64 +74,64 @@ data:
     \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
     \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
     \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
-    constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
-    \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
-    \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
-    \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
-    \    Point(Real x, Real y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n   \
-    \ Real x() const {\n        return x_;\n    }\n    Real& x() {\n        return\
-    \ x_;\n    }\n    Real y() const {\n        return y_;\n    }\n    Real& y() {\n\
-    \        return y_;\n    }\n\n    /* operator */\n    Point& operator+=(const\
-    \ Point& rhs) {\n        x_ += rhs.x();\n        y_ += rhs.y();\n        return\
-    \ *this;\n    }\n    friend Point operator+(const Point& lhs, const Point& rhs)\
-    \ {\n        return Point{lhs} += rhs;\n    }\n    Point operator+() const {\n\
-    \        return *this;\n    }\n    Point& operator-=(const Point& rhs) {\n   \
-    \     x_ -= rhs.x();\n        y_ -= rhs.y();\n        return *this;\n    }\n \
-    \   friend Point operator-(const Point& lhs, const Point& rhs) {\n        return\
-    \ Point{lhs} -= rhs;\n    }\n    Point operator-() const {\n        return Point{}\
-    \ - *this;\n    }\n    Point& operator*=(Real k) {\n        x_ *= k;\n       \
-    \ y_ *= k;\n        return *this;\n    }\n    friend Point operator*(Real k, const\
-    \ Point& p) {\n        return Point{p} *= k;\n    }\n    friend Point operator*(const\
-    \ Point& p, Real k) {\n        return Point{p} *= k;\n    }\n    Point& operator/=(Real\
-    \ k) {\n        assert(!Zero(k));\n        x_ /= k;\n        y_ /= k;\n      \
-    \  return *this;\n    }\n    friend Point operator/(Real k, const Point& p) {\n\
-    \        return Point{p} /= k;\n    }\n    friend Point operator/(const Point&\
-    \ p, Real k) {\n        return Point{p} /= k;\n    }\n    friend bool operator==(const\
-    \ Point& lhs, const Point& rhs) {\n        return Equal(lhs.x(), rhs.x()) and\
-    \ Equal(lhs.y(), rhs.y());\n    }\n    friend bool operator!=(const Point& lhs,\
-    \ const Point& rhs) {\n        return !Equal(lhs.x(), rhs.x()) or !Equal(lhs.y(),\
-    \ rhs.y());\n    }\n    friend bool operator<(const Point& lhs, const Point& rhs)\
-    \ {\n        return Smaller(lhs.x(), rhs.x()) or \n            (Equal(lhs.x(),\
-    \ rhs.x()) and Smaller(lhs.y(), rhs.y()));\n    }\n    friend bool operator<=(const\
-    \ Point& lhs, const Point& rhs) {\n        return Smaller(lhs.x(), rhs.x()) or\
-    \ \n            (Equal(lhs.x(), rhs.x()) and (Smaller(lhs.y(), rhs.y()) or Equal(lhs.y(),\
-    \ rhs.y())));\n    }\n    friend bool operator>(const Point& lhs, const Point&\
-    \ rhs) {\n        return Bigger(lhs.x(), rhs.x()) or\n            (Equal(lhs.x(),\
-    \ rhs.x()) and Bigger(lhs.y(), rhs.y()));\n    }\n    friend bool operator>=(const\
-    \ Point& lhs, const Point& rhs) {\n        return Bigger(lhs.x(), rhs.x()) or\n\
-    \            (Equal(lhs.x(), rhs.x()) and (Bigger(lhs.y(), rhs.y()) or Equal(lhs.y(),\
-    \ rhs.y())));\n    }\n    friend std::istream& operator>>(std::istream& is, Point&\
-    \ p) {\n        is >> p.x_ >> p.y_;\n        return is;\n    }\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const Point& p) {\n        os << '(' << p.x_ <<\
-    \ ',' << p.y_ << ')';\n        return os;\n    }\n    \n    /* member function\
-    \ */\n    Real normSquare() const {\n        return Square(x_) + Square(y_);\n\
-    \    }\n    Real norm() const {\n        return Sqrt(normSquare());\n    }\n \
-    \   void normalize() {\n        assert((*this) != Point{});\n        (*this) /=\
-    \ norm(); \n    }\n    Point normalized() const {\n        Point res{*this};\n\
-    \        res.normalize();\n        return res;\n    }\n    Point rotated(Real\
-    \ radian) const {\n        return Point{\n            x_ * cosl(radian) - y_ *\
-    \ sinl(radian),\n            x_ * sinl(radian) + y_ * cosl(radian)\n        };\n\
-    \    }\n    void rotate(Real radian) {\n        *this = rotated(radian); \n  \
-    \  }\n    Point rotatedByArc(Real arc) const {\n        return rotated(ArcToRadian(arc));\n\
-    \    }\n    void rotateByArc(Real arc) {\n        *this = rotatedByArc(arc);\n\
-    \    }\n    Real argument() const {\n        return (Negative(y_) ? TAU : static_cast<Real>(0))\
-    \ + atan2l(y_, x_);\n    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
+    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
+    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
+    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
+    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Point.hpp\"\n\n#line 7 \"Src/GeometryR2/Point.hpp\"\
+    \n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\n\nnamespace zawa\
+    \ {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n    Real x_{}, y_{};\n\
+    public:\n    /* constructor */\n    Point() = default;\n    Point(Real x, Real\
+    \ y) : x_{x}, y_{y} {}\n\n    /* getter, setter */\n    Real x() const {\n   \
+    \     return x_;\n    }\n    Real& x() {\n        return x_;\n    }\n    Real\
+    \ y() const {\n        return y_;\n    }\n    Real& y() {\n        return y_;\n\
+    \    }\n\n    /* operator */\n    Point& operator+=(const Point& rhs) {\n    \
+    \    x_ += rhs.x();\n        y_ += rhs.y();\n        return *this;\n    }\n  \
+    \  friend Point operator+(const Point& lhs, const Point& rhs) {\n        return\
+    \ Point{lhs} += rhs;\n    }\n    Point operator+() const {\n        return *this;\n\
+    \    }\n    Point& operator-=(const Point& rhs) {\n        x_ -= rhs.x();\n  \
+    \      y_ -= rhs.y();\n        return *this;\n    }\n    friend Point operator-(const\
+    \ Point& lhs, const Point& rhs) {\n        return Point{lhs} -= rhs;\n    }\n\
+    \    Point operator-() const {\n        return Point{} - *this;\n    }\n    Point&\
+    \ operator*=(Real k) {\n        x_ *= k;\n        y_ *= k;\n        return *this;\n\
+    \    }\n    friend Point operator*(Real k, const Point& p) {\n        return Point{p}\
+    \ *= k;\n    }\n    friend Point operator*(const Point& p, Real k) {\n       \
+    \ return Point{p} *= k;\n    }\n    Point& operator/=(Real k) {\n        assert(!Zero(k));\n\
+    \        x_ /= k;\n        y_ /= k;\n        return *this;\n    }\n    friend\
+    \ Point operator/(Real k, const Point& p) {\n        return Point{p} /= k;\n \
+    \   }\n    friend Point operator/(const Point& p, Real k) {\n        return Point{p}\
+    \ /= k;\n    }\n    friend bool operator==(const Point& lhs, const Point& rhs)\
+    \ {\n        return Equal(lhs.x(), rhs.x()) and Equal(lhs.y(), rhs.y());\n   \
+    \ }\n    friend bool operator!=(const Point& lhs, const Point& rhs) {\n      \
+    \  return !Equal(lhs.x(), rhs.x()) or !Equal(lhs.y(), rhs.y());\n    }\n    friend\
+    \ bool operator<(const Point& lhs, const Point& rhs) {\n        return Smaller(lhs.x(),\
+    \ rhs.x()) or \n            (Equal(lhs.x(), rhs.x()) and Smaller(lhs.y(), rhs.y()));\n\
+    \    }\n    friend bool operator<=(const Point& lhs, const Point& rhs) {\n   \
+    \     return Smaller(lhs.x(), rhs.x()) or \n            (Equal(lhs.x(), rhs.x())\
+    \ and (Smaller(lhs.y(), rhs.y()) or Equal(lhs.y(), rhs.y())));\n    }\n    friend\
+    \ bool operator>(const Point& lhs, const Point& rhs) {\n        return Bigger(lhs.x(),\
+    \ rhs.x()) or\n            (Equal(lhs.x(), rhs.x()) and Bigger(lhs.y(), rhs.y()));\n\
+    \    }\n    friend bool operator>=(const Point& lhs, const Point& rhs) {\n   \
+    \     return Bigger(lhs.x(), rhs.x()) or\n            (Equal(lhs.x(), rhs.x())\
+    \ and (Bigger(lhs.y(), rhs.y()) or Equal(lhs.y(), rhs.y())));\n    }\n    friend\
+    \ std::istream& operator>>(std::istream& is, Point& p) {\n        is >> p.x_ >>\
+    \ p.y_;\n        return is;\n    }\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const Point& p) {\n        os << '(' << p.x_ << ',' << p.y_ << ')';\n  \
+    \      return os;\n    }\n    \n    /* member function */\n    Real normSquare()\
+    \ const {\n        return Square(x_) + Square(y_);\n    }\n    Real norm() const\
+    \ {\n        return Sqrt(normSquare());\n    }\n    void normalize() {\n     \
+    \   assert((*this) != Point{});\n        (*this) /= norm(); \n    }\n    Point\
+    \ normalized() const {\n        Point res{*this};\n        res.normalize();\n\
+    \        return res;\n    }\n    Point rotated(Real radian) const {\n        return\
+    \ Point{\n            x_ * cosl(radian) - y_ * sinl(radian),\n            x_ *\
+    \ sinl(radian) + y_ * cosl(radian)\n        };\n    }\n    void rotate(Real radian)\
+    \ {\n        *this = rotated(radian); \n    }\n    Point rotatedByArc(Real arc)\
+    \ const {\n        return rotated(ArcToRadian(arc));\n    }\n    void rotateByArc(Real\
+    \ arc) {\n        *this = rotatedByArc(arc);\n    }\n    Real argument() const\
+    \ {\n        return (Negative(y_) ? TAU : static_cast<Real>(0)) + atan2l(y_, x_);\n\
+    \    }\n    Real argumentByArc() const {\n        return RadianToArc(argument());\n\
     \    }\n\n    /* friend function */\n    friend Real Dot(const Point& lhs, const\
     \ Point& rhs) {\n        return lhs.x() * rhs.x() + lhs.y() * rhs.y();\n    }\n\
     \    friend Real Cross(const Point& lhs, const Point& rhs) {\n        return lhs.x()\
@@ -144,8 +144,8 @@ data:
     \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
     \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
     \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Circle.hpp\"\n\n\
-    #line 9 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa {\n\
+    \ geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Circle.hpp\"\n\n\
+    #line 10 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa {\n\
     \nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n \
     \   Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
@@ -155,18 +155,20 @@ data:
     \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
     \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
     \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
-    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
-    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
-    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
-    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
-    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
-    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
-    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
-    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
-    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    \ {\n        return radius_;\n    }\n    Real area() const {\n        return PI\
+    \ * Square(radius_);\n    }\n    Real sectorArea(Real centerAngle) const {\n \
+    \       return Square(radius_) * centerAngle / 2;\n    }\n\n    /* operator */\n\
+    \    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \n    /* friend function */\n    friend u32 NumberCommonTangent(const Circle&\
+    \ c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(), c1.center())};\n\
+    \        Real down{Square(Abs(c0.radius() - c1.radius()))};\n        if (Smaller(dist,\
+    \ down)) return 0;\n        if (Equal(dist, down)) return 1;\n        Real up{Square(c0.radius()\
+    \ + c1.radius())};\n        if (Smaller(dist, up)) return 2;\n        if (Equal(dist,\
+    \ up)) return 3;\n        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
     \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
     \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
@@ -256,8 +258,8 @@ data:
   - Src/GeometryR2/Circle.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryR2/Real.hpp
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Distance/PointAndPoint.hpp
   - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Relation.hpp
@@ -268,7 +270,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_7_C.test.cpp
   requiredBy: []
-  timestamp: '2025-07-01 18:28:26+09:00'
+  timestamp: '2025-07-03 21:45:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_7_C.test.cpp

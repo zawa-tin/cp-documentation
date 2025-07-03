@@ -18,6 +18,12 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+    title: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+    title: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
@@ -57,6 +63,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_4_C.test.cpp
     title: Test/AOJ/CGL_4_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_H.test.cpp
+    title: Test/AOJ/CGL_7_H.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_I.test.cpp
+    title: Test/AOJ/CGL_7_I.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -245,6 +257,8 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Polygon.hpp
   requiredBy:
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - Src/GeometryR2/CommonArea/CircleAndCircle.hpp
   - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
@@ -255,10 +269,12 @@ data:
   verifiedWith:
   - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/CGL_7_I.test.cpp
   - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_4_C.test.cpp
   - Test/AOJ/CGL_3_C.test.cpp
   - Test/AOJ/2009.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
 documentation_of: Src/GeometryR2/Polygon.hpp

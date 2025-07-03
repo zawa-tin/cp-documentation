@@ -164,8 +164,8 @@ data:
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p0,\
     \ const Point& p1) {\n    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const\
     \ Point& p0, const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Circle.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
+    } // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 10 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
     \ {\n\nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n\
     \    Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
@@ -175,37 +175,39 @@ data:
     \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
     \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
     \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
-    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
-    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
-    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
-    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
-    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
-    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
-    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
-    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
-    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum ContainState {\n    INSIDE,\n\
-    \    ONLINE,\n    OUTSIDE\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const Circle& circle,\
-    \ const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n    if (Smaller(dist,\
-    \ circle.radius())) {\n        return INSIDE;\n    }\n    else if (Equal(dist,\
-    \ circle.radius())) {\n        return ONLINE;\n    }\n    else {\n        return\
-    \ OUTSIDE;\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line\
-    \ 9 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\n\n#line 11 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n// p0\u306B\u63A5\u70B9\u304C\
-    \u4EE3\u5165\u3055\u308C\u307E\u3059\nstd::pair<Line, Line> TangentToCircle(const\
-    \ Circle& c, const Point& p) {\n    ContainState state{CircleContainsPoint(c,\
-    \ p)};\n    assert(state != INSIDE);\n    if (state == ONLINE) {\n        Vector\
-    \ dir{Vector{p - c.center()}.rotatedByArc(90)};\n        return {Line{p, p + dir},\
-    \ Line{p, p + dir}};\n    }\n    else {\n        Vector dir{c.center() - p};\n\
-    \        Real theta{asinl(c.radius() / dir.norm())};\n        Real len{Sqrt(dir.normSquare()\
-    \ - Square(c.radius()))};\n        dir.normalize();\n        return {Line{p +\
-    \ dir.rotated(theta) * len, p}, Line{p + dir.rotated(-theta) * len, p}};\n   \
-    \ }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ {\n        return radius_;\n    }\n    Real area() const {\n        return PI\
+    \ * Square(radius_);\n    }\n    Real sectorArea(Real centerAngle) const {\n \
+    \       return Square(radius_) * centerAngle / 2;\n    }\n\n    /* operator */\n\
+    \    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \n    /* friend function */\n    friend u32 NumberCommonTangent(const Circle&\
+    \ c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(), c1.center())};\n\
+    \        Real down{Square(Abs(c0.radius() - c1.radius()))};\n        if (Smaller(dist,\
+    \ down)) return 0;\n        if (Equal(dist, down)) return 1;\n        Real up{Square(c0.radius()\
+    \ + c1.radius())};\n        if (Smaller(dist, up)) return 2;\n        if (Equal(dist,\
+    \ up)) return 3;\n        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
+    };\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nContainState CircleContainsPoint(const\
+    \ Circle& circle, const Point& p) {\n    Real dist{Distance(circle.center(), p)};\n\
+    \    if (Smaller(dist, circle.radius())) {\n        return INSIDE;\n    }\n  \
+    \  else if (Equal(dist, circle.radius())) {\n        return ONLINE;\n    }\n \
+    \   else {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n#line 9 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\n\n\
+    #line 11 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\n\nnamespace zawa {\n\n\
+    namespace geometryR2 {\n\n// p0\u306B\u63A5\u70B9\u304C\u4EE3\u5165\u3055\u308C\
+    \u307E\u3059\nstd::pair<Line, Line> TangentToCircle(const Circle& c, const Point&\
+    \ p) {\n    ContainState state{CircleContainsPoint(c, p)};\n    assert(state !=\
+    \ INSIDE);\n    if (state == ONLINE) {\n        Vector dir{Vector{p - c.center()}.rotatedByArc(90)};\n\
+    \        return {Line{p, p + dir}, Line{p, p + dir}};\n    }\n    else {\n   \
+    \     Vector dir{c.center() - p};\n        Real theta{asinl(c.radius() / dir.norm())};\n\
+    \        Real len{Sqrt(dir.normSquare() - Square(c.radius()))};\n        dir.normalize();\n\
+    \        return {Line{p + dir.rotated(theta) * len, p}, Line{p + dir.rotated(-theta)\
+    \ * len, p}};\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Real.hpp\"\n#include \"../Point.hpp\"\n#include\
     \ \"../Line.hpp\"\n#include \"../Circle.hpp\"\n#include \"../Distance/PointAndPoint.hpp\"\
     \n#include \"../Contain/CircleContainsPoint.hpp\"\n\n#include <utility>\n\nnamespace\
@@ -233,7 +235,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Tangent/TangentToCircle.hpp
   requiredBy: []
-  timestamp: '2025-07-01 18:28:26+09:00'
+  timestamp: '2025-07-03 21:45:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/CGL_7_F.test.cpp

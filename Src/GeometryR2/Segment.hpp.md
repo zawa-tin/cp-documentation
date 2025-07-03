@@ -27,11 +27,17 @@ data:
     path: Src/GeometryR2/CircumscribedCircle.hpp
     title: Src/GeometryR2/CircumscribedCircle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+    title: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
     title: Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/ConvexPolygonCut.hpp
     title: Src/GeometryR2/ConvexPolygonCut.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
@@ -105,6 +111,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_H.test.cpp
+    title: Test/AOJ/CGL_7_H.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc151_f.test.cpp
     title: Test/AtCoder/abc151_f.test.cpp
@@ -263,8 +272,10 @@ data:
   - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
   - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
@@ -289,6 +300,7 @@ data:
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
   - Test/AOJ/CGL_7_B.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AtCoder/abc151_f.test.cpp

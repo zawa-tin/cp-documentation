@@ -5,32 +5,23 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Bisector/AngleBisector.hpp
-    title: Src/GeometryR2/Bisector/AngleBisector.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Circle.hpp
     title: Src/GeometryR2/Circle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
-    title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/LineAndPoint.hpp
-    title: Src/GeometryR2/Distance/LineAndPoint.hpp
+    path: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+    title: Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/PointAndPoint.hpp
     title: Src/GeometryR2/Distance/PointAndPoint.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/InCircle.hpp
-    title: Src/GeometryR2/InCircle.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Intersect/LineAndLine.hpp
-    title: Src/GeometryR2/Intersect/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Line.hpp
-    title: Src/GeometryR2/Line.hpp
+    path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
+    title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Point.hpp
     title: Src/GeometryR2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Polygon.hpp
+    title: Src/GeometryR2/Polygon.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Real.hpp
     title: Src/GeometryR2/Real.hpp
@@ -38,25 +29,21 @@ data:
     path: Src/GeometryR2/Relation.hpp
     title: Src/GeometryR2/Relation.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Segment.hpp
-    title: Src/GeometryR2/Segment.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_I.test.cpp
+    title: Test/AOJ/CGL_7_I.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    ERROR: '0.000001'
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
     links:
-    - https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B
-  bundledCode: "#line 1 \"Test/AOJ/CGL_7_B.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\
-    \n#define ERROR 0.000001\n\n#line 2 \"Src/GeometryR2/InCircle.hpp\"\n\n#line 2\
-    \ \"Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line\
+    - https://tjkendev.github.io/procon-library/python/geometry/circles_intersection_area.html
+  bundledCode: "#line 2 \"Src/GeometryR2/CommonArea/CircleAndCircle.hpp\"\n\n#line\
+    \ 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line\
     \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -77,12 +64,13 @@ data:
     \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
     \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
     \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
-    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
-    \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
-    \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
-    }\n\nconstexpr Real RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180))\
-    \ / PI;\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Point.hpp\"\
+    \ \n} // namespace zawa\n#line 4 \"Src/GeometryR2/Angle.hpp\"\n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nconstexpr Real PI{acosl(-1)};\n\
+    constexpr Real TAU{static_cast<Real>(2) * PI};\n\nconstexpr Real ArcToRadian(Real\
+    \ arc) {\n    return (arc * PI) / static_cast<Real>(180);\n}\n\nconstexpr Real\
+    \ RadianToArc(Real radian) {\n    return (radian * static_cast<Real>(180)) / PI;\n\
+    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 2 \"Src/GeometryR2/Point.hpp\"\n\n#line 5 \"Src/GeometryR2/Point.hpp\"\
     \n\n#line 7 \"Src/GeometryR2/Point.hpp\"\n#include <iostream>\n#line 9 \"Src/GeometryR2/Point.hpp\"\
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Point {\nprivate:\n  \
     \  Real x_{}, y_{};\npublic:\n    /* constructor */\n    Point() = default;\n\
@@ -141,15 +129,15 @@ data:
     \ lhs, const Point& rhs) {\n        return rhs.argument() - lhs.argument();\n\
     \    }\n    friend bool ArgComp(const Point& lhs, const Point& rhs) {\n      \
     \  return Smaller(lhs.argument(), rhs.argument());\n    }\n};\n\nusing Vector\
-    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Circle.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const\
-    \ Point& p0, const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Circle.hpp\"\
-    \n\n#line 10 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n\
-    \    Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
+    \ = Point;\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
+    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
+    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
+    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Circle.hpp\"\n\n\
+    #line 10 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa {\n\
+    \nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n \
+    \   Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
     \ {\n        assert(!Negative(radius));\n    }\n    Circle(Real x, Real y, Real\
     \ r) : center_{x, y}, radius_{r} {\n        assert(!Negative(r));\n    }\n\n \
@@ -170,7 +158,7 @@ data:
     \ down)) return 0;\n        if (Equal(dist, down)) return 1;\n        Real up{Square(c0.radius()\
     \ + c1.radius())};\n        if (Smaller(dist, up)) return 2;\n        if (Equal(dist,\
     \ up)) return 3;\n        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n\
-    } // namespace zawa\n#line 2 \"Src/GeometryR2/Segment.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Polygon.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
     \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
     \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
@@ -185,105 +173,111 @@ data:
     \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
     \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
     \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
-    \ // namespace zawa\n#line 6 \"Src/GeometryR2/Segment.hpp\"\n\n#include <algorithm>\n\
-    #line 9 \"Src/GeometryR2/Segment.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Segment {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
-    \ */\n    Segment() = default;\n    Segment(const Point& p0, const Point& p1)\
-    \ : p0_{p0}, p1_{p1} {}\n    Segment(Real x0, Real y0, Real x1, Real y1) : p0_{x0,\
-    \ y0}, p1_{x1, y1} {}\n\n    /* getter setter */\n    const Point& p0() const\
-    \ {\n        return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n\
-    \    const Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n\
-    \        return p1_;\n    }\n\n    /* member function */\n    bool valid() const\
-    \ {\n        return p0_ != p1_;\n    }\n    bool straddle(const Segment& s) const\
-    \ {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_, p1_, s.p1()) <=\
-    \ 0;\n    }\n    Real length() const {\n        assert(valid());\n        return\
-    \ Distance(p0_, p1_);\n    }\n    Point midpoint() const {\n        assert(valid());\n\
-    \        return p0_ + Vector{p1_ - p0_} / static_cast<Real>(2);\n    }\n};\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Bisector/AngleBisector.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 5 \"Src/GeometryR2/Line.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Line.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
-    \ {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
-    \ */\n    Line() = default;\n    Line(const Point& p0, const Point& p1) : p0_{p0},\
-    \ p1_{p1} {}\n    // y = ax + b \n    Line(Real a, Real b) : p0_{static_cast<Real>(0),\
-    \ b}, p1_{static_cast<Real>(1), a + b} {}\n\n    /* getter, setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator */\n   \
-    \ friend bool operator==(const Line& l0, const Line& l1) {\n        return Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0())) and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
-    \    }\n    friend bool operator!=(const Line& l0, const Line& l1) {\n       \
-    \ return !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
-    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
-    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
-    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Bisector/AngleBisector.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Bisector/AngleBisector.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\n// bisector of \\angle {p1 p0 p2}\nLine AngleBisector(const\
-    \ Point& p0, const Point& p1, const Point& p2) {\n    const Vector p{p1 - p0},\
-    \ q{p2 - p0};    \n    const Point op = p0 + p.rotated(-Argument(q, p) / 2);\n\
-    \    return {p0, op};\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\n#line 2 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\n\n#line 6 \"Src/GeometryR2/Intersect/LineAndLine.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Line& l0,\
-    \ const Line& l1) {\n    assert(l0.valid());\n    assert(l1.valid());\n    if\
-    \ (!Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()))) {\n        return true;\n\
-    \    }\n    else if (!Zero(Cross(l0.p1() - l0.p0(), l1.p0() - l0.p0()))) {\n \
-    \       return false;\n    }\n    else {\n        return true;\n    }\n}\n\n}\
-    \ // namespace geometryR2\n\n} // namespace \n#line 6 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\
-    \n\n#line 8 \"Src/GeometryR2/CrossPoint/LineAndLine.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nPoint CrossPoint(const Line& l0, const Line& l1) {\n\
-    \    assert(l0.valid());\n    assert(l1.valid());\n    assert(Intersect(l0, l1));\n\
-    \    assert(l0 != l1);\n    return l0.p0() + (l0.p1() - l0.p0()) * \n        (Cross(l1.p0()\
-    \ - l0.p0(), l1.p1() - l1.p0()) / Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()));\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
-    \n\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Line& l,\
-    \ const Point& p) {\n    assert(l.valid());\n    return Abs(Cross(p - l.p0(),\
-    \ l.p1() - l.p0())) / Distance(l.p1(), l.p0());\n}\n\nbool PointOnLine(const Line&\
-    \ l, const Point& p) {\n    assert(l.valid());\n    return Zero(Distance(l, p));\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 9 \"Src/GeometryR2/InCircle.hpp\"\
-    \n\n#include <optional>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nstd::optional<Circle>\
-    \ InCircle(const Point& p0, const Point& p1, const Point& p2) {\n    if (Zero(Cross(p1\
-    \ - p0, p2 - p0))) return std::nullopt;\n    const Point center = CrossPoint(\n\
-    \            AngleBisector(p0, p1, p2),\n            AngleBisector(p1, p0, p2)\n\
-    \            );\n    const Real radius = Distance(Line{p0, p1}, center);\n   \
-    \ return Circle{center, radius};\n}\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AOJ/CGL_7_B.test.cpp\"\nusing namespace zawa::geometryR2;\n\
-    \n#line 8 \"Test/AOJ/CGL_7_B.test.cpp\"\n#include <iomanip>\n\nint main() {\n\
-    \    Point p, q, r;\n    std::cin >> p >> q >> r;\n    auto ans = InCircle(p,\
-    \ q, r).value();\n    std::cout << std::fixed << std::setprecision(8) << ans.center().x()\
-    \ << ' ' << ans.center().y() << ' ' << ans.radius() << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/4/CGL/7/CGL_7_B\"\
-    \n#define ERROR 0.000001\n\n#include \"../../Src/GeometryR2/InCircle.hpp\"\nusing\
-    \ namespace zawa::geometryR2;\n\n#include <iostream>\n#include <iomanip>\n\nint\
-    \ main() {\n    Point p, q, r;\n    std::cin >> p >> q >> r;\n    auto ans = InCircle(p,\
-    \ q, r).value();\n    std::cout << std::fixed << std::setprecision(8) << ans.center().x()\
-    \ << ' ' << ans.center().y() << ' ' << ans.radius() << '\\n';\n}\n"
+    \ // namespace zawa\n#line 7 \"Src/GeometryR2/Polygon.hpp\"\n\n#include <algorithm>\n\
+    #line 10 \"Src/GeometryR2/Polygon.hpp\"\n#include <concepts>\n#include <vector>\n\
+    \nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Polygon {\nprivate:\n  \
+    \  std::vector<Point> data_;\npublic:\n    /* member */\n    usize size() const\
+    \ {\n        return data_.size();\n    }\n\n    /* constructor */\n    Polygon()\
+    \ = default;\n    explicit Polygon(const std::vector<Point>& data) : data_{data}\
+    \ {}\n    explicit Polygon(usize n) : data_(n) {}\n\n    /* operator[] */\n  \
+    \  Point& operator[](usize i) {\n        assert(i < size());\n        return data_[i];\n\
+    \    }\n    const Point& operator[](usize i) const {\n        assert(i < size());\n\
+    \        return data_[i];\n    }\n    friend std::istream& operator>>(std::istream&\
+    \ is, Polygon& polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++)\
+    \ {\n            is >> polygon[i];\n        }\n        return is;\n    }\n   \
+    \ friend std::ostream& operator<<(std::ostream& os, const Polygon& polygon) {\n\
+    \        for (usize i{} ; i < polygon.size() ; i++) {\n            std::cout <<\
+    \ polygon[i] << (i + 1 == polygon.size() ? \"\" : \" \");\n        }\n       \
+    \ return os;\n    }\n\n    /* member function */\n    void orderRotate(usize i)\
+    \ {\n        assert(i < size());\n        std::rotate(data_.begin(), data_.begin()\
+    \ + i, data_.end());\n    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
+    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
+    \    }\n    Polygon normalFormed() const {\n        Polygon res{*this};\n    \
+    \    res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
+    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
+    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
+    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
+    \              return false;\n            }\n        }\n        return true;\n\
+    \    }\n    Real area() const {\n        if (std::ssize(data_) <= 2) return 0;\n\
+    \        Real res{};\n        for (usize i{1} ; i < size() ; i++) {\n        \
+    \    res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
+    \        }\n        return res / static_cast<Real>(2);\n    }\n    void pushBack(const\
+    \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Real x,\
+    \ Real y) {\n        data_.emplace_back(x, y);\n    }\n    void reserve(usize\
+    \ n) {\n        data_.reserve(n);\n    }\n    template <std::input_iterator RandomAccessIterator>\n\
+    \    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last)\
+    \ {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ n), first, last);\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n\n#line 2 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n\n#line 2\
+    \ \"Src/GeometryR2/Intersect/CircleAndCircle.hpp\"\n\n#line 5 \"Src/GeometryR2/Intersect/CircleAndCircle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nbool Intersect(const Circle&\
+    \ c0, const Circle& c1) {\n    u32 number{NumberCommonTangent(c0, c1)};\n    return\
+    \ 0u < number and number < 4u;\n}\n\n} // namespace geometryR2\n\n} // namespace\
+    \ zawa\n#line 6 \"Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n\n#line 8 \"\
+    Src/GeometryR2/CrossPoint/CircleAndCircle.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ geometryR2 {\n\nstd::pair<Point, Point> CrossPoint(const Circle& lhs, const\
+    \ Circle& rhs) {\n    assert(lhs.center() != rhs.center());\n    assert(Intersect(lhs,\
+    \ rhs));\n    assert(!Zero(lhs.radius()) or !Zero(rhs.radius()));\n    if (Zero(lhs.radius()))\
+    \ return {lhs.center(), lhs.center()};\n    if (Zero(rhs.radius())) return {rhs.center(),\
+    \ rhs.center()};\n    Real d{Distance(lhs.center(), rhs.center())};\n    Real\
+    \ cosine{(Square(lhs.radius()) + Square(d) - Square(rhs.radius()))\n        /\
+    \ (static_cast<Real>(2)*lhs.radius()*d)};\n    Real rc{lhs.radius()*cosine};\n\
+    \    Real rs{Sqrt(Square(lhs.radius()) - Square(rc))};\n    Vector lr{Vector{rhs.center()\
+    \ - lhs.center()}.normalized()};\n    Vector h{lhs.center() + lr*rc};\n    std::pair<Point,\
+    \ Point> res;\n    res.first = h + lr.rotatedByArc(90) * rs;\n    res.second =\
+    \ h + lr.rotatedByArc(-90) * rs;\n    return res;\n}\n\n} // namespace geometryR2\n\
+    \    \n} // namespace zawa\n#line 8 \"Src/GeometryR2/CommonArea/CircleAndCircle.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n// ref: https://tjkendev.github.io/procon-library/python/geometry/circles_intersection_area.html\n\
+    Real CommonArea(const Circle& c0, const Circle& c1) {\n    const u32 cnt = NumberCommonTangent(c0,\
+    \ c1);\n    if (cnt == 0u or cnt == 1u) { // \u4E00\u65B9\u304C\u4ED6\u65B9\u306B\
+    \u5185\u5305\n        return std::min(c0.area(), c1.area());\n    }\n    else\
+    \ if (cnt == 2) { // \u3044\u3044\u611F\u3058\u306B\u4EA4\u308F\u3063\u3066\u3066\
+    \u56F0\u308B\n        const auto [P, Q] = CrossPoint(c0, c1);\n        const Real\
+    \ d = Distance(c0.center(), c1.center());\n        const Real a0 = acosl((Square(c0.radius())\
+    \ + Square(d) - Square(c1.radius())) / (2*d*c0.radius()));\n        const Real\
+    \ a1 = acosl((Square(c1.radius()) + Square(d) - Square(c0.radius())) / (2*d*c1.radius()));\n\
+    \        Real res = 0;\n        res += c0.sectorArea(2 * a0);\n        res +=\
+    \ c1.sectorArea(2 * a1);\n        res -= Polygon{{P, c0.center(), Q, c1.center()}}.area();\n\
+    \        return res;\n    }\n    else { // \u4EA4\u308F\u3063\u3066\u306A\u3044\
+    \n        return 0;\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Angle.hpp\"\n#include \"../Circle.hpp\"\n#include\
+    \ \"../Polygon.hpp\"\n#include \"../Distance/PointAndPoint.hpp\"\n#include \"\
+    ../CrossPoint/CircleAndCircle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\n// ref: https://tjkendev.github.io/procon-library/python/geometry/circles_intersection_area.html\n\
+    Real CommonArea(const Circle& c0, const Circle& c1) {\n    const u32 cnt = NumberCommonTangent(c0,\
+    \ c1);\n    if (cnt == 0u or cnt == 1u) { // \u4E00\u65B9\u304C\u4ED6\u65B9\u306B\
+    \u5185\u5305\n        return std::min(c0.area(), c1.area());\n    }\n    else\
+    \ if (cnt == 2) { // \u3044\u3044\u611F\u3058\u306B\u4EA4\u308F\u3063\u3066\u3066\
+    \u56F0\u308B\n        const auto [P, Q] = CrossPoint(c0, c1);\n        const Real\
+    \ d = Distance(c0.center(), c1.center());\n        const Real a0 = acosl((Square(c0.radius())\
+    \ + Square(d) - Square(c1.radius())) / (2*d*c0.radius()));\n        const Real\
+    \ a1 = acosl((Square(c1.radius()) + Square(d) - Square(c0.radius())) / (2*d*c1.radius()));\n\
+    \        Real res = 0;\n        res += c0.sectorArea(2 * a0);\n        res +=\
+    \ c1.sectorArea(2 * a1);\n        res -= Polygon{{P, c0.center(), Q, c1.center()}}.area();\n\
+    \        return res;\n    }\n    else { // \u4EA4\u308F\u3063\u3066\u306A\u3044\
+    \n        return 0;\n    }\n}\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/GeometryR2/InCircle.hpp
-  - Src/GeometryR2/Point.hpp
+  - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Circle.hpp
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Distance/PointAndPoint.hpp
-  - Src/GeometryR2/Segment.hpp
+  - Src/GeometryR2/Polygon.hpp
   - Src/GeometryR2/Relation.hpp
-  - Src/GeometryR2/Bisector/AngleBisector.hpp
-  - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  - Src/GeometryR2/Intersect/LineAndLine.hpp
-  - Src/GeometryR2/Distance/LineAndPoint.hpp
-  isVerificationFile: true
-  path: Test/AOJ/CGL_7_B.test.cpp
+  - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
+  - Src/GeometryR2/Intersect/CircleAndCircle.hpp
+  isVerificationFile: false
+  path: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
   requiredBy: []
   timestamp: '2025-07-03 21:45:03+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/AOJ/CGL_7_B.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AOJ/CGL_7_I.test.cpp
+documentation_of: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/CGL_7_B.test.cpp
-- /verify/Test/AOJ/CGL_7_B.test.cpp.html
-title: Test/AOJ/CGL_7_B.test.cpp
+- /library/Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+- /library/Src/GeometryR2/CommonArea/CircleAndCircle.hpp.html
+title: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
 ---

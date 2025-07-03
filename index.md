@@ -244,6 +244,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
       title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - name: Src/GeometryR2/CommonArea
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+      title: Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+      title: Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
   - name: Src/GeometryR2/Contain
     pages:
     - icon: ':heavy_check_mark:'
@@ -272,6 +280,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
       title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
+      title: Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
       title: Src/GeometryR2/CrossPoint/LineAndLine.hpp
@@ -817,6 +828,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_G.test.cpp
       title: Test/AOJ/CGL_7_G.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_H.test.cpp
+      title: Test/AOJ/CGL_7_H.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_I.test.cpp
+      title: Test/AOJ/CGL_7_I.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DPL_3_C.test.cpp
       title: Test/AOJ/DPL_3_C.test.cpp

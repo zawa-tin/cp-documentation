@@ -144,8 +144,8 @@ data:
     \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Point& p0,\
     \ const Point& p1) {\n    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const\
     \ Point& p0, const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n\
-    } // namespace geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Circle.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
+    } // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Circle.hpp\"\
+    \n\n#line 10 \"Src/GeometryR2/Circle.hpp\"\n#include <utility>\n\nnamespace zawa\
     \ {\n\nnamespace geometryR2 {\n\nclass Circle {\nprivate:\n    Point center_{};\n\
     \    Real radius_{};\npublic:\n    /* constructor */\n    Circle() = default;\n\
     \    Circle(const Point& center, Real radius) : center_{center}, radius_{radius}\
@@ -155,50 +155,52 @@ data:
     \ p1) / 2} {}\n\n    /* getter setter */\n    const Point& center() const {\n\
     \        return center_;\n    }\n    Point& center() {\n        return center_;\n\
     \    }\n    Real radius() const {\n        return radius_;\n    }\n    Real& radius()\
-    \ {\n        return radius_;\n    }\n\n    /* operator */\n    friend bool operator==(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() == rhs.center()\
-    \ and Equal(lhs.radius(), rhs.radius());\n    }\n    friend bool operator!=(const\
-    \ Circle& lhs, const Circle& rhs) {\n        return lhs.center() != rhs.center()\
-    \ or !Equal(lhs.radius(), rhs.radius());\n    }\n\n    /* friend function */\n\
-    \    friend u32 NumberCommonTangent(const Circle& c0, const Circle& c1) {\n  \
-    \      Real dist{DistanceSquare(c0.center(), c1.center())};\n        Real down{Square(Abs(c0.radius()\
-    \ - c1.radius()))};\n        if (Smaller(dist, down)) return 0;\n        if (Equal(dist,\
-    \ down)) return 1;\n        Real up{Square(c0.radius() + c1.radius())};\n    \
-    \    if (Smaller(dist, up)) return 2;\n        if (Equal(dist, up)) return 3;\n\
-    \        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n\
-    #line 2 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\n\n#line 2 \"Src/GeometryR2/Line.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nenum RELATION {\n    // p0 ->\
-    \ p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\
-    \n    ONLINE_FRONT = -2,\n    // (p1 - p0) -> (p2 - p0)\u304C\u6642\u8A08\u56DE\
-    \u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    CLOCKWISE,\n    // p0 -> p2 ->\
-    \ p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n\
-    \    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\u53CD\u6642\u8A08\u56DE\u308A\
-    \u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n    // p2 -> p0\
-    \ -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
-    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\nRELATION Relation(const\
-    \ Point& p0, const Point& p1, const Point& p2) {\n    Point a{p1 - p0}, b{p2 -\
-    \ p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n    if (Negative(Cross(a,\
-    \ b))) return CLOCKWISE;\n    if (Negative(Dot(a, b))) return ONLINE_BACK;\n \
-    \   if (Smaller(a.normSquare(), b.normSquare())) return ONLINE_FRONT;\n    return\
-    \ ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 5\
-    \ \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n    Point p0_{},\
-    \ p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n    Line(const\
-    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b \n    Line(Real\
-    \ a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1), a + b}\
-    \ {}\n\n    /* getter, setter */\n    const Point& p0() const {\n        return\
-    \ p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point&\
-    \ p1() const {\n        return p1_;\n    }\n    Point& p1() {\n        return\
-    \ p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line& l0,\
-    \ const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0()))\
-    \ and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n    friend bool\
-    \ operator!=(const Line& l0, const Line& l1) {\n        return !Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n\
-    \    }\n\n    /* member function */\n    bool valid() const {\n        return\
-    \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
-    \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
+    \ {\n        return radius_;\n    }\n    Real area() const {\n        return PI\
+    \ * Square(radius_);\n    }\n    Real sectorArea(Real centerAngle) const {\n \
+    \       return Square(radius_) * centerAngle / 2;\n    }\n\n    /* operator */\n\
+    \    friend bool operator==(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() == rhs.center() and Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \    friend bool operator!=(const Circle& lhs, const Circle& rhs) {\n        return\
+    \ lhs.center() != rhs.center() or !Equal(lhs.radius(), rhs.radius());\n    }\n\
+    \n    /* friend function */\n    friend u32 NumberCommonTangent(const Circle&\
+    \ c0, const Circle& c1) {\n        Real dist{DistanceSquare(c0.center(), c1.center())};\n\
+    \        Real down{Square(Abs(c0.radius() - c1.radius()))};\n        if (Smaller(dist,\
+    \ down)) return 0;\n        if (Equal(dist, down)) return 1;\n        Real up{Square(c0.radius()\
+    \ + c1.radius())};\n        if (Smaller(dist, up)) return 2;\n        if (Equal(dist,\
+    \ up)) return 3;\n        return 4;\n    }\n};\n\n} // namespace geometryR2\n\n\
+    } // namespace zawa\n#line 2 \"Src/GeometryR2/Tangent/TangentToCircle.hpp\"\n\n\
+    #line 2 \"Src/GeometryR2/Line.hpp\"\n\n#line 2 \"Src/GeometryR2/Relation.hpp\"\
+    \n\n#line 5 \"Src/GeometryR2/Relation.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nenum RELATION {\n    // p0 -> p1 -> p2\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\
+    \u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_FRONT = -2,\n    // (p1 - p0)\
+    \ -> (p2 - p0)\u304C\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\
+    \n    CLOCKWISE,\n    // p0 -> p2 -> p1\u306E\u9806\u3067\u76F4\u7DDA\u4E0A\u306B\
+    \u4E26\u3093\u3067\u3044\u308B\n    ON_SEGMENT,\n    // (p1 - p0) -> (p2 - p0)\u304C\
+    \u53CD\u6642\u8A08\u56DE\u308A\u306B\u306A\u3063\u3066\u3044\u308B\n    COUNTER_CLOCKWISE,\n\
+    \    // p2 -> p0 -> p1\u3001\u307E\u305F\u306Fp1 -> p0 -> p2\u306E\u9806\u3067\
+    \u76F4\u7DDA\u4E0A\u306B\u4E26\u3093\u3067\u3044\u308B\n    ONLINE_BACK\n};\n\n\
+    RELATION Relation(const Point& p0, const Point& p1, const Point& p2) {\n    Point\
+    \ a{p1 - p0}, b{p2 - p0};\n    if (Positive(Cross(a, b))) return COUNTER_CLOCKWISE;\n\
+    \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
+    \ return ONLINE_BACK;\n    if (Smaller(a.normSquare(), b.normSquare())) return\
+    \ ONLINE_FRONT;\n    return ON_SEGMENT;\n};\n\n} // namespace geometryR2\n\n}\
+    \ // namespace zawa\n#line 5 \"Src/GeometryR2/Line.hpp\"\n\n#line 7 \"Src/GeometryR2/Line.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryR2 {\n\nclass Line {\nprivate:\n   \
+    \ Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Line() = default;\n\
+    \    Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y =\
+    \ ax + b \n    Line(Real a, Real b) : p0_{static_cast<Real>(0), b}, p1_{static_cast<Real>(1),\
+    \ a + b} {}\n\n    /* getter, setter */\n    const Point& p0() const {\n     \
+    \   return p0_;\n    }\n    Point& p0() {\n        return p0_;\n    }\n    const\
+    \ Point& p1() const {\n        return p1_;\n    }\n    Point& p1() {\n       \
+    \ return p1_;\n    }\n\n    /* operator */\n    friend bool operator==(const Line&\
+    \ l0, const Line& l1) {\n        return Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
+    \ - l1.p0())) and Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l0.p0()));\n    }\n\
+    \    friend bool operator!=(const Line& l0, const Line& l1) {\n        return\
+    \ !Zero(Cross(l0.p1() - l0.p0(), l1.p1() - l1.p0())) or !Zero(Cross(l0.p1() -\
+    \ l0.p0(), l1.p1() - l0.p0()));\n    }\n\n    /* member function */\n    bool\
+    \ valid() const {\n        return p0_ != p1_;\n    }\n    Vector slope() const\
+    \ {\n        assert(valid());\n        return Vector{p1() - p0()}.normalized();\n\
+    \    }\n};\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
     \n\n#line 2 \"Src/GeometryR2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace\
     \ geometryR2 {\n\nenum ContainState {\n    INSIDE,\n    ONLINE,\n    OUTSIDE\n\
     };\n\n} // namespace geometryR2\n\n} // namespace zawa\n#line 8 \"Src/GeometryR2/Contain/CircleContainsPoint.hpp\"\
@@ -253,7 +255,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_7_F.test.cpp
   requiredBy: []
-  timestamp: '2025-07-01 18:28:26+09:00'
+  timestamp: '2025-07-03 21:45:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_7_F.test.cpp
