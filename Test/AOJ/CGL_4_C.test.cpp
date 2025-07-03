@@ -1,4 +1,5 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/CGL_4_C"
+#define ERROR 0.00001
 
 #include "../../Src/GeometryR2/ConvexPolygonCut.hpp"
 using namespace zawa::geometryR2;
