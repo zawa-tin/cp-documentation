@@ -44,6 +44,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
     title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/InCircle.hpp
+    title: Src/GeometryR2/InCircle.hpp
   - icon: ':warning:'
     path: Src/GeometryR2/Intersect/LineAndSegment.hpp
     title: Src/GeometryR2/Intersect/LineAndSegment.hpp
@@ -96,6 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_B.test.cpp
     title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_B.test.cpp
+    title: Test/AOJ/CGL_7_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
@@ -254,6 +260,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Segment.hpp
   requiredBy:
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
   - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
@@ -281,6 +288,7 @@ data:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
   - Test/AOJ/2003.test.cpp
   - Test/AOJ/1157.test.cpp
   - Test/AtCoder/abc151_f.test.cpp

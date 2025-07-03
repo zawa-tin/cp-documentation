@@ -106,6 +106,9 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Bisector/AngleBisector.hpp
+    title: Src/GeometryR2/Bisector/AngleBisector.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
     title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - icon: ':heavy_check_mark:'
@@ -165,6 +168,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
     title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/InCircle.hpp
+    title: Src/GeometryR2/InCircle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
     title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
@@ -641,6 +647,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_B.test.cpp
+    title: Test/AOJ/CGL_7_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
@@ -1334,6 +1343,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Distance/LineAndPoint.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
@@ -1354,6 +1364,7 @@ data:
   - Src/GeometryR2/Real.hpp
   - Src/GeometryR2/Polygon.hpp
   - Src/GeometryR2/Angle.hpp
+  - Src/GeometryR2/Bisector/AngleBisector.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
@@ -1556,6 +1567,7 @@ data:
   - Test/AOJ/CGL_7_C.test.cpp
   - Test/AOJ/0478.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_7_G.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp

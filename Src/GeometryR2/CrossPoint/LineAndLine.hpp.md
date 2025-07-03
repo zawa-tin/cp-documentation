@@ -35,6 +35,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
     title: Src/GeometryR2/CrossPoint/LineAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/InCircle.hpp
+    title: Src/GeometryR2/InCircle.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2009.test.cpp
@@ -45,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_B.test.cpp
     title: Test/AOJ/CGL_5_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_B.test.cpp
+    title: Test/AOJ/CGL_7_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
@@ -206,6 +212,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/CrossPoint/LineAndLine.hpp
   requiredBy:
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
@@ -217,6 +224,7 @@ data:
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
   - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/CrossPoint/LineAndLine.hpp
 layout: document

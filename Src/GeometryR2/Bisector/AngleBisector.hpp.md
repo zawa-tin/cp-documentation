@@ -5,9 +5,6 @@ data:
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Distance/PointAndPoint.hpp
-    title: Src/GeometryR2/Distance/PointAndPoint.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Line.hpp
     title: Src/GeometryR2/Line.hpp
   - icon: ':heavy_check_mark:'
@@ -24,58 +21,40 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-    title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  - icon: ':warning:'
-    path: Src/GeometryR2/Distance/LineAndLine.hpp
-    title: Src/GeometryR2/Distance/LineAndLine.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/InCircle.hpp
     title: Src/GeometryR2/InCircle.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryR2/Intersect/CircleAndLine.hpp
-    title: Src/GeometryR2/Intersect/CircleAndLine.hpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1053.test.cpp
-    title: AOJ1053 Accelerated Railgun
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/2201.test.cpp
-    title: "AOJ2201 \u4E0D\u6B7B\u306E\u5B9D\u77F3"
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_B.test.cpp
     title: Test/AOJ/CGL_7_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_7_D.test.cpp
-    title: Test/AOJ/CGL_7_D.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\n#line 2 \"\
-    Src/GeometryR2/Real.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include\
-    \ <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
-    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
-    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
-    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
-    #line 4 \"Src/GeometryR2/Real.hpp\"\n\n#include <cmath>\n#include <cassert>\n\n\
-    namespace zawa {\n\nnamespace geometryR2 {\n\nusing Real = long double;\n\nnamespace\
-    \ internal {\n\nReal EPS{1e-12};\nconstexpr i32 negative{-1};\nconstexpr i32 zero{};\n\
-    constexpr i32 positive{1};\n\n} // namespace internal\n\nReal& Eps() {\n    return\
-    \ internal::EPS;\n}\n\ni32 Sign(Real value) {\n    if (value < -Eps()) return\
-    \ internal::negative;\n    if (value > Eps()) return internal::positive;\n   \
-    \ return internal::zero;\n}\n\nbool Zero(Real value) {\n    return Sign(value)\
-    \ == internal::zero;\n}\n\nbool Positive(Real value) {\n    return Sign(value)\
-    \ == internal::positive;\n}\n\nbool Negative(Real value) {\n    return Sign(value)\
-    \ == internal::negative;\n}\n\nbool Equal(Real a, Real b) {\n    return Zero(a\
-    \ - b);\n}\n\nbool Smaller(Real a, Real b) {\n    return Negative(a - b);\n}\n\
-    \nbool Bigger(Real a, Real b) {\n    return Positive(a - b);\n}\n\nReal Square(Real\
-    \ value) {\n    return (Zero(value) ? value : value * value);\n}\n\nReal Sqrt(Real\
-    \ value) {\n    assert(!Negative(value));\n    return (Zero(value) ? value : sqrtl(value));\n\
-    }\n\nReal Abs(Real value) {\n    return (Negative(value) ? -value : value);\n\
-    }\n\n} // namespace geometryR2\n \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Point.hpp\"\
-    \n\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
+  bundledCode: "#line 2 \"Src/GeometryR2/Bisector/AngleBisector.hpp\"\n\n#line 2 \"\
+    Src/GeometryR2/Point.hpp\"\n\n#line 2 \"Src/GeometryR2/Real.hpp\"\n\n#line 2 \"\
+    Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
+    \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
+    \ std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16\
+    \ = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\n\
+    using usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/GeometryR2/Real.hpp\"\
+    \n\n#include <cmath>\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryR2\
+    \ {\n\nusing Real = long double;\n\nnamespace internal {\n\nReal EPS{1e-12};\n\
+    constexpr i32 negative{-1};\nconstexpr i32 zero{};\nconstexpr i32 positive{1};\n\
+    \n} // namespace internal\n\nReal& Eps() {\n    return internal::EPS;\n}\n\ni32\
+    \ Sign(Real value) {\n    if (value < -Eps()) return internal::negative;\n   \
+    \ if (value > Eps()) return internal::positive;\n    return internal::zero;\n\
+    }\n\nbool Zero(Real value) {\n    return Sign(value) == internal::zero;\n}\n\n\
+    bool Positive(Real value) {\n    return Sign(value) == internal::positive;\n}\n\
+    \nbool Negative(Real value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nbool Equal(Real a, Real b) {\n    return Zero(a - b);\n}\n\nbool Smaller(Real\
+    \ a, Real b) {\n    return Negative(a - b);\n}\n\nbool Bigger(Real a, Real b)\
+    \ {\n    return Positive(a - b);\n}\n\nReal Square(Real value) {\n    return (Zero(value)\
+    \ ? value : value * value);\n}\n\nReal Sqrt(Real value) {\n    assert(!Negative(value));\n\
+    \    return (Zero(value) ? value : sqrtl(value));\n}\n\nReal Abs(Real value) {\n\
+    \    return (Negative(value) ? -value : value);\n}\n\n} // namespace geometryR2\n\
+    \ \n} // namespace zawa\n#line 2 \"Src/GeometryR2/Angle.hpp\"\n\n#line 4 \"Src/GeometryR2/Angle.hpp\"\
     \n\n#line 6 \"Src/GeometryR2/Angle.hpp\"\n\nnamespace zawa {\n\nnamespace geometryR2\
     \ {\n\nconstexpr Real PI{acosl(-1)};\nconstexpr Real TAU{static_cast<Real>(2)\
     \ * PI};\n\nconstexpr Real ArcToRadian(Real arc) {\n    return (arc * PI) / static_cast<Real>(180);\n\
@@ -171,51 +150,37 @@ data:
     \    }\n\n    /* member function */\n    bool valid() const {\n        return\
     \ p0_ != p1_;\n    }\n    Vector slope() const {\n        assert(valid());\n \
     \       return Vector{p1() - p0()}.normalized();\n    }\n};\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 2 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\
-    \n\n#line 4 \"Src/GeometryR2/Distance/PointAndPoint.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nReal Distance(const Point& p0, const Point& p1) {\n\
-    \    return Point{p1 - p0}.norm();\n}\n\nReal DistanceSquare(const Point& p0,\
-    \ const Point& p1) {\n    return Point{p1 - p0}.normSquare();\n}\n\n} // namespace\
-    \ geometryR2\n\n} // namespace zawa\n#line 7 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\
-    \n\n#line 9 \"Src/GeometryR2/Distance/LineAndPoint.hpp\"\n\nnamespace zawa {\n\
-    \nnamespace geometryR2 {\n\nReal Distance(const Line& l, const Point& p) {\n \
-    \   assert(l.valid());\n    return Abs(Cross(p - l.p0(), l.p1() - l.p0())) / Distance(l.p1(),\
-    \ l.p0());\n}\n\nbool PointOnLine(const Line& l, const Point& p) {\n    assert(l.valid());\n\
-    \    return Zero(Distance(l, p));\n}\n\n} // namespace geometryR2\n\n} // namespace\
-    \ zawa\n"
-  code: "#pragma once\n\n#include \"../Real.hpp\"\n#include \"../Point.hpp\"\n#include\
-    \ \"../Line.hpp\"\n#include \"./PointAndPoint.hpp\"\n\n#include <cassert>\n\n\
-    namespace zawa {\n\nnamespace geometryR2 {\n\nReal Distance(const Line& l, const\
-    \ Point& p) {\n    assert(l.valid());\n    return Abs(Cross(p - l.p0(), l.p1()\
-    \ - l.p0())) / Distance(l.p1(), l.p0());\n}\n\nbool PointOnLine(const Line& l,\
-    \ const Point& p) {\n    assert(l.valid());\n    return Zero(Distance(l, p));\n\
-    }\n\n} // namespace geometryR2\n\n} // namespace zawa\n"
+    \ geometryR2\n\n} // namespace zawa\n#line 5 \"Src/GeometryR2/Bisector/AngleBisector.hpp\"\
+    \n\n#include <utility>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n// bisector\
+    \ of \\angle {p1 p0 p2}\nLine AngleBisector(const Point& p0, const Point& p1,\
+    \ const Point& p2) {\n    const Vector p{p1 - p0}, q{p2 - p0};    \n    const\
+    \ Point op = p0 + p.rotated(-Argument(q, p) / 2);\n    return {p0, op};\n}\n\n\
+    } // namespace geometryR2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Point.hpp\"\n#include \"../Line.hpp\"\n\n#include\
+    \ <utility>\n\nnamespace zawa {\n\nnamespace geometryR2 {\n\n// bisector of \\\
+    angle {p1 p0 p2}\nLine AngleBisector(const Point& p0, const Point& p1, const Point&\
+    \ p2) {\n    const Vector p{p1 - p0}, q{p2 - p0};    \n    const Point op = p0\
+    \ + p.rotated(-Argument(q, p) / 2);\n    return {p0, op};\n}\n\n} // namespace\
+    \ geometryR2\n\n} // namespace zawa\n"
   dependsOn:
+  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Real.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/GeometryR2/Point.hpp
   - Src/GeometryR2/Angle.hpp
   - Src/GeometryR2/Line.hpp
   - Src/GeometryR2/Relation.hpp
-  - Src/GeometryR2/Distance/PointAndPoint.hpp
   isVerificationFile: false
-  path: Src/GeometryR2/Distance/LineAndPoint.hpp
+  path: Src/GeometryR2/Bisector/AngleBisector.hpp
   requiredBy:
   - Src/GeometryR2/InCircle.hpp
-  - Src/GeometryR2/Distance/LineAndLine.hpp
-  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  - Src/GeometryR2/Intersect/CircleAndLine.hpp
-  timestamp: '2023-11-20 11:32:11+09:00'
+  timestamp: '2025-07-03 18:00:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_7_D.test.cpp
-  - Test/AOJ/1053.test.cpp
   - Test/AOJ/CGL_7_B.test.cpp
-  - Test/AOJ/2201.test.cpp
-documentation_of: Src/GeometryR2/Distance/LineAndPoint.hpp
+documentation_of: Src/GeometryR2/Bisector/AngleBisector.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryR2/Distance/LineAndPoint.hpp
-- /library/Src/GeometryR2/Distance/LineAndPoint.hpp.html
-title: Src/GeometryR2/Distance/LineAndPoint.hpp
+- /library/Src/GeometryR2/Bisector/AngleBisector.hpp
+- /library/Src/GeometryR2/Bisector/AngleBisector.hpp.html
+title: Src/GeometryR2/Bisector/AngleBisector.hpp
 ---

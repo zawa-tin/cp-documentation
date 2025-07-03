@@ -12,6 +12,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/Bisector/AngleBisector.hpp
+    title: Src/GeometryR2/Bisector/AngleBisector.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
     title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - icon: ':heavy_check_mark:'
@@ -71,6 +74,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Distance/SegmentAndSegment.hpp
     title: Src/GeometryR2/Distance/SegmentAndSegment.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/InCircle.hpp
+    title: Src/GeometryR2/InCircle.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
     title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
@@ -198,6 +204,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_B.test.cpp
+    title: Test/AOJ/CGL_7_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
@@ -380,6 +389,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Point.hpp
   requiredBy:
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/Segment.hpp
   - Src/GeometryR2/Distance/LineAndPoint.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
@@ -397,6 +407,7 @@ data:
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/PointCloud.hpp
   - Src/GeometryR2/Polygon.hpp
+  - Src/GeometryR2/Bisector/AngleBisector.hpp
   - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
@@ -442,6 +453,7 @@ data:
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/2009.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/CGL_7_G.test.cpp
   - Test/AOJ/CGL_1_C/GeometryR2.test.cpp

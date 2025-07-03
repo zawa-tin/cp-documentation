@@ -207,6 +207,9 @@ data:
       path: Src/GeometryR2/ConvexPolygonCut.hpp
       title: Src/GeometryR2/ConvexPolygonCut.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/InCircle.hpp
+      title: Src/GeometryR2/InCircle.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Line.hpp
       title: Src/GeometryR2/Line.hpp
     - icon: ':heavy_check_mark:'
@@ -235,6 +238,9 @@ data:
       title: Src/GeometryR2/Segment.hpp
   - name: Src/GeometryR2/Bisector
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryR2/Bisector/AngleBisector.hpp
+      title: Src/GeometryR2/Bisector/AngleBisector.hpp
     - icon: ':heavy_check_mark:'
       path: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
       title: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
@@ -793,6 +799,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_5_B.test.cpp
       title: Test/AOJ/CGL_5_B.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/CGL_7_B.test.cpp
+      title: Test/AOJ/CGL_7_B.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/CGL_7_C.test.cpp
       title: Test/AOJ/CGL_7_C.test.cpp

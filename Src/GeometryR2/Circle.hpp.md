@@ -33,6 +33,9 @@ data:
     path: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
     title: Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryR2/InCircle.hpp
+    title: Src/GeometryR2/InCircle.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Intersect/CircleAndCircle.hpp
     title: Src/GeometryR2/Intersect/CircleAndCircle.hpp
   - icon: ':heavy_check_mark:'
@@ -63,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
     title: Test/AOJ/CGL_7_A/GeometryR2.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_7_B.test.cpp
+    title: Test/AOJ/CGL_7_B.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_7_C.test.cpp
     title: Test/AOJ/CGL_7_C.test.cpp
@@ -234,6 +240,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Circle.hpp
   requiredBy:
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
   - Src/GeometryR2/CrossPoint/CircleAndCircle.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
@@ -254,6 +261,7 @@ data:
   - Test/AOJ/1053.test.cpp
   - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
   - Test/AOJ/CGL_7_G.test.cpp
   - Test/AOJ/2201.test.cpp
   - Test/AOJ/CGL_7_F.test.cpp
