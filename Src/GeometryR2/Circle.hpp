@@ -2,6 +2,7 @@
 
 #include "../Template/TypeAlias.hpp"
 #include "./Real.hpp"
+#include "./Angle.hpp"
 #include "./Point.hpp"
 #include "./Distance/PointAndPoint.hpp"
 
@@ -40,6 +41,12 @@ public:
     }
     Real& radius() {
         return radius_;
+    }
+    Real area() const {
+        return PI * Square(radius_);
+    }
+    Real sectorArea(Real centerAngle) const {
+        return Square(radius_) * centerAngle / 2;
     }
 
     /* operator */
