@@ -75,7 +75,7 @@ public:
         return true;
     }
     Real area() const {
-        assert(size() >= static_cast<usize>(3));
+        if (std::ssize(data_) <= 2) return 0;
         Real res{};
         for (usize i{1} ; i < size() ; i++) {
             res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);
