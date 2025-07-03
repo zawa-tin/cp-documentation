@@ -34,6 +34,9 @@ data:
     path: Test/AOJ/CGL_4_A.test.cpp
     title: Test/AOJ/CGL_4_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_B.test.cpp
+    title: Test/AOJ/CGL_4_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_A.test.cpp
     title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -173,6 +176,7 @@ data:
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_4_B.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp

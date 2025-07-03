@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_B.test.cpp
+    title: Test/AOJ/CGL_4_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_5_A.test.cpp
     title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,6 +60,7 @@ data:
   timestamp: '2023-08-11 15:55:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_4_B.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/agc047_a.test.cpp

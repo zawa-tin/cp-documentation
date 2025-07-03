@@ -28,6 +28,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/CGL_4_B.test.cpp
+    title: Test/AOJ/CGL_4_B.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
   _isVerificationFailed: false
@@ -262,6 +265,7 @@ data:
   timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/CGL_4_B.test.cpp
   - Test/LC/furthest_pair.test.cpp
 documentation_of: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
 layout: document
