@@ -53,6 +53,7 @@
 "Test/AOJ/CGL_5_B.test.cpp": "2025-07-01 18:28:26 +0900",
 "Test/AOJ/CGL_7_A/GeometryR2.test.cpp": "2025-07-01 18:28:26 +0900",
 "Test/AOJ/CGL_7_A/GeometryZ2.test.cpp": "2024-06-26 14:51:43 +0900",
+"Test/AOJ/CGL_7_B.test.cpp": "2025-07-03 18:00:15 +0900",
 "Test/AOJ/CGL_7_C.test.cpp": "2025-07-01 18:28:26 +0900",
 "Test/AOJ/CGL_7_D.test.cpp": "2025-07-01 18:28:26 +0900",
 "Test/AOJ/CGL_7_E.test.cpp": "2025-07-01 18:28:26 +0900",
