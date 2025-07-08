@@ -28,36 +28,36 @@ data:
     \ zawa {\n\nclass Lowlink {\npublic:\n\n    using V = usize;\n\n    using ID =\
     \ usize;\n\nprivate:\n\n    class LowlinkResponse {\n    public:\n\n        LowlinkResponse()\
     \ = default;\n\n        LowlinkResponse(std::vector<u32>&& articulation, std::vector<bool>&&\
-    \ bridge)\n            : articulation_{std::move(articulation)}, bridge_{std::move(bridge)}\
+    \ bridge)\n            : m_articulation{std::move(articulation)}, m_bridge{std::move(bridge)}\
     \ {}\n\n        inline bool isArticulation(V v) const {\n            assert(v\
-    \ < articulation_.size());\n            return articulation_[v] > 1u;\n      \
-    \  }\n\n        inline u32 cut(V v) const {\n            assert(v < articulation_.size());\n\
-    \            return articulation_[v];\n        }\n\n        inline bool isBridge(ID\
-    \ i) const {\n            assert(i < bridge_.size());\n            return bridge_[i];\n\
-    \        }\n\n    private:\n\n        std::vector<u32> articulation_;\n\n    \
-    \    std::vector<bool> bridge_;\n\n    };\n\n    static constexpr usize INVALID{static_cast<usize>(-1)};\n\
-    \n    usize n_{}, m_{};\n\n    std::vector<std::vector<std::pair<V, ID>>> g_;\n\
-    \n    std::vector<std::pair<V, V>> e_;\n\n    void dfs(V v, V p, u32& t, std::vector<u32>&\
-    \ articulation, \n            std::vector<bool>& bridge, std::vector<usize>& in,\
-    \ std::vector<usize>& low) const {\n        low[v] = in[v] = t++;\n        u32\
-    \ deg{}; \n        for (const auto& [x, i] : g_[v]) {\n            if (in[x] ==\
-    \ INVALID) {\n                deg++;\n                dfs(x, v, t, articulation,\
+    \ < m_articulation.size());\n            return m_articulation[v] > 1u;\n    \
+    \    }\n\n        inline u32 cut(V v) const {\n            assert(v < m_articulation.size());\n\
+    \            return m_articulation[v];\n        }\n\n        inline bool isBridge(ID\
+    \ i) const {\n            assert(i < m_bridge.size());\n            return m_bridge[i];\n\
+    \        }\n\n    private:\n\n        std::vector<u32> m_articulation;\n\n   \
+    \     std::vector<bool> m_bridge;\n\n    };\n\n    static constexpr usize INVALID{static_cast<ID>(-1)};\n\
+    \n    usize m_n{}, m_m{};\n\n    std::vector<std::vector<std::pair<V, ID>>> m_g;\n\
+    \n    std::vector<std::pair<V, V>> m_e;\n\n    void dfs(V v, ID p_edge, u32& t,\
+    \ std::vector<u32>& articulation, \n            std::vector<bool>& bridge, std::vector<usize>&\
+    \ in, std::vector<usize>& low) const {\n        low[v] = in[v] = t++;\n      \
+    \  u32 deg{}; \n        for (const auto& [x, i] : m_g[v]) {\n            if (in[x]\
+    \ == INVALID) {\n                deg++;\n                dfs(x, i, t, articulation,\
     \ bridge, in, low);\n                low[v] = std::min(low[v], low[x]);\n    \
-    \            if (p != INVALID and low[x] >= in[v]) {\n                    articulation[v]++;\n\
-    \                }\n                if (low[x] > in[v]) {\n                  \
-    \  bridge[i] = true;\n                }\n            }\n            else if (x\
-    \ != p) {\n                low[v] = std::min(low[v], in[x]);\n            }\n\
-    \        }\n        if (p == INVALID) {\n            articulation[v] = deg;\n\
-    \        }\n    }\n\npublic:\n\n    constexpr usize size() const noexcept {\n\
-    \        return n_;\n    }\n\n    constexpr usize edgeSize() const noexcept {\n\
-    \        return m_;\n    }\n\n    Lowlink() = default;\n\n    explicit Lowlink(usize\
-    \ n) \n        : n_{n}, m_{}, g_(n) {\n        g_.shrink_to_fit();\n    }\n  \
-    \  \n    ID addEdge(V u, V v) {\n        ID res{m_++};\n        e_.emplace_back(u,\
-    \ v);\n        g_[u].emplace_back(v, res);\n        g_[v].emplace_back(u, res);\n\
+    \            if (p_edge != INVALID and low[x] >= in[v]) {\n                  \
+    \  articulation[v]++;\n                }\n                if (low[x] > in[v])\
+    \ {\n                    bridge[i] = true;\n                }\n            }\n\
+    \            else if (p_edge != i) {\n                low[v] = std::min(low[v],\
+    \ in[x]);\n            }\n        }\n        if (p_edge == INVALID) {\n      \
+    \      articulation[v] = deg;\n        }\n    }\n\npublic:\n\n    constexpr usize\
+    \ size() const noexcept {\n        return m_n;\n    }\n\n    constexpr usize edgeSize()\
+    \ const noexcept {\n        return m_m;\n    }\n\n    Lowlink() = default;\n\n\
+    \    explicit Lowlink(usize n) \n        : m_n{n}, m_m{}, m_g(n) {\n        m_g.shrink_to_fit();\n\
+    \    }\n    \n    ID addEdge(V u, V v) {\n        ID res{m_m++};\n        m_e.emplace_back(u,\
+    \ v);\n        m_g[u].emplace_back(v, res);\n        m_g[v].emplace_back(u, res);\n\
     \        return res;\n    }\n\n    const std::vector<std::pair<V, ID>>& operator[](V\
-    \ v) const noexcept {\n        assert(v < size());\n        return g_[v];\n  \
-    \  }\n    const std::pair<V, V>& edge(ID i) const noexcept {\n        assert(i\
-    \ < edgeSize());\n        return e_[i];\n    }\n\n    LowlinkResponse build()\
+    \ v) const noexcept {\n        assert(v < size());\n        return m_g[v];\n \
+    \   }\n\n    const std::pair<V, V>& edge(ID i) const noexcept {\n        assert(i\
+    \ < edgeSize());\n        return m_e[i];\n    }\n\n    LowlinkResponse build()\
     \ const {\n        u32 t{};\n        std::vector<u32> articulation(size(), 1u);\n\
     \        std::vector<usize> in(size(), INVALID), low(size());\n        std::vector<bool>\
     \ bridge(edgeSize());\n        for (u32 v{} ; v < size() ; v++) if (in[v] == INVALID)\
@@ -67,32 +67,32 @@ data:
     #line 6 \"Test/AOJ/GRL_3_B.test.cpp\"\n#include <iostream>\n#line 9 \"Test/AOJ/GRL_3_B.test.cpp\"\
     \n\nusing namespace zawa;\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n    int n, m; \n    std::cin >> n >> m;\n\
-    \    Lowlink g(n);\n    for (int _{} ; _ < m ; _++) {\n        int s, t; \n  \
-    \      std::cin >> s >> t;\n        g.addEdge(s, t);\n    }\n    auto info{g.build()};\n\
-    \    std::vector<std::pair<int, int>> ans;\n    for (int i{} ; i < m ; i++) {\n\
-    \        if (info.isBridge(i)) {\n            auto [u, v]{g.edge(i)};\n      \
-    \      ans.emplace_back(std::min(u, v), std::max(u, v));\n        }\n    }\n \
-    \   std::sort(ans.begin(), ans.end());\n    for (auto [u, v] : ans) {\n      \
-    \  std::cout << u << ' ' << v << '\\n';\n    }\n}\n"
+    \    Lowlink g(n);\n    for (int i = 0 ; i < m ; i++) {\n        int s, t; \n\
+    \        std::cin >> s >> t;\n        g.addEdge(s, t);\n    }\n    const auto\
+    \ info{g.build()};\n    std::vector<std::pair<int, int>> ans;\n    for (int i{}\
+    \ ; i < m ; i++) {\n        if (info.isBridge(i)) {\n            auto [u, v]{g.edge(i)};\n\
+    \            ans.emplace_back(std::min(u, v), std::max(u, v));\n        }\n  \
+    \  }\n    std::ranges::sort(ans);\n    for (auto [u, v] : ans) {\n        std::cout\
+    \ << u << ' ' << v << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/3/GRL_3_B\"\
     \n\n#include \"../../Src/Graph/Components/Lowlink.hpp\"\n\n#include <algorithm>\n\
     #include <iostream>\n#include <utility>\n#include <vector>\n\nusing namespace\
     \ zawa;\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
     \    std::ios::sync_with_stdio(false);\n    int n, m; \n    std::cin >> n >> m;\n\
-    \    Lowlink g(n);\n    for (int _{} ; _ < m ; _++) {\n        int s, t; \n  \
-    \      std::cin >> s >> t;\n        g.addEdge(s, t);\n    }\n    auto info{g.build()};\n\
-    \    std::vector<std::pair<int, int>> ans;\n    for (int i{} ; i < m ; i++) {\n\
-    \        if (info.isBridge(i)) {\n            auto [u, v]{g.edge(i)};\n      \
-    \      ans.emplace_back(std::min(u, v), std::max(u, v));\n        }\n    }\n \
-    \   std::sort(ans.begin(), ans.end());\n    for (auto [u, v] : ans) {\n      \
-    \  std::cout << u << ' ' << v << '\\n';\n    }\n}\n"
+    \    Lowlink g(n);\n    for (int i = 0 ; i < m ; i++) {\n        int s, t; \n\
+    \        std::cin >> s >> t;\n        g.addEdge(s, t);\n    }\n    const auto\
+    \ info{g.build()};\n    std::vector<std::pair<int, int>> ans;\n    for (int i{}\
+    \ ; i < m ; i++) {\n        if (info.isBridge(i)) {\n            auto [u, v]{g.edge(i)};\n\
+    \            ans.emplace_back(std::min(u, v), std::max(u, v));\n        }\n  \
+    \  }\n    std::ranges::sort(ans);\n    for (auto [u, v] : ans) {\n        std::cout\
+    \ << u << ' ' << v << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Graph/Components/Lowlink.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/AOJ/GRL_3_B.test.cpp
   requiredBy: []
-  timestamp: '2025-06-09 10:00:52+09:00'
+  timestamp: '2025-07-08 14:43:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/GRL_3_B.test.cpp

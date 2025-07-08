@@ -22,7 +22,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc334/submissions/66615159
+    - https://atcoder.jp/contests/abc334/submissions/67422779
     - https://atcoder.jp/contests/abc334/tasks/abc334_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -40,7 +40,7 @@ data:
     \ line -1: no such header\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc334/tasks/abc334_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 334 G - Christmas Color Grid 2\n * https://atcoder.jp/contests/abc334/submissions/66615159\n\
+    \n\n/*\n * AtCoder Beginner Contest 334 G - Christmas Color Grid 2\n * https://atcoder.jp/contests/abc334/submissions/67422779\n\
     \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Components/ConnectedComponents.hpp\"\
     \n#include \"../../Src/Graph/Components/Lowlink.hpp\"\n#include \"atcoder/modint\"\
     \n\n#include <iostream>\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\n\
@@ -73,7 +73,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc334_g.test.cpp
   requiredBy: []
-  timestamp: '2025-06-09 10:00:52+09:00'
+  timestamp: '2025-07-08 14:43:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc334_g.test.cpp
