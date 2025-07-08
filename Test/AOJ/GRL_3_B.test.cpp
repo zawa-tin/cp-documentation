@@ -16,12 +16,12 @@ int main() {
     int n, m; 
     std::cin >> n >> m;
     Lowlink g(n);
-    for (int _{} ; _ < m ; _++) {
+    for (int i = 0 ; i < m ; i++) {
         int s, t; 
         std::cin >> s >> t;
         g.addEdge(s, t);
     }
-    auto info{g.build()};
+    const auto info{g.build()};
     std::vector<std::pair<int, int>> ans;
     for (int i{} ; i < m ; i++) {
         if (info.isBridge(i)) {
@@ -29,7 +29,7 @@ int main() {
             ans.emplace_back(std::min(u, v), std::max(u, v));
         }
     }
-    std::sort(ans.begin(), ans.end());
+    std::ranges::sort(ans);
     for (auto [u, v] : ans) {
         std::cout << u << ' ' << v << '\n';
     }
