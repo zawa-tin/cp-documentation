@@ -11,7 +11,7 @@ using namespace zawa;
 
 /*
  * Codeforces Round 923 (Div. 3) - F Microcycle
- * https://codeforces.com/contest/1927/submission/323560243
+ * https://codeforces.com/contest/1927/submission/328032871
  */
 
 void solve() {

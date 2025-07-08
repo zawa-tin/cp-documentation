@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 334 G - Christmas Color Grid 2
- * https://atcoder.jp/contests/abc334/submissions/66615159
+ * https://atcoder.jp/contests/abc334/submissions/67422779
  */
 
 #include "../../Src/Template/IOSetting.hpp"
