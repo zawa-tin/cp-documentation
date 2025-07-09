@@ -439,6 +439,9 @@ data:
     path: Src/Sequence/MajorityVote.hpp
     title: "Boyer-Moore\u306EMajority vote algorithm"
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/Manacher.hpp
+    title: Manacher (Enumerate Palindromes)
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/PermutationSwapSort.hpp
     title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\
       \u30C8\u3059\u308B"
@@ -928,6 +931,9 @@ data:
     path: Test/AtCoder/abc396_g.test.cpp
     title: ABC396-G Flip Row or Col
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc398_f.test.cpp
+    title: Test/AtCoder/abc398_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc403_g.test.cpp
     title: Test/AtCoder/abc403_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1054,6 +1060,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/enumerate_palindromes.test.cpp
+    title: Test/LC/enumerate_palindromes.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_primes.test.cpp
     title: Test/LC/enumerate_primes.test.cpp
@@ -1425,6 +1434,7 @@ data:
   - Src/Sequence/RollingHash.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - Src/Sequence/Manacher.hpp
   - Src/GeometryR3/Segment.hpp
   - Src/GeometryR3/Point.hpp
   - Src/GeometryR3/Sphere.hpp
@@ -1630,6 +1640,7 @@ data:
   - Test/LC/eulerian_trail_directed.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/enumerate_primes.test.cpp
+  - Test/LC/enumerate_palindromes.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/LC/matrix_det.test.cpp
@@ -1683,6 +1694,7 @@ data:
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/agc002_d.test.cpp
   - Test/AtCoder/abc136_f.test.cpp
+  - Test/AtCoder/abc398_f.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc247_d.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
