@@ -265,8 +265,8 @@ data:
   timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_4_B.test.cpp
   - Test/LC/furthest_pair.test.cpp
+  - Test/AOJ/CGL_4_B.test.cpp
 documentation_of: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
 layout: document
 redirect_from:

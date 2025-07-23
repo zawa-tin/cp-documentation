@@ -662,6 +662,9 @@ data:
       path: Src/Utility/ParallelBinarySearch.hpp
       title: "\u4E26\u5217\u4E8C\u5206\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/RationalBinarySearch.hpp
+      title: "\u6709\u7406\u6570\u3067\u4E8C\u5206\u63A2\u7D22"
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/SeparatedFamilySet.hpp
       title: "2\u8981\u7D20\u306E\u5206\u96E2\u3092\u7DB2\u7F85\u3059\u308B\u30C6\u30AF\
         \u30CB\u30C3\u30AF"
@@ -1092,6 +1095,9 @@ data:
       path: Test/AtCoder/abc332_f.test.cpp
       title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc333_g.test.cpp
+      title: Test/AtCoder/abc333_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc334_g.test.cpp
       title: Test/AtCoder/abc334_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1326,6 +1332,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/range_set_range_composite.test.cpp
       title: Test/LC/range_set_range_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/rational_approximation.test.cpp
+      title: Test/LC/rational_approximation.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/rectangle_sum.test.cpp
       title: Test/LC/rectangle_sum.test.cpp

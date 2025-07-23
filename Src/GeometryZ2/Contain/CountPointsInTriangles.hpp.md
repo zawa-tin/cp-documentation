@@ -260,10 +260,10 @@ data:
   timestamp: '2025-04-30 16:41:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Baekjoon/23249.test.cpp
   - Test/LC/count_points_in_triangle.test.cpp
-  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - Test/Baekjoon/23249.test.cpp
   - Test/UC/3-35-L.test.cpp
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
 documentation_of: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
 layout: document
 title: Count Points in Triangles

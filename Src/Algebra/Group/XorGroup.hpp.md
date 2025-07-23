@@ -33,8 +33,8 @@ data:
   timestamp: '2024-07-27 05:40:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc308_g.test.cpp
   - Test/CF/CF956-F.test.cpp
+  - Test/AtCoder/abc308_g.test.cpp
 documentation_of: Src/Algebra/Group/XorGroup.hpp
 layout: document
 redirect_from:
