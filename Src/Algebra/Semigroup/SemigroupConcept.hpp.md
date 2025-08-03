@@ -140,6 +140,9 @@ data:
     path: Test/AtCoder/abc403_g.test.cpp
     title: Test/AtCoder/abc403_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc417_f.test.cpp
+    title: Test/AtCoder/abc417_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -209,8 +212,8 @@ data:
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3226.test.cpp
-    title: Test/Manual/aoj3226.test.cpp
+    path: Test/Manual/aoj3326.test.cpp
+    title: Test/Manual/aoj3326.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
@@ -284,6 +287,7 @@ data:
   - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
+  - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
@@ -299,7 +303,7 @@ data:
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
-  - Test/Manual/aoj3226.test.cpp
+  - Test/Manual/aoj3326.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp

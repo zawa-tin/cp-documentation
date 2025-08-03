@@ -1137,6 +1137,9 @@ data:
       path: Test/AtCoder/abc403_g.test.cpp
       title: Test/AtCoder/abc403_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc417_f.test.cpp
+      title: Test/AtCoder/abc417_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1431,8 +1434,8 @@ data:
       path: Test/Manual/agc026_a.test.cpp
       title: Test/Manual/agc026_a.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/Manual/aoj3226.test.cpp
-      title: Test/Manual/aoj3226.test.cpp
+      path: Test/Manual/aoj3326.test.cpp
+      title: Test/Manual/aoj3326.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/Manual/aoj3369.test.cpp
       title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"

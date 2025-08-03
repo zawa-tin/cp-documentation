@@ -32,11 +32,13 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc331/submissions/68181997
     - https://atcoder.jp/contests/abc331/tasks/abc331_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc331_f.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
-    #line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    /*\n * AtCoder Beginner Contest 331 F - Palindrome Query\n * https://atcoder.jp/contests/abc331/submissions/68181997\n\
+    \ */\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -63,7 +65,7 @@ data:
     \ m_dat(n << 1, VM::identity()) {}\n\n    explicit SegmentTree(const std::vector<V>&\
     \ dat) : m_n{ dat.size() }, m_dat(dat.size() << 1, VM::identity()) {\n       \
     \ for (usize i{} ; i < m_n ; i++) {\n            m_dat[i + m_n] = dat[i];\n  \
-    \      }\n        for (usize i{m_n} ; i-- ; i) {\n            m_dat[i] = VM::operation(m_dat[left(i)],\
+    \      }\n        for (usize i{m_n} ; i-- ; ) {\n            m_dat[i] = VM::operation(m_dat[left(i)],\
     \ m_dat[right(i)]);\n        }\n    }\n\n    [[nodiscard]] inline usize size()\
     \ const noexcept {\n        return m_n;\n    }\n\n    [[nodiscard]] V get(usize\
     \ i) const {\n        assert(i < size());\n        return m_dat[i + m_n];\n  \
@@ -81,42 +83,43 @@ data:
     \ {\n            if (l & 1) {\n                L = VM::operation(L, m_dat[l++]);\n\
     \            }\n            if (r & 1) {\n                R = VM::operation(m_dat[--r],\
     \ R);\n            }\n        }\n        return VM::operation(L, R);\n    }\n\n\
-    \    template <class Function>\n    [[nodiscard]] usize maxRight(usize l, const\
-    \ Function& f) {\n        assert(l < size());\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(f(VM::identity()));\n        usize res{l}, width{1};\n    \
-    \    V prod{ VM::identity() };\n        // \u73FE\u5728\u306E\u898B\u3066\u3044\
-    \u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\u6301\u3064\n        // \u5883\
-    \u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\u3080\u90E8\u5206\u6728\u306E\
-    \u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\u8FD4\u3059\u6642\u306F\u5FC5\
-    \u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\u6839\u306B\u306A\u308B\u304C\
-    \u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\u3067\u30AA\u30FC\u30D0\u30FC\
-    \u3057\u306A\u3044)\n        for (l += size() ; res + width <= size() ; l = parent(l),\
-    \ width <<= 1) if (l & 1) {\n            if (not f(VM::operation(prod, m_dat[l])))\
-    \ break; \n            res += width;\n            prod = VM::operation(prod, m_dat[l++]);\n\
-    \        }\n        // \u6839\u304B\u3089\u4E0B\u3063\u3066\u3001\u5883\u754C\u3092\
-    \u767A\u898B\u3059\u308B\n        while (l = left(l), width >>= 1) {\n       \
-    \     if (res + width <= size() and f(VM::operation(prod, m_dat[l]))) {\n    \
-    \            res += width;\n                prod = VM::operation(prod, m_dat[l++]);\n\
-    \            } \n        }\n        return res;\n    }\n\n    template <class\
-    \ Function>\n    [[nodiscard]] usize minLeft(usize r, const Function& f) const\
-    \ {\n        assert(r <= size());\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
-    \        assert(f(VM::identity()));\n        usize res{r}, width{1};\n       \
-    \ V prod{ VM::identity() };\n        for (r += size() ; res >= width ; r = parent(r),\
-    \ width <<= 1) if (r & 1) {\n            if (not f(VM::operation(m_dat[r - 1],\
-    \ prod))) break;\n            res -= width;\n            prod = VM::operation(prod,\
-    \ m_dat[--r]);\n        }\n        while (r = left(r), width >>= 1) {\n      \
-    \      if (res >= width and f(VM::operation(m_dat[r - 1], prod))) {\n        \
-    \        res -= width;\n                prod = VM::operation(m_dat[--r], prod);\n\
-    \            }\n        }\n        return res;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (usize i{1}\
-    \ ; i < 2 * st.size() ; i++) {\n            os << st.m_dat[i] << (i + 1 == 2 *\
-    \ st.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\
-    \n    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n\n   \
-    \ constexpr u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n\n  \
-    \  constexpr u32 parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize\
-    \ m_n;\n\n    std::vector<V> m_dat;\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\
+    \    template <class F>\n    requires std::predicate<F, V>\n    [[nodiscard]]\
+    \ usize maxRight(usize l, const F& f) {\n        assert(l < size());\n       \
+    \ static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, \"\
+    maxRight's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{l}, width{1};\n        V prod{ VM::identity() };\n        //\
+    \ \u73FE\u5728\u306E\u898B\u3066\u3044\u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\
+    \u6301\u3064\n        // \u5883\u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\
+    \u3080\u90E8\u5206\u6728\u306E\u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\
+    \u8FD4\u3059\u6642\u306F\u5FC5\u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\
+    \u6839\u306B\u306A\u308B\u304C\u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\
+    \u3067\u30AA\u30FC\u30D0\u30FC\u3057\u306A\u3044)\n        for (l += size() ;\
+    \ res + width <= size() ; l = parent(l), width <<= 1) if (l & 1) {\n         \
+    \   if (not f(VM::operation(prod, m_dat[l]))) break; \n            res += width;\n\
+    \            prod = VM::operation(prod, m_dat[l++]);\n        }\n        // \u6839\
+    \u304B\u3089\u4E0B\u3063\u3066\u3001\u5883\u754C\u3092\u767A\u898B\u3059\u308B\
+    \n        while (l = left(l), width >>= 1) {\n            if (res + width <= size()\
+    \ and f(VM::operation(prod, m_dat[l]))) {\n                res += width;\n   \
+    \             prod = VM::operation(prod, m_dat[l++]);\n            } \n      \
+    \  }\n        return res;\n    }\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    [[nodiscard]] usize minLeft(usize r, const F& f) const {\n        assert(r\
+    \ <= size());\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{r}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (r += size() ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {\n   \
+    \         if (not f(VM::operation(m_dat[r - 1], prod))) break;\n            res\
+    \ -= width;\n            prod = VM::operation(prod, m_dat[--r]);\n        }\n\
+    \        while (r = left(r), width >>= 1) {\n            if (res >= width and\
+    \ f(VM::operation(m_dat[r - 1], prod))) {\n                res -= width;\n   \
+    \             prod = VM::operation(m_dat[--r], prod);\n            }\n       \
+    \ }\n        return res;\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const SegmentTree& st) {\n        for (usize i{1} ; i < 2 * st.size() ;\
+    \ i++) {\n            os << st.m_dat[i] << (i + 1 == 2 * st.size() ? \"\" : \"\
+    \ \");\n        }\n        return os;\n    }\n\nprivate:\n\n    constexpr u32\
+    \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
+    \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
+    \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/RollingHashMonoid.hpp\"\
     \n\n#line 2 \"Src/Number/Mersenne61ModInt.hpp\"\n\n#line 4 \"Src/Number/Mersenne61ModInt.hpp\"\
     \n\nnamespace zawa {\n\n// @reference: https://qiita.com/keymoon/items/11fac5627672a6d6a9f6\n\
     class Mersenne61ModInt {\npublic:\n    using Value = u64;\nprivate:\n    static\
@@ -152,9 +155,9 @@ data:
     \    static constexpr Element operation(const Element& lhs, const Element& rhs)\
     \ noexcept {\n        return Element{\n            Modulo::Modulo(Modulo::UnsafeMul(lhs.hash,\
     \ rhs.pow) + rhs.hash),\n            Modulo::Mul(lhs.pow, rhs.pow),\n        \
-    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 7\
-    \ \"Test/AtCoder/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 12 \"Test/AtCoder/abc331_f.test.cpp\"\
-    \n#include <string>\n#line 14 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value\
+    \    lhs.len + rhs.len\n        };\n    }\n};\n\n} // namespace zawa\n#line 12\
+    \ \"Test/AtCoder/abc331_f.test.cpp\"\nusing namespace zawa;\n\n#line 17 \"Test/AtCoder/abc331_f.test.cpp\"\
+    \n#include <string>\n#line 19 \"Test/AtCoder/abc331_f.test.cpp\"\n\nusing Value\
     \ = RollingHashMonoidData::Value;\n\nValue RollingHashMonoidData::base{\n    RollingHashMonoidData::randomValue(26)\n\
     };\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n    int N, Q; \n    std::cin\
     \ >> N >> Q;\n    std::string S; \n    std::cin >> S;\n\n    std::vector<RollingHashMonoidData>\
@@ -163,15 +166,16 @@ data:
     \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
     \ t;\n        if (t == 1) {\n            int x; \n            std::cin >> x;\n\
     \            x--;\n            char c; \n            std::cin >> c;\n        \
-    \    seg.set(x, RollingHashMonoidData{c});\n            ges.set(N - x - 1, RollingHashMonoidData{c});\n\
-    \        }\n        else if (t == 2) {\n            int l, r; std::cin >> l >>\
-    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
-    \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
-    \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \    seg.assign(x, RollingHashMonoidData{c});\n            ges.assign(N - x -\
+    \ 1, RollingHashMonoidData{c});\n        }\n        else if (t == 2) {\n     \
+    \       int l, r; std::cin >> l >> r;\n            l--;\n            bool ans{seg.product(l,\
+    \ r) == ges.product(N - r, N - l)};\n            std::cout << (ans ? \"Yes\" :\
+    \ \"No\") << '\\n';\n        }\n        else {\n            assert(!\"input fail\"\
+    );\n        }\n    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc331/tasks/abc331_f\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    /*\n * AtCoder Beginner Contest 331 F - Palindrome Query\n * https://atcoder.jp/contests/abc331/submissions/68181997\n\
+    \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n#include \"../../Src/Algebra/Monoid/RollingHashMonoid.hpp\"\nusing namespace\
     \ zawa;\n\n#include <cassert>\n#include <iostream>\n#include <random>\n#include\
     \ <string>\n#include <vector>\n\nusing Value = RollingHashMonoidData::Value;\n\
@@ -183,12 +187,12 @@ data:
     \ seg{init}, ges{tini};\n    while(Q--) {\n        int t; \n        std::cin >>\
     \ t;\n        if (t == 1) {\n            int x; \n            std::cin >> x;\n\
     \            x--;\n            char c; \n            std::cin >> c;\n        \
-    \    seg.set(x, RollingHashMonoidData{c});\n            ges.set(N - x - 1, RollingHashMonoidData{c});\n\
-    \        }\n        else if (t == 2) {\n            int l, r; std::cin >> l >>\
-    \ r;\n            l--;\n            bool ans{seg.product(l, r) == ges.product(N\
-    \ - r, N - l)};\n            std::cout << (ans ? \"Yes\" : \"No\") << '\\n';\n\
-    \        }\n        else {\n            assert(!\"input fail\");\n        }\n\
-    \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+    \    seg.assign(x, RollingHashMonoidData{c});\n            ges.assign(N - x -\
+    \ 1, RollingHashMonoidData{c});\n        }\n        else if (t == 2) {\n     \
+    \       int l, r; std::cin >> l >> r;\n            l--;\n            bool ans{seg.product(l,\
+    \ r) == ges.product(N - r, N - l)};\n            std::cout << (ans ? \"Yes\" :\
+    \ \"No\") << '\\n';\n        }\n        else {\n            assert(!\"input fail\"\
+    );\n        }\n    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -200,7 +204,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc331_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 15:30:56+09:00'
+  timestamp: '2025-08-03 16:41:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc331_f.test.cpp

@@ -940,6 +940,9 @@ data:
     path: Test/AtCoder/abc403_g.test.cpp
     title: Test/AtCoder/abc403_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc417_f.test.cpp
+    title: Test/AtCoder/abc417_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1214,8 +1217,8 @@ data:
     path: Test/Manual/agc026_a.test.cpp
     title: Test/Manual/agc026_a.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3226.test.cpp
-    title: Test/Manual/aoj3226.test.cpp
+    path: Test/Manual/aoj3326.test.cpp
+    title: Test/Manual/aoj3326.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3369.test.cpp
     title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
@@ -1628,6 +1631,7 @@ data:
   - Test/AtCoder/abc398_f.test.cpp
   - Test/AtCoder/abc302_h.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
+  - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/arc070_e.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
@@ -1688,7 +1692,6 @@ data:
   - Test/Manual/abc004_d.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/Manual/abc252_e.test.cpp
-  - Test/Manual/aoj3226.test.cpp
   - Test/Manual/abc291_h.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/abc271_d.test.cpp
@@ -1697,6 +1700,7 @@ data:
   - Test/Manual/typical90_an.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/kupc2016_e.test.cpp
+  - Test/Manual/aoj3326.test.cpp
   - Test/Manual/aoj3369.test.cpp
   - Test/Manual/tdpc_fibonacci.test.cpp
   - Test/Manual/typical90_by.test.cpp

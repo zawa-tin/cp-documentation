@@ -25,12 +25,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc237/submissions/67038132
+    - https://atcoder.jp/contests/abc237/submissions/68181908
     - https://atcoder.jp/contests/abc237/tasks/abc237_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc237_g.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/67038132\n\
+    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/68181908\n\
     \ */\n\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\n\
     #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
@@ -56,7 +56,7 @@ data:
     \ {}\n\n    explicit SegmentTree(const std::vector<V>& dat) : m_n{ dat.size()\
     \ }, m_dat(dat.size() << 1, VM::identity()) {\n        for (usize i{} ; i < m_n\
     \ ; i++) {\n            m_dat[i + m_n] = dat[i];\n        }\n        for (usize\
-    \ i{m_n} ; i-- ; i) {\n            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n\
+    \ i{m_n} ; i-- ; ) {\n            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n\
     \        }\n    }\n\n    [[nodiscard]] inline usize size() const noexcept {\n\
     \        return m_n;\n    }\n\n    [[nodiscard]] V get(usize i) const {\n    \
     \    assert(i < size());\n        return m_dat[i + m_n];\n    }\n\n    [[nodiscard]]\
@@ -73,42 +73,43 @@ data:
     \ parent(l), r = parent(r)) {\n            if (l & 1) {\n                L = VM::operation(L,\
     \ m_dat[l++]);\n            }\n            if (r & 1) {\n                R = VM::operation(m_dat[--r],\
     \ R);\n            }\n        }\n        return VM::operation(L, R);\n    }\n\n\
-    \    template <class Function>\n    [[nodiscard]] usize maxRight(usize l, const\
-    \ Function& f) {\n        assert(l < size());\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(f(VM::identity()));\n        usize res{l}, width{1};\n    \
-    \    V prod{ VM::identity() };\n        // \u73FE\u5728\u306E\u898B\u3066\u3044\
-    \u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\u6301\u3064\n        // \u5883\
-    \u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\u3080\u90E8\u5206\u6728\u306E\
-    \u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\u8FD4\u3059\u6642\u306F\u5FC5\
-    \u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\u6839\u306B\u306A\u308B\u304C\
-    \u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\u3067\u30AA\u30FC\u30D0\u30FC\
-    \u3057\u306A\u3044)\n        for (l += size() ; res + width <= size() ; l = parent(l),\
-    \ width <<= 1) if (l & 1) {\n            if (not f(VM::operation(prod, m_dat[l])))\
-    \ break; \n            res += width;\n            prod = VM::operation(prod, m_dat[l++]);\n\
-    \        }\n        // \u6839\u304B\u3089\u4E0B\u3063\u3066\u3001\u5883\u754C\u3092\
-    \u767A\u898B\u3059\u308B\n        while (l = left(l), width >>= 1) {\n       \
-    \     if (res + width <= size() and f(VM::operation(prod, m_dat[l]))) {\n    \
-    \            res += width;\n                prod = VM::operation(prod, m_dat[l++]);\n\
-    \            } \n        }\n        return res;\n    }\n\n    template <class\
-    \ Function>\n    [[nodiscard]] usize minLeft(usize r, const Function& f) const\
-    \ {\n        assert(r <= size());\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
-    \        assert(f(VM::identity()));\n        usize res{r}, width{1};\n       \
-    \ V prod{ VM::identity() };\n        for (r += size() ; res >= width ; r = parent(r),\
-    \ width <<= 1) if (r & 1) {\n            if (not f(VM::operation(m_dat[r - 1],\
-    \ prod))) break;\n            res -= width;\n            prod = VM::operation(prod,\
-    \ m_dat[--r]);\n        }\n        while (r = left(r), width >>= 1) {\n      \
-    \      if (res >= width and f(VM::operation(m_dat[r - 1], prod))) {\n        \
-    \        res -= width;\n                prod = VM::operation(m_dat[--r], prod);\n\
-    \            }\n        }\n        return res;\n    }\n\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const SegmentTree& st) {\n        for (usize i{1}\
-    \ ; i < 2 * st.size() ; i++) {\n            os << st.m_dat[i] << (i + 1 == 2 *\
-    \ st.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\
-    \n    constexpr u32 left(u32 v) const {\n        return v << 1;\n    }\n\n   \
-    \ constexpr u32 right(u32 v) const {\n        return v << 1 | 1;\n    }\n\n  \
-    \  constexpr u32 parent(u32 v) const {\n        return v >> 1;\n    }\n\n    usize\
-    \ m_n;\n\n    std::vector<V> m_dat;\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \    template <class F>\n    requires std::predicate<F, V>\n    [[nodiscard]]\
+    \ usize maxRight(usize l, const F& f) {\n        assert(l < size());\n       \
+    \ static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, \"\
+    maxRight's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{l}, width{1};\n        V prod{ VM::identity() };\n        //\
+    \ \u73FE\u5728\u306E\u898B\u3066\u3044\u308B\u9802\u70B9\u306E\u5E45\u3092width\u3067\
+    \u6301\u3064\n        // \u5883\u754C\u304C\u3042\u308B\u9802\u70B9\u3092\u542B\
+    \u3080\u90E8\u5206\u6728\u306E\u6839\u3092\u63A2\u3059\n        // (\u6298\u308A\
+    \u8FD4\u3059\u6642\u306F\u5FC5\u8981\u4EE5\u4E0A\u306E\u5E45\u3092\u6301\u3064\
+    \u6839\u306B\u306A\u308B\u304C\u3001width\u3092\u6301\u3063\u3066\u3044\u308B\u306E\
+    \u3067\u30AA\u30FC\u30D0\u30FC\u3057\u306A\u3044)\n        for (l += size() ;\
+    \ res + width <= size() ; l = parent(l), width <<= 1) if (l & 1) {\n         \
+    \   if (not f(VM::operation(prod, m_dat[l]))) break; \n            res += width;\n\
+    \            prod = VM::operation(prod, m_dat[l++]);\n        }\n        // \u6839\
+    \u304B\u3089\u4E0B\u3063\u3066\u3001\u5883\u754C\u3092\u767A\u898B\u3059\u308B\
+    \n        while (l = left(l), width >>= 1) {\n            if (res + width <= size()\
+    \ and f(VM::operation(prod, m_dat[l]))) {\n                res += width;\n   \
+    \             prod = VM::operation(prod, m_dat[l++]);\n            } \n      \
+    \  }\n        return res;\n    }\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    [[nodiscard]] usize minLeft(usize r, const F& f) const {\n        assert(r\
+    \ <= size());\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{r}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (r += size() ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {\n   \
+    \         if (not f(VM::operation(m_dat[r - 1], prod))) break;\n            res\
+    \ -= width;\n            prod = VM::operation(prod, m_dat[--r]);\n        }\n\
+    \        while (r = left(r), width >>= 1) {\n            if (res >= width and\
+    \ f(VM::operation(m_dat[r - 1], prod))) {\n                res -= width;\n   \
+    \             prod = VM::operation(m_dat[--r], prod);\n            }\n       \
+    \ }\n        return res;\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const SegmentTree& st) {\n        for (usize i{1} ; i < 2 * st.size() ;\
+    \ i++) {\n            os << st.m_dat[i] << (i + 1 == 2 * st.size() ? \"\" : \"\
+    \ \");\n        }\n        return os;\n    }\n\nprivate:\n\n    constexpr u32\
+    \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
+    \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
+    \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
     \n\n#line 9 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
     \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T, class\
     \ U>\nconcept Powerable = requires {\n    typename T::Element;\n    { T::power(std::declval<typename\
@@ -182,7 +183,7 @@ data:
     \    solve();\n#else\n    std::cout << \"Hello World\\n\";\n#endif    \n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/67038132\n\
+    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/68181908\n\
     \ */\n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
     \n#include \"../../Src/Template/TypeAlias.hpp\"\nusing namespace zawa;\n\nstruct\
     \ M {\n    using Element = int;\n    static constexpr int identity() {\n     \
@@ -215,7 +216,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc237_g.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 15:48:54+09:00'
+  timestamp: '2025-08-03 16:41:16+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc237_g.test.cpp
