@@ -4,7 +4,7 @@
 
 /*
  * AtCoder Grand Contest 005 B - Minimum Sum
- * https://atcoder.jp/contests/agc005/submissions/67037601
+ * https://atcoder.jp/contests/agc005/submissions/68182027
  */
 
 #include <iostream>

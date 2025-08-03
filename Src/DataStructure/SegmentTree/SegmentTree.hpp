@@ -31,7 +31,7 @@ public:
         for (usize i{} ; i < m_n ; i++) {
             m_dat[i + m_n] = dat[i];
         }
-        for (usize i{m_n} ; i-- ; i) {
+        for (usize i{m_n} ; i-- ; ) {
             m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);
         }
     }
@@ -82,8 +82,9 @@ public:
         return VM::operation(L, R);
     }
 
-    template <class Function>
-    [[nodiscard]] usize maxRight(usize l, const Function& f) {
+    template <class F>
+    requires std::predicate<F, V>
+    [[nodiscard]] usize maxRight(usize l, const F& f) {
         assert(l < size());
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "maxRight's argument f must be function bool(T)");
         assert(f(VM::identity()));
@@ -107,8 +108,9 @@ public:
         return res;
     }
 
-    template <class Function>
-    [[nodiscard]] usize minLeft(usize r, const Function& f) const {
+    template <class F>
+    requires std::predicate<F, V>
+    [[nodiscard]] usize minLeft(usize r, const F& f) const {
         assert(r <= size());
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "minLeft's argument f must be function bool(T)");
         assert(f(VM::identity()));

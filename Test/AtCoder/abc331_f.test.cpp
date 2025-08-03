@@ -1,6 +1,11 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 // #define PROBLEM "https://atcoder.jp/contests/abc331/tasks/abc331_f"
 
+/*
+ * AtCoder Beginner Contest 331 F - Palindrome Query
+ * https://atcoder.jp/contests/abc331/submissions/68181997
+ */
+
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/RollingHashMonoid.hpp"
@@ -41,8 +46,8 @@ int main() {
             x--;
             char c; 
             std::cin >> c;
-            seg.set(x, RollingHashMonoidData{c});
-            ges.set(N - x - 1, RollingHashMonoidData{c});
+            seg.assign(x, RollingHashMonoidData{c});
+            ges.assign(N - x - 1, RollingHashMonoidData{c});
         }
         else if (t == 2) {
             int l, r; std::cin >> l >> r;
