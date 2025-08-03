@@ -2,6 +2,11 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc292/tasks/abc292_ex"
 #define ERROR 1e-9
 
+/*
+ * AtCoder Beginner Contest 292 Ex - Rating Estimator
+ * https://atcoder.jp/contests/abc292/submissions/68181944
+ */
+
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Algebra/Monoid/AdditionMonoid.hpp"
 #include "../../Src/Algebra/Monoid/MaxMonoid.hpp"
@@ -48,7 +53,7 @@ int main() {
         c--;
         long long x; std::cin >> x;
         x -= b;
-        seg.set(c, M::Element{D{x}, D{x}});
+        seg.assign(c, M::Element{D{x}, D{x}});
         auto r{seg.maxRight(0, [](const M::Element& v) -> bool { return (!(bool)v.prefix() or v.prefix().value() < 0LL); })};
         r = std::min<int>(r + 1, n);
         assert(seg.product(0, r).product().has_value());

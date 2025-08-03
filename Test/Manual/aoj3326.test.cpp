@@ -13,7 +13,7 @@ using D = M::Element;
 
 /*
  * AOJ3226 Range Same Query
- * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/10635768/C++20
+ * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3326/judge/10781111/C++20
  */
 
 void solve() {
