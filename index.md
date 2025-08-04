@@ -45,6 +45,9 @@ data:
       path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
       title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/ReverseOrder.hpp
+      title: Src/Algebra/Monoid/ReverseOrder.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/RollingHashMonoid.hpp
       title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
         \u306E\u30E2\u30CE\u30A4\u30C9"
@@ -55,6 +58,10 @@ data:
     - icon: ':warning:'
       path: Src/Algebra/Monoid/SemigroupMonoid.hpp
       title: Src/Algebra/Monoid/SemigroupMonoid.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/SubarraySumMaxMonoid.hpp
+      title: "\u9023\u7D9A\u90E8\u5206\u5217\u306E\u7DCF\u548C\u306E\u6700\u5927\u3092\
+        \u7BA1\u7406\u3059\u308B"
     - icon: ':warning:'
       path: Src/Algebra/Monoid/SuffixProductMonoid.hpp
       title: Src/Algebra/Monoid/SuffixProductMonoid.hpp
@@ -726,6 +733,9 @@ data:
       path: Test/AOJ/2334.test.cpp
       title: "AOJ2334 \u8857\u3092\u99C6\u3051\u308B\u9053"
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2450.test.cpp
+      title: Test/AOJ/2450.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/2559.test.cpp
       title: Test/AOJ/2559.test.cpp
     - icon: ':heavy_check_mark:'
@@ -762,6 +772,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3079.test.cpp
       title: Test/AOJ/3079.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/3111.test.cpp
+      title: Test/AOJ/3111.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3168.test.cpp
       title: Test/AOJ/3168.test.cpp

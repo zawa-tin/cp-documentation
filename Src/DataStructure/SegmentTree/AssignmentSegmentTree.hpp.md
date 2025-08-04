@@ -16,6 +16,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2450.test.cpp
+    title: Test/AOJ/2450.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -235,6 +238,7 @@ data:
   - Test/AtCoder/abl_e.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
+  - Test/AOJ/2450.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
 layout: document
 title: Assignment Segment Tree

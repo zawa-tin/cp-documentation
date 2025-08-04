@@ -13,6 +13,9 @@ data:
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2450.test.cpp
+    title: Test/AOJ/2450.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2559.test.cpp
     title: Test/AOJ/2559.test.cpp
   - icon: ':heavy_check_mark:'
@@ -195,6 +198,7 @@ data:
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/AOJ/0465.test.cpp
   - Test/AOJ/2559.test.cpp
+  - Test/AOJ/2450.test.cpp
   - Test/AOJ/0478.test.cpp
 documentation_of: Src/Graph/Tree/HeavyLightDecomposition.hpp
 layout: document
