@@ -2,6 +2,7 @@
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Algebra/Monoid/RollingHashMonoid.hpp"
+#include "../../Src/Algebra/Monoid/ReverseOrder.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 #include "../../Src/Graph/Tree/HeavyLightDecomposition.hpp"
 
@@ -30,11 +31,12 @@ int main() {
         T[v].push_back(u);
     }
     HeavyLightDecomposition hld{T};
-    std::vector<RollingHashMonoidData> init(N), tini(N);
+    std::vector<RollingHashMonoidData> init(N);
     for (int i{} ; i < N ; i++) {
-        init[hld[i]] = tini[N - hld[i] - 1] = RollingHashMonoidData{K[i]};
+        init[hld[i]] = RollingHashMonoidData{K[i]};
     }
-    SegmentTree<RollingHashMonoid> seg{init}, ges{tini};
+    SegmentTree<RollingHashMonoid> seg{init};
+    SegmentTree<ReverseOrder<RollingHashMonoid>> ges{init};
     int Q;
     std::cin >> Q;
     std::unordered_set<RollingHashMonoidData::Value> set;
@@ -50,7 +52,7 @@ int main() {
                 u = hld[u];
                 v = hld[v];
                 if (u <= v) res = RollingHashMonoid::operation(res, seg.product(u, v + 1));
-                else res = RollingHashMonoid::operation(res, ges.product(N - u - 1, N - v));
+                else res = RollingHashMonoid::operation(res, ges.product(v, u + 1));
             }
             set.insert(res.hash);
             std::cout << set.size() << '\n';
@@ -61,7 +63,7 @@ int main() {
             std::cin >> k >> c;
             k--;
             seg.assign(hld[k], RollingHashMonoidData{c});
-            ges.assign(N - hld[k] - 1, RollingHashMonoidData{c});
+            ges.assign(hld[k], RollingHashMonoidData{c});
         }
         else {
             assert(false);
