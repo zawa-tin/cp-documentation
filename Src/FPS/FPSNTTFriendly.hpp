@@ -5,8 +5,9 @@
 #include "atcoder/modint"
 #include "atcoder/convolution"
 
-#include <iostream>
 #include <cassert>
+#include <iostream>
+#include <ranges>
 #include <utility>
 #include <vector>
 
@@ -24,13 +25,13 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
         for (V v : f) this->push_back(std::move(v));
     }
 
-    FPSNTTFriendly<MOD> resized(usize n) const {
+    [[nodiscard]] FPSNTTFriendly<MOD> resized(usize n) const {
         auto cp = *this;
         cp.resize(n);
         return cp;
     }
 
-    FPSNTTFriendly<MOD> inv(usize n) const {
+    [[nodiscard]] FPSNTTFriendly<MOD> inv(usize n) const {
         assert(this->size() and (*this)[0] != V{0});
         FPSNTTFriendly<MOD> g{this->front().inv()};
         while (g.size() < n) {
@@ -59,7 +60,11 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
         return g;
     }
 
-    FPSNTTFriendly<MOD> differential() const {
+    [[nodiscard]] FPSNTTFriendly<MOD> inv() const {
+        return inv(this->size());
+    }
+
+    [[nodiscard]] FPSNTTFriendly<MOD> differential() const {
         if (this->empty()) return FPSNTTFriendly{};
         FPSNTTFriendly res(this->size() - 1);
         for (usize i = 1 ; i < this->size() ; i++) {
@@ -69,7 +74,7 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
     }
 
     // C = 0
-    FPSNTTFriendly<MOD> integral() const {
+    [[nodiscard]] FPSNTTFriendly<MOD> integral() const {
         FPSNTTFriendly<MOD> res(this->size() + 1);
         for (usize i = 0 ; i < this->size() ; i++) {
             res[i + 1] = (*this)[i] / V{i + 1};
@@ -77,17 +82,50 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
         return res;
     }
 
-    FPSNTTFriendly<MOD> inv() const {
-        return inv(this->size());
-    }
-
-    FPSNTTFriendly<MOD> log(usize n) const {
+    [[nodiscard]] FPSNTTFriendly<MOD> log(usize n) const {
         assert(this->size() and (*this)[0] == V{1});
         return FPSNTTFriendly<MOD>{differential() / (*this)}.resized(n - 1).integral();
     }
 
-    FPSNTTFriendly<MOD> log() const {
+    [[nodiscard]] FPSNTTFriendly<MOD> log() const {
         return log(this->size()); 
+    }
+
+    [[nodiscard]] FPSNTTFriendly<MOD> exp(usize n) const {
+        assert(this->size() and (*this)[0] == 0);    
+        FPSNTTFriendly<MOD> g{V{1}};
+        for (usize sz = 1 ; sz < n ; sz <<= 1) {
+            auto f = -g.resized(sz << 1).log() + (*this).resized(sz << 1);
+            f[0] += 1;
+            g = g * f;
+            g.resize(sz << 1);
+        }
+        g.resize(n);
+        return g;
+    }
+
+    [[nodiscard]] FPSNTTFriendly<MOD> exp() const {
+        return exp(this->size());
+    }
+
+    [[nodiscard]] FPSNTTFriendly<MOD> pow(u64 k, usize n) const {
+        if (k == 0) return FPSNTTFriendly<MOD>{V{1}}.resized(n);
+        auto it = std::ranges::find_if(*this, [&](const auto& v) { return v != V{0}; });
+        if (it == this->end()) return FPSNTTFriendly<MOD>(n);
+        auto sh = it - this->begin();
+        if (sh and k > n / sh) return FPSNTTFriendly<MOD>(n);
+        FPSNTTFriendly<MOD> f(this->size() - sh);
+        const auto pv = it->pow(k);
+        const auto iv = it->inv();
+        for (usize i = 0 ; i < f.size() ; i++) f[i] = (*this)[sh + i] * iv;
+        f = (f.log(n) * V{k}).exp(n);
+        FPSNTTFriendly<MOD> res(n);
+        for (usize i = 0 ; i + sh * k < n ; i++) res[i + sh * k] = f[i] * pv;
+        return res;
+    }
+
+    [[nodiscard]] FPSNTTFriendly<MOD> pow(u64 k) const {
+        return pow(k, this->size());
     }
 
     FPSNTTFriendly<MOD> operator+() const {
@@ -95,7 +133,9 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
     }
 
     FPSNTTFriendly<MOD> operator-() const {
-        for (usize i = 0 ; i < this->size() ; i++) (*this)[i] *= V::raw(MOD - 1);
+        FPSNTTFriendly<MOD> f = *this;
+        for (usize i = 0 ; i < this->size() ; i++) f[i] *= V::raw(MOD - 1);
+        return f;
     }
 
     FPSNTTFriendly<MOD>& operator+=(const FPSNTTFriendly<MOD>& f) {
