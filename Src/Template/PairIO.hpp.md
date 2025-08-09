@@ -57,15 +57,15 @@ data:
   isVerificationFile: false
   path: Src/Template/PairIO.hpp
   requiredBy:
-  - Src/Template/Input.hpp
   - Src/Template/Output.hpp
+  - Src/Template/Input.hpp
   timestamp: '2023-08-05 05:25:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/many_aplusb.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
-  - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/abc236_e.test.cpp
+  - Test/LC/many_aplusb.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/ITP1_1_A.test.cpp
 documentation_of: Src/Template/PairIO.hpp

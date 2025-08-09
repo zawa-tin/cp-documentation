@@ -123,8 +123,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF902-B.test.cpp
-  - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/arc185_e.test.cpp
+  - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
 documentation_of: Src/Number/LinearSieve.hpp
 layout: document

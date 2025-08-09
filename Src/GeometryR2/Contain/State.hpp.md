@@ -74,13 +74,13 @@ data:
   - Test/AtCoder/abc157_f.test.cpp
   - Test/AtCoder/abc151_f.test.cpp
   - Test/AOJ/2009.test.cpp
-  - Test/AOJ/CGL_3_C.test.cpp
-  - Test/AOJ/2827.test.cpp
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/0412.test.cpp
-  - Test/AOJ/CGL_5_B.test.cpp
-  - Test/AOJ/1132.test.cpp
   - Test/AOJ/CGL_7_F.test.cpp
+  - Test/AOJ/1157.test.cpp
+  - Test/AOJ/2827.test.cpp
+  - Test/AOJ/0412.test.cpp
+  - Test/AOJ/CGL_3_C.test.cpp
+  - Test/AOJ/1132.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
 documentation_of: Src/GeometryR2/Contain/State.hpp
 layout: document
 redirect_from:

@@ -156,8 +156,8 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/PointCloud.hpp
   requiredBy:
-  - Src/GeometryR2/ConvexHull.hpp
   - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - Src/GeometryR2/ConvexHull.hpp
   timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

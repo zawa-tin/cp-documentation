@@ -126,8 +126,8 @@ data:
   timestamp: '2025-06-24 16:23:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_point_get.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 layout: document

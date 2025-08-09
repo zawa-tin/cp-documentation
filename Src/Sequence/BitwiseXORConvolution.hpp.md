@@ -88,8 +88,8 @@ data:
   timestamp: '2025-06-02 16:41:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/bitwise_xor_convolution.test.cpp
   - Test/AtCoder/abc396_g.test.cpp
+  - Test/LC/bitwise_xor_convolution.test.cpp
 documentation_of: Src/Sequence/BitwiseXORConvolution.hpp
 layout: document
 title: Bitwise XOR Convolution

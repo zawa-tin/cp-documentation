@@ -258,25 +258,25 @@ data:
   path: Src/GeometryR2/Polygon.hpp
   requiredBy:
   - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-  - Src/GeometryR2/ConvexHull.hpp
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - Src/GeometryR2/CommonArea/CircleAndCircle.hpp
   - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
   - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryR2/ConvexPolygonCut.hpp
-  - Src/GeometryR2/CommonArea/CircleAndCircle.hpp
-  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - Src/GeometryR2/ConvexHull.hpp
   timestamp: '2025-07-03 17:15:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2009.test.cpp
-  - Test/AOJ/CGL_3_C.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
-  - Test/AOJ/2827.test.cpp
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/CGL_7_H.test.cpp
   - Test/AOJ/CGL_7_I.test.cpp
-  - Test/AOJ/0412.test.cpp
   - Test/AOJ/CGL_4_C.test.cpp
+  - Test/AOJ/2009.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AOJ/1157.test.cpp
+  - Test/AOJ/2827.test.cpp
+  - Test/AOJ/0412.test.cpp
+  - Test/AOJ/CGL_3_C.test.cpp
 documentation_of: Src/GeometryR2/Polygon.hpp
 layout: document
 redirect_from:

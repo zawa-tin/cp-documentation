@@ -56,8 +56,8 @@ data:
   timestamp: '2025-05-09 01:17:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/AtCoder/abc215_g.test.cpp
+  - Test/LC/polynomial_taylor_shift.test.cpp
 documentation_of: Src/FPS/PolynomialTaylorShift.hpp
 layout: document
 title: Polynomial Taylor Shift

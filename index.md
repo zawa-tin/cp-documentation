@@ -190,6 +190,9 @@ data:
   - name: Src/FPS
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/FPSNTTFriendly.hpp
+      title: Src/FPS/FPSNTTFriendly.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/KthTerm.hpp
       title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
         \u308B"
@@ -1307,11 +1310,17 @@ data:
       path: Test/LC/incremental_scc.test.cpp
       title: Test/LC/incremental_scc.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/inv_of_formal_power_series.test.cpp
+      title: Test/LC/inv_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/jump_on_tree.test.cpp
       title: Test/LC/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
       title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/log_of_formal_power_series.test.cpp
+      title: Test/LC/log_of_formal_power_series.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp

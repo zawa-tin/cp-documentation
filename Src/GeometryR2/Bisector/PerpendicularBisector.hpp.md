@@ -219,8 +219,8 @@ data:
   verifiedWith:
   - Test/AtCoder/abc151_f.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
-  - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/1132.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
 documentation_of: Src/GeometryR2/Bisector/PerpendicularBisector.hpp
 layout: document
 redirect_from:

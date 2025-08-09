@@ -64,10 +64,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc191_d.test.cpp
-  - Test/AtCoder/agc047_a.test.cpp
   - Test/AtCoder/abc333_g.test.cpp
-  - Test/AOJ/CGL_4_B.test.cpp
+  - Test/AtCoder/agc047_a.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
+  - Test/AOJ/CGL_4_B.test.cpp
 documentation_of: Src/Utility/FloatingMarkerShift.hpp
 layout: document
 title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u309210\u500D\

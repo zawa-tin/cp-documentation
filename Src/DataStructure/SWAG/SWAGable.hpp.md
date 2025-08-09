@@ -96,15 +96,15 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SWAG/SWAGable.hpp
   requiredBy:
-  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC171-F.test.cpp
-  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
+  - Test/LC/queue_operate_all_composite.test.cpp
   - Test/AOJ/3548.test.cpp
 documentation_of: Src/DataStructure/SWAG/SWAGable.hpp
 layout: document

@@ -71,8 +71,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/ECR178-D.test.cpp
-  - Test/LC/enumerate_primes.test.cpp
   - Test/My/Number/EnumeratePrimes.test.cpp
+  - Test/LC/enumerate_primes.test.cpp
 documentation_of: Src/Number/EnumeratePrimes.hpp
 layout: document
 title: Enumerate Primes
