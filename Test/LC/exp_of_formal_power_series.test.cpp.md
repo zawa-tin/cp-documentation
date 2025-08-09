@@ -14,9 +14,9 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/exp_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/log_of_formal_power_series
+    - https://judge.yosupo.jp/problem/exp_of_formal_power_series
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.13.5/x64/lib/python3.13/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -33,25 +33,24 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \n\n#include \"../../Src/FPS/FPSNTTFriendly.hpp\"\n#include \"atcoder/modint\"\
-    \nusing mint = atcoder::modint998244353;\n\n#include <iostream>\n\nusing namespace\
-    \ std;\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/exp_of_formal_power_series\"\
+    \n\n#include \"../../Src/FPS/FPSNTTFriendly.hpp\"\n\n#include <iostream>\nusing\
+    \ namespace std;\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
     \    int N;\n    cin >> N;\n    zawa::FPS<998244353> f(N);\n    cin >> f;\n  \
-    \  cout << f.log() << '\\n';\n}\n"
+    \  cout << f.exp() << '\\n';\n}\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
-  path: Test/LC/log_of_formal_power_series.test.cpp
+  path: Test/LC/exp_of_formal_power_series.test.cpp
   requiredBy: []
   timestamp: '2025-08-10 00:41:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/log_of_formal_power_series.test.cpp
+documentation_of: Test/LC/exp_of_formal_power_series.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/log_of_formal_power_series.test.cpp
-- /verify/Test/LC/log_of_formal_power_series.test.cpp.html
-title: Test/LC/log_of_formal_power_series.test.cpp
+- /verify/Test/LC/exp_of_formal_power_series.test.cpp
+- /verify/Test/LC/exp_of_formal_power_series.test.cpp.html
+title: Test/LC/exp_of_formal_power_series.test.cpp
 ---

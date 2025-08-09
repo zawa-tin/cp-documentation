@@ -1091,6 +1091,9 @@ data:
     path: Test/LC/eulerian_trail_undirected.test.cpp
     title: Test/LC/eulerian_trail_undirected.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/exp_of_formal_power_series.test.cpp
+    title: Test/LC/exp_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/frequency_table_of_tree_distance.test.cpp
     title: Test/LC/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1147,6 +1150,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/polynomial_taylor_shift.test.cpp
     title: Test/LC/polynomial_taylor_shift.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/pow_of_formal_power_series.test.cpp
+    title: Test/LC/pow_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
@@ -1677,6 +1683,7 @@ data:
   - Test/LC/cartesian_tree.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/sort_by_argument.test.cpp
@@ -1712,6 +1719,7 @@ data:
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
   - Test/LC/incremental_scc.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
+  - Test/LC/pow_of_formal_power_series.test.cpp
   - Test/Manual/typical90_an.test.cpp
   - Test/Manual/kupc2016_h.test.cpp
   - Test/Manual/abc291_h.test.cpp

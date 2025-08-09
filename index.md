@@ -1301,6 +1301,9 @@ data:
       path: Test/LC/eulerian_trail_undirected.test.cpp
       title: Test/LC/eulerian_trail_undirected.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/exp_of_formal_power_series.test.cpp
+      title: Test/LC/exp_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/frequency_table_of_tree_distance.test.cpp
       title: Test/LC/frequency_table_of_tree_distance.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1342,6 +1345,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/polynomial_taylor_shift.test.cpp
       title: Test/LC/polynomial_taylor_shift.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/pow_of_formal_power_series.test.cpp
+      title: Test/LC/pow_of_formal_power_series.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/queue_operate_all_composite.test.cpp
       title: Test/LC/queue_operate_all_composite.test.cpp
