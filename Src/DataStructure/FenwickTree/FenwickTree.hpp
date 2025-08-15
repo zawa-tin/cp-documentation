@@ -79,13 +79,14 @@ public:
     template <class Function>
     usize maxRight(usize l, const Function& f) const {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "maxRight's argument f must be function bool(T)");
-        assert(l < size());
+        assert(l <= size());
+        assert(f(VM::identity()));
         V sum{ VM::inverse(product(l)) }; 
         usize r{};
         for (usize bit{ m_bitwidth } ; bit ; ) {
             bit--;
             usize nxt{ r | (1u << bit) };
-            if (nxt < m_dat.size() and f(VM::operation(sum, m_dat[nxt]))) {
+            if (nxt < m_dat.size() and (nxt <= l or f(VM::operation(sum, m_dat[nxt])))) {
                 sum = VM::operation(sum, m_dat[nxt]);
                 r = std::move(nxt);
             }
@@ -98,6 +99,7 @@ public:
     usize minLeft(usize r, const Function& f) const {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "minLeft's argument f must be function bool(T)");
         assert(r <= size());
+        assert(f(VM::identity()));
         V sum{ product(r) };
         usize l{};
         for (usize bit{ m_bitwidth } ; bit ; ) {
