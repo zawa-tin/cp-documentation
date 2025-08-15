@@ -5,6 +5,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1330.test.cpp
@@ -55,6 +61,9 @@ data:
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -93,6 +102,8 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/AdditiveGroup.hpp
   requiredBy:
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
   timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -109,6 +120,7 @@ data:
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp

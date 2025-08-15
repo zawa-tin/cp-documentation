@@ -17,6 +17,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
@@ -33,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
@@ -96,18 +105,19 @@ data:
     \        return VM::operation(VM::inverse(product(l)), product(r));\n    }\n\n\
     \    template <class Function>\n    usize maxRight(usize l, const Function& f)\
     \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l < size());\n\
-    \        V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize\
-    \ bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r\
-    \ | (1u << bit) };\n            if (nxt < m_dat.size() and f(VM::operation(sum,\
-    \ m_dat[nxt]))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n   \
-    \             r = std::move(nxt);\n            }\n        }\n        assert(l\
-    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
-    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
-    \        assert(r <= size());\n        V sum{ product(r) };\n        usize l{};\n\
-    \        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n      \
-    \      usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
+    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ VM::inverse(product(l)) };\
+    \ \n        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n   \
+    \         bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
+    \ < m_dat.size() and (nxt <= l or f(VM::operation(sum, m_dat[nxt])))) {\n    \
+    \            sum = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n\
+    \            }\n        }\n        assert(l <= r);\n        return r;\n    }\n\
+    \n    template <class Function>\n    usize minLeft(usize r, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ product(r) };\n        usize\
+    \ l{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n\
+    \            usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
     \ sum))) {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n\
     \                l = std::move(nxt);\n            }\n        }\n        assert(l\
     \ <= r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
@@ -150,18 +160,19 @@ data:
     \        return VM::operation(VM::inverse(product(l)), product(r));\n    }\n\n\
     \    template <class Function>\n    usize maxRight(usize l, const Function& f)\
     \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l < size());\n\
-    \        V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize\
-    \ bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r\
-    \ | (1u << bit) };\n            if (nxt < m_dat.size() and f(VM::operation(sum,\
-    \ m_dat[nxt]))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n   \
-    \             r = std::move(nxt);\n            }\n        }\n        assert(l\
-    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
-    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
-    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
-    \        assert(r <= size());\n        V sum{ product(r) };\n        usize l{};\n\
-    \        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n      \
-    \      usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
+    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ VM::inverse(product(l)) };\
+    \ \n        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n   \
+    \         bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
+    \ < m_dat.size() and (nxt <= l or f(VM::operation(sum, m_dat[nxt])))) {\n    \
+    \            sum = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n\
+    \            }\n        }\n        assert(l <= r);\n        return r;\n    }\n\
+    \n    template <class Function>\n    usize minLeft(usize r, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ product(r) };\n        usize\
+    \ l{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n\
+    \            usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
     \ sum))) {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n\
     \                l = std::move(nxt);\n            }\n        }\n        assert(l\
     \ <= r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
@@ -186,14 +197,17 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/FenwickTree.hpp
   requiredBy:
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
-  timestamp: '2025-06-24 20:48:55+09:00'
+  timestamp: '2025-08-15 19:19:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp

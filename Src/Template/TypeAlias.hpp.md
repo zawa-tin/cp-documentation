@@ -84,6 +84,12 @@ data:
     title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
       \u30B0\u30E1\u30F3\u30C8\u6728"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
     title: Disjoint Sparse Table
   - icon: ':heavy_check_mark:'
@@ -1130,6 +1136,9 @@ data:
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1426,6 +1435,8 @@ data:
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
@@ -1668,6 +1679,7 @@ data:
   - Test/yukicoder/3044.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/jump_on_tree.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/eulerian_trail_undirected.test.cpp

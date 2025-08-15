@@ -70,7 +70,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc276_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 20:48:55+09:00'
+  timestamp: '2025-08-15 19:19:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc276_f.test.cpp

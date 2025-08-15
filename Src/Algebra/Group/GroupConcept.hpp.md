@@ -20,6 +20,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Other/PriorityProductSet.hpp
     title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
@@ -48,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_range_sum.test.cpp
     title: Test/LC/point_add_range_sum.test.cpp
@@ -95,6 +104,8 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
@@ -111,6 +122,7 @@ data:
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/yukicoder/649.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp

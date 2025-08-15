@@ -12,6 +12,9 @@ data:
     path: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
     title: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RangeKthSmallest.hpp
     title: Range Kth Smallest
   _extendedVerifiedWith:
@@ -33,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF1026-E.test.cpp
     title: Test/CF/CF1026-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
@@ -116,6 +122,7 @@ data:
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Sequence/RangeKthSmallest.hpp
@@ -128,6 +135,7 @@ data:
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp

@@ -100,43 +100,43 @@ data:
     \ product(r));\n    }\n\n    template <class Function>\n    usize maxRight(usize\
     \ l, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
     \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(l < size());\n        V sum{ VM::inverse(product(l)) }; \n\
-    \        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n      \
-    \      bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
-    \ < m_dat.size() and f(VM::operation(sum, m_dat[nxt]))) {\n                sum\
-    \ = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n   \
-    \         }\n        }\n        assert(l <= r);\n        return r;\n    }\n\n\
-    \    template <class Function>\n    usize minLeft(usize r, const Function& f)\
-    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
-    \        V sum{ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth\
-    \ } ; bit ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n\
-    \            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum)))\
-    \ {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n    \
-    \            l = std::move(nxt);\n            }\n        }\n        assert(l <=\
-    \ r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const FenwickTree& ft) {\n        for (usize i{}\
-    \ ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i) << (i == ft.size()\
-    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\n    usize\
-    \ m_n{};\n\n    usize m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr\
-    \ i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n    \n    //\
-    \ a[i] <- a[i] + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <=\
-    \ i and i < static_cast<i32>(m_n));\n        for ( i++ ; i < static_cast<i32>(m_dat.size())\
-    \ ; i += lsb(i)) {\n            m_dat[i] = VM::operation(m_dat[i], v);\n     \
-    \   }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i)\
-    \ const {\n        assert(0 <= i and i <= static_cast<i32>(m_n));\n        V res{\
-    \ VM::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n            res =\
-    \ VM::operation(res, m_dat[i]);\n        }\n        return res;\n    }\n\n};\n\
-    \n} // namespace zawa\n#line 8 \"Test/LC/point_add_range_sum.test.cpp\"\n\n#line\
-    \ 12 \"Test/LC/point_add_range_sum.test.cpp\"\n\nusing namespace zawa;\n\nint\
-    \ main() {\n    SetFastIO();\n    usize N, Q; std::cin >> N >> Q;\n    std::vector<i64>\
-    \ A(N); std::cin >> A;\n\n    FenwickTree<AdditiveGroup<i64>> ft(A);\n\n    for\
-    \ (u32 _{} ; _ < Q ; _++) {\n        u32 t; std::cin >> t;\n        if (t == 0)\
-    \ {\n            u32 p; std::cin >> p;\n            i64 x; std::cin >> x;\n  \
-    \          ft.operation(p, x);\n        }\n        else if (t == 1) {\n      \
-    \      u32 l, r; std::cin >> l >> r;\n            std::cout << ft.product(l, r)\
-    \ << '\\n';\n        }\n        else {\n            assert(!\"input fail\");\n\
-    \        }\n    }\n}\n"
+    );\n        assert(l <= size());\n        assert(f(VM::identity()));\n       \
+    \ V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize bit{\
+    \ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r | (1u\
+    \ << bit) };\n            if (nxt < m_dat.size() and (nxt <= l or f(VM::operation(sum,\
+    \ m_dat[nxt])))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n  \
+    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
+    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
+    \        assert(r <= size());\n        assert(f(VM::identity()));\n        V sum{\
+    \ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth } ; bit\
+    \ ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n     \
+    \       if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum))) {\n\
+    \                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n        \
+    \        l = std::move(nxt);\n            }\n        }\n        assert(l <= r);\n\
+    \        return l;\n    }\n\n    // debug print\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const FenwickTree& ft) {\n        for (usize i{} ; i <= ft.size() ; i++)\
+    \ {\n            os << ft.prefixProduct(i) << (i == ft.size() ? \"\" : \" \");\n\
+    \        }\n        return os;\n    }\n\nprivate:\n\n    usize m_n{};\n\n    usize\
+    \ m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr i32 lsb(i32\
+    \ x) const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i]\
+    \ + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <= i and i < static_cast<i32>(m_n));\n\
+    \        for ( i++ ; i < static_cast<i32>(m_dat.size()) ; i += lsb(i)) {\n   \
+    \         m_dat[i] = VM::operation(m_dat[i], v);\n        }\n    }\n\n    // return\
+    \ a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i) const {\n        assert(0\
+    \ <= i and i <= static_cast<i32>(m_n));\n        V res{ VM::identity() };\n  \
+    \      for ( ; i > 0 ; i -= lsb(i)) {\n            res = VM::operation(res, m_dat[i]);\n\
+    \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 8 \"\
+    Test/LC/point_add_range_sum.test.cpp\"\n\n#line 12 \"Test/LC/point_add_range_sum.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    usize N, Q; std::cin\
+    \ >> N >> Q;\n    std::vector<i64> A(N); std::cin >> A;\n\n    FenwickTree<AdditiveGroup<i64>>\
+    \ ft(A);\n\n    for (u32 _{} ; _ < Q ; _++) {\n        u32 t; std::cin >> t;\n\
+    \        if (t == 0) {\n            u32 p; std::cin >> p;\n            i64 x;\
+    \ std::cin >> x;\n            ft.operation(p, x);\n        }\n        else if\
+    \ (t == 1) {\n            u32 l, r; std::cin >> l >> r;\n            std::cout\
+    \ << ft.product(l, r) << '\\n';\n        }\n        else {\n            assert(!\"\
+    input fail\");\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
     \n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/Template/VectorIO.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
@@ -162,7 +162,7 @@ data:
   isVerificationFile: true
   path: Test/LC/point_add_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 20:48:55+09:00'
+  timestamp: '2025-08-15 19:19:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_add_range_sum.test.cpp

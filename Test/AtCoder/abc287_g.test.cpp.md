@@ -116,41 +116,41 @@ data:
     \ product(r));\n    }\n\n    template <class Function>\n    usize maxRight(usize\
     \ l, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
     \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(l < size());\n        V sum{ VM::inverse(product(l)) }; \n\
-    \        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n      \
-    \      bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
-    \ < m_dat.size() and f(VM::operation(sum, m_dat[nxt]))) {\n                sum\
-    \ = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n   \
-    \         }\n        }\n        assert(l <= r);\n        return r;\n    }\n\n\
-    \    template <class Function>\n    usize minLeft(usize r, const Function& f)\
-    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
-    \        V sum{ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth\
-    \ } ; bit ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n\
-    \            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum)))\
-    \ {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n    \
-    \            l = std::move(nxt);\n            }\n        }\n        assert(l <=\
-    \ r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const FenwickTree& ft) {\n        for (usize i{}\
-    \ ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i) << (i == ft.size()\
-    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\n    usize\
-    \ m_n{};\n\n    usize m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr\
-    \ i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n    \n    //\
-    \ a[i] <- a[i] + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <=\
-    \ i and i < static_cast<i32>(m_n));\n        for ( i++ ; i < static_cast<i32>(m_dat.size())\
-    \ ; i += lsb(i)) {\n            m_dat[i] = VM::operation(m_dat[i], v);\n     \
-    \   }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i)\
-    \ const {\n        assert(0 <= i and i <= static_cast<i32>(m_n));\n        V res{\
-    \ VM::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n            res =\
-    \ VM::operation(res, m_dat[i]);\n        }\n        return res;\n    }\n\n};\n\
-    \n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
-    \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
-    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
-    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
-    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"Test/AtCoder/abc287_g.test.cpp\"\
-    \n\n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\n\n/*\n * AtCoder Beginner Contest\
-    \ 287 G - Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/67045318\n\
+    );\n        assert(l <= size());\n        assert(f(VM::identity()));\n       \
+    \ V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize bit{\
+    \ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r | (1u\
+    \ << bit) };\n            if (nxt < m_dat.size() and (nxt <= l or f(VM::operation(sum,\
+    \ m_dat[nxt])))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n  \
+    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
+    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
+    \        assert(r <= size());\n        assert(f(VM::identity()));\n        V sum{\
+    \ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth } ; bit\
+    \ ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n     \
+    \       if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum))) {\n\
+    \                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n        \
+    \        l = std::move(nxt);\n            }\n        }\n        assert(l <= r);\n\
+    \        return l;\n    }\n\n    // debug print\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const FenwickTree& ft) {\n        for (usize i{} ; i <= ft.size() ; i++)\
+    \ {\n            os << ft.prefixProduct(i) << (i == ft.size() ? \"\" : \" \");\n\
+    \        }\n        return os;\n    }\n\nprivate:\n\n    usize m_n{};\n\n    usize\
+    \ m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr i32 lsb(i32\
+    \ x) const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i]\
+    \ + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <= i and i < static_cast<i32>(m_n));\n\
+    \        for ( i++ ; i < static_cast<i32>(m_dat.size()) ; i += lsb(i)) {\n   \
+    \         m_dat[i] = VM::operation(m_dat[i], v);\n        }\n    }\n\n    // return\
+    \ a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i) const {\n        assert(0\
+    \ <= i and i <= static_cast<i32>(m_n));\n        V res{ VM::identity() };\n  \
+    \      for ( ; i > 0 ; i -= lsb(i)) {\n            res = VM::operation(res, m_dat[i]);\n\
+    \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 2 \"\
+    Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
+    class AdditiveGroup {\npublic:\n    using Element = T;\n    static constexpr T\
+    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(const\
+    \ T& l, const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr\
+    \ T inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 7 \"Test/AtCoder/abc287_g.test.cpp\"\n\n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\
+    \n\n/*\n * AtCoder Beginner Contest 287 G - Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/67045318\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -241,7 +241,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 20:48:55+09:00'
+  timestamp: '2025-08-15 19:19:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc287_g.test.cpp

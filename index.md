@@ -168,6 +168,14 @@ data:
       path: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
       title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\
         \u30B0\u30E1\u30F3\u30C8\u6728"
+  - name: Src/DataStructure/Set
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Set/FenwickSet.hpp
+      title: Src/DataStructure/Set/FenwickSet.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+      title: Src/DataStructure/Set/OfflineOrderedSet.hpp
   - name: Src/DataStructure/SparseTable
     pages:
     - icon: ':heavy_check_mark:'
@@ -1407,6 +1415,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/lca/LowestCommonAncestor.test.cpp
       title: Test/LC/lca/LowestCommonAncestor.test.cpp
+  - name: Test/LC/ordered_set
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+      title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - name: Test/LC/point_add_rectangle_sum
     pages:
     - icon: ':heavy_check_mark:'

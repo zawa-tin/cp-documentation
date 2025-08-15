@@ -127,54 +127,55 @@ data:
     \ product(r));\n    }\n\n    template <class Function>\n    usize maxRight(usize\
     \ l, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
     \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
-    );\n        assert(l < size());\n        V sum{ VM::inverse(product(l)) }; \n\
-    \        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n      \
-    \      bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
-    \ < m_dat.size() and f(VM::operation(sum, m_dat[nxt]))) {\n                sum\
-    \ = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n   \
-    \         }\n        }\n        assert(l <= r);\n        return r;\n    }\n\n\
-    \    template <class Function>\n    usize minLeft(usize r, const Function& f)\
-    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
-    \        V sum{ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth\
-    \ } ; bit ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n\
-    \            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum)))\
-    \ {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n    \
-    \            l = std::move(nxt);\n            }\n        }\n        assert(l <=\
-    \ r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const FenwickTree& ft) {\n        for (usize i{}\
-    \ ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i) << (i == ft.size()\
-    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\n    usize\
-    \ m_n{};\n\n    usize m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr\
-    \ i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n    \n    //\
-    \ a[i] <- a[i] + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <=\
-    \ i and i < static_cast<i32>(m_n));\n        for ( i++ ; i < static_cast<i32>(m_dat.size())\
-    \ ; i += lsb(i)) {\n            m_dat[i] = VM::operation(m_dat[i], v);\n     \
-    \   }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i)\
-    \ const {\n        assert(0 <= i and i <= static_cast<i32>(m_n));\n        V res{\
-    \ VM::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n            res =\
-    \ VM::operation(res, m_dat[i]);\n        }\n        return res;\n    }\n\n};\n\
-    \n} // namespace zawa\n#line 7 \"Test/LC/vertex_add_subtree_sum.test.cpp\"\n\n\
-    #line 12 \"Test/LC/vertex_add_subtree_sum.test.cpp\"\n\nusing namespace zawa;\n\
-    \nint main() {\n    SetFastIO();\n\n    int n, q; std::cin >> n >> q;\n    std::vector\
-    \ dat(n, std::vector<std::pair<int, long long>>{});\n    for (int i{} ; i < n\
-    \ ; i++) {\n        long long a; std::cin >> a;\n        dat[i].emplace_back(0,\
-    \ a);\n    }\n    Sack sack(n);\n    for (int i{1} ; i < n ; i++) {\n        int\
-    \ p; std::cin >> p;\n        sack.addEdge(p, i);\n    }\n    std::vector<long\
-    \ long> ans;\n    ans.reserve(q);\n    int id{};\n    std::vector query(n, std::vector<std::pair<int,\
-    \ int>>{});\n    query.reserve(q);\n    for (int i{1} ; i <= q ; i++) {\n    \
-    \    int t, v; std::cin >> t >> v;\n        if (t == 0) {\n            long long\
-    \ x; std::cin >> x;\n            dat[v].emplace_back(i, x);\n        }\n     \
-    \   else if (t == 1) {\n            ans.emplace_back(-1LL);\n            query[v].emplace_back(i,\
-    \ id++);\n        }\n        else {\n            assert(false);\n        }\n \
-    \   }\n    FenwickTree<AdditiveGroup<long long>> fen(q + 1);\n    auto add{[&](int\
-    \ v) -> void {\n        for (auto [time, x] : dat[v]) {\n            fen.operation(time,\
-    \ x);\n        }\n    }};\n    auto del{[&](int v) -> void {\n        for (auto\
-    \ [time, x] : dat[v]) {\n            fen.operation(time, -x);\n        }\n   \
-    \ }};\n    auto answer{[&](int v) -> void {\n        for (auto [time, i] : query[v])\
-    \ {\n            ans[i] = fen.prefixProduct(time + 1);\n        }\n    }};\n \
-    \   auto reset{[](){}};\n    sack.execute(0, add, del, answer, reset);\n    for\
-    \ (auto v : ans) {\n        std::cout << v << '\\n';\n    }\n}\n"
+    );\n        assert(l <= size());\n        assert(f(VM::identity()));\n       \
+    \ V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize bit{\
+    \ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r | (1u\
+    \ << bit) };\n            if (nxt < m_dat.size() and (nxt <= l or f(VM::operation(sum,\
+    \ m_dat[nxt])))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n  \
+    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
+    \ minLeft(usize r, const Function& f) const {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"minLeft's argument f must be function bool(T)\");\n\
+    \        assert(r <= size());\n        assert(f(VM::identity()));\n        V sum{\
+    \ product(r) };\n        usize l{};\n        for (usize bit{ m_bitwidth } ; bit\
+    \ ; ) {\n            bit--;\n            usize nxt{ l | (1u << bit) };\n     \
+    \       if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]), sum))) {\n\
+    \                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n        \
+    \        l = std::move(nxt);\n            }\n        }\n        assert(l <= r);\n\
+    \        return l;\n    }\n\n    // debug print\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const FenwickTree& ft) {\n        for (usize i{} ; i <= ft.size() ; i++)\
+    \ {\n            os << ft.prefixProduct(i) << (i == ft.size() ? \"\" : \" \");\n\
+    \        }\n        return os;\n    }\n\nprivate:\n\n    usize m_n{};\n\n    usize\
+    \ m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr i32 lsb(i32\
+    \ x) const noexcept {\n        return x & -x;\n    }\n    \n    // a[i] <- a[i]\
+    \ + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <= i and i < static_cast<i32>(m_n));\n\
+    \        for ( i++ ; i < static_cast<i32>(m_dat.size()) ; i += lsb(i)) {\n   \
+    \         m_dat[i] = VM::operation(m_dat[i], v);\n        }\n    }\n\n    // return\
+    \ a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i) const {\n        assert(0\
+    \ <= i and i <= static_cast<i32>(m_n));\n        V res{ VM::identity() };\n  \
+    \      for ( ; i > 0 ; i -= lsb(i)) {\n            res = VM::operation(res, m_dat[i]);\n\
+    \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 7 \"\
+    Test/LC/vertex_add_subtree_sum.test.cpp\"\n\n#line 12 \"Test/LC/vertex_add_subtree_sum.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n\n    int n, q; std::cin\
+    \ >> n >> q;\n    std::vector dat(n, std::vector<std::pair<int, long long>>{});\n\
+    \    for (int i{} ; i < n ; i++) {\n        long long a; std::cin >> a;\n    \
+    \    dat[i].emplace_back(0, a);\n    }\n    Sack sack(n);\n    for (int i{1} ;\
+    \ i < n ; i++) {\n        int p; std::cin >> p;\n        sack.addEdge(p, i);\n\
+    \    }\n    std::vector<long long> ans;\n    ans.reserve(q);\n    int id{};\n\
+    \    std::vector query(n, std::vector<std::pair<int, int>>{});\n    query.reserve(q);\n\
+    \    for (int i{1} ; i <= q ; i++) {\n        int t, v; std::cin >> t >> v;\n\
+    \        if (t == 0) {\n            long long x; std::cin >> x;\n            dat[v].emplace_back(i,\
+    \ x);\n        }\n        else if (t == 1) {\n            ans.emplace_back(-1LL);\n\
+    \            query[v].emplace_back(i, id++);\n        }\n        else {\n    \
+    \        assert(false);\n        }\n    }\n    FenwickTree<AdditiveGroup<long\
+    \ long>> fen(q + 1);\n    auto add{[&](int v) -> void {\n        for (auto [time,\
+    \ x] : dat[v]) {\n            fen.operation(time, x);\n        }\n    }};\n  \
+    \  auto del{[&](int v) -> void {\n        for (auto [time, x] : dat[v]) {\n  \
+    \          fen.operation(time, -x);\n        }\n    }};\n    auto answer{[&](int\
+    \ v) -> void {\n        for (auto [time, i] : query[v]) {\n            ans[i]\
+    \ = fen.prefixProduct(time + 1);\n        }\n    }};\n    auto reset{[](){}};\n\
+    \    sack.execute(0, add, del, answer, reset);\n    for (auto v : ans) {\n   \
+    \     std::cout << v << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_subtree_sum\"\
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/Sack.hpp\"\
     \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
@@ -211,7 +212,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_add_subtree_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 20:48:55+09:00'
+  timestamp: '2025-08-15 19:19:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_add_subtree_sum.test.cpp

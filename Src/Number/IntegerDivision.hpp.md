@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Number/EnumerateQuotients.hpp
     title: "\u5546\u5217\u6319"
   _extendedVerifiedWith:
@@ -21,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_quotients.test.cpp
     title: Test/LC/enumerate_quotients.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+    title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
@@ -56,6 +65,8 @@ data:
   isVerificationFile: false
   path: Src/Number/IntegerDivision.hpp
   requiredBy:
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/Number/EnumerateQuotients.hpp
   timestamp: '2023-08-11 15:55:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -64,6 +75,7 @@ data:
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/AOJ/2957.test.cpp
 documentation_of: Src/Number/IntegerDivision.hpp

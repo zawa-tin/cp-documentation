@@ -1,0 +1,288 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/AdditiveGroup.hpp
+    title: "\u52A0\u6CD5\u7FA4"
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/FenwickTree.hpp
+    title: Fenwick Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/FenwickSet.hpp
+    title: Src/DataStructure/Set/FenwickSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Set/OfflineOrderedSet.hpp
+    title: Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/IntegerDivision.hpp
+    title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
+      \u3052\u9664\u7B97"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/CompressedSequence.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/ordered_set
+    links:
+    - https://judge.yosupo.jp/problem/ordered_set
+  bundledCode: "#line 1 \"Test/LC/ordered_set/OfflineOrderedSet.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/ordered_set\"\n\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n\
+    #include <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
+    \ {\npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
+    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
+    } // namespace zawa\n#line 2 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\
+    \n#line 2 \"Src/DataStructure/Set/FenwickSet.hpp\"\n\n#line 2 \"Src/Number/IntegerDivision.hpp\"\
+    \n\n#include <type_traits>\n#line 5 \"Src/Number/IntegerDivision.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T>\nconstexpr T DivFloor(T a, T b) {\n    static_assert(std::is_integral_v<T>,\
+    \ \"DivFloor argument must be Integer\");\n    assert(b != T{});\n    if constexpr\
+    \ (std::is_unsigned_v<T>) {\n        return a / b;\n    }\n    else {\n      \
+    \  if (b < 0) {\n            a *= -1;\n            b *= -1;\n        }\n     \
+    \   return (a >= 0 ? a / b : (a - b + 1) / b);\n    }\n}\n\ntemplate <class T>\n\
+    constexpr T DivCeil(T a, T b) {\n    static_assert(std::is_integral_v<T>, \"DivCeil\
+    \ argument must be Integer\");\n    assert(b != T{});\n    if constexpr (std::is_unsigned_v<T>)\
+    \ {\n        return (a + b - 1) / b;\n    }\n    else {\n        if (b < 0) {\n\
+    \            a *= -1;\n            b *= -1;\n        }\n        return (a >= 0\
+    \ ? (a + b - 1) / b : a / b);\n    }\n}\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include <ostream>\n\
+    #include <functional>\n#line 11 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <concepts::Group Group>\nclass FenwickTree {\n\
+    public:\n\n    using VM = Group;\n    \n    using V = typename VM::Element;\n\n\
+    \    FenwickTree() = default;\n\n    explicit FenwickTree(usize n) : m_n{ n },\
+    \ m_bitwidth{ std::__lg(n) + 1 }, m_a(n), m_dat(n + 1, VM::identity()) {\n   \
+    \     m_dat.shrink_to_fit();\n        m_a.shrink_to_fit();\n    }\n\n    explicit\
+    \ FenwickTree(const std::vector<V>& a) : m_n{ a.size() }, m_bitwidth{ std::__lg(a.size())\
+    \ + 1 }, m_a(a), m_dat(a.size() + 1, VM::identity()) {\n        m_dat.shrink_to_fit();\
+    \  \n        m_a.shrink_to_fit();\n        for (i32 i{} ; i < static_cast<i32>(m_n)\
+    \ ; i++) {\n            addDat(i, a[i]);\n        }\n    }\n\n    inline usize\
+    \ size() const noexcept {\n        return m_n;\n    }\n\n    // return a[i]\n\
+    \    const V& get(usize i) const noexcept {\n        assert(i < size());\n   \
+    \     return m_a[i];\n    }\n\n    // return a[i]\n    const V& operator[](usize\
+    \ i) const noexcept {\n        assert(i < size());\n        return m_a[i];\n \
+    \   }\n\n    // a[i] <- a[i] + v\n    void operation(usize i, const V& v) {\n\
+    \        assert(i < size());\n        addDat(i, v);\n        m_a[i] = VM::operation(m_a[i],\
+    \ v);\n    }\n\n    // a[i] <- v\n    void assign(usize i, const V& v) {\n   \
+    \     assert(i < size());\n        addDat(i, VM::operation(VM::inverse(m_a[i]),\
+    \ v));\n        m_a[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r -\
+    \ 1]\n    V prefixProduct(usize r) const {\n        assert(r <= size());\n   \
+    \     return product(r);\n    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n\
+    \    V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
+    \        return VM::operation(VM::inverse(product(l)), product(r));\n    }\n\n\
+    \    template <class Function>\n    usize maxRight(usize l, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ VM::inverse(product(l)) };\
+    \ \n        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n   \
+    \         bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
+    \ < m_dat.size() and (nxt <= l or f(VM::operation(sum, m_dat[nxt])))) {\n    \
+    \            sum = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n\
+    \            }\n        }\n        assert(l <= r);\n        return r;\n    }\n\
+    \n    template <class Function>\n    usize minLeft(usize r, const Function& f)\
+    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
+    \        assert(f(VM::identity()));\n        V sum{ product(r) };\n        usize\
+    \ l{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n\
+    \            usize nxt{ l | (1u << bit) };\n            if (nxt <= r and not f(VM::operation(VM::inverse(m_dat[nxt]),\
+    \ sum))) {\n                sum = VM::operation(VM::inverse(m_dat[nxt]), sum);\n\
+    \                l = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return l;\n    }\n\n    // debug print\n    friend std::ostream&\
+    \ operator<<(std::ostream& os, const FenwickTree& ft) {\n        for (usize i{}\
+    \ ; i <= ft.size() ; i++) {\n            os << ft.prefixProduct(i) << (i == ft.size()\
+    \ ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprivate:\n\n    usize\
+    \ m_n{};\n\n    usize m_bitwidth{};\n\n    std::vector<V> m_a, m_dat;\n\n    constexpr\
+    \ i32 lsb(i32 x) const noexcept {\n        return x & -x;\n    }\n    \n    //\
+    \ a[i] <- a[i] + v\n    void addDat(i32 i, const V& v) {\n        assert(0 <=\
+    \ i and i < static_cast<i32>(m_n));\n        for ( i++ ; i < static_cast<i32>(m_dat.size())\
+    \ ; i += lsb(i)) {\n            m_dat[i] = VM::operation(m_dat[i], v);\n     \
+    \   }\n    }\n\n    // return a[0] + a[1] + .. + a[i - 1]\n    V product(i32 i)\
+    \ const {\n        assert(0 <= i and i <= static_cast<i32>(m_n));\n        V res{\
+    \ VM::identity() };\n        for ( ; i > 0 ; i -= lsb(i)) {\n            res =\
+    \ VM::operation(res, m_dat[i]);\n        }\n        return res;\n    }\n\n};\n\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
+    \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
+    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
+    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
+    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/Set/FenwickSet.hpp\"\
+    \n\n#include <bit>\n#line 11 \"Src/DataStructure/Set/FenwickSet.hpp\"\n#include\
+    \ <optional>\n\nnamespace zawa {\n\nclass FenwickSet {\npublic:\n\n    FenwickSet()\
+    \ = default;\n\n    explicit FenwickSet(usize n) \n        : m_n{n}, m_m{DivCeil<usize>(n,\
+    \ 64)}, m_dat(m_m), m_fen(m_m), m_all{} {}\n\n    constexpr usize maxValue() const\
+    \ {\n        return m_n;\n    }\n\n    usize size() const {\n        return m_all;\n\
+    \    }\n\n    void insert(i32 x) {\n        assert(0 <= x);\n        assert(static_cast<usize>(x)\
+    \ < maxValue());\n        if ((m_dat[x / 64] >> (x % 64)) & 1) \n            return;\n\
+    \        m_dat[x / 64] |= u64{1} << (x % 64);\n        m_fen.operation(x / 64,\
+    \ 1);\n        m_all++;\n    }\n\n    void erase(i32 x) {\n        assert(static_cast<usize>(x)\
+    \ < maxValue());\n        if ((m_dat[x / 64] >> (x % 64)) & 1) {\n           \
+    \ m_dat[x / 64] ^= u64{1} << (x % 64);\n            m_fen.operation(x / 64, -1);\n\
+    \            m_all--;\n        }\n    }\n\n    bool contains(i32 x) const {\n\
+    \        assert(static_cast<usize>(x) < maxValue());\n        return (m_dat[x\
+    \ / 64] >> (x % 64)) & 1;\n    }\n\n    // 1-indexed\n    std::optional<usize>\
+    \ kth(i32 k) const {\n        assert(k > 0);\n        if (static_cast<usize>(k)\
+    \ > m_all) \n            return std::nullopt;\n        const usize idx = m_fen.maxRight(0,\
+    \ [&](i32 v) { return v < k; });\n        i32 sum = m_fen.prefixProduct(idx);\n\
+    \        assert(sum < k);\n        for (usize i = 0 ; i < 64 ; i++)\n        \
+    \    if ((m_dat[idx] >> i) & 1) {\n                sum++;\n                if\
+    \ (sum == k) \n                    return idx * 64 + i;\n            }\n     \
+    \   assert(!\"Fenwick Set library bug\");\n        return std::nullopt;\n    }\n\
+    \n    usize countLessEqual(i32 x) const {\n        if (x < 0) \n            return\
+    \ 0;\n        if (static_cast<usize>(x) >= maxValue()) \n            return m_all;\n\
+    \        usize sum = m_fen.prefixProduct(x / 64);\n        for (i32 i = 0 ; i\
+    \ <= x % 64 ; i++) \n            sum += (m_dat[x / 64] >> i) & 1;\n        return\
+    \ sum;\n    }\n\n    std::optional<usize> prevEqual(i32 x) const {\n        if\
+    \ (countLessEqual(x) == 0) \n            return std::nullopt;\n        for (usize\
+    \ i = x % 64 + 1 ; i-- ; ) \n            if ((m_dat[x / 64] >> i) & 1) \n    \
+    \            return (x / 64) * 64 + i;\n        const usize idx = m_fen.minLeft(x\
+    \ / 64, [](i32 v) { return v <= 0; });\n        for (usize i = 64 ; i-- ; ) \n\
+    \            if ((m_dat[idx] >> i) & 1)\n                return idx * 64 + i;\n\
+    \        assert(!\"Fenwick Set library bug\");\n        return std::nullopt;\n\
+    \    }\n\n    std::optional<usize> nextEqual(i32 x) const {\n        if (m_all\
+    \ == countLessEqual(x - 1))\n            return std::nullopt;\n        for (usize\
+    \ i = x % 64 ; i < 64 ; i++)\n            if ((m_dat[x / 64] >> i) & 1)\n    \
+    \            return (x / 64) * 64 + i;\n        const usize idx = m_fen.maxRight(x\
+    \ / 64 + 1, [](i32 v) { return v <= 0; });\n        for (usize i = 0 ; i < 64\
+    \ ; i++)\n            if ((m_dat[idx] >> i) & 1)\n                return idx *\
+    \ 64 + i;\n        assert(!\"Fenwick Set library bug\");\n        return std::nullopt;\n\
+    \    }\n\nprivate:\n\n    usize m_n{}, m_m{};\n    \n    std::vector<u64> m_dat;\n\
+    \n    FenwickTree<AdditiveGroup<i32>> m_fen;\n\n    usize m_all{0};\n\n};\n\n\
+    } // namespace zawa\n#line 5 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\
+    \n#line 8 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\nnamespace zawa {\n\
+    \ntemplate <std::totally_ordered T>\nclass OfflineOrderedSet {\nprivate:\n   \
+    \ class OfflineOrderedSetExecuter {\n    public:\n\n        explicit OfflineOrderedSetExecuter(std::vector<T>&&\
+    \ app)\n            : m_comp(std::move(app)), m_set(m_comp.size()) {}\n\n    \
+    \    usize size() const {\n            return m_set.size();\n        }\n\n   \
+    \     void insert(T x) {\n            m_set.insert(m_comp.at(x));\n        }\n\
+    \n        void erase(T x) {\n            auto it = m_comp.find(x);\n         \
+    \   if (it == decltype(m_comp)::NotFound)\n                return;\n         \
+    \   m_set.erase(it);\n        }\n\n        bool contains(T x) const {\n      \
+    \      auto it = m_comp.find(x);\n            return it != decltype(m_comp)::NotFound\
+    \ and m_set.contains(it);\n        }\n\n        // 1-indexed\n        std::optional<T>\
+    \ kth(i32 k) const {\n            auto res = m_set.kth(k);\n            return\
+    \ res ? std::optional{m_comp.inverse(res.value())} : std::nullopt;\n        }\n\
+    \n        usize countLessEqual(T x) const {\n            return m_set.countLessEqual(static_cast<i32>(m_comp.upper_bound(x))\
+    \ - 1);\n        }\n\n        std::optional<T> prevEqual(T x) const {\n      \
+    \      auto res = m_set.prevEqual(static_cast<i32>(m_comp.upper_bound(x)) - 1);\n\
+    \            return res ? std::optional{m_comp.inverse(res.value())} : std::nullopt;\n\
+    \        }\n\n        std::optional<T> nextEqual(T x) const {\n            auto\
+    \ res = m_set.nextEqual(m_comp[x]);\n            return res ? std::optional{m_comp.inverse(res.value())}\
+    \ : std::nullopt;\n        }\n\n    private:\n\n        CompressedSequence<T>\
+    \ m_comp;\n\n        FenwickSet m_set;\n    };\n\npublic:\n\n    OfflineOrderedSet()\
+    \ = default;\n\n    void reserveInsert(T v) {\n        m_app.push_back(v);\n \
+    \   }\n\n    OfflineOrderedSetExecuter build() {\n        return OfflineOrderedSetExecuter{std::move(m_app)};\n\
+    \    }\n\nprivate:\n\n    std::vector<T> m_app; \n\n};\n\n}\n#line 5 \"Test/LC/ordered_set/OfflineOrderedSet.test.cpp\"\
+    \nusing namespace zawa;\n\n#line 8 \"Test/LC/ordered_set/OfflineOrderedSet.test.cpp\"\
+    \n#include <iostream>\n#line 10 \"Test/LC/ordered_set/OfflineOrderedSet.test.cpp\"\
+    \n\nusing namespace std;\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n  \
+    \  ios::sync_with_stdio(0);\n    int N, Q;\n    cin >> N >> Q;\n    vector<int>\
+    \ A(N), T(Q), X(Q);\n    OfflineOrderedSet<int> st;\n    for (int& a : A) {\n\
+    \        cin >> a;\n        st.reserveInsert(a);\n    }\n    for (int i = 0 ;\
+    \ i < Q ; i++) {\n        cin >> T[i] >> X[i];\n        if (T[i] == 0)\n     \
+    \       st.reserveInsert(X[i]);\n    }\n    auto exe = st.build();\n    for (int\
+    \ i = 0 ; i < N ; i++) {\n        exe.insert(A[i]);\n    }\n    for (int i = 0\
+    \ ; i < Q ; i++) {\n        if (T[i] == 0) \n            exe.insert(X[i]);\n \
+    \       else if (T[i] == 1) \n            exe.erase(X[i]);\n        else if (T[i]\
+    \ == 2) \n            cout << exe.kth(X[i]).value_or(-1) << '\\n';\n        else\
+    \ if (T[i] == 3)\n            cout << exe.countLessEqual(X[i]) << '\\n';\n   \
+    \     else if (T[i] == 4) \n            cout << exe.prevEqual(X[i]).value_or(-1)\
+    \ << '\\n';\n        else if (T[i] == 5) \n            cout << exe.nextEqual(X[i]).value_or(-1)\
+    \ << '\\n';\n        else assert(false);\n        cout.flush();\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/ordered_set\"\n\n#include\
+    \ \"../../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../../Src/DataStructure/Set/OfflineOrderedSet.hpp\"\
+    \nusing namespace zawa;\n\n#include <cassert>\n#include <iostream>\n#include <vector>\n\
+    \nusing namespace std;\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int N, Q;\n    cin >> N >> Q;\n    vector<int> A(N), T(Q), X(Q);\n    OfflineOrderedSet<int>\
+    \ st;\n    for (int& a : A) {\n        cin >> a;\n        st.reserveInsert(a);\n\
+    \    }\n    for (int i = 0 ; i < Q ; i++) {\n        cin >> T[i] >> X[i];\n  \
+    \      if (T[i] == 0)\n            st.reserveInsert(X[i]);\n    }\n    auto exe\
+    \ = st.build();\n    for (int i = 0 ; i < N ; i++) {\n        exe.insert(A[i]);\n\
+    \    }\n    for (int i = 0 ; i < Q ; i++) {\n        if (T[i] == 0) \n       \
+    \     exe.insert(X[i]);\n        else if (T[i] == 1) \n            exe.erase(X[i]);\n\
+    \        else if (T[i] == 2) \n            cout << exe.kth(X[i]).value_or(-1)\
+    \ << '\\n';\n        else if (T[i] == 3)\n            cout << exe.countLessEqual(X[i])\
+    \ << '\\n';\n        else if (T[i] == 4) \n            cout << exe.prevEqual(X[i]).value_or(-1)\
+    \ << '\\n';\n        else if (T[i] == 5) \n            cout << exe.nextEqual(X[i]).value_or(-1)\
+    \ << '\\n';\n        else assert(false);\n        cout.flush();\n    }\n}\n"
+  dependsOn:
+  - Src/Sequence/CompressedSequence.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/Set/FenwickSet.hpp
+  - Src/Number/IntegerDivision.hpp
+  - Src/DataStructure/FenwickTree/FenwickTree.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Group/AdditiveGroup.hpp
+  isVerificationFile: true
+  path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+  requiredBy: []
+  timestamp: '2025-08-15 19:51:26+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+- /verify/Test/LC/ordered_set/OfflineOrderedSet.test.cpp.html
+title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+---
