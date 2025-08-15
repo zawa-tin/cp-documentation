@@ -20,13 +20,17 @@ public:
     explicit FenwickSet(usize n) 
         : m_n{n}, m_m{DivCeil<usize>(n, 64)}, m_dat(m_m), m_fen(m_m), m_all{} {}
 
-    constexpr usize size() const {
+    constexpr usize maxValue() const {
         return m_n;
+    }
+
+    usize size() const {
+        return m_all;
     }
 
     void insert(i32 x) {
         assert(0 <= x);
-        assert(static_cast<usize>(x) < size());
+        assert(static_cast<usize>(x) < maxValue());
         if ((m_dat[x / 64] >> (x % 64)) & 1) 
             return;
         m_dat[x / 64] |= u64{1} << (x % 64);
@@ -35,7 +39,7 @@ public:
     }
 
     void erase(i32 x) {
-        assert(static_cast<usize>(x) < size());
+        assert(static_cast<usize>(x) < maxValue());
         if ((m_dat[x / 64] >> (x % 64)) & 1) {
             m_dat[x / 64] ^= u64{1} << (x % 64);
             m_fen.operation(x / 64, -1);
@@ -44,7 +48,7 @@ public:
     }
 
     bool contains(i32 x) const {
-        assert(static_cast<usize>(x) < size());
+        assert(static_cast<usize>(x) < maxValue());
         return (m_dat[x / 64] >> (x % 64)) & 1;
     }
 
@@ -69,7 +73,7 @@ public:
     usize countLessEqual(i32 x) const {
         if (x < 0) 
             return 0;
-        if (static_cast<usize>(x) >= size()) 
+        if (static_cast<usize>(x) >= maxValue()) 
             return m_all;
         usize sum = m_fen.prefixProduct(x / 64);
         for (i32 i = 0 ; i <= x % 64 ; i++) 
