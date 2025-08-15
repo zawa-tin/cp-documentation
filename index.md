@@ -105,6 +105,9 @@ data:
   - name: Src/DataStructure/Other
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Other/MexManager.hpp
+      title: "\u8981\u7D20\u8FFD\u52A0\u30FB\u524A\u9664\u30FBmex\u8A08\u7B97"
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Other/PriorityProductSet.hpp
       title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
     - icon: ':heavy_check_mark:'
@@ -1112,6 +1115,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc322_f.test.cpp
       title: ABC322-F Vacation Query
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc330_e.test.cpp
+      title: Test/AtCoder/abc330_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc331_f.test.cpp
       title: Test/AtCoder/abc331_f.test.cpp
