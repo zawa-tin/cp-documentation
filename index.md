@@ -591,6 +591,9 @@ data:
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/AhoCorasick.hpp
+      title: Aho-Corasick
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/BitwiseXORConvolution.hpp
       title: Bitwise XOR Convolution
     - icon: ':heavy_check_mark:'
@@ -1058,6 +1061,9 @@ data:
       path: Test/AtCoder/abc266_c.test.cpp
       title: Test/AtCoder/abc266_c.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc268_h.test.cpp
+      title: Test/AtCoder/abc268_h.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc276_f.test.cpp
       title: Test/AtCoder/abc276_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1170,6 +1176,9 @@ data:
       path: Test/AtCoder/abc417_f.test.cpp
       title: Test/AtCoder/abc417_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc419_f.test.cpp
+      title: Test/AtCoder/abc419_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1269,6 +1278,9 @@ data:
       title: Test/CF/ECR178-D.test.cpp
   - name: Test/LC
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/aho_corasick.test.cpp
+      title: Test/LC/aho_corasick.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/aplusb.test.cpp
       title: Test/LC/aplusb.test.cpp

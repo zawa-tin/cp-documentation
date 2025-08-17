@@ -430,6 +430,9 @@ data:
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/AhoCorasick.hpp
+    title: Aho-Corasick
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/BitwiseXORConvolution.hpp
     title: Bitwise XOR Convolution
   - icon: ':heavy_check_mark:'
@@ -849,6 +852,9 @@ data:
     path: Test/AtCoder/abc266_c.test.cpp
     title: Test/AtCoder/abc266_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc268_h.test.cpp
+    title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -958,6 +964,9 @@ data:
     path: Test/AtCoder/abc417_f.test.cpp
     title: Test/AtCoder/abc417_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc419_f.test.cpp
+    title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1051,6 +1060,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/ECR178-D.test.cpp
     title: Test/CF/ECR178-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/aho_corasick.test.cpp
+    title: Test/LC/aho_corasick.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
@@ -1495,6 +1507,7 @@ data:
   - Src/Sequence/PermutationSwapSort.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/RangeKthSmallest.hpp
+  - Src/Sequence/AhoCorasick.hpp
   - Src/Sequence/CartesianTree.hpp
   - Src/Sequence/MajorityVote.hpp
   - Src/Sequence/RunLengthEncoding.hpp
@@ -1595,6 +1608,7 @@ data:
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
+  - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
@@ -1609,6 +1623,7 @@ data:
   - Test/AtCoder/abc127_f.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc205_f.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
@@ -1722,6 +1737,7 @@ data:
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/rectangle_sum.test.cpp
+  - Test/LC/aho_corasick.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/aplusb.test.cpp
   - Test/LC/static_range_sum.test.cpp
