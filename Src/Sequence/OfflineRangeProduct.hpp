@@ -20,10 +20,13 @@ concept Range = requires (R lr) {
     { lr.r } -> std::convertible_to<usize>;
 };
 
+template <class M, class S, class R>
+concept condition = concepts::Monoid<M> and Range<R> and (std::same_as<typename M::Element, S> or concepts::Acted<M, S>);
+
 } // namespace offline_range_product_internal
 
 template <class M, class S, class Range>
-requires concepts::Monoid<M> and concepts::Acted<M, S> and offline_range_product_internal::Range<Range>
+requires offline_range_product_internal::condition<M, S, Range>
 std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, const std::vector<Range>& qs) {
     std::vector<typename M::Element> sum(as.size() + 1), res(qs.size(), M::identity());
     auto f = [&](usize l, usize m, usize r, const std::vector<usize>& idx) -> void {
@@ -33,10 +36,18 @@ std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, c
             L = std::min<usize>(L, qs[i].l);
             R = std::max<usize>(R, qs[i].r);
         }
-        for (usize i = m ; i-- > L ; )
-            sum[i] = M::acted(sum[i + 1], as[i]);
-        for (usize i = m ; i < R ; i++)
-            sum[i + 1] = M::acted(sum[i], as[i]);
+        for (usize i = m ; i-- > L ; ) {
+            if constexpr (std::same_as<typename M::Element, S>)
+                sum[i] = M::operation(as[i], sum[i + 1]);
+            else
+                sum[i] = M::acted(sum[i + 1], as[i]);
+        }
+        for (usize i = m ; i < R ; i++) {
+            if constexpr (std::same_as<typename M::Element, S>)
+                sum[i + 1] = M::operation(sum[i], as[i]);
+            else
+                sum[i + 1] = M::acted(sum[i], as[i]);
+        }
         for (usize i : idx)
             res[i] = M::operation(sum[qs[i].l], sum[qs[i].r]);
     };
