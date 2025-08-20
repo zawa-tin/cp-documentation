@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
+    title: Disjoint Sparse Table
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
@@ -22,6 +25,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/aho_corasick.test.cpp
     title: Test/LC/aho_corasick.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+    title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
@@ -49,6 +55,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
+  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/AhoCorasick.hpp
   timestamp: '2025-08-20 18:56:28+09:00'
@@ -57,6 +64,7 @@ data:
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
+  - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/aho_corasick.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
