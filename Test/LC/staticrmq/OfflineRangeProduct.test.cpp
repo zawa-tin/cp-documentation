@@ -1,7 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 
 #include "../../../Src/Sequence/OfflineRangeProduct.hpp"
-#include "../../../Src/Algebra/Monoid/MonoidAction.hpp"
 
 #include <algorithm>
 #include <vector>
@@ -18,7 +17,6 @@ struct M {
         return min(L, R);
     }
 };
-using Monoid = AddSelfAction<M>;
 struct query {
     int l, r;
 };
@@ -37,6 +35,6 @@ int main() {
         cin >> l >> r;
         q[i] = {l, r};
     }
-    for (int ans : OfflineRangeProduct<Monoid>(a, q))
+    for (int ans : OfflineRangeProduct<M>(a, q))
         cout << ans << '\n';
 }

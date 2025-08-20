@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 223 H - Xor Query
- * https://atcoder.jp/contests/abc223/submissions/68656585
+ * https://atcoder.jp/contests/abc223/submissions/68663949
  */
 
 #include "../../Src/Sequence/OfflineRangeProduct.hpp"

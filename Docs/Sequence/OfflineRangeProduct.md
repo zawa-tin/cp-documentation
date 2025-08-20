@@ -13,7 +13,7 @@ std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, c
 
 `M`はモノイドであり、 $S$ は`M::Element`に作用する。
 
-`M::Element = S`の場合はMonoidAction.hppの`AddSelfAction<M>`とすれば作用の関数がその`operation`で自動的に定義される(非可換のときは十分に注意すること)
+`M::Element = S`の場合はそのまま`M`のみをテンプレート引数に渡せば良い。(actedを呼び出す所がoperationに置き換わる)
 
 雛形
 
@@ -39,7 +39,7 @@ struct query {
 
 ## 計算量
 
-`acted`を $\Theta (N\log N)$ 回。`operation, identity`をそれぞれ $O\Theta (Q)$ 回呼び出す。
+`acted`を $\Theta (N\log N)$ 回。`operation`を $\Theta (Q)$ 回。`identity`を $\Theta (N + Q)$ 回呼び出す。
 
 ## 参考
 
