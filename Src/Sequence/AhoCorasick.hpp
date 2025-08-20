@@ -1,33 +1,31 @@
 #pragma once
 
 #include "../Template/TypeAlias.hpp"
+#include "../Algebra/Monoid/MonoidConcept.hpp"
+#include "../Algebra/Action/ActionConcept.hpp"
 
 #include <cassert>
 #include <concepts>
 #include <ranges>
 #include <unordered_map>
+#include <utility>
 #include <vector>
 
 namespace zawa {
 
-namespace ahocorasickinternal {
+namespace ahocorasick_internal {
 
 template <class T>
 concept HasValueType = requires {
     typename T::value_type;
 };
 
-template <class T>
-concept AuxiliaryData = requires {
-    typename T::Element;
-    { T::identity() } -> std::same_as<typename T::Element>;
-    { T::merge(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
-    { T::add(std::declval<typename T::Element>(), std::declval<usize>()) } -> std::same_as<typename T::Element>;
-};
+template <class T, class S>
+concept AuxiliaryData = concepts::Monoid<T> and concepts::Acted<T, S>;
 
-} // namespace ahocorasickinternal
+} // namespace ahocorasick_internal
 
-template <ahocorasickinternal::HasValueType Container>
+template <ahocorasick_internal::HasValueType Container>
 class AhoCorasick {
 public:
 
@@ -139,10 +137,11 @@ public:
         return Trie{std::move(nodes), std::move(match)};
     }
 
-    template <ahocorasickinternal::AuxiliaryData T>
-    Trie build(std::vector<typename T::Element>& data) const {
-        data.clear();
-        data.resize(1, T::identity());
+    template <class T, class S>
+    requires ahocorasick_internal::AuxiliaryData<T, S>
+    std::pair<Trie, std::vector<typename T::Element>> build(const std::vector<S>& values) const {
+        assert(values.size() == m_seq.size());
+        std::vector<typename T::Element> data(1, T::identity());
         std::vector<typename Trie::Node> nodes(1);  
         std::vector<usize> match(m_seq.size());
         for (usize i = 0 ; const Container& s : m_seq) {
@@ -161,7 +160,7 @@ public:
                 cur = nxt;
             }
             match[i] = cur;
-            data[cur] = T::add(data[cur], i++);
+            data[cur] = T::acted(data[cur], values[i++]);
         }
         std::vector<usize> que;
         for (const usize x : nodes[0].ch | std::views::values)
@@ -180,9 +179,9 @@ public:
                 nodes[v].fail = 0;
             else
                 nodes[v].fail = it->second;
-            data[v] = T::merge(data[nodes[v].fail], data[v]);
+            data[v] = T::operation(data[nodes[v].fail], data[v]);
         }
-        return Trie{std::move(nodes), std::move(match)};
+        return std::pair{Trie{std::move(nodes), std::move(match)}, data};
     }
 
 private:

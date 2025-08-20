@@ -14,7 +14,7 @@ documentation_of: //Src/Sequence/AhoCorasick.hpp
 ### コンストラクタ
 
 ```cpp
-template <ahocorasickinternal::HasValueType Container>
+template <ahocorasick_internal::HasValueType Container>
 AhoCorasick() = default;
 ```
 
@@ -33,8 +33,9 @@ $s$ を辞書 $T$ に追加する。
 ```cpp
 Trie build() const (1)
 
-template <ahocorasickinternal::AuxiliaryData T>
-Trie build(std::vector<typename T::Element>& data) const (2)
+template <class T, class S>
+requires ahocorasick_internal::AuxiliaryData<T, S>
+std::pair<Trie, std::vector<typename T::Element>> build(const std::vector<S>& values) const (2)
 ```
 
 現在の $T$ をもとにオートマトンを構築する。構築されたオートマトンを返す。
@@ -45,32 +46,35 @@ Trie build(std::vector<typename T::Element>& data) const (2)
 
 可換モノイド $M = (P, \oplus)$ に対する $\bigoplus_{i\in U_{v}} f(i)$ を計算する。ただし、 $f(i)$ は $i$ をある $P$ の要素に対応させる関数とする。
 
-`T`は以下のconceptを満たす必要がある。
+`T`はモノイドであり、$S$ は`T::Element`に作用する必要がある。
+
+雛形
 
 ```cpp
-typename T::Element;
-{ T::identity() } -> std::same_as<typename T::Element>;
-{ T::merge(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
-{ T::add(std::declval<typename T::Element>(), std::declval<usize>()) } -> std::same_as<typename T::Element>;
-```
-
-`Element`が $P$ の型、`identity`が $M$ の単位元、`merge`は $\oplus$ 、`add`は $p\oplus f(i)$ を計算する関数である。
+class M {
+    using Element ;
+    static Element identity() {
+    }
+    static Element operation(Element, Element) {
+    }
+    static Element acted(Element, S) {
+    }
+};
 
 例えば以下のように定義すると、オートマトンの各状態が $S_i$ とマッチしているかという意味で受理状態か否かが計算できる。
 
 ```cpp
-truct M {
+struct Monoid {
     using Element = bool;
     static Element identity() {
         return false;
     }
-    static Element add(Element, int) {
-        return true;
-    }
-    static Element merge(Element l, Element r) {
+    static Element operation(Element l, Element r) {
         return l or r;
     }
 };
+using M = AddSelfAction<Monoid>;
+// valuesはvector<bool>(N, true)とする。
 ```
 
 ### Trie::Root
