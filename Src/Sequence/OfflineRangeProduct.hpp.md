@@ -53,60 +53,71 @@ data:
     \n#include <numeric>\n#include <vector>\n\nnamespace zawa {\n\nnamespace offline_range_product_internal\
     \ {\n\ntemplate <class R>\nconcept Range = requires (R lr) {\n    { lr.l } ->\
     \ std::convertible_to<usize>;\n    { lr.r } -> std::convertible_to<usize>;\n};\n\
-    \n} // namespace offline_range_product_internal\n\ntemplate <class M, class S,\
-    \ class Range>\nrequires concepts::Monoid<M> and concepts::Acted<M, S> and offline_range_product_internal::Range<Range>\n\
-    std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as,\
-    \ const std::vector<Range>& qs) {\n    std::vector<typename M::Element> sum(as.size()\
-    \ + 1), res(qs.size(), M::identity());\n    auto f = [&](usize l, usize m, usize\
-    \ r, const std::vector<usize>& idx) -> void {\n        sum[m] = M::identity();\n\
-    \        usize L = m, R = m;\n        for (usize i : idx) {\n            L = std::min<usize>(L,\
-    \ qs[i].l);\n            R = std::max<usize>(R, qs[i].r);\n        }\n       \
-    \ for (usize i = m ; i-- > L ; )\n            sum[i] = M::acted(sum[i + 1], as[i]);\n\
-    \        for (usize i = m ; i < R ; i++)\n            sum[i + 1] = M::acted(sum[i],\
-    \ as[i]);\n        for (usize i : idx)\n            res[i] = M::operation(sum[qs[i].l],\
+    \ntemplate <class M, class S, class R>\nconcept condition = concepts::Monoid<M>\
+    \ and Range<R> and (std::same_as<typename M::Element, S> or concepts::Acted<M,\
+    \ S>);\n\n} // namespace offline_range_product_internal\n\ntemplate <class M,\
+    \ class S, class Range>\nrequires offline_range_product_internal::condition<M,\
+    \ S, Range>\nstd::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>&\
+    \ as, const std::vector<Range>& qs) {\n    std::vector<typename M::Element> sum(as.size()\
+    \ + 1), res(qs.size(), M::identity());\n    auto f = [&](usize m, const std::vector<usize>&\
+    \ idx) -> void {\n        sum[m] = M::identity();\n        usize L = m, R = m;\n\
+    \        for (usize i : idx) {\n            L = std::min<usize>(L, qs[i].l);\n\
+    \            R = std::max<usize>(R, qs[i].r);\n        }\n        for (usize i\
+    \ = m ; i-- > L ; ) {\n            if constexpr (std::same_as<typename M::Element,\
+    \ S>)\n                sum[i] = M::operation(as[i], sum[i + 1]);\n           \
+    \ else\n                sum[i] = M::acted(sum[i + 1], as[i]);\n        }\n   \
+    \     for (usize i = m ; i < R ; i++) {\n            if constexpr (std::same_as<typename\
+    \ M::Element, S>)\n                sum[i + 1] = M::operation(sum[i], as[i]);\n\
+    \            else\n                sum[i + 1] = M::acted(sum[i], as[i]);\n   \
+    \     }\n        for (usize i : idx)\n            res[i] = M::operation(sum[qs[i].l],\
     \ sum[qs[i].r]);\n    };\n    auto rec = [&](auto rec, usize L, usize R, std::vector<usize>\
     \ idx) -> void {\n        if (L >= R)\n            return;\n        if (L + 1\
-    \ == R) {\n            f(L, L, R, idx);\n            return;\n        }\n    \
-    \    const usize mid = (L + R) / 2;\n        std::vector<usize> toL, toR, cur;\n\
-    \        for (usize i : idx) {\n            assert(qs[i].l <= qs[i].r and qs[i].r\
-    \ <= as.size());\n            if (qs[i].r <= mid)\n                toL.push_back(i);\n\
-    \            else if (mid <= qs[i].l)\n                toR.push_back(i);\n   \
-    \         else\n                cur.push_back(i);\n        }\n        if (cur.size())\n\
-    \            f(L, mid, R, cur);\n        if (toL.size())\n            rec(rec,\
-    \ L, mid, toL);\n        if (toR.size())\n            rec(rec, mid, R, toR);\n\
-    \    };\n    std::vector<usize> idx(qs.size());\n    std::iota(idx.begin(), idx.end(),\
-    \ 0);\n    rec(rec, 0, as.size(), idx);\n    return res;\n}\n\n} // namespace\
-    \ zawa\n"
+    \ == R) {\n            f(L, idx);\n            return;\n        }\n        const\
+    \ usize mid = (L + R) / 2;\n        std::vector<usize> toL, toR, cur;\n      \
+    \  for (auto&& i : idx) {\n            assert(qs[i].l <= qs[i].r and static_cast<usize>(qs[i].r)\
+    \ <= as.size());\n            if (static_cast<usize>(qs[i].r) <= mid)\n      \
+    \          toL.push_back(std::move(i));\n            else if (mid <= static_cast<usize>(qs[i].l))\n\
+    \                toR.push_back(std::move(i));\n            else\n            \
+    \    cur.push_back(std::move(i));\n        }\n        if (cur.size())\n      \
+    \      f(mid, cur);\n        if (toL.size())\n            rec(rec, L, mid, toL);\n\
+    \        if (toR.size())\n            rec(rec, mid, R, toR);\n    };\n    std::vector<usize>\
+    \ idx(qs.size());\n    std::iota(idx.begin(), idx.end(), 0);\n    rec(rec, 0,\
+    \ as.size(), idx);\n    return res;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"../Algebra/Monoid/MonoidConcept.hpp\"\
     \n#include \"../Algebra/Action/ActionConcept.hpp\"\n\n#include <algorithm>\n#include\
     \ <cassert>\n#include <concepts>\n#include <numeric>\n#include <vector>\n\nnamespace\
     \ zawa {\n\nnamespace offline_range_product_internal {\n\ntemplate <class R>\n\
     concept Range = requires (R lr) {\n    { lr.l } -> std::convertible_to<usize>;\n\
-    \    { lr.r } -> std::convertible_to<usize>;\n};\n\n} // namespace offline_range_product_internal\n\
-    \ntemplate <class M, class S, class Range>\nrequires concepts::Monoid<M> and concepts::Acted<M,\
-    \ S> and offline_range_product_internal::Range<Range>\nstd::vector<typename M::Element>\
-    \ OfflineRangeProduct(const std::vector<S>& as, const std::vector<Range>& qs)\
-    \ {\n    std::vector<typename M::Element> sum(as.size() + 1), res(qs.size(), M::identity());\n\
-    \    auto f = [&](usize l, usize m, usize r, const std::vector<usize>& idx) ->\
-    \ void {\n        sum[m] = M::identity();\n        usize L = m, R = m;\n     \
-    \   for (usize i : idx) {\n            L = std::min<usize>(L, qs[i].l);\n    \
-    \        R = std::max<usize>(R, qs[i].r);\n        }\n        for (usize i = m\
-    \ ; i-- > L ; )\n            sum[i] = M::acted(sum[i + 1], as[i]);\n        for\
-    \ (usize i = m ; i < R ; i++)\n            sum[i + 1] = M::acted(sum[i], as[i]);\n\
-    \        for (usize i : idx)\n            res[i] = M::operation(sum[qs[i].l],\
+    \    { lr.r } -> std::convertible_to<usize>;\n};\n\ntemplate <class M, class S,\
+    \ class R>\nconcept condition = concepts::Monoid<M> and Range<R> and (std::same_as<typename\
+    \ M::Element, S> or concepts::Acted<M, S>);\n\n} // namespace offline_range_product_internal\n\
+    \ntemplate <class M, class S, class Range>\nrequires offline_range_product_internal::condition<M,\
+    \ S, Range>\nstd::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>&\
+    \ as, const std::vector<Range>& qs) {\n    std::vector<typename M::Element> sum(as.size()\
+    \ + 1), res(qs.size(), M::identity());\n    auto f = [&](usize m, const std::vector<usize>&\
+    \ idx) -> void {\n        sum[m] = M::identity();\n        usize L = m, R = m;\n\
+    \        for (usize i : idx) {\n            L = std::min<usize>(L, qs[i].l);\n\
+    \            R = std::max<usize>(R, qs[i].r);\n        }\n        for (usize i\
+    \ = m ; i-- > L ; ) {\n            if constexpr (std::same_as<typename M::Element,\
+    \ S>)\n                sum[i] = M::operation(as[i], sum[i + 1]);\n           \
+    \ else\n                sum[i] = M::acted(sum[i + 1], as[i]);\n        }\n   \
+    \     for (usize i = m ; i < R ; i++) {\n            if constexpr (std::same_as<typename\
+    \ M::Element, S>)\n                sum[i + 1] = M::operation(sum[i], as[i]);\n\
+    \            else\n                sum[i + 1] = M::acted(sum[i], as[i]);\n   \
+    \     }\n        for (usize i : idx)\n            res[i] = M::operation(sum[qs[i].l],\
     \ sum[qs[i].r]);\n    };\n    auto rec = [&](auto rec, usize L, usize R, std::vector<usize>\
     \ idx) -> void {\n        if (L >= R)\n            return;\n        if (L + 1\
-    \ == R) {\n            f(L, L, R, idx);\n            return;\n        }\n    \
-    \    const usize mid = (L + R) / 2;\n        std::vector<usize> toL, toR, cur;\n\
-    \        for (usize i : idx) {\n            assert(qs[i].l <= qs[i].r and qs[i].r\
-    \ <= as.size());\n            if (qs[i].r <= mid)\n                toL.push_back(i);\n\
-    \            else if (mid <= qs[i].l)\n                toR.push_back(i);\n   \
-    \         else\n                cur.push_back(i);\n        }\n        if (cur.size())\n\
-    \            f(L, mid, R, cur);\n        if (toL.size())\n            rec(rec,\
-    \ L, mid, toL);\n        if (toR.size())\n            rec(rec, mid, R, toR);\n\
-    \    };\n    std::vector<usize> idx(qs.size());\n    std::iota(idx.begin(), idx.end(),\
-    \ 0);\n    rec(rec, 0, as.size(), idx);\n    return res;\n}\n\n} // namespace\
-    \ zawa\n"
+    \ == R) {\n            f(L, idx);\n            return;\n        }\n        const\
+    \ usize mid = (L + R) / 2;\n        std::vector<usize> toL, toR, cur;\n      \
+    \  for (auto&& i : idx) {\n            assert(qs[i].l <= qs[i].r and static_cast<usize>(qs[i].r)\
+    \ <= as.size());\n            if (static_cast<usize>(qs[i].r) <= mid)\n      \
+    \          toL.push_back(std::move(i));\n            else if (mid <= static_cast<usize>(qs[i].l))\n\
+    \                toR.push_back(std::move(i));\n            else\n            \
+    \    cur.push_back(std::move(i));\n        }\n        if (cur.size())\n      \
+    \      f(mid, cur);\n        if (toL.size())\n            rec(rec, L, mid, toL);\n\
+    \        if (toR.size())\n            rec(rec, mid, R, toR);\n    };\n    std::vector<usize>\
+    \ idx(qs.size());\n    std::iota(idx.begin(), idx.end(), 0);\n    rec(rec, 0,\
+    \ as.size(), idx);\n    return res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -115,7 +126,7 @@ data:
   isVerificationFile: false
   path: Src/Sequence/OfflineRangeProduct.hpp
   requiredBy: []
-  timestamp: '2025-08-20 18:56:28+09:00'
+  timestamp: '2025-08-21 03:06:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc223_h.test.cpp
@@ -136,7 +147,7 @@ std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, c
 
 `M`はモノイドであり、 $S$ は`M::Element`に作用する。
 
-`M::Element = S`の場合はMonoidAction.hppの`AddSelfAction<M>`とすれば作用の関数がその`operation`で自動的に定義される(非可換のときは十分に注意すること)
+`M::Element = S`の場合はそのまま`M`のみをテンプレート引数に渡せば良い。(actedを呼び出す所がoperationに置き換わる)
 
 雛形
 
@@ -162,7 +173,7 @@ struct query {
 
 ## 計算量
 
-`acted`を $\Theta (N\log N)$ 回。`operation, identity`をそれぞれ $O\Theta (Q)$ 回呼び出す。
+`acted`を $\Theta (N\log N)$ 回。`operation`を $\Theta (Q)$ 回。`identity`を $\Theta (N + Q)$ 回呼び出す。
 
 ## 参考
 
