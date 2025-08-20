@@ -2,6 +2,7 @@
 
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/MonoidConcept.hpp"
+#include "../../Algebra/Action/ActionConcept.hpp"
 
 #include <bit>
 #include <cassert>
@@ -25,7 +26,9 @@ public:
         return std::bit_width(n) - 1;
     }
 
-    DisjointSparseTable(std::vector<V>&& A) : m_table(height(A.size())) {
+    template <class S>
+    requires std::same_as<V, S> or concepts::Acted<V, S>
+    DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size())) {
         assert(A.size());
         for (usize i = 1, w = 2 ; i < m_table.size() ; i++, w <<= 1) {
             m_table[i].resize(A.size());
@@ -34,23 +37,33 @@ public:
                 if (idx & 1) { // ->
                     usize m = std::min(A.size() - j, w);
                     for (usize k = 0 ; k < m ; k++) {
-                        prod = M::operation(prod, A[j + k]);
+                        if constexpr (std::same_as<V, S>)
+                            prod = M::operation(prod, A[j + k]);
+                        else
+                            prod = M::acted(prod, A[j + k]);
                         m_table[i][j + k] = prod;
                     }
                 }
                 else { // <-
                     usize m = std::min(A.size(), j + w);
                     for (usize k = m ; k-- > j ; ) {
-                        prod = M::operation(A[k], prod);
+                        if constexpr (std::same_as<V, S>)
+                            prod = M::operation(A[k], prod);
+                        else
+                            prod = M::acted(prod, A[k]);
                         m_table[i][k] = prod;
                     }
                 }
             }
         }
-        m_table[0] = std::move(A);
+        m_table[0].resize(A.size());
+        for (usize i = 0 ; i < A.size() ; i++) {
+            if constexpr (std::same_as<V, S>)
+                m_table[0][i] = A[i];
+            else
+                m_table[0][i] = M::acted(M::identity(), A[i]);
+        }
     }
-
-    DisjointSparseTable(const std::vector<V>& A) : DisjointSparseTable(std::vector<V>{A}) {}
 
     template <std::input_iterator It>
     DisjointSparseTable(It first, It last) : DisjointSparseTable(std::vector(first, last)) {}
