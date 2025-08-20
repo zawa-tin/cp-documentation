@@ -29,7 +29,7 @@ template <class M, class S, class Range>
 requires offline_range_product_internal::condition<M, S, Range>
 std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, const std::vector<Range>& qs) {
     std::vector<typename M::Element> sum(as.size() + 1), res(qs.size(), M::identity());
-    auto f = [&](usize l, usize m, usize r, const std::vector<usize>& idx) -> void {
+    auto f = [&](usize m, const std::vector<usize>& idx) -> void {
         sum[m] = M::identity();
         usize L = m, R = m;
         for (usize i : idx) {
@@ -55,22 +55,22 @@ std::vector<typename M::Element> OfflineRangeProduct(const std::vector<S>& as, c
         if (L >= R)
             return;
         if (L + 1 == R) {
-            f(L, L, R, idx);
+            f(L, idx);
             return;
         }
         const usize mid = (L + R) / 2;
         std::vector<usize> toL, toR, cur;
-        for (usize i : idx) {
-            assert(qs[i].l <= qs[i].r and qs[i].r <= as.size());
-            if (qs[i].r <= mid)
-                toL.push_back(i);
-            else if (mid <= qs[i].l)
-                toR.push_back(i);
+        for (auto&& i : idx) {
+            assert(qs[i].l <= qs[i].r and static_cast<usize>(qs[i].r) <= as.size());
+            if (static_cast<usize>(qs[i].r) <= mid)
+                toL.push_back(std::move(i));
+            else if (mid <= static_cast<usize>(qs[i].l))
+                toR.push_back(std::move(i));
             else
-                cur.push_back(i);
+                cur.push_back(std::move(i));
         }
         if (cur.size())
-            f(L, mid, R, cur);
+            f(mid, cur);
         if (toL.size())
             rec(rec, L, mid, toL);
         if (toR.size())
