@@ -76,6 +76,9 @@ data:
     path: Src/DataStructure/SparseTable/DualSparseTable.hpp
     title: Dual Sparse Table
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/AhoCorasick.hpp
+    title: Aho-Corasick
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/EnumerateStaticLengthProduct.hpp
     title: Src/Sequence/EnumerateStaticLengthProduct.hpp
   - icon: ':heavy_check_mark:'
@@ -129,6 +132,9 @@ data:
     path: Test/AtCoder/abc256_h.test.cpp
     title: Test/AtCoder/abc256_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc268_h.test.cpp
+    title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -168,6 +174,9 @@ data:
     path: Test/AtCoder/abc417_f.test.cpp
     title: Test/AtCoder/abc417_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc419_f.test.cpp
+    title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -194,6 +203,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/aho_corasick.test.cpp
+    title: Test/LC/aho_corasick.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/area_of_union_of_rectangles.test.cpp
     title: Test/LC/area_of_union_of_rectangles.test.cpp
@@ -302,6 +314,7 @@ data:
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - Src/Sequence/AhoCorasick.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -312,11 +325,13 @@ data:
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
+  - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
@@ -344,6 +359,7 @@ data:
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/aho_corasick.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp

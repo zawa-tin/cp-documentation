@@ -2,6 +2,18 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Action/ActionConcept.hpp
+    title: Src/Algebra/Action/ActionConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidAction.hpp
+    title: Src/Algebra/Monoid/MonoidAction.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
@@ -16,7 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc268/submissions/68594582
+    - https://atcoder.jp/contests/abc268/submissions/68657548
     - https://atcoder.jp/contests/abc268/tasks/abc268_ex
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc268_h.test.cpp\"\n// #define PROBLEM \"\
@@ -26,29 +38,43 @@ data:
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Sequence/AhoCorasick.hpp\"\n\n#include <cassert>\n\
-    #include <concepts>\n#include <ranges>\n#include <unordered_map>\n#include <vector>\n\
-    \nnamespace zawa {\n\nnamespace ahocorasickinternal {\n\ntemplate <class T>\n\
-    concept HasValueType = requires {\n    typename T::value_type;\n};\n\ntemplate\
-    \ <class T>\nconcept AuxiliaryData = requires {\n    typename T::Element;\n  \
-    \  { T::identity() } -> std::same_as<typename T::Element>;\n    { T::merge(std::declval<typename\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line\
+    \ 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\n\
+    namespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n    { T::add(std::declval<typename T::Element>(), std::declval<usize>())\
-    \ } -> std::same_as<typename T::Element>;\n};\n\n} // namespace ahocorasickinternal\n\
-    \ntemplate <ahocorasickinternal::HasValueType Container>\nclass AhoCorasick {\n\
-    public:\n\n    using V = Container::value_type;\n\nprivate:\n\n    class Trie\
-    \ {\n    public:\n\n        struct Node {\n            usize fail = 0;\n     \
-    \       std::unordered_map<V, usize> ch{};\n            std::pair<usize, V> par{};\n\
-    \        };\n\n        Trie(std::vector<Node>&& nodes, std::vector<usize>&& match)\
-    \ \n            : m_nodes{std::move(nodes)}, m_match{std::move(match)} {}\n\n\
-    \        static constexpr usize Root() {\n            return 0;\n        }\n\n\
-    \        usize size() const {\n            return m_nodes.size();\n        }\n\
-    \n        usize trace(usize cur, V v) {\n            assert(cur < size());\n \
-    \           while (cur and !m_nodes[cur].ch.contains(v))\n                cur\
-    \ = m_nodes[cur].fail;\n            if (auto it = m_nodes[cur].ch.find(v) ; it\
-    \ != m_nodes[cur].ch.end())\n                return it->second;\n            else\n\
-    \                return cur;\n        }\n\n        usize match(usize i) const\
-    \ {\n            assert(i < m_match.size());\n            return m_match[i];\n\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Action/ActionConcept.hpp\"\
+    \n\n#line 4 \"Src/Algebra/Action/ActionConcept.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class G, class X>\nconcept Action = requires {\n   \
+    \ typename G::Element;\n    { G::action(std::declval<typename G::Element>(), std::declval<X>())\
+    \ } -> std::same_as<X>;\n};\n\n// Is appropriate name X-set?\ntemplate <class\
+    \ G, class X>\nconcept Acted = requires {\n    typename G::Element;\n    { G::acted(std::declval<typename\
+    \ G::Element>(), std::declval<X>()) } -> std::same_as<typename G::Element>;\n\
+    };\n\n} // namespace concepts\n\n} // namespace zawa\n#line 6 \"Src/Sequence/AhoCorasick.hpp\"\
+    \n\n#include <cassert>\n#line 9 \"Src/Sequence/AhoCorasick.hpp\"\n#include <ranges>\n\
+    #include <unordered_map>\n#include <utility>\n#include <vector>\n\nnamespace zawa\
+    \ {\n\nnamespace ahocorasick_internal {\n\ntemplate <class T>\nconcept HasValueType\
+    \ = requires {\n    typename T::value_type;\n};\n\ntemplate <class T, class S>\n\
+    concept AuxiliaryData = concepts::Monoid<T> and concepts::Acted<T, S>;\n\n} //\
+    \ namespace ahocorasick_internal\n\ntemplate <ahocorasick_internal::HasValueType\
+    \ Container>\nclass AhoCorasick {\npublic:\n\n    using V = Container::value_type;\n\
+    \nprivate:\n\n    class Trie {\n    public:\n\n        struct Node {\n       \
+    \     usize fail = 0;\n            std::unordered_map<V, usize> ch{};\n      \
+    \      std::pair<usize, V> par{};\n        };\n\n        Trie(std::vector<Node>&&\
+    \ nodes, std::vector<usize>&& match) \n            : m_nodes{std::move(nodes)},\
+    \ m_match{std::move(match)} {}\n\n        static constexpr usize Root() {\n  \
+    \          return 0;\n        }\n\n        usize size() const {\n            return\
+    \ m_nodes.size();\n        }\n\n        usize trace(usize cur, V v) {\n      \
+    \      assert(cur < size());\n            while (cur and !m_nodes[cur].ch.contains(v))\n\
+    \                cur = m_nodes[cur].fail;\n            if (auto it = m_nodes[cur].ch.find(v)\
+    \ ; it != m_nodes[cur].ch.end())\n                return it->second;\n       \
+    \     else\n                return cur;\n        }\n\n        usize match(usize\
+    \ i) const {\n            assert(i < m_match.size());\n            return m_match[i];\n\
     \        }\n\n        usize trace(usize cur, const Container& S) {\n         \
     \   assert(cur < size());\n            for (V v : S)\n                cur = trace(cur,\
     \ v);\n            return cur;\n        }\n\n        const std::vector<Node>&\
@@ -75,20 +101,21 @@ data:
     \            if (auto it = nodes[x].ch.find(ed) ; it == nodes[x].ch.end() or it->second\
     \ == v) \n                nodes[v].fail = 0;\n            else\n             \
     \   nodes[v].fail = it->second;\n        }\n        return Trie{std::move(nodes),\
-    \ std::move(match)};\n    }\n\n    template <ahocorasickinternal::AuxiliaryData\
-    \ T>\n    Trie build(std::vector<typename T::Element>& data) const {\n       \
-    \ data.clear();\n        data.resize(1, T::identity());\n        std::vector<typename\
-    \ Trie::Node> nodes(1);  \n        std::vector<usize> match(m_seq.size());\n \
-    \       for (usize i = 0 ; const Container& s : m_seq) {\n            usize cur\
-    \ = 0, idx = 0;\n            for ( ; idx < s.size() ; idx++) {\n             \
-    \   auto it = nodes[cur].ch.find(s[idx]);\n                if (it == nodes[cur].ch.end())\n\
-    \                    break;\n                cur = it->second;\n            }\n\
-    \            for ( ; idx < s.size() ; idx++) {\n                usize nxt = nodes[cur].ch[s[idx]]\
-    \ = nodes.size();\n                nodes.emplace_back();\n                nodes.back().par\
-    \ = {cur, s[idx]};\n                data.push_back(data[cur]);\n             \
-    \   cur = nxt;\n            }\n            match[i] = cur;\n            data[cur]\
-    \ = T::add(data[cur], i++);\n        }\n        std::vector<usize> que;\n    \
-    \    for (const usize x : nodes[0].ch | std::views::values)\n            que.emplace_back(x);\n\
+    \ std::move(match)};\n    }\n\n    template <class T, class S>\n    requires ahocorasick_internal::AuxiliaryData<T,\
+    \ S>\n    std::pair<Trie, std::vector<typename T::Element>> build(const std::vector<S>&\
+    \ values) const {\n        assert(values.size() == m_seq.size());\n        std::vector<typename\
+    \ T::Element> data(1, T::identity());\n        std::vector<typename Trie::Node>\
+    \ nodes(1);  \n        std::vector<usize> match(m_seq.size());\n        for (usize\
+    \ i = 0 ; const Container& s : m_seq) {\n            usize cur = 0, idx = 0;\n\
+    \            for ( ; idx < s.size() ; idx++) {\n                auto it = nodes[cur].ch.find(s[idx]);\n\
+    \                if (it == nodes[cur].ch.end())\n                    break;\n\
+    \                cur = it->second;\n            }\n            for ( ; idx < s.size()\
+    \ ; idx++) {\n                usize nxt = nodes[cur].ch[s[idx]] = nodes.size();\n\
+    \                nodes.emplace_back();\n                nodes.back().par = {cur,\
+    \ s[idx]};\n                data.push_back(data[cur]);\n                cur =\
+    \ nxt;\n            }\n            match[i] = cur;\n            data[cur] = T::acted(data[cur],\
+    \ values[i++]);\n        }\n        std::vector<usize> que;\n        for (const\
+    \ usize x : nodes[0].ch | std::views::values)\n            que.emplace_back(x);\n\
     \        for (usize qt = 0 ; qt < que.size() ; qt++) {\n            const usize\
     \ v = que[qt];\n            for (const usize x : nodes[v].ch | std::views::values)\n\
     \                que.emplace_back(x);\n            auto [x, ed] = nodes[v].par;\n\
@@ -96,48 +123,57 @@ data:
     \            while (x and !nodes[x].ch.contains(ed))\n                x = nodes[x].fail;\n\
     \            if (auto it = nodes[x].ch.find(ed) ; it == nodes[x].ch.end() or it->second\
     \ == v) \n                nodes[v].fail = 0;\n            else\n             \
-    \   nodes[v].fail = it->second;\n            data[v] = T::merge(data[nodes[v].fail],\
-    \ data[v]);\n        }\n        return Trie{std::move(nodes), std::move(match)};\n\
-    \    }\n\nprivate:\n\n    std::vector<Container> m_seq;\n\n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/AtCoder/abc268_h.test.cpp\"\n\n/*\n * AtCoder Beginner\
-    \ Contest 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68594582\n\
-    \ */\n\n#include <iostream>\n#include <string>\n#line 14 \"Test/AtCoder/abc268_h.test.cpp\"\
-    \nusing namespace std;\nusing namespace zawa;\nstruct M {\n    using Element =\
-    \ bool;\n    static Element identity() {\n        return false;\n    }\n    static\
-    \ Element add(Element, int) {\n        return true;\n    }\n    static Element\
-    \ merge(Element l, Element r) {\n        return l or r;\n    }\n};\nint main()\
-    \ {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    string S;\n    int N;\n    cin >> S >> N;\n    AhoCorasick<string> aho;\n\
-    \    for (int i = 0 ; i < N ; i++) {\n        string T;\n        cin >> T;\n \
-    \       aho.insert(T);\n    }\n    vector<bool> ban;\n    auto trie = aho.build<M>(ban);\n\
-    \    int ans = 0, cur = 0;\n    for (char c : S) {\n        cur = trie.trace(cur,\
-    \ c);\n        if (ban[cur]) {\n            ans++;\n            cur = decltype(trie)::Root();\n\
+    \   nodes[v].fail = it->second;\n            data[v] = T::operation(data[nodes[v].fail],\
+    \ data[v]);\n        }\n        return std::pair{Trie{std::move(nodes), std::move(match)},\
+    \ data};\n    }\n\nprivate:\n\n    std::vector<Container> m_seq;\n\n};\n\n} //\
+    \ namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidAction.hpp\"\n\n#line 4 \"\
+    Src/Algebra/Monoid/MonoidAction.hpp\"\n\nnamespace zawa {\n\ntemplate <concepts::Monoid\
+    \ M>\nstruct AddSelfAction : public M {\n    static M::Element action(M::Element\
+    \ a, M::Element b) {\n        return M::operation(a, b);\n    }\n    static M::Element\
+    \ acted(M::Element a, M::Element b) {\n        return M::operation(a, b);\n  \
+    \  }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc268_h.test.cpp\"\n\n\
+    /*\n * AtCoder Beginner Contest 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68657548\n\
+    \ */\n\n#include <iostream>\n#include <string>\n#line 15 \"Test/AtCoder/abc268_h.test.cpp\"\
+    \nusing namespace std;\nusing namespace zawa;\nstruct Monoid {\n    using Element\
+    \ = bool;\n    static Element identity() {\n        return false;\n    }\n   \
+    \ static Element operation(Element l, Element r) {\n        return l or r;\n \
+    \   }\n};\nusing M = AddSelfAction<Monoid>;\nint main() {\n#ifdef ATCODER\n  \
+    \  cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    string S;\n\
+    \    int N;\n    cin >> S >> N;\n    AhoCorasick<string> aho;\n    for (int i\
+    \ = 0 ; i < N ; i++) {\n        string T;\n        cin >> T;\n        aho.insert(T);\n\
+    \    }\n    auto [trie, ban] = aho.build<M>(vector<bool>(N, true));\n    int ans\
+    \ = 0, cur = 0;\n    for (char c : S) {\n        cur = trie.trace(cur, c);\n \
+    \       if (ban[cur]) {\n            ans++;\n            cur = decltype(trie)::Root();\n\
     \        }\n    }\n    cout << ans << '\\n';\n#else\n    cout << \"Hello World\\\
     n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc268/tasks/abc268_ex\"\
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n#include \"../../Src/Sequence/AhoCorasick.hpp\"\n\n/*\n * AtCoder Beginner\
-    \ Contest 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68594582\n\
+    \n\n#include \"../../Src/Sequence/AhoCorasick.hpp\"\n#include \"../../Src/Algebra/Monoid/MonoidAction.hpp\"\
+    \n\n/*\n * AtCoder Beginner Contest 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68657548\n\
     \ */\n\n#include <iostream>\n#include <string>\n#include <vector>\nusing namespace\
-    \ std;\nusing namespace zawa;\nstruct M {\n    using Element = bool;\n    static\
-    \ Element identity() {\n        return false;\n    }\n    static Element add(Element,\
-    \ int) {\n        return true;\n    }\n    static Element merge(Element l, Element\
-    \ r) {\n        return l or r;\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
+    \ std;\nusing namespace zawa;\nstruct Monoid {\n    using Element = bool;\n  \
+    \  static Element identity() {\n        return false;\n    }\n    static Element\
+    \ operation(Element l, Element r) {\n        return l or r;\n    }\n};\nusing\
+    \ M = AddSelfAction<Monoid>;\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
     \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    string S;\n    int N;\n \
     \   cin >> S >> N;\n    AhoCorasick<string> aho;\n    for (int i = 0 ; i < N ;\
     \ i++) {\n        string T;\n        cin >> T;\n        aho.insert(T);\n    }\n\
-    \    vector<bool> ban;\n    auto trie = aho.build<M>(ban);\n    int ans = 0, cur\
-    \ = 0;\n    for (char c : S) {\n        cur = trie.trace(cur, c);\n        if\
-    \ (ban[cur]) {\n            ans++;\n            cur = decltype(trie)::Root();\n\
+    \    auto [trie, ban] = aho.build<M>(vector<bool>(N, true));\n    int ans = 0,\
+    \ cur = 0;\n    for (char c : S) {\n        cur = trie.trace(cur, c);\n      \
+    \  if (ban[cur]) {\n            ans++;\n            cur = decltype(trie)::Root();\n\
     \        }\n    }\n    cout << ans << '\\n';\n#else\n    cout << \"Hello World\\\
     n\";\n#endif\n}\n"
   dependsOn:
   - Src/Sequence/AhoCorasick.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Action/ActionConcept.hpp
+  - Src/Algebra/Monoid/MonoidAction.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc268_h.test.cpp
   requiredBy: []
-  timestamp: '2025-08-17 19:11:40+09:00'
+  timestamp: '2025-08-20 19:47:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc268_h.test.cpp

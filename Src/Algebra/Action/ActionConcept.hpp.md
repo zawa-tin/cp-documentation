@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/AhoCorasick.hpp
+    title: Aho-Corasick
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/OfflineRangeProduct.hpp
     title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
       \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
@@ -10,6 +13,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc223_h.test.cpp
     title: Test/AtCoder/abc223_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc268_h.test.cpp
+    title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc419_f.test.cpp
+    title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/aho_corasick.test.cpp
+    title: Test/LC/aho_corasick.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
@@ -38,11 +50,15 @@ data:
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
   - Src/Sequence/OfflineRangeProduct.hpp
+  - Src/Sequence/AhoCorasick.hpp
   timestamp: '2025-08-20 18:56:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - Test/LC/aho_corasick.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document
 redirect_from:

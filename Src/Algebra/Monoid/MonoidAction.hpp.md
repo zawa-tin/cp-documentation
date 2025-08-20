@@ -10,6 +10,12 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc268_h.test.cpp
+    title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc419_f.test.cpp
+    title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   _isVerificationFailed: false
@@ -47,6 +53,8 @@ data:
   timestamp: '2025-08-20 18:56:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc419_f.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidAction.hpp
 layout: document
