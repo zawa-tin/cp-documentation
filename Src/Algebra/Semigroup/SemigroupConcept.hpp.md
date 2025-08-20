@@ -6,6 +6,9 @@ data:
     path: Src/Algebra/Group/GroupConcept.hpp
     title: Src/Algebra/Group/GroupConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidAction.hpp
+    title: Src/Algebra/Monoid/MonoidAction.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -76,6 +79,10 @@ data:
     path: Src/Sequence/EnumerateStaticLengthProduct.hpp
     title: Src/Sequence/EnumerateStaticLengthProduct.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/OfflineRangeProduct.hpp
+    title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
+      \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/AreaOfUnionOfRectangles.hpp
     title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
@@ -112,6 +119,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc223_h.test.cpp
+    title: Test/AtCoder/abc223_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc237_g.test.cpp
     title: Test/AtCoder/abc237_g.test.cpp
@@ -224,6 +234,9 @@ data:
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+    title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -279,8 +292,10 @@ data:
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Monoid/MonoidAction.hpp
   - Src/Algebra/Monoid/ReverseOrder.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
+  - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -293,6 +308,7 @@ data:
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
@@ -315,6 +331,7 @@ data:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
+  - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp

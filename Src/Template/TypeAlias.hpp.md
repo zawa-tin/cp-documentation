@@ -454,6 +454,10 @@ data:
     path: Src/Sequence/Manacher.hpp
     title: Manacher (Enumerate Palindromes)
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/OfflineRangeProduct.hpp
+    title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
+      \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/PermutationSwapSort.hpp
     title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\
       \u30C8\u3059\u308B"
@@ -806,6 +810,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc217_h.test.cpp
     title: Test/AtCoder/abc217_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc223_h.test.cpp
+    title: Test/AtCoder/abc223_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc225_e.test.cpp
     title: Test/AtCoder/abc225_e.test.cpp
@@ -1214,6 +1221,9 @@ data:
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+    title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/SparseTable.test.cpp
     title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1504,6 +1514,7 @@ data:
   - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/Sequence/BitwiseXORConvolution.hpp
+  - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/PermutationSwapSort.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/RangeKthSmallest.hpp
@@ -1614,6 +1625,7 @@ data:
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc238_c.test.cpp
+  - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
@@ -1700,6 +1712,7 @@ data:
   - Test/LC/eulerian_trail_undirected.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/closest_pair.test.cpp
   - Test/LC/count_points_in_triangle.test.cpp
   - Test/LC/matrix_det.test.cpp

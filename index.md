@@ -1,6 +1,11 @@
 ---
 data:
   libraryCategories:
+  - name: Src/Algebra/Action
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Action/ActionConcept.hpp
+      title: Src/Algebra/Action/ActionConcept.hpp
   - name: Src/Algebra/Group
     pages:
     - icon: ':heavy_check_mark:'
@@ -38,6 +43,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MinMonoid.hpp
       title: "min\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MonoidAction.hpp
+      title: Src/Algebra/Monoid/MonoidAction.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MonoidConcept.hpp
       title: Src/Algebra/Monoid/MonoidConcept.hpp
@@ -615,6 +623,10 @@ data:
       path: Src/Sequence/Manacher.hpp
       title: Manacher (Enumerate Palindromes)
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/OfflineRangeProduct.hpp
+      title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
+        \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/PermutationSwapSort.hpp
       title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\
         \u30C8\u3059\u308B"
@@ -1015,6 +1027,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc217_h.test.cpp
       title: Test/AtCoder/abc217_h.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc223_h.test.cpp
+      title: Test/AtCoder/abc223_h.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc225_e.test.cpp
       title: Test/AtCoder/abc225_e.test.cpp
@@ -1454,6 +1469,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
       title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+      title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/staticrmq/SparseTable.test.cpp
       title: Test/LC/staticrmq/SparseTable.test.cpp
