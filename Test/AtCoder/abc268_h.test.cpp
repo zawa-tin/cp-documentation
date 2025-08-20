@@ -2,10 +2,11 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Sequence/AhoCorasick.hpp"
+#include "../../Src/Algebra/Monoid/MonoidAction.hpp"
 
 /*
  * AtCoder Beginner Contest 268 Ex - Taboo
- * https://atcoder.jp/contests/abc268/submissions/68594582
+ * https://atcoder.jp/contests/abc268/submissions/68657548
  */
 
 #include <iostream>
@@ -13,18 +14,16 @@
 #include <vector>
 using namespace std;
 using namespace zawa;
-struct M {
+struct Monoid {
     using Element = bool;
     static Element identity() {
         return false;
     }
-    static Element add(Element, int) {
-        return true;
-    }
-    static Element merge(Element l, Element r) {
+    static Element operation(Element l, Element r) {
         return l or r;
     }
 };
+using M = AddSelfAction<Monoid>;
 int main() {
 #ifdef ATCODER
     cin.tie(0);
@@ -39,8 +38,7 @@ int main() {
         cin >> T;
         aho.insert(T);
     }
-    vector<bool> ban;
-    auto trie = aho.build<M>(ban);
+    auto [trie, ban] = aho.build<M>(vector<bool>(N, true));
     int ans = 0, cur = 0;
     for (char c : S) {
         cur = trie.trace(cur, c);

@@ -3,10 +3,11 @@
 
 /*
  * AtCoder Beginner Contest 419 F - All Included
- * https://atcoder.jp/contests/abc419/submissions/68594391
+ * https://atcoder.jp/contests/abc419/submissions/68657508
  */
 
 #include "../../Src/Sequence/AhoCorasick.hpp"
+#include "../../Src/Algebra/Monoid/MonoidAction.hpp"
 #include "atcoder/modint"
 using mint = atcoder::modint998244353;
 
@@ -18,21 +19,16 @@ using mint = atcoder::modint998244353;
 
 using namespace zawa;
 using namespace std;
-struct M {
+struct Monoid {
     using Element = int;
-    // どの文字列もsuffixとして含んでいない
     static Element identity() {
         return 0;
     }
-    // i番目の文字列の情報を作用させる
-    static Element add(Element e, int i) {
-        return e |= 1 << i;
-    }
-    // a \subseteqq bであるので、aのデータをbに足し込む
-    static Element merge(Element a, Element b) {
+    static Element operation(Element a, Element b) {
         return a | b;
     }
 };
+using M = AddSelfAction<Monoid>;
 int main() {
 #ifdef ATCODER
     cin.tie(0);
@@ -41,13 +37,14 @@ int main() {
     int N, L;
     cin >> N >> L;
     AhoCorasick<string> aho;
+    vector<int> idx(N);
     for (int i = 0 ; i < N ; i++) {
         string s;
         cin >> s;
         aho.insert(s);
+        idx[i] = 1 << i;
     }
-    vector<int> msk;
-    auto trie = aho.build<M>(msk);
+    auto [trie, msk] = aho.build<M>(idx);
     vector dp(1 << N, vector<mint>(trie.size()));
     dp[0][decltype(trie)::Root()] = 1;
     while (L--) {
