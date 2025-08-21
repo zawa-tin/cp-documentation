@@ -50,6 +50,9 @@ data:
       path: Src/Algebra/Monoid/MonoidConcept.hpp
       title: Src/Algebra/Monoid/MonoidConcept.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+      title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
       title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
@@ -1028,6 +1031,9 @@ data:
       path: Test/AtCoder/abc217_h.test.cpp
       title: Test/AtCoder/abc217_h.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc222_g.test.cpp
+      title: Test/AtCoder/abc222_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc223_h.test.cpp
       title: Test/AtCoder/abc223_h.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1078,6 +1084,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc268_h.test.cpp
       title: Test/AtCoder/abc268_h.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc270_g.test.cpp
+      title: Test/AtCoder/abc270_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc276_f.test.cpp
       title: Test/AtCoder/abc276_f.test.cpp
@@ -1326,6 +1335,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/deque_operate_all_composite.test.cpp
       title: Test/LC/deque_operate_all_composite.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/discrete_logarithm_mod.test.cpp
+      title: Test/LC/discrete_logarithm_mod.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/enumerate_palindromes.test.cpp
       title: Test/LC/enumerate_palindromes.test.cpp

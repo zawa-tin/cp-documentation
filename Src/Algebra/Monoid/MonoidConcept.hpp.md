@@ -12,6 +12,9 @@ data:
     path: Src/Algebra/Monoid/MonoidAction.hpp
     title: Src/Algebra/Monoid/MonoidAction.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+    title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ReverseOrder.hpp
     title: Src/Algebra/Monoid/ReverseOrder.hpp
   - icon: ':heavy_check_mark:'
@@ -123,6 +126,9 @@ data:
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc222_g.test.cpp
+    title: Test/AtCoder/abc222_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc223_h.test.cpp
     title: Test/AtCoder/abc223_h.test.cpp
   - icon: ':heavy_check_mark:'
@@ -134,6 +140,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc268_h.test.cpp
     title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc270_g.test.cpp
+    title: Test/AtCoder/abc270_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
@@ -212,6 +221,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/discrete_logarithm_mod.test.cpp
+    title: Test/LC/discrete_logarithm_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -309,6 +321,7 @@ data:
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Algebra/Monoid/MonoidAction.hpp
   - Src/Algebra/Monoid/ReverseOrder.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
@@ -322,6 +335,7 @@ data:
   - Test/CF/CF895-E.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/AtCoder/abc403_g.test.cpp
+  - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
@@ -344,6 +358,7 @@ data:
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
+  - Test/AtCoder/abc270_g.test.cpp
   - Test/AtCoder/abl_e.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/yukicoder/649.test.cpp
@@ -357,6 +372,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
+  - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/aho_corasick.test.cpp

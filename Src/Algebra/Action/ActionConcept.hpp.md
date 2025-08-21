@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+    title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
     title: Disjoint Sparse Table
   - icon: ':heavy_check_mark:'
@@ -14,17 +17,26 @@ data:
       \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc222_g.test.cpp
+    title: Test/AtCoder/abc222_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc223_h.test.cpp
     title: Test/AtCoder/abc223_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc268_h.test.cpp
     title: Test/AtCoder/abc268_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc270_g.test.cpp
+    title: Test/AtCoder/abc270_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc419_f.test.cpp
     title: Test/AtCoder/abc419_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aho_corasick.test.cpp
     title: Test/LC/aho_corasick.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/discrete_logarithm_mod.test.cpp
+    title: Test/LC/discrete_logarithm_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
@@ -56,16 +68,20 @@ data:
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
+  - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/AhoCorasick.hpp
   timestamp: '2025-08-20 18:56:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
+  - Test/AtCoder/abc270_g.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/aho_corasick.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document

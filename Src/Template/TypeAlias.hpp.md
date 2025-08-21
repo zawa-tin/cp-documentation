@@ -9,6 +9,9 @@ data:
     path: Src/Algebra/Monoid/ChminMonoid.hpp
     title: Src/Algebra/Monoid/ChminMonoid.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+    title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/RollingHashMonoid.hpp
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
@@ -811,6 +814,9 @@ data:
     path: Test/AtCoder/abc217_h.test.cpp
     title: Test/AtCoder/abc217_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc222_g.test.cpp
+    title: Test/AtCoder/abc222_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc223_h.test.cpp
     title: Test/AtCoder/abc223_h.test.cpp
   - icon: ':heavy_check_mark:'
@@ -861,6 +867,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc268_h.test.cpp
     title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc270_g.test.cpp
+    title: Test/AtCoder/abc270_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
@@ -1100,6 +1109,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/discrete_logarithm_mod.test.cpp
+    title: Test/LC/discrete_logarithm_mod.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_palindromes.test.cpp
     title: Test/LC/enumerate_palindromes.test.cpp
@@ -1486,6 +1498,7 @@ data:
   - Src/GeometryR3/Point.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
+  - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Utility/SeparatedFamilySet.hpp
   - Src/Utility/BinarySearch.hpp
@@ -1615,6 +1628,7 @@ data:
   - Test/AtCoder/abc403_g.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
+  - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
@@ -1682,6 +1696,7 @@ data:
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
+  - Test/AtCoder/abc270_g.test.cpp
   - Test/AtCoder/abc261_f.test.cpp
   - Test/AtCoder/abc165_f.test.cpp
   - Test/AtCoder/abc308_g.test.cpp
@@ -1746,6 +1761,7 @@ data:
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
+  - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
