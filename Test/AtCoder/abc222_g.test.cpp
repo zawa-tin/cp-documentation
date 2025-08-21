@@ -36,6 +36,7 @@ long long solve() {
         return -1;
 }
 int main() {
+#ifdef ATCODER
     cin.tie(0);
     cout.tie(0);
     ios::sync_with_stdio(0);
@@ -45,4 +46,7 @@ int main() {
         cin >> P;
         cout << solve() << '\n';
     }
+#else
+    cout << "Hello World\n";
+#endif
 }
