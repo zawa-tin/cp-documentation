@@ -175,9 +175,9 @@ int main() {
 ## 計算量
 
 - `X::identity()`を高々 $2$ 回呼び出す
-- `X::operation()`を高々 $4\sqrt{N} + O(1)$ 回呼び出す
-- `X::action()`を高々 $3\sqrt{N} + O(1)$ 回呼び出す
-- `std::unordered<S>`に高々 $\sqrt{N}$ 要素挿入され、高々 $\sqrt{N}$ 回検索を行う
+- `X::operation()`を高々 $4\lfloor \sqrt{N}\rfloor + O(1)$ 回呼び出す
+- `X::action()`を高々 $3\lfloor\sqrt{N}\rfloor + O(1)$ 回呼び出す
+- `std::unordered<S>`に高々 $\lfloor\sqrt{N}\rfloor$ 要素挿入され、高々 $\lfloor\sqrt{N}\rfloor + O(1)$ 回検索を行う
 
 ## 参考
 
