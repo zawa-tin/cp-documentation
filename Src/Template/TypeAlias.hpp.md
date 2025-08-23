@@ -433,6 +433,9 @@ data:
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Number/SternBrocotTree.hpp
+    title: Stern-Brocot Tree
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
@@ -1239,6 +1242,9 @@ data:
     path: Test/LC/staticrmq/SparseTable.test.cpp
     title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/stern_brocot_tree.test.cpp
+    title: Test/LC/stern_brocot_tree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/two_edge_connected_components.test.cpp
     title: Test/LC/two_edge_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1541,6 +1547,7 @@ data:
   - Src/Sequence/RollingHash.hpp
   - Src/Number/BinomalCoefficients.hpp
   - Src/Number/EratosthenesSieve.hpp
+  - Src/Number/SternBrocotTree.hpp
   - Src/Number/PrimeFactor.hpp
   - Src/Number/ModInt.hpp
   - Src/Number/PrimeFactorize.hpp
@@ -1720,6 +1727,7 @@ data:
   - Test/yukicoder/117.test.cpp
   - Test/yukicoder/3044.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/stern_brocot_tree.test.cpp
   - Test/LC/jump_on_tree.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp

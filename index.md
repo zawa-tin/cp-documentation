@@ -599,6 +599,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Number/PrimeFactorize.hpp
       title: Src/Number/PrimeFactorize.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/SternBrocotTree.hpp
+      title: Stern-Brocot Tree
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'
@@ -1440,6 +1443,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/stern_brocot_tree.test.cpp
+      title: Test/LC/stern_brocot_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/two_edge_connected_components.test.cpp
       title: Test/LC/two_edge_connected_components.test.cpp
