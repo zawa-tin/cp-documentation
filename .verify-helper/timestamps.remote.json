@@ -243,6 +243,7 @@
 "Test/LC/staticrmq/DisjointSparseTable.test.cpp": "2025-08-21 03:53:28 +0900",
 "Test/LC/staticrmq/OfflineRangeProduct.test.cpp": "2025-08-21 03:06:56 +0900",
 "Test/LC/staticrmq/SparseTable.test.cpp": "2025-04-15 14:25:45 +0900",
+"Test/LC/stern_brocot_tree.test.cpp": "2025-08-23 22:47:55 +0900",
 "Test/LC/two_edge_connected_components.test.cpp": "2025-06-12 16:53:31 +0900",
 "Test/LC/unionfind.test.cpp": "2025-05-05 21:42:21 +0900",
 "Test/LC/vertex_add_path_sum.test.cpp": "2025-08-15 19:19:29 +0900",
