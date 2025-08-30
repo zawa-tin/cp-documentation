@@ -219,6 +219,9 @@ data:
       title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
         \u308B"
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/PolynomialInterpolation.hpp
+      title: Src/FPS/PolynomialInterpolation.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/PolynomialTaylorShift.hpp
       title: Polynomial Taylor Shift
   - name: Src/GeometryR2
@@ -989,6 +992,9 @@ data:
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc137_f.test.cpp
+      title: Test/AtCoder/abc137_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc139_f.test.cpp
       title: Test/AtCoder/abc139_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1482,6 +1488,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
       title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+  - name: Test/LC/polynomial_interpolation
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/polynomial_interpolation/quadratic.test.cpp
+      title: Test/LC/polynomial_interpolation/quadratic.test.cpp
   - name: Test/LC/staticrmq
     pages:
     - icon: ':heavy_check_mark:'

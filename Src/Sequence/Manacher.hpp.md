@@ -81,8 +81,8 @@ data:
   timestamp: '2025-07-09 19:40:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc398_f.test.cpp
   - Test/LC/enumerate_palindromes.test.cpp
+  - Test/AtCoder/abc398_f.test.cpp
 documentation_of: Src/Sequence/Manacher.hpp
 layout: document
 title: Manacher (Enumerate Palindromes)

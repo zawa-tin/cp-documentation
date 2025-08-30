@@ -206,9 +206,9 @@ data:
   timestamp: '2025-08-20 19:47:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/aho_corasick.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
-  - Test/LC/aho_corasick.test.cpp
 documentation_of: Src/Sequence/AhoCorasick.hpp
 layout: document
 title: Aho-Corasick

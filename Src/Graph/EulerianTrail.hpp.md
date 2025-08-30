@@ -96,8 +96,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF1026-E.test.cpp
-  - Test/LC/eulerian_trail_undirected.test.cpp
   - Test/LC/eulerian_trail_directed.test.cpp
+  - Test/LC/eulerian_trail_undirected.test.cpp
 documentation_of: Src/Graph/EulerianTrail.hpp
 layout: document
 title: "Eulerian Trail (\u30AA\u30A4\u30E9\u30FC\u8DEF)"

@@ -138,8 +138,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/inv_of_formal_power_series.test.cpp
-  - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
+  - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document

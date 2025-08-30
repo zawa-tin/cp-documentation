@@ -345,76 +345,76 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Relation.hpp
   requiredBy:
-  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
-  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-  - Src/GeometryR2/Intersect/CircleAndLine.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Intersect/LineAndSegment.hpp
-  - Src/GeometryR2/Intersect/LineAndLine.hpp
-  - Src/GeometryR2/Reflection.hpp
-  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
-  - Src/GeometryR2/Parallel/LineAndLine.hpp
-  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
-  - Src/GeometryR2/CommonArea/CircleAndCircle.hpp
-  - Src/GeometryR2/Projection.hpp
-  - Src/GeometryR2/Segment.hpp
-  - Src/GeometryR2/Line.hpp
-  - Src/GeometryR2/Contain/LineContainsPoint.hpp
-  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
-  - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
-  - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
-  - Src/GeometryR2/Bisector/AngleBisector.hpp
-  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
   - Src/GeometryR2/Tangent/TangentToCircle.hpp
-  - Src/GeometryR2/CircumscribedCircle.hpp
-  - Src/GeometryR2/Polygon.hpp
-  - Src/GeometryR2/ConvexPolygonCut.hpp
-  - Src/GeometryR2/ConvexHull.hpp
-  - Src/GeometryR2/InCircle.hpp
-  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - Src/GeometryR2/Line.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndLine.hpp
+  - Src/GeometryR2/CrossPoint/LineAndLine.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
+  - Src/GeometryR2/Contain/ConvexPolygonContainsPoint.hpp
+  - Src/GeometryR2/Contain/PolygonContainsPoint.hpp
+  - Src/GeometryR2/Contain/LineContainsPoint.hpp
+  - Src/GeometryR2/Intersect/CircleAndLine.hpp
+  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  - Src/GeometryR2/Intersect/LineAndLine.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/Intersect/LineAndSegment.hpp
+  - Src/GeometryR2/Distance/PointAndSegment.hpp
+  - Src/GeometryR2/Distance/LineAndLine.hpp
   - Src/GeometryR2/Distance/LineAndPoint.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  - Src/GeometryR2/Distance/LineAndLine.hpp
-  - Src/GeometryR2/Distance/PointAndSegment.hpp
+  - Src/GeometryR2/ConvexPolygonCut.hpp
+  - Src/GeometryR2/ConvexHull.hpp
+  - Src/GeometryR2/Reflection.hpp
+  - Src/GeometryR2/Parallel/LineAndLine.hpp
+  - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
+  - Src/GeometryR2/Polygon.hpp
+  - Src/GeometryR2/CircumscribedCircle.hpp
+  - Src/GeometryR2/Bisector/AngleBisector.hpp
+  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
+  - Src/GeometryR2/Orthgonal/LineAndLine.hpp
+  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - Src/GeometryR2/CommonArea/CircleAndCircle.hpp
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - Src/GeometryR2/InCircle.hpp
+  - Src/GeometryR2/Segment.hpp
+  - Src/GeometryR2/Projection.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc151_f.test.cpp
-  - Test/AOJ/CGL_7_I.test.cpp
-  - Test/AOJ/CGL_4_C.test.cpp
-  - Test/AOJ/CGL_2_B.test.cpp
-  - Test/AOJ/2009.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
-  - Test/AOJ/CGL_7_F.test.cpp
-  - Test/AOJ/CGL_7_H.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
-  - Test/AOJ/2862.test.cpp
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2003.test.cpp
-  - Test/AOJ/2827.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_7_B.test.cpp
-  - Test/AOJ/0412.test.cpp
-  - Test/AOJ/CGL_7_G.test.cpp
-  - Test/AOJ/2334.test.cpp
-  - Test/AOJ/CGL_1_B.test.cpp
-  - Test/AOJ/2201.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
   - Test/AOJ/CGL_2_A.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
+  - Test/AOJ/2009.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryR2.test.cpp
+  - Test/AOJ/CGL_7_G.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
+  - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
-  - Test/AOJ/CGL_3_C.test.cpp
-  - Test/AOJ/CGL_7_C.test.cpp
-  - Test/AOJ/1132.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryR2.test.cpp
+  - Test/AOJ/CGL_4_C.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
+  - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/2334.test.cpp
+  - Test/AOJ/CGL_7_C.test.cpp
+  - Test/AOJ/2201.test.cpp
+  - Test/AOJ/CGL_7_I.test.cpp
+  - Test/AOJ/0412.test.cpp
+  - Test/AOJ/1157.test.cpp
   - Test/AOJ/CGL_7_D.test.cpp
+  - Test/AOJ/2003.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryR2.test.cpp
+  - Test/AOJ/CGL_3_C.test.cpp
+  - Test/AOJ/2862.test.cpp
+  - Test/AOJ/CGL_7_F.test.cpp
+  - Test/AOJ/1132.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/Relation.hpp
 layout: document
 redirect_from:

@@ -265,8 +265,8 @@ data:
   timestamp: '2025-06-25 16:48:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc346_g.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
 documentation_of: Src/Utility/AreaOfUnionOfRectangles.hpp
 layout: document
 redirect_from:

@@ -168,8 +168,8 @@ data:
   timestamp: '2025-04-28 13:40:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
+  - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
 documentation_of: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
 layout: document
 redirect_from:

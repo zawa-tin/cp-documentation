@@ -77,20 +77,20 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   requiredBy:
-  - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
-  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
+  - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
+  - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
   timestamp: '2025-06-25 16:48:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF895-E.test.cpp
-  - Test/AtCoder/abc256_h.test.cpp
-  - Test/AtCoder/abc346_g.test.cpp
-  - Test/AtCoder/practice2_l.test.cpp
-  - Test/AtCoder/abc322_f.test.cpp
-  - Test/AtCoder/abc371_f.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/abc371_f.test.cpp
+  - Test/AtCoder/abc256_h.test.cpp
+  - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/practice2_l.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
 layout: document
 redirect_from:

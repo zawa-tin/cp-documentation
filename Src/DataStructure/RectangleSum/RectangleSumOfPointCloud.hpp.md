@@ -104,9 +104,9 @@ data:
   timestamp: '2025-04-25 15:47:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc136_f.test.cpp
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
   - Test/LC/rectangle_sum.test.cpp
+  - Test/AtCoder/abc136_f.test.cpp
 documentation_of: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
 layout: document
 title: Rectangle Sum of PointCloud

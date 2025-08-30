@@ -250,9 +250,9 @@ data:
   verifiedWith:
   - Test/LC/static_convex_hull.test.cpp
   - Test/LC/furthest_pair.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/1298.test.cpp
   - Test/AOJ/CGL_4_B.test.cpp
+  - Test/AOJ/1298.test.cpp
+  - Test/AOJ/CGL_4_A.test.cpp
 documentation_of: Src/GeometryZ2/ConvexHull.hpp
 layout: document
 redirect_from:

@@ -161,9 +161,9 @@ data:
   timestamp: '2025-07-01 18:28:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc151_f.test.cpp
   - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
+  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/PointCloud.hpp
 layout: document
 redirect_from:

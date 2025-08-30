@@ -66,8 +66,8 @@ data:
   timestamp: '2025-08-04 20:15:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/3111.test.cpp
   - Test/AOJ/2450.test.cpp
+  - Test/AOJ/3111.test.cpp
 documentation_of: Src/Algebra/Monoid/SubarraySumMaxMonoid.hpp
 layout: document
 title: "\u9023\u7D9A\u90E8\u5206\u5217\u306E\u7DCF\u548C\u306E\u6700\u5927\u3092\u7BA1\

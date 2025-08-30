@@ -67,22 +67,22 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
-  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
-  - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/AhoCorasick.hpp
+  - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+  - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   timestamp: '2025-08-20 18:56:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc222_g.test.cpp
-  - Test/AtCoder/abc419_f.test.cpp
-  - Test/AtCoder/abc223_h.test.cpp
-  - Test/AtCoder/abc268_h.test.cpp
-  - Test/AtCoder/abc270_g.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
-  - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/aho_corasick.test.cpp
+  - Test/LC/discrete_logarithm_mod.test.cpp
+  - Test/AtCoder/abc419_f.test.cpp
+  - Test/AtCoder/abc270_g.test.cpp
+  - Test/AtCoder/abc222_g.test.cpp
+  - Test/AtCoder/abc223_h.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document
 redirect_from:
