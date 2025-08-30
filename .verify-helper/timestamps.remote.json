@@ -226,6 +226,7 @@
 "Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp": "2025-04-25 15:47:36 +0900",
 "Test/LC/point_set_range_composite.test.cpp": "2025-08-03 16:41:16 +0900",
 "Test/LC/point_set_range_composite_large_array.test.cpp": "2025-06-24 16:35:25 +0900",
+"Test/LC/polynomial_interpolation/quadratic.test.cpp": "2025-08-30 17:03:33 +0900",
 "Test/LC/polynomial_taylor_shift.test.cpp": "2025-05-09 01:17:18 +0900",
 "Test/LC/pow_of_formal_power_series.test.cpp": "2025-08-10 00:41:43 +0900",
 "Test/LC/queue_operate_all_composite.test.cpp": "2025-04-17 21:32:55 +0900",
