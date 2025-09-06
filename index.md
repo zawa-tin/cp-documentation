@@ -605,6 +605,26 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Number/SternBrocotTree.hpp
       title: Stern-Brocot Tree
+  - name: Src/Random
+    pages:
+    - icon: ':warning:'
+      path: Src/Random/RandomArray.hpp
+      title: Src/Random/RandomArray.hpp
+    - icon: ':warning:'
+      path: Src/Random/RandomBalancedParenthesis.hpp
+      title: Src/Random/RandomBalancedParenthesis.hpp
+    - icon: ':warning:'
+      path: Src/Random/RandomConnectedGraph.hpp
+      title: Src/Random/RandomConnectedGraph.hpp
+    - icon: ':warning:'
+      path: Src/Random/RandomDistinctArray.hpp
+      title: Src/Random/RandomDistinctArray.hpp
+    - icon: ':warning:'
+      path: Src/Random/RandomPermutation.hpp
+      title: Src/Random/RandomPermutation.hpp
+    - icon: ':warning:'
+      path: Src/Random/RandomTree.hpp
+      title: Src/Random/RandomTree.hpp
   - name: Src/Sequence
     pages:
     - icon: ':heavy_check_mark:'

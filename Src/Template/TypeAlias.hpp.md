@@ -438,6 +438,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Number/SternBrocotTree.hpp
     title: Stern-Brocot Tree
+  - icon: ':warning:'
+    path: Src/Random/RandomArray.hpp
+    title: Src/Random/RandomArray.hpp
+  - icon: ':warning:'
+    path: Src/Random/RandomBalancedParenthesis.hpp
+    title: Src/Random/RandomBalancedParenthesis.hpp
+  - icon: ':warning:'
+    path: Src/Random/RandomConnectedGraph.hpp
+    title: Src/Random/RandomConnectedGraph.hpp
+  - icon: ':warning:'
+    path: Src/Random/RandomDistinctArray.hpp
+    title: Src/Random/RandomDistinctArray.hpp
+  - icon: ':warning:'
+    path: Src/Random/RandomPermutation.hpp
+    title: Src/Random/RandomPermutation.hpp
+  - icon: ':warning:'
+    path: Src/Random/RandomTree.hpp
+    title: Src/Random/RandomTree.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
@@ -1613,6 +1631,12 @@ data:
   - Src/GeometryZ2/Relation.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/Random/RandomPermutation.hpp
+  - Src/Random/RandomConnectedGraph.hpp
+  - Src/Random/RandomArray.hpp
+  - Src/Random/RandomDistinctArray.hpp
+  - Src/Random/RandomTree.hpp
+  - Src/Random/RandomBalancedParenthesis.hpp
   - Src/Template/Output.hpp
   - Src/Template/VectorIO.hpp
   - Src/Template/ArrayIO.hpp
