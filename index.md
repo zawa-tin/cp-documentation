@@ -443,6 +443,9 @@ data:
       path: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
       title: Count Points in Triangles
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+      title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
       title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
     - icon: ':heavy_check_mark:'
@@ -1231,6 +1234,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc419_f.test.cpp
       title: Test/AtCoder/abc419_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc422_e.test.cpp
+      title: Test/AtCoder/abc422_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

@@ -117,12 +117,12 @@ data:
     \    if (Negative(Cross(a, b))) return CLOCKWISE;\n    if (Negative(Dot(a, b)))\
     \ return ONLINE_BACK;\n    if (a.normSquare() < b.normSquare()) return ONLINE_FRONT;\n\
     \    return ON_SEGMENT;\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
-    #line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\n\n\
-    namespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n    Point\
-    \ p0_{}, p1_{};\n\npublic:\n    /* constructor */\n    Line() = default;\n   \
-    \ Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax\
-    \ + b\n    Line(const Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a\
-    \ + b} {}\n    Line(const Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter,\
+    #line 6 \"Src/GeometryZ2/Line.hpp\"\n\n#line 8 \"Src/GeometryZ2/Line.hpp\"\n#include\
+    \ <tuple>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n\
+    \    Point p0_{}, p1_{};\n\npublic:\n    /* constructor */\n    Line() = default;\n\
+    \    Line(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y =\
+    \ ax + b\n    Line(const Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a,\
+    \ a + b} {}\n    Line(const Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter,\
     \ setter */\n    const Point& p0() const {\n        return p0_;\n    }\n    Point&\
     \ p0() {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
     \ p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator\
@@ -143,31 +143,33 @@ data:
     \  /* member function */\n    bool valid() const {\n        return p0_ != p1_;\n\
     \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
     \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
-    \ *= -1;\n        }\n        return res;\n    }\n};\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n\n#line 2 \"Src/GeometryZ2/Segment.hpp\"\n\n#line 6 \"\
-    Src/GeometryZ2/Segment.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\n\
-    class Segment {\nprivate:\n    Point p0_{}, p1_{};\npublic:\n    /* constructor\
-    \ */\n    Segment() = default;\n    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_}\
-    \ {}\n    Segment(const Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n\
-    \    /* getter, setter */ \n    const Point& p0() const {\n        return p0_;\n\
-    \    }\n    Point& p0() {\n        return p0_;\n    }\n    const Point& p1() const\
-    \ {\n        return p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\
-    \n    /* operator */\n    Segment& operator=(const Segment& s) {\n        p0_\
-    \ = s.p0();\n        p1_ = s.p1();\n        return *this;\n    }\n    friend bool\
-    \ operator==(const Segment& s0, const Segment& s1) {\n        return (s0.p0()\
-    \ == s1.p0() and s0.p1() == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1()\
-    \ == s1.p0());\n    }\n    friend bool operator!=(const Segment& s0, const Segment&\
-    \ s1) {\n        return !(s0 == s1);\n    }\n\n    /* member function */\n   \
-    \ bool valid() const {\n        return p0_ != p1_;\n    }\n    bool straddle(const\
-    \ Segment& s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_,\
-    \ p1_, s.p1()) <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n#line 6 \"Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\n#line 8 \"\
-    Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ geometryZ2 {\n\nbool Intersect(const Line& l, const Segment& s, bool straddle\
-    \ = false) {\n    assert(l.valid());\n    assert(s.valid());\n    RELATION r0\
-    \ = Relation(l.p0(), l.p1(), s.p0());\n    if (Abs(r0) != 1) return !straddle;\n\
-    \    RELATION r1 = Relation(l.p0(), l.p1(), s.p1());\n    if (Abs(r1) != 1) return\
-    \ !straddle;\n    return r0 != r1;\n}\n\n}\n\n} // namespace zawa\n"
+    \ *= -1;\n        }\n        return res;\n    }\n    std::tuple<Zahlen, Zahlen,\
+    \ Zahlen> normalForm() const {\n        Zahlen a = p0_.y() - p1_.y();\n      \
+    \  Zahlen b = p1_.x() - p0_.x();\n        Zahlen c = -a * p0_.x() - b * p0_.y();\n\
+    \        return {a, b, c};\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
+    \ zawa\n\n#line 2 \"Src/GeometryZ2/Segment.hpp\"\n\n#line 6 \"Src/GeometryZ2/Segment.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Segment {\nprivate:\n\
+    \    Point p0_{}, p1_{};\npublic:\n    /* constructor */\n    Segment() = default;\n\
+    \    Segment(const Segment& s) : p0_{s.p0_}, p1_{s.p1_} {}\n    Segment(const\
+    \ Point& p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n\n    /* getter, setter */\
+    \ \n    const Point& p0() const {\n        return p0_;\n    }\n    Point& p0()\
+    \ {\n        return p0_;\n    }\n    const Point& p1() const {\n        return\
+    \ p1_;\n    }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator\
+    \ */\n    Segment& operator=(const Segment& s) {\n        p0_ = s.p0();\n    \
+    \    p1_ = s.p1();\n        return *this;\n    }\n    friend bool operator==(const\
+    \ Segment& s0, const Segment& s1) {\n        return (s0.p0() == s1.p0() and s0.p1()\
+    \ == s1.p1())\n            or (s0.p1() == s1.p1() and s0.p1() == s1.p0());\n \
+    \   }\n    friend bool operator!=(const Segment& s0, const Segment& s1) {\n  \
+    \      return !(s0 == s1);\n    }\n\n    /* member function */\n    bool valid()\
+    \ const {\n        return p0_ != p1_;\n    }\n    bool straddle(const Segment&\
+    \ s) const {\n        return Relation(p0_, p1_, s.p0()) * Relation(p0_, p1_, s.p1())\
+    \ <= 0;\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line\
+    \ 6 \"Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\n\n#line 8 \"Src/GeometryZ2/Intersect/LineAndSegment.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nbool Intersect(const Line& l,\
+    \ const Segment& s, bool straddle = false) {\n    assert(l.valid());\n    assert(s.valid());\n\
+    \    RELATION r0 = Relation(l.p0(), l.p1(), s.p0());\n    if (Abs(r0) != 1) return\
+    \ !straddle;\n    RELATION r1 = Relation(l.p0(), l.p1(), s.p1());\n    if (Abs(r1)\
+    \ != 1) return !straddle;\n    return r0 != r1;\n}\n\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Line.hpp\"\n#include \"../Segment.hpp\"\n#include\
     \ \"../Relation.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2\
     \ {\n\nbool Intersect(const Line& l, const Segment& s, bool straddle = false)\
@@ -185,7 +187,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
   requiredBy: []
-  timestamp: '2025-04-27 17:14:19+09:00'
+  timestamp: '2025-09-09 19:37:10+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Src/GeometryZ2/Intersect/LineAndSegment.hpp

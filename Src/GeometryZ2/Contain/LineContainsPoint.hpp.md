@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/State.hpp
+    title: Src/GeometryZ2/Contain/State.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Line.hpp
+    title: Src/GeometryZ2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -13,17 +19,8 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
-  - icon: ':warning:'
-    path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
-    title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/0388.test.cpp
-    title: Test/AOJ/0388.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc422_e.test.cpp
     title: Test/AtCoder/abc422_e.test.cpp
@@ -32,8 +29,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 2 \"Src/GeometryZ2/Contain/LineContainsPoint.hpp\"\n\n#line\
+    \ 2 \"Src/GeometryZ2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum ContainState {\n    INSIDE          = 0,\n    ONLINE          = 1,\n\
+    \    OUTSIDE         = 2\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\
+    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -152,58 +153,33 @@ data:
     \ Zahlen> normalForm() const {\n        Zahlen a = p0_.y() - p1_.y();\n      \
     \  Zahlen b = p1_.x() - p0_.x();\n        Zahlen c = -a * p0_.x() - b * p0_.y();\n\
     \        return {a, b, c};\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n\n"
-  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n#include\
-    \ \"./Relation.hpp\"\n\n#include <cassert>\n#include <tuple>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\n\
-    \npublic:\n    /* constructor */\n    Line() = default;\n    Line(const Point&\
-    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b\n    Line(const\
-    \ Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a + b} {}\n    Line(const\
-    \ Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter, setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator */\n   \
-    \ friend bool operator==(const Line& l0, const Line& l1) {\n        return Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0())) \n            and Zero(Cross(l1.p0() - l0.p0(),\
-    \ l0.p1() - l0.p0()));\n    }\n    friend bool operator!=(const Line& l0, const\
-    \ Line& l1) {\n        return !(l0 == l1);\n    }\n    friend bool operator<(const\
-    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
-    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;\n\
-    \        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator<=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 < l1);\n    }\n    friend\
-    \ bool operator>(const Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(),\
-    \ l1.p0()) == CLOCKWISE;\n        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator>=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 > l1);\n    }\n\n  \
-    \  /* member function */\n    bool valid() const {\n        return p0_ != p1_;\n\
-    \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
-    \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
-    \ *= -1;\n        }\n        return res;\n    }\n    std::tuple<Zahlen, Zahlen,\
-    \ Zahlen> normalForm() const {\n        Zahlen a = p0_.y() - p1_.y();\n      \
-    \  Zahlen b = p1_.x() - p0_.x();\n        Zahlen c = -a * p0_.x() - b * p0_.y();\n\
-    \        return {a, b, c};\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n\n"
+    \ zawa\n\n#line 6 \"Src/GeometryZ2/Contain/LineContainsPoint.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\nContainState LineContainsPoint(const Line&\
+    \ l, const Point& p) {\n    return Cross(p - l.p0(), l.p1() - l.p0()) == 0 ? ONLINE\
+    \ : OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"./State.hpp\"\n#include \"../Line.hpp\"\n#include\
+    \ \"../Point.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nContainState\
+    \ LineContainsPoint(const Line& l, const Point& p) {\n    return Cross(p - l.p0(),\
+    \ l.p1() - l.p0()) == 0 ? ONLINE : OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n\
+    } // namespace zawa\n"
   dependsOn:
+  - Src/GeometryZ2/Contain/State.hpp
+  - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Relation.hpp
   isVerificationFile: false
-  path: Src/GeometryZ2/Line.hpp
-  requiredBy:
-  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
-  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
+  path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+  requiredBy: []
   timestamp: '2025-09-09 19:37:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/0388.test.cpp
   - Test/AtCoder/abc422_e.test.cpp
-documentation_of: Src/GeometryZ2/Line.hpp
+documentation_of: Src/GeometryZ2/Contain/LineContainsPoint.hpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Line.hpp
-- /library/Src/GeometryZ2/Line.hpp.html
-title: Src/GeometryZ2/Line.hpp
+- /library/Src/GeometryZ2/Contain/LineContainsPoint.hpp
+- /library/Src/GeometryZ2/Contain/LineContainsPoint.hpp.html
+title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
 ---

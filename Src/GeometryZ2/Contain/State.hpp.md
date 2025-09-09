@@ -8,6 +8,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1298.test.cpp
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc422_e.test.cpp
+    title: Test/AtCoder/abc422_e.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -36,10 +42,12 @@ data:
   requiredBy:
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
   timestamp: '2023-11-17 15:09:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1298.test.cpp
+  - Test/AtCoder/abc422_e.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
 documentation_of: Src/GeometryZ2/Contain/State.hpp

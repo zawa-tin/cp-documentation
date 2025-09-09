@@ -2,6 +2,15 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/State.hpp
+    title: Src/GeometryZ2/Contain/State.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Line.hpp
+    title: Src/GeometryZ2/Line.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
   - icon: ':heavy_check_mark:'
@@ -13,27 +22,27 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
-  - icon: ':warning:'
-    path: Src/GeometryZ2/Intersect/LineAndSegment.hpp
-    title: Src/GeometryZ2/Intersect/LineAndSegment.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/0388.test.cpp
-    title: Test/AOJ/0388.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc422_e.test.cpp
-    title: Test/AtCoder/abc422_e.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    links:
+    - https://atcoder.jp/contests/abc422/tasks/abc422_e
+    - https://atcoder.jp/contests/jsc2025advance-final/submissions/69185007
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc422_e.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc422/tasks/abc422_e\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 422 E - Colinear\n * https://atcoder.jp/contests/jsc2025advance-final/submissions/69185007\n\
+    \ */\n\n#line 2 \"Src/GeometryZ2/Contain/LineContainsPoint.hpp\"\n\n#line 2 \"\
+    Src/GeometryZ2/Contain/State.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nenum ContainState {\n    INSIDE          = 0,\n    ONLINE          = 1,\n\
+    \    OUTSIDE         = 2\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 2 \"Src/GeometryZ2/Line.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\
+    \n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -152,58 +161,56 @@ data:
     \ Zahlen> normalForm() const {\n        Zahlen a = p0_.y() - p1_.y();\n      \
     \  Zahlen b = p1_.x() - p0_.x();\n        Zahlen c = -a * p0_.x() - b * p0_.y();\n\
     \        return {a, b, c};\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n\n"
-  code: "#pragma once\n\n#include \"./Zahlen.hpp\"\n#include \"./Point.hpp\"\n#include\
-    \ \"./Relation.hpp\"\n\n#include <cassert>\n#include <tuple>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nclass Line {\nprivate:\n    Point p0_{}, p1_{};\n\
-    \npublic:\n    /* constructor */\n    Line() = default;\n    Line(const Point&\
-    \ p0, const Point& p1) : p0_{p0}, p1_{p1} {}\n    // y = ax + b\n    Line(const\
-    \ Zahlen& a, const Zahlen& b) : p0_{Zahlen{}, b}, p1_{a, a + b} {}\n    Line(const\
-    \ Line& l) : p0_{l.p0()}, p1_{l.p1()} {}\n\n    /* getter, setter */\n    const\
-    \ Point& p0() const {\n        return p0_;\n    }\n    Point& p0() {\n       \
-    \ return p0_;\n    }\n    const Point& p1() const {\n        return p1_;\n   \
-    \ }\n    Point& p1() {\n        return p1_;\n    }\n\n    /* operator */\n   \
-    \ friend bool operator==(const Line& l0, const Line& l1) {\n        return Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0())) \n            and Zero(Cross(l1.p0() - l0.p0(),\
-    \ l0.p1() - l0.p0()));\n    }\n    friend bool operator!=(const Line& l0, const\
-    \ Line& l1) {\n        return !(l0 == l1);\n    }\n    friend bool operator<(const\
-    \ Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1() - l0.p0(), l1.p1()\
-    \ - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(), l1.p0()) == COUNTER_CLOCKWISE;\n\
-    \        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator<=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 < l1);\n    }\n    friend\
-    \ bool operator>(const Line& l0, const Line& l1) {\n        if (Zero(Cross(l0.p1()\
-    \ - l0.p0(), l1.p1() - l1.p0()))) {\n            return Relation(l0.p0(), l0.p1(),\
-    \ l1.p0()) == CLOCKWISE;\n        }\n        else {\n            return Point::ArgComp(l0.positiveDir(),\
-    \ l1.positiveDir());\n        }\n    }\n    friend bool operator>=(const Line&\
-    \ l0, const Line& l1) {\n        return (l0 == l1) or (l0 > l1);\n    }\n\n  \
-    \  /* member function */\n    bool valid() const {\n        return p0_ != p1_;\n\
-    \    }\n    Vector positiveDir() const {\n        Vector res{p1_ - p0_};\n   \
-    \     if (Negative(res.x())) {\n            res.x() *= -1;\n            res.y()\
-    \ *= -1;\n        }\n        return res;\n    }\n    std::tuple<Zahlen, Zahlen,\
-    \ Zahlen> normalForm() const {\n        Zahlen a = p0_.y() - p1_.y();\n      \
-    \  Zahlen b = p1_.x() - p0_.x();\n        Zahlen c = -a * p0_.x() - b * p0_.y();\n\
-    \        return {a, b, c};\n    }\n};\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n\n"
+    \ zawa\n\n#line 6 \"Src/GeometryZ2/Contain/LineContainsPoint.hpp\"\n\nnamespace\
+    \ zawa {\n\nnamespace geometryZ2 {\n\nContainState LineContainsPoint(const Line&\
+    \ l, const Point& p) {\n    return Cross(p - l.p0(), l.p1() - l.p0()) == 0 ? ONLINE\
+    \ : OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 10\
+    \ \"Test/AtCoder/abc422_e.test.cpp\"\nusing namespace zawa::geometryZ2;\nusing\
+    \ namespace std;\n\n#line 14 \"Test/AtCoder/abc422_e.test.cpp\"\n#include <random>\n\
+    \nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int N;\n    cin >> N;\n    vector<Point> P(N);\n    for (auto& p : P)\n \
+    \       cin >> p;\n    mt19937 mt{random_device{}()};\n    for (int _ = 0 ; _\
+    \ < 100 ; _++) {\n        int p = 0, q = 0;\n        while (p == q) {\n      \
+    \      p = mt() % N;\n            q = mt() % N;\n        }\n        Line l{P[p],\
+    \ P[q]};\n        int cnt = 0;\n        for (const Point& v : P)\n           \
+    \ cnt += LineContainsPoint(l, v) == ONLINE;\n        if (2 * cnt > N) {\n    \
+    \        auto [a, b, c] = l.normalForm();\n            cout << \"Yes\\n\" << a\
+    \ << ' ' << b << ' ' << c << '\\n';\n            return 0;\n        }\n    }\n\
+    \    cout << \"No\\n\";\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc422/tasks/abc422_e\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 422 E - Colinear\n * https://atcoder.jp/contests/jsc2025advance-final/submissions/69185007\n\
+    \ */\n\n#include \"../../Src/GeometryZ2/Contain/LineContainsPoint.hpp\"\nusing\
+    \ namespace zawa::geometryZ2;\nusing namespace std;\n\n#include <iostream>\n#include\
+    \ <random>\n\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
+    \    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n    vector<Point> P(N);\n\
+    \    for (auto& p : P)\n        cin >> p;\n    mt19937 mt{random_device{}()};\n\
+    \    for (int _ = 0 ; _ < 100 ; _++) {\n        int p = 0, q = 0;\n        while\
+    \ (p == q) {\n            p = mt() % N;\n            q = mt() % N;\n        }\n\
+    \        Line l{P[p], P[q]};\n        int cnt = 0;\n        for (const Point&\
+    \ v : P)\n            cnt += LineContainsPoint(l, v) == ONLINE;\n        if (2\
+    \ * cnt > N) {\n            auto [a, b, c] = l.normalForm();\n            cout\
+    \ << \"Yes\\n\" << a << ' ' << b << ' ' << c << '\\n';\n            return 0;\n\
+    \        }\n    }\n    cout << \"No\\n\";\n#else\n    cout << \"Hello World\\\
+    n\";\n#endif\n}\n"
   dependsOn:
+  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
+  - Src/GeometryZ2/Contain/State.hpp
+  - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Zahlen.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Relation.hpp
-  isVerificationFile: false
-  path: Src/GeometryZ2/Line.hpp
-  requiredBy:
-  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
-  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
-  timestamp: '2025-09-09 19:37:10+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AOJ/0388.test.cpp
-  - Test/AtCoder/abc422_e.test.cpp
-documentation_of: Src/GeometryZ2/Line.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/abc422_e.test.cpp
+  requiredBy: []
+  timestamp: '2025-09-09 19:40:02+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/abc422_e.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Line.hpp
-- /library/Src/GeometryZ2/Line.hpp.html
-title: Src/GeometryZ2/Line.hpp
+- /verify/Test/AtCoder/abc422_e.test.cpp
+- /verify/Test/AtCoder/abc422_e.test.cpp.html
+title: Test/AtCoder/abc422_e.test.cpp
 ---

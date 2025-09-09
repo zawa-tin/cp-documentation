@@ -15,6 +15,9 @@ data:
     path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
     title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+    title: Src/GeometryZ2/Contain/LineContainsPoint.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
     title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - icon: ':heavy_check_mark:'
@@ -84,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc422_e.test.cpp
+    title: Test/AtCoder/abc422_e.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
@@ -217,6 +223,7 @@ data:
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
   - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   - Src/GeometryZ2/Intersect/LineAndSegment.hpp
@@ -241,6 +248,7 @@ data:
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
+  - Test/AtCoder/abc422_e.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
