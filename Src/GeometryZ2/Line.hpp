@@ -5,6 +5,7 @@
 #include "./Relation.hpp"
 
 #include <cassert>
+#include <tuple>
 
 namespace zawa {
 
@@ -78,6 +79,12 @@ public:
             res.y() *= -1;
         }
         return res;
+    }
+    std::tuple<Zahlen, Zahlen, Zahlen> normalForm() const {
+        Zahlen a = p0_.y() - p1_.y();
+        Zahlen b = p1_.x() - p0_.x();
+        Zahlen c = -a * p0_.x() - b * p0_.y();
+        return {a, b, c};
     }
 };
 
