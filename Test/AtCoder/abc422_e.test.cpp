@@ -14,6 +14,7 @@ using namespace std;
 #include <random>
 
 int main() {
+#ifdef ATCODER
     cin.tie(0);
     cout.tie(0);
     ios::sync_with_stdio(0);
@@ -40,4 +41,7 @@ int main() {
         }
     }
     cout << "No\n";
+#else
+    cout << "Hello World\n";
+#endif
 }
