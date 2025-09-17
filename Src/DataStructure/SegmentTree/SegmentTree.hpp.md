@@ -69,6 +69,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3326.test.cpp
     title: Test/Manual/aoj3326.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3189.test.cpp
+    title: Test/yukicoder/3189.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -232,6 +235,7 @@ data:
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+  - Test/yukicoder/3189.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp

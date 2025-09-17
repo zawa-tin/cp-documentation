@@ -273,6 +273,9 @@ data:
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3189.test.cpp
+    title: Test/yukicoder/3189.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/649.test.cpp
     title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
@@ -348,6 +351,7 @@ data:
   - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/yukicoder/649.test.cpp
+  - Test/yukicoder/3189.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
