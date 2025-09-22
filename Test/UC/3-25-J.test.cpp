@@ -1,5 +1,5 @@
 // #define PROBLEM "https://contest.ucup.ac/contest/1893/problem/9735"
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 /*
  * The 3rd Universal Cup. Stage 25: Hangzhou J. Japanese Bands
