@@ -1,4 +1,4 @@
-#define PROBLEM "bitwise_and_convolution"
+#define PROBLEM "https://judge.yosupo.jp/problem/bitwise_and_convolution"
 
 #include "../../Src/Sequence/BitwiseAndConvolution.hpp"
 #include "atcoder/modint"
