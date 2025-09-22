@@ -634,6 +634,9 @@ data:
       path: Src/Sequence/AhoCorasick.hpp
       title: Aho-Corasick
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/BitwiseAndConvolution.hpp
+      title: Src/Sequence/BitwiseAndConvolution.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/BitwiseXORConvolution.hpp
       title: Bitwise XOR Convolution
     - icon: ':heavy_check_mark:'
@@ -671,6 +674,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/RunLengthEncoding.hpp
       title: "\u9023\u9577\u5727\u7E2E"
+    - icon: ':heavy_check_mark:'
+      path: Src/Sequence/SupersetTransform.hpp
+      title: "Superset Zeta/Mobius Transform ( $\\emptyset$ \u306E\u65B9\u3078\u96C6\
+        \u3081\u308B\u3084\u3064 )"
   - name: Src/Template
     pages:
     - icon: ':heavy_check_mark:'
@@ -1355,6 +1362,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/bipartitematching.test.cpp
       title: Test/LC/bipartitematching.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/bitwise_and_convolution.test.cpp
+      title: Test/LC/bitwise_and_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/bitwise_xor_convolution.test.cpp
       title: Test/LC/bitwise_xor_convolution.test.cpp

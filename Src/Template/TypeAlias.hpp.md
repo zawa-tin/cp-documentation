@@ -463,6 +463,9 @@ data:
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/BitwiseAndConvolution.hpp
+    title: Src/Sequence/BitwiseAndConvolution.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/BitwiseXORConvolution.hpp
     title: Bitwise XOR Convolution
   - icon: ':heavy_check_mark:'
@@ -500,6 +503,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/RunLengthEncoding.hpp
     title: "\u9023\u9577\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/SupersetTransform.hpp
+    title: "Superset Zeta/Mobius Transform ( $\\emptyset$ \u306E\u65B9\u3078\u96C6\
+      \u3081\u308B\u3084\u3064 )"
   - icon: ':heavy_check_mark:'
     path: Src/Template/ArrayIO.hpp
     title: "std::array\u306E\u5165\u51FA\u529B"
@@ -1128,6 +1135,9 @@ data:
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/bitwise_and_convolution.test.cpp
+    title: Test/LC/bitwise_and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bitwise_xor_convolution.test.cpp
     title: Test/LC/bitwise_xor_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1516,6 +1526,8 @@ data:
   - Src/Sequence/RangeKthSmallest.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/CompressedSequence.hpp
+  - Src/Sequence/BitwiseAndConvolution.hpp
+  - Src/Sequence/SupersetTransform.hpp
   - Src/Sequence/CartesianTree.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/PermutationSwapSort.hpp
@@ -1707,6 +1719,7 @@ data:
   - Test/LC/incremental_scc.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/LC/many_aplusb.test.cpp
+  - Test/LC/bitwise_and_convolution.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/LC/stern_brocot_tree.test.cpp
