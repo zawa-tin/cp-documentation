@@ -637,6 +637,9 @@ data:
       path: Src/Sequence/BitwiseAndConvolution.hpp
       title: Src/Sequence/BitwiseAndConvolution.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/BitwiseOrConvolution.hpp
+      title: Src/Sequence/BitwiseOrConvolution.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/BitwiseXORConvolution.hpp
       title: Bitwise XOR Convolution
     - icon: ':heavy_check_mark:'
@@ -674,6 +677,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/RunLengthEncoding.hpp
       title: "\u9023\u9577\u5727\u7E2E"
+    - icon: ':heavy_check_mark:'
+      path: Src/Sequence/SubsetTransform.hpp
+      title: "Subset Zeta/Mobius Transform ( $U$ \u306E\u65B9\u3078\u96C6\u3081\u308B\
+        \u3084\u3064 )"
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/SupersetTransform.hpp
       title: "Superset Zeta/Mobius Transform ( $\\emptyset$ \u306E\u65B9\u3078\u96C6\
@@ -1646,6 +1653,9 @@ data:
       title: Test/My/Utility/U32Pair.test.cpp
   - name: Test/UC
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/UC/3-25-J.test.cpp
+      title: Test/UC/3-25-J.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/UC/3-35-L.test.cpp
       title: Test/UC/3-35-L.test.cpp
