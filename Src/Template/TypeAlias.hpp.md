@@ -424,6 +424,12 @@ data:
     path: Src/Number/EratosthenesSieve.hpp
     title: "\u30A8\u30E9\u30C8\u30B9\u30C6\u30CD\u30B9\u306E\u7BE9"
   - icon: ':heavy_check_mark:'
+    path: Src/Number/GCDConvolution.hpp
+    title: Src/Number/GCDConvolution.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/LCMConvolution.hpp
+    title: Src/Number/LCMConvolution.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Number/LinearSieve.hpp
     title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
@@ -438,6 +444,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Number/PrimeFactorize.hpp
     title: Src/Number/PrimeFactorize.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/PrimeSubsetTransform.hpp
+    title: Src/Number/PrimeSubsetTransform.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/PrimeSupersetTransform.hpp
+    title: Src/Number/PrimeSupersetTransform.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Number/SternBrocotTree.hpp
     title: Stern-Brocot Tree
@@ -958,6 +970,9 @@ data:
     path: Test/AtCoder/abc302_h.test.cpp
     title: Test/AtCoder/abc302_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc304_f.test.cpp
+    title: Test/AtCoder/abc304_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc307_e.test.cpp
     title: Test/AtCoder/abc307_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1187,6 +1202,9 @@ data:
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/gcd_convolution.test.cpp
+    title: Test/LC/gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/incremental_scc.test.cpp
     title: Test/LC/incremental_scc.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1204,6 +1222,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lcm_convolution.test.cpp
+    title: Test/LC/lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/log_of_formal_power_series.test.cpp
     title: Test/LC/log_of_formal_power_series.test.cpp
@@ -1592,11 +1613,15 @@ data:
   - Src/Number/EratosthenesSieve.hpp
   - Src/Number/BinomalCoefficients.hpp
   - Src/Number/Mersenne61ModInt.hpp
+  - Src/Number/PrimeSubsetTransform.hpp
   - Src/Number/EnumerateQuotients.hpp
   - Src/Number/LinearSieve.hpp
+  - Src/Number/LCMConvolution.hpp
+  - Src/Number/PrimeSupersetTransform.hpp
   - Src/Number/EnumeratePrimes.hpp
   - Src/Number/Divisor.hpp
   - Src/Number/ModInt.hpp
+  - Src/Number/GCDConvolution.hpp
   - Src/GeometryR2/Tangent/CommonTangentBetweenCircles.hpp
   - Src/GeometryR2/Tangent/TangentToCircle.hpp
   - Src/GeometryR2/Line.hpp
@@ -1721,6 +1746,7 @@ data:
   - Test/LC/closest_pair.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/LC/eulerian_trail_directed.test.cpp
+  - Test/LC/gcd_convolution.test.cpp
   - Test/LC/aho_corasick.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
@@ -1750,6 +1776,7 @@ data:
   - Test/LC/enumerate_primes.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/eulerian_trail_undirected.test.cpp
+  - Test/LC/lcm_convolution.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/unionfind.test.cpp
@@ -1941,6 +1968,7 @@ data:
   - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/arc070_e.test.cpp
   - Test/AtCoder/abl_e.test.cpp
+  - Test/AtCoder/abc304_f.test.cpp
   - Test/AtCoder/arc185_e.test.cpp
   - Test/AtCoder/abc136_f.test.cpp
   - Test/AtCoder/abc247_g.test.cpp

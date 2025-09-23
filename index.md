@@ -587,9 +587,15 @@ data:
       path: Src/Number/ExtendGCD.hpp
       title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"
     - icon: ':heavy_check_mark:'
+      path: Src/Number/GCDConvolution.hpp
+      title: Src/Number/GCDConvolution.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Number/IntegerDivision.hpp
       title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
         \u3052\u9664\u7B97"
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/LCMConvolution.hpp
+      title: Src/Number/LCMConvolution.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Number/LinearSieve.hpp
       title: "\u7DDA\u5F62\u7BE9 (osa-k\u7D20\u56E0\u6570\u5206\u89E3)"
@@ -605,6 +611,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Number/PrimeFactorize.hpp
       title: Src/Number/PrimeFactorize.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/PrimeSubsetTransform.hpp
+      title: Src/Number/PrimeSubsetTransform.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/PrimeSupersetTransform.hpp
+      title: Src/Number/PrimeSupersetTransform.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Number/SternBrocotTree.hpp
       title: Stern-Brocot Tree
@@ -1177,6 +1189,9 @@ data:
       path: Test/AtCoder/abc302_h.test.cpp
       title: Test/AtCoder/abc302_h.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc304_f.test.cpp
+      title: Test/AtCoder/abc304_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc307_e.test.cpp
       title: Test/AtCoder/abc307_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1415,6 +1430,9 @@ data:
       path: Test/LC/furthest_pair.test.cpp
       title: Test/LC/furthest_pair.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/gcd_convolution.test.cpp
+      title: Test/LC/gcd_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/incremental_scc.test.cpp
       title: Test/LC/incremental_scc.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1426,6 +1444,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
       title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/lcm_convolution.test.cpp
+      title: Test/LC/lcm_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/log_of_formal_power_series.test.cpp
       title: Test/LC/log_of_formal_power_series.test.cpp
