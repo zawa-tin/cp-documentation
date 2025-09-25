@@ -269,41 +269,41 @@ data:
   isVerificationFile: false
   path: Src/GeometryR2/Segment.hpp
   requiredBy:
-  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
-  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
+  - Src/GeometryR2/InCircle.hpp
   - Src/GeometryR2/CrossPoint/LineAndSegment.hpp
-  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
-  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
-  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryR2/Intersect/LineAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/SegmentAndSegment.hpp
+  - Src/GeometryR2/CrossPoint/CircleAndSegment.hpp
+  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
   - Src/GeometryR2/Distance/PointAndSegment.hpp
   - Src/GeometryR2/Distance/SegmentAndSegment.hpp
-  - Src/GeometryR2/ConvexPolygonCut.hpp
+  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
+  - Src/GeometryR2/Contain/SmallestEnclosingDisc.hpp
   - Src/GeometryR2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryR2/CircumscribedCircle.hpp
-  - Src/GeometryR2/Bisector/PerpendicularBisector.hpp
-  - Src/GeometryR2/Orthgonal/SegmentAndSegment.hpp
-  - Src/GeometryR2/CommonArea/CircleAndPolygon.hpp
-  - Src/GeometryR2/InCircle.hpp
+  - Src/GeometryR2/Intersect/PolygonAndSegment.hpp
+  - Src/GeometryR2/Intersect/LineAndSegment.hpp
+  - Src/GeometryR2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryR2/ConvexPolygonCut.hpp
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1053.test.cpp
-  - Test/AOJ/CGL_7_B.test.cpp
-  - Test/AOJ/CGL_7_H.test.cpp
-  - Test/AOJ/2827.test.cpp
-  - Test/AOJ/CGL_2_B.test.cpp
-  - Test/AOJ/CGL_4_C.test.cpp
-  - Test/AOJ/CGL_5_B.test.cpp
-  - Test/AOJ/2334.test.cpp
-  - Test/AOJ/CGL_7_C.test.cpp
-  - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2003.test.cpp
-  - Test/AOJ/CGL_2_D.test.cpp
-  - Test/AOJ/2862.test.cpp
-  - Test/AOJ/1132.test.cpp
-  - Test/AOJ/CGL_2_C.test.cpp
   - Test/AtCoder/abc151_f.test.cpp
+  - Test/AOJ/2827.test.cpp
+  - Test/AOJ/CGL_7_B.test.cpp
+  - Test/AOJ/CGL_5_B.test.cpp
+  - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_2_D.test.cpp
+  - Test/AOJ/CGL_4_C.test.cpp
+  - Test/AOJ/2334.test.cpp
+  - Test/AOJ/CGL_2_C.test.cpp
+  - Test/AOJ/1157.test.cpp
+  - Test/AOJ/CGL_2_B.test.cpp
+  - Test/AOJ/CGL_7_H.test.cpp
+  - Test/AOJ/2862.test.cpp
+  - Test/AOJ/2003.test.cpp
+  - Test/AOJ/1132.test.cpp
+  - Test/AOJ/CGL_7_C.test.cpp
 documentation_of: Src/GeometryR2/Segment.hpp
 layout: document
 redirect_from:

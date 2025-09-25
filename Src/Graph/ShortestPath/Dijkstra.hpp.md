@@ -144,9 +144,9 @@ data:
   timestamp: '2023-12-14 22:32:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/Manual/abc252_e.test.cpp
   - Test/LC/shortest_path.test.cpp
   - Test/AOJ/2872.test.cpp
-  - Test/Manual/abc252_e.test.cpp
 documentation_of: Src/Graph/ShortestPath/Dijkstra.hpp
 layout: document
 redirect_from:

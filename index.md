@@ -113,6 +113,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Mo/Mo.hpp
       title: Mo's algorithm
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Mo/RollbackMo.hpp
+      title: Rollback Mo
   - name: Src/DataStructure/Other
     pages:
     - icon: ':heavy_check_mark:'
@@ -1510,6 +1513,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_frequency.test.cpp
       title: Test/LC/static_range_frequency.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/static_range_mode_query.test.cpp
+      title: Test/LC/static_range_mode_query.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp

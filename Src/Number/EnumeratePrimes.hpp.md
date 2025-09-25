@@ -70,9 +70,9 @@ data:
   timestamp: '2025-05-09 20:26:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/ECR178-D.test.cpp
   - Test/LC/enumerate_primes.test.cpp
   - Test/My/Number/EnumeratePrimes.test.cpp
+  - Test/CF/ECR178-D.test.cpp
 documentation_of: Src/Number/EnumeratePrimes.hpp
 layout: document
 title: Enumerate Primes

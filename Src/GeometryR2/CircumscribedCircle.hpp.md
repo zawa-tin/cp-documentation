@@ -274,9 +274,9 @@ data:
   timestamp: '2025-07-03 21:45:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc151_f.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/CGL_7_C.test.cpp
-  - Test/AtCoder/abc151_f.test.cpp
 documentation_of: Src/GeometryR2/CircumscribedCircle.hpp
 layout: document
 redirect_from:

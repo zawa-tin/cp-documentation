@@ -137,10 +137,10 @@ data:
   timestamp: '2025-08-10 00:41:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/inv_of_formal_power_series.test.cpp
-  - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
+  - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp
+  - Test/LC/inv_of_formal_power_series.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document
 redirect_from:

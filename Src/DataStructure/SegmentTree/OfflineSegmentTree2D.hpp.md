@@ -217,8 +217,8 @@ data:
   timestamp: '2025-08-03 16:41:16+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
 layout: document
 redirect_from:
