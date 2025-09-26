@@ -88,6 +88,6 @@ for (auto [a, b] : RollbackMo<Query, Data, decltype(add), decltype(rollback), de
 - `addR`を $O((N + Q)\sqrt{N})$ 回呼び出す
 - `addL, addR`を呼び出した回数の合計と同じ回数だけ`rollback`を呼び出す
 - `eval`を $Q$ 回呼び出す
-- $O((N + Q)\sqrt{N})$ (カウンタの管理など)
+- $O((N + Q)\sqrt{N} + Q\log Q)$ (カウンタの管理やソートなど)
 
 ロールバックの管理に関して、`vector<RBT>`を一個用いており、この要素数の最大は実行全体で高々 $N$ 個になる。

@@ -54,7 +54,7 @@ std::vector<typename std::invoke_result_t<Eval, usize, const RBT&>> RollbackMo(c
                     history.push_back(addR(R++, history.back()));
                 for (usize j = L ; j > qs[idx].l ; )
                     history.push_back(addL(--j, history.back()));
-                res[idx] = eval(i, history.back());
+                res[idx] = eval(idx, history.back());
                 for (usize j = L ; j > qs[idx].l ; j--) {
                     rollback(history.back());
                     history.pop_back();
