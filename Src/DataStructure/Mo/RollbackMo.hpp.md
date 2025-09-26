@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1054-G.test.cpp
+    title: Test/CF/CF1054-G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_mode_query.test.cpp
     title: Test/LC/static_range_mode_query.test.cpp
   _isVerificationFailed: false
@@ -43,12 +46,12 @@ data:
     \ R = L;\n            for (auto [r, idx] : rs[i]) {\n                while (R\
     \ < r)\n                    history.push_back(addR(R++, history.back()));\n  \
     \              for (usize j = L ; j > qs[idx].l ; )\n                    history.push_back(addL(--j,\
-    \ history.back()));\n                res[idx] = eval(i, history.back());\n   \
-    \             for (usize j = L ; j > qs[idx].l ; j--) {\n                    rollback(history.back());\n\
-    \                    history.pop_back();\n                }\n            }\n \
-    \           for (usize j = L ; j < R ; j++) {\n                rollback(history.back());\n\
-    \                history.pop_back();\n            }\n        }\n    return res;\n\
-    }\n\n} // namespace zawa\n"
+    \ history.back()));\n                res[idx] = eval(idx, history.back());\n \
+    \               for (usize j = L ; j > qs[idx].l ; j--) {\n                  \
+    \  rollback(history.back());\n                    history.pop_back();\n      \
+    \          }\n            }\n            for (usize j = L ; j < R ; j++) {\n \
+    \               rollback(history.back());\n                history.pop_back();\n\
+    \            }\n        }\n    return res;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <concepts>\n#include <limits>\n#include <utility>\n\
     #include <vector>\n\nnamespace zawa {\n\ntemplate <class T, class RBT, class Add,\
@@ -73,21 +76,22 @@ data:
     \ R = L;\n            for (auto [r, idx] : rs[i]) {\n                while (R\
     \ < r)\n                    history.push_back(addR(R++, history.back()));\n  \
     \              for (usize j = L ; j > qs[idx].l ; )\n                    history.push_back(addL(--j,\
-    \ history.back()));\n                res[idx] = eval(i, history.back());\n   \
-    \             for (usize j = L ; j > qs[idx].l ; j--) {\n                    rollback(history.back());\n\
-    \                    history.pop_back();\n                }\n            }\n \
-    \           for (usize j = L ; j < R ; j++) {\n                rollback(history.back());\n\
-    \                history.pop_back();\n            }\n        }\n    return res;\n\
-    }\n\n} // namespace zawa\n"
+    \ history.back()));\n                res[idx] = eval(idx, history.back());\n \
+    \               for (usize j = L ; j > qs[idx].l ; j--) {\n                  \
+    \  rollback(history.back());\n                    history.pop_back();\n      \
+    \          }\n            }\n            for (usize j = L ; j < R ; j++) {\n \
+    \               rollback(history.back());\n                history.pop_back();\n\
+    \            }\n        }\n    return res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/Mo/RollbackMo.hpp
   requiredBy: []
-  timestamp: '2025-09-26 03:53:05+09:00'
+  timestamp: '2025-09-26 14:43:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/static_range_mode_query.test.cpp
+  - Test/CF/CF1054-G.test.cpp
 documentation_of: Src/DataStructure/Mo/RollbackMo.hpp
 layout: document
 title: Rollback Mo
@@ -178,6 +182,6 @@ for (auto [a, b] : RollbackMo<Query, Data, decltype(add), decltype(rollback), de
 - `addR`を $O((N + Q)\sqrt{N})$ 回呼び出す
 - `addL, addR`を呼び出した回数の合計と同じ回数だけ`rollback`を呼び出す
 - `eval`を $Q$ 回呼び出す
-- $O((N + Q)\sqrt{N})$ (カウンタの管理など)
+- $O((N + Q)\sqrt{N} + Q\log Q)$ (カウンタの管理やソートなど)
 
 ロールバックの管理に関して、`vector<RBT>`を一個用いており、この要素数の最大は実行全体で高々 $N$ 個になる。

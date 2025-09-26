@@ -37,6 +37,9 @@ data:
     path: Test/CF/CF1026-E.test.cpp
     title: Test/CF/CF1026-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1054-G.test.cpp
+    title: Test/CF/CF1054-G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
@@ -144,6 +147,7 @@ data:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/CF/CF1026-E.test.cpp
+  - Test/CF/CF1054-G.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

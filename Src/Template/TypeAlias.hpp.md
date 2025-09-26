@@ -1103,6 +1103,9 @@ data:
     path: Test/CF/CF1026-E.test.cpp
     title: Test/CF/CF1026-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1054-G.test.cpp
+    title: Test/CF/CF1054-G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1999,6 +2002,7 @@ data:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF895-E.test.cpp
+  - Test/CF/CF1054-G.test.cpp
   - Test/yukicoder/649.test.cpp
   - Test/yukicoder/117.test.cpp
   - Test/yukicoder/3044.test.cpp

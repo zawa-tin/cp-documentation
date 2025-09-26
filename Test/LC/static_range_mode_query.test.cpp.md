@@ -50,18 +50,19 @@ data:
     \ R = L;\n            for (auto [r, idx] : rs[i]) {\n                while (R\
     \ < r)\n                    history.push_back(addR(R++, history.back()));\n  \
     \              for (usize j = L ; j > qs[idx].l ; )\n                    history.push_back(addL(--j,\
-    \ history.back()));\n                res[idx] = eval(i, history.back());\n   \
-    \             for (usize j = L ; j > qs[idx].l ; j--) {\n                    rollback(history.back());\n\
-    \                    history.pop_back();\n                }\n            }\n \
-    \           for (usize j = L ; j < R ; j++) {\n                rollback(history.back());\n\
-    \                history.pop_back();\n            }\n        }\n    return res;\n\
-    }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n\
-    #line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n#include <iterator>\n#line 10 \"Src/Sequence/CompressedSequence.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\n    static\
-    \ constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
-    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
-    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ history.back()));\n                res[idx] = eval(idx, history.back());\n \
+    \               for (usize j = L ; j > qs[idx].l ; j--) {\n                  \
+    \  rollback(history.back());\n                    history.pop_back();\n      \
+    \          }\n            }\n            for (usize j = L ; j < R ; j++) {\n \
+    \               rollback(history.back());\n                history.pop_back();\n\
+    \            }\n        }\n    return res;\n}\n\n} // namespace zawa\n#line 2\
+    \ \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\n#include <iterator>\n#line\
+    \ 10 \"Src/Sequence/CompressedSequence.hpp\"\n\nnamespace zawa {\n\ntemplate <class\
+    \ T>\nclass CompressedSequence {\npublic:\n\n    static constexpr u32 NotFound\
+    \ = std::numeric_limits<u32>::max();\n\n    CompressedSequence() = default;\n\n\
+    \    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
+    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
     \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -123,7 +124,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_range_mode_query.test.cpp
   requiredBy: []
-  timestamp: '2025-09-26 03:53:05+09:00'
+  timestamp: '2025-09-26 14:43:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_mode_query.test.cpp
