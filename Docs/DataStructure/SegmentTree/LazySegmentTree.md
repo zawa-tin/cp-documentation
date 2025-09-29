@@ -19,7 +19,7 @@ documentation_of: //Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 
 `Value get(usize i)`: $i$ 番目の要素を取得
 
-`void assign(usize i, const V& v)`: $i$ 番目の要素に $v$ を代入 (未verify)
+`void assign(usize i, const V& v)`: $i$ 番目の要素に $v$ を代入
 
 `usize maxRight(usize l, F f)`: $f(\text{prod}(a_l, \dots, a_{r-1}))$ が`true`であるような最大の $r$ を返す(単調性を仮定)
 
@@ -30,3 +30,5 @@ documentation_of: //Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 2023/11/08: `operator[]`にWarningがでていたのを解消
 
 2025/6/25: 書き直した
+
+2025/9/29: CF1052-Eで`assign`をverify
