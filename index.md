@@ -1329,6 +1329,9 @@ data:
       path: Test/CF/CF1026-E.test.cpp
       title: Test/CF/CF1026-E.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/CF/CF1052-E.test.cpp
+      title: Test/CF/CF1052-E.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/CF1054-G.test.cpp
       title: Test/CF/CF1054-G.test.cpp
     - icon: ':heavy_check_mark:'

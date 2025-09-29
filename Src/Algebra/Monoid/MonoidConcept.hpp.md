@@ -204,6 +204,9 @@ data:
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1052-E.test.cpp
+    title: Test/CF/CF1052-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF895-E.test.cpp
     title: Test/CF/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -392,6 +395,7 @@ data:
   - Test/AOJ/3111.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/CF/EC171-F.test.cpp
+  - Test/CF/CF1052-E.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF895-E.test.cpp
   - Test/yukicoder/649.test.cpp

@@ -1103,6 +1103,9 @@ data:
     path: Test/CF/CF1026-E.test.cpp
     title: Test/CF/CF1026-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1052-E.test.cpp
+    title: Test/CF/CF1052-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1054-G.test.cpp
     title: Test/CF/CF1054-G.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1997,6 +2000,7 @@ data:
   - Test/CF/CF956-F.test.cpp
   - Test/CF/EC162-D.test.cpp
   - Test/CF/EC171-F.test.cpp
+  - Test/CF/CF1052-E.test.cpp
   - Test/CF/CF923-F.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/EC2-E.test.cpp

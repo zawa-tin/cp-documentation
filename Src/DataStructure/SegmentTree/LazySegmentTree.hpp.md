@@ -31,6 +31,9 @@ data:
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1052-E.test.cpp
+    title: Test/CF/CF1052-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF895-E.test.cpp
     title: Test/CF/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -265,6 +268,7 @@ data:
   - Test/AtCoder/abc322_f.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/CF/CF1052-E.test.cpp
   - Test/CF/CF895-E.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 layout: document
@@ -287,7 +291,7 @@ title: Lazy Segment Tree
 
 `Value get(usize i)`: $i$ 番目の要素を取得
 
-`void assign(usize i, const V& v)`: $i$ 番目の要素に $v$ を代入 (未verify)
+`void assign(usize i, const V& v)`: $i$ 番目の要素に $v$ を代入
 
 `usize maxRight(usize l, F f)`: $f(\text{prod}(a_l, \dots, a_{r-1}))$ が`true`であるような最大の $r$ を返す(単調性を仮定)
 
@@ -298,3 +302,5 @@ title: Lazy Segment Tree
 2023/11/08: `operator[]`にWarningがでていたのを解消
 
 2025/6/25: 書き直した
+
+2025/9/29: CF1052-Eで`assign`をverify

@@ -34,6 +34,9 @@ data:
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1052-E.test.cpp
+    title: Test/CF/CF1052-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF895-E.test.cpp
     title: Test/CF/CF895-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,6 +93,7 @@ data:
   - Test/AtCoder/abc322_f.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/CF/CF1052-E.test.cpp
   - Test/CF/CF895-E.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
 layout: document
