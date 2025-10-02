@@ -12,9 +12,9 @@ public:
 
     SubarraySumMax() = default;
 
-    explicit SubarraySumMax(T v) : m_ans{v}, m_sum{v}, m_pref{v}, m_suf{v}, m_entire{true} {}
+    explicit SubarraySumMax(T v) : m_ans{v}, m_sum{v}, m_pref{v}, m_suf{v} {}
 
-    SubarraySumMax(T ans, T sum, T pref, T suf, bool entire) : m_ans{ans}, m_sum{sum}, m_pref{pref}, m_suf{suf}, m_entire{entire} {}
+    SubarraySumMax(T ans, T sum, T pref, T suf) : m_ans{ans}, m_sum{sum}, m_pref{pref}, m_suf{suf} {}
 
     inline T ans() const {
         return m_ans;
@@ -32,24 +32,18 @@ public:
         return m_suf;
     }
 
-    inline bool entire() const {
-        return m_entire;
-    }
-
     static SubarraySumMax<T> merge(const SubarraySumMax<T>& lhs, const SubarraySumMax<T>& rhs) {
         T sum = lhs.sum() + rhs.sum();
         T pref = std::max(lhs.pref(), lhs.sum() + rhs.pref());
         T suf = std::max(rhs.suf(), lhs.suf() + rhs.sum());
-        T ans = std::max({lhs.ans(), rhs.ans(), lhs.suf() + rhs.pref(), sum});
-        bool entire = (ans == sum);
-        return {ans, sum, pref, suf, entire};
+        T ans = std::max({lhs.ans(), rhs.ans(), lhs.suf() + rhs.pref()});
+        return {ans, sum, pref, suf};
     }
 
 private:
 
     T m_ans{}, m_sum{}, m_pref{}, m_suf{};
 
-    bool m_entire{};
 };
 
 template <std::totally_ordered T>
