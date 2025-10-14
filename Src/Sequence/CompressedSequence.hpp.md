@@ -57,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_mode_query.test.cpp
     title: Test/LC/static_range_mode_query.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/UC/4-2-K.test.cpp
+    title: Test/UC/4-2-K.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -146,6 +149,7 @@ data:
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
+  - Test/UC/4-2-K.test.cpp
   - Test/CF/CF1026-E.test.cpp
   - Test/CF/CF1054-G.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp

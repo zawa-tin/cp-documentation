@@ -1439,6 +1439,9 @@ data:
     path: Test/UC/3-37-M.test.cpp
     title: Test/UC/3-37-M.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/UC/4-2-K.test.cpp
+    title: Test/UC/4-2-K.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1901,6 +1904,7 @@ data:
   - Test/UC/3-36-F.test.cpp
   - Test/UC/3-35-L.test.cpp
   - Test/UC/3-37-M.test.cpp
+  - Test/UC/4-2-K.test.cpp
   - Test/UC/3-25-J.test.cpp
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp

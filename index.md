@@ -1698,6 +1698,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/UC/3-37-M.test.cpp
       title: Test/UC/3-37-M.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/UC/4-2-K.test.cpp
+      title: Test/UC/4-2-K.test.cpp
   - name: Test/yukicoder
     pages:
     - icon: ':heavy_check_mark:'

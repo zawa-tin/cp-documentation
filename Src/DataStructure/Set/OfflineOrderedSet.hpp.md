@@ -75,39 +75,41 @@ data:
     \n} // namespace zawa\n#line 5 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n\n#include <vector>\n#line 8 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
     \n#include <ostream>\n#include <functional>\n#line 11 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n\nnamespace zawa {\n\ntemplate <concepts::Group Group>\nclass FenwickTree {\n\
-    public:\n\n    using VM = Group;\n    \n    using V = typename VM::Element;\n\n\
-    \    FenwickTree() = default;\n\n    explicit FenwickTree(usize n) : m_n{ n },\
-    \ m_bitwidth{ std::__lg(n) + 1 }, m_a(n), m_dat(n + 1, VM::identity()) {\n   \
-    \     m_dat.shrink_to_fit();\n        m_a.shrink_to_fit();\n    }\n\n    explicit\
-    \ FenwickTree(const std::vector<V>& a) : m_n{ a.size() }, m_bitwidth{ std::__lg(a.size())\
-    \ + 1 }, m_a(a), m_dat(a.size() + 1, VM::identity()) {\n        m_dat.shrink_to_fit();\
-    \  \n        m_a.shrink_to_fit();\n        for (i32 i{} ; i < static_cast<i32>(m_n)\
-    \ ; i++) {\n            addDat(i, a[i]);\n        }\n    }\n\n    inline usize\
-    \ size() const noexcept {\n        return m_n;\n    }\n\n    // return a[i]\n\
-    \    const V& get(usize i) const noexcept {\n        assert(i < size());\n   \
-    \     return m_a[i];\n    }\n\n    // return a[i]\n    const V& operator[](usize\
-    \ i) const noexcept {\n        assert(i < size());\n        return m_a[i];\n \
-    \   }\n\n    // a[i] <- a[i] + v\n    void operation(usize i, const V& v) {\n\
-    \        assert(i < size());\n        addDat(i, v);\n        m_a[i] = VM::operation(m_a[i],\
-    \ v);\n    }\n\n    // a[i] <- v\n    void assign(usize i, const V& v) {\n   \
-    \     assert(i < size());\n        addDat(i, VM::operation(VM::inverse(m_a[i]),\
-    \ v));\n        m_a[i] = v;\n    }\n\n    // return a[0] + a[1] + ... + a[r -\
-    \ 1]\n    V prefixProduct(usize r) const {\n        assert(r <= size());\n   \
-    \     return product(r);\n    }\n\n    // return a[l] + a[l + 1] ... + a[r - 1]\n\
-    \    V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
-    \        return VM::operation(VM::inverse(product(l)), product(r));\n    }\n\n\
-    \    template <class Function>\n    usize maxRight(usize l, const Function& f)\
-    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
-    \ \"maxRight's argument f must be function bool(T)\");\n        assert(l <= size());\n\
-    \        assert(f(VM::identity()));\n        V sum{ VM::inverse(product(l)) };\
-    \ \n        usize r{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n   \
-    \         bit--;\n            usize nxt{ r | (1u << bit) };\n            if (nxt\
-    \ < m_dat.size() and (nxt <= l or f(VM::operation(sum, m_dat[nxt])))) {\n    \
-    \            sum = VM::operation(sum, m_dat[nxt]);\n                r = std::move(nxt);\n\
-    \            }\n        }\n        assert(l <= r);\n        return r;\n    }\n\
-    \n    template <class Function>\n    usize minLeft(usize r, const Function& f)\
-    \ const {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass FenwickTree\
+    \ {\npublic:\n\n    using VM = Monoid;\n    \n    using V = typename VM::Element;\n\
+    \n    FenwickTree() = default;\n\n    explicit FenwickTree(usize n) : m_n{ n },\
+    \ m_bitwidth{ std::__lg(n) + 1 }, m_a(n, VM::identity()), m_dat(n + 1, VM::identity())\
+    \ {\n        m_dat.shrink_to_fit();\n        m_a.shrink_to_fit();\n    }\n\n \
+    \   explicit FenwickTree(const std::vector<V>& a) : m_n{ a.size() }, m_bitwidth{\
+    \ std::__lg(a.size()) + 1 }, m_a(a), m_dat(a.size() + 1, VM::identity()) {\n \
+    \       m_dat.shrink_to_fit();  \n        m_a.shrink_to_fit();\n        for (i32\
+    \ i{} ; i < static_cast<i32>(m_n) ; i++) {\n            addDat(i, a[i]);\n   \
+    \     }\n    }\n\n    inline usize size() const noexcept {\n        return m_n;\n\
+    \    }\n\n    // return a[i]\n    const V& get(usize i) const noexcept {\n   \
+    \     assert(i < size());\n        return m_a[i];\n    }\n\n    // return a[i]\n\
+    \    const V& operator[](usize i) const noexcept {\n        assert(i < size());\n\
+    \        return m_a[i];\n    }\n\n    // a[i] <- a[i] + v\n    void operation(usize\
+    \ i, const V& v) {\n        assert(i < size());\n        addDat(i, v);\n     \
+    \   m_a[i] = VM::operation(m_a[i], v);\n    }\n\n    // a[i] <- v\n    void assign(usize\
+    \ i, const V& v) requires concepts::Inversible<Monoid> {\n        assert(i < size());\n\
+    \        addDat(i, VM::operation(VM::inverse(m_a[i]), v));\n        m_a[i] = v;\n\
+    \    }\n\n    // return a[0] + a[1] + ... + a[r - 1]\n    V prefixProduct(usize\
+    \ r) const {\n        assert(r <= size());\n        return product(r);\n    }\n\
+    \n    // return a[l] + a[l + 1] ... + a[r - 1]\n    V product(usize l, usize r)\
+    \ const requires concepts::Inversible<Monoid> {\n        assert(l <= r and r <=\
+    \ size());\n        return VM::operation(VM::inverse(product(l)), product(r));\n\
+    \    }\n\n    template <class Function>\n    usize maxRight(usize l, const Function&\
+    \ f) const requires concepts::Inversible<Monoid> {\n        static_assert(std::is_convertible_v<decltype(f),\
+    \ std::function<bool(V)>>, \"maxRight's argument f must be function bool(T)\"\
+    );\n        assert(l <= size());\n        assert(f(VM::identity()));\n       \
+    \ V sum{ VM::inverse(product(l)) }; \n        usize r{};\n        for (usize bit{\
+    \ m_bitwidth } ; bit ; ) {\n            bit--;\n            usize nxt{ r | (1u\
+    \ << bit) };\n            if (nxt < m_dat.size() and (nxt <= l or f(VM::operation(sum,\
+    \ m_dat[nxt])))) {\n                sum = VM::operation(sum, m_dat[nxt]);\n  \
+    \              r = std::move(nxt);\n            }\n        }\n        assert(l\
+    \ <= r);\n        return r;\n    }\n\n    template <class Function>\n    usize\
+    \ minLeft(usize r, const Function& f) const requires concepts::Inversible<Monoid>\
+    \ {\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
     \ \"minLeft's argument f must be function bool(T)\");\n        assert(r <= size());\n\
     \        assert(f(VM::identity()));\n        V sum{ product(r) };\n        usize\
     \ l{};\n        for (usize bit{ m_bitwidth } ; bit ; ) {\n            bit--;\n\
@@ -265,7 +267,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/Set/OfflineOrderedSet.hpp
   requiredBy: []
-  timestamp: '2025-08-15 19:51:26+09:00'
+  timestamp: '2025-10-14 12:56:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp

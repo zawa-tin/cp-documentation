@@ -70,6 +70,9 @@ data:
     path: Test/LC/vertex_add_subtree_sum.test.cpp
     title: Test/LC/vertex_add_subtree_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/UC/4-2-K.test.cpp
+    title: Test/UC/4-2-K.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/yukicoder/649.test.cpp
     title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
@@ -125,6 +128,7 @@ data:
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/UC/4-2-K.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/yukicoder/649.test.cpp
