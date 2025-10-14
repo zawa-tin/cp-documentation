@@ -7,20 +7,21 @@ documentation_of: //Src/DataStructure/FenwickTree/FenwickTree.hpp
 
 可換群 $G = (S, \circ)$ 上で列上の一点更新、区間積クエリに答えることができるデータ構造です。
 - 以後、管理する列を $A$ とします。
+- prefixの積のみに限定するならば、可換モノイド(=逆元が無い)でも対応可能です。
 
 ## ライブラリの使い方
 
 #### テンプレート引数
 
 ```cpp
-template <class Group>
+template <class Monoid>
 ```
 
-群 $G$ を指定します。
+可換モノイド $M$ を指定します。
 
 詳細は、[本ライブラリにおける群の実装について](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Group.html) を確認してください。
 
-以下、`Group::Element` を `Value` と訳します。
+以下、`Monoid::Element` を `Value` と訳します。
 
 <br />
 
@@ -104,7 +105,7 @@ $A_i$ を $A_i \circ v$ に置き換えます。
 ```cpp
 void assign(usize i, const Value& v)
 ```
-$A_i$ を $v$ を置き換えます。
+$A_i$ を $v$ を置き換えます。 $M$ に`inverse`が定義されていることが必要です。
 
 **制約**: $0\ \le\ i\ <\ n$
 
@@ -132,7 +133,7 @@ $\displaystyle \prod_{i = 0}^{r - 1} A_{i}$ を求め、返します。
 Value product(usize l, usize r) const
 ```
 
-$\displaystyle \prod_{i = l}^{r - 1} A_i$ を求めます。
+$\displaystyle \prod_{i = l}^{r - 1} A_i$ を求めます。 $M$ に`inverse`が定義されていることが必要です。
 
 **制約**: $0\ \le\ l\ \le\ r\ \le\ n$
 
@@ -152,6 +153,8 @@ u32 maxRight(u32 l, const Function& f) const
 そのような状況で、 $m$ を発見して返します。
 
 ただし、 $f(\displaystyle \prod_{i = l}^{n - 1} A_{i}) = \text{true}$ の時は $n$ を返します。
+
+$M$ に`inverse`が定義されていることが必要です。
 
 **制約**
 
@@ -176,6 +179,7 @@ u32 minLeft(u32 l, const Function& f) const
 
 ただし、 $f(\displaystyle \prod_{i = 0}^{r - 1} A_{i}) = \text{true}$ の時は $0$ を返します。
 
+$M$ に`inverse`が定義されていることが必要です。
 
 **制約**
 
@@ -206,3 +210,5 @@ $n + 1$ 要素空白区切りで出力します。 $i$ 要素目は $\displaysty
 2023/12/28: minLeftをverify
 
 2025/06/24: 値の型名を`Value`から`V`へ変更
+
+2025/10/14: $a_i$ のコンストラクタが壊れていたので修正。モノイドでも一部メンバが呼び出せるように修正。
