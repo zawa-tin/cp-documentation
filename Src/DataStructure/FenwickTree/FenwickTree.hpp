@@ -11,17 +11,17 @@
 
 namespace zawa {
 
-template <concepts::Group Group>
+template <concepts::Monoid Monoid>
 class FenwickTree {
 public:
 
-    using VM = Group;
+    using VM = Monoid;
     
     using V = typename VM::Element;
 
     FenwickTree() = default;
 
-    explicit FenwickTree(usize n) : m_n{ n }, m_bitwidth{ std::__lg(n) + 1 }, m_a(n), m_dat(n + 1, VM::identity()) {
+    explicit FenwickTree(usize n) : m_n{ n }, m_bitwidth{ std::__lg(n) + 1 }, m_a(n, VM::identity()), m_dat(n + 1, VM::identity()) {
         m_dat.shrink_to_fit();
         m_a.shrink_to_fit();
     }
@@ -58,7 +58,7 @@ public:
     }
 
     // a[i] <- v
-    void assign(usize i, const V& v) {
+    void assign(usize i, const V& v) requires concepts::Inversible<Monoid> {
         assert(i < size());
         addDat(i, VM::operation(VM::inverse(m_a[i]), v));
         m_a[i] = v;
@@ -71,13 +71,13 @@ public:
     }
 
     // return a[l] + a[l + 1] ... + a[r - 1]
-    V product(usize l, usize r) const {
+    V product(usize l, usize r) const requires concepts::Inversible<Monoid> {
         assert(l <= r and r <= size());
         return VM::operation(VM::inverse(product(l)), product(r));
     }
 
     template <class Function>
-    usize maxRight(usize l, const Function& f) const {
+    usize maxRight(usize l, const Function& f) const requires concepts::Inversible<Monoid> {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "maxRight's argument f must be function bool(T)");
         assert(l <= size());
         assert(f(VM::identity()));
@@ -96,7 +96,7 @@ public:
     }
 
     template <class Function>
-    usize minLeft(usize r, const Function& f) const {
+    usize minLeft(usize r, const Function& f) const requires concepts::Inversible<Monoid> {
         static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, "minLeft's argument f must be function bool(T)");
         assert(r <= size());
         assert(f(VM::identity()));
