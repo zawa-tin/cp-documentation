@@ -9,26 +9,26 @@ namespace zawa {
 
 namespace internal {
 
-// [x^K] P(x) / Q(x)を計算するアルゴリズム
+// compute [x^K] P(x) / Q(x)
 template <class T, class F>
 T BostanMori(u64 K, std::vector<T> P, std::vector<T> Q, F mult) {
     assert(P.size());
     assert(Q.size() and Q[0] != T(0));
 
-    // p(-x)を計算
+    // compute p(-x)
     auto minus_x{[](const std::vector<T>& p) -> std::vector<T> {
         std::vector<T> res(p.size()); 
         for (usize i{} ; i < p.size() ; i++) res[i] = (i % 2 ? T{-1} * p[i] : p[i]);
         return res;
     }};
-    // 奇数次数の係数のみを取り出す
+    // pick up coef of odd degree
     auto odd{[](const std::vector<T>& p) -> std::vector<T> {
         std::vector<T> res;
         res.reserve(p.size() >> 1);
         for (usize i{1} ; i < p.size() ; i += 2u) res.push_back(p[i]);
         return res;
     }};
-    // 偶数次数の係数のみを取り出す
+    // pick up coef of even degree
     auto even{[](const std::vector<T>& p) -> std::vector<T> {
         std::vector<T> res;
         res.reserve((p.size() & 1) + (p.size() >> 1));

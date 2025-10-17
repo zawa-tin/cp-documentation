@@ -175,7 +175,6 @@ private:
     void operation(usize i, const O& o, usize nd, usize nl, usize nr) {
         if (nl == i and i + 1 == nr) {
             m_dat[nd] = S::mapping(m_dat[nd], o);
-            // 葉頂点なので、lazyへのopは不要
             return;
         }
         propagate(nd); 

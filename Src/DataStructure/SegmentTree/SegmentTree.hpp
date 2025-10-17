@@ -90,15 +90,11 @@ public:
         assert(f(VM::identity()));
         usize res{l}, width{1};
         V prod{ VM::identity() };
-        // 現在の見ている頂点の幅をwidthで持つ
-        // 境界がある頂点を含む部分木の根を探す
-        // (折り返す時は必要以上の幅を持つ根になるが、widthを持っているのでオーバーしない)
         for (l += size() ; res + width <= size() ; l = parent(l), width <<= 1) if (l & 1) {
             if (not f(VM::operation(prod, m_dat[l]))) break; 
             res += width;
             prod = VM::operation(prod, m_dat[l++]);
         }
-        // 根から下って、境界を発見する
         while (l = left(l), width >>= 1) {
             if (res + width <= size() and f(VM::operation(prod, m_dat[l]))) {
                 res += width;

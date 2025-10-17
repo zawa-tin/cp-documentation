@@ -26,7 +26,7 @@ std::vector<mint> PolynomialInterpolation(const std::vector<mint>& xs, const std
     }
     std::vector<mint> ans(xs.size());
     for (usize idx = 0 ; mint x : xs) {
-        // 分子は戻すdp
+        // num -> modosu dp
         std::vector<mint> num(xs.size());  
         if (x == mint{0}) {
             for (usize i = 0 ; i < num.size() ; i++)
@@ -38,7 +38,7 @@ std::vector<mint> PolynomialInterpolation(const std::vector<mint>& xs, const std
             for (usize i = 1 ; i < num.size() ; i++) 
                 num[i] = (num[i - 1] - dp[i]) * ix;
         }
-        // 分母はねねちゃん
+        // den -> nene chang!
         mint den = 1;
         for (usize i = 0 ; i < xs.size() ; i++)
             if (i != idx)
