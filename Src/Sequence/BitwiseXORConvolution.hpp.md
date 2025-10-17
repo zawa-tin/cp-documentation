@@ -24,8 +24,7 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Sequence/BitwiseXORConvolution.hpp\"\n\n\
     #include <bit>\n#include <concepts>\n#include <cassert>\n#include <vector>\n\n\
-    namespace zawa {\n\n// note: \u8FD4\u308A\u5024\u306E\u5404\u70B9\u306E\u5024\u306F\
-    \u771F\u306E\u5024\u3088\u308A(2^{k/2})\u500D\u3055\u308C\u3066\u3044\u308B\n\
+    namespace zawa {\n\n// note: each values are multed by 2^{k/2} than truth value\n\
     template <class T>\nvoid FastWalshHadamardTransform(std::vector<T>& A) {\n   \
     \ if (A.empty()) return;\n    while (!std::has_single_bit(A.size())) A.push_back(T{0});\n\
     \    const usize k = std::bit_width(A.size()) - 1, n = A.size();\n    for (usize\
@@ -53,16 +52,15 @@ data:
     \ b);\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <bit>\n\
     #include <concepts>\n#include <cassert>\n#include <vector>\n\nnamespace zawa {\n\
-    \n// note: \u8FD4\u308A\u5024\u306E\u5404\u70B9\u306E\u5024\u306F\u771F\u306E\u5024\
-    \u3088\u308A(2^{k/2})\u500D\u3055\u308C\u3066\u3044\u308B\ntemplate <class T>\n\
-    void FastWalshHadamardTransform(std::vector<T>& A) {\n    if (A.empty()) return;\n\
-    \    while (!std::has_single_bit(A.size())) A.push_back(T{0});\n    const usize\
-    \ k = std::bit_width(A.size()) - 1, n = A.size();\n    for (usize i = 0 ; i <\
-    \ k ; i++) {\n        const usize bit = 1 << i;\n        for (usize j = 0 ; j\
-    \ < n ; j += bit << 1) {\n            for (usize k = 0 ; k < bit ; k++) {\n  \
-    \              const T p = A[j + k], q = A[j + k + bit];\n                A[j\
-    \ + k] = p + q;\n                A[j + k + bit] = p - q;\n            }\n    \
-    \    }\n    }\n}\n\ntemplate <class T>\nstd::vector<T> BitwiseXORConvolution(std::vector<T>\
+    \n// note: each values are multed by 2^{k/2} than truth value\ntemplate <class\
+    \ T>\nvoid FastWalshHadamardTransform(std::vector<T>& A) {\n    if (A.empty())\
+    \ return;\n    while (!std::has_single_bit(A.size())) A.push_back(T{0});\n   \
+    \ const usize k = std::bit_width(A.size()) - 1, n = A.size();\n    for (usize\
+    \ i = 0 ; i < k ; i++) {\n        const usize bit = 1 << i;\n        for (usize\
+    \ j = 0 ; j < n ; j += bit << 1) {\n            for (usize k = 0 ; k < bit ; k++)\
+    \ {\n                const T p = A[j + k], q = A[j + k + bit];\n             \
+    \   A[j + k] = p + q;\n                A[j + k + bit] = p - q;\n            }\n\
+    \        }\n    }\n}\n\ntemplate <class T>\nstd::vector<T> BitwiseXORConvolution(std::vector<T>\
     \ A, std::vector<T> B) {\n    FastWalshHadamardTransform(A);\n    FastWalshHadamardTransform(B);\n\
     \    if (A.size() > B.size()) std::swap(A, B);\n    for (usize i = 0 ; i < A.size()\
     \ ; i++) A[i] *= B[i];\n    FastWalshHadamardTransform(A);\n    if (A.empty())\
@@ -85,7 +83,7 @@ data:
   isVerificationFile: false
   path: Src/Sequence/BitwiseXORConvolution.hpp
   requiredBy: []
-  timestamp: '2025-06-02 16:41:21+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc396_g.test.cpp

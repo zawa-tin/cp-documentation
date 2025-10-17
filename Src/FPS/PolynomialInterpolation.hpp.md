@@ -39,24 +39,23 @@ data:
     \ next(dp.size() + 1);\n        for (usize i = 0 ; i < dp.size() ; i++) {\n  \
     \          next[i + 1] += dp[i];\n            next[i] += dp[i] * -x;\n       \
     \ }\n        dp = std::move(next);\n    }\n    std::vector<mint> ans(xs.size());\n\
-    \    for (usize idx = 0 ; mint x : xs) {\n        // \u5206\u5B50\u306F\u623B\u3059\
-    dp\n        std::vector<mint> num(xs.size());  \n        if (x == mint{0}) {\n\
-    \            for (usize i = 0 ; i < num.size() ; i++)\n                num[i]\
-    \ = dp[i + 1];\n        }\n        else {\n            const mint ix = mint{1}\
-    \ / x;\n            num[0] = -dp[0] * ix;\n            for (usize i = 1 ; i <\
-    \ num.size() ; i++) \n                num[i] = (num[i - 1] - dp[i]) * ix;\n  \
-    \      }\n        // \u5206\u6BCD\u306F\u306D\u306D\u3061\u3083\u3093\n      \
-    \  mint den = 1;\n        for (usize i = 0 ; i < xs.size() ; i++)\n          \
-    \  if (i != idx)\n                den *= x - xs[i];\n        den = mint{1} / den;\n\
-    \        for (usize i = 0 ; i < xs.size() ; i++)\n            ans[i] += ys[idx]\
-    \ * num[i] * den;\n        idx++;\n    } \n    return ans;\n}\n\n} // namespace\
-    \ zawa\n"
+    \    for (usize idx = 0 ; mint x : xs) {\n        // num -> modosu dp\n      \
+    \  std::vector<mint> num(xs.size());  \n        if (x == mint{0}) {\n        \
+    \    for (usize i = 0 ; i < num.size() ; i++)\n                num[i] = dp[i +\
+    \ 1];\n        }\n        else {\n            const mint ix = mint{1} / x;\n \
+    \           num[0] = -dp[0] * ix;\n            for (usize i = 1 ; i < num.size()\
+    \ ; i++) \n                num[i] = (num[i - 1] - dp[i]) * ix;\n        }\n  \
+    \      // den -> nene chang!\n        mint den = 1;\n        for (usize i = 0\
+    \ ; i < xs.size() ; i++)\n            if (i != idx)\n                den *= x\
+    \ - xs[i];\n        den = mint{1} / den;\n        for (usize i = 0 ; i < xs.size()\
+    \ ; i++)\n            ans[i] += ys[idx] * num[i] * den;\n        idx++;\n    }\
+    \ \n    return ans;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/PolynomialInterpolation.hpp
   requiredBy: []
-  timestamp: '2025-08-25 17:13:03+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc137_f.test.cpp

@@ -53,7 +53,7 @@ data:
   isVerificationFile: true
   path: Test/LC/polynomial_interpolation/quadratic.test.cpp
   requiredBy: []
-  timestamp: '2025-08-30 17:03:33+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/polynomial_interpolation/quadratic.test.cpp

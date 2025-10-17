@@ -119,17 +119,16 @@ data:
     \        operation(ql, qr, o, nd << 1 | 0, nl, m);\n        operation(ql, qr,\
     \ o, nd << 1 | 1, m, nr);\n        recalc(nd);\n    }\n\n    void operation(usize\
     \ i, const O& o, usize nd, usize nl, usize nr) {\n        if (nl == i and i +\
-    \ 1 == nr) {\n            m_dat[nd] = S::mapping(m_dat[nd], o);\n            //\
-    \ \u8449\u9802\u70B9\u306A\u306E\u3067\u3001lazy\u3078\u306Eop\u306F\u4E0D\u8981\
-    \n            return;\n        }\n        propagate(nd); \n        const usize\
-    \ m = (nl + nr) >> 1;\n        i < m ? operation(i, o, nd << 1 | 0, nl, m) : operation(i,\
-    \ o, nd << 1 | 1, m, nr);\n        recalc(nd);\n    }\n\n    void assign(usize\
-    \ i, const V& v, usize nd, usize nl, usize nr) {\n        if (nl == i and i +\
-    \ 1 == nr) {\n            m_dat[nd] = v;\n            return;\n        }\n   \
-    \     propagate(nd); \n        const usize m = (nl + nr) >> 1;\n        i < m\
-    \ ? assign(i, v, nd << 1 | 0, nl, m) : assign(i, v, nd << 1 | 1, m, nr);\n   \
-    \     recalc(nd);\n    }\n\n    void partition_range(usize ql, usize qr, std::vector<NodeInfo>&\
-    \ res, usize nd, usize nl, usize nr) {\n        if (qr <= nl or nr <= ql) return;\n\
+    \ 1 == nr) {\n            m_dat[nd] = S::mapping(m_dat[nd], o);\n            return;\n\
+    \        }\n        propagate(nd); \n        const usize m = (nl + nr) >> 1;\n\
+    \        i < m ? operation(i, o, nd << 1 | 0, nl, m) : operation(i, o, nd << 1\
+    \ | 1, m, nr);\n        recalc(nd);\n    }\n\n    void assign(usize i, const V&\
+    \ v, usize nd, usize nl, usize nr) {\n        if (nl == i and i + 1 == nr) {\n\
+    \            m_dat[nd] = v;\n            return;\n        }\n        propagate(nd);\
+    \ \n        const usize m = (nl + nr) >> 1;\n        i < m ? assign(i, v, nd <<\
+    \ 1 | 0, nl, m) : assign(i, v, nd << 1 | 1, m, nr);\n        recalc(nd);\n   \
+    \ }\n\n    void partition_range(usize ql, usize qr, std::vector<NodeInfo>& res,\
+    \ usize nd, usize nl, usize nr) {\n        if (qr <= nl or nr <= ql) return;\n\
     \        if (ql <= nl and nr <= qr) {\n            res.emplace_back(nd, nl, nr);\n\
     \            return;\n        }\n        propagate(nd);\n        const usize m\
     \ = (nl + nr) >> 1;\n        partition_range(ql, qr, res, nd << 1 | 0, nl, m);\n\
@@ -243,7 +242,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc322_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-25 16:48:25+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc322_f.test.cpp

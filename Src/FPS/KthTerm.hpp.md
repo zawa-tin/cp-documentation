@@ -29,25 +29,23 @@ data:
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 7 \"Src/FPS/KthTerm.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace internal {\n\n// [x^K] P(x) / Q(x)\u3092\u8A08\
-    \u7B97\u3059\u308B\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0\ntemplate <class T, class\
-    \ F>\nT BostanMori(u64 K, std::vector<T> P, std::vector<T> Q, F mult) {\n    assert(P.size());\n\
-    \    assert(Q.size() and Q[0] != T(0));\n\n    // p(-x)\u3092\u8A08\u7B97\n  \
-    \  auto minus_x{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res(p.size()); \n        for (usize i{} ; i < p.size() ; i++) res[i] = (i %\
-    \ 2 ? T{-1} * p[i] : p[i]);\n        return res;\n    }};\n    // \u5947\u6570\
-    \u6B21\u6570\u306E\u4FC2\u6570\u306E\u307F\u3092\u53D6\u308A\u51FA\u3059\n   \
-    \ auto odd{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res;\n        res.reserve(p.size() >> 1);\n        for (usize i{1} ; i < p.size()\
-    \ ; i += 2u) res.push_back(p[i]);\n        return res;\n    }};\n    // \u5076\
-    \u6570\u6B21\u6570\u306E\u4FC2\u6570\u306E\u307F\u3092\u53D6\u308A\u51FA\u3059\
-    \n    auto even{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res;\n        res.reserve((p.size() & 1) + (p.size() >> 1));\n        for (usize\
-    \ i{} ; i < p.size() ; i += 2u) res.push_back(p[i]);\n        return res;\n  \
-    \  }};\n\n    while (K) {\n        auto Qm{minus_x(Q)};\n        auto U{mult(P,\
-    \ Qm)};\n        P = (K & 1 ? odd(U) : even(U));\n        Q = even(mult(Q, Qm));\n\
-    \        K >>= 1;\n    }\n    return (Q[0] == T{1} ? P[0] : P[0] / Q[0]);\n}\n\
-    \n} // namespace internal\n\ntemplate <class T, class F>\nT KthTerm(u64 K, std::vector<T>\
+    \n\nnamespace zawa {\n\nnamespace internal {\n\n// compute [x^K] P(x) / Q(x)\n\
+    template <class T, class F>\nT BostanMori(u64 K, std::vector<T> P, std::vector<T>\
+    \ Q, F mult) {\n    assert(P.size());\n    assert(Q.size() and Q[0] != T(0));\n\
+    \n    // compute p(-x)\n    auto minus_x{[](const std::vector<T>& p) -> std::vector<T>\
+    \ {\n        std::vector<T> res(p.size()); \n        for (usize i{} ; i < p.size()\
+    \ ; i++) res[i] = (i % 2 ? T{-1} * p[i] : p[i]);\n        return res;\n    }};\n\
+    \    // pick up coef of odd degree\n    auto odd{[](const std::vector<T>& p) ->\
+    \ std::vector<T> {\n        std::vector<T> res;\n        res.reserve(p.size()\
+    \ >> 1);\n        for (usize i{1} ; i < p.size() ; i += 2u) res.push_back(p[i]);\n\
+    \        return res;\n    }};\n    // pick up coef of even degree\n    auto even{[](const\
+    \ std::vector<T>& p) -> std::vector<T> {\n        std::vector<T> res;\n      \
+    \  res.reserve((p.size() & 1) + (p.size() >> 1));\n        for (usize i{} ; i\
+    \ < p.size() ; i += 2u) res.push_back(p[i]);\n        return res;\n    }};\n\n\
+    \    while (K) {\n        auto Qm{minus_x(Q)};\n        auto U{mult(P, Qm)};\n\
+    \        P = (K & 1 ? odd(U) : even(U));\n        Q = even(mult(Q, Qm));\n   \
+    \     K >>= 1;\n    }\n    return (Q[0] == T{1} ? P[0] : P[0] / Q[0]);\n}\n\n\
+    } // namespace internal\n\ntemplate <class T, class F>\nT KthTerm(u64 K, std::vector<T>\
     \ A, std::vector<T> C, F mult) {\n    assert(A.size() + 1u >= C.size());\n   \
     \ if (K < A.size()) return A[K];\n    std::vector<T> tmp(C.size() + 1, T{1});\n\
     \    for (usize i{} ; i < C.size() ; i++) {\n        tmp[i + 1] = -C[i];\n   \
@@ -55,25 +53,23 @@ data:
     \    A.resize(C.size() - 1);\n    return internal::BostanMori(K, A, C, mult);\n\
     }\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"../Template/TypeAlias.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace internal {\n\n// [x^K] P(x) / Q(x)\u3092\u8A08\
-    \u7B97\u3059\u308B\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0\ntemplate <class T, class\
-    \ F>\nT BostanMori(u64 K, std::vector<T> P, std::vector<T> Q, F mult) {\n    assert(P.size());\n\
-    \    assert(Q.size() and Q[0] != T(0));\n\n    // p(-x)\u3092\u8A08\u7B97\n  \
-    \  auto minus_x{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res(p.size()); \n        for (usize i{} ; i < p.size() ; i++) res[i] = (i %\
-    \ 2 ? T{-1} * p[i] : p[i]);\n        return res;\n    }};\n    // \u5947\u6570\
-    \u6B21\u6570\u306E\u4FC2\u6570\u306E\u307F\u3092\u53D6\u308A\u51FA\u3059\n   \
-    \ auto odd{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res;\n        res.reserve(p.size() >> 1);\n        for (usize i{1} ; i < p.size()\
-    \ ; i += 2u) res.push_back(p[i]);\n        return res;\n    }};\n    // \u5076\
-    \u6570\u6B21\u6570\u306E\u4FC2\u6570\u306E\u307F\u3092\u53D6\u308A\u51FA\u3059\
-    \n    auto even{[](const std::vector<T>& p) -> std::vector<T> {\n        std::vector<T>\
-    \ res;\n        res.reserve((p.size() & 1) + (p.size() >> 1));\n        for (usize\
-    \ i{} ; i < p.size() ; i += 2u) res.push_back(p[i]);\n        return res;\n  \
-    \  }};\n\n    while (K) {\n        auto Qm{minus_x(Q)};\n        auto U{mult(P,\
-    \ Qm)};\n        P = (K & 1 ? odd(U) : even(U));\n        Q = even(mult(Q, Qm));\n\
-    \        K >>= 1;\n    }\n    return (Q[0] == T{1} ? P[0] : P[0] / Q[0]);\n}\n\
-    \n} // namespace internal\n\ntemplate <class T, class F>\nT KthTerm(u64 K, std::vector<T>\
+    \n\nnamespace zawa {\n\nnamespace internal {\n\n// compute [x^K] P(x) / Q(x)\n\
+    template <class T, class F>\nT BostanMori(u64 K, std::vector<T> P, std::vector<T>\
+    \ Q, F mult) {\n    assert(P.size());\n    assert(Q.size() and Q[0] != T(0));\n\
+    \n    // compute p(-x)\n    auto minus_x{[](const std::vector<T>& p) -> std::vector<T>\
+    \ {\n        std::vector<T> res(p.size()); \n        for (usize i{} ; i < p.size()\
+    \ ; i++) res[i] = (i % 2 ? T{-1} * p[i] : p[i]);\n        return res;\n    }};\n\
+    \    // pick up coef of odd degree\n    auto odd{[](const std::vector<T>& p) ->\
+    \ std::vector<T> {\n        std::vector<T> res;\n        res.reserve(p.size()\
+    \ >> 1);\n        for (usize i{1} ; i < p.size() ; i += 2u) res.push_back(p[i]);\n\
+    \        return res;\n    }};\n    // pick up coef of even degree\n    auto even{[](const\
+    \ std::vector<T>& p) -> std::vector<T> {\n        std::vector<T> res;\n      \
+    \  res.reserve((p.size() & 1) + (p.size() >> 1));\n        for (usize i{} ; i\
+    \ < p.size() ; i += 2u) res.push_back(p[i]);\n        return res;\n    }};\n\n\
+    \    while (K) {\n        auto Qm{minus_x(Q)};\n        auto U{mult(P, Qm)};\n\
+    \        P = (K & 1 ? odd(U) : even(U));\n        Q = even(mult(Q, Qm));\n   \
+    \     K >>= 1;\n    }\n    return (Q[0] == T{1} ? P[0] : P[0] / Q[0]);\n}\n\n\
+    } // namespace internal\n\ntemplate <class T, class F>\nT KthTerm(u64 K, std::vector<T>\
     \ A, std::vector<T> C, F mult) {\n    assert(A.size() + 1u >= C.size());\n   \
     \ if (K < A.size()) return A[K];\n    std::vector<T> tmp(C.size() + 1, T{1});\n\
     \    for (usize i{} ; i < C.size() ; i++) {\n        tmp[i + 1] = -C[i];\n   \
@@ -85,7 +81,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/KthTerm.hpp
   requiredBy: []
-  timestamp: '2024-11-13 00:58:07+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/tdpc_fibonacci.test.cpp

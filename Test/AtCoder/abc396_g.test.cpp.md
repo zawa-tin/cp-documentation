@@ -29,8 +29,7 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Sequence/BitwiseXORConvolution.hpp\"\n\n\
     #include <bit>\n#include <concepts>\n#include <cassert>\n#include <vector>\n\n\
-    namespace zawa {\n\n// note: \u8FD4\u308A\u5024\u306E\u5404\u70B9\u306E\u5024\u306F\
-    \u771F\u306E\u5024\u3088\u308A(2^{k/2})\u500D\u3055\u308C\u3066\u3044\u308B\n\
+    namespace zawa {\n\n// note: each values are multed by 2^{k/2} than truth value\n\
     template <class T>\nvoid FastWalshHadamardTransform(std::vector<T>& A) {\n   \
     \ if (A.empty()) return;\n    while (!std::has_single_bit(A.size())) A.push_back(T{0});\n\
     \    const usize k = std::bit_width(A.size()) - 1, n = A.size();\n    for (usize\
@@ -89,7 +88,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc396_g.test.cpp
   requiredBy: []
-  timestamp: '2025-06-02 16:41:21+09:00'
+  timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc396_g.test.cpp
