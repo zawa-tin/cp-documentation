@@ -25,12 +25,9 @@ template <std::equality_comparable T, std::integral RES>
 std::vector<RES> Manacher(const std::vector<std::optional<T>>& a) {
     std::vector<RES> res(a.size());
     for (usize i = 0, j = 0 ; i < a.size() ; ) {
-        // i + jはここでしか増加せず、i + jは高々|a|しか増えない
-        // -> このループは高々|a|
         while (i >= j and i + j < a.size() and a[i - j] == a[i + j]) j++;
         res[i] = j;
         usize k = 1;
-        // iは高々|a|までしか増えない->kを増やしているこのループは丁度|a|
         for ( ; i >= k and k + res[i - k] < j ; k++) res[i + k] = res[i - k];
         i += k;
         j -= k;

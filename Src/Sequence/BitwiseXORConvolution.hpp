@@ -9,7 +9,7 @@
 
 namespace zawa {
 
-// note: 返り値の各点の値は真の値より(2^{k/2})倍されている
+// note: each values are multed by 2^{k/2} than truth value
 template <class T>
 void FastWalshHadamardTransform(std::vector<T>& A) {
     if (A.empty()) return;
