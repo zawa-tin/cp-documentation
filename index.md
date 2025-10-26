@@ -1270,6 +1270,9 @@ data:
       path: Test/AtCoder/abc422_e.test.cpp
       title: Test/AtCoder/abc422_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc429_e.test.cpp
+      title: Test/AtCoder/abc429_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
