@@ -25,36 +25,36 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 9 \"Src/Utility/SeparatedFamilySet.hpp\"\n\nnamespace\
-    \ zawa {\n\n// https://noshi91.hatenablog.com/entry/2024/05/31/012055\n// \u5411\
-    \u304D\u306E\u3064\u3044\u305F\u5206\u5272\nstd::vector<std::vector<bool>> SeparatedFamilySet(usize\
-    \ U) {\n    const usize d = [&]() {\n        for (usize i = 1 ; ; i++) {\n   \
-    \         usize max = 1;\n            for (usize j = 0 ; j < (i / 2) ; j++) {\n\
-    \                max *= i - j;\n                max /= j + 1;\n            }\n\
-    \            if (max >= U) return i;\n        }\n        return U;\n    }();\n\
-    \    std::vector res(d, std::vector<bool>(U));\n    std::vector<u8> in(d);\n \
-    \   std::fill(in.rbegin(), in.rbegin() + d / 2, true);\n    for (usize idx = 0\
-    \ ; idx < U ; idx++) {\n        for (usize i = 0 ; i < d ; i++) if (in[i]) {\n\
-    \            res[i][idx] = true;\n        }\n        std::ranges::next_permutation(in);\n\
+    \ zawa {\n\n// https://noshi91.hatenablog.com/entry/2024/05/31/012055\n// each\
+    \ (i, j) satisfy there are k such that res[k][i]=1,res[k][j]=0\nstd::vector<std::vector<bool>>\
+    \ SeparatedFamilySet(usize U) {\n    const usize d = [&]() {\n        for (usize\
+    \ i = 1 ; ; i++) {\n            usize max = 1;\n            for (usize j = 0 ;\
+    \ j < (i / 2) ; j++) {\n                max *= i - j;\n                max /=\
+    \ j + 1;\n            }\n            if (max >= U) return i;\n        }\n    \
+    \    return U;\n    }();\n    std::vector res(d, std::vector<bool>(U));\n    std::vector<u8>\
+    \ in(d);\n    std::fill(in.rbegin(), in.rbegin() + d / 2, true);\n    for (usize\
+    \ idx = 0 ; idx < U ; idx++) {\n        for (usize i = 0 ; i < d ; i++) if (in[i])\
+    \ {\n            res[i][idx] = true;\n        }\n        std::ranges::next_permutation(in);\n\
     \    }\n    return res;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include <algorithm>\n#include <vector>\n#include <concepts>\n\
     #include <ranges>\n\n#include \"../Template/TypeAlias.hpp\"\n\nnamespace zawa\
-    \ {\n\n// https://noshi91.hatenablog.com/entry/2024/05/31/012055\n// \u5411\u304D\
-    \u306E\u3064\u3044\u305F\u5206\u5272\nstd::vector<std::vector<bool>> SeparatedFamilySet(usize\
-    \ U) {\n    const usize d = [&]() {\n        for (usize i = 1 ; ; i++) {\n   \
-    \         usize max = 1;\n            for (usize j = 0 ; j < (i / 2) ; j++) {\n\
-    \                max *= i - j;\n                max /= j + 1;\n            }\n\
-    \            if (max >= U) return i;\n        }\n        return U;\n    }();\n\
-    \    std::vector res(d, std::vector<bool>(U));\n    std::vector<u8> in(d);\n \
-    \   std::fill(in.rbegin(), in.rbegin() + d / 2, true);\n    for (usize idx = 0\
-    \ ; idx < U ; idx++) {\n        for (usize i = 0 ; i < d ; i++) if (in[i]) {\n\
-    \            res[i][idx] = true;\n        }\n        std::ranges::next_permutation(in);\n\
+    \ {\n\n// https://noshi91.hatenablog.com/entry/2024/05/31/012055\n// each (i,\
+    \ j) satisfy there are k such that res[k][i]=1,res[k][j]=0\nstd::vector<std::vector<bool>>\
+    \ SeparatedFamilySet(usize U) {\n    const usize d = [&]() {\n        for (usize\
+    \ i = 1 ; ; i++) {\n            usize max = 1;\n            for (usize j = 0 ;\
+    \ j < (i / 2) ; j++) {\n                max *= i - j;\n                max /=\
+    \ j + 1;\n            }\n            if (max >= U) return i;\n        }\n    \
+    \    return U;\n    }();\n    std::vector res(d, std::vector<bool>(U));\n    std::vector<u8>\
+    \ in(d);\n    std::fill(in.rbegin(), in.rbegin() + d / 2, true);\n    for (usize\
+    \ idx = 0 ; idx < U ; idx++) {\n        for (usize i = 0 ; i < d ; i++) if (in[i])\
+    \ {\n            res[i][idx] = true;\n        }\n        std::ranges::next_permutation(in);\n\
     \    }\n    return res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Utility/SeparatedFamilySet.hpp
   requiredBy: []
-  timestamp: '2025-05-10 20:51:44+09:00'
+  timestamp: '2025-10-26 19:01:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc429_e.test.cpp
