@@ -3,7 +3,7 @@
 
 /*
  * The 3rd Universal Cup. Stage 36: Wulin F. Challenge NPC III
- * https://contest.ucup.ac/submission/1046445
+ * https://contest.ucup.ac/submission/1588769
  */
 
 #include "../../Src/Utility/SeparatedFamilySet.hpp"
