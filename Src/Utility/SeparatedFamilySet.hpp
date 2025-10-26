@@ -10,7 +10,7 @@
 namespace zawa {
 
 // https://noshi91.hatenablog.com/entry/2024/05/31/012055
-// 向きのついた分割
+// each (i, j) satisfy there are k such that res[k][i]=1,res[k][j]=0
 std::vector<std::vector<bool>> SeparatedFamilySet(usize U) {
     const usize d = [&]() {
         for (usize i = 1 ; ; i++) {
