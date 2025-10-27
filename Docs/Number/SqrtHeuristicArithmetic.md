@@ -1,6 +1,6 @@
 ---
 title: Mod of Linear をsqrt(M)個の等差数列に分割する
-documentation_of: //Src/Number/BinomalCoefficients.hpp
+documentation_of: //Src/Number/SqrtHeuristicArithmetic.hpp
 ---
 
 ## 概要
