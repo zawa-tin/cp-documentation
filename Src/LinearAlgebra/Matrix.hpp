@@ -55,7 +55,7 @@ public:
             std::fill(dat_[i].begin(), dat_[i].end(), v);
         }
     } 
-    Matrix rotated() const {
+    Matrix tranposed() const {
         Matrix res(width(), height());
         for (usize i{} ; i < height() ; i++) {
             for (usize j{} ; j < width() ; j++) {
@@ -107,7 +107,6 @@ public:
         return Matrix{lhs} += rhs;
     }
     friend Matrix operator*(const Matrix& lhs, const Matrix& rhs) {
-        assert(lhs.height() == rhs.width());
         assert(lhs.width() == rhs.height());
         Matrix res(lhs.height(), rhs.width());
         for (usize i{} ; i < lhs.height() ; i++) {
