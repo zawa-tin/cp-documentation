@@ -573,7 +573,8 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Src/Number/BinomalCoefficients.hpp
-      title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
+      title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\
+        \u5206\u5272\u3059\u308B"
     - icon: ':heavy_check_mark:'
       path: Src/Number/Divisor.hpp
       title: "\u7D04\u6570\u5217\u6319"
@@ -620,6 +621,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Number/PrimeSupersetTransform.hpp
       title: Src/Number/PrimeSupersetTransform.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Number/SqrtHeuristicArithmetic.hpp
+      title: Src/Number/SqrtHeuristicArithmetic.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Number/SternBrocotTree.hpp
       title: Stern-Brocot Tree
@@ -1273,6 +1277,9 @@ data:
       path: Test/AtCoder/abc429_e.test.cpp
       title: Test/AtCoder/abc429_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc429_g.test.cpp
+      title: Test/AtCoder/abc429_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1677,6 +1684,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/Number/EnumeratePrimes.test.cpp
       title: Test/My/Number/EnumeratePrimes.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/My/Number/SqrtHeuristicArithmetic.test.cpp
+      title: Test/My/Number/SqrtHeuristicArithmetic.test.cpp
   - name: Test/My/Number/EnumerateQuotients
     pages:
     - icon: ':heavy_check_mark:'

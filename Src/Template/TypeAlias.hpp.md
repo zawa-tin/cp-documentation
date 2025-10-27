@@ -413,7 +413,8 @@ data:
     title: Src/LinearAlgebra/Matrix.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Number/BinomalCoefficients.hpp
-    title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
+    title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\u5206\
+      \u5272\u3059\u308B"
   - icon: ':heavy_check_mark:'
     path: Src/Number/Divisor.hpp
     title: "\u7D04\u6570\u5217\u6319"
@@ -453,6 +454,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Number/PrimeSupersetTransform.hpp
     title: Src/Number/PrimeSupersetTransform.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Number/SqrtHeuristicArithmetic.hpp
+    title: Src/Number/SqrtHeuristicArithmetic.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Number/SternBrocotTree.hpp
     title: Stern-Brocot Tree
@@ -1051,6 +1055,9 @@ data:
     path: Test/AtCoder/abc429_e.test.cpp
     title: Test/AtCoder/abc429_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc429_g.test.cpp
+    title: Test/AtCoder/abc429_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1427,6 +1434,9 @@ data:
     path: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
     title: Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/Number/SqrtHeuristicArithmetic.test.cpp
+    title: Test/My/Number/SqrtHeuristicArithmetic.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Utility/U32Pair.test.cpp
     title: Test/My/Utility/U32Pair.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1714,6 +1724,7 @@ data:
   - Src/Number/Divisor.hpp
   - Src/Number/Mersenne61ModInt.hpp
   - Src/Number/LCMConvolution.hpp
+  - Src/Number/SqrtHeuristicArithmetic.hpp
   - Src/Number/PrimeSubsetTransform.hpp
   - Src/Template/Output.hpp
   - Src/Template/Input.hpp
@@ -1773,6 +1784,7 @@ data:
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
+  - Test/AtCoder/abc429_g.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
@@ -1997,6 +2009,7 @@ data:
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
+  - Test/My/Number/SqrtHeuristicArithmetic.test.cpp
   - Test/My/Number/EnumeratePrimes.test.cpp
   - Test/CF/CF974-H.test.cpp
   - Test/CF/ECR167-F.test.cpp
