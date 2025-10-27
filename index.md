@@ -573,8 +573,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Src/Number/BinomalCoefficients.hpp
-      title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\
-        \u5206\u5272\u3059\u308B"
+      title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
     - icon: ':heavy_check_mark:'
       path: Src/Number/Divisor.hpp
       title: "\u7D04\u6570\u5217\u6319"
@@ -623,7 +622,8 @@ data:
       title: Src/Number/PrimeSupersetTransform.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Number/SqrtHeuristicArithmetic.hpp
-      title: Src/Number/SqrtHeuristicArithmetic.hpp
+      title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\
+        \u5206\u5272\u3059\u308B"
     - icon: ':heavy_check_mark:'
       path: Src/Number/SternBrocotTree.hpp
       title: Stern-Brocot Tree

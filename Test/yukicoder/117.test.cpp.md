@@ -3,8 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Number/BinomalCoefficients.hpp
-    title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\u5206\
-      \u5272\u3059\u308B"
+    title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
