@@ -43,26 +43,26 @@ data:
     \ const {\n        assert(not empty());\n        return dat_[0].size();\n    }\n\
     \    void fill(const E& v) {\n        for (usize i{} ; i < height() ; i++) {\n\
     \            std::fill(dat_[i].begin(), dat_[i].end(), v);\n        }\n    } \n\
-    \    Matrix rotated() const {\n        Matrix res(width(), height());\n      \
-    \  for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ; j < width()\
-    \ ; j++) {\n                res[j][i] = dat_[i][j];\n            }\n        }\n\
-    \        return res;\n    }\n    Matrix pow(u64 exp) const {\n        assert(height()\
-    \ == width());\n        Matrix res{I(height())}, base{*this};\n        while (exp)\
-    \ {\n            if (exp & 1) {\n                res = res * base;\n         \
-    \   }\n            base = base * base;\n            exp >>= 1;\n        }\n  \
-    \      return res;\n    }\n\n    const std::vector<E>& operator[](usize i) const\
-    \ {\n        assert(i < height());\n        return dat_[i];\n    }\n    std::vector<E>&\
-    \ operator[](usize i) {\n        assert(i < height());\n        return dat_[i];\n\
-    \    }\n    Matrix& operator=(const Matrix& mat) {\n        dat_ = mat.dat_;\n\
-    \        return *this;\n    }\n    Matrix& operator=(Matrix&& mat) {\n       \
-    \ dat_ = std::move(mat.dat_);\n        return *this;\n    }\n    Matrix& operator+=(const\
-    \ Matrix& mat) {\n        assert(height() == mat.height());\n        assert(width()\
-    \ == mat.width());\n        for (usize i{} ; i < height() ; i++) {\n         \
-    \   for (usize j{} ; j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
-    \ mat[i][j]);\n            }\n        }\n        return *this;\n    }\n    friend\
-    \ Matrix operator+(const Matrix& lhs, const Matrix& rhs) {\n        return Matrix{lhs}\
-    \ += rhs;\n    }\n    friend Matrix operator*(const Matrix& lhs, const Matrix&\
-    \ rhs) {\n        assert(lhs.height() == rhs.width());\n        assert(lhs.width()\
+    \    Matrix tranposed() const {\n        Matrix res(width(), height());\n    \
+    \    for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ; j <\
+    \ width() ; j++) {\n                res[j][i] = dat_[i][j];\n            }\n \
+    \       }\n        return res;\n    }\n    Matrix pow(u64 exp) const {\n     \
+    \   assert(height() == width());\n        Matrix res{I(height())}, base{*this};\n\
+    \        while (exp) {\n            if (exp & 1) {\n                res = res\
+    \ * base;\n            }\n            base = base * base;\n            exp >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    const std::vector<E>& operator[](usize\
+    \ i) const {\n        assert(i < height());\n        return dat_[i];\n    }\n\
+    \    std::vector<E>& operator[](usize i) {\n        assert(i < height());\n  \
+    \      return dat_[i];\n    }\n    Matrix& operator=(const Matrix& mat) {\n  \
+    \      dat_ = mat.dat_;\n        return *this;\n    }\n    Matrix& operator=(Matrix&&\
+    \ mat) {\n        dat_ = std::move(mat.dat_);\n        return *this;\n    }\n\
+    \    Matrix& operator+=(const Matrix& mat) {\n        assert(height() == mat.height());\n\
+    \        assert(width() == mat.width());\n        for (usize i{} ; i < height()\
+    \ ; i++) {\n            for (usize j{} ; j < width() ; j++) {\n              \
+    \  dat_[i][j] = A::operation(dat_[i][j], mat[i][j]);\n            }\n        }\n\
+    \        return *this;\n    }\n    friend Matrix operator+(const Matrix& lhs,\
+    \ const Matrix& rhs) {\n        return Matrix{lhs} += rhs;\n    }\n    friend\
+    \ Matrix operator*(const Matrix& lhs, const Matrix& rhs) {\n        assert(lhs.width()\
     \ == rhs.height());\n        Matrix res(lhs.height(), rhs.width());\n        for\
     \ (usize i{} ; i < lhs.height() ; i++) {\n            for (usize j{} ; j < rhs.width()\
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
@@ -110,26 +110,26 @@ data:
     \ const {\n        assert(not empty());\n        return dat_[0].size();\n    }\n\
     \    void fill(const E& v) {\n        for (usize i{} ; i < height() ; i++) {\n\
     \            std::fill(dat_[i].begin(), dat_[i].end(), v);\n        }\n    } \n\
-    \    Matrix rotated() const {\n        Matrix res(width(), height());\n      \
-    \  for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ; j < width()\
-    \ ; j++) {\n                res[j][i] = dat_[i][j];\n            }\n        }\n\
-    \        return res;\n    }\n    Matrix pow(u64 exp) const {\n        assert(height()\
-    \ == width());\n        Matrix res{I(height())}, base{*this};\n        while (exp)\
-    \ {\n            if (exp & 1) {\n                res = res * base;\n         \
-    \   }\n            base = base * base;\n            exp >>= 1;\n        }\n  \
-    \      return res;\n    }\n\n    const std::vector<E>& operator[](usize i) const\
-    \ {\n        assert(i < height());\n        return dat_[i];\n    }\n    std::vector<E>&\
-    \ operator[](usize i) {\n        assert(i < height());\n        return dat_[i];\n\
-    \    }\n    Matrix& operator=(const Matrix& mat) {\n        dat_ = mat.dat_;\n\
-    \        return *this;\n    }\n    Matrix& operator=(Matrix&& mat) {\n       \
-    \ dat_ = std::move(mat.dat_);\n        return *this;\n    }\n    Matrix& operator+=(const\
-    \ Matrix& mat) {\n        assert(height() == mat.height());\n        assert(width()\
-    \ == mat.width());\n        for (usize i{} ; i < height() ; i++) {\n         \
-    \   for (usize j{} ; j < width() ; j++) {\n                dat_[i][j] = A::operation(dat_[i][j],\
-    \ mat[i][j]);\n            }\n        }\n        return *this;\n    }\n    friend\
-    \ Matrix operator+(const Matrix& lhs, const Matrix& rhs) {\n        return Matrix{lhs}\
-    \ += rhs;\n    }\n    friend Matrix operator*(const Matrix& lhs, const Matrix&\
-    \ rhs) {\n        assert(lhs.height() == rhs.width());\n        assert(lhs.width()\
+    \    Matrix tranposed() const {\n        Matrix res(width(), height());\n    \
+    \    for (usize i{} ; i < height() ; i++) {\n            for (usize j{} ; j <\
+    \ width() ; j++) {\n                res[j][i] = dat_[i][j];\n            }\n \
+    \       }\n        return res;\n    }\n    Matrix pow(u64 exp) const {\n     \
+    \   assert(height() == width());\n        Matrix res{I(height())}, base{*this};\n\
+    \        while (exp) {\n            if (exp & 1) {\n                res = res\
+    \ * base;\n            }\n            base = base * base;\n            exp >>=\
+    \ 1;\n        }\n        return res;\n    }\n\n    const std::vector<E>& operator[](usize\
+    \ i) const {\n        assert(i < height());\n        return dat_[i];\n    }\n\
+    \    std::vector<E>& operator[](usize i) {\n        assert(i < height());\n  \
+    \      return dat_[i];\n    }\n    Matrix& operator=(const Matrix& mat) {\n  \
+    \      dat_ = mat.dat_;\n        return *this;\n    }\n    Matrix& operator=(Matrix&&\
+    \ mat) {\n        dat_ = std::move(mat.dat_);\n        return *this;\n    }\n\
+    \    Matrix& operator+=(const Matrix& mat) {\n        assert(height() == mat.height());\n\
+    \        assert(width() == mat.width());\n        for (usize i{} ; i < height()\
+    \ ; i++) {\n            for (usize j{} ; j < width() ; j++) {\n              \
+    \  dat_[i][j] = A::operation(dat_[i][j], mat[i][j]);\n            }\n        }\n\
+    \        return *this;\n    }\n    friend Matrix operator+(const Matrix& lhs,\
+    \ const Matrix& rhs) {\n        return Matrix{lhs} += rhs;\n    }\n    friend\
+    \ Matrix operator*(const Matrix& lhs, const Matrix& rhs) {\n        assert(lhs.width()\
     \ == rhs.height());\n        Matrix res(lhs.height(), rhs.width());\n        for\
     \ (usize i{} ; i < lhs.height() ; i++) {\n            for (usize j{} ; j < rhs.width()\
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
@@ -164,7 +164,7 @@ data:
   isVerificationFile: false
   path: Src/LinearAlgebra/Matrix.hpp
   requiredBy: []
-  timestamp: '2024-06-25 21:03:43+09:00'
+  timestamp: '2025-10-27 18:46:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/aoj3369.test.cpp
