@@ -28,6 +28,9 @@ data:
     path: Test/AtCoder/abc371_f.test.cpp
     title: Test/AtCoder/abc371_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc430_g.test.cpp
+    title: Test/AtCoder/abc430_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
@@ -261,6 +264,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/practice2_l.test.cpp
+  - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp

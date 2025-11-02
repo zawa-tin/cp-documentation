@@ -125,6 +125,10 @@ data:
       path: Src/DataStructure/Other/PriorityProductSet.hpp
       title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Other/RangeAssigner.hpp
+      title: "\u540C\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u6975\u5927\u306A\u533A\
+        \u9593\u3092\u7BA1\u7406\u3059\u308B"
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
       title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
         \u3092\u7BA1\u7406\u3059\u308B"
@@ -1279,6 +1283,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc429_g.test.cpp
       title: Test/AtCoder/abc429_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc430_g.test.cpp
+      title: Test/AtCoder/abc430_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

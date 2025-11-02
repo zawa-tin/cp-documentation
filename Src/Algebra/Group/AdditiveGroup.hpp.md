@@ -43,6 +43,9 @@ data:
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc430_g.test.cpp
+    title: Test/AtCoder/abc430_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
   - icon: ':heavy_check_mark:'
@@ -114,6 +117,7 @@ data:
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
