@@ -14,12 +14,11 @@ namespace zawa {
 
 namespace Random {
 
-// 単純連結
 template <std::integral T>
 std::vector<std::pair<T, T>> ConnectedGraph(usize n, usize m, bool verify = true) {
     if (n == 0)
         return {};
-    assert(m >= n - 1);
+    assert(n - 1 <= m and (u64)m <= (u64)n * (n - 1) / 2);
     std::vector<std::pair<T, T>> res = Tree<T>(n, verify);
     std::set<std::pair<T, T>> st;
     for (auto [u, v] : res)
