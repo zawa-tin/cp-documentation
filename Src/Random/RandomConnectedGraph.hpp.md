@@ -87,9 +87,27 @@ data:
     \   }\n        } \n    }\n    return res;\n}\n\n} // namespace Random\n\n} //\
     \ namespace zawa\n#line 4 \"Src/Random/RandomConnectedGraph.hpp\"\n\n#line 11\
     \ \"Src/Random/RandomConnectedGraph.hpp\"\n#include <set>\n\nnamespace zawa {\n\
-    \nnamespace Random {\n\n// \u5358\u7D14\u9023\u7D50\ntemplate <std::integral T>\n\
-    std::vector<std::pair<T, T>> ConnectedGraph(usize n, usize m, bool verify = true)\
-    \ {\n    if (n == 0)\n        return {};\n    assert(m >= n - 1);\n    std::vector<std::pair<T,\
+    \nnamespace Random {\n\ntemplate <std::integral T>\nstd::vector<std::pair<T, T>>\
+    \ ConnectedGraph(usize n, usize m, bool verify = true) {\n    if (n == 0)\n  \
+    \      return {};\n    assert(n - 1 <= m and (u64)m <= (u64)n * (n - 1) / 2);\n\
+    \    std::vector<std::pair<T, T>> res = Tree<T>(n, verify);\n    std::set<std::pair<T,\
+    \ T>> st;\n    for (auto [u, v] : res)\n        st.insert(std::minmax({u, v}));\n\
+    \    std::mt19937 mt{std::random_device{}()};\n    while (res.size() < m) {\n\
+    \        T u = mt() % n, v = mt() % n;\n        if (u == v)\n            continue;\n\
+    \        if (st.contains(std::minmax({u, v})))\n            continue;\n      \
+    \  st.insert(std::minmax({u, v}));\n        res.push_back({u, v});\n    }\n  \
+    \  if (verify) {\n        std::set<std::pair<T, T>> used;\n        for (auto [u,\
+    \ v] : res) {\n            assert(0 <= u and u < static_cast<T>(n));\n       \
+    \     assert(0 <= v and v < static_cast<T>(n));\n            assert(u != v);\n\
+    \            used.insert(std::minmax({u, v}));\n        }\n        assert(used.size()\
+    \ == m);\n    }\n    return res;\n}\n\n} // namespace Random\n\n} // namespace\
+    \ zawa\n"
+  code: "#pragma once\n\n#include \"./RandomTree.hpp\"\n\n#include <algorithm>\n#include\
+    \ <cassert>\n#include <concepts>\n#include <utility>\n#include <vector>\n#include\
+    \ <random>\n#include <set>\n\nnamespace zawa {\n\nnamespace Random {\n\ntemplate\
+    \ <std::integral T>\nstd::vector<std::pair<T, T>> ConnectedGraph(usize n, usize\
+    \ m, bool verify = true) {\n    if (n == 0)\n        return {};\n    assert(n\
+    \ - 1 <= m and (u64)m <= (u64)n * (n - 1) / 2);\n    std::vector<std::pair<T,\
     \ T>> res = Tree<T>(n, verify);\n    std::set<std::pair<T, T>> st;\n    for (auto\
     \ [u, v] : res)\n        st.insert(std::minmax({u, v}));\n    std::mt19937 mt{std::random_device{}()};\n\
     \    while (res.size() < m) {\n        T u = mt() % n, v = mt() % n;\n       \
@@ -101,23 +119,6 @@ data:
     \            assert(u != v);\n            used.insert(std::minmax({u, v}));\n\
     \        }\n        assert(used.size() == m);\n    }\n    return res;\n}\n\n}\
     \ // namespace Random\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./RandomTree.hpp\"\n\n#include <algorithm>\n#include\
-    \ <cassert>\n#include <concepts>\n#include <utility>\n#include <vector>\n#include\
-    \ <random>\n#include <set>\n\nnamespace zawa {\n\nnamespace Random {\n\n// \u5358\
-    \u7D14\u9023\u7D50\ntemplate <std::integral T>\nstd::vector<std::pair<T, T>> ConnectedGraph(usize\
-    \ n, usize m, bool verify = true) {\n    if (n == 0)\n        return {};\n   \
-    \ assert(m >= n - 1);\n    std::vector<std::pair<T, T>> res = Tree<T>(n, verify);\n\
-    \    std::set<std::pair<T, T>> st;\n    for (auto [u, v] : res)\n        st.insert(std::minmax({u,\
-    \ v}));\n    std::mt19937 mt{std::random_device{}()};\n    while (res.size() <\
-    \ m) {\n        T u = mt() % n, v = mt() % n;\n        if (u == v)\n         \
-    \   continue;\n        if (st.contains(std::minmax({u, v})))\n            continue;\n\
-    \        st.insert(std::minmax({u, v}));\n        res.push_back({u, v});\n   \
-    \ }\n    if (verify) {\n        std::set<std::pair<T, T>> used;\n        for (auto\
-    \ [u, v] : res) {\n            assert(0 <= u and u < static_cast<T>(n));\n   \
-    \         assert(0 <= v and v < static_cast<T>(n));\n            assert(u != v);\n\
-    \            used.insert(std::minmax({u, v}));\n        }\n        assert(used.size()\
-    \ == m);\n    }\n    return res;\n}\n\n} // namespace Random\n\n} // namespace\
-    \ zawa\n"
   dependsOn:
   - Src/Random/RandomTree.hpp
   - Src/Random/RandomPermutation.hpp
@@ -127,7 +128,7 @@ data:
   isVerificationFile: false
   path: Src/Random/RandomConnectedGraph.hpp
   requiredBy: []
-  timestamp: '2025-09-06 12:13:55+09:00'
+  timestamp: '2025-11-10 22:14:54+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Src/Random/RandomConnectedGraph.hpp
