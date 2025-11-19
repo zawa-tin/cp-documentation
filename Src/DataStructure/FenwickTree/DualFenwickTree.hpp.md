@@ -16,6 +16,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_E.test.cpp
+    title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_e.test.cpp
     title: Test/AtCoder/abc340_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -166,6 +169,7 @@ data:
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
 layout: document
 title: Dual Fenwick Tree

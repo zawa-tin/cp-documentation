@@ -22,6 +22,9 @@ data:
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_E.test.cpp
+    title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
   - icon: ':heavy_check_mark:'
@@ -136,6 +139,7 @@ data:
   - Test/UC/4-2-K.test.cpp
   - Test/AOJ/1330.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/CF/EC162-D.test.cpp
   - Test/CF/EC2-E.test.cpp

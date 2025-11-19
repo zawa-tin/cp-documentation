@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Action/ActionConcept.hpp
+    title: Src/Algebra/Action/ActionConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
@@ -10,9 +13,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -28,7 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc332/submissions/67039166
+    - https://atcoder.jp/contests/abc332/submissions/71071551
     - https://atcoder.jp/contests/abc332/tasks/abc332_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.0/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -48,7 +48,7 @@ data:
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
     \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n/*\n * AtCoder Beginner Contest\
-    \ 332 F - Random Update Query\n * https://atcoder.jp/contests/abc332/submissions/67039166\n\
+    \ 332 F - Random Update Query\n * https://atcoder.jp/contests/abc332/submissions/71071551\n\
     \ */\n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n#include\
     \ \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\nvoid solve() {\n\
     \    int N, M;\n    std::cin >> N >> M;\n    std::vector<Affine<mint>> init(N);\n\
@@ -63,15 +63,15 @@ data:
     \ \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Action/ActionConcept.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc332_f.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 16:23:43+09:00'
+  timestamp: '2025-11-20 00:22:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc332_f.test.cpp

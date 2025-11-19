@@ -53,7 +53,9 @@ data:
     \ Element identity() noexcept {\n        return Element{};\n    }\n    // f_r(f_l(x)):\
     \ a_r(a_lx+b_l)+b_r\n    static constexpr Element operation(const Element& l,\
     \ const Element& r) noexcept {\n        return Element{ l.a() * r.a(), l.b() *\
-    \ r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n"
+    \ r.a() + r.b() };\n    }\n    static constexpr Element acted(const Element& l,\
+    \ const Element& r) noexcept {\n        return operation(l, r);\n    }\n};\n\n\
+    } // namespace zawa\n"
   code: "#pragma once\n\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
     \ T>\nclass Affine {\nprivate:\n    T a_{1}, b_{};\npublic:\n    constexpr Affine()\
     \ {}\n    constexpr Affine(const T& a, const T& b) : a_{a}, b_{b} {}\n    T a()\
@@ -68,12 +70,14 @@ data:
     \    static constexpr Element identity() noexcept {\n        return Element{};\n\
     \    }\n    // f_r(f_l(x)): a_r(a_lx+b_l)+b_r\n    static constexpr Element operation(const\
     \ Element& l, const Element& r) noexcept {\n        return Element{ l.a() * r.a(),\
-    \ l.b() * r.a() + r.b() };\n    }\n};\n\n} // namespace zawa\n"
+    \ l.b() * r.a() + r.b() };\n    }\n    static constexpr Element acted(const Element&\
+    \ l, const Element& r) noexcept {\n        return operation(l, r);\n    }\n};\n\
+    \n} // namespace zawa\n"
   dependsOn: []
   isVerificationFile: false
   path: Src/Algebra/Monoid/AffineMonoid.hpp
   requiredBy: []
-  timestamp: '2025-02-27 21:25:38+09:00'
+  timestamp: '2025-11-20 00:22:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc270_g.test.cpp

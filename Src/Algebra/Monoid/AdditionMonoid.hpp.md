@@ -7,9 +7,6 @@ data:
     title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/AOJ/DSL_2_E.test.cpp
-    title: Test/AOJ/DSL_2_E.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc292_h.test.cpp
     title: Test/AtCoder/abc292_h.test.cpp
   - icon: ':heavy_check_mark:'
@@ -47,7 +44,6 @@ data:
   - Test/AtCoder/abc292_h.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document
 redirect_from:

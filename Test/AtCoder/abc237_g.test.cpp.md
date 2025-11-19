@@ -115,14 +115,10 @@ data:
     \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
     \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
     \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
-    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        // dat: \u533A\u9593\u306E\u5DE6\
-    \u7AEFl\u306Ba_{l}^{r-l}, \u305D\u308C\u4EE5\u5916\u306Ei\u306Fidentity()\u306B\
-    \u3059\u308B -> \u30BB\u30B0\u6728\u306B\u3053\u308C\u3092\u306E\u305B\u308B\n\
-    \        // m_dat: \u533A\u9593\u306E\u5DE6\u7AEFl\u306Ba_{l}, \u305D\u308C\u4EE5\
-    \u5916\u306Ei\u306Fidentity()\u306B\u3059\u308B\n        m_dat.shrink_to_fit();\n\
-    \        if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{},\
-    \ j{} ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i]\
-    \ == dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
+    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
+    \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
+    \ ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i] ==\
+    \ dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
     \ j - i);\n                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity())\
     \ ;\n            }\n        }\n        else {\n            for (usize i{} ; i\
     \ < m_dat.size() ; i++) m_ls.insert(i);\n        }\n        m_ls.insert(dat.size());\n\
@@ -131,49 +127,51 @@ data:
     \ V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
     \        if (l == r) return VM::identity();\n        const auto second_l = m_ls.upper_bound(l);\n\
     \        const auto first_l = std::prev(second_l);\n        if (second_l != m_ls.end()\
-    \ and r <= *second_l) { // \u4E00\u3064\u306E\u533A\u9593\u306B\u542B\u307E\u308C\
-    \u3066\u3044\u308B\n            return power(m_dat[*first_l], r - l);\n      \
-    \  }\n        const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res\
-    \ = VM::operation(\n                power(m_dat[*first_l], *second_l - l),\n \
-    \               m_seg.product(*second_l, *last_l)\n                );\n      \
-    \  if (r == *last_l) return res;\n        return VM::operation(res, power(m_dat[*last_l],\
-    \ r - *last_l));\n    }\n\n    void assign(usize l, usize r, V v) {\n        assert(l\
-    \ <= r and r <= m_dat.size());\n        if (l == r) return;\n        // assert(*it_l\
-    \ < n);\n        auto it_l = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r));\
-    \ \n        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
+    \ and r <= *second_l)\n            return power(m_dat[*first_l], r - l);\n   \
+    \     const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n\
+    \                power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
+    \ *last_l)\n                );\n        if (r == *last_l) return res;\n      \
+    \  return VM::operation(res, power(m_dat[*last_l], r - *last_l));\n    }\n\n \
+    \   void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= m_dat.size());\n\
+    \        if (l == r) return;\n        // assert(*it_l < n);\n        auto it_l\
+    \ = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r)); \n\
+    \        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
     \        m_seg.assign(l, power(v, r - l));\n        if (*it_r < r and r < m_dat.size())\
     \ {\n            m_dat[r] = m_dat[*it_r];\n            m_seg.assign(r, power(m_dat[r],\
     \ *std::next(it_r) - r));\n            m_ls.insert(r);\n        }\n        m_dat[l]\
     \ = v;\n        for (it_l++ ; *it_l < r ; it_l = m_ls.erase(it_l)) {\n       \
     \     m_seg.assign(*it_l, VM::identity());\n            m_dat[*it_l] = VM::identity();\n\
-    \        }\n        m_ls.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<VM>\
-    \ m_seg;\n\n    std::vector<V> m_dat;\n\n    std::set<usize> m_ls; \n\n    static\
-    \ V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM> {\n        return\
-    \ VM::power(v, p);\n    }\n\n    static V power(V v, u32 p) {\n        V res{VM::identity()};\n\
-    \        while (p) {\n            if (p & 1) res = VM::operation(res, v);\n  \
-    \          v = VM::operation(v, v);\n            p >>= 1; \n        }\n      \
-    \  return res;\n    }\n};\n\n} // namespace zawa\n#line 11 \"Test/AtCoder/abc237_g.test.cpp\"\
-    \nusing namespace zawa;\n\nstruct M {\n    using Element = int;\n    static constexpr\
-    \ int identity() {\n        return 0;\n    }\n    static constexpr int operation(int\
-    \ l, int r) {\n        return l + r;\n    }\n    static constexpr int power(int\
-    \ v, u64 exp) {\n        return v * (int)exp;\n    }\n};\n\n#include <iostream>\n\
-    \nvoid solve() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n  \
-    \  std::ios::sync_with_stdio(false);\n    int N, Q, X;\n    std::cin >> N >> Q\
-    \ >> X;\n    std::vector<int> init(N);\n    for (int i = 0 ; i < N ; i++) {\n\
-    \        int P;\n        std::cin >> P;\n        init[i] = (P < X ? 0 : (P ==\
-    \ X ? 1 : 2));\n    }\n    AssignmentSegmentTree<M> seg{init};\n    int z = 0,\
-    \ o = 0, t = 0;\n    auto prod = [&](int l, int r) -> void {\n        int sum\
-    \ = seg.product(l, r);\n        o = sum % 2;\n        t = sum / 2;\n        z\
-    \ = r - l - o - t;\n        assert(o + t + z == r - l);\n    };\n    while (Q--)\
-    \ {\n        int C, L, R;\n        std::cin >> C >> L >> R;\n        L--;\n  \
-    \      prod(L, R);\n        if (C == 1) {\n            seg.assign(L, L + z, 0);\n\
-    \            seg.assign(L + z, L + z + o, 1);\n            seg.assign(L + z +\
-    \ o, L + z + o + t, 2);\n        }\n        else if (C == 2) {\n            seg.assign(L,\
-    \ L + t, 2);\n            seg.assign(L + t, L + t + o, 1);\n            seg.assign(L\
-    \ + t + o, L + t + o + z, 0);\n        }\n        else assert(false);\n    }\n\
-    \    for (int i = 0 ; i < N ; i++) if (seg.product(0, i + 1) % 2) {\n        std::cout\
-    \ << i + 1 << '\\n';\n        return;\n    }\n}\n\nint main() {\n#ifdef ATCODER\n\
-    \    solve();\n#else\n    std::cout << \"Hello World\\n\";\n#endif    \n}\n"
+    \        }\n        m_ls.insert(l);\n    }\n\n    [[nodiscard]] V get(usize i)\
+    \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
+    \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
+    \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
+    \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
+    \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 11 \"Test/AtCoder/abc237_g.test.cpp\"\nusing namespace zawa;\n\n\
+    struct M {\n    using Element = int;\n    static constexpr int identity() {\n\
+    \        return 0;\n    }\n    static constexpr int operation(int l, int r) {\n\
+    \        return l + r;\n    }\n    static constexpr int power(int v, u64 exp)\
+    \ {\n        return v * (int)exp;\n    }\n};\n\n#include <iostream>\n\nvoid solve()\
+    \ {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int N, Q, X;\n    std::cin >> N >> Q >> X;\n    std::vector<int> init(N);\n\
+    \    for (int i = 0 ; i < N ; i++) {\n        int P;\n        std::cin >> P;\n\
+    \        init[i] = (P < X ? 0 : (P == X ? 1 : 2));\n    }\n    AssignmentSegmentTree<M>\
+    \ seg{init};\n    int z = 0, o = 0, t = 0;\n    auto prod = [&](int l, int r)\
+    \ -> void {\n        int sum = seg.product(l, r);\n        o = sum % 2;\n    \
+    \    t = sum / 2;\n        z = r - l - o - t;\n        assert(o + t + z == r -\
+    \ l);\n    };\n    while (Q--) {\n        int C, L, R;\n        std::cin >> C\
+    \ >> L >> R;\n        L--;\n        prod(L, R);\n        if (C == 1) {\n     \
+    \       seg.assign(L, L + z, 0);\n            seg.assign(L + z, L + z + o, 1);\n\
+    \            seg.assign(L + z + o, L + z + o + t, 2);\n        }\n        else\
+    \ if (C == 2) {\n            seg.assign(L, L + t, 2);\n            seg.assign(L\
+    \ + t, L + t + o, 1);\n            seg.assign(L + t + o, L + t + o + z, 0);\n\
+    \        }\n        else assert(false);\n    }\n    for (int i = 0 ; i < N ; i++)\
+    \ if (seg.product(0, i + 1) % 2) {\n        std::cout << i + 1 << '\\n';\n   \
+    \     return;\n    }\n}\n\nint main() {\n#ifdef ATCODER\n    solve();\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif    \n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/68181908\n\
@@ -209,7 +207,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc237_g.test.cpp
   requiredBy: []
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2025-11-19 23:53:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc237_g.test.cpp

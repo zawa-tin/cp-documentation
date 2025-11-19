@@ -31,6 +31,9 @@ data:
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_D.test.cpp
+    title: Test/AOJ/DSL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -231,6 +234,7 @@ data:
   - Test/LC/range_set_range_composite.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp

@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Action/ActionConcept.hpp
+    title: Src/Algebra/Action/ActionConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
@@ -10,9 +13,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -44,7 +44,7 @@ data:
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n#include \"atcoder/modint\"\
+    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n\n#include \"atcoder/modint\"\
     \n\n#include <iostream>\n#include <cassert>\n\nint main() {\n    using namespace\
     \ zawa;\n    using mint = atcoder::modint998244353;\n    std::cin.tie(nullptr);\n\
     \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    int n,\
@@ -58,15 +58,15 @@ data:
     \ {\n            assert(false);\n        }\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Action/ActionConcept.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/range_affine_point_get.test.cpp
   requiredBy: []
-  timestamp: '2025-06-24 16:23:43+09:00'
+  timestamp: '2025-11-20 00:22:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_point_get.test.cpp

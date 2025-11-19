@@ -5,6 +5,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
+  - icon: ':warning:'
+    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
+    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+    title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
     title: Disjoint Sparse Table
@@ -29,6 +35,9 @@ data:
     path: Test/AtCoder/abc270_g.test.cpp
     title: Test/AtCoder/abc270_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc332_f.test.cpp
+    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc419_f.test.cpp
     title: Test/AtCoder/abc419_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -37,6 +46,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/discrete_logarithm_mod.test.cpp
     title: Test/LC/discrete_logarithm_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_affine_point_get.test.cpp
+    title: Test/LC/range_affine_point_get.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
@@ -68,6 +80,8 @@ data:
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+  - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
+  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
   - Src/Sequence/AhoCorasick.hpp
@@ -79,9 +93,11 @@ data:
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/abc222_g.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/discrete_logarithm_mod.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/aho_corasick.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document

@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc270_g.test.cpp
   requiredBy: []
-  timestamp: '2025-08-21 17:59:05+09:00'
+  timestamp: '2025-11-20 00:22:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc270_g.test.cpp

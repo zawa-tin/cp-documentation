@@ -19,6 +19,9 @@ data:
     path: Test/AOJ/2450.test.cpp
     title: Test/AOJ/2450.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_D.test.cpp
+    title: Test/AOJ/DSL_2_D.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -125,14 +128,10 @@ data:
     \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
     \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
     \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
-    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        // dat: \u533A\u9593\u306E\u5DE6\
-    \u7AEFl\u306Ba_{l}^{r-l}, \u305D\u308C\u4EE5\u5916\u306Ei\u306Fidentity()\u306B\
-    \u3059\u308B -> \u30BB\u30B0\u6728\u306B\u3053\u308C\u3092\u306E\u305B\u308B\n\
-    \        // m_dat: \u533A\u9593\u306E\u5DE6\u7AEFl\u306Ba_{l}, \u305D\u308C\u4EE5\
-    \u5916\u306Ei\u306Fidentity()\u306B\u3059\u308B\n        m_dat.shrink_to_fit();\n\
-    \        if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{},\
-    \ j{} ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i]\
-    \ == dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
+    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
+    \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
+    \ ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i] ==\
+    \ dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
     \ j - i);\n                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity())\
     \ ;\n            }\n        }\n        else {\n            for (usize i{} ; i\
     \ < m_dat.size() ; i++) m_ls.insert(i);\n        }\n        m_ls.insert(dat.size());\n\
@@ -141,28 +140,30 @@ data:
     \ V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
     \        if (l == r) return VM::identity();\n        const auto second_l = m_ls.upper_bound(l);\n\
     \        const auto first_l = std::prev(second_l);\n        if (second_l != m_ls.end()\
-    \ and r <= *second_l) { // \u4E00\u3064\u306E\u533A\u9593\u306B\u542B\u307E\u308C\
-    \u3066\u3044\u308B\n            return power(m_dat[*first_l], r - l);\n      \
-    \  }\n        const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res\
-    \ = VM::operation(\n                power(m_dat[*first_l], *second_l - l),\n \
-    \               m_seg.product(*second_l, *last_l)\n                );\n      \
-    \  if (r == *last_l) return res;\n        return VM::operation(res, power(m_dat[*last_l],\
-    \ r - *last_l));\n    }\n\n    void assign(usize l, usize r, V v) {\n        assert(l\
-    \ <= r and r <= m_dat.size());\n        if (l == r) return;\n        // assert(*it_l\
-    \ < n);\n        auto it_l = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r));\
-    \ \n        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
+    \ and r <= *second_l)\n            return power(m_dat[*first_l], r - l);\n   \
+    \     const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n\
+    \                power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
+    \ *last_l)\n                );\n        if (r == *last_l) return res;\n      \
+    \  return VM::operation(res, power(m_dat[*last_l], r - *last_l));\n    }\n\n \
+    \   void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= m_dat.size());\n\
+    \        if (l == r) return;\n        // assert(*it_l < n);\n        auto it_l\
+    \ = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r)); \n\
+    \        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
     \        m_seg.assign(l, power(v, r - l));\n        if (*it_r < r and r < m_dat.size())\
     \ {\n            m_dat[r] = m_dat[*it_r];\n            m_seg.assign(r, power(m_dat[r],\
     \ *std::next(it_r) - r));\n            m_ls.insert(r);\n        }\n        m_dat[l]\
     \ = v;\n        for (it_l++ ; *it_l < r ; it_l = m_ls.erase(it_l)) {\n       \
     \     m_seg.assign(*it_l, VM::identity());\n            m_dat[*it_l] = VM::identity();\n\
-    \        }\n        m_ls.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<VM>\
-    \ m_seg;\n\n    std::vector<V> m_dat;\n\n    std::set<usize> m_ls; \n\n    static\
-    \ V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM> {\n        return\
-    \ VM::power(v, p);\n    }\n\n    static V power(V v, u32 p) {\n        V res{VM::identity()};\n\
-    \        while (p) {\n            if (p & 1) res = VM::operation(res, v);\n  \
-    \          v = VM::operation(v, v);\n            p >>= 1; \n        }\n      \
-    \  return res;\n    }\n};\n\n} // namespace zawa\n"
+    \        }\n        m_ls.insert(l);\n    }\n\n    [[nodiscard]] V get(usize i)\
+    \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
+    \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
+    \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
+    \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
+    \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
     \n#include \"./SegmentTree.hpp\"\n\n#include <cassert>\n#include <vector>\n#include\
     \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T, class\
@@ -176,14 +177,10 @@ data:
     \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
     \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
     \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
-    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        // dat: \u533A\u9593\u306E\u5DE6\
-    \u7AEFl\u306Ba_{l}^{r-l}, \u305D\u308C\u4EE5\u5916\u306Ei\u306Fidentity()\u306B\
-    \u3059\u308B -> \u30BB\u30B0\u6728\u306B\u3053\u308C\u3092\u306E\u305B\u308B\n\
-    \        // m_dat: \u533A\u9593\u306E\u5DE6\u7AEFl\u306Ba_{l}, \u305D\u308C\u4EE5\
-    \u5916\u306Ei\u306Fidentity()\u306B\u3059\u308B\n        m_dat.shrink_to_fit();\n\
-    \        if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{},\
-    \ j{} ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i]\
-    \ == dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
+    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
+    \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
+    \ ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i] ==\
+    \ dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
     \ j - i);\n                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity())\
     \ ;\n            }\n        }\n        else {\n            for (usize i{} ; i\
     \ < m_dat.size() ; i++) m_ls.insert(i);\n        }\n        m_ls.insert(dat.size());\n\
@@ -192,28 +189,30 @@ data:
     \ V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
     \        if (l == r) return VM::identity();\n        const auto second_l = m_ls.upper_bound(l);\n\
     \        const auto first_l = std::prev(second_l);\n        if (second_l != m_ls.end()\
-    \ and r <= *second_l) { // \u4E00\u3064\u306E\u533A\u9593\u306B\u542B\u307E\u308C\
-    \u3066\u3044\u308B\n            return power(m_dat[*first_l], r - l);\n      \
-    \  }\n        const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res\
-    \ = VM::operation(\n                power(m_dat[*first_l], *second_l - l),\n \
-    \               m_seg.product(*second_l, *last_l)\n                );\n      \
-    \  if (r == *last_l) return res;\n        return VM::operation(res, power(m_dat[*last_l],\
-    \ r - *last_l));\n    }\n\n    void assign(usize l, usize r, V v) {\n        assert(l\
-    \ <= r and r <= m_dat.size());\n        if (l == r) return;\n        // assert(*it_l\
-    \ < n);\n        auto it_l = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r));\
-    \ \n        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
+    \ and r <= *second_l)\n            return power(m_dat[*first_l], r - l);\n   \
+    \     const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n\
+    \                power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
+    \ *last_l)\n                );\n        if (r == *last_l) return res;\n      \
+    \  return VM::operation(res, power(m_dat[*last_l], r - *last_l));\n    }\n\n \
+    \   void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= m_dat.size());\n\
+    \        if (l == r) return;\n        // assert(*it_l < n);\n        auto it_l\
+    \ = std::prev(m_ls.upper_bound(l)), it_r = std::prev(m_ls.upper_bound(r)); \n\
+    \        if (*it_l < l) m_seg.assign(*it_l, power(m_dat[*it_l], l - *it_l));\n\
     \        m_seg.assign(l, power(v, r - l));\n        if (*it_r < r and r < m_dat.size())\
     \ {\n            m_dat[r] = m_dat[*it_r];\n            m_seg.assign(r, power(m_dat[r],\
     \ *std::next(it_r) - r));\n            m_ls.insert(r);\n        }\n        m_dat[l]\
     \ = v;\n        for (it_l++ ; *it_l < r ; it_l = m_ls.erase(it_l)) {\n       \
     \     m_seg.assign(*it_l, VM::identity());\n            m_dat[*it_l] = VM::identity();\n\
-    \        }\n        m_ls.insert(l);\n    }\n\nprivate:\n\n    SegmentTree<VM>\
-    \ m_seg;\n\n    std::vector<V> m_dat;\n\n    std::set<usize> m_ls; \n\n    static\
-    \ V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM> {\n        return\
-    \ VM::power(v, p);\n    }\n\n    static V power(V v, u32 p) {\n        V res{VM::identity()};\n\
-    \        while (p) {\n            if (p & 1) res = VM::operation(res, v);\n  \
-    \          v = VM::operation(v, v);\n            p >>= 1; \n        }\n      \
-    \  return res;\n    }\n};\n\n} // namespace zawa\n"
+    \        }\n        m_ls.insert(l);\n    }\n\n    [[nodiscard]] V get(usize i)\
+    \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
+    \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
+    \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
+    \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
+    \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -222,13 +221,14 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2025-11-19 23:53:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
@@ -321,6 +321,19 @@ $l$ 番目から $r - 1$ 番目の要素を $v$ にする。
 
 - $O(Q\log N)$
 - 加えて`M::power`が $O(Q)$ 回呼ばれる。定義されていないときは、 `M::operation`が $O(Q\log N)$ 回呼ばれる。
+
+#### get, operator[]
+
+```
+V get(usize i) const
+V operator[](usize i) const
+```
+
+$i$ 番目の要素を取得する。
+
+**計算量**
+
+$O(\log N)$
 
 ## 参考
 
