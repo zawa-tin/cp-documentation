@@ -47,8 +47,6 @@ public:
     }
 
     explicit AssignmentSegmentTree(std::vector<V> dat) : m_seg{}, m_dat{dat}, m_ls{} {
-        // dat: 区間の左端lにa_{l}^{r-l}, それ以外のiはidentity()にする -> セグ木にこれをのせる
-        // m_dat: 区間の左端lにa_{l}, それ以外のiはidentity()にする
         m_dat.shrink_to_fit();
         if constexpr (concepts::EqualCompare<V>) {
             for (usize i{}, j{} ; i < m_dat.size() ; ) {
@@ -74,9 +72,8 @@ public:
         if (l == r) return VM::identity();
         const auto second_l = m_ls.upper_bound(l);
         const auto first_l = std::prev(second_l);
-        if (second_l != m_ls.end() and r <= *second_l) { // 一つの区間に含まれている
+        if (second_l != m_ls.end() and r <= *second_l)
             return power(m_dat[*first_l], r - l);
-        }
         const auto last_l = std::prev(m_ls.upper_bound(r));
         V res = VM::operation(
                 power(m_dat[*first_l], *second_l - l),
@@ -104,6 +101,15 @@ public:
             m_dat[*it_l] = VM::identity();
         }
         m_ls.insert(l);
+    }
+
+    [[nodiscard]] V get(usize i) const {
+        assert(i < size());
+        return m_dat[*std::prev(m_ls.upper_bound(i))];
+    }
+
+    [[nodiscard]] V operator[](usize i) const {
+        return get(i);
     }
 
 private:

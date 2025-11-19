@@ -1,12 +1,13 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_D"
 
-#include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
+#include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 
 #include <cassert>
 #include <iostream>
 #include <vector>
 
 using namespace zawa;
+using namespace std;
 
 struct M {
     using Element = int;
@@ -17,25 +18,27 @@ struct M {
         return (b == identity() ? a : b);
     }
 };
-
 int main() {
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-    std::ios::sync_with_stdio(false);
-    int n, q; std::cin >> n >> q;
-    DualSegmentTree<M> seg(std::vector<int>(n, (1LL << 31) - 1));
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+    ios::sync_with_stdio(false);
+    int n, q;
+    cin >> n >> q;
+    AssignmentSegmentTree<M> seg(vector<int>(n, (1LL << 31) - 1));
     while (q--) {
-        int t; std::cin >> t;
+        int t; 
+        cin >> t;
         if (t == 0) {
-            int l, r, x; std::cin >> l >> r >> x;
-            seg.operation(l, r + 1, x);
+            int l, r, x; 
+            cin >> l >> r >> x;
+            seg.assign(l, r + 1, x);
         }
         else if (t == 1) {
-            int i; std::cin >> i;
-            std::cout << seg[i] << '\n';
+            int i; 
+            cin >> i;
+            cout << seg[i] << '\n';
         }
-        else {
+        else
             assert(false);
-        }
     }
 }

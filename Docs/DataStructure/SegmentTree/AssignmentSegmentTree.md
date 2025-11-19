@@ -88,6 +88,19 @@ $l$ 番目から $r - 1$ 番目の要素を $v$ にする。
 - $O(Q\log N)$
 - 加えて`M::power`が $O(Q)$ 回呼ばれる。定義されていないときは、 `M::operation`が $O(Q\log N)$ 回呼ばれる。
 
+#### get, operator[]
+
+```
+V get(usize i) const
+V operator[](usize i) const
+```
+
+$i$ 番目の要素を取得する。
+
+**計算量**
+
+$O(\log N)$
+
 ## 参考
 
 - [\[Library Checker\] Range Set Range Composite](https://maspypy.com/library-checker-range-set-range-composite)
