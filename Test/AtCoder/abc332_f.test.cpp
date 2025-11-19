@@ -6,7 +6,7 @@
 
 /*
  * AtCoder Beginner Contest 332 F - Random Update Query
- * https://atcoder.jp/contests/abc332/submissions/67039166
+ * https://atcoder.jp/contests/abc332/submissions/71071551
  */
 
 #include <iostream>

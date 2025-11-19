@@ -3,6 +3,7 @@
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
 
+
 #include "atcoder/modint"
 
 #include <iostream>
