@@ -42,6 +42,9 @@ struct AffineMonoid {
     static constexpr Element operation(const Element& l, const Element& r) noexcept {
         return Element{ l.a() * r.a(), l.b() * r.a() + r.b() };
     }
+    static constexpr Element acted(const Element& l, const Element& r) noexcept {
+        return operation(l, r);
+    }
 };
 
 } // namespace zawa

@@ -14,6 +14,8 @@ struct M {
     }
     static Element operation(Element L, Element R) {
     }
+    static Element acted(Element x, O o) {
+    }
 };
 ```
 
@@ -21,7 +23,7 @@ struct M {
 
 `O = Monoid::Element`
 
-`operation(u32 l, u32 r, const O& v)` 半開区間 $[l, r)$ に $v$ を合成(ACLでいう`composition`)
+`operation(u32 l, u32 r, const O& v)` 半開区間 $[l, r)$ に $v$ を作用
 - $O(\log n)$
 
 `operation(u32 i, const O& v)` 

@@ -2,6 +2,7 @@
 
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/MonoidConcept.hpp"
+#include "../../Algebra/Action/ActionConcept.hpp"
 
 #include <bit>
 #include <cassert>
@@ -15,10 +16,6 @@ template <concepts::Monoid Monoid>
 class CommutativeDualSegmentTree {
 public:
 
-    using OM = Monoid;
-
-    using O = typename OM::Element;
-
     using VM = Monoid;
 
     using V = typename VM::Element;
@@ -28,14 +25,14 @@ public:
     explicit CommutativeDualSegmentTree(usize n) 
         : m_n{ n }, m_dat((n << 1), VM::identity()) {}
 
-    explicit CommutativeDualSegmentTree(const std::vector<O>& dat) 
+    explicit CommutativeDualSegmentTree(const std::vector<V>& dat) 
         : m_n{ dat.size() }, m_dat((m_n << 1), VM::identity()) {
         initDat(dat.begin(), dat.end());
     }
 
     template <class InputIterator>
     CommutativeDualSegmentTree(InputIterator first, InputIterator last)
-        : m_n{ static_cast<usize>(std::distance(first, last)) }, m_dat((m_n << 1), OM::identity()) {
+        : m_n{ static_cast<usize>(std::distance(first, last)) }, m_dat((m_n << 1), VM::identity()) {
         initDat(first, last);
     }
 
@@ -43,24 +40,27 @@ public:
         return m_n;
     }
 
-    virtual void operation(usize l, usize r, const O& v) {
+    template <class O>
+    requires concepts::Acted<Monoid, O>
+    void operation(usize l, usize r, const O& v) {
         assert(l <= r and r <= size());
         for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r)) {
             if (l & 1) {
-                m_dat[l] = OM::operation(m_dat[l], v);
+                m_dat[l] = VM::acted(m_dat[l], v);
                 l++;
             }
             if (r & 1) {
                 r--;
-                m_dat[r] = OM::operation(m_dat[r], v);
+                m_dat[r] = VM::acted(m_dat[r], v);
             }
         }
     }
 
-    // 未verify
-    virtual void operation(usize i, const O& o) {
+    template <class O>
+    requires concepts::Acted<Monoid, O>
+    void operation(usize i, const O& o) {
         assert(i < size());
-        m_dat[i + size()] = OM::operation(m_dat[i + size()], o);
+        m_dat[i + size()] = VM::acted(m_dat[i + size()], o);
     }
 
     void assign(usize i, const V& v) {
@@ -72,9 +72,8 @@ public:
     [[nodiscard]] virtual V operator[](usize i) {
         assert(i < size());
         V res{ VM::identity() };
-        for (i += size() ; i ; i = parent(i)) {
+        for (i += size() ; i ; i = parent(i))
             res = VM::operation(res, m_dat[i]);
-        }
         return res;
     }
 
@@ -117,9 +116,9 @@ protected:
         usize height{ 64u - std::countl_zero(i) };
         for (usize h{ height } ; --h ; ) {
             usize v{ i >> h };
-            m_dat[left(v)] = OM::operation(m_dat[left(v)], m_dat[v]);
-            m_dat[right(v)] = OM::operation(m_dat[right(v)], m_dat[v]);
-            m_dat[v] = OM::identity();
+            m_dat[left(v)] = VM::operation(m_dat[left(v)], m_dat[v]);
+            m_dat[right(v)] = VM::operation(m_dat[right(v)], m_dat[v]);
+            m_dat[v] = VM::identity();
         }
     }
 
