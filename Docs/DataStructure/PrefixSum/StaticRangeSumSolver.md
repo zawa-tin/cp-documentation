@@ -1,6 +1,6 @@
 ---
 title: 静的な列上の区間和クエリ
-documentation_of: //Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+documentation_of: //Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
 ---
 
 ## 概要

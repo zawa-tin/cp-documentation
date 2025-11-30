@@ -1,6 +1,6 @@
 ---
 title: 1次元累積和
-documentation_of: //Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+documentation_of: //Src/DataStructure/PrefixSum/PrefixSum1D.hpp
 ---
 
 ## 概要
