@@ -1,6 +1,11 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 // #define PROBLEM "https://atcoder.jp/contests/abc434/tasks/abc434_d"
 
+/*
+ * AtCoder Beginner Contest 434 D - Clouds
+ * https://atcoder.jp/contests/abc434/submissions/71356369
+ */
+
 #include "../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp"
 #include "../../Src/DataStructure/PrefixSum/Imos2D.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
@@ -15,6 +20,7 @@ int main() {
     cin.tie(0);
     cout.tie(0);
     ios::sync_with_stdio(0);
+#ifdef ATCODER
     const int MAX = 2000;
     int N;
     cin >> N;
@@ -41,4 +47,7 @@ int main() {
         int ans = base + solver.product(l, d, r, u);
         cout << ans << '\n';
     }
+#else
+    cout << "Hello World\n";
+#endif
 }
