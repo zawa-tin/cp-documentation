@@ -1,7 +1,13 @@
-#define PROBLEM "https://atcoder.jp/contests/abc229/tasks/abc229_d"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+//#define PROBLEM "https://atcoder.jp/contests/abc229/tasks/abc229_d"
+
+/*
+ * AtCoder Beginner Contest 229 D - Longest X
+ * https://atcoder.jp/contests/abc229/submissions/71354868
+ */
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp"
+#include "../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp"
 
 using namespace zawa;
 
@@ -10,6 +16,7 @@ using namespace zawa;
 #include <algorithm>
 
 int main() {
+#ifdef ATCODER
     std::cin.tie(nullptr)->sync_with_stdio(false);
 
     std::string S;
@@ -32,4 +39,7 @@ int main() {
     }
 
     std::cout << ans << std::endl;
+#else
+    std::cout << "Hello World\n";
+#endif
 }

@@ -1,7 +1,13 @@
-#define PROBLEM "https://atcoder.jp/contests/agc023/tasks/agc023_a"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+// #define PROBLEM "https://atcoder.jp/contests/agc023/tasks/agc023_a"
+
+/*
+ * AtCoder Grand Contest 023
+ * https://atcoder.jp/contests/agc023/submissions/71354946
+ */
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp"
+#include "../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp"
 
 #include <iostream>
 #include <vector>
@@ -10,6 +16,7 @@
 using namespace zawa;
 
 i32 main() {
+#ifdef ATCODER
     std::cin.tie(nullptr)->sync_with_stdio(false);
 
     u32 N; std::cin >> N;
@@ -25,4 +32,7 @@ i32 main() {
     } 
 
     std::cout << ans << std::endl;
+#else
+    std::cout << "Hello World\n";
+#endif
 }

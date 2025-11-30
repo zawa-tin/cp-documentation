@@ -1,7 +1,13 @@
-#define PROBLEM "https://atcoder.jp/contests/abc172/tasks/abc172_c"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+//#define PROBLEM "https://atcoder.jp/contests/abc172/tasks/abc172_c"
+
+/*
+ * AtCoder Beginner Contest 172 C - Tsundoku
+ * https://atcoder.jp/contests/abc172/submissions/71354696
+ */
 
 #include "../../Src/Template/TypeAlias.hpp"
-#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp"
+#include "../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp"
 
 #include <iostream>
 #include <vector>
@@ -10,6 +16,7 @@
 using namespace zawa;
 
 i32 main() {
+#ifdef ATCODER
     std::cin.tie(nullptr)->sync_with_stdio(false);
 
     usize N, M; std::cin >> N >> M;
@@ -49,4 +56,7 @@ i32 main() {
     assert(ans1 == ans2);
 
     std::cout << ans1 << std::endl;
+#else
+    std::cout << "Hello World\n";
+#endif
 }

@@ -1,7 +1,7 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp"
+#include "../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp"
 #include "../../Src/Algebra/Monoid/SameMonoid.hpp"
 #include "../../Src/DataStructure/SparseTable/SparseTable.hpp"
 #include "../../Src/Utility/BinarySearch.hpp"
@@ -15,7 +15,7 @@ using D = M::Element;
 
 /*
  * Educational Codeforces Round 162 - D. Slimes
- * https://codeforces.com/contest/1923/submission/248125965
+ * https://codeforces.com/contest/1923/submission/351304253
  */
 
 void solve() {
