@@ -5,10 +5,10 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+    path: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
@@ -29,14 +29,14 @@ data:
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
     \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
     \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
-    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
+    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
+    \n\n#line 4 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
     #include <functional>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
     \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat_;\n\
@@ -68,7 +68,7 @@ data:
     \        };\n        return dat_.rend() - std::partition_point(dat_.rbegin() +\
     \ (dat_.size() - r - 1), dat_.rend(), f_) - 1;\n    }\n\n    const auto begin()\
     \ const {\n        return dat_.begin();\n    }\n\n    const auto end() const {\n\
-    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \n\nnamespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver\
     \ = PrefixSum1D<AdditiveGroup<T>>;\n\n    template <class T>\n    using Ruisekiwa\
     \ = PrefixSum1D<AdditiveGroup<T>>;\n\n};\n#line 5 \"Test/LC/static_range_sum.test.cpp\"\
@@ -79,7 +79,7 @@ data:
     \    u32 l, r;\n        std::scanf(\"%u%u\", &l, &r);\n        std::printf(\"\
     %ld\\n\", S.product(l, r));\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n\n\
-    #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \ \n\n#include <cstdio>\n#include <vector>\n\nusing namespace zawa;\n\ni32 main()\
     \ {\n    u32 N, Q;\n    std::scanf(\"%u%u\", &N, &Q); \n    std::vector<i64> A(N);\n\
     \    for (auto& a : A) std::scanf(\"%ld\", &a);\n\n    Ruisekiwa<i64> S(A);\n\
@@ -87,13 +87,13 @@ data:
     %u%u\", &l, &r);\n        std::printf(\"%ld\\n\", S.product(l, r));\n    }\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
-  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum1D.hpp
   isVerificationFile: true
   path: Test/LC/static_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2023-07-22 13:55:49+09:00'
+  timestamp: '2025-11-30 16:55:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_sum.test.cpp

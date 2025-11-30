@@ -30,6 +30,12 @@ data:
     path: Src/DataStructure/Other/PriorityProductSet.hpp
     title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/Imos2D.hpp
+    title: Src/DataStructure/PrefixSum/Imos2D.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
   - icon: ':heavy_check_mark:'
@@ -189,6 +195,9 @@ data:
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc434_d.test.cpp
+    title: Test/AtCoder/abc434_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -314,6 +323,8 @@ data:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/PrefixSum/Imos2D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/DataStructure/SegmentTree/SegmentTreeConcept.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
@@ -348,6 +359,7 @@ data:
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
+  - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp

@@ -132,13 +132,19 @@ data:
       path: Src/DataStructure/Other/SortedAdjacentProduct.hpp
       title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
         \u3092\u7BA1\u7406\u3059\u308B"
-  - name: Src/DataStructure/PrefixSum1D
+  - name: Src/DataStructure/PrefixSum
     pages:
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+      path: Src/DataStructure/PrefixSum/Imos2D.hpp
+      title: Src/DataStructure/PrefixSum/Imos2D.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+      path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+      title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - name: Src/DataStructure/RectangleSum
     pages:
@@ -1286,6 +1292,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc430_g.test.cpp
       title: Test/AtCoder/abc430_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc434_d.test.cpp
+      title: Test/AtCoder/abc434_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

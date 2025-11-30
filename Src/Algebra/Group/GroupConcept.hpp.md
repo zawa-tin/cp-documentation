@@ -21,6 +21,12 @@ data:
     path: Src/DataStructure/Other/PriorityProductSet.hpp
     title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/Imos2D.hpp
+    title: Src/DataStructure/PrefixSum/Imos2D.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Set/FenwickSet.hpp
     title: Src/DataStructure/Set/FenwickSet.hpp
   - icon: ':heavy_check_mark:'
@@ -48,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc434_d.test.cpp
+    title: Test/AtCoder/abc434_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
@@ -112,6 +121,8 @@ data:
   requiredBy:
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/PrefixSum/Imos2D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
@@ -122,6 +133,7 @@ data:
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/abc384_g.test.cpp

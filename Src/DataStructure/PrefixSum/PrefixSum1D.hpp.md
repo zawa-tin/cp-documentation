@@ -6,7 +6,7 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
@@ -29,12 +29,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 2 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#line\
-    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+  bundledCode: "#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\n\n#line 2\
+    \ \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\n\
+    namespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
     \n\n#include <cmath>\n#include <vector>\n#include <cassert>\n#include <algorithm>\n\
     #include <type_traits>\n#include <functional>\n\nnamespace zawa {\n\ntemplate\
     \ <class Group>\nclass PrefixSum1D {\nprivate:\n    using T = typename Group::Element;\n\
@@ -103,10 +103,10 @@ data:
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
-  path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+  path: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
   requiredBy:
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  timestamp: '2023-07-22 13:55:49+09:00'
+  - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
+  timestamp: '2025-11-30 16:55:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/agc023_a.test.cpp
@@ -114,7 +114,7 @@ data:
   - Test/AtCoder/abc229_d.test.cpp
   - Test/LC/static_range_sum.test.cpp
   - Test/CF/EC162-D.test.cpp
-documentation_of: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+documentation_of: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
 layout: document
 title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---

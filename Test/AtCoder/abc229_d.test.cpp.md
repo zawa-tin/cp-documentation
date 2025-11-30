@@ -5,10 +5,10 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+    path: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
@@ -20,22 +20,26 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc229/tasks/abc229_d
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc229/submissions/71354868
     - https://atcoder.jp/contests/abc229/tasks/abc229_d
-  bundledCode: "#line 1 \"Test/AtCoder/abc229_d.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc229_d.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n//#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\n\n\
+    /*\n * AtCoder Beginner Contest 229 D - Longest X\n * https://atcoder.jp/contests/abc229/submissions/71354868\n\
+    \ */\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include\
+    \ <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\n\
+    using i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
     \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
     \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
-    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
+    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
+    \n\n#line 4 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
     #include <functional>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
     \ {\nprivate:\n    using T = typename Group::Element;\n    std::vector<T> dat_;\n\
@@ -67,37 +71,41 @@ data:
     \        };\n        return dat_.rend() - std::partition_point(dat_.rbegin() +\
     \ (dat_.size() - r - 1), dat_.rend(), f_) - 1;\n    }\n\n    const auto begin()\
     \ const {\n        return dat_.begin();\n    }\n\n    const auto end() const {\n\
-    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
+    \        return dat_.end();\n    }\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \n\nnamespace zawa {\n\n    template <class T>\n    using StaticRangeSumSolver\
     \ = PrefixSum1D<AdditiveGroup<T>>;\n\n    template <class T>\n    using Ruisekiwa\
-    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n};\n#line 5 \"Test/AtCoder/abc229_d.test.cpp\"\
-    \n\nusing namespace zawa;\n\n#include <iostream>\n#line 11 \"Test/AtCoder/abc229_d.test.cpp\"\
-    \n\nint main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\n    std::string\
-    \ S;\n    std::cin >> S;\n    u32 K;\n    std::cin >> K;\n\n    std::vector<i32>\
-    \ A(S.size());\n    for (u32 i = 0 ; i < S.size() ; i++) {\n        A[i] = S[i]\
-    \ == '.';\n    }\n    A.push_back(K + 1);\n\n    Ruisekiwa<i32> pref(A);\n\n \
-    \   u32 ans = 0;\n    for (u32 i = 0 ; i <= S.size() ; i++) {\n        u32 v =\
-    \ pref.upperBound(i, pref.size() - 1, K) - 1;\n        ans = std::max(ans, v -\
-    \ i);\n    }\n\n    std::cout << ans << std::endl;\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\n\n\
-    #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp\"\
-    \n\nusing namespace zawa;\n\n#include <iostream>\n#include <vector>\n#include\
-    \ <algorithm>\n\nint main() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \ = PrefixSum1D<AdditiveGroup<T>>;\n\n};\n#line 11 \"Test/AtCoder/abc229_d.test.cpp\"\
+    \n\nusing namespace zawa;\n\n#include <iostream>\n#line 17 \"Test/AtCoder/abc229_d.test.cpp\"\
+    \n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     \n    std::string S;\n    std::cin >> S;\n    u32 K;\n    std::cin >> K;\n\n \
     \   std::vector<i32> A(S.size());\n    for (u32 i = 0 ; i < S.size() ; i++) {\n\
     \        A[i] = S[i] == '.';\n    }\n    A.push_back(K + 1);\n\n    Ruisekiwa<i32>\
     \ pref(A);\n\n    u32 ans = 0;\n    for (u32 i = 0 ; i <= S.size() ; i++) {\n\
     \        u32 v = pref.upperBound(i, pref.size() - 1, K) - 1;\n        ans = std::max(ans,\
-    \ v - i);\n    }\n\n    std::cout << ans << std::endl;\n}\n"
+    \ v - i);\n    }\n\n    std::cout << ans << std::endl;\n#else\n    std::cout <<\
+    \ \"Hello World\\n\";\n#endif\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n//#define PROBLEM \"https://atcoder.jp/contests/abc229/tasks/abc229_d\"\n\n\
+    /*\n * AtCoder Beginner Contest 229 D - Longest X\n * https://atcoder.jp/contests/abc229/submissions/71354868\n\
+    \ */\n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
+    \n\nusing namespace zawa;\n\n#include <iostream>\n#include <vector>\n#include\
+    \ <algorithm>\n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    \n    std::string S;\n    std::cin >> S;\n    u32 K;\n    std::cin >> K;\n\n \
+    \   std::vector<i32> A(S.size());\n    for (u32 i = 0 ; i < S.size() ; i++) {\n\
+    \        A[i] = S[i] == '.';\n    }\n    A.push_back(K + 1);\n\n    Ruisekiwa<i32>\
+    \ pref(A);\n\n    u32 ans = 0;\n    for (u32 i = 0 ; i <= S.size() ; i++) {\n\
+    \        u32 v = pref.upperBound(i, pref.size() - 1, K) - 1;\n        ans = std::max(ans,\
+    \ v - i);\n    }\n\n    std::cout << ans << std::endl;\n#else\n    std::cout <<\
+    \ \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
-  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum1D.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc229_d.test.cpp
   requiredBy: []
-  timestamp: '2023-07-22 13:55:49+09:00'
+  timestamp: '2025-11-30 16:55:06+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc229_d.test.cpp

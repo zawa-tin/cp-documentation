@@ -47,10 +47,16 @@ data:
     title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\
       \u3092\u7BA1\u7406\u3059\u308B"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
+    path: Src/DataStructure/PrefixSum/Imos2D.hpp
+    title: Src/DataStructure/PrefixSum/Imos2D.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
@@ -1061,6 +1067,9 @@ data:
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc434_d.test.cpp
+    title: Test/AtCoder/abc434_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1566,6 +1575,10 @@ data:
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum/Imos2D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSum1D.hpp
   - Src/DataStructure/Mo/RollbackMo.hpp
   - Src/DataStructure/Mo/Mo.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
@@ -1576,8 +1589,6 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTreeBeats.hpp
   - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
-  - Src/DataStructure/PrefixSum1D/PrefixSum1D.hpp
   - Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/DataStructure/Undoable/UndoableVector.hpp
@@ -1789,6 +1800,7 @@ data:
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc429_g.test.cpp
+  - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp

@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+    path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Set/FenwickSet.hpp
@@ -48,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc434_d.test.cpp
+    title: Test/AtCoder/abc434_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc023_a.test.cpp
     title: AGC023-A Zero-Sum Ranges
@@ -113,7 +116,7 @@ data:
   requiredBy:
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
-  - Src/DataStructure/PrefixSum1D/StaticRangeSumSolver.hpp
+  - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -121,6 +124,7 @@ data:
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
+  - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
