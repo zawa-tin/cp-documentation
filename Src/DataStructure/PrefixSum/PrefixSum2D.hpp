@@ -78,7 +78,7 @@ public:
         return m_W;
     }
 
-    void add(usize i, usize j, T v) {
+    void operation(usize i, usize j, T v) {
         assert((i < height() and j < width()) and "invalid range: Ruisekiwa2D::add");
         m_a[i][j] = G::operation(m_a[i][j], v);
     }

@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 434 D - Clouds
- * https://atcoder.jp/contests/abc434/submissions/71356369
+ * https://atcoder.jp/contests/abc434/submissions/71356471
  */
 
 #include "../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp"
@@ -30,7 +30,7 @@ int main() {
         cin >> l >> r >> d >> u;
         l--;
         d--;
-        imos.add(l, d, r, u, 1);
+        imos.operation(l, d, r, u, 1);
     }
     auto a = imos.build();
     Ruisekiwa2D<AdditiveGroup<int>> sum(MAX, MAX);
@@ -40,7 +40,7 @@ int main() {
             if (a[i][j] == 0)
                 base++;
             else if (a[i][j] == 1)
-                sum.add(i, j, 1);
+                sum.operation(i, j, 1);
         }
     auto solver = sum.build();
     for (auto [l, r, d, u] : A) {

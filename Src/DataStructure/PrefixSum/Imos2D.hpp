@@ -65,7 +65,7 @@ public:
     }
 
     // [l, r) x [d, u)
-    void add(usize l, usize d, usize r, usize u, T v) {
+    void operation(usize l, usize d, usize r, usize u, T v) {
         assert((l <= r and r <= height()) and "invalid i range: Imos2D::add");
         assert((d <= u and u <= width()) and "invalid j range: Imos2D::add");
         T inv = G::inverse(v);
