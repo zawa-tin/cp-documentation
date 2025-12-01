@@ -27,7 +27,7 @@ struct DP {
 };
 ```
 
-[画像](./Tree.jpg)
+![image](https://github.com/zawa-tin/cp-documentation/blob/main/Docs/Graph/Tree/Tree.jpg)
 
 木dpでは
 
