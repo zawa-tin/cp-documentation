@@ -568,6 +568,9 @@ data:
       path: Src/Graph/Tree/LowestCommonAncestor.hpp
       title: Lowest Common Ancestor
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/Rerooting.hpp
+      title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Sack.hpp
       title: Sack
     - icon: ':heavy_check_mark:'
@@ -824,6 +827,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/1379.test.cpp
       title: Test/AOJ/1379.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/1595.test.cpp
+      title: Test/AOJ/1595.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2003.test.cpp
       title: Test/AOJ/2003.test.cpp

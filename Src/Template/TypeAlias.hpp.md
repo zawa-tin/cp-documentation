@@ -408,6 +408,9 @@ data:
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/Rerooting.hpp
+    title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/Sack.hpp
     title: Sack
   - icon: ':heavy_check_mark:'
@@ -617,6 +620,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/1379.test.cpp
     title: Test/AOJ/1379.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/1595.test.cpp
+    title: Test/AOJ/1595.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2003.test.cpp
     title: Test/AOJ/2003.test.cpp
@@ -1611,6 +1617,7 @@ data:
   - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/BurnBury.hpp
   - Src/Graph/Tree/SubtreesHash.hpp
+  - Src/Graph/Tree/Rerooting.hpp
   - Src/Graph/Tree/LevelAncestor.hpp
   - Src/Graph/Tree/Sack.hpp
   - Src/Graph/Tree/HeavyLightDecomposition.hpp
@@ -1941,6 +1948,7 @@ data:
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/3168.test.cpp
+  - Test/AOJ/1595.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/2827.test.cpp
