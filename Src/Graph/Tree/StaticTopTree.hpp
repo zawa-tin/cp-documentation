@@ -54,11 +54,11 @@ public:
     StaticTopTree() = default;
 
     StaticTopTree(STTGraph g, usize root) 
-        : m_nodes(1), m_posVertex(g.size(), Empty), m_posEdge(g.size(), Empty) {
-        removeParent(g, root, Empty);
-        hld(g, root);
-        m_nodes.reserve(g.size() << 1);
-        m_root = dfs(g, root);
+        : m_g{move(g)}, m_nodes(1), m_posVertex(m_g.size(), Empty), m_posEdge(m_g.size(), Empty) {
+        removeParent(root, Empty);
+        hld(root);
+        m_nodes.reserve(m_g.size() << 1);
+        m_root = dfs(root);
     }
 
     inline usize size() const {
@@ -86,40 +86,44 @@ public:
 
 private:
 
+    STTGraph m_g;
+
     std::vector<Node> m_nodes;
 
     std::vector<usize> m_posVertex, m_posEdge;
 
     usize m_root;
 
-    void removeParent(STTGraph& g, usize v, usize p) {
-        for (usize i = 0 ; i + 1 < g[v].size() ; ) {
-            if (g[v][i].first == p)
-                swap(g[v][i], g[v].back());
+    void removeParent(usize v, usize p) {
+        for (usize i = 0 ; i + 1 < m_g[v].size() ; ) {
+            if (m_g[v][i].first == p)
+                swap(m_g[v][i], m_g[v].back());
             else
-                removeParent(g, g[v][i++].first, v);
+                removeParent(m_g[v][i++].first, v);
         }
-        if (g[v].size()) {
-            if (g[v].back().first == p)
-                g[v].pop_back();
+        if (m_g[v].size()) {
+            if (m_g[v].back().first == p)
+                m_g[v].pop_back();
             else
-                removeParent(g, g[v].back().first, v);
+                removeParent(m_g[v].back().first, v);
         }
     }
 
-    usize hld(STTGraph& g, usize v) {
-        if (g[v].empty())
+    usize hld(usize v) {
+        if (m_g[v].empty())
             return 1;
-        usize res = hld(g, g[v][0].first), mx = res;
-        for (usize i = 1 ; i < g[v].size() ; i++) {
-            usize ch = hld(g, g[v][i].first);
+        usize res = 1, mx = 0, arg = 0;
+        for (usize i = 0 ; i < m_g[v].size() ; i++) {
+            usize ch = hld(m_g[v][i].first);
             if (mx < ch) {
-                swap(g[v][0], g[v][i]);
+                arg = i;
                 mx = ch;
             }
             res += ch;
         }
-        return ++res;
+        if (arg)
+            std::swap(m_g[v][0], m_g[v][arg]);
+        return res;
     }
 
     usize makeNode(Node&& node) {
@@ -128,19 +132,21 @@ private:
         return res;
     }
 
-    usize compressStrategy(const STTGraph& g, const std::vector<std::pair<usize, usize>>& path) {
+    usize compressStrategy(const std::vector<std::pair<usize, usize>>& path) {
         assert(path.size());
         std::vector<std::tuple<usize, usize, usize>> stk;
         stk.reserve(path.size());
-        auto merge = [&](auto&& l, auto&& r) {
-            auto [nl, vl, hl] = std::move(l);
-            auto [nr, vr, hr] = std::move(r);
-            usize e = g[vl][0].second;
+        auto merge = [&]() {
+            auto [nr, vr, hr] = std::move(stk.back());
+            stk.pop_back();
+            auto [nl, vl, hl] = std::move(stk.back());
+            stk.pop_back();
+            usize e = m_g[vl][0].second;
             usize h = std::max(hl, hr) + 1;
             Node cur{STTOp::Compress, Empty, nl | (u64{nr} << Bit), Empty, e, h};
             usize merged = makeNode(std::move(cur));
             m_posEdge[e] = m_nodes[nl].par = m_nodes[nr].par = merged;
-            return std::tuple<usize, usize, usize>{merged, vr, h};
+            stk.emplace_back(merged, vr, h);
         };
         for (auto [nd, v] : path) {
             stk.push_back({nd, v, m_nodes[nd].height});
@@ -149,32 +155,18 @@ private:
                 if (len >= 3 and (std::get<2>(stk[len - 3]) == std::get<2>(stk[len - 2]) or std::get<2>(stk[len - 3]) < std::get<2>(stk[len - 1]))) {
                     auto tmp = std::move(stk.back());
                     stk.pop_back();
-                    auto r = std::move(stk.back());
-                    stk.pop_back();
-                    auto l = std::move(stk.back());
-                    stk.pop_back();
-                    stk.push_back(merge(std::move(l), std::move(r)));
+                    merge();
                     stk.push_back(std::move(tmp));
                 }
-                else if (len >= 2 and std::get<2>(stk[len - 2]) <= std::get<2>(stk[len - 1])) {
-                    auto r = std::move(stk.back());
-                    stk.pop_back();
-                    auto l = std::move(stk.back());
-                    stk.pop_back();
-                    stk.push_back(merge(std::move(l), std::move(r)));
-                }
+                else if (len >= 2 and std::get<2>(stk[len - 2]) <= std::get<2>(stk[len - 1]))
+                    merge();
                 else
                     break;
             }
         }
-        auto pd = std::move(stk.back());
-        stk.pop_back();
-        while (stk.size()) {
-            auto tmp = merge(std::move(stk.back()), std::move(pd));
-            pd = std::move(tmp);
-            stk.pop_back();
-        }
-        return std::get<0>(pd);
+        while (stk.size() >= 2)
+            merge();
+        return std::get<0>(stk.back());
     }
 
     usize rakeStrategy(usize v, const std::vector<usize> ch) {
@@ -182,14 +174,18 @@ private:
             Node cur{STTOp::Vertex, Empty, 0, v, Empty, 0};
             return m_posVertex[v] = makeNode(std::move(cur));
         }
-        auto merge = [&](auto&& l, auto&& r) -> std::pair<usize, usize> {
-            usize h = std::max(l.second, r.second) + 1;
-            Node cur{STTOp::Rake, Empty, l.first | (u64{r.first} << Bit), Empty, Empty, h};
+        std::vector<std::pair<usize, usize>> stk;
+        auto merge = [&]() {
+            auto [rnd, rh] = std::move(stk.back());
+            stk.pop_back();
+            auto [lnd, lh] = std::move(stk.back());
+            stk.pop_back();
+            usize h = std::max(lh, rh) + 1;
+            Node cur{STTOp::Rake, Empty, lnd | (u64{rnd} << Bit), Empty, Empty, h};
             usize merged = makeNode(std::move(cur));
-            return {m_nodes[l.first].par = m_nodes[r.first].par = merged, h};
+            stk.emplace_back(m_nodes[lnd].par = m_nodes[rnd].par = merged, h);
         };
         usize pd = [&]() -> usize {
-            std::vector<std::pair<usize, usize>> stk;
             for (usize nd : ch) {
                 stk.push_back({nd, m_nodes[nd].height});
                 while (true) {
@@ -197,53 +193,39 @@ private:
                     if (len >= 3 and (stk[len - 3].second == stk[len - 2].second or stk[len - 3].second < stk[len - 1].second)) {
                         auto tmp = std::move(stk.back());
                         stk.pop_back();
-                        auto r = std::move(stk.back());
-                        stk.pop_back();
-                        auto l = std::move(stk.back());
-                        stk.pop_back();
-                        stk.push_back(merge(l, r));
+                        merge();
                         stk.push_back(std::move(tmp));
                     }
-                    else if (len >= 2 and stk[len - 2].second <= stk[len - 1].second) {
-                        auto r = std::move(stk.back());
-                        stk.pop_back();
-                        auto l = std::move(stk.back());
-                        stk.pop_back();
-                        stk.push_back(merge(l, r));
-                    }
+                    else if (len >= 2 and stk[len - 2].second <= stk[len - 1].second)
+                        merge();
                     else
                         break;
                 }
             }
-            auto res = std::move(stk.back());
-            stk.pop_back();
-            while (stk.size()) {
-                auto tmp = merge(std::move(stk.back()), std::move(res));
-                res = std::move(tmp);
-                stk.pop_back();
-            }
-            return res.first;
+            while (stk.size() >= 2)
+                merge();
+            return stk.back().first;
         }();
         Node cur{STTOp::AddVertex, Empty, pd, v, Empty, m_nodes[pd].height + 1};
         return m_posVertex[v] = m_nodes[pd].par = makeNode(std::move(cur));
     }
 
-    usize dfs(const STTGraph& g, usize v) {
+    usize dfs(usize v) {
         std::vector<std::pair<usize, usize>> path;
-        for ( ; ; v = g[v][0].first) {
-            path.emplace_back(dfsLight(g, v), v);
-            if (g[v].empty())
+        for ( ; ; v = m_g[v][0].first) {
+            path.emplace_back(dfsLight(v), v);
+            if (m_g[v].empty())
                 break;
         }
-        return compressStrategy(g, path);
+        return compressStrategy(path);
     }
 
-    usize dfsLight(const STTGraph& g, usize v) {
+    usize dfsLight(usize v) {
         std::vector<usize> chs;
-        chs.reserve(g[v].size());
-        for (usize i = 1 ; i < g[v].size() ; i++) {
-            const auto [x, e] = g[v][i];
-            const usize nd = dfs(g, x);
+        chs.reserve(m_g[v].size());
+        for (usize i = 1 ; i < m_g[v].size() ; i++) {
+            const auto [x, e] = m_g[v][i];
+            const usize nd = dfs(x);
             Node cur{STTOp::AddEdge, Empty, nd, Empty, e, m_nodes[nd].height + 1};
             const usize ch = makeNode(std::move(cur));
             chs.push_back(m_posEdge[e] = m_nodes[nd].par = ch);
