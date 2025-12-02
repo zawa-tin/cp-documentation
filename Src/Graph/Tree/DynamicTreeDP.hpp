@@ -4,7 +4,7 @@
 
 #include <concepts>
 #include <variant>
-#include <iostream>
+// #include <iostream>
 
 namespace zawa {
 
@@ -56,8 +56,9 @@ public:
         assert(g.size() == m_vs.size());
         assert(g.empty() or g.size() == m_es.size() + 1);
         for (usize i = 0 ; i < m_stt.size() ; i++)
-            recalc(i);
-        std::cerr << "STT's Height is " << m_stt[m_stt.root()].height << std::endl;
+            if (i != StaticTopTree::Empty)
+                recalc(i);
+        //std::cerr << "STT's Height is " << m_stt[m_stt.root()].height << std::endl;
     }
 
     inline usize size() const {
@@ -113,30 +114,30 @@ private:
         }
         case STTOp::AddVertex:
         {
-            const Point& ch = std::get<PointId>(m_dp[node.ch[0]]);
+            const Point& ch = std::get<PointId>(m_dp[node[0]]);
             const Vertex& v = m_vs[node.invV];
             m_dp[i] = Item{std::in_place_index<PathId>, T::addVertex(ch, v)};
             break;
         }
         case STTOp::AddEdge:
         {
-            const Path& ch = std::get<PathId>(m_dp[node.ch[0]]);
+            const Path& ch = std::get<PathId>(m_dp[node[0]]);
             const Edge& e = m_es[node.invE];
             m_dp[i] = Item{std::in_place_index<PointId>, T::addEdge(ch, e)};
             break;
         }
         case STTOp::Rake:
         {
-            const Point& l = std::get<PointId>(m_dp[node.ch[0]]);
-            const Point& r = std::get<PointId>(m_dp[node.ch[1]]);
+            const Point& l = std::get<PointId>(m_dp[node[0]]);
+            const Point& r = std::get<PointId>(m_dp[node[1]]);
             m_dp[i] = Item{std::in_place_index<PointId>, T::rake(l, r)};
             break;
         }
         case STTOp::Compress:
         {
-            const Path& l = std::get<PathId>(m_dp[node.ch[0]]);
+            const Path& l = std::get<PathId>(m_dp[node[0]]);
             const Edge& e = m_es[node.invE];
-            const Path& r = std::get<PathId>(m_dp[node.ch[1]]);
+            const Path& r = std::get<PathId>(m_dp[node[1]]);
             m_dp[i] = Item{std::in_place_index<PathId>, T::compress(l, e, r)};
             break;
         }
