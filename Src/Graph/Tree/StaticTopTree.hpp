@@ -3,11 +3,9 @@
 #include "../../Template/TypeAlias.hpp"
 
 #include <algorithm>
-#include <array>
 #include <cassert>
 #include <utility>
 #include <vector>
-#include <ostream>
 #include <string>
 #include <tuple>
 
@@ -22,10 +20,9 @@ enum class STTOp {
     Rake,
     Compress
 };
-std::ostream& operator<<(std::ostream& os, STTOp v) {
+std::string STTOpName(STTOp v) {
     static std::string name[]{"Vertex", "AddVertex", "AddEdge", "Rake", "Compress"};
-    os << name[static_cast<int>(v)];
-    return os;
+    return name[static_cast<usize>(v)];
 }
 
 class StaticTopTree {
@@ -169,7 +166,7 @@ private:
         return std::get<0>(stk.back());
     }
 
-    usize rakeStrategy(usize v, const std::vector<usize> ch) {
+    usize rakeStrategy(usize v, const std::vector<usize>& ch) {
         if (ch.empty()) {
             Node cur{STTOp::Vertex, Empty, 0, v, Empty, 0};
             return m_posVertex[v] = makeNode(std::move(cur));

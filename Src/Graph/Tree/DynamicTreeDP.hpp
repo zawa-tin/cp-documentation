@@ -91,6 +91,20 @@ public:
         recalcAncestor(m_stt.posEdge(e));
     }
 
+    template <class F>
+    void visit(F f) const {
+        for (usize i = 0 ; i < m_stt.size() ; i++)
+            if (i != StaticTopTree::Empty) {
+                const auto& node = m_stt[i];
+                std::string name = STTOpName(node.type);
+                usize par = node.par;
+                if (std::holds_alternative<Path>(m_dp[i]))
+                    f(i, name, par, std::get<PathId>(m_dp[i]));
+                else
+                    f(i, name, par, std::get<PointId>(m_dp[i]));
+            }
+    }
+
 private:
 
     usize m_n;
