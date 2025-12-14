@@ -24,9 +24,9 @@ data:
     \ {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
     \ usize>> GreyCode(usize n) {\n    std::vector<std::pair<GreyCodeOp, usize>> res;\n\
     \    res.reserve(1 << (n + 1));\n    usize cur = 0;\n    res.emplace_back(GreyCodeOp::Access,\
-    \ cur);\n    for (usize i = 1 ; i < (1 << n) ; i++) {\n        usize nxt = i ^\
-    \ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n      \
-    \  if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
+    \ cur);\n    for (usize i = 1 ; i < (1u << n) ; i++) {\n        usize nxt = i\
+    \ ^ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n    \
+    \    if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
     \        else\n            res.emplace_back(GreyCodeOp::Add, k);\n        res.emplace_back(GreyCodeOp::Access,\
     \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\nnamespace concepts {\n\
     \ntemplate <class T>\nconcept SubsetProd = requires {\n    typename T::Element;\n\
@@ -48,9 +48,9 @@ data:
     \ {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
     \ usize>> GreyCode(usize n) {\n    std::vector<std::pair<GreyCodeOp, usize>> res;\n\
     \    res.reserve(1 << (n + 1));\n    usize cur = 0;\n    res.emplace_back(GreyCodeOp::Access,\
-    \ cur);\n    for (usize i = 1 ; i < (1 << n) ; i++) {\n        usize nxt = i ^\
-    \ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n      \
-    \  if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
+    \ cur);\n    for (usize i = 1 ; i < (1u << n) ; i++) {\n        usize nxt = i\
+    \ ^ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n    \
+    \    if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
     \        else\n            res.emplace_back(GreyCodeOp::Add, k);\n        res.emplace_back(GreyCodeOp::Access,\
     \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\nnamespace concepts {\n\
     \ntemplate <class T>\nconcept SubsetProd = requires {\n    typename T::Element;\n\
@@ -72,7 +72,7 @@ data:
   isVerificationFile: false
   path: Src/Utility/GreyCode.hpp
   requiredBy: []
-  timestamp: '2025-12-14 15:22:50+09:00'
+  timestamp: '2025-12-14 22:30:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF1070-F.test.cpp
