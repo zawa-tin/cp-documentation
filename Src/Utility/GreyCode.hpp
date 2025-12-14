@@ -19,7 +19,7 @@ std::vector<std::pair<GreyCodeOp, usize>> GreyCode(usize n) {
     res.reserve(1 << (n + 1));
     usize cur = 0;
     res.emplace_back(GreyCodeOp::Access, cur);
-    for (usize i = 1 ; i < (1 << n) ; i++) {
+    for (usize i = 1 ; i < (1u << n) ; i++) {
         usize nxt = i ^ (i >> 1);
         usize k = std::countr_zero<unsigned>(cur ^ nxt);
         if (cur & (1 << k))
