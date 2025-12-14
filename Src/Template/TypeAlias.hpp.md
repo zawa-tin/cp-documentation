@@ -580,6 +580,10 @@ data:
     title: "\u6587\u5B57\u5217\u3067\u53D7\u3051\u53D6\u3063\u305F\u5C0F\u6570\u3092\
       10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\u3064"
   - icon: ':heavy_check_mark:'
+    path: Src/Utility/GreyCode.hpp
+    title: "\u30B0\u30EC\u30A4\u30B3\u30FC\u30C9\u306B\u3088\u308B\u90E8\u5206\u96C6\
+      \u5408\u5217\u6319"
+  - icon: ':heavy_check_mark:'
     path: Src/Utility/MisereNim.hpp
     title: Misere Nim
   - icon: ':heavy_check_mark:'
@@ -1149,6 +1153,9 @@ data:
     path: Test/CF/CF1054-G.test.cpp
     title: Test/CF/CF1054-G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1070-F.test.cpp
+    title: Test/CF/CF1070-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF316-D.test.cpp
     title: Test/CF/CF316-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1581,6 +1588,7 @@ data:
   isVerificationFile: false
   path: Src/Template/TypeAlias.hpp
   requiredBy:
+  - Src/Utility/GreyCode.hpp
   - Src/Utility/BinarySearch.hpp
   - Src/Utility/FloatingMarkerShift.hpp
   - Src/Utility/SeparatedFamilySet.hpp
@@ -2069,6 +2077,7 @@ data:
   - Test/CF/CF923-F.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/EC2-E.test.cpp
+  - Test/CF/CF1070-F.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF895-E.test.cpp
   - Test/CF/CF1054-G.test.cpp

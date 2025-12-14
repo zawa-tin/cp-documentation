@@ -776,6 +776,10 @@ data:
         10\u500D\u3057\u307E\u304F\u3063\u3066\u6574\u6570\u306B\u3059\u308B\u3084\
         \u3064"
     - icon: ':heavy_check_mark:'
+      path: Src/Utility/GreyCode.hpp
+      title: "\u30B0\u30EC\u30A4\u30B3\u30FC\u30C9\u306B\u3088\u308B\u90E8\u5206\u96C6\
+        \u5408\u5217\u6319"
+    - icon: ':heavy_check_mark:'
       path: Src/Utility/MisereNim.hpp
       title: Misere Nim
     - icon: ':heavy_check_mark:'
@@ -1378,6 +1382,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF1054-G.test.cpp
       title: Test/CF/CF1054-G.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/CF1070-F.test.cpp
+      title: Test/CF/CF1070-F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF316-D.test.cpp
       title: Test/CF/CF316-D.test.cpp

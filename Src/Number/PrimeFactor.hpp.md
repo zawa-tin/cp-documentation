@@ -29,6 +29,9 @@ data:
     title: "ABC185-E Adjacent GCD (\u7D04\u6570\u30FB\u500D\u6570\u95A2\u4FC2\u306E\
       \u9AD8\u901F\u30BC\u30FC\u30BF\u30FB\u30E1\u30D3\u30A6\u30B9\u5909\u63DB)"
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1070-F.test.cpp
+    title: Test/CF/CF1070-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF902-B.test.cpp
     title: Test/CF/CF902-B.test.cpp
   _isVerificationFailed: false
@@ -83,6 +86,7 @@ data:
   - Test/AtCoder/arc185_e.test.cpp
   - Test/AOJ/2706.test.cpp
   - Test/CF/CF902-B.test.cpp
+  - Test/CF/CF1070-F.test.cpp
 documentation_of: Src/Number/PrimeFactor.hpp
 layout: document
 redirect_from:
