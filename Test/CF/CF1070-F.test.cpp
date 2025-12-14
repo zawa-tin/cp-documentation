@@ -1,6 +1,11 @@
 // #define PROBLEM "https://codeforces.com/contest/2176/problem/F"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * Codeforces Round1070 (Div. 2) F. Omega Numbers
+ * https://codeforces.com/contest/2176/submission/353449994
+ */
+
 #include "../../Src/Number/LinearSieve.hpp"
 #include "../../Src/Utility/GreyCode.hpp"
 #include "atcoder/modint"
