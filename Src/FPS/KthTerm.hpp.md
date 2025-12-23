@@ -3,7 +3,8 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/FPS/BostanMori.hpp
-    title: Src/FPS/BostanMori.hpp
+    title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
+      \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
@@ -60,8 +61,30 @@ data:
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/KthTerm.hpp
 layout: document
-title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori \u30A2\
-  \u30EB\u30B4\u30EA\u30BA\u30E0)"
+title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\u308B"
 ---
 
 ## 概要
+
+漸化式 $a_{n} = \sum_{i = 1}^{d} c_{i}a_{n - i}$ の $K$ 項目を計算する。
+
+## ライブラリ
+
+```
+template <usize MOD = 998244353>
+typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFriendly<MOD> C)
+```
+
+$C$ は1-indexedですよ！
+
+- $\mid C\mid \ge 2$
+- $C_{0} = 0$
+- $\mid A\mid \ge d$
+
+## アルゴリズム
+
+$a$ の母関数を $A(x)$ 、 $Q(x) = 1 - \sum_{i = 1}^{d} c_{i}x^{i}$ とすると、 $A(x)Q(x)$ の $d$ 次以上の係数は $0$ になる。 これを $P(x)$ とおくと $[x^{K}]\frac{P(x)}{Q(x)}$ を計算することに帰着していて、Bostan-Moriアルゴリズムを使うと良い。
+
+## 参考
+
+- [線形漸化式のN項目の計算](https://qiita.com/ryuhe1/items/da5acbcce4ac1911f47a)

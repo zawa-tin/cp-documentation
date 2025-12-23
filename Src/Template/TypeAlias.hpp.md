@@ -115,14 +115,15 @@ data:
     title: Src/DataStructure/Undoable/UndoableVector.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/BostanMori.hpp
-    title: Src/FPS/BostanMori.hpp
+    title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
+      \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/KthTerm.hpp
-    title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
-      \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
+    title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
+      \u308B"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialInterpolation.hpp
     title: Src/FPS/PolynomialInterpolation.hpp
@@ -1095,6 +1096,9 @@ data:
     path: Test/AtCoder/abc434_d.test.cpp
     title: Test/AtCoder/abc434_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc436_g.test.cpp
+    title: ABC436-G Linear Inequation
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1896,6 +1900,7 @@ data:
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc127_f.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
+  - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/abc311_b.test.cpp
