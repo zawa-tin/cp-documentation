@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc340/tasks/abc340_g"
+//#define PROBLEM "https://atcoder.jp/contests/abc340/tasks/abc340_g"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/TypeAlias.hpp"
 #include "../../Src/Graph/Tree/AuxiliaryTree.hpp"
@@ -13,6 +14,7 @@ using namespace zawa;
 using mint = atcoder::modint998244353;
 
 int main() {
+#ifdef ATCODER
     int N;
     std::cin >> N;
     std::vector<std::vector<int>> A(N);
@@ -58,4 +60,7 @@ int main() {
         dfs(dfs, r, -1);
     }
     std::cout << ans.val() << '\n';
+#else
+    std::cout << "Hello World\n";
+#endif
 }
