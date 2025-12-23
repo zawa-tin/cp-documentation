@@ -3,7 +3,7 @@
 
 /*
  * 第7回日本情報オリンピック本選 (過去問) E - ペンキの色
- * https://atcoder.jp/contests/joi2008ho/submissions/71931671
+ * https://atcoder.jp/contests/joi2008ho/submissions/71932516
  */
 
 #include "../../Src/Sequence/CompressedSequence.hpp"
@@ -39,7 +39,7 @@ int main() {
     for (auto [l, d, r, u] : ita) {
         imos.operation(cx[l], cy[d], cx[r], cy[u], 1);
     }
-    auto solver = imos.destructiveBuild();
+    auto solver = imos.inplaceBuild();
     vector id(cx.size(), vector<int>(cy.size(), -1));
     int ans = 0;
     for (int i = 0 ; i < ssize(cx) and cx.inverse(i) < W ; i++) 

@@ -109,7 +109,7 @@ public:
         return internal::StaticRectAddSolver<G>{m_imos};
     }
 
-    internal::StaticRectAddSolver<G> destructiveBuild() {
+    internal::StaticRectAddSolver<G> inplaceBuild() {
         assert(m_moved == false and "data is already builded: Imos2D::build");
         m_moved = true;
         return internal::StaticRectAddSolver<G>{std::move(m_imos)};
