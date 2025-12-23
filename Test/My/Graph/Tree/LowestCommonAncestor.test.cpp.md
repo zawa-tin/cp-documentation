@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChminMonoid.hpp
-    title: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: "chmin\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
@@ -45,15 +45,13 @@ data:
     \ true;\n        else return l.priority() < r.priority();\n    }\n};\n\ntemplate\
     \ <class T, class U>\nstruct ChminMonoid {\n    using Element = ChminMonoidData<T,\
     \ U>;\n    static Element identity() noexcept {\n        return Element{};\n \
-    \   }\n    // \u30BF\u30A4\u30D6\u30EC\u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\
-    \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
-    \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
-    \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
-    \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
-    \    std::vector<u32> L;\n    std::vector<std::vector<Value>> dat;\npublic:\n\n\
-    \    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
+    \   }\n    static Element operation(const Element& l, const Element& r) noexcept\
+    \ {\n        return (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n\nnamespace zawa\
+    \ {\n\ntemplate <class Structure>\nclass SparseTable {\nprivate:\n    using Value\
+    \ = typename Structure::Element;\n    std::vector<u32> L;\n    std::vector<std::vector<Value>>\
+    \ dat;\npublic:\n\n    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
     \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
     \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
     \ + 1);\n        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ;\
@@ -127,7 +125,7 @@ data:
   isVerificationFile: true
   path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   requiredBy: []
-  timestamp: '2024-12-07 19:34:02+09:00'
+  timestamp: '2025-12-23 16:17:45+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp

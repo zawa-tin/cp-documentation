@@ -27,10 +27,10 @@ data:
       title: Src/Algebra/Monoid/AffineMonoid.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/ChmaxMonoid.hpp
-      title: Src/Algebra/Monoid/ChmaxMonoid.hpp
+      title: "chmax\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/ChminMonoid.hpp
-      title: Src/Algebra/Monoid/ChminMonoid.hpp
+      title: "chmin\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/ClampAddMonoid.hpp
       title: Src/Algebra/Monoid/ClampAddMonoid.hpp

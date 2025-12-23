@@ -4,10 +4,10 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChmaxMonoid.hpp
-    title: Src/Algebra/Monoid/ChmaxMonoid.hpp
+    title: "chmax\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChminMonoid.hpp
-    title: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: "chmin\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"

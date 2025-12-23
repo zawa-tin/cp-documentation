@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChminMonoid.hpp
-    title: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: "chmin\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
@@ -29,10 +29,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc359/tasks/abc359_g
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://atcoder.jp/contests/abc359/tasks/abc359_g
-  bundledCode: "#line 1 \"Test/AtCoder/abc359_g.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc359_g.test.cpp\"\n//#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -57,15 +59,13 @@ data:
     \ true;\n        else return l.priority() < r.priority();\n    }\n};\n\ntemplate\
     \ <class T, class U>\nstruct ChminMonoid {\n    using Element = ChminMonoidData<T,\
     \ U>;\n    static Element identity() noexcept {\n        return Element{};\n \
-    \   }\n    // \u30BF\u30A4\u30D6\u30EC\u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\
-    \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
-    \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
-    \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
-    \n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <class\
-    \ Structure>\nclass SparseTable {\nprivate:\n    using Value = typename Structure::Element;\n\
-    \    std::vector<u32> L;\n    std::vector<std::vector<Value>> dat;\npublic:\n\n\
-    \    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
+    \   }\n    static Element operation(const Element& l, const Element& r) noexcept\
+    \ {\n        return (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 2 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\n\n#line 4 \"Src/DataStructure/SparseTable/SparseTable.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n#include <ostream>\n\nnamespace zawa\
+    \ {\n\ntemplate <class Structure>\nclass SparseTable {\nprivate:\n    using Value\
+    \ = typename Structure::Element;\n    std::vector<u32> L;\n    std::vector<std::vector<Value>>\
+    \ dat;\npublic:\n\n    SparseTable() : L{}, dat{} {}\n    SparseTable(const std::vector<Value>&\
     \ a) : L(a.size() + 1), dat{} {\n        for (u32 i{1} ; i < L.size() ; i++) {\n\
     \            L[i] = L[i - 1] + (i >> (L[i - 1] + 1));\n        }\n        dat.resize(L.back()\
     \ + 1);\n        dat[0] = a;\n        for (u32 i{1}, len{2} ; i < dat.size() ;\
@@ -145,29 +145,32 @@ data:
     \     return stack.back();\n    }\n\n    void clear() {\n        for (V v : vs_)\
     \ {\n            T_[v].clear();\n            used_[v] = false;\n            dist_[v]\
     \ = 0u;\n        }\n        vs_.clear();\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 5 \"Test/AtCoder/abc359_g.test.cpp\"\n\n#line 8 \"Test/AtCoder/abc359_g.test.cpp\"\
-    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n\n    int N;\n  \
-    \  std::cin >> N;\n    std::vector<std::vector<int>> g(N);\n    for (int i{1}\
-    \ ; i < N ; i++) {\n        int u, v;\n        std::cin >> u >> v;\n        u--;\
-    \ v--;\n        g[u].push_back(v);\n        g[v].push_back(u);\n    }\n    std::vector<int>\
-    \ A(N);\n    std::vector<std::vector<int>> B(N);\n    for (int i{} ; i < N ; i++)\
-    \ {\n        std::cin >> A[i];\n        A[i]--;\n        B[A[i]].push_back(i);\n\
-    \    }\n    AuxiliaryTree AT(g);\n    long long ans{};\n    std::vector<int> size(N);\n\
-    \    std::vector<long long> dp(N);\n    for (int c{} ; c < N ; c++) {\n      \
-    \  if (B[c].empty()) {\n            continue;\n        }\n        int r{(int)AT.construct(B[c])};\n\
-    \        auto dfs{[&](auto dfs, int v, int p) -> long long {\n            if (A[v]\
-    \ == c) size[v]++; \n            long long res{};\n            for (auto x : AT[v])\
-    \ {\n                if ((int)x == p) continue;\n                res += dfs(dfs,\
-    \ x, v);\n                res += dp[v] * size[x] + size[v] * (size[x] * AT.parentEdgeLength(x)\
+    \ 6 \"Test/AtCoder/abc359_g.test.cpp\"\n\n#line 9 \"Test/AtCoder/abc359_g.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n#ifdef ATCODER\n    SetFastIO();\n\n\
+    \    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>> g(N);\n   \
+    \ for (int i{1} ; i < N ; i++) {\n        int u, v;\n        std::cin >> u >>\
+    \ v;\n        u--; v--;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
+    \    }\n    std::vector<int> A(N);\n    std::vector<std::vector<int>> B(N);\n\
+    \    for (int i{} ; i < N ; i++) {\n        std::cin >> A[i];\n        A[i]--;\n\
+    \        B[A[i]].push_back(i);\n    }\n    AuxiliaryTree AT(g);\n    long long\
+    \ ans{};\n    std::vector<int> size(N);\n    std::vector<long long> dp(N);\n \
+    \   for (int c{} ; c < N ; c++) {\n        if (B[c].empty()) {\n            continue;\n\
+    \        }\n        int r{(int)AT.construct(B[c])};\n        auto dfs{[&](auto\
+    \ dfs, int v, int p) -> long long {\n            if (A[v] == c) size[v]++; \n\
+    \            long long res{};\n            for (auto x : AT[v]) {\n          \
+    \      if ((int)x == p) continue;\n                res += dfs(dfs, x, v);\n  \
+    \              res += dp[v] * size[x] + size[v] * (size[x] * AT.parentEdgeLength(x)\
     \ + dp[x]);\n                dp[v] += dp[x] + AT.parentEdgeLength(x) * size[x];\n\
     \                size[v] += size[x];\n            }\n            return res;\n\
     \        }}; \n        long long val{dfs(dfs, r, -1)};\n        ans += val;\n\
     \        for (auto v : AT.current()) {\n            size[v] = 0;\n           \
-    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
+    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
+  code: "//#define PROBLEM \"https://atcoder.jp/contests/abc359/tasks/abc359_g\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nint main()\
-    \ {\n    SetFastIO();\n\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
+    \ {\n#ifdef ATCODER\n    SetFastIO();\n\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
     \ g(N);\n    for (int i{1} ; i < N ; i++) {\n        int u, v;\n        std::cin\
     \ >> u >> v;\n        u--; v--;\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
     \    }\n    std::vector<int> A(N);\n    std::vector<std::vector<int>> B(N);\n\
@@ -184,7 +187,8 @@ data:
     \                size[v] += size[x];\n            }\n            return res;\n\
     \        }}; \n        long long val{dfs(dfs, r, -1)};\n        ans += val;\n\
     \        for (auto v : AT.current()) {\n            size[v] = 0;\n           \
-    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
+    \ dp[v] = 0;\n        }\n    }\n    std::cout << ans << '\\n';\n#else\n    std::cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -195,7 +199,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc359_g.test.cpp
   requiredBy: []
-  timestamp: '2024-12-07 19:29:25+09:00'
+  timestamp: '2025-12-23 16:32:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc359_g.test.cpp

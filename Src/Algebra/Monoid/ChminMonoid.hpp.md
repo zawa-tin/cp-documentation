@@ -57,10 +57,8 @@ data:
     \ true;\n        else return l.priority() < r.priority();\n    }\n};\n\ntemplate\
     \ <class T, class U>\nstruct ChminMonoid {\n    using Element = ChminMonoidData<T,\
     \ U>;\n    static Element identity() noexcept {\n        return Element{};\n \
-    \   }\n    // \u30BF\u30A4\u30D6\u30EC\u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\
-    \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
-    \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
-    \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n"
+    \   }\n    static Element operation(const Element& l, const Element& r) noexcept\
+    \ {\n        return (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <optional>\n\nnamespace zawa {\n\ntemplate <class T, class U>\nclass\
     \ ChminMonoidData {\nprivate:\n    std::optional<T> priority_{};\n    U value_{};\n\
@@ -75,10 +73,8 @@ data:
     \ true;\n        else return l.priority() < r.priority();\n    }\n};\n\ntemplate\
     \ <class T, class U>\nstruct ChminMonoid {\n    using Element = ChminMonoidData<T,\
     \ U>;\n    static Element identity() noexcept {\n        return Element{};\n \
-    \   }\n    // \u30BF\u30A4\u30D6\u30EC\u30FC\u30AF\u306Fl\u5074\u3092\u512A\u5148\
-    \u3059\u308B\u3088\u3046\u306B\u306A\u3063\u3066\u3044\u308B\u3002\n    static\
-    \ Element operation(const Element& l, const Element& r) noexcept {\n        return\
-    \ (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n"
+    \   }\n    static Element operation(const Element& l, const Element& r) noexcept\
+    \ {\n        return (r < l ? r : l);\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
@@ -86,7 +82,7 @@ data:
   requiredBy:
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
-  timestamp: '2024-02-10 00:53:33+09:00'
+  timestamp: '2025-12-23 16:17:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/typical90_ai.test.cpp
@@ -97,8 +93,9 @@ data:
   - Test/CF/CF923-D.test.cpp
 documentation_of: Src/Algebra/Monoid/ChminMonoid.hpp
 layout: document
-redirect_from:
-- /library/Src/Algebra/Monoid/ChminMonoid.hpp
-- /library/Src/Algebra/Monoid/ChminMonoid.hpp.html
-title: Src/Algebra/Monoid/ChminMonoid.hpp
+title: "chmin\u30E2\u30CE\u30A4\u30C9"
 ---
+
+# 概要
+
+タイブレークは $l$ 側を優先します。

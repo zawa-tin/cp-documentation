@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChminMonoid.hpp
-    title: Src/Algebra/Monoid/ChminMonoid.hpp
+    title: "chmin\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
@@ -26,9 +26,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc340/tasks/abc340_g
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://atcoder.jp/contests/abc340/tasks/abc340_g
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -42,11 +43,12 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc340/tasks/abc340_g\"\n\n\
-    #include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
+  code: "//#define PROBLEM \"https://atcoder.jp/contests/abc340/tasks/abc340_g\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Graph/Tree/AuxiliaryTree.hpp\"\
     \n#include \"atcoder/modint\"\n\n#include <array>\n#include <algorithm>\n#include\
     \ <iostream>\n#include <set>\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\n\
-    \nint main() {\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
+    \nint main() {\n#ifdef ATCODER\n    int N;\n    std::cin >> N;\n    std::vector<std::vector<int>>\
     \ A(N);\n    std::vector<int> col(N);\n    for (int i{} ; i < N ; i++) {\n   \
     \     std::cin >> col[i];\n        col[i]--;\n        A[col[i]].push_back(i);\n\
     \    }\n    std::vector<std::vector<int>> g(N);\n    for (int i{} ; i < N - 1\
@@ -63,7 +65,7 @@ data:
     \         ans += dp[2];\n            if (col[v] == c) {\n                dp[1]++;\n\
     \                ans += dp[1];\n            }\n            return dp[1] + dp[2];\n\
     \        }};\n        dfs(dfs, r, -1);\n    }\n    std::cout << ans.val() << '\\\
-    n';\n}\n"
+    n';\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
@@ -73,7 +75,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc340_g.test.cpp
   requiredBy: []
-  timestamp: '2024-12-07 19:29:25+09:00'
+  timestamp: '2025-12-23 16:28:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc340_g.test.cpp
