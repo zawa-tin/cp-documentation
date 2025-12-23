@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc359/tasks/abc359_g"
+//#define PROBLEM "https://atcoder.jp/contests/abc359/tasks/abc359_g"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Graph/Tree/AuxiliaryTree.hpp"
@@ -9,6 +10,7 @@
 using namespace zawa;
 
 int main() {
+#ifdef ATCODER
     SetFastIO();
 
     int N;
@@ -57,4 +59,7 @@ int main() {
         }
     }
     std::cout << ans << '\n';
+#else
+    std::cout << "Hello World\n";
+#endif
 }

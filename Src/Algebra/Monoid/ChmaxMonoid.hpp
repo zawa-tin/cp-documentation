@@ -41,7 +41,6 @@ struct ChmaxMonoid {
     static Element identity() noexcept {
         return Element{};
     }
-    // タイブレークはl側を優先するようになっている。
     static Element operation(const Element& l, const Element& r) noexcept {
         return (r > l ? r : l);
     }
