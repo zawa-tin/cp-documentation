@@ -114,12 +114,15 @@ data:
     path: Src/DataStructure/Undoable/UndoableVector.hpp
     title: Src/DataStructure/Undoable/UndoableVector.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/BostanMori.hpp
+    title: Src/FPS/BostanMori.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/KthTerm.hpp
-    title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
-      \u308B"
+    title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
+      \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialInterpolation.hpp
     title: Src/FPS/PolynomialInterpolation.hpp
@@ -685,9 +688,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3022.test.cpp
     title: Test/AOJ/3022.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/3079.test.cpp
-    title: Test/AOJ/3079.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3111.test.cpp
     title: Test/AOJ/3111.test.cpp
@@ -1447,9 +1447,6 @@ data:
     path: Test/Manual/practice2_e.test.cpp
     title: AtCoder Library Practice Contest - E MinCostFlow
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/tdpc_fibonacci.test.cpp
-    title: Test/Manual/tdpc_fibonacci.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1663,6 +1660,7 @@ data:
   - Src/Graph/Components/BlockCutTree.hpp
   - Src/Graph/EulerianTrail.hpp
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/BostanMori.hpp
   - Src/FPS/PolynomialInterpolation.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/KthTerm.hpp
@@ -1805,7 +1803,6 @@ data:
   - Test/Manual/abc272_g.test.cpp
   - Test/Manual/abc252_e.test.cpp
   - Test/Manual/abc004_d.test.cpp
-  - Test/Manual/tdpc_fibonacci.test.cpp
   - Test/Manual/abc168_d.test.cpp
   - Test/Manual/abc267_f.test.cpp
   - Test/Manual/typical90_ai.test.cpp
@@ -2006,7 +2003,6 @@ data:
   - Test/AOJ/0478.test.cpp
   - Test/AOJ/2201.test.cpp
   - Test/AOJ/2828.test.cpp
-  - Test/AOJ/3079.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/GRL_6_B.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp

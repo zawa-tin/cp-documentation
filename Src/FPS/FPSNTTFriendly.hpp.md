@@ -4,7 +4,14 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/BostanMori.hpp
+    title: Src/FPS/BostanMori.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/KthTerm.hpp
+    title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
+      \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/LC/exp_of_formal_power_series.test.cpp
@@ -13,11 +20,17 @@ data:
     path: Test/LC/inv_of_formal_power_series.test.cpp
     title: Test/LC/inv_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+    title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/log_of_formal_power_series.test.cpp
     title: Test/LC/log_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/pow_of_formal_power_series.test.cpp
     title: Test/LC/pow_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3044.test.cpp
+    title: Test/yukicoder/3044.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -133,14 +146,18 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/FPSNTTFriendly.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/FPS/BostanMori.hpp
+  - Src/FPS/KthTerm.hpp
   timestamp: '2025-08-10 00:41:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
+  - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document
 redirect_from:
