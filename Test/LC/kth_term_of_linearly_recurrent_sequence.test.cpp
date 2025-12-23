@@ -1,28 +1,34 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/kth_term_of_linearly_recurrent_sequence"
 
+#include "../../Src/FPS/FPSNTTFriendly.hpp"
 #include "../../Src/FPS/KthTerm.hpp"
-#include "../../Src/Template/IOSetting.hpp"
-#include "./atcoder/convolution"
+using namespace zawa;
+#include "atcoder/modint"
 
 using mint = atcoder::modint998244353;
+using fps = FPSNTTFriendly<mint::mod()>;
 
-using namespace zawa;
+#include <iostream>
+
+using namespace std;
 
 int main() {
-    SetFastIO(); 
+    cin.tie(0);
+    cout.tie(0);
+    ios::sync_with_stdio(0);
     int d;
     long long k;
-    std::cin >> d >> k;
-    std::vector<mint> a(d), c(d);
-    for (auto& v : a) {
-        int i;
-        std::cin >> i;
-        v = i;
+    cin >> d >> k;
+    fps A(d), C(d + 1);
+    for (int i = 0 ; i < d ; i++) {
+        int v;
+        cin >> v;
+        A[i] = v;
     }
-    for (auto& v : c) {
-        int i;
-        std::cin >> i;
-        v = i;
+    for (int i = 1 ; i <= d ; i++) {
+        int v;
+        cin >> v;
+        C[i] = v;
     }
-    std::cout << KthTerm(k, a, c, [](const auto& L, const auto& R) { return atcoder::convolution(L, R); }).val();
+    cout << KthTerm(k, A, C).val() << '\n';
 }
