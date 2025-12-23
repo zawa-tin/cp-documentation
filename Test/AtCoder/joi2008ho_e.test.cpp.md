@@ -31,14 +31,14 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/joi2008ho/submissions/71931671
+    - https://atcoder.jp/contests/joi2008ho/submissions/71932516
     - https://atcoder.jp/contests/joi2008ho/tasks/joi2008ho_e
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/joi2008ho_e.test.cpp\"\n// #define PROBLEM\
     \ \"https://atcoder.jp/contests/joi2008ho/tasks/joi2008ho_e\"\n#define PROBLEM\
     \ \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n/*\n\
     \ * \u7B2C7\u56DE\u65E5\u672C\u60C5\u5831\u30AA\u30EA\u30F3\u30D4\u30C3\u30AF\u672C\
-    \u9078 (\u904E\u53BB\u554F) E - \u30DA\u30F3\u30AD\u306E\u8272\n * https://atcoder.jp/contests/joi2008ho/submissions/71931671\n\
+    \u9078 (\u904E\u53BB\u554F) E - \u30DA\u30F3\u30AD\u306E\u8272\n * https://atcoder.jp/contests/joi2008ho/submissions/71932516\n\
     \ */\n\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -130,8 +130,8 @@ data:
     \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
     \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
     );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
-    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
-    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \ inplaceBuild() {\n        assert(m_moved == false and \"data is already builded:\
+    \ Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
     \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
     \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 12 \"\
     Test/AtCoder/joi2008ho_e.test.cpp\"\n\n#include <iostream>\n#line 15 \"Test/AtCoder/joi2008ho_e.test.cpp\"\
@@ -144,7 +144,7 @@ data:
     \        if (u < H)\n            ys.push_back(u);\n    }\n    CompressedSequence\
     \ cx{xs}, cy{ys};\n    Imos2D<AdditiveGroup<int>> imos(cx.size(), cy.size());\
     \ \n    for (auto [l, d, r, u] : ita) {\n        imos.operation(cx[l], cy[d],\
-    \ cx[r], cy[u], 1);\n    }\n    auto solver = imos.destructiveBuild();\n    vector\
+    \ cx[r], cy[u], 1);\n    }\n    auto solver = imos.inplaceBuild();\n    vector\
     \ id(cx.size(), vector<int>(cy.size(), -1));\n    int ans = 0;\n    for (int i\
     \ = 0 ; i < ssize(cx) and cx.inverse(i) < W ; i++) \n        for (int j = 0 ;\
     \ j < ssize(cy) and cy.inverse(j) < H ; j++) \n            if (id[i][j] == -1\
@@ -168,7 +168,7 @@ data:
     \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n * \u7B2C7\u56DE\u65E5\u672C\u60C5\u5831\u30AA\u30EA\u30F3\u30D4\u30C3\
     \u30AF\u672C\u9078 (\u904E\u53BB\u554F) E - \u30DA\u30F3\u30AD\u306E\u8272\n *\
-    \ https://atcoder.jp/contests/joi2008ho/submissions/71931671\n */\n\n#include\
+    \ https://atcoder.jp/contests/joi2008ho/submissions/71932516\n */\n\n#include\
     \ \"../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n#include \"../../Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n#include <iostream>\n\
     #include <cassert>\n\nnamespace zawa {}\nusing namespace zawa;\nusing namespace\
@@ -180,7 +180,7 @@ data:
     \        if (u < H)\n            ys.push_back(u);\n    }\n    CompressedSequence\
     \ cx{xs}, cy{ys};\n    Imos2D<AdditiveGroup<int>> imos(cx.size(), cy.size());\
     \ \n    for (auto [l, d, r, u] : ita) {\n        imos.operation(cx[l], cy[d],\
-    \ cx[r], cy[u], 1);\n    }\n    auto solver = imos.destructiveBuild();\n    vector\
+    \ cx[r], cy[u], 1);\n    }\n    auto solver = imos.inplaceBuild();\n    vector\
     \ id(cx.size(), vector<int>(cy.size(), -1));\n    int ans = 0;\n    for (int i\
     \ = 0 ; i < ssize(cx) and cx.inverse(i) < W ; i++) \n        for (int j = 0 ;\
     \ j < ssize(cy) and cy.inverse(j) < H ; j++) \n            if (id[i][j] == -1\
@@ -211,7 +211,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/joi2008ho_e.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 17:18:01+09:00'
+  timestamp: '2025-12-23 18:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/joi2008ho_e.test.cpp

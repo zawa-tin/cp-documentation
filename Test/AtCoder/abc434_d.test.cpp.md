@@ -31,12 +31,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc434/submissions/71931417
+    - https://atcoder.jp/contests/abc434/submissions/71932493
     - https://atcoder.jp/contests/abc434/tasks/abc434_d
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc434_d.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc434/tasks/abc434_d\"\n\n\
-    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71931417\n\
+    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71932493\n\
     \ */\n\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\n\n#line 2 \"\
     Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
     \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
@@ -60,22 +60,33 @@ data:
     \n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\
     \n\n#include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa\
     \ {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\nclass StaticRectSumSolver\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    explicit StaticRectSumSolver(const\
+    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    using const_iterator\
+    \ = typename std::vector<std::vector<T>>::const_iterator;\n\n    explicit StaticRectSumSolver(const\
     \ std::vector<std::vector<T>>& a) : m_H{a.size()}, m_W{a.empty() ? 0u : a[0].size()},\
     \ m_sum(m_H + 1, std::vector<T>(m_W + 1, G::identity())) {\n        for (usize\
     \ i = 0 ; i < m_H ; i++)\n            for (usize j = 0 ; j < m_W ; j++)\n    \
     \            m_sum[i + 1][j + 1] = G::operation(\n                        G::operation(m_sum[i\
     \ + 1][j], m_sum[i][j + 1]), \n                        G::operation(G::inverse(m_sum[i][j]),\
-    \ a[i][j])\n                        );\n    }\n\n    inline usize height() const\
-    \ {\n        return m_H;\n    }\n\n    inline usize width() const {\n        return\
-    \ m_W;\n    }\n\n    // [l, r) x [d, u)\n    T product(usize l, usize d, usize\
-    \ r, usize u) const {\n        assert((l <= r and r <= height()) and \"invalid\
-    \ i range: StaticRectSumSolver::product\");\n        assert((d <= u and u <= width())\
-    \ and \"invalid j range: StaticRectSumSolver::product\");\n        return G::operation(\n\
-    \                G::operation(m_sum[r][u], m_sum[l][d]),\n                G::inverse(G::operation(m_sum[r][d],\
-    \ m_sum[l][u]))\n                );\n    }\n\n    const std::vector<T>& operator[](usize\
-    \ i) const {\n        assert(i <= height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
-    );\n        return m_sum[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n   \
+    \ a[i][j])\n                        );\n    }\n\n    explicit StaticRectSumSolver(std::vector<std::vector<T>>&&\
+    \ a) : m_H{a.size()}, m_W{a.empty() ? 0u : a[0].size()}, m_sum{std::move(a)} {\n\
+    \        for (usize i = 0 ; i < m_H ; i++)\n            m_sum[i].push_back(G::identity());\n\
+    \        m_sum.push_back(std::vector<T>(m_W + 1, G::identity()));\n        for\
+    \ (usize i = 0 ; i <= m_H ; i++)\n            for (usize j = m_W ; j-- ; )\n \
+    \               m_sum[i][j] = G::operation(m_sum[i][j], m_sum[i][j + 1]);\n  \
+    \      for (usize i = m_H ; i-- ; )\n            for (usize j = 0 ; j <= m_W ;\
+    \ j++)\n                m_sum[i][j] = G::operation(m_sum[i][j], m_sum[i + 1][j]);\n\
+    \    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\n  \
+    \  inline usize width() const {\n        return m_W;\n    }\n\n    // [l, r) x\
+    \ [d, u)\n    T product(usize l, usize d, usize r, usize u) const {\n        assert((l\
+    \ <= r and r <= height()) and \"invalid i range: StaticRectSumSolver::product\"\
+    );\n        assert((d <= u and u <= width()) and \"invalid j range: StaticRectSumSolver::product\"\
+    );\n        return G::operation(\n                G::operation(m_sum[r][u], m_sum[l][d]),\n\
+    \                G::inverse(G::operation(m_sum[r][d], m_sum[l][u]))\n        \
+    \        );\n    }\n\n    const std::vector<T>& operator[](usize i) const {\n\
+    \        assert(i <= height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
+    );\n        return m_sum[i];\n    }\n\n    const_iterator begin() const {\n  \
+    \      return m_sum.begin();\n    }\n    \n    const_iterator end() const {\n\
+    \        return m_sum.end();\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n   \
     \ std::vector<std::vector<T>> m_sum;\n};\n\n} // namespace internal\n\ntemplate\
     \ <concepts::Group G>\nclass Ruisekiwa2D {\npublic:\n    \n    using T = typename\
     \ G::Element;\n\n    Ruisekiwa2D(usize H, usize W) : m_H{H}, m_W{W}, m_a(H, std::vector<T>(W,\
@@ -85,13 +96,19 @@ data:
     \ m_W{a.empty() ? 0u : a[0].size()}, m_a{a} {}\n\n    inline usize height() const\
     \ {\n        return m_H;\n    }\n\n    inline usize width() const {\n        return\
     \ m_W;\n    }\n\n    void operation(usize i, usize j, T v) {\n        assert((i\
-    \ < height() and j < width()) and \"invalid range: Ruisekiwa2D::add\");\n    \
-    \    m_a[i][j] = G::operation(m_a[i][j], v);\n    }\n\n    const std::vector<T>&\
+    \ < height() and j < width()) and \"invalid range: Ruisekiwa2D::operation\");\n\
+    \        assert(m_moved == false and \"already destructed: Ruisekiwa2D::operation\"\
+    );\n        m_a[i][j] = G::operation(m_a[i][j], v);\n    }\n\n    const std::vector<T>&\
     \ operator[](const usize i) const {\n        assert(i < height() and \"invalid\
-    \ range: Ruisekiwa2D::operator[]\");\n        return m_a[i];\n    }\n\n    internal::StaticRectSumSolver<G>\
-    \ build() const {\n        return internal::StaticRectSumSolver<G>{m_a};\n   \
-    \ }\n\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
+    \ range: Ruisekiwa2D::operator[]\");\n        assert(m_moved == false and \"already\
+    \ destructed: Ruisekiwa2D::operator[]\");\n        return m_a[i];\n    }\n\n \
+    \   internal::StaticRectSumSolver<G> build() const {\n        assert(m_moved ==\
+    \ false and \"already destructed: Ruisekiwa2D::build\");\n        return internal::StaticRectSumSolver<G>{m_a};\n\
+    \    }\n\n    internal::StaticRectSumSolver<G> inplaceBuild() {\n        assert(m_moved\
+    \ == false and \"already destructed: Ruisekiwa2D::build\");\n        m_moved =\
+    \ true;\n        return internal::StaticRectSumSolver<G>{std::move(m_a)};\n  \
+    \  }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
+    \ m_a;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
     \n\n#line 5 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n#line 9 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
     \n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\n\
     class StaticRectAddSolver {\npublic:\n    \n    using T = typename G::Element;\n\
@@ -129,8 +146,8 @@ data:
     \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
     \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
     );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
-    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
-    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \ inplaceBuild() {\n        assert(m_moved == false and \"data is already builded:\
+    \ Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
     \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
     \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 2 \"\
     Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
@@ -145,7 +162,7 @@ data:
     \ N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX, MAX);\n    vector<tuple<int,\
     \ int, int, int>> A(N);\n    for (auto& [l, r, d, u] : A) {\n        cin >> l\
     \ >> r >> d >> u;\n        l--;\n        d--;\n        imos.operation(l, d, r,\
-    \ u, 1);\n    }\n    auto a = imos.destructiveBuild();\n    Ruisekiwa2D<AdditiveGroup<int>>\
+    \ u, 1);\n    }\n    auto a = imos.build();\n    Ruisekiwa2D<AdditiveGroup<int>>\
     \ sum(MAX, MAX);\n    int base = 0;\n    for (int i = 0 ; i < MAX ; i++)\n   \
     \     for (int j = 0 ; j < MAX ; j++) {\n            if (a[i][j] == 0)\n     \
     \           base++;\n            else if (a[i][j] == 1)\n                sum.operation(i,\
@@ -154,7 +171,7 @@ data:
     \ ans << '\\n';\n    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc434/tasks/abc434_d\"\n\n\
-    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71931417\n\
+    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71932493\n\
     \ */\n\n#include \"../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\n#include\
     \ \"../../Src/DataStructure/PrefixSum/Imos2D.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <tuple>\nusing namespace\
@@ -163,7 +180,7 @@ data:
     \ int N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX, MAX);\n    vector<tuple<int,\
     \ int, int, int>> A(N);\n    for (auto& [l, r, d, u] : A) {\n        cin >> l\
     \ >> r >> d >> u;\n        l--;\n        d--;\n        imos.operation(l, d, r,\
-    \ u, 1);\n    }\n    auto a = imos.destructiveBuild();\n    Ruisekiwa2D<AdditiveGroup<int>>\
+    \ u, 1);\n    }\n    auto a = imos.build();\n    Ruisekiwa2D<AdditiveGroup<int>>\
     \ sum(MAX, MAX);\n    int base = 0;\n    for (int i = 0 ; i < MAX ; i++)\n   \
     \     for (int j = 0 ; j < MAX ; j++) {\n            if (a[i][j] == 0)\n     \
     \           base++;\n            else if (a[i][j] == 1)\n                sum.operation(i,\
@@ -181,7 +198,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc434_d.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 17:06:14+09:00'
+  timestamp: '2025-12-23 18:04:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc434_d.test.cpp

@@ -102,6 +102,9 @@ data:
     path: Test/AOJ/0478.test.cpp
     title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2426.test.cpp
+    title: Test/AOJ/2426.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2450.test.cpp
     title: Test/AOJ/2450.test.cpp
   - icon: ':heavy_check_mark:'
@@ -406,6 +409,7 @@ data:
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/aho_corasick.test.cpp
   - Test/UC/4-2-K.test.cpp
+  - Test/AOJ/2426.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/AOJ/0478.test.cpp

@@ -646,6 +646,9 @@ data:
     path: Test/AOJ/2334.test.cpp
     title: "AOJ2334 \u8857\u3092\u99C6\u3051\u308B\u9053"
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2426.test.cpp
+    title: Test/AOJ/2426.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/2450.test.cpp
     title: Test/AOJ/2450.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1978,6 +1981,7 @@ data:
   - Test/UC/4-2-K.test.cpp
   - Test/UC/3-25-J.test.cpp
   - Test/AOJ/1379.test.cpp
+  - Test/AOJ/2426.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/3168.test.cpp
   - Test/AOJ/1595.test.cpp

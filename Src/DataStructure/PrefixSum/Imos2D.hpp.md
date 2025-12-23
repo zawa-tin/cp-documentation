@@ -83,8 +83,8 @@ data:
     \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
     \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
     );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
-    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
-    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \ inplaceBuild() {\n        assert(m_moved == false and \"data is already builded:\
+    \ Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
     \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
     \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Group/GroupConcept.hpp\"\
@@ -124,8 +124,8 @@ data:
     \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
     \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
     );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
-    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
-    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \ inplaceBuild() {\n        assert(m_moved == false and \"data is already builded:\
+    \ Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
     \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
     \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
   dependsOn:
@@ -136,7 +136,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum/Imos2D.hpp
   requiredBy: []
-  timestamp: '2025-12-23 17:06:14+09:00'
+  timestamp: '2025-12-23 18:04:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc434_d.test.cpp

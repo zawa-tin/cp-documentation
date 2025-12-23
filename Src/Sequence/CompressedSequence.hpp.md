@@ -19,6 +19,9 @@ data:
     title: Range Kth Smallest
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2426.test.cpp
+    title: Test/AOJ/2426.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -154,6 +157,7 @@ data:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/range_kth_smallest.test.cpp
   - Test/UC/4-2-K.test.cpp
+  - Test/AOJ/2426.test.cpp
   - Test/CF/CF1026-E.test.cpp
   - Test/CF/CF1054-G.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp

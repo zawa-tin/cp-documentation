@@ -16,6 +16,9 @@ data:
     path: Test/AOJ/1330.test.cpp
     title: Test/AOJ/1330.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/2426.test.cpp
+    title: Test/AOJ/2426.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_1_B.test.cpp
     title: Test/AOJ/DSL_1_B.test.cpp
   - icon: ':heavy_check_mark:'
@@ -145,6 +148,7 @@ data:
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/UC/4-2-K.test.cpp
+  - Test/AOJ/2426.test.cpp
   - Test/AOJ/1330.test.cpp
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
