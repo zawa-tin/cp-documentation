@@ -5,7 +5,7 @@
 
 /*
  * yukicoder No. 3044 よくあるカエルさん
- * https://yukicoder.me/submissions/1048080
+ * https://yukicoder.me/submissions/1141501
  */
 
 #include <iostream>
@@ -14,29 +14,23 @@
 #include "atcoder/modint"
 using namespace zawa;
 using mint = atcoder::modint998244353;
+using fps = FPSNTTFriendly<mint::mod()>;
 
 void solve() {
     int N, T, k, l;
     std::cin >> N >> T >> k >> l;
-    std::vector<mint> C(T);
-    C[0] = mint::raw(k - 1) / mint::raw(6);
-    C[1] = mint::raw(l - k) / mint::raw(6);
-    C[T - 1] = mint::raw(7 - l) / mint::raw(6);
-    std::vector<mint> A(T);
+    fps C(T + 1);
+    C[1] = mint::raw(k - 1) / mint::raw(6);
+    C[2] = mint::raw(l - k) / mint::raw(6);
+    C[T] = mint::raw(7 - l) / mint::raw(6);
+    fps A(T);
     A[0] = 1;
     for (int n = 1 ; n < T ; n++) {
-        for (int j = 1 ; j < T and n - j >= 0 ; j++) {
-            A[n] += C[j - 1] * A[n - j];
+        for (int j = 1 ; j <= T and n - j >= 0 ; j++) {
+            A[n] += C[j] * A[n - j];
         }
     }
-    std::cout << KthTerm(N - 1, A, C, [](const auto& L, const auto& R) {
-                if (L.empty() or R.empty()) return std::vector<mint>{};
-                std::vector<mint> res(L.size() + R.size() - 1);
-                for (size_t i{} ; i < L.size() ; i++) for (size_t j{} ; j < R.size() ; j++) {
-                    res[i + j] += L[i] * R[j];
-                }
-                return res;
-            }).val() << '\n';
+    std::cout << KthTerm(N - 1, A, C).val() << '\n';
 }
 
 int main() {
