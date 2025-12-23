@@ -31,6 +31,9 @@ data:
     path: Test/AtCoder/abc389_f.test.cpp
     title: Test/AtCoder/abc389_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/joi2008ho_e.test.cpp
+    title: Test/AtCoder/joi2008ho_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
@@ -140,6 +143,7 @@ data:
   verifiedWith:
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp

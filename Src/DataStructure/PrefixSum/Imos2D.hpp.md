@@ -18,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc434_d.test.cpp
     title: Test/AtCoder/abc434_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/joi2008ho_e.test.cpp
+    title: Test/AtCoder/joi2008ho_e.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -46,65 +49,85 @@ data:
     \n} // namespace zawa\n#line 5 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n\
     #include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
     \nnamespace internal {\n\ntemplate <concepts::Group G>\nclass StaticRectAddSolver\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    explicit StaticRectAddSolver(const\
+    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    using const_iterator\
+    \ = typename std::vector<std::vector<T>>::const_iterator;\n\n    explicit StaticRectAddSolver(const\
     \ std::vector<std::vector<T>>& imos) : m_H{imos.size() - 1}, m_W{imos[0].size()\
-    \ - 1}, m_a(imos) {\n        for (usize i = 0 ; i < m_H ; i++)\n            for\
-    \ (usize j = 1 ; j <= m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
+    \ - 1}, m_a(imos) {\n        build();\n    }\n\n    explicit StaticRectAddSolver(std::vector<std::vector<T>>&&\
+    \ imos) : m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a{std::move(imos)}\
+    \ {\n        build();\n    }\n\n    inline usize size() const {\n        return\
+    \ m_H;\n    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\
+    \n    inline usize width() const {\n        return m_W;\n    }\n\n    const_iterator\
+    \ begin() const {\n        return m_a.begin();\n    }\n\n    const_iterator end()\
+    \ const {\n        return m_a.end();\n    }\n\n    const std::vector<T>& operator[](usize\
+    \ i) const {\n        assert(i < height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
+    );\n        return m_a[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n    std::vector<std::vector<T>>\
+    \ m_a;\n\n    void build() {\n        for (usize i = 0 ; i < m_H ; i++)\n    \
+    \        for (usize j = 1 ; j <= m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
     \ m_a[i][j - 1]);\n        for (usize i = 1 ; i <= m_H ; i++)\n            for\
     \ (usize j = 0 ; j < m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
-    \ m_a[i - 1][j]);\n    }\n\n    inline usize height() const {\n        return\
-    \ m_H;\n    }\n\n    inline usize width() const {\n        return m_W;\n    }\n\
-    \n    const std::vector<T>& operator[](usize i) const {\n        assert(i < height()\
-    \ and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\");\n       \
-    \ return m_a[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n};\n\n} // namespace internal\n\ntemplate <concepts::Group G>\nclass Imos2D\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    Imos2D(usize H,\
-    \ usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W + 1, G::identity()))\
-    \ {}\n\n    inline usize height() const {\n        return m_H;\n    }\n\n    inline\
-    \ usize width() const {\n        return m_W;\n    }\n\n    // [l, r) x [d, u)\n\
-    \    void operation(usize l, usize d, usize r, usize u, T v) {\n        assert((l\
-    \ <= r and r <= height()) and \"invalid i range: Imos2D::add\");\n        assert((d\
-    \ <= u and u <= width()) and \"invalid j range: Imos2D::add\");\n        T inv\
-    \ = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d], v);\n  \
-    \      m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d] =\
-    \ G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
+    \ m_a[i - 1][j]);\n    }\n};\n\n} // namespace internal\n\ntemplate <concepts::Group\
+    \ G>\nclass Imos2D {\npublic:\n    \n    using T = typename G::Element;\n\n  \
+    \  Imos2D(usize H, usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W +\
+    \ 1, G::identity())) {}\n\n    inline usize height() const {\n        return m_H;\n\
+    \    }\n\n    inline usize width() const {\n        return m_W;\n    }\n\n   \
+    \ // [l, r) x [d, u)\n    void operation(usize l, usize d, usize r, usize u, T\
+    \ v) {\n        assert((l <= r and r <= height()) and \"invalid i range: Imos2D::add\"\
+    );\n        assert((d <= u and u <= width()) and \"invalid j range: Imos2D::add\"\
+    );\n        assert(m_moved == false and \"data is already builded: Imos2D::add\"\
+    );\n        T inv = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d],\
+    \ v);\n        m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d]\
+    \ = G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
     \ v);\n    }\n\n    const std::vector<T>& operator[](const usize i) const {\n\
-    \        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n   \
-    \     return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
-    \ const {\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n\
-    private:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>> m_imos;\n\
-    };\n\n} // namespace zawa\n"
+    \        assert(m_moved == false and \"data is already builded: Imos2D::operator[]\"\
+    );\n        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n\
+    \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
+    \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
+    );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
+    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
+    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
+    \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Group/GroupConcept.hpp\"\
     \n\n#include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa\
     \ {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\nclass StaticRectAddSolver\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    explicit StaticRectAddSolver(const\
+    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    using const_iterator\
+    \ = typename std::vector<std::vector<T>>::const_iterator;\n\n    explicit StaticRectAddSolver(const\
     \ std::vector<std::vector<T>>& imos) : m_H{imos.size() - 1}, m_W{imos[0].size()\
-    \ - 1}, m_a(imos) {\n        for (usize i = 0 ; i < m_H ; i++)\n            for\
-    \ (usize j = 1 ; j <= m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
+    \ - 1}, m_a(imos) {\n        build();\n    }\n\n    explicit StaticRectAddSolver(std::vector<std::vector<T>>&&\
+    \ imos) : m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a{std::move(imos)}\
+    \ {\n        build();\n    }\n\n    inline usize size() const {\n        return\
+    \ m_H;\n    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\
+    \n    inline usize width() const {\n        return m_W;\n    }\n\n    const_iterator\
+    \ begin() const {\n        return m_a.begin();\n    }\n\n    const_iterator end()\
+    \ const {\n        return m_a.end();\n    }\n\n    const std::vector<T>& operator[](usize\
+    \ i) const {\n        assert(i < height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
+    );\n        return m_a[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n    std::vector<std::vector<T>>\
+    \ m_a;\n\n    void build() {\n        for (usize i = 0 ; i < m_H ; i++)\n    \
+    \        for (usize j = 1 ; j <= m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
     \ m_a[i][j - 1]);\n        for (usize i = 1 ; i <= m_H ; i++)\n            for\
     \ (usize j = 0 ; j < m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
-    \ m_a[i - 1][j]);\n    }\n\n    inline usize height() const {\n        return\
-    \ m_H;\n    }\n\n    inline usize width() const {\n        return m_W;\n    }\n\
-    \n    const std::vector<T>& operator[](usize i) const {\n        assert(i < height()\
-    \ and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\");\n       \
-    \ return m_a[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n};\n\n} // namespace internal\n\ntemplate <concepts::Group G>\nclass Imos2D\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    Imos2D(usize H,\
-    \ usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W + 1, G::identity()))\
-    \ {}\n\n    inline usize height() const {\n        return m_H;\n    }\n\n    inline\
-    \ usize width() const {\n        return m_W;\n    }\n\n    // [l, r) x [d, u)\n\
-    \    void operation(usize l, usize d, usize r, usize u, T v) {\n        assert((l\
-    \ <= r and r <= height()) and \"invalid i range: Imos2D::add\");\n        assert((d\
-    \ <= u and u <= width()) and \"invalid j range: Imos2D::add\");\n        T inv\
-    \ = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d], v);\n  \
-    \      m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d] =\
-    \ G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
+    \ m_a[i - 1][j]);\n    }\n};\n\n} // namespace internal\n\ntemplate <concepts::Group\
+    \ G>\nclass Imos2D {\npublic:\n    \n    using T = typename G::Element;\n\n  \
+    \  Imos2D(usize H, usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W +\
+    \ 1, G::identity())) {}\n\n    inline usize height() const {\n        return m_H;\n\
+    \    }\n\n    inline usize width() const {\n        return m_W;\n    }\n\n   \
+    \ // [l, r) x [d, u)\n    void operation(usize l, usize d, usize r, usize u, T\
+    \ v) {\n        assert((l <= r and r <= height()) and \"invalid i range: Imos2D::add\"\
+    );\n        assert((d <= u and u <= width()) and \"invalid j range: Imos2D::add\"\
+    );\n        assert(m_moved == false and \"data is already builded: Imos2D::add\"\
+    );\n        T inv = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d],\
+    \ v);\n        m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d]\
+    \ = G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
     \ v);\n    }\n\n    const std::vector<T>& operator[](const usize i) const {\n\
-    \        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n   \
-    \     return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
-    \ const {\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n\
-    private:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>> m_imos;\n\
-    };\n\n} // namespace zawa\n"
+    \        assert(m_moved == false and \"data is already builded: Imos2D::operator[]\"\
+    );\n        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n\
+    \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
+    \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
+    );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
+    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
+    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
+    \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/GroupConcept.hpp
@@ -113,10 +136,11 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum/Imos2D.hpp
   requiredBy: []
-  timestamp: '2025-11-30 18:03:51+09:00'
+  timestamp: '2025-12-23 17:06:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc434_d.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/Imos2D.hpp
 layout: document
 redirect_from:

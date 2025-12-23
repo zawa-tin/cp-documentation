@@ -31,12 +31,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc434/submissions/71356471
+    - https://atcoder.jp/contests/abc434/submissions/71931417
     - https://atcoder.jp/contests/abc434/tasks/abc434_d
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc434_d.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc434/tasks/abc434_d\"\n\n\
-    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71356471\n\
+    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71931417\n\
     \ */\n\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\n\n#line 2 \"\
     Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
     \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
@@ -95,55 +95,66 @@ data:
     \n\n#line 5 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n#line 9 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
     \n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\n\
     class StaticRectAddSolver {\npublic:\n    \n    using T = typename G::Element;\n\
+    \n    using const_iterator = typename std::vector<std::vector<T>>::const_iterator;\n\
     \n    explicit StaticRectAddSolver(const std::vector<std::vector<T>>& imos) :\
-    \ m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a(imos) {\n        for (usize\
-    \ i = 0 ; i < m_H ; i++)\n            for (usize j = 1 ; j <= m_W ; j++)\n   \
-    \             m_a[i][j] = G::operation(m_a[i][j], m_a[i][j - 1]);\n        for\
-    \ (usize i = 1 ; i <= m_H ; i++)\n            for (usize j = 0 ; j < m_W ; j++)\n\
-    \                m_a[i][j] = G::operation(m_a[i][j], m_a[i - 1][j]);\n    }\n\n\
-    \    inline usize height() const {\n        return m_H;\n    }\n\n    inline usize\
-    \ width() const {\n        return m_W;\n    }\n\n    const std::vector<T>& operator[](usize\
+    \ m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a(imos) {\n        build();\n\
+    \    }\n\n    explicit StaticRectAddSolver(std::vector<std::vector<T>>&& imos)\
+    \ : m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a{std::move(imos)} {\n  \
+    \      build();\n    }\n\n    inline usize size() const {\n        return m_H;\n\
+    \    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\n  \
+    \  inline usize width() const {\n        return m_W;\n    }\n\n    const_iterator\
+    \ begin() const {\n        return m_a.begin();\n    }\n\n    const_iterator end()\
+    \ const {\n        return m_a.end();\n    }\n\n    const std::vector<T>& operator[](usize\
     \ i) const {\n        assert(i < height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
     );\n        return m_a[i];\n    }\n\nprivate:\n\n    usize m_H, m_W;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n};\n\n} // namespace internal\n\ntemplate <concepts::Group G>\nclass Imos2D\
-    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    Imos2D(usize H,\
-    \ usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W + 1, G::identity()))\
-    \ {}\n\n    inline usize height() const {\n        return m_H;\n    }\n\n    inline\
-    \ usize width() const {\n        return m_W;\n    }\n\n    // [l, r) x [d, u)\n\
-    \    void operation(usize l, usize d, usize r, usize u, T v) {\n        assert((l\
-    \ <= r and r <= height()) and \"invalid i range: Imos2D::add\");\n        assert((d\
-    \ <= u and u <= width()) and \"invalid j range: Imos2D::add\");\n        T inv\
-    \ = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d], v);\n  \
-    \      m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d] =\
-    \ G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
+    \ m_a;\n\n    void build() {\n        for (usize i = 0 ; i < m_H ; i++)\n    \
+    \        for (usize j = 1 ; j <= m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
+    \ m_a[i][j - 1]);\n        for (usize i = 1 ; i <= m_H ; i++)\n            for\
+    \ (usize j = 0 ; j < m_W ; j++)\n                m_a[i][j] = G::operation(m_a[i][j],\
+    \ m_a[i - 1][j]);\n    }\n};\n\n} // namespace internal\n\ntemplate <concepts::Group\
+    \ G>\nclass Imos2D {\npublic:\n    \n    using T = typename G::Element;\n\n  \
+    \  Imos2D(usize H, usize W) : m_H{H}, m_W{W}, m_imos(H + 1, std::vector<T>(W +\
+    \ 1, G::identity())) {}\n\n    inline usize height() const {\n        return m_H;\n\
+    \    }\n\n    inline usize width() const {\n        return m_W;\n    }\n\n   \
+    \ // [l, r) x [d, u)\n    void operation(usize l, usize d, usize r, usize u, T\
+    \ v) {\n        assert((l <= r and r <= height()) and \"invalid i range: Imos2D::add\"\
+    );\n        assert((d <= u and u <= width()) and \"invalid j range: Imos2D::add\"\
+    );\n        assert(m_moved == false and \"data is already builded: Imos2D::add\"\
+    );\n        T inv = G::inverse(v);\n        m_imos[l][d] = G::operation(m_imos[l][d],\
+    \ v);\n        m_imos[l][u] = G::operation(m_imos[l][u], inv);\n        m_imos[r][d]\
+    \ = G::operation(m_imos[r][d], inv);\n        m_imos[r][u] = G::operation(m_imos[r][u],\
     \ v);\n    }\n\n    const std::vector<T>& operator[](const usize i) const {\n\
-    \        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n   \
-    \     return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
-    \ const {\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n\
-    private:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>> m_imos;\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\n\
-    namespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using\
-    \ Element = T;\n    static constexpr T identity() noexcept {\n        return T{};\n\
-    \    }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n\
-    \        return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
-    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 12 \"Test/AtCoder/abc434_d.test.cpp\"\
-    \n\n#include <iostream>\n#line 15 \"Test/AtCoder/abc434_d.test.cpp\"\n#include\
-    \ <tuple>\nusing namespace std;\nusing namespace zawa;\n\nint main() {\n    cin.tie(0);\n\
-    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n#ifdef ATCODER\n    const int\
-    \ MAX = 2000;\n    int N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX,\
-    \ MAX);\n    vector<tuple<int, int, int, int>> A(N);\n    for (auto& [l, r, d,\
-    \ u] : A) {\n        cin >> l >> r >> d >> u;\n        l--;\n        d--;\n  \
-    \      imos.operation(l, d, r, u, 1);\n    }\n    auto a = imos.build();\n   \
-    \ Ruisekiwa2D<AdditiveGroup<int>> sum(MAX, MAX);\n    int base = 0;\n    for (int\
-    \ i = 0 ; i < MAX ; i++)\n        for (int j = 0 ; j < MAX ; j++) {\n        \
-    \    if (a[i][j] == 0)\n                base++;\n            else if (a[i][j]\
-    \ == 1)\n                sum.operation(i, j, 1);\n        }\n    auto solver =\
-    \ sum.build();\n    for (auto [l, r, d, u] : A) {\n        int ans = base + solver.product(l,\
-    \ d, r, u);\n        cout << ans << '\\n';\n    }\n#else\n    cout << \"Hello\
-    \ World\\n\";\n#endif\n}\n"
+    \        assert(m_moved == false and \"data is already builded: Imos2D::operator[]\"\
+    );\n        assert(i < height() and \"invalid range: Imos2D::operator[]\");\n\
+    \        return m_imos[i];\n    }\n\n    internal::StaticRectAddSolver<G> build()\
+    \ const {\n        assert(m_moved == false and \"data is already builded: Imos2D::build\"\
+    );\n        return internal::StaticRectAddSolver<G>{m_imos};\n    }\n\n    internal::StaticRectAddSolver<G>\
+    \ destructiveBuild() {\n        assert(m_moved == false and \"data is already\
+    \ builded: Imos2D::build\");\n        m_moved = true;\n        return internal::StaticRectAddSolver<G>{std::move(m_imos)};\n\
+    \    }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
+    \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 2 \"\
+    Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
+    class AdditiveGroup {\npublic:\n    using Element = T;\n    static constexpr T\
+    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(const\
+    \ T& l, const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr\
+    \ T inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 12 \"Test/AtCoder/abc434_d.test.cpp\"\n\n#include <iostream>\n#line\
+    \ 15 \"Test/AtCoder/abc434_d.test.cpp\"\n#include <tuple>\nusing namespace std;\n\
+    using namespace zawa;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n   \
+    \ ios::sync_with_stdio(0);\n#ifdef ATCODER\n    const int MAX = 2000;\n    int\
+    \ N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX, MAX);\n    vector<tuple<int,\
+    \ int, int, int>> A(N);\n    for (auto& [l, r, d, u] : A) {\n        cin >> l\
+    \ >> r >> d >> u;\n        l--;\n        d--;\n        imos.operation(l, d, r,\
+    \ u, 1);\n    }\n    auto a = imos.destructiveBuild();\n    Ruisekiwa2D<AdditiveGroup<int>>\
+    \ sum(MAX, MAX);\n    int base = 0;\n    for (int i = 0 ; i < MAX ; i++)\n   \
+    \     for (int j = 0 ; j < MAX ; j++) {\n            if (a[i][j] == 0)\n     \
+    \           base++;\n            else if (a[i][j] == 1)\n                sum.operation(i,\
+    \ j, 1);\n        }\n    auto solver = sum.build();\n    for (auto [l, r, d, u]\
+    \ : A) {\n        int ans = base + solver.product(l, d, r, u);\n        cout <<\
+    \ ans << '\\n';\n    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc434/tasks/abc434_d\"\n\n\
-    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71356471\n\
+    /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71931417\n\
     \ */\n\n#include \"../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\n#include\
     \ \"../../Src/DataStructure/PrefixSum/Imos2D.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <tuple>\nusing namespace\
@@ -152,7 +163,7 @@ data:
     \ int N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX, MAX);\n    vector<tuple<int,\
     \ int, int, int>> A(N);\n    for (auto& [l, r, d, u] : A) {\n        cin >> l\
     \ >> r >> d >> u;\n        l--;\n        d--;\n        imos.operation(l, d, r,\
-    \ u, 1);\n    }\n    auto a = imos.build();\n    Ruisekiwa2D<AdditiveGroup<int>>\
+    \ u, 1);\n    }\n    auto a = imos.destructiveBuild();\n    Ruisekiwa2D<AdditiveGroup<int>>\
     \ sum(MAX, MAX);\n    int base = 0;\n    for (int i = 0 ; i < MAX ; i++)\n   \
     \     for (int j = 0 ; j < MAX ; j++) {\n            if (a[i][j] == 0)\n     \
     \           base++;\n            else if (a[i][j] == 1)\n                sum.operation(i,\
@@ -170,7 +181,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc434_d.test.cpp
   requiredBy: []
-  timestamp: '2025-11-30 18:03:51+09:00'
+  timestamp: '2025-12-23 17:06:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc434_d.test.cpp

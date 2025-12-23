@@ -64,6 +64,9 @@ data:
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/joi2008ho_e.test.cpp
+    title: Test/AtCoder/joi2008ho_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -136,6 +139,7 @@ data:
   - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
