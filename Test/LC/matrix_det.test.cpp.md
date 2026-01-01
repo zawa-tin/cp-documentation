@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: Test/LC/matrix_det.test.cpp
   requiredBy: []
-  timestamp: '2025-10-27 18:46:37+09:00'
+  timestamp: '2026-01-01 21:17:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/matrix_det.test.cpp

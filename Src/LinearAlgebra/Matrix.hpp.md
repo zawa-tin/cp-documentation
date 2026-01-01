@@ -68,30 +68,29 @@ data:
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
     \              res[i][j] = A::operation(res[i][j], M::operation(lhs[i][k], rhs[k][j]));\n\
     \                }\n            }\n        }\n        return res;\n    }\n\n \
-    \   // \u884C\u5217\u5F0F\n    E determinant() const {\n        assert(height()\
-    \ == width());\n        usize n{height()};\n        Matrix<Semiring> dat{*this};\n\
-    \        E res{M::identity()};\n        const E m1{A::inverse(M::identity())};\
-    \ // -1\n        for (usize i{} ; i < n ; i++) {\n            for (usize j{i}\
-    \ ; j < n ; j++) {\n                if (dat[j][i] == A::identity()) {\n      \
-    \              continue; \n                }\n                if (i != j) {\n\
-    \                    std::swap(dat[i], dat[j]);\n                    res = M::operation(res,\
-    \ m1);\n                }\n                break;\n            }\n           \
-    \ res = M::operation(res, dat[i][i]);\n            if (dat[i][i] == A::identity())\
-    \ continue;\n            for (usize j{i + 1} ; j < n ; j++) {\n              \
-    \  if (dat[j][i] == A::identity()) {\n                    continue;\n        \
-    \        }\n                E coef{M::operation(m1, M::operation(dat[j][i], M::inverse(dat[i][i])))};\n\
-    \                for (usize k{i} ; k < n ; k++) {\n                    dat[j][k]\
-    \ = A::operation(dat[j][k], M::operation(coef, dat[i][k]));\n                }\n\
-    \            }\n        }\n        return res;\n    }\n    // \u4F59\u56E0\u5B50\
-    \n    E cofactor(usize r, usize c) const {\n        assert(height() == width());\n\
-    \        usize n{height()};\n        assert(n >= usize{2});\n        Matrix tmp(n\
-    \ - 1, n - 1);\n        for (usize i{} ; i < n ; i++) {\n            if (i ==\
-    \ r) {\n                continue;\n            }\n            for (usize j{} ;\
-    \ j < n ; j++) {\n                if (j == c) {\n                    continue;\n\
-    \                }\n                tmp[i > r ? i - 1 : i][j > c ? j - 1 : j]\
-    \ = dat_[i][j];\n            }\n        }\n        return tmp.determinant();\n\
-    \    }\n\nprivate:\n    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace\
-    \ zawa\n"
+    \   E determinant() const {\n        assert(height() == width());\n        usize\
+    \ n{height()};\n        Matrix<Semiring> dat{*this};\n        E res{M::identity()};\n\
+    \        const E m1{A::inverse(M::identity())}; // -1\n        for (usize i{}\
+    \ ; i < n ; i++) {\n            for (usize j{i} ; j < n ; j++) {\n           \
+    \     if (dat[j][i] == A::identity()) {\n                    continue; \n    \
+    \            }\n                if (i != j) {\n                    std::swap(dat[i],\
+    \ dat[j]);\n                    res = M::operation(res, m1);\n               \
+    \ }\n                break;\n            }\n            res = M::operation(res,\
+    \ dat[i][i]);\n            if (dat[i][i] == A::identity()) continue;\n       \
+    \     for (usize j{i + 1} ; j < n ; j++) {\n                if (dat[j][i] == A::identity())\
+    \ {\n                    continue;\n                }\n                E coef{M::operation(m1,\
+    \ M::operation(dat[j][i], M::inverse(dat[i][i])))};\n                for (usize\
+    \ k{i} ; k < n ; k++) {\n                    dat[j][k] = A::operation(dat[j][k],\
+    \ M::operation(coef, dat[i][k]));\n                }\n            }\n        }\n\
+    \        return res;\n    }\n    E cofactor(usize r, usize c) const {\n      \
+    \  assert(height() == width());\n        usize n{height()};\n        assert(n\
+    \ >= usize{2});\n        Matrix tmp(n - 1, n - 1);\n        for (usize i{} ; i\
+    \ < n ; i++) {\n            if (i == r) {\n                continue;\n       \
+    \     }\n            for (usize j{} ; j < n ; j++) {\n                if (j ==\
+    \ c) {\n                    continue;\n                }\n                tmp[i\
+    \ > r ? i - 1 : i][j > c ? j - 1 : j] = dat_[i][j];\n            }\n        }\n\
+    \        return tmp.determinant();\n    }\n\nprivate:\n    std::vector<std::vector<E>>\
+    \ dat_;\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <type_traits>\n#include <utility>\n#include <vector>\n\
     \nnamespace zawa {\n\ntemplate <class Semiring>\nclass Matrix {\npublic:\n   \
@@ -135,36 +134,35 @@ data:
     \ ; j++) {\n                for (usize k{} ; k < lhs.width() ; k++) {\n      \
     \              res[i][j] = A::operation(res[i][j], M::operation(lhs[i][k], rhs[k][j]));\n\
     \                }\n            }\n        }\n        return res;\n    }\n\n \
-    \   // \u884C\u5217\u5F0F\n    E determinant() const {\n        assert(height()\
-    \ == width());\n        usize n{height()};\n        Matrix<Semiring> dat{*this};\n\
-    \        E res{M::identity()};\n        const E m1{A::inverse(M::identity())};\
-    \ // -1\n        for (usize i{} ; i < n ; i++) {\n            for (usize j{i}\
-    \ ; j < n ; j++) {\n                if (dat[j][i] == A::identity()) {\n      \
-    \              continue; \n                }\n                if (i != j) {\n\
-    \                    std::swap(dat[i], dat[j]);\n                    res = M::operation(res,\
-    \ m1);\n                }\n                break;\n            }\n           \
-    \ res = M::operation(res, dat[i][i]);\n            if (dat[i][i] == A::identity())\
-    \ continue;\n            for (usize j{i + 1} ; j < n ; j++) {\n              \
-    \  if (dat[j][i] == A::identity()) {\n                    continue;\n        \
-    \        }\n                E coef{M::operation(m1, M::operation(dat[j][i], M::inverse(dat[i][i])))};\n\
-    \                for (usize k{i} ; k < n ; k++) {\n                    dat[j][k]\
-    \ = A::operation(dat[j][k], M::operation(coef, dat[i][k]));\n                }\n\
-    \            }\n        }\n        return res;\n    }\n    // \u4F59\u56E0\u5B50\
-    \n    E cofactor(usize r, usize c) const {\n        assert(height() == width());\n\
-    \        usize n{height()};\n        assert(n >= usize{2});\n        Matrix tmp(n\
-    \ - 1, n - 1);\n        for (usize i{} ; i < n ; i++) {\n            if (i ==\
-    \ r) {\n                continue;\n            }\n            for (usize j{} ;\
-    \ j < n ; j++) {\n                if (j == c) {\n                    continue;\n\
-    \                }\n                tmp[i > r ? i - 1 : i][j > c ? j - 1 : j]\
-    \ = dat_[i][j];\n            }\n        }\n        return tmp.determinant();\n\
-    \    }\n\nprivate:\n    std::vector<std::vector<E>> dat_;\n};\n\n} // namespace\
-    \ zawa\n"
+    \   E determinant() const {\n        assert(height() == width());\n        usize\
+    \ n{height()};\n        Matrix<Semiring> dat{*this};\n        E res{M::identity()};\n\
+    \        const E m1{A::inverse(M::identity())}; // -1\n        for (usize i{}\
+    \ ; i < n ; i++) {\n            for (usize j{i} ; j < n ; j++) {\n           \
+    \     if (dat[j][i] == A::identity()) {\n                    continue; \n    \
+    \            }\n                if (i != j) {\n                    std::swap(dat[i],\
+    \ dat[j]);\n                    res = M::operation(res, m1);\n               \
+    \ }\n                break;\n            }\n            res = M::operation(res,\
+    \ dat[i][i]);\n            if (dat[i][i] == A::identity()) continue;\n       \
+    \     for (usize j{i + 1} ; j < n ; j++) {\n                if (dat[j][i] == A::identity())\
+    \ {\n                    continue;\n                }\n                E coef{M::operation(m1,\
+    \ M::operation(dat[j][i], M::inverse(dat[i][i])))};\n                for (usize\
+    \ k{i} ; k < n ; k++) {\n                    dat[j][k] = A::operation(dat[j][k],\
+    \ M::operation(coef, dat[i][k]));\n                }\n            }\n        }\n\
+    \        return res;\n    }\n    E cofactor(usize r, usize c) const {\n      \
+    \  assert(height() == width());\n        usize n{height()};\n        assert(n\
+    \ >= usize{2});\n        Matrix tmp(n - 1, n - 1);\n        for (usize i{} ; i\
+    \ < n ; i++) {\n            if (i == r) {\n                continue;\n       \
+    \     }\n            for (usize j{} ; j < n ; j++) {\n                if (j ==\
+    \ c) {\n                    continue;\n                }\n                tmp[i\
+    \ > r ? i - 1 : i][j > c ? j - 1 : j] = dat_[i][j];\n            }\n        }\n\
+    \        return tmp.determinant();\n    }\n\nprivate:\n    std::vector<std::vector<E>>\
+    \ dat_;\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/LinearAlgebra/Matrix.hpp
   requiredBy: []
-  timestamp: '2025-10-27 18:46:37+09:00'
+  timestamp: '2026-01-01 21:17:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/aoj3369.test.cpp
