@@ -119,7 +119,6 @@ public:
         return res;
     }
 
-    // 行列式
     E determinant() const {
         assert(height() == width());
         usize n{height()};
@@ -151,7 +150,6 @@ public:
         }
         return res;
     }
-    // 余因子
     E cofactor(usize r, usize c) const {
         assert(height() == width());
         usize n{height()};

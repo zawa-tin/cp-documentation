@@ -152,8 +152,8 @@ public:
         return (m_dep[u] <= m_dep[v] ? u : v);
     }
 
-    // pはvの祖先か？
-    bool isAncestor(V v, V p) {
+    // is p ancestor of v ?
+    bool isAncestor(V v, V p) const {
         assert(v < size());
         assert(p < size());
         if (m_dep[v] < m_dep[p]) return false;
