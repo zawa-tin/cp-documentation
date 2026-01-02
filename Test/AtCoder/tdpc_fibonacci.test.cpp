@@ -1,5 +1,5 @@
 //#define PROBLEM "https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci"
-#define PROBOEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 /*
  * Typical DP Contest T - fibonacci
