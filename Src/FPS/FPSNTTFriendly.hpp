@@ -1,5 +1,6 @@
 #pragma once
 
+#include "./FPS.hpp"
 #include "../Template/TypeAlias.hpp"
 
 #include "atcoder/modint"

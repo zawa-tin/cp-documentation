@@ -8,9 +8,8 @@
 
 namespace zawa {
 
-
-template <usize MOD = 998244353>
-typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFriendly<MOD> C) {
+template <concepts::IndexedFPS FPS, class Conv = FPSMult>
+typename FPS::value_type KthTerm(u64 K, FPS A, FPS C, Conv conv = {}) {
     assert(C.size() >= 2 and C[0] == 0);
     assert(A.size() >= C.size() - 1);
     if (K < A.size()) 
@@ -18,7 +17,9 @@ typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFrie
     for (auto& v : C)
         v = -v;
     C[0] = 1;
-    return BostanMori(K, (A * C).resized(C.size() - 1), C);
+    FPS multed = conv(A, C);
+    multed.resize(C.size() - 1);
+    return BostanMori(K, multed, C, conv);
 }
 
 } // namespace zawa

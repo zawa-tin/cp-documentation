@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 436 G - Linear Inequation
- * https://atcoder.jp/contests/abc436/submissions/71935256
+ * https://atcoder.jp/contests/abc436/submissions/72141699
  */
 
 #include "../../Src/FPS/BostanMori.hpp"
