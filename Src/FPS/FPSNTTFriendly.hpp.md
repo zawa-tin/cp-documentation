@@ -13,6 +13,9 @@ data:
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
       \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/DivisionOfPolynomials.hpp
+    title: Src/FPS/DivisionOfPolynomials.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/KthTerm.hpp
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
@@ -23,6 +26,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_fibonacci.test.cpp
     title: Test/AtCoder/tdpc_fibonacci.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/division_of_polynomials.test.cpp
+    title: Test/LC/division_of_polynomials.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/exp_of_formal_power_series.test.cpp
     title: Test/LC/exp_of_formal_power_series.test.cpp
@@ -159,6 +165,7 @@ data:
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
   - Src/FPS/BostanMori.hpp
+  - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/KthTerm.hpp
   timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -169,6 +176,7 @@ data:
   - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp

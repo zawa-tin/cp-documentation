@@ -118,6 +118,9 @@ data:
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
       \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/DivisionOfPolynomials.hpp
+    title: Src/FPS/DivisionOfPolynomials.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPS.hpp
     title: Src/FPS/FPS.hpp
   - icon: ':heavy_check_mark:'
@@ -1250,6 +1253,9 @@ data:
     path: Test/LC/discrete_logarithm_mod.test.cpp
     title: Test/LC/discrete_logarithm_mod.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/division_of_polynomials.test.cpp
+    title: Test/LC/division_of_polynomials.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/enumerate_palindromes.test.cpp
     title: Test/LC/enumerate_palindromes.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1674,6 +1680,7 @@ data:
   - Src/FPS/BostanMori.hpp
   - Src/FPS/PolynomialInterpolation.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
+  - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/KthTerm.hpp
   - Src/GeometryR3/Sphere.hpp
   - Src/GeometryR3/Point.hpp
@@ -1958,6 +1965,7 @@ data:
   - Test/LC/closest_pair.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/eulerian_trail_directed.test.cpp
   - Test/LC/rectangle_sum.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
