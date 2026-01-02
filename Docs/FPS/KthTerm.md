@@ -10,8 +10,8 @@ documentation_of: //Src/FPS/KthTerm.hpp
 ## ライブラリ
 
 ```
-template <usize MOD = 998244353>
-typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFriendly<MOD> C)
+template <concepts::IndexedFPS FPS, class Conv = FPSMult>
+typename FPS::value_type KthTerm(u64 K, FPS A, FPS C, Conv conv = {}) {
 ```
 
 $C$ は1-indexedですよ！
@@ -19,6 +19,10 @@ $C$ は1-indexedですよ！
 - $\mid C\mid \ge 2$
 - $C_{0} = 0$
 - $\mid A\mid \ge d$
+
+`conv`は`FPSNTTFriendly`のときは何も指定しなくても良い。それ以外のときは畳み込みをする関数オブジェクトを与える。
+
+$\Theta O(NM)$ の畳み込みは`FPS.hpp`の`NaiveConvolution`を与えると良い。
 
 ## アルゴリズム
 

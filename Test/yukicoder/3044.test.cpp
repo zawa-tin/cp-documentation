@@ -5,7 +5,7 @@
 
 /*
  * yukicoder No. 3044 よくあるカエルさん
- * https://yukicoder.me/submissions/1141501
+ * https://yukicoder.me/submissions/1142529
  */
 
 #include <iostream>
