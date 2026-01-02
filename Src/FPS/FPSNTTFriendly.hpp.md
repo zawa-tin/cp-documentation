@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
@@ -17,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_fibonacci.test.cpp
+    title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/exp_of_formal_power_series.test.cpp
     title: Test/LC/exp_of_formal_power_series.test.cpp
@@ -53,12 +59,12 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include \"atcoder/modint\"\
-    \n#include \"atcoder/convolution\"\n\n#include <cassert>\n#include <iostream>\n\
-    #include <ranges>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
-    \ntemplate <usize MOD = 998244353>\nstruct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>>\
-    \ {\n\n    using std::vector<atcoder::static_modint<MOD>>::vector;\n\n    using\
-    \ V = atcoder::static_modint<MOD>;\n\n    FPSNTTFriendly(const std::vector<V>&\
+  code: "#pragma once\n\n#include \"./FPS.hpp\"\n#include \"../Template/TypeAlias.hpp\"\
+    \n\n#include \"atcoder/modint\"\n#include \"atcoder/convolution\"\n\n#include\
+    \ <cassert>\n#include <iostream>\n#include <ranges>\n#include <utility>\n#include\
+    \ <vector>\n\nnamespace zawa {\n\ntemplate <usize MOD = 998244353>\nstruct FPSNTTFriendly\
+    \ : public std::vector<atcoder::static_modint<MOD>> {\n\n    using std::vector<atcoder::static_modint<MOD>>::vector;\n\
+    \n    using V = atcoder::static_modint<MOD>;\n\n    FPSNTTFriendly(const std::vector<V>&\
     \ f) {\n        this->reserve(f.size());\n        for (V v : f) this->push_back(std::move(v));\n\
     \    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD> resized(usize n) const {\n   \
     \     auto cp = *this;\n        cp.resize(n);\n        return cp;\n    }\n\n \
@@ -147,15 +153,17 @@ data:
     }\n\ntemplate <usize MOD = 998244353>\nusing FPS = FPSNTTFriendly<MOD>;\n\n} //\
     \ namespace zawa\n"
   dependsOn:
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
   - Src/FPS/BostanMori.hpp
   - Src/FPS/KthTerm.hpp
-  timestamp: '2025-08-10 00:41:43+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp

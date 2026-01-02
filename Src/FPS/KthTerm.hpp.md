@@ -6,6 +6,9 @@ data:
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
       \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -13,6 +16,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_fibonacci.test.cpp
+    title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
@@ -41,22 +47,24 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
   code: "#pragma once\n\n#include <cassert>\n#include <vector>\n\n#include \"FPSNTTFriendly.hpp\"\
-    \n#include \"BostanMori.hpp\"\n\nnamespace zawa {\n\n\ntemplate <usize MOD = 998244353>\n\
-    typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFriendly<MOD>\
-    \ C) {\n    assert(C.size() >= 2 and C[0] == 0);\n    assert(A.size() >= C.size()\
-    \ - 1);\n    if (K < A.size()) \n        return A[K];\n    for (auto& v : C)\n\
-    \        v = -v;\n    C[0] = 1;\n    return BostanMori(K, (A * C).resized(C.size()\
-    \ - 1), C);\n}\n\n} // namespace zawa\n"
+    \n#include \"BostanMori.hpp\"\n\nnamespace zawa {\n\ntemplate <concepts::IndexedFPS\
+    \ FPS, class Conv = FPSMult>\ntypename FPS::value_type KthTerm(u64 K, FPS A, FPS\
+    \ C, Conv conv = {}) {\n    assert(C.size() >= 2 and C[0] == 0);\n    assert(A.size()\
+    \ >= C.size() - 1);\n    if (K < A.size()) \n        return A[K];\n    for (auto&\
+    \ v : C)\n        v = -v;\n    C[0] = 1;\n    FPS multed = conv(A, C);\n    multed.resize(C.size()\
+    \ - 1);\n    return BostanMori(K, multed, C, conv);\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   - Src/FPS/BostanMori.hpp
   isVerificationFile: false
   path: Src/FPS/KthTerm.hpp
   requiredBy: []
-  timestamp: '2025-12-23 20:12:22+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/KthTerm.hpp
@@ -71,8 +79,8 @@ title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u305
 ## ライブラリ
 
 ```
-template <usize MOD = 998244353>
-typename FPSNTTFriendly<MOD>::V KthTerm(u64 K, FPSNTTFriendly<MOD> A, FPSNTTFriendly<MOD> C)
+template <concepts::IndexedFPS FPS, class Conv = FPSMult>
+typename FPS::value_type KthTerm(u64 K, FPS A, FPS C, Conv conv = {}) {
 ```
 
 $C$ は1-indexedですよ！
@@ -80,6 +88,10 @@ $C$ は1-indexedですよ！
 - $\mid C\mid \ge 2$
 - $C_{0} = 0$
 - $\mid A\mid \ge d$
+
+`conv`は`FPSNTTFriendly`のときは何も指定しなくても良い。それ以外のときは畳み込みをする関数オブジェクトを与える。
+
+$\Theta O(NM)$ の畳み込みは`FPS.hpp`の`NaiveConvolution`を与えると良い。
 
 ## アルゴリズム
 

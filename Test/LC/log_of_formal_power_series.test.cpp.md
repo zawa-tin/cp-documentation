@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -41,11 +44,12 @@ data:
     \  cout << f.log() << '\\n';\n}\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/LC/log_of_formal_power_series.test.cpp
   requiredBy: []
-  timestamp: '2025-08-10 00:41:43+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/log_of_formal_power_series.test.cpp

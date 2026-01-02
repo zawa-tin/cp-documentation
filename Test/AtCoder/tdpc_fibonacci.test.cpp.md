@@ -27,9 +27,9 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/tdpc/submissions/72142064
+    - https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-    - https://yukicoder.me/problems/no/3044
-    - https://yukicoder.me/submissions/1142529
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -49,20 +49,15 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "// #define PROBLEM \"https://yukicoder.me/problems/no/3044\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n#include\
-    \ \"../../Src/FPS/KthTerm.hpp\"\n\n/*\n * yukicoder No. 3044 \u3088\u304F\u3042\
-    \u308B\u30AB\u30A8\u30EB\u3055\u3093\n * https://yukicoder.me/submissions/1142529\n\
-    \ */\n\n#include <iostream>\n#include <vector>\n\n#include \"atcoder/modint\"\n\
-    using namespace zawa;\nusing mint = atcoder::modint998244353;\nusing fps = FPSNTTFriendly<mint::mod()>;\n\
-    \nvoid solve() {\n    int N, T, k, l;\n    std::cin >> N >> T >> k >> l;\n   \
-    \ fps C(T + 1);\n    C[1] = mint::raw(k - 1) / mint::raw(6);\n    C[2] = mint::raw(l\
-    \ - k) / mint::raw(6);\n    C[T] = mint::raw(7 - l) / mint::raw(6);\n    fps A(T);\n\
-    \    A[0] = 1;\n    for (int n = 1 ; n < T ; n++) {\n        for (int j = 1 ;\
-    \ j <= T and n - j >= 0 ; j++) {\n            A[n] += C[j] * A[n - j];\n     \
-    \   }\n    }\n    std::cout << KthTerm(N - 1, A, C).val() << '\\n';\n}\n\nint\
-    \ main() {\n#ifdef ONLINE_JUDGE\n    solve();\n#else\n    std::cout << \"Hello\
-    \ World\\n\";\n#endif\n}\n"
+  code: "//#define PROBLEM \"https://atcoder.jp/contests/tdpc/tasks/tdpc_fibonacci\"\
+    \n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * Typical DP Contest T - fibonacci\n * https://atcoder.jp/contests/tdpc/submissions/72142064\n\
+    \ */\n\n#include \"../../Src/FPS/KthTerm.hpp\"\n#include \"atcoder/modint\"\n\
+    using mint = atcoder::modint1000000007;\n\n#include <vector>\nusing namespace\
+    \ std;\nusing fps = vector<mint>;\n\nint main() {\n#ifdef ATCODER\n    int K,\
+    \ N;\n    cin >> K >> N;\n    fps C(K + 1, 1);\n    C[0] = 0;\n    fps A(K, 1);\n\
+    \    cout << zawa::KthTerm(N - 1, A, C, zawa::NaiveConvolution{}).val() << '\\\
+    n';\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/FPS/KthTerm.hpp
   - Src/FPS/FPSNTTFriendly.hpp
@@ -70,15 +65,15 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/FPS/BostanMori.hpp
   isVerificationFile: true
-  path: Test/yukicoder/3044.test.cpp
+  path: Test/AtCoder/tdpc_fibonacci.test.cpp
   requiredBy: []
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-02 14:57:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/yukicoder/3044.test.cpp
+documentation_of: Test/AtCoder/tdpc_fibonacci.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/yukicoder/3044.test.cpp
-- /verify/Test/yukicoder/3044.test.cpp.html
-title: Test/yukicoder/3044.test.cpp
+- /verify/Test/AtCoder/tdpc_fibonacci.test.cpp
+- /verify/Test/AtCoder/tdpc_fibonacci.test.cpp.html
+title: Test/AtCoder/tdpc_fibonacci.test.cpp
 ---

@@ -6,6 +6,9 @@ data:
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
       \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -53,13 +56,14 @@ data:
     \ << '\\n';\n}\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   - Src/FPS/KthTerm.hpp
   - Src/FPS/BostanMori.hpp
   isVerificationFile: true
   path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 20:12:22+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp

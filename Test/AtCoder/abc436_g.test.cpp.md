@@ -6,6 +6,9 @@ data:
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
       \ \u30A2\u30EB\u30B4\u30EA\u30BA\u30E0)"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -20,7 +23,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc436/submissions/71935256
+    - https://atcoder.jp/contests/abc436/submissions/72141699
     - https://atcoder.jp/contests/abc436/tasks/abc436_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -44,7 +47,7 @@ data:
     \ line -1: no such header\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc436/tasks/abc436_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 436 G - Linear Inequation\n * https://atcoder.jp/contests/abc436/submissions/71935256\n\
+    \n\n/*\n * AtCoder Beginner Contest 436 G - Linear Inequation\n * https://atcoder.jp/contests/abc436/submissions/72141699\n\
     \ */\n\n#include \"../../Src/FPS/BostanMori.hpp\"\nusing namespace zawa;\nusing\
     \ mint = atcoder::modint998244353;\nusing fps = FPSNTTFriendly<mint::mod()>;\n\
     \n#include <iostream>\nusing namespace std;\n\nint main() {\n#ifdef ATCODER\n\
@@ -56,11 +59,12 @@ data:
   dependsOn:
   - Src/FPS/BostanMori.hpp
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc436_g.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 20:35:20+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc436_g.test.cpp

@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -16,6 +19,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tdpc_fibonacci.test.cpp
+    title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
     title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
@@ -43,27 +49,32 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#pragma once\n\n#include \"FPSNTTFriendly.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <usize MOD = 998244353>\ntypename FPSNTTFriendly<MOD>::V BostanMori(usize N,\
-    \ FPSNTTFriendly<MOD> P, FPSNTTFriendly<MOD> Q) {\n    assert(P.size());\n   \
-    \ assert(Q.size() and Q[0] != 0); \n    auto takeParity = [&](const FPSNTTFriendly<MOD>&\
-    \ f, usize p) {\n        FPSNTTFriendly<MOD> res;\n        res.reserve(f.size()\
-    \ / 2);\n        for (usize i = p ; i < f.size() ; i += 2)\n            res.push_back(f[i]);\n\
-    \        return res;\n    };\n    while (N) {\n        FPSNTTFriendly<MOD> Qm(Q.size());\n\
-    \        for (usize i = 0 ; i < Q.size() ; i++)\n            Qm[i] = i % 2 ? -Q[i]\
-    \ : Q[i];\n        P = takeParity(P * Qm, N % 2);\n        Q = takeParity(Q *\
-    \ Qm, 0);\n        N >>= 1;\n    }\n    return P[0] / Q[0];\n}\n\n} // namespace\
+  code: "#pragma once\n\n#include \"FPSNTTFriendly.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class FPS, class Conv>\nconcept Convolution = \n   \
+    \ std::regular_invocable<Conv, const FPS&, const FPS&> &&\n    std::same_as<std::invoke_result_t<Conv,\
+    \ const FPS&, const FPS&>, FPS>;\n\n} // namespace concepts\n\ntemplate <concepts::IndexedFPS\
+    \ FPS, class Conv = FPSMult>\nrequires concepts::Convolution<FPS, Conv>\ntypename\
+    \ FPS::value_type BostanMori(usize N, FPS P, FPS Q, Conv conv = {}) {\n    assert(P.size());\n\
+    \    assert(Q.size() and Q[0] != 0); \n    auto takeParity = [&](const FPS& f,\
+    \ usize p) {\n        FPS res;\n        res.reserve(f.size() / 2);\n        for\
+    \ (usize i = p ; i < f.size() ; i += 2)\n            res.push_back(f[i]);\n  \
+    \      return res;\n    };\n    while (N) {\n        FPS Qm(Q.size());\n     \
+    \   for (usize i = 0 ; i < Q.size() ; i++)\n            Qm[i] = i % 2 ? -Q[i]\
+    \ : Q[i];\n        P = takeParity(conv(P, Qm), N % 2);\n        Q = takeParity(conv(Q,\
+    \ Qm), 0);\n        N >>= 1;\n    }\n    return P[0] / Q[0];\n}\n\n} // namespace\
     \ zawa\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/BostanMori.hpp
   requiredBy:
   - Src/FPS/KthTerm.hpp
-  timestamp: '2025-12-23 20:12:22+09:00'
+  timestamp: '2026-01-02 14:52:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/yukicoder/3044.test.cpp
@@ -74,3 +85,21 @@ title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori 
 ---
 
 ## 概要
+
+## ライブラリの説明
+
+```
+template <concepts::IndexedFPS FPS, class Conv = FPSMult>
+requires concepts::Convolution<FPS, Conv>
+typename FPS::value_type BostanMori(usize N, FPS P, FPS Q, Conv conv = {})
+```
+
+$[x^N]\frac{P(x)}{Q(x)}$を計算する
+
+`conv`は`FPSNTTFriendly`のときは何も指定しなくても良い。それ以外のときは畳み込みをする関数オブジェクトを与える。
+
+$\Theta O(NM)$ の畳み込みは`FPS.hpp`の`NaiveConvolution`を与えると良い。
+
+**計算量**
+
+- 畳み込みを $2\times \lceil\log_{2}(N + 1)\rceil$ 回行うのがボトルネック
