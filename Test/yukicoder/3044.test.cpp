@@ -1,11 +1,12 @@
 // #define PROBLEM "https://yukicoder.me/problems/no/3044"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+#include "../../Src/FPS/FPSNTTFriendly.hpp"
 #include "../../Src/FPS/KthTerm.hpp"
 
 /*
  * yukicoder No. 3044 よくあるカエルさん
- * https://yukicoder.me/submissions/1142529
+ * https://yukicoder.me/submissions/1142771
  */
 
 #include <iostream>

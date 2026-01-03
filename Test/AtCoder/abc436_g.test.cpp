@@ -3,11 +3,12 @@
 
 /*
  * AtCoder Beginner Contest 436 G - Linear Inequation
- * https://atcoder.jp/contests/abc436/submissions/72141699
  */
 
+#include "../../Src/FPS/FPSNTTFriendly.hpp"
 #include "../../Src/FPS/BostanMori.hpp"
 using namespace zawa;
+#include "atcoder/modint"
 using mint = atcoder::modint998244353;
 using fps = FPSNTTFriendly<mint::mod()>;
 
