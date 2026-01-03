@@ -10,8 +10,11 @@ documentation_of: //Src/FPS/PolynomialTaylorShift.hpp
 ## ライブラリの使い方
 
 ```cpp
-template <class T, std::integral C, class F>
-std::vector<T> PolynomialTaylorShift(std::vector<T> a, C c, F convolution) {
+template <class C, concepts::IndexedFPS FPS, class Conv = FPSMult>
+requires concepts::Convolution<FPS, Conv>
+FPS PolynomialTaylorShift(FPS a, C c, Conv conv = {})
 ```
 
-`convolution`は畳み込み計算をする関数を渡す。`atcoder::convolution<atcoder::modint998244353>`を渡しておけば今の所は大丈夫そう？
+`conv`は畳み込みの関数。`FPSNTTFriendly`を使う際は何も指定しなくて良い。
+
+$\Theta(NM)$ かけてやる愚直な畳み込みは `FPS.hpp` の `NaiveConvolution` の実体を与えると良い。

@@ -4,15 +4,6 @@
 
 namespace zawa {
 
-namespace concepts {
-
-template <class FPS, class Conv>
-concept Convolution = 
-    std::regular_invocable<Conv, const FPS&, const FPS&> &&
-    std::same_as<std::invoke_result_t<Conv, const FPS&, const FPS&>, FPS>;
-
-} // namespace concepts
-
 template <concepts::IndexedFPS FPS, class Conv = FPSMult>
 requires concepts::Convolution<FPS, Conv>
 typename FPS::value_type BostanMori(usize N, FPS P, FPS Q, Conv conv = {}) {

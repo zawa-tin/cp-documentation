@@ -17,6 +17,11 @@ concept IndexedFPS = requires(FPS f, usize i) {
     f.push_back(f[i]);
 };
 
+template <class FPS, class Conv>
+concept Convolution = 
+    std::regular_invocable<Conv, const FPS&, const FPS&> &&
+    std::same_as<std::invoke_result_t<Conv, const FPS&, const FPS&>, FPS>;
+
 } // namespace concepts
 
 struct FPSMult {
