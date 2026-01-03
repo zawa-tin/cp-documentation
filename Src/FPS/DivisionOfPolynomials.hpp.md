@@ -55,7 +55,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/DivisionOfPolynomials.hpp
   requiredBy: []
-  timestamp: '2026-01-02 17:54:32+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/division_of_polynomials.test.cpp

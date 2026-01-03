@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPSNTTFriendly.hpp
+    title: Src/FPS/FPSNTTFriendly.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialTaylorShift.hpp
     title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
@@ -16,7 +22,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc215/submissions/65595540
+    - https://atcoder.jp/contests/abc215/submissions/72163857
     - https://atcoder.jp/contests/abc215/tasks/abc215_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -27,6 +33,9 @@ data:
     , line 187, in bundle\n    bundler.update(path)\n    ~~~~~~~~~~~~~~^^^^^^\n  File\
     \ \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \                ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
     \ File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
@@ -34,30 +43,32 @@ data:
     \ line -1: no such header\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc215/tasks/abc215_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 215 G - Colorful Candies 2\n * https://atcoder.jp/contests/abc215/submissions/65595540\n\
-    \ */\n\n#include \"../../Src/FPS/PolynomialTaylorShift.hpp\"\n\n#include \"atcoder/modint\"\
-    \n#include \"atcoder/convolution\"\nusing mint = atcoder::modint998244353;\n\n\
-    #include <iostream>\n#include <vector>\n#include <algorithm>\nint N, C[50050];\n\
-    int main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n\n    std::cin >> N;\n    for (int i =\
-    \ 0 ; i < N ; i++) std::cin >> C[i];\n    std::ranges::sort(C, C + N);\n    int\
-    \ cnt = 0;\n    std::vector<mint> a(N + 1);\n    for (int i = 0, j = 0 ; i < N\
-    \ ; i = j) {\n        while (j < N and C[i] == C[j]) j++;\n        a[N - (j -\
-    \ i)]++;\n        cnt++;\n    }\n    auto b = zawa::PolynomialTaylorShift(a, 1,\
-    \ atcoder::convolution<mint>);\n    std::vector<mint> fact(N + 1, 1), invfact(N\
-    \ + 1);\n    for (int i = 1 ; i <= N ; i++) fact[i] = fact[i - 1] * mint::raw(i);\n\
-    \    invfact[N] = fact[N].inv();\n    for (int i = N ; i >= 1 ; i--) invfact[i\
-    \ - 1] = invfact[i] * mint::raw(i);\n    for (int k = 1 ; k <= N ; k++) {\n  \
-    \      mint ans = mint{cnt} - b[k] * invfact[N] * fact[k] * fact[N - k];\n   \
-    \     std::cout << ans.val() << '\\n';\n    }\n#else\n    std::cout << \"Hello\
-    \ World\\n\";\n#endif\n}\n"
+    \n\n/*\n * AtCoder Beginner Contest 215 G - Colorful Candies 2\n * https://atcoder.jp/contests/abc215/submissions/72163857\n\
+    \ */\n\n#include \"../../Src/FPS/FPSNTTFriendly.hpp\"\n#include \"../../Src/FPS/PolynomialTaylorShift.hpp\"\
+    \nusing namespace zawa;\n\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
+    using fps = FPSNTTFriendly<mint::mod()>;\n\n#include <iostream>\n#include <vector>\n\
+    #include <algorithm>\nint N, C[50050];\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\n    std::cin\
+    \ >> N;\n    for (int i = 0 ; i < N ; i++) \n        std::cin >> C[i];\n    std::ranges::sort(C,\
+    \ C + N);\n    int cnt = 0;\n    fps a(N + 1);\n    for (int i = 0, j = 0 ; i\
+    \ < N ; i = j) {\n        while (j < N and C[i] == C[j]) \n            j++;\n\
+    \        a[N - (j - i)]++;\n        cnt++;\n    }\n    auto b = zawa::PolynomialTaylorShift(a,\
+    \ 1);\n    std::vector<mint> fact(N + 1, 1), invfact(N + 1);\n    for (int i =\
+    \ 1 ; i <= N ; i++) \n        fact[i] = fact[i - 1] * mint::raw(i);\n    invfact[N]\
+    \ = fact[N].inv();\n    for (int i = N ; i >= 1 ; i--) \n        invfact[i - 1]\
+    \ = invfact[i] * mint::raw(i);\n    for (int k = 1 ; k <= N ; k++) {\n       \
+    \ mint ans = mint{cnt} - b[k] * invfact[N] * fact[k] * fact[N - k];\n        std::cout\
+    \ << ans.val() << '\\n';\n    }\n#else\n    std::cout << \"Hello World\\n\";\n\
+    #endif\n}\n"
   dependsOn:
-  - Src/FPS/PolynomialTaylorShift.hpp
+  - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/FPS/PolynomialTaylorShift.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc215_g.test.cpp
   requiredBy: []
-  timestamp: '2025-05-09 01:17:18+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc215_g.test.cpp

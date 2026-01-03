@@ -49,17 +49,14 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#pragma once\n\n#include \"FPSNTTFriendly.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ concepts {\n\ntemplate <class FPS, class Conv>\nconcept Convolution = \n   \
-    \ std::regular_invocable<Conv, const FPS&, const FPS&> &&\n    std::same_as<std::invoke_result_t<Conv,\
-    \ const FPS&, const FPS&>, FPS>;\n\n} // namespace concepts\n\ntemplate <concepts::IndexedFPS\
-    \ FPS, class Conv = FPSMult>\nrequires concepts::Convolution<FPS, Conv>\ntypename\
-    \ FPS::value_type BostanMori(usize N, FPS P, FPS Q, Conv conv = {}) {\n    assert(P.size());\n\
-    \    assert(Q.size() and Q[0] != 0); \n    auto takeParity = [&](const FPS& f,\
-    \ usize p) {\n        FPS res;\n        res.reserve(f.size() / 2);\n        for\
-    \ (usize i = p ; i < f.size() ; i += 2)\n            res.push_back(f[i]);\n  \
-    \      return res;\n    };\n    while (N) {\n        FPS Qm(Q.size());\n     \
-    \   for (usize i = 0 ; i < Q.size() ; i++)\n            Qm[i] = i % 2 ? -Q[i]\
+  code: "#pragma once\n\n#include \"FPSNTTFriendly.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <concepts::IndexedFPS FPS, class Conv = FPSMult>\nrequires concepts::Convolution<FPS,\
+    \ Conv>\ntypename FPS::value_type BostanMori(usize N, FPS P, FPS Q, Conv conv\
+    \ = {}) {\n    assert(P.size());\n    assert(Q.size() and Q[0] != 0); \n    auto\
+    \ takeParity = [&](const FPS& f, usize p) {\n        FPS res;\n        res.reserve(f.size()\
+    \ / 2);\n        for (usize i = p ; i < f.size() ; i += 2)\n            res.push_back(f[i]);\n\
+    \        return res;\n    };\n    while (N) {\n        FPS Qm(Q.size());\n   \
+    \     for (usize i = 0 ; i < Q.size() ; i++)\n            Qm[i] = i % 2 ? -Q[i]\
     \ : Q[i];\n        P = takeParity(conv(P, Qm), N % 2);\n        Q = takeParity(conv(Q,\
     \ Qm), 0);\n        N >>= 1;\n    }\n    return P[0] / Q[0];\n}\n\n} // namespace\
     \ zawa\n"
@@ -71,7 +68,7 @@ data:
   path: Src/FPS/BostanMori.hpp
   requiredBy:
   - Src/FPS/KthTerm.hpp
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/tdpc_fibonacci.test.cpp

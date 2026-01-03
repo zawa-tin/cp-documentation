@@ -23,7 +23,6 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc436/submissions/72141699
     - https://atcoder.jp/contests/abc436/tasks/abc436_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -37,9 +36,6 @@ data:
     \    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
     \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
-    \    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
-    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \                ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
     \ File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
@@ -47,24 +43,25 @@ data:
     \ line -1: no such header\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc436/tasks/abc436_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 436 G - Linear Inequation\n * https://atcoder.jp/contests/abc436/submissions/72141699\n\
-    \ */\n\n#include \"../../Src/FPS/BostanMori.hpp\"\nusing namespace zawa;\nusing\
-    \ mint = atcoder::modint998244353;\nusing fps = FPSNTTFriendly<mint::mod()>;\n\
-    \n#include <iostream>\nusing namespace std;\n\nint main() {\n#ifdef ATCODER\n\
-    \    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N;\n\
-    \    long long M;\n    cin >> N >> M;\n    fps Q{1, -1};\n    while (N--) {\n\
-    \        int a;\n        cin >> a;\n        fps f(a + 1);\n        f[0] = 1;\n\
-    \        f[a] = -1;\n        Q *= f;\n    }\n    cout << BostanMori(M, fps{1},\
-    \ Q).val() << '\\n';\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+    \n\n/*\n * AtCoder Beginner Contest 436 G - Linear Inequation\n */\n\n#include\
+    \ \"../../Src/FPS/FPSNTTFriendly.hpp\"\n#include \"../../Src/FPS/BostanMori.hpp\"\
+    \nusing namespace zawa;\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
+    using fps = FPSNTTFriendly<mint::mod()>;\n\n#include <iostream>\nusing namespace\
+    \ std;\n\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n  \
+    \  ios::sync_with_stdio(0);\n    int N;\n    long long M;\n    cin >> N >> M;\n\
+    \    fps Q{1, -1};\n    while (N--) {\n        int a;\n        cin >> a;\n   \
+    \     fps f(a + 1);\n        f[0] = 1;\n        f[a] = -1;\n        Q *= f;\n\
+    \    }\n    cout << BostanMori(M, fps{1}, Q).val() << '\\n';\n#else\n    cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
-  - Src/FPS/BostanMori.hpp
   - Src/FPS/FPSNTTFriendly.hpp
   - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/FPS/BostanMori.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc436_g.test.cpp
   requiredBy: []
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-03 20:57:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc436_g.test.cpp

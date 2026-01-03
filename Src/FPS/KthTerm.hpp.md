@@ -61,7 +61,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/KthTerm.hpp
   requiredBy: []
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/tdpc_fibonacci.test.cpp

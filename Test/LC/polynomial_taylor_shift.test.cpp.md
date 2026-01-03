@@ -2,6 +2,12 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPS.hpp
+    title: Src/FPS/FPS.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/FPSNTTFriendly.hpp
+    title: Src/FPS/FPSNTTFriendly.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialTaylorShift.hpp
     title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
@@ -25,28 +31,33 @@ data:
     , line 187, in bundle\n    bundler.update(path)\n    ~~~~~~~~~~~~~~^^^^^^\n  File\
     \ \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \                ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
     \ File \"/opt/hostedtoolcache/Python/3.14.2/x64/lib/python3.14/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/polynomial_taylor_shift\"\
-    \n\n#include \"../../Src/FPS/PolynomialTaylorShift.hpp\"\n\n#include \"atcoder/modint\"\
-    \n#include \"atcoder/convolution\"\nusing mint = atcoder::modint998244353;\n\n\
-    #include <iostream>\n#include <vector>\n\nint main() {\n    std::cin.tie(nullptr);\
-    \    \n    std::cout.tie(nullptr);    \n    std::ios::sync_with_stdio(false);\n\
-    \    int N, c;\n    std::cin >> N >> c;\n    std::vector<mint> A(N);\n    for\
-    \ (int i = 0 ; i < N ; i++) {\n        int a;\n        std::cin >> a;\n      \
-    \  A[i] = mint::raw(a);\n    }\n    auto B = zawa::PolynomialTaylorShift(A, c,\
-    \ atcoder::convolution<mint>);\n    for (int i = 0 ; i < N ; i++) std::cout <<\
-    \ B[i].val() << (i + 1 == N ? '\\n' : ' ');\n}\n"
+    \n\n#include \"../../Src/FPS/FPSNTTFriendly.hpp\"\n#include \"../../Src/FPS/PolynomialTaylorShift.hpp\"\
+    \nusing namespace zawa;\n\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
+    using fps = FPSNTTFriendly<mint::mod()>;\n\n#include <iostream>\n#include <vector>\n\
+    using namespace std;\n\nint main() {\n    std::cin.tie(nullptr);    \n    std::cout.tie(nullptr);\
+    \    \n    std::ios::sync_with_stdio(false);\n    int N, c;\n    std::cin >> N\
+    \ >> c;\n    fps A(N);\n    for (int i = 0 ; i < N ; i++) {\n        int a;\n\
+    \        std::cin >> a;\n        A[i] = mint::raw(a);\n    }\n    auto B = PolynomialTaylorShift(A,\
+    \ c);\n    for (int i = 0 ; i < N ; i++) \n        std::cout << B[i].val() <<\
+    \ (i + 1 == N ? '\\n' : ' ');\n}\n"
   dependsOn:
-  - Src/FPS/PolynomialTaylorShift.hpp
+  - Src/FPS/FPSNTTFriendly.hpp
+  - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/FPS/PolynomialTaylorShift.hpp
   isVerificationFile: true
   path: Test/LC/polynomial_taylor_shift.test.cpp
   requiredBy: []
-  timestamp: '2025-05-09 01:17:18+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/polynomial_taylor_shift.test.cpp

@@ -48,7 +48,7 @@ data:
   isVerificationFile: true
   path: Test/LC/pow_of_formal_power_series.test.cpp
   requiredBy: []
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/pow_of_formal_power_series.test.cpp

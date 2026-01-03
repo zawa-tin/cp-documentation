@@ -19,7 +19,13 @@ data:
     path: Src/FPS/KthTerm.hpp
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/PolynomialTaylorShift.hpp
+    title: Polynomial Taylor Shift
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc215_g.test.cpp
+    title: ABC215-G Colorful Candies 2
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
@@ -42,6 +48,9 @@ data:
     path: Test/LC/log_of_formal_power_series.test.cpp
     title: Test/LC/log_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/polynomial_taylor_shift.test.cpp
+    title: Test/LC/polynomial_taylor_shift.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/pow_of_formal_power_series.test.cpp
     title: Test/LC/pow_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
@@ -61,30 +70,36 @@ data:
     namespace zawa {\n\nnamespace concepts {\n\ntemplate <class FPS>\nconcept IndexedFPS\
     \ = requires(FPS f, usize i) {\n    typename FPS::value_type;\n    { f.size()\
     \ } -> std::convertible_to<usize>;\n    { f[i] } -> std::convertible_to<typename\
-    \ FPS::value_type>;\n    f.reserve(0);\n    f.push_back(f[i]);\n};\n\n} // namespace\
-    \ concepts\n\nstruct FPSMult {\n    template <class FPS>\n    requires requires(const\
-    \ FPS& a, const FPS& b) {\n        { a * b } -> std::same_as<FPS>;\n    }\n  \
-    \  FPS operator()(const FPS& a, const FPS& b) const {\n        return a * b;\n\
-    \    }\n};\n\nstruct NaiveConvolution {\n    template <class FPS>\n    FPS operator()(const\
-    \ FPS& a, const FPS& b) const {\n        if (a.empty())\n            return b;\n\
-    \        if (b.empty())\n            return a;\n        FPS res(a.size() + b.size()\
-    \ - 1);\n        for (usize i = 0 ; i < a.size() ; i++)\n            for (usize\
-    \ j = 0 ; j < b.size() ; j++)\n                res[i + j] += a[i] * b[j];\n  \
-    \      return res;\n    }\n};\n\n} // namespace zawa\n"
+    \ FPS::value_type>;\n    f.reserve(0);\n    f.push_back(f[i]);\n};\n\ntemplate\
+    \ <class FPS, class Conv>\nconcept Convolution = \n    std::regular_invocable<Conv,\
+    \ const FPS&, const FPS&> &&\n    std::same_as<std::invoke_result_t<Conv, const\
+    \ FPS&, const FPS&>, FPS>;\n\n} // namespace concepts\n\nstruct FPSMult {\n  \
+    \  template <class FPS>\n    requires requires(const FPS& a, const FPS& b) {\n\
+    \        { a * b } -> std::same_as<FPS>;\n    }\n    FPS operator()(const FPS&\
+    \ a, const FPS& b) const {\n        return a * b;\n    }\n};\n\nstruct NaiveConvolution\
+    \ {\n    template <class FPS>\n    FPS operator()(const FPS& a, const FPS& b)\
+    \ const {\n        if (a.empty())\n            return b;\n        if (b.empty())\n\
+    \            return a;\n        FPS res(a.size() + b.size() - 1);\n        for\
+    \ (usize i = 0 ; i < a.size() ; i++)\n            for (usize j = 0 ; j < b.size()\
+    \ ; j++)\n                res[i + j] += a[i] * b[j];\n        return res;\n  \
+    \  }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <concepts>\n\
     \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class FPS>\nconcept IndexedFPS\
     \ = requires(FPS f, usize i) {\n    typename FPS::value_type;\n    { f.size()\
     \ } -> std::convertible_to<usize>;\n    { f[i] } -> std::convertible_to<typename\
-    \ FPS::value_type>;\n    f.reserve(0);\n    f.push_back(f[i]);\n};\n\n} // namespace\
-    \ concepts\n\nstruct FPSMult {\n    template <class FPS>\n    requires requires(const\
-    \ FPS& a, const FPS& b) {\n        { a * b } -> std::same_as<FPS>;\n    }\n  \
-    \  FPS operator()(const FPS& a, const FPS& b) const {\n        return a * b;\n\
-    \    }\n};\n\nstruct NaiveConvolution {\n    template <class FPS>\n    FPS operator()(const\
-    \ FPS& a, const FPS& b) const {\n        if (a.empty())\n            return b;\n\
-    \        if (b.empty())\n            return a;\n        FPS res(a.size() + b.size()\
-    \ - 1);\n        for (usize i = 0 ; i < a.size() ; i++)\n            for (usize\
-    \ j = 0 ; j < b.size() ; j++)\n                res[i + j] += a[i] * b[j];\n  \
-    \      return res;\n    }\n};\n\n} // namespace zawa\n"
+    \ FPS::value_type>;\n    f.reserve(0);\n    f.push_back(f[i]);\n};\n\ntemplate\
+    \ <class FPS, class Conv>\nconcept Convolution = \n    std::regular_invocable<Conv,\
+    \ const FPS&, const FPS&> &&\n    std::same_as<std::invoke_result_t<Conv, const\
+    \ FPS&, const FPS&>, FPS>;\n\n} // namespace concepts\n\nstruct FPSMult {\n  \
+    \  template <class FPS>\n    requires requires(const FPS& a, const FPS& b) {\n\
+    \        { a * b } -> std::same_as<FPS>;\n    }\n    FPS operator()(const FPS&\
+    \ a, const FPS& b) const {\n        return a * b;\n    }\n};\n\nstruct NaiveConvolution\
+    \ {\n    template <class FPS>\n    FPS operator()(const FPS& a, const FPS& b)\
+    \ const {\n        if (a.empty())\n            return b;\n        if (b.empty())\n\
+    \            return a;\n        FPS res(a.size() + b.size() - 1);\n        for\
+    \ (usize i = 0 ; i < a.size() ; i++)\n            for (usize j = 0 ; j < b.size()\
+    \ ; j++)\n                res[i + j] += a[i] * b[j];\n        return res;\n  \
+    \  }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
@@ -92,11 +107,13 @@ data:
   requiredBy:
   - Src/FPS/FPSNTTFriendly.hpp
   - Src/FPS/BostanMori.hpp
+  - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/KthTerm.hpp
-  timestamp: '2026-01-02 14:52:12+09:00'
+  timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc215_g.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
@@ -105,6 +122,7 @@ data:
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
+  - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPS.hpp
 layout: document
