@@ -3,14 +3,16 @@
 
 /*
  * AtCoder Beginner Contest 215 G - Colorful Candies 2
- * https://atcoder.jp/contests/abc215/submissions/65595540
+ * https://atcoder.jp/contests/abc215/submissions/72163857
  */
 
+#include "../../Src/FPS/FPSNTTFriendly.hpp"
 #include "../../Src/FPS/PolynomialTaylorShift.hpp"
+using namespace zawa;
 
 #include "atcoder/modint"
-#include "atcoder/convolution"
 using mint = atcoder::modint998244353;
+using fps = FPSNTTFriendly<mint::mod()>;
 
 #include <iostream>
 #include <vector>
@@ -23,20 +25,24 @@ int main() {
     std::ios::sync_with_stdio(false);
 
     std::cin >> N;
-    for (int i = 0 ; i < N ; i++) std::cin >> C[i];
+    for (int i = 0 ; i < N ; i++) 
+        std::cin >> C[i];
     std::ranges::sort(C, C + N);
     int cnt = 0;
-    std::vector<mint> a(N + 1);
+    fps a(N + 1);
     for (int i = 0, j = 0 ; i < N ; i = j) {
-        while (j < N and C[i] == C[j]) j++;
+        while (j < N and C[i] == C[j]) 
+            j++;
         a[N - (j - i)]++;
         cnt++;
     }
-    auto b = zawa::PolynomialTaylorShift(a, 1, atcoder::convolution<mint>);
+    auto b = zawa::PolynomialTaylorShift(a, 1);
     std::vector<mint> fact(N + 1, 1), invfact(N + 1);
-    for (int i = 1 ; i <= N ; i++) fact[i] = fact[i - 1] * mint::raw(i);
+    for (int i = 1 ; i <= N ; i++) 
+        fact[i] = fact[i - 1] * mint::raw(i);
     invfact[N] = fact[N].inv();
-    for (int i = N ; i >= 1 ; i--) invfact[i - 1] = invfact[i] * mint::raw(i);
+    for (int i = N ; i >= 1 ; i--) 
+        invfact[i - 1] = invfact[i] * mint::raw(i);
     for (int k = 1 ; k <= N ; k++) {
         mint ans = mint{cnt} - b[k] * invfact[N] * fact[k] * fact[N - k];
         std::cout << ans.val() << '\n';
