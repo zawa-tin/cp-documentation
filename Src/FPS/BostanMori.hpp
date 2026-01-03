@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FPSNTTFriendly.hpp"
+#include "FPS.hpp"
 
 namespace zawa {
 
