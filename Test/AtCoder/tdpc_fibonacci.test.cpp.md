@@ -67,7 +67,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/tdpc_fibonacci.test.cpp
   requiredBy: []
-  timestamp: '2026-01-03 20:52:40+09:00'
+  timestamp: '2026-01-03 22:37:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/tdpc_fibonacci.test.cpp
