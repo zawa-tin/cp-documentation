@@ -8,7 +8,6 @@ using mint = atcoder::modint998244353;
 using fps = FPSNTTFriendly<mint::mod()>;
 
 #include <iostream>
-#include <iterator>
 #include <random>
 using namespace std;
 mt19937 mt{random_device{}()};
@@ -35,8 +34,9 @@ void test(int MAXN, int MAXM, int MAXVAL, bool verify = true) {
     if (verify) {
         auto nv = naive(M, W, F);
         if (ans != nv) {
-            cerr << W << endl;
-            cerr << F << endl;
+            cerr << "fail" << endl;
+            cerr << "W -> " << W << endl;
+            cerr << "F -> " << F << endl;
             cerr << "ans: ";
             for (auto i : nv)
                 cerr << i.val() << ' ';
@@ -51,9 +51,9 @@ void test(int MAXN, int MAXM, int MAXVAL, bool verify = true) {
 }
 int main() {
 #ifdef DEBUG
-    fps W{4, 0, 4};
-    fps F{0, 3};
-    int M = 4;
+    fps W{1, 7, 5, 3};
+    fps F{0, 9, 6, 8};
+    int M = 20;
     for (auto i : PowerProjection(M, W, F))
         cout << i.val() << ' ';
     cout << endl;
@@ -61,15 +61,15 @@ int main() {
         cout << i.val() << ' ';
     cout << endl;
 #else
-    for (int i = (1 << 10) ; i-- ; )
-        test(5, 5, 5);
-    cerr << "tiny end" << endl;
-    for (int i = (1 << 10) ; i-- ; )
-        test(50, 50, mint::mod());
-    cerr << "small end" << endl;
-    for (int i = 0 ; i < (1 << 3) ; i++)
-        test(3000, 3000, mint::mod());
-    cerr << "med end" << endl;
+    //for (int i = (1 << 15) ; i-- ; )
+    //    test(5, 20, 10);
+    //cerr << "tiny end" << endl;
+    //for (int i = (1 << 10) ; i-- ; )
+    //    test(50, 50, mint::mod());
+    //cerr << "small end" << endl;
+    //for (int i = 0 ; i < (1 << 3) ; i++)
+    //    test(3000, 3000, mint::mod());
+    //cerr << "med end" << endl;
     for (int i = 0 ; i < (1 << 2) ; i++) {
         cerr << "test start" << endl;
         test(200000, 200000, mint::mod(), false);

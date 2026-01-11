@@ -42,34 +42,40 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
             res[i] *= fact[i];
         return res;
     }
-    usize nx = std::bit_ceil(W.size()), ny = 4;
-    W.resize(nx);
-    F.resize(nx);
+    usize n = std::bit_ceil(W.size()), nx = n * 2, ny = 2;
+    W.resize(n);
+    F.resize(n);
     std::ranges::reverse(W);
     // bostan mori [x^{n-1}](g(x)/(1-yf(x)))
     FPS P(nx * ny), Q(nx * ny);
     Q[0] = 1;
-    for (usize x = 0 ; x < nx ; x++) {
-        P[x * ny] = W[x];
-        Q[x * ny + 1] = -F[x];
+    for (usize x = 0 ; x < n ; x++) {
+        P[x] = W[x];
+        Q[nx + x] = -F[x];
     }
-    while (nx > 1) {
+    while (n > 1) {
         FPS R(nx * ny);
         for (usize x = 0 ; x < nx ; x++)
-            for (usize y = 0 ; y < (ny >> 1) ; y++)
-                R[x * ny + y] = Q[x * ny + y] * Element{x % 2 ? -1 : 1};
+            for (usize y = 0 ; y < ny ; y++)
+                R[y * nx + x] = Q[y * nx + x] * Element{x % 2 ? -1 : 1};
         auto PR = convolution(P, R), QR = convolution(Q, R);
+        PR.emplace_back();
+        QR.emplace_back();
         std::ranges::fill(P, Element{0});
         std::ranges::fill(Q, Element{0});
-        for (usize x = 1 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < ny ; y++)
-                P[(x >> 1) * (ny << 1) + y] = PR[x * ny + y];
-        for (usize x = 0 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < ny ; y++) 
-                Q[(x >> 1) * (ny << 1) + y] = QR[x * ny + y];
+        for (usize x = 1 ; x < (nx >> 1) ; x += 2)
+            for (usize y = 0 ; y < (2 * ny) ; y++)
+                P[y * (nx >> 1) + (x >> 1)] = PR.at(y * nx + x);
+        for (usize x = 0 ; x < (nx >> 1) ; x += 2)
+            for (usize y = 0 ; y < (2 * ny) ; y++) 
+                Q[y * (nx >> 1) + (x >> 1)] = QR[y * nx + x];
         nx >>= 1;
+        n >>= 1;
         ny <<= 1;
     }
+    P.resize(2 * m);
+    for (usize i = 0 ; i < m ; i++)
+        P[i] = P[i << 1];
     P.resize(m);
     return P;
 }
