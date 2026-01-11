@@ -61,17 +61,19 @@ int main() {
         cout << i.val() << ' ';
     cout << endl;
 #else
-    //for (int i = (1 << 10) ; i-- ; )
-    //    test(5, 5, 5);
-    //cerr << "tiny end" << endl;
-    //for (int i = (1 << 10) ; i-- ; )
-    //    test(50, 50, mint::mod());
-    //cerr << "small end" << endl;
-    //for (int i = 0 ; i < (1 << 3) ; i++)
-    //    test(3000, 3000, mint::mod());
-    //cerr << "med end" << endl;
-    for (int i = 0 ; i < (1 << 2) ; i++)
+    for (int i = (1 << 10) ; i-- ; )
+        test(5, 5, 5);
+    cerr << "tiny end" << endl;
+    for (int i = (1 << 10) ; i-- ; )
+        test(50, 50, mint::mod());
+    cerr << "small end" << endl;
+    for (int i = 0 ; i < (1 << 3) ; i++)
+        test(3000, 3000, mint::mod());
+    cerr << "med end" << endl;
+    for (int i = 0 ; i < (1 << 2) ; i++) {
+        cerr << "test start" << endl;
         test(200000, 200000, mint::mod(), false);
+    }
     cerr << "large end" << endl;
     int A, B;
     cin >> A >> B;

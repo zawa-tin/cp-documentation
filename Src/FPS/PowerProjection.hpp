@@ -46,32 +46,27 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
     W.resize(nx);
     F.resize(nx);
     std::ranges::reverse(W);
-    auto get = [&](FPS& f, usize x, usize y) -> Element& {
-        assert(x < nx);
-        assert(y < ny);
-        return f[x * ny + y];
-    };
     // bostan mori [x^{n-1}](g(x)/(1-yf(x)))
     FPS P(nx * ny), Q(nx * ny);
-    get(Q, 0, 0) = 1;
+    Q[0] = 1;
     for (usize x = 0 ; x < nx ; x++) {
-        get(P, x, 0) = W[x];
-        get(Q, x, 1) = -F[x];
+        P[x * ny] = W[x];
+        Q[x * ny + 1] = -F[x];
     }
     while (nx > 1) {
         FPS R(nx * ny);
         for (usize x = 0 ; x < nx ; x++)
             for (usize y = 0 ; y < (ny >> 1) ; y++)
-                get(R, x, y) = get(Q, x, y) * Element{(x % 2 ? -1 : 1)};
+                R[x * ny + y] = Q[x * ny + y] * Element{x % 2 ? -1 : 1};
         auto PR = convolution(P, R), QR = convolution(Q, R);
         std::ranges::fill(P, Element{0});
         std::ranges::fill(Q, Element{0});
         for (usize x = 1 ; x < nx ; x += 2)
             for (usize y = 0 ; y < ny ; y++)
-                P[(x >> 1) * (ny << 1) + y] = get(PR, x, y);
+                P[(x >> 1) * (ny << 1) + y] = PR[x * ny + y];
         for (usize x = 0 ; x < nx ; x += 2)
             for (usize y = 0 ; y < ny ; y++) 
-                Q[(x >> 1) * (ny << 1) + y] = get(QR, x, y);
+                Q[(x >> 1) * (ny << 1) + y] = QR[x * ny + y];
         nx >>= 1;
         ny <<= 1;
     }
