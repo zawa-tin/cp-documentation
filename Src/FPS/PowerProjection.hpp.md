@@ -13,6 +13,9 @@ data:
     path: Test/AtCoder/abc345_g.test.cpp
     title: Test/AtCoder/abc345_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc439_g.test.cpp
+    title: Test/AtCoder/abc439_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/FPS/PowerProjection.test.cpp
     title: Test/My/FPS/PowerProjection.test.cpp
   _isVerificationFailed: false
@@ -118,6 +121,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc345_g.test.cpp
+  - Test/AtCoder/abc439_g.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
 documentation_of: Src/FPS/PowerProjection.hpp
 layout: document

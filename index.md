@@ -254,6 +254,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/FPS/PowerProjection.hpp
       title: FPS Power Projection
+    - icon: ':heavy_check_mark:'
+      path: Src/FPS/RationalSum.hpp
+      title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
+        \u308B\u6709\u7406\u5F0F\u306E\u7DCF\u548C"
   - name: Src/GeometryR2
     pages:
     - icon: ':heavy_check_mark:'
@@ -1343,6 +1347,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc436_g.test.cpp
       title: ABC436-G Linear Inequation
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc439_g.test.cpp
+      title: Test/AtCoder/abc439_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

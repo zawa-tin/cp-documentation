@@ -29,6 +29,9 @@ data:
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc439_g.test.cpp
+    title: Test/AtCoder/abc439_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_fibonacci.test.cpp
     title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
@@ -188,6 +191,7 @@ data:
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
+  - Test/AtCoder/abc439_g.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp
