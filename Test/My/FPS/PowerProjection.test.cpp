@@ -51,9 +51,9 @@ void test(int MAXN, int MAXM, int MAXVAL, bool verify = true) {
 }
 int main() {
 #ifdef DEBUG
-    fps W{1, 7, 5, 3};
-    fps F{0, 9, 6, 8};
-    int M = 20;
+    fps W{4, 4, 1, 0};
+    fps F{0, 7, 1, 5};
+    int M = 10;
     for (auto i : PowerProjection(M, W, F))
         cout << i.val() << ' ';
     cout << endl;
@@ -61,22 +61,22 @@ int main() {
         cout << i.val() << ' ';
     cout << endl;
 #else
-    //for (int i = (1 << 15) ; i-- ; )
-    //    test(5, 20, 10);
-    //cerr << "tiny end" << endl;
-    //for (int i = (1 << 10) ; i-- ; )
-    //    test(50, 50, mint::mod());
-    //cerr << "small end" << endl;
-    //for (int i = 0 ; i < (1 << 3) ; i++)
-    //    test(3000, 3000, mint::mod());
-    //cerr << "med end" << endl;
-    for (int i = 0 ; i < (1 << 2) ; i++) {
+    // for (int i = (1 << 15) ; i-- ; )
+    //     test(4, 10, 10);
+    // cerr << "tiny end" << endl;
+    // for (int i = (1 << 10) ; i-- ; )
+    //     test(50, 50, mint::mod());
+    // cerr << "small end" << endl;
+    // for (int i = 0 ; i < (1 << 3) ; i++)
+    //     test(3000, 3000, mint::mod());
+    // cerr << "med end" << endl;
+    for (int i = 0 ; i < (1 << 0) ; i++) {
         cerr << "test start" << endl;
         test(200000, 200000, mint::mod(), false);
     }
     cerr << "large end" << endl;
-    int A, B;
-    cin >> A >> B;
-    cout << A + B << '\n';
+    // int A, B;
+    // cin >> A >> B;
+    // cout << A + B << '\n';
 #endif
 }
