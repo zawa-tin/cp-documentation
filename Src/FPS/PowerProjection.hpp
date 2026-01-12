@@ -61,7 +61,7 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
     usize n = std::bit_ceil(W.size());
     W.resize(n);
     F.resize(n);
-    usize nx = n, ny = 2;
+    usize nx = n, ny = 1;
     std::ranges::reverse(W);
     // bostan mori [x^{n-1}](g(x)/(1-yf(x)))
     FPS P(2 * nx * ny), Q(2 * nx * ny);
@@ -69,12 +69,10 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
         P[x] = W[x];
         Q[x] = -F[x];
     }
-    Q[2 * nx] = 1;
     while (n > 1) {
-        std::cout << nx << ' ' << ny << "iterate" << std::endl;
         FPS R = Q;
         for (usize x = 1 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < ny ; y++)
+            for (usize y = 0 ; y < (ny << 1) ; y++)
                 R[y * nx + x] *= Element{-1};
         // print("P", P, nx << 1, ny);
         // print("Q", Q, nx << 1, ny);
@@ -82,6 +80,12 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
         auto PR = convolution(P, R), QR = convolution(Q, R);
         PR.resize(4 * nx * ny);
         QR.resize(4 * nx * ny);
+        // print("PR", PR, nx << 1, ny << 1);
+        // print("QR", QR, nx << 1, ny << 1);
+        for (usize i = 0 ; i < P.size() ; i++) {
+            PR[i + P.size()] += P[i];
+            QR[i + P.size()] += Q[i] + R[i];
+        }
         // print("PR", PR, nx << 1, ny << 1);
         // print("QR", QR, nx << 1, ny << 1);
         std::ranges::fill(P, Element{0});
@@ -96,10 +100,8 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
         n >>= 1;
         ny <<= 1;
     }
-    // std::cout << "result P(x, y) = " << P << std::endl;
-    // print("P", P, 2, ny);
-    std::vector<Element> res(ny >> 1);
-    for (usize i = 0 ; i < (ny >> 1) ; i++)
+    std::vector<Element> res(ny);
+    for (usize i = 0 ; i < ny ; i++)
         res[i] = P[i << 1];
     std::ranges::reverse(res);
     res.resize(m);
