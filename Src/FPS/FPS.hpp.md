@@ -20,6 +20,10 @@ data:
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/PolynomialProducts.hpp
+    title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
+      \u308B\u591A\u9805\u5F0F\u306E\u5217\u306E\u7DCF\u7A4D"
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialTaylorShift.hpp
     title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
@@ -32,6 +36,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc345_g.test.cpp
     title: Test/AtCoder/abc345_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc385_g.test.cpp
+    title: Test/AtCoder/abc385_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
@@ -59,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/pow_of_formal_power_series.test.cpp
     title: Test/LC/pow_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/product_of_polynomial_sequence.test.cpp
+    title: Test/LC/product_of_polynomial_sequence.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/FPS/PowerProjection.test.cpp
     title: Test/My/FPS/PowerProjection.test.cpp
@@ -116,6 +126,7 @@ data:
   requiredBy:
   - Src/FPS/FPSNTTFriendly.hpp
   - Src/FPS/BostanMori.hpp
+  - Src/FPS/PolynomialProducts.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/PowerProjection.hpp
@@ -126,6 +137,7 @@ data:
   - Test/AtCoder/abc215_g.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
+  - Test/AtCoder/abc385_g.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
@@ -133,6 +145,7 @@ data:
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
+  - Test/LC/product_of_polynomial_sequence.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/yukicoder/3044.test.cpp

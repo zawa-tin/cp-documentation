@@ -245,6 +245,10 @@ data:
       path: Src/FPS/PolynomialInterpolation.hpp
       title: Src/FPS/PolynomialInterpolation.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/PolynomialProducts.hpp
+      title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
+        \u308B\u591A\u9805\u5F0F\u306E\u5217\u306E\u7DCF\u7A4D"
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/PolynomialTaylorShift.hpp
       title: Polynomial Taylor Shift
     - icon: ':heavy_check_mark:'
@@ -1301,6 +1305,9 @@ data:
       path: Test/AtCoder/abc384_g.test.cpp
       title: Test/AtCoder/abc384_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc385_g.test.cpp
+      title: Test/AtCoder/abc385_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc389_f.test.cpp
       title: Test/AtCoder/abc389_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1565,6 +1572,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/pow_of_formal_power_series.test.cpp
       title: Test/LC/pow_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/product_of_polynomial_sequence.test.cpp
+      title: Test/LC/product_of_polynomial_sequence.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/queue_operate_all_composite.test.cpp
       title: Test/LC/queue_operate_all_composite.test.cpp
