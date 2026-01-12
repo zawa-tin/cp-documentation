@@ -20,6 +20,9 @@ data:
     path: Test/AtCoder/abc215_g.test.cpp
     title: ABC215-G Colorful Candies 2
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc345_g.test.cpp
+    title: Test/AtCoder/abc345_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
     title: ABC436-G Linear Inequation
   - icon: ':heavy_check_mark:'
@@ -46,6 +49,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/pow_of_formal_power_series.test.cpp
     title: Test/LC/pow_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/FPS/PowerProjection.test.cpp
+    title: Test/My/FPS/PowerProjection.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3044.test.cpp
     title: Test/yukicoder/3044.test.cpp
@@ -172,6 +178,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc215_g.test.cpp
+  - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
@@ -181,6 +188,7 @@ data:
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
+  - Test/My/FPS/PowerProjection.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document

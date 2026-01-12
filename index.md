@@ -247,6 +247,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/FPS/PolynomialTaylorShift.hpp
       title: Polynomial Taylor Shift
+    - icon: ':heavy_check_mark:'
+      path: Src/FPS/PowerProjection.hpp
+      title: FPS Power Projection
   - name: Src/GeometryR2
     pages:
     - icon: ':heavy_check_mark:'
@@ -1274,6 +1277,9 @@ data:
       path: Test/AtCoder/abc340_g.test.cpp
       title: Test/AtCoder/abc340_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc345_g.test.cpp
+      title: Test/AtCoder/abc345_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc346_g.test.cpp
       title: Test/AtCoder/abc346_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1732,6 +1738,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
       title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+  - name: Test/My/FPS
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/FPS/PowerProjection.test.cpp
+      title: Test/My/FPS/PowerProjection.test.cpp
   - name: Test/My/GeometryZ2/Contain
     pages:
     - icon: ':heavy_check_mark:'

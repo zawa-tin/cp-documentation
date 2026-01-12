@@ -137,6 +137,9 @@ data:
     path: Src/FPS/PolynomialTaylorShift.hpp
     title: Polynomial Taylor Shift
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/PowerProjection.hpp
+    title: FPS Power Projection
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryR2/Angle.hpp
     title: Src/GeometryR2/Angle.hpp
   - icon: ':heavy_check_mark:'
@@ -1048,6 +1051,9 @@ data:
     path: Test/AtCoder/abc340_g.test.cpp
     title: Test/AtCoder/abc340_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc345_g.test.cpp
+    title: Test/AtCoder/abc345_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc346_g.test.cpp
     title: Test/AtCoder/abc346_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1481,6 +1487,9 @@ data:
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/FPS/PowerProjection.test.cpp
+    title: Test/My/FPS/PowerProjection.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
     title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1681,6 +1690,7 @@ data:
   - Src/FPS/PolynomialInterpolation.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
+  - Src/FPS/PowerProjection.hpp
   - Src/FPS/KthTerm.hpp
   - Src/GeometryR3/Sphere.hpp
   - Src/GeometryR3/Point.hpp
@@ -1867,6 +1877,7 @@ data:
   - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc304_f.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
+  - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/abc136_f.test.cpp
@@ -2084,6 +2095,7 @@ data:
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/My/FPS/PowerProjection.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/My/Number/SqrtHeuristicArithmetic.test.cpp
