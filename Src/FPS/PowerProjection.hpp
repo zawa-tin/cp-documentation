@@ -41,63 +41,36 @@ std::vector<typename FPS::value_type> PowerProjection(usize m, FPS W, FPS F, Con
             res[i] *= fact[i];
         return res;
     }
-    auto print = [&](std::string name, const FPS& f, usize nx, usize ny) {
-        std::cout << name << " | ";
-        for (usize y = 0 ; y < ny ; y++)
-            for (usize x = 0 ; x < nx ; x++) {
-                if (f[y * nx + x] == Element{})
-                    continue;
-                std::cout << f.at(y * nx + x).val();
-                if (x) {
-                    std::cout << "x" << (x == 1 ? "" : "^" + std::to_string(x));
-                }
-                if (y) {
-                    std::cout << "y" << (y == 1 ? "" : "^" + std::to_string(y));
-                }
-                std::cout << " + ";
-            }
-        std::cout << std::endl;
-    };
-    usize n = std::bit_ceil(W.size());
-    W.resize(n);
-    F.resize(n);
-    usize nx = n, ny = 1;
+    usize nx = std::bit_ceil(W.size()), ny = 1;
+    W.resize(nx);
+    F.resize(nx);
     std::ranges::reverse(W);
     // bostan mori [x^{n-1}](g(x)/(1-yf(x)))
     FPS P(2 * nx * ny), Q(2 * nx * ny);
-    for (usize x = 0 ; x < n ; x++) {
+    for (usize x = 0 ; x < nx ; x++) {
         P[x] = W[x];
         Q[x] = -F[x];
     }
-    while (n > 1) {
+    while (nx > 1) {
         FPS R = Q;
-        for (usize x = 1 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < (ny << 1) ; y++)
-                R[y * nx + x] *= Element{-1};
-        // print("P", P, nx << 1, ny);
-        // print("Q", Q, nx << 1, ny);
-        // print("R", R, nx << 1, ny);
+        for (usize i = 1 ; i < R.size() ; i += 2)
+            R[i] = -R[i];
         auto PR = convolution(P, R), QR = convolution(Q, R);
         PR.resize(4 * nx * ny);
         QR.resize(4 * nx * ny);
-        // print("PR", PR, nx << 1, ny << 1);
-        // print("QR", QR, nx << 1, ny << 1);
         for (usize i = 0 ; i < P.size() ; i++) {
             PR[i + P.size()] += P[i];
             QR[i + P.size()] += Q[i] + R[i];
         }
-        // print("PR", PR, nx << 1, ny << 1);
-        // print("QR", QR, nx << 1, ny << 1);
         std::ranges::fill(P, Element{0});
         std::ranges::fill(Q, Element{0});
-        for (usize x = 1 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < (ny << 1) ; y++)
+        for (usize y = 0 ; y < (ny << 1) ; y++) {
+            for (usize x = 1 ; x < nx ; x += 2)
                 P[y * nx + (x >> 1)] = PR[y * (nx << 1) + x];
-        for (usize x = 0 ; x < nx ; x += 2)
-            for (usize y = 0 ; y < (ny << 1) ; y++) 
+            for (usize x = 0 ; x < nx ; x += 2)
                 Q[y * nx + (x >> 1)] = QR[y * (nx << 1) + x];
+        }
         nx >>= 1;
-        n >>= 1;
         ny <<= 1;
     }
     std::vector<Element> res(ny);

@@ -49,18 +49,16 @@ void test(int MAXN, int MAXM, int MAXVAL, bool verify = true) {
         }
     }
 }
+void test2(int N, int M, int MAXVAL) {
+    fps W(N), F(N);
+    for (int i = 0 ; i < N ; i++) {
+        W[i] = mt() % MAXVAL;
+        F[i] = mt() % MAXVAL;
+    }
+    auto ans = PowerProjection(M, W, F);
+    std::cerr << ans.size() << "fin" << std::endl;
+}
 int main() {
-#ifdef DEBUG
-    fps W{4, 4, 1, 0};
-    fps F{0, 7, 1, 5};
-    int M = 10;
-    for (auto i : PowerProjection(M, W, F))
-        cout << i.val() << ' ';
-    cout << endl;
-    for (auto i : naive(M, W, F))
-        cout << i.val() << ' ';
-    cout << endl;
-#else
     for (int i = (1 << 15) ; i-- ; )
         test(4, 10, 10);
     cerr << "tiny end" << endl;
@@ -70,13 +68,9 @@ int main() {
     for (int i = 0 ; i < (1 << 3) ; i++)
         test(3000, 1000, mint::mod());
     cerr << "med end" << endl;
-    for (int i = 0 ; i < (1 << 0) ; i++) {
-        cerr << "test start" << endl;
-        test(200000, 200000, mint::mod(), false);
-    }
+    test2(250000, 250000, mint::mod());
     cerr << "large end" << endl;
-    // int A, B;
-    // cin >> A >> B;
-    // cout << A + B << '\n';
-#endif
+    int A, B;
+    cin >> A >> B;
+    cout << A + B << '\n';
 }
