@@ -8,7 +8,7 @@ data:
       title: Src/Algebra/Action/ActionConcept.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Action/SetOperator.hpp
-      title: Src/Algebra/Action/SetOperator.hpp
+      title: Set Operator
   - name: Src/Algebra/Group
     pages:
     - icon: ':heavy_check_mark:'

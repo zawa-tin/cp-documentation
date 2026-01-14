@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Action/SetOperator.hpp
+    title: Set Operator
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -19,60 +22,55 @@ data:
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 4 \"Src/Utility/GreyCode.hpp\"\n\n#include <bit>\n\
-    #include <utility>\n#include <vector>\n\nnamespace zawa {\n\nenum class GreyCodeOp\
-    \ {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Action/SetOperator.hpp\"\n\n#include\
+    \ <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class S,\
+    \ class T>\nconcept SetOperator = requires {\n    typename S::Element;\n    {\
+    \ S::identity() } -> std::same_as<typename S::Element>;\n    { S::add(std::declval<typename\
+    \ S::Element&>(), std::declval<T>()) } -> std::same_as<void>;\n    { S::remove(std::declval<typename\
+    \ S::Element&>(), std::declval<T>()) } -> std::same_as<void>;\n};\n\n} // namespace\
+    \ concepts\n\n} // namespace zawa\n#line 5 \"Src/Utility/GreyCode.hpp\"\n\n#include\
+    \ <bit>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\nenum class\
+    \ GreyCodeOp {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
     \ usize>> GreyCode(usize n) {\n    std::vector<std::pair<GreyCodeOp, usize>> res;\n\
     \    res.reserve(1 << (n + 1));\n    usize cur = 0;\n    res.emplace_back(GreyCodeOp::Access,\
     \ cur);\n    for (usize i = 1 ; i < (1u << n) ; i++) {\n        usize nxt = i\
     \ ^ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n    \
     \    if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
     \        else\n            res.emplace_back(GreyCodeOp::Add, k);\n        res.emplace_back(GreyCodeOp::Access,\
-    \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\nnamespace concepts {\n\
-    \ntemplate <class T>\nconcept SubsetProd = requires {\n    typename T::Element;\n\
-    \    { T::identity() } -> std::same_as<typename T::Element>;\n    { T::add(std::declval<typename\
-    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n    { T::remove(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n\n} // namespace\
-    \ concepts\n\ntemplate <concepts::SubsetProd T>\nstd::vector<typename T::Element>\
-    \ EnumerateSubsetProduct(std::vector<typename T::Element> A) {\n    std::vector<typename\
-    \ T::Element> res(1 << A.size());\n    typename T::Element cur = T::identity();\n\
-    \    for (auto [type, idx] : GreyCode(A.size())) {\n        switch (type) {\n\
-    \        case GreyCodeOp::Add:\n            cur = T::add(cur, A[idx]);\n     \
-    \       break;\n        case GreyCodeOp::Remove:\n            cur = T::remove(cur,\
-    \ A[idx]);\n            break;\n        case GreyCodeOp::Access:\n           \
-    \ res[idx] = cur;\n            break;\n        }\n    }\n    return res;\n}\n\n\
-    } // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <bit>\n\
-    #include <utility>\n#include <vector>\n\nnamespace zawa {\n\nenum class GreyCodeOp\
-    \ {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
+    \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\ntemplate <class S, class\
+    \ T>\nrequires concepts::SetOperator<S, T>\nstd::vector<typename S::Element> EnumerateSubsetProduct(const\
+    \ std::vector<T>& A) {\n    std::vector<typename S::Element> res(1 << A.size());\n\
+    \    typename S::Element cur = S::identity();\n    for (auto [type, idx] : GreyCode(A.size()))\
+    \ {\n        switch (type) {\n        case GreyCodeOp::Add:\n            S::add(cur,\
+    \ A[idx]);\n            break;\n        case GreyCodeOp::Remove:\n           \
+    \ S::remove(cur, A[idx]);\n            break;\n        case GreyCodeOp::Access:\n\
+    \            res[idx] = cur;\n            break;\n        }\n    }\n    return\
+    \ res;\n}\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"../Algebra/Action/SetOperator.hpp\"\
+    \n\n#include <bit>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
+    \nenum class GreyCodeOp {\n    Add,\n    Remove,\n    Access\n};\n\nstd::vector<std::pair<GreyCodeOp,\
     \ usize>> GreyCode(usize n) {\n    std::vector<std::pair<GreyCodeOp, usize>> res;\n\
     \    res.reserve(1 << (n + 1));\n    usize cur = 0;\n    res.emplace_back(GreyCodeOp::Access,\
     \ cur);\n    for (usize i = 1 ; i < (1u << n) ; i++) {\n        usize nxt = i\
     \ ^ (i >> 1);\n        usize k = std::countr_zero<unsigned>(cur ^ nxt);\n    \
     \    if (cur & (1 << k))\n            res.emplace_back(GreyCodeOp::Remove, k);\n\
     \        else\n            res.emplace_back(GreyCodeOp::Add, k);\n        res.emplace_back(GreyCodeOp::Access,\
-    \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\nnamespace concepts {\n\
-    \ntemplate <class T>\nconcept SubsetProd = requires {\n    typename T::Element;\n\
-    \    { T::identity() } -> std::same_as<typename T::Element>;\n    { T::add(std::declval<typename\
-    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
-    \ T::Element>;\n    { T::remove(std::declval<typename T::Element>(), std::declval<typename\
-    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\n\n} // namespace\
-    \ concepts\n\ntemplate <concepts::SubsetProd T>\nstd::vector<typename T::Element>\
-    \ EnumerateSubsetProduct(std::vector<typename T::Element> A) {\n    std::vector<typename\
-    \ T::Element> res(1 << A.size());\n    typename T::Element cur = T::identity();\n\
-    \    for (auto [type, idx] : GreyCode(A.size())) {\n        switch (type) {\n\
-    \        case GreyCodeOp::Add:\n            cur = T::add(cur, A[idx]);\n     \
-    \       break;\n        case GreyCodeOp::Remove:\n            cur = T::remove(cur,\
-    \ A[idx]);\n            break;\n        case GreyCodeOp::Access:\n           \
-    \ res[idx] = cur;\n            break;\n        }\n    }\n    return res;\n}\n\n\
-    } // namespace zawa\n"
+    \ nxt);\n        cur = nxt;\n    }\n    return res;\n}\n\ntemplate <class S, class\
+    \ T>\nrequires concepts::SetOperator<S, T>\nstd::vector<typename S::Element> EnumerateSubsetProduct(const\
+    \ std::vector<T>& A) {\n    std::vector<typename S::Element> res(1 << A.size());\n\
+    \    typename S::Element cur = S::identity();\n    for (auto [type, idx] : GreyCode(A.size()))\
+    \ {\n        switch (type) {\n        case GreyCodeOp::Add:\n            S::add(cur,\
+    \ A[idx]);\n            break;\n        case GreyCodeOp::Remove:\n           \
+    \ S::remove(cur, A[idx]);\n            break;\n        case GreyCodeOp::Access:\n\
+    \            res[idx] = cur;\n            break;\n        }\n    }\n    return\
+    \ res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Action/SetOperator.hpp
   isVerificationFile: false
   path: Src/Utility/GreyCode.hpp
   requiredBy: []
-  timestamp: '2025-12-14 22:30:00+09:00'
+  timestamp: '2026-01-14 17:43:50+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF1070-F.test.cpp
@@ -113,11 +111,12 @@ enum class GreyCodeOp {
 ### EnumerateSubsetProduct
 
 ```cpp
-template <concepts::SubsetProd T>
-std::vector<typename T::Element> EnumerateSubsetProduct(std::vector<typename T::Element> A)
+template <class S, class T>
+requires concepts::SetOperator<S, T>
+std::vector<typename S::Element> EnumerateSubsetProduct(const std::vector<typename T>& A)
 ```
 
-先述の`Add, Remove`の演算を`T`に与えたとき、 $2^{n}$ 個の要素を列挙して返す。
+先述の`Add, Remove`の演算を`S`に与えたとき、 $2^{n}$ 個の要素を列挙して返す。
 
 返り値の $i$ 番目の要素は $i$ の二進数表示で立っている桁が $S_i = \\{ j_1, j_2, \dots, j_k \\}$ だとしたとき、 $\prod_{j\in S_i} A_j$ である。
 
@@ -128,9 +127,9 @@ struct SPD {
     using Element = ;
     static Element identity() {
     } 
-    static Element add(Element l, Element r) {
+    static void add(Element& s, const T& v) {
     }
-    static Element remove(Element l, Element r) {
+    static void remove(Element& s, const T& v) {
     }
 };
 ```

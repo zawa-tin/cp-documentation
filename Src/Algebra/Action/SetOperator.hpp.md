@@ -6,6 +6,10 @@ data:
     path: Src/DataStructure/Heap/PartitionedProducts.hpp
     title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
       \u7DCF\u7A4D\u3092\u7BA1\u7406"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/GreyCode.hpp
+    title: "\u30B0\u30EC\u30A4\u30B3\u30FC\u30C9\u306B\u3088\u308B\u90E8\u5206\u96C6\
+      \u5408\u5217\u6319"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc306_e.test.cpp
@@ -16,6 +20,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1070-F.test.cpp
+    title: Test/CF/CF1070-F.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -38,6 +45,7 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Action/SetOperator.hpp
   requiredBy:
+  - Src/Utility/GreyCode.hpp
   - Src/DataStructure/Heap/PartitionedProducts.hpp
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -45,10 +53,27 @@ data:
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
+  - Test/CF/CF1070-F.test.cpp
 documentation_of: Src/Algebra/Action/SetOperator.hpp
 layout: document
-redirect_from:
-- /library/Src/Algebra/Action/SetOperator.hpp
-- /library/Src/Algebra/Action/SetOperator.hpp.html
-title: Src/Algebra/Action/SetOperator.hpp
+title: Set Operator
 ---
+
+example
+
+```cpp
+struct OP {
+    using Element = long long;
+    static Element identity() {
+        return 0;
+    }
+    static void add(Element& s, int v) {
+        s += v;
+    }
+    static void remove(Element& s, int v) {
+        s -= v;
+    }
+};
+```
+
+`remove(s, v)`の前には(まだ`remove`されていない)`add(s, v)`と丁度一つ対応させることができる時に使う。

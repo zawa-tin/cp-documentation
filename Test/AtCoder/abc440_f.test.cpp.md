@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Action/SetOperator.hpp
-    title: Src/Algebra/Action/SetOperator.hpp
+    title: Set Operator
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Heap/BinaryHeap.hpp
     title: "Binary Heap (\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\u30FC)"
