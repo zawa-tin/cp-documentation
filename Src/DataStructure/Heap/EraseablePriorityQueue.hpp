@@ -19,6 +19,10 @@ public:
         return m_cnt;
     }
 
+    inline bool empty() const {
+        return m_cnt == 0;
+    }
+
     EraseablePriorityQueue(Comp comp = {}) 
         : m_que{comp}, m_rm{comp}, m_cnt{0} {}
 
@@ -56,14 +60,37 @@ public:
         normalize();
         T res = m_que.top();
         m_que.pop();
+        m_cnt--;
+        return res;
+    }
+
+    std::vector<T> container() const {
+        BinaryHeap que = m_que, rm = m_rm;  
+        std::vector<T> res;
+        while (que.size()) {
+            if (rm.empty() or que.comp()(que.top(), rm.top())) {
+                res.push_back(que.top());
+                que.pop();
+            }
+            else if (que.top() == rm.top())
+                que.pop(), rm.pop();
+            else
+                rm.pop();
+        }
         return res;
     }
 
 private:
 
     void normalize() {
-        while (m_rm.size() and m_que.size() and m_que.top() == m_rm.top())
-            m_que.pop(), m_rm.pop();
+        while (m_rm.size() and m_que.size()) {
+            if (m_que.top() == m_rm.top())
+                m_que.pop(), m_rm.pop();
+            else if (m_que.comp()(m_rm.top(), m_que.top()))
+                m_rm.pop();
+            else
+                break;
+        }
     }
 };
 

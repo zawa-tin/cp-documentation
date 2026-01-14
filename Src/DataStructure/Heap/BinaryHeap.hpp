@@ -30,6 +30,10 @@ public:
         return m_dat.size() == 1;
     }
 
+    inline const Comp& comp() const {
+        return m_comp;
+    }
+
     using const_iterator = typename decltype(m_dat)::const_iterator;
 
     const_iterator begin() const {
