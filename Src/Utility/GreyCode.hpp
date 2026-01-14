@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Template/TypeAlias.hpp"
+#include "../Algebra/Action/SetOperator.hpp"
 
 #include <bit>
 #include <utility>
@@ -32,30 +33,18 @@ std::vector<std::pair<GreyCodeOp, usize>> GreyCode(usize n) {
     return res;
 }
 
-namespace concepts {
-
-template <class T>
-concept SubsetProd = requires {
-    typename T::Element;
-    { T::identity() } -> std::same_as<typename T::Element>;
-    { T::add(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
-    { T::remove(std::declval<typename T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename T::Element>;
-};
-
-
-} // namespace concepts
-
-template <concepts::SubsetProd T>
-std::vector<typename T::Element> EnumerateSubsetProduct(std::vector<typename T::Element> A) {
-    std::vector<typename T::Element> res(1 << A.size());
-    typename T::Element cur = T::identity();
+template <class S, class T>
+requires concepts::SetOperator<S, T>
+std::vector<typename S::Element> EnumerateSubsetProduct(const std::vector<T>& A) {
+    std::vector<typename S::Element> res(1 << A.size());
+    typename S::Element cur = S::identity();
     for (auto [type, idx] : GreyCode(A.size())) {
         switch (type) {
         case GreyCodeOp::Add:
-            cur = T::add(cur, A[idx]);
+            S::add(cur, A[idx]);
             break;
         case GreyCodeOp::Remove:
-            cur = T::remove(cur, A[idx]);
+            S::remove(cur, A[idx]);
             break;
         case GreyCodeOp::Access:
             res[idx] = cur;

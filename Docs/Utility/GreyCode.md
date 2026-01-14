@@ -34,11 +34,12 @@ enum class GreyCodeOp {
 ### EnumerateSubsetProduct
 
 ```cpp
-template <concepts::SubsetProd T>
-std::vector<typename T::Element> EnumerateSubsetProduct(std::vector<typename T::Element> A)
+template <class S, class T>
+requires concepts::SetOperator<S, T>
+std::vector<typename S::Element> EnumerateSubsetProduct(const std::vector<typename T>& A)
 ```
 
-先述の`Add, Remove`の演算を`T`に与えたとき、 $2^{n}$ 個の要素を列挙して返す。
+先述の`Add, Remove`の演算を`S`に与えたとき、 $2^{n}$ 個の要素を列挙して返す。
 
 返り値の $i$ 番目の要素は $i$ の二進数表示で立っている桁が $S_i = \\{ j_1, j_2, \dots, j_k \\}$ だとしたとき、 $\prod_{j\in S_i} A_j$ である。
 
@@ -49,9 +50,9 @@ struct SPD {
     using Element = ;
     static Element identity() {
     } 
-    static Element add(Element l, Element r) {
+    static void add(Element& s, const T& v) {
     }
-    static Element remove(Element l, Element r) {
+    static void remove(Element& s, const T& v) {
     }
 };
 ```

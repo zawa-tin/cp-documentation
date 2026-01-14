@@ -3,7 +3,7 @@
 
 /*
  * Codeforces Round1070 (Div. 2) F. Omega Numbers
- * https://codeforces.com/contest/2176/submission/353449994
+ * https://codeforces.com/contest/2176/submission/357801306
  */
 
 #include "../../Src/Number/LinearSieve.hpp"
@@ -26,11 +26,11 @@ struct PD {
     static Element identity() {
         return 1;
     }
-    static Element add(Element a, Element b) {
-        return a * b;
+    static void add(Element& a, Element b) {
+        a *= b;
     }
-    static Element remove(Element a, Element b) {
-        return a / b;
+    static void remove(Element& a, Element b) {
+        a /= b;
     }
 };
 void solve() {
