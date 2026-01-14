@@ -61,9 +61,6 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/arc196_a.test.cpp
-    title: Test/AtCoder/arc196_a.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,7 +123,6 @@ data:
   timestamp: '2023-07-17 03:16:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc430_g.test.cpp

@@ -6,6 +6,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Action/ActionConcept.hpp
       title: Src/Algebra/Action/ActionConcept.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Action/SetOperator.hpp
+      title: Src/Algebra/Action/SetOperator.hpp
   - name: Src/Algebra/Group
     pages:
     - icon: ':heavy_check_mark:'
@@ -108,6 +111,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
       title: Fenwick Tree 2D (Offline Query)
+  - name: Src/DataStructure/Heap
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Heap/BinaryHeap.hpp
+      title: "Binary Heap (\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\u30FC)"
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Heap/EraseablePriorityQueue.hpp
+      title: Src/DataStructure/Heap/EraseablePriorityQueue.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Heap/PartitionedProducts.hpp
+      title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\
+        \u306E\u7DCF\u7A4D\u3092\u7BA1\u7406"
   - name: Src/DataStructure/Mo
     pages:
     - icon: ':heavy_check_mark:'
@@ -121,9 +136,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Other/MexManager.hpp
       title: "\u8981\u7D20\u8FFD\u52A0\u30FB\u524A\u9664\u30FBmex\u8A08\u7B97"
-    - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/Other/PriorityProductSet.hpp
-      title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Other/RangeAssigner.hpp
       title: "\u540C\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u6975\u5927\u306A\u533A\
@@ -1249,6 +1261,9 @@ data:
       path: Test/AtCoder/abc304_f.test.cpp
       title: Test/AtCoder/abc304_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc306_e.test.cpp
+      title: Test/AtCoder/abc306_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc307_e.test.cpp
       title: Test/AtCoder/abc307_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1350,6 +1365,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc439_g.test.cpp
       title: Test/AtCoder/abc439_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc440_f.test.cpp
+      title: Test/AtCoder/abc440_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
@@ -1750,6 +1768,14 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/Manual/yahoo_procon2018_final_c.test.cpp
       title: Test/Manual/yahoo_procon2018_final_c.test.cpp
+  - name: Test/My/DataStructure/Heap
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/Heap/BinaryHeap.test.cpp
+      title: Test/My/DataStructure/Heap/BinaryHeap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
+      title: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
   - name: Test/My/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -1819,8 +1845,5 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/yukicoder/3189.test.cpp
       title: Test/yukicoder/3189.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Test/yukicoder/649.test.cpp
-      title: Test/yukicoder/649.test.cpp
 layout: toppage
 ---

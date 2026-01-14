@@ -27,9 +27,6 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/Other/PriorityProductSet.hpp
-    title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
-  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/Imos2D.hpp
     title: Src/DataStructure/PrefixSum/Imos2D.hpp
   - icon: ':heavy_check_mark:'
@@ -210,9 +207,6 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/arc196_a.test.cpp
-    title: Test/AtCoder/arc196_a.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -299,9 +293,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3189.test.cpp
     title: Test/yukicoder/3189.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/yukicoder/649.test.cpp
-    title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -343,7 +334,6 @@ data:
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/SWAG/SWAGable.hpp
-  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
@@ -356,7 +346,6 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/aoj3326.test.cpp
-  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
@@ -421,7 +410,6 @@ data:
   - Test/CF/CF1052-E.test.cpp
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF895-E.test.cpp
-  - Test/yukicoder/649.test.cpp
   - Test/yukicoder/3189.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp
 layout: document

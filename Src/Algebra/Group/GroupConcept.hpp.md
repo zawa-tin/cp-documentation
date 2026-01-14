@@ -18,9 +18,6 @@ data:
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/Other/PriorityProductSet.hpp
-    title: "\u6607\u9806 $K$ \u500B\u306E\u548C\u3092\u53D6\u308C\u308Bpriority_queue"
-  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/Imos2D.hpp
     title: Src/DataStructure/PrefixSum/Imos2D.hpp
   - icon: ':heavy_check_mark:'
@@ -64,9 +61,6 @@ data:
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/arc196_a.test.cpp
-    title: Test/AtCoder/arc196_a.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,9 +84,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/UC/4-2-K.test.cpp
     title: Test/UC/4-2-K.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/yukicoder/649.test.cpp
-    title: Test/yukicoder/649.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -129,14 +120,12 @@ data:
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/PrefixSum/Imos2D.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-  - Src/DataStructure/Other/PriorityProductSet.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc434_d.test.cpp
@@ -155,7 +144,6 @@ data:
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/CF/EC2-E.test.cpp
-  - Test/yukicoder/649.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp
 layout: document
 redirect_from:

@@ -26,12 +26,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - http://atcoder.jp/contests/arc196/submissions/72451838
-    - https://atcoder.jp/contests/arc196/tasks/arc196_a
+    - https://atcoder.jp/contests/abc306/submissions/72450475
+    - https://atcoder.jp/contests/abc306/tasks/abc306_e
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/AtCoder/arc196_a.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://atcoder.jp/contests/arc196/tasks/arc196_a\"\n\n\
-    /*\n * AtCoder Regular Contest 196 (Div. 1) A - Adjacent Delete\n * http://atcoder.jp/contests/arc196/submissions/72451838\n\
+  bundledCode: "#line 1 \"Test/AtCoder/abc306_e.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc306/tasks/abc306_e\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 306 E - Best Performances\n * https://atcoder.jp/contests/abc306/submissions/72450475\n\
     \ */\n\n#line 2 \"Src/DataStructure/Heap/PartitionedProducts.hpp\"\n\n#line 2\
     \ \"Src/DataStructure/Heap/EraseablePriorityQueue.hpp\"\n\n#line 2 \"Src/DataStructure/Heap/BinaryHeap.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
@@ -160,47 +160,31 @@ data:
     \          m_sm.pop();\n        }\n        while (smallSize() < K) {\n       \
     \     addSmall(m_bg.top());\n            S::remove(m_prodB, m_bg.top());\n   \
     \         m_bg.pop();\n        }\n    }\n};\n\n} // namespace zawa\n#line 10 \"\
-    Test/AtCoder/arc196_a.test.cpp\"\nusing namespace zawa;\n\n#line 13 \"Test/AtCoder/arc196_a.test.cpp\"\
-    \n#include <iostream>\n#line 15 \"Test/AtCoder/arc196_a.test.cpp\"\nusing namespace\
-    \ std;\nstruct OP {\n    using Element = long long;\n    static Element identity()\
-    \ {\n        return 0;\n    }\n    static void add(Element& L, int R) {\n    \
-    \    L += R;\n    }\n    static void remove(Element& L, int R) {\n        L -=\
-    \ R;\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
-    \    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n    vector<int> A(N);\n\
-    \    for (int& a : A)\n        cin >> a;\n    auto eval = [&](auto& que) -> long\
-    \ long {\n        assert(que.size() % 2 == 0);\n        if (que.empty())\n   \
-    \         return 0;\n        else {\n            que.adjustSmall(que.size() /\
-    \ 2);\n            return que.bigProd() - que.smallProd();\n        }\n    };\n\
-    \    PartitionedProducts<OP, int> queL, queR{A};\n    if (N % 2 == 0) \n     \
-    \   cout << eval(queR) << '\\n'; \n    else {\n        queR.erase(A[0]); \n  \
-    \      long long ans = 0;\n        for (int i = 0 ; i < N ; i += 2) {\n      \
-    \      ans = max(ans, eval(queL) + eval(queR));\n            if (i + 2 < N) {\n\
-    \                queL.insert(A[i]);\n                queL.insert(A[i + 1]);\n\
-    \                queR.erase(A[i + 1]);\n                queR.erase(A[i + 2]);\n\
-    \            }\n        }\n        cout << ans << '\\n';\n    }\n#else\n    cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://atcoder.jp/contests/arc196/tasks/arc196_a\"\n\n\
-    /*\n * AtCoder Regular Contest 196 (Div. 1) A - Adjacent Delete\n * http://atcoder.jp/contests/arc196/submissions/72451838\n\
-    \ */\n\n#include \"../../Src/DataStructure/Heap/PartitionedProducts.hpp\"\nusing\
-    \ namespace zawa;\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
+    Test/AtCoder/abc306_e.test.cpp\"\nusing namespace zawa;\n\n#include <iostream>\n\
     using namespace std;\nstruct OP {\n    using Element = long long;\n    static\
     \ Element identity() {\n        return 0;\n    }\n    static void add(Element&\
-    \ L, int R) {\n        L += R;\n    }\n    static void remove(Element& L, int\
-    \ R) {\n        L -= R;\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
-    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n \
-    \   vector<int> A(N);\n    for (int& a : A)\n        cin >> a;\n    auto eval\
-    \ = [&](auto& que) -> long long {\n        assert(que.size() % 2 == 0);\n    \
-    \    if (que.empty())\n            return 0;\n        else {\n            que.adjustSmall(que.size()\
-    \ / 2);\n            return que.bigProd() - que.smallProd();\n        }\n    };\n\
-    \    PartitionedProducts<OP, int> queL, queR{A};\n    if (N % 2 == 0) \n     \
-    \   cout << eval(queR) << '\\n'; \n    else {\n        queR.erase(A[0]); \n  \
-    \      long long ans = 0;\n        for (int i = 0 ; i < N ; i += 2) {\n      \
-    \      ans = max(ans, eval(queL) + eval(queR));\n            if (i + 2 < N) {\n\
-    \                queL.insert(A[i]);\n                queL.insert(A[i + 1]);\n\
-    \                queR.erase(A[i + 1]);\n                queR.erase(A[i + 2]);\n\
-    \            }\n        }\n        cout << ans << '\\n';\n    }\n#else\n    cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
+    \ v, Element x) {\n        v += x;\n    }\n    static void remove(Element& v,\
+    \ Element x) {\n        v -= x;\n    }\n};\nint main() {\n#ifdef ATCODER\n   \
+    \ cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N, K, Q;\n\
+    \    cin >> N >> K >> Q;\n    vector<int> A(N);\n    PartitionedProducts<OP, int>\
+    \ que(A);\n    while (Q--) {\n        int t, x;\n        cin >> t >> x;\n    \
+    \    t--;\n        que.erase(A[t]);\n        A[t] = x;\n        que.insert(A[t]);\n\
+    \        assert(que.adjustBig(K));\n        cout << que.bigProd() << '\\n';\n\
+    \    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc306/tasks/abc306_e\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 306 E - Best Performances\n * https://atcoder.jp/contests/abc306/submissions/72450475\n\
+    \ */\n\n#include \"../../Src/DataStructure/Heap/PartitionedProducts.hpp\"\nusing\
+    \ namespace zawa;\n\n#include <iostream>\nusing namespace std;\nstruct OP {\n\
+    \    using Element = long long;\n    static Element identity() {\n        return\
+    \ 0;\n    }\n    static void add(Element& v, Element x) {\n        v += x;\n \
+    \   }\n    static void remove(Element& v, Element x) {\n        v -= x;\n    }\n\
+    };\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int N, K, Q;\n    cin >> N >> K >> Q;\n    vector<int> A(N);\n    PartitionedProducts<OP,\
+    \ int> que(A);\n    while (Q--) {\n        int t, x;\n        cin >> t >> x;\n\
+    \        t--;\n        que.erase(A[t]);\n        A[t] = x;\n        que.insert(A[t]);\n\
+    \        assert(que.adjustBig(K));\n        cout << que.bigProd() << '\\n';\n\
+    \    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/Heap/PartitionedProducts.hpp
   - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
@@ -208,15 +192,15 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Action/SetOperator.hpp
   isVerificationFile: true
-  path: Test/AtCoder/arc196_a.test.cpp
+  path: Test/AtCoder/abc306_e.test.cpp
   requiredBy: []
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AtCoder/arc196_a.test.cpp
+documentation_of: Test/AtCoder/abc306_e.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AtCoder/arc196_a.test.cpp
-- /verify/Test/AtCoder/arc196_a.test.cpp.html
-title: Test/AtCoder/arc196_a.test.cpp
+- /verify/Test/AtCoder/abc306_e.test.cpp
+- /verify/Test/AtCoder/abc306_e.test.cpp.html
+title: Test/AtCoder/abc306_e.test.cpp
 ---

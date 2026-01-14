@@ -11,29 +11,26 @@ data:
     path: Src/DataStructure/Heap/EraseablePriorityQueue.hpp
     title: Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/Heap/PartitionedProducts.hpp
-    title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
-      \u7DCF\u7A4D\u3092\u7BA1\u7406"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc306_e.test.cpp
+    title: Test/AtCoder/abc306_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc440_f.test.cpp
+    title: Test/AtCoder/abc440_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc196_a.test.cpp
+    title: Test/AtCoder/arc196_a.test.cpp
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-    links:
-    - http://atcoder.jp/contests/arc196/submissions/72451838
-    - https://atcoder.jp/contests/arc196/tasks/arc196_a
-    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
-  bundledCode: "#line 1 \"Test/AtCoder/arc196_a.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://atcoder.jp/contests/arc196/tasks/arc196_a\"\n\n\
-    /*\n * AtCoder Regular Contest 196 (Div. 1) A - Adjacent Delete\n * http://atcoder.jp/contests/arc196/submissions/72451838\n\
-    \ */\n\n#line 2 \"Src/DataStructure/Heap/PartitionedProducts.hpp\"\n\n#line 2\
-    \ \"Src/DataStructure/Heap/EraseablePriorityQueue.hpp\"\n\n#line 2 \"Src/DataStructure/Heap/BinaryHeap.hpp\"\
+    links: []
+  bundledCode: "#line 2 \"Src/DataStructure/Heap/PartitionedProducts.hpp\"\n\n#line\
+    \ 2 \"Src/DataStructure/Heap/EraseablePriorityQueue.hpp\"\n\n#line 2 \"Src/DataStructure/Heap/BinaryHeap.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -159,64 +156,200 @@ data:
     \        addBig(m_sm.top());\n            S::remove(m_prodS, m_sm.top());\n  \
     \          m_sm.pop();\n        }\n        while (smallSize() < K) {\n       \
     \     addSmall(m_bg.top());\n            S::remove(m_prodB, m_bg.top());\n   \
-    \         m_bg.pop();\n        }\n    }\n};\n\n} // namespace zawa\n#line 10 \"\
-    Test/AtCoder/arc196_a.test.cpp\"\nusing namespace zawa;\n\n#line 13 \"Test/AtCoder/arc196_a.test.cpp\"\
-    \n#include <iostream>\n#line 15 \"Test/AtCoder/arc196_a.test.cpp\"\nusing namespace\
-    \ std;\nstruct OP {\n    using Element = long long;\n    static Element identity()\
-    \ {\n        return 0;\n    }\n    static void add(Element& L, int R) {\n    \
-    \    L += R;\n    }\n    static void remove(Element& L, int R) {\n        L -=\
-    \ R;\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
-    \    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n    vector<int> A(N);\n\
-    \    for (int& a : A)\n        cin >> a;\n    auto eval = [&](auto& que) -> long\
-    \ long {\n        assert(que.size() % 2 == 0);\n        if (que.empty())\n   \
-    \         return 0;\n        else {\n            que.adjustSmall(que.size() /\
-    \ 2);\n            return que.bigProd() - que.smallProd();\n        }\n    };\n\
-    \    PartitionedProducts<OP, int> queL, queR{A};\n    if (N % 2 == 0) \n     \
-    \   cout << eval(queR) << '\\n'; \n    else {\n        queR.erase(A[0]); \n  \
-    \      long long ans = 0;\n        for (int i = 0 ; i < N ; i += 2) {\n      \
-    \      ans = max(ans, eval(queL) + eval(queR));\n            if (i + 2 < N) {\n\
-    \                queL.insert(A[i]);\n                queL.insert(A[i + 1]);\n\
-    \                queR.erase(A[i + 1]);\n                queR.erase(A[i + 2]);\n\
-    \            }\n        }\n        cout << ans << '\\n';\n    }\n#else\n    cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n// #define PROBLEM \"https://atcoder.jp/contests/arc196/tasks/arc196_a\"\n\n\
-    /*\n * AtCoder Regular Contest 196 (Div. 1) A - Adjacent Delete\n * http://atcoder.jp/contests/arc196/submissions/72451838\n\
-    \ */\n\n#include \"../../Src/DataStructure/Heap/PartitionedProducts.hpp\"\nusing\
-    \ namespace zawa;\n\n#include <algorithm>\n#include <iostream>\n#include <vector>\n\
-    using namespace std;\nstruct OP {\n    using Element = long long;\n    static\
-    \ Element identity() {\n        return 0;\n    }\n    static void add(Element&\
-    \ L, int R) {\n        L += R;\n    }\n    static void remove(Element& L, int\
-    \ R) {\n        L -= R;\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
-    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n \
-    \   vector<int> A(N);\n    for (int& a : A)\n        cin >> a;\n    auto eval\
-    \ = [&](auto& que) -> long long {\n        assert(que.size() % 2 == 0);\n    \
-    \    if (que.empty())\n            return 0;\n        else {\n            que.adjustSmall(que.size()\
-    \ / 2);\n            return que.bigProd() - que.smallProd();\n        }\n    };\n\
-    \    PartitionedProducts<OP, int> queL, queR{A};\n    if (N % 2 == 0) \n     \
-    \   cout << eval(queR) << '\\n'; \n    else {\n        queR.erase(A[0]); \n  \
-    \      long long ans = 0;\n        for (int i = 0 ; i < N ; i += 2) {\n      \
-    \      ans = max(ans, eval(queL) + eval(queR));\n            if (i + 2 < N) {\n\
-    \                queL.insert(A[i]);\n                queL.insert(A[i + 1]);\n\
-    \                queR.erase(A[i + 1]);\n                queR.erase(A[i + 2]);\n\
-    \            }\n        }\n        cout << ans << '\\n';\n    }\n#else\n    cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
+    \         m_bg.pop();\n        }\n    }\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"EraseablePriorityQueue.hpp\"\n#include \"../../Algebra/Action/SetOperator.hpp\"\
+    \n\n#include <utility>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate\
+    \ <class Comp>\nstruct ReverseComp {\n\n    [[no_unique_address]] Comp comp;\n\
+    \n    ReverseComp() = default;\n\n    explicit ReverseComp(Comp c) : comp(std::move(c))\
+    \ {}\n\n    template <class T, class U>\n    bool operator()(T&& a, U&& b) const\
+    \ noexcept(noexcept(std::invoke(comp, std::forward<U>(b), std::forward<T>(a))))\
+    \ {\n        return std::invoke(comp, std::forward<U>(b), std::forward<T>(a));\n\
+    \    }\n};\n\n} // namespace internal\n\ntemplate <class S, class T, class Comp\
+    \ = std::less<T>>\nrequires concepts::SetOperator<S, T> and std::strict_weak_order<Comp,\
+    \ const T&, const T&>\nclass PartitionedProducts {\npublic:\n\n    PartitionedProducts(Comp\
+    \ comp = {}) \n        : m_sm{internal::ReverseComp{comp}}, m_bg{comp}, m_comp{comp}\
+    \ {}\n\n    PartitionedProducts(std::vector<T> a, Comp comp = {}) \n        :\
+    \ m_sm{}, m_bg{comp}, m_comp{comp} {\n        for (const T& x : a)\n         \
+    \   S::add(m_prodS, x);\n        m_sm = EraseablePriorityQueue{std::move(a), internal::ReverseComp{comp}};\n\
+    \    }\n\n    inline usize size() const {\n        return m_sm.size() + m_bg.size();\n\
+    \    }\n\n    inline usize smallSize() const {\n        return m_sm.size();\n\
+    \    }\n\n    inline usize bigSize() const {\n        return m_bg.size();\n  \
+    \  }\n\n    inline bool empty() const {\n        return m_sm.empty() and m_bg.empty();\n\
+    \    }\n\n    template <class U>\n    requires std::same_as<std::remove_cvref_t<U>,\
+    \ T>\n    void insert(U&& v) {\n        if (m_sm.empty())\n            addBig(std::forward<U>(v));\n\
+    \        else if (m_bg.empty() or m_comp(v, m_bg.top()))\n            addSmall(std::forward<U>(v));\n\
+    \        else\n            addBig(std::forward<U>(v));\n    }\n\n    template\
+    \ <class U>\n    requires std::same_as<std::remove_cvref_t<U>, T>\n    void erase(U&&\
+    \ v) {\n        if (m_sm.empty())\n            eraseBig(std::forward<U>(v));\n\
+    \        else if (m_bg.empty() or m_comp(v, m_bg.top()))\n            eraseSmall(std::forward<U>(v));\n\
+    \        else\n            eraseBig(std::forward<U>(v));\n    }\n\n    bool adjustSmall(usize\
+    \ K) {\n        if (size() < K)\n            return false;\n        adjust(K);\n\
+    \        return true;\n    }\n\n    bool adjustBig(usize K) {\n        if (size()\
+    \ < K)\n            return false;\n        adjust(size() - K);\n        return\
+    \ true;\n    }\n\n    const T& smallTop() {\n        assert(smallSize() and \"\
+    HeapUnderFlow: small\");\n        return m_sm.top();\n    }\n\n    const S::Element&\
+    \ smallProd() const {\n        return m_prodS;\n    }\n\n    const T& bigTop()\
+    \ {\n        assert(bigSize() and \"HeapUnderFlow: big\");\n        return m_bg.top();\n\
+    \    }\n\n    const S::Element& bigProd() const {\n        return m_prodB;\n \
+    \   }\n\n    std::pair<std::vector<T>, std::vector<T>> container() const {\n \
+    \       return {m_sm.container(), m_bg.container()};\n    }\n\nprivate:\n\n  \
+    \  EraseablePriorityQueue<T, internal::ReverseComp<Comp>> m_sm;\n\n    EraseablePriorityQueue<T,\
+    \ Comp> m_bg;\n\n    Comp m_comp;\n\n    S::Element m_prodS = S::identity(), m_prodB\
+    \ = S::identity();\n\n    template <class U>\n    requires std::same_as<std::remove_cvref_t<U>,\
+    \ T>\n    void addSmall(U&& v) {\n        S::add(m_prodS, v);\n        m_sm.push(std::forward<U>(v));\n\
+    \    }\n\n    template <class U>\n    requires std::same_as<std::remove_cvref_t<U>,\
+    \ T>\n    void addBig(U&& v) {\n        S::add(m_prodB, v);\n        m_bg.push(std::forward<U>(v));\n\
+    \    }\n\n    template <class U>\n    requires std::same_as<std::remove_cvref_t<U>,\
+    \ T>\n    void eraseSmall(U&& v) {\n        S::remove(m_prodS, v);\n        m_sm.erase(std::forward<U>(v));\n\
+    \    }\n\n    template <class U>\n    requires std::same_as<std::remove_cvref_t<U>,\
+    \ T>\n    void eraseBig(U&& v) {\n        S::remove(m_prodB, v);\n        m_bg.erase(std::forward<U>(v));\n\
+    \    }\n\n    void adjust(usize K) {\n        while (smallSize() > K) {\n    \
+    \        addBig(m_sm.top());\n            S::remove(m_prodS, m_sm.top());\n  \
+    \          m_sm.pop();\n        }\n        while (smallSize() < K) {\n       \
+    \     addSmall(m_bg.top());\n            S::remove(m_prodB, m_bg.top());\n   \
+    \         m_bg.pop();\n        }\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
-  - Src/DataStructure/Heap/PartitionedProducts.hpp
   - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   - Src/DataStructure/Heap/BinaryHeap.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Action/SetOperator.hpp
-  isVerificationFile: true
-  path: Test/AtCoder/arc196_a.test.cpp
+  isVerificationFile: false
+  path: Src/DataStructure/Heap/PartitionedProducts.hpp
   requiredBy: []
   timestamp: '2026-01-14 16:33:38+09:00'
-  verificationStatus: TEST_ACCEPTED
-  verifiedWith: []
-documentation_of: Test/AtCoder/arc196_a.test.cpp
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/AtCoder/arc196_a.test.cpp
+  - Test/AtCoder/abc306_e.test.cpp
+  - Test/AtCoder/abc440_f.test.cpp
+documentation_of: Src/DataStructure/Heap/PartitionedProducts.hpp
 layout: document
-redirect_from:
-- /verify/Test/AtCoder/arc196_a.test.cpp
-- /verify/Test/AtCoder/arc196_a.test.cpp.html
-title: Test/AtCoder/arc196_a.test.cpp
+title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
+  \u7DCF\u7A4D\u3092\u7BA1\u7406"
 ---
+
+いわゆる「Priority Queue二つ持ってガチャガチャやるやつ」。海外だとSmartSetなんて呼ばれているやつかも
+
+## ライブラリの使い方
+
+内部で二つの削除可能Priority Queueを管理していて、昇順 $K$ 個を管理している方を`small`、他方を`big`と呼ぶことにする。
+
+### テンプレート引数
+
+```cpp
+template <class S, class T, class Comp = std::less<T>>
+requires concepts::SetOperator<S, T> and std::strict_weak_order<Comp, const T&, const T&>
+class PartitionedProducts
+```
+
+`S`が総積の取り方を決める代数的構造。`T`が各要素を意味する。
+- `S::Element`の単位元
+- `S::Element`に`T`の要素を追加する
+- `S::Element`に追加されていた`T`の要素を取り除く
+
+のみっつが定義されていれば良い。例えばかけざんならば、
+
+```
+struct OP {
+    using Element = long long;
+    static Element identity() {
+        return 1;
+    }
+    static void add(Element& a, int x) {
+        a *= x;
+    }
+    static void remove(Element& a, int x) {
+        assert(a % x == 0);
+        return a / x;
+    }
+};
+```
+で良い。このように`S::Element`と`T`は必ずしも同じ要素である必要は無い。
+
+### コンストラクタ
+
+```cpp
+(1) PartitionedProducts(Comp comp = {}) 
+(2) PartitionedProducts(std::vector<T> a, Comp comp = {}) 
+```
+
+`comp`は指定しなければ`std::less<T>`になる。(`std::less<T>`以外のケースverifyしてないけど、ばぐってなければよいが...)
+
+(2)において`a`は全部`small`側に入る。
+
+**計算量:** (2)は $O(N)$
+
+###  size(), empty()
+
+```
+inline usize size() const
+inline usize smallSize() const
+inline usize bigSize() const
+inline bool empty() const
+```
+
+### insert
+
+```cpp
+template <class U>
+requires std::same_as<std::remove_cvref_t<U>, T>
+void insert(U&& v)
+```
+
+なにやらややこしいが、`T, const T&, T&&`以外で使用することは基本的に想定されていない
+
+**計算量:** $O(\log N)$
+
+### erase
+
+```cpp
+template <class U>
+requires std::same_as<std::remove_cvref_t<U>, T>
+void erase(U&& v)
+```
+
+なにやらややこしいが、`T, const T&, T&&`以外で使用することは基本的に想定されていない
+
+**queに存在しない要素をeraseに呼んでもassertなどにはひっかからないが、後々のクエリでassert:Heap Underflowを発生させる。**
+
+- これを咎めようとするとハッシュセットを別途持つ必要などがでてきて、諦めることにした。ユーザー側の責任とする。
+
+**計算量:** $O(\log N)$
+
+
+### adjust
+
+```cpp
+bool adjustSmall(usize K)
+bool adjustBig(usize K)
+```
+
+それぞれ、`small`、`big`の個数が $K$ になるように調節し、trueを返す。`size() < K`のときは`false`を返し、何もしない。
+
+### top
+
+```cpp
+const T& smallTop()
+const T& bigTop()
+```
+
+呼び出す前に`smallSize(), bigSize()`を確認しておくと良い。
+
+**計算量:** ならし $O(1)$
+
+### prod
+
+```cpp
+const S::Element& smallProd() const;
+const S::Element& bigProd() const
+```
+
+**計算量:** $O(1)$
+
+### container
+
+```cpp
+std::pair<std::vector<T>, std::vector<T>> container() const
+```
+
+デバッグ目的。`first`にsmall, `second`にbigがある。
