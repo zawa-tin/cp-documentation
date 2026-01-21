@@ -52,7 +52,7 @@ data:
     \ constexpr usize height(usize n) const {\n        return std::max(usize{1}, std::bit_width(n)\
     \ - (usize)std::has_single_bit(n));\n    }\n\n    constexpr usize msb(usize n)\
     \ const {\n        assert(n);\n        return std::bit_width(n) - 1;\n    }\n\n\
-    \    template <class S>\n    requires std::same_as<V, S> or concepts::Acted<V,\
+    \    template <class S>\n    requires std::same_as<V, S> or concepts::Acted<M,\
     \ S>\n    DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size()))\
     \ {\n        assert(A.size());\n        for (usize i = 1, w = 2 ; i < m_table.size()\
     \ ; i++, w <<= 1) {\n            m_table[i].resize(A.size());\n            for\
@@ -87,7 +87,7 @@ data:
     \  return std::max(usize{1}, std::bit_width(n) - (usize)std::has_single_bit(n));\n\
     \    }\n\n    constexpr usize msb(usize n) const {\n        assert(n);\n     \
     \   return std::bit_width(n) - 1;\n    }\n\n    template <class S>\n    requires\
-    \ std::same_as<V, S> or concepts::Acted<V, S>\n    DisjointSparseTable(const std::vector<S>&\
+    \ std::same_as<V, S> or concepts::Acted<M, S>\n    DisjointSparseTable(const std::vector<S>&\
     \ A) : m_table(height(A.size())) {\n        assert(A.size());\n        for (usize\
     \ i = 1, w = 2 ; i < m_table.size() ; i++, w <<= 1) {\n            m_table[i].resize(A.size());\n\
     \            for (usize j = 0, idx = 0 ; j < A.size() ; j += w, idx++) {\n   \
@@ -121,7 +121,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   requiredBy: []
-  timestamp: '2025-08-21 03:53:28+09:00'
+  timestamp: '2026-01-21 16:17:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
