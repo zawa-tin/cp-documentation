@@ -27,7 +27,7 @@ public:
     }
 
     template <class S>
-    requires std::same_as<V, S> or concepts::Acted<V, S>
+    requires std::same_as<V, S> or concepts::Acted<M, S>
     DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size())) {
         assert(A.size());
         for (usize i = 1, w = 2 ; i < m_table.size() ; i++, w <<= 1) {
