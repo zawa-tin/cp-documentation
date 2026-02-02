@@ -458,6 +458,9 @@ data:
     path: Src/Number/BinomalCoefficients.hpp
     title: "\u4E8C\u9805\u4FC2\u6570(\u7D20\u6570mod)"
   - icon: ':heavy_check_mark:'
+    path: Src/Number/DiscreteLogarithmPrimeLift.hpp
+    title: "$p^k$\u306B\u5BFE\u3059\u308B\u96E2\u6563\u5BFE\u6570\u554F\u984C"
+  - icon: ':heavy_check_mark:'
     path: Src/Number/Divisor.hpp
     title: "\u7D04\u6570\u5217\u6319"
   - icon: ':heavy_check_mark:'
@@ -1532,6 +1535,9 @@ data:
     path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
     title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/Number/DiscreteLogarithmPrimeLifet.test.cpp
+    title: Test/My/Number/DiscreteLogarithmPrimeLifet.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Number/EnumeratePrimes.test.cpp
     title: Test/My/Number/EnumeratePrimes.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1558,6 +1564,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/UC/4-2-K.test.cpp
     title: Test/UC/4-2-K.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/UC/4-9-A.test.cpp
+    title: Test/UC/4-9-A.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/117.test.cpp
     title: Test/yukicoder/117.test.cpp
@@ -1825,6 +1834,7 @@ data:
   - Src/GeometryZ2/Intersect/LineAndSegment.hpp
   - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
   - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/Number/DiscreteLogarithmPrimeLift.hpp
   - Src/Number/EnumeratePrimes.hpp
   - Src/Number/GCDConvolution.hpp
   - Src/Number/SternBrocotTree.hpp
@@ -2048,6 +2058,7 @@ data:
   - Test/LC/stern_brocot_tree.test.cpp
   - Test/UC/3-36-F.test.cpp
   - Test/UC/3-35-L.test.cpp
+  - Test/UC/4-9-A.test.cpp
   - Test/UC/3-37-M.test.cpp
   - Test/UC/4-2-K.test.cpp
   - Test/UC/3-25-J.test.cpp
@@ -2141,6 +2152,7 @@ data:
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - Test/My/Number/DiscreteLogarithmPrimeLifet.test.cpp
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
   - Test/My/Number/SqrtHeuristicArithmetic.test.cpp
   - Test/My/Number/EnumeratePrimes.test.cpp
