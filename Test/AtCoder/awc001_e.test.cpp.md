@@ -14,27 +14,32 @@ data:
     path: Src/DataStructure/SWAG/SWAGable.hpp
     title: Src/DataStructure/SWAG/SWAGable.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/EnumerateStaticLengthProduct.hpp
+    title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/3548.test.cpp
-    title: AOJ3548 String Puzzle
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/awc001_e.test.cpp
-    title: Test/AtCoder/awc001_e.test.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/Sequence/EnumerateStaticLengthProduct.hpp\"\n\n#line\
-    \ 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://atcoder.jp/contests/awc0001/submissions/73160986
+    - https://atcoder.jp/contests/awc0001/tasks/awc0001_e
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"Test/AtCoder/awc001_e.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/awc0001/tasks/awc0001_e\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    \n\n/*\n * AtCoder Weekday Contest 0001 Beta E\n * https://atcoder.jp/contests/awc0001/submissions/73160986\n\
+    \ */\n\n#line 2 \"Src/Sequence/EnumerateStaticLengthProduct.hpp\"\n\n#line 2 \"\
+    Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\nnamespace\
+    \ zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing i64 =\
+    \ std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16\
+    \ = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\n\
+    using usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
     \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
@@ -102,36 +107,46 @@ data:
     \ que{};\n    for (usize i{} ; i < K ; i++) {\n        que.push(A[i]);\n    }\n\
     \    for (usize i{} ; i < A.size() - K ; i++) {\n        res[i] = que.product();\n\
     \        que.pop();\n        que.push(A[i + K]);\n    }\n    res[A.size() - K]\
-    \ = que.product();\n    return res;\n}\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"../Algebra/Semigroup/SemigroupConcept.hpp\"\
-    \n#include \"../DataStructure/SWAG/FoldableQueue.hpp\"\n\n#include <cassert>\n\
-    #include <iterator>\n#include <type_traits>\n#include <vector>\n\nnamespace zawa\
-    \ {\n\ntemplate <concepts::Semigroup S>\nstd::vector<typename S::Element> EnumerateStaticLengthProduct(const\
-    \ std::vector<typename S::Element>& A, usize K) {\n    assert(K > 0);\n    if\
-    \ (A.size() < K) return {};\n    std::vector<typename S::Element> res(A.size()\
-    \ - K + 1);\n    FoldableQueue<SemigroupSWAGable<S>> que{};\n    for (usize i{}\
-    \ ; i < K ; i++) {\n        que.push(A[i]);\n    }\n    for (usize i{} ; i < A.size()\
-    \ - K ; i++) {\n        res[i] = que.product();\n        que.pop();\n        que.push(A[i\
-    \ + K]);\n    }\n    res[A.size() - K] = que.product();\n    return res;\n}\n\n\
-    } // namespace zawa\n"
+    \ = que.product();\n    return res;\n}\n\n} // namespace zawa\n#line 10 \"Test/AtCoder/awc001_e.test.cpp\"\
+    \nusing namespace zawa;\n#include <iostream>\n#include <algorithm>\n#line 14 \"\
+    Test/AtCoder/awc001_e.test.cpp\"\nusing namespace std;\nstruct M {\n   using Element\
+    \ = pair<int,int>;\n   static Element operation(Element l, Element r) {\n    \
+    \   return {max(l.first,r.first),min(l.second,r.second)};\n   }\n};\nint main()\
+    \ {\n#ifdef ATCODER\n    int N, K;\n    cin >> N >> K;\n    vector<pair<int,int>>\
+    \ A(N);\n    for (auto& x : A) {\n        cin >> x.first;\n        x.second =\
+    \ x.first;\n    }\n    int ans = 0;\n    for (auto [a, b] : EnumerateStaticLengthProduct<M>(A,\
+    \ K))\n        ans = max(ans, a - b);\n    cout << ans << '\\n';\n#else\n    int\
+    \ a, b;\n    cin >> a >> b;\n    cout << a + b << '\\n';\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/awc0001/tasks/awc0001_e\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n/*\n * AtCoder\
+    \ Weekday Contest 0001 Beta E\n * https://atcoder.jp/contests/awc0001/submissions/73160986\n\
+    \ */\n\n#include \"../../Src/Sequence/EnumerateStaticLengthProduct.hpp\"\nusing\
+    \ namespace zawa;\n#include <iostream>\n#include <algorithm>\n#include <vector>\n\
+    using namespace std;\nstruct M {\n   using Element = pair<int,int>;\n   static\
+    \ Element operation(Element l, Element r) {\n       return {max(l.first,r.first),min(l.second,r.second)};\n\
+    \   }\n};\nint main() {\n#ifdef ATCODER\n    int N, K;\n    cin >> N >> K;\n \
+    \   vector<pair<int,int>> A(N);\n    for (auto& x : A) {\n        cin >> x.first;\n\
+    \        x.second = x.first;\n    }\n    int ans = 0;\n    for (auto [a, b] :\
+    \ EnumerateStaticLengthProduct<M>(A, K))\n        ans = max(ans, a - b);\n   \
+    \ cout << ans << '\\n';\n#else\n    int a, b;\n    cin >> a >> b;\n    cout <<\
+    \ a + b << '\\n';\n#endif\n}\n"
   dependsOn:
+  - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
-  isVerificationFile: false
-  path: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/awc001_e.test.cpp
   requiredBy: []
   timestamp: '2026-02-09 20:31:12+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/AtCoder/awc001_e.test.cpp
-  - Test/AOJ/3548.test.cpp
-documentation_of: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/awc001_e.test.cpp
 layout: document
 redirect_from:
-- /library/Src/Sequence/EnumerateStaticLengthProduct.hpp
-- /library/Src/Sequence/EnumerateStaticLengthProduct.hpp.html
-title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+- /verify/Test/AtCoder/awc001_e.test.cpp
+- /verify/Test/AtCoder/awc001_e.test.cpp.html
+title: Test/AtCoder/awc001_e.test.cpp
 ---

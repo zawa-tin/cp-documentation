@@ -22,6 +22,9 @@ data:
     path: Test/AOJ/3548.test.cpp
     title: AOJ3548 String Puzzle
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/awc001_e.test.cpp
+    title: Test/AtCoder/awc001_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -102,6 +105,7 @@ data:
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/awc001_e.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/AOJ/3548.test.cpp

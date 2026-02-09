@@ -22,6 +22,9 @@ data:
     path: Test/AOJ/3548.test.cpp
     title: AOJ3548 String Puzzle
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/awc001_e.test.cpp
+    title: Test/AtCoder/awc001_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/queue_operate_all_composite.test.cpp
     title: Test/LC/queue_operate_all_composite.test.cpp
   _isVerificationFailed: false
@@ -80,20 +83,19 @@ data:
     \            m_front.empty() ? Fold::identity() : m_front.back(),\n          \
     \  m_back.empty() ? Fold::identity() : m_back.back()\n        };\n    }\n\n  \
     \  std::pair<std::optional<F>, std::optional<F>> get() const {\n        return\
-    \ {\n            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back().first},\n\
-    \            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back().first}\n\
+    \ {\n            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back()},\n\
+    \            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back()}\n\
     \        };\n    }\n\n    F product() const requires concepts::Monoid<typename\
     \ S::Fold> {\n        auto [f, b] = get();\n        return Fold::operation(f,\
     \ b);\n    }\n\n    F product() const requires concepts::Semigroup<typename S::Fold>\
     \ {\n        assert(m_front.size() or m_back.size());\n        if (m_front.empty())\
-    \ return m_back.back().first;\n        if (m_back.empty()) return m_front.back().first;\n\
-    \        return S::Fold::operation(m_front.back().first, m_back.back().first);\n\
-    \    }\n    \nprivate:\n    std::vector<F> m_front{}, m_back{};\n    std::vector<V>\
-    \ m_raw{};\n\n    void move() {\n        if (m_front.size()) return;\n       \
-    \ while (m_back.size()) {\n            m_back.pop_back();\n            V v{m_raw.back()};\n\
-    \            m_raw.pop_back();\n            m_front.push_back(m_front.size() ?\
-    \ S::pushFront(m_front.back(), v) : S::convert(v));\n        }\n    }\n};\n\n\
-    } // namespace zawa\n"
+    \ return m_back.back();\n        if (m_back.empty()) return m_front.back();\n\
+    \        return S::Fold::operation(m_front.back(), m_back.back());\n    }\n  \
+    \  \nprivate:\n    std::vector<F> m_front{}, m_back{};\n    std::vector<V> m_raw{};\n\
+    \n    void move() {\n        if (m_front.size()) return;\n        while (m_back.size())\
+    \ {\n            m_back.pop_back();\n            V v{m_raw.back()};\n        \
+    \    m_raw.pop_back();\n            m_front.push_back(m_front.size() ? S::pushFront(m_front.back(),\
+    \ v) : S::convert(v));\n        }\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./SWAGable.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
     \n#include \"../../Algebra/Semigroup/SemigroupConcept.hpp\"\n#include \"../../Template/TypeAlias.hpp\"\
     \n\n#include <cassert>\n#include <optional>\n#include <vector>\n\nnamespace zawa\
@@ -109,20 +111,19 @@ data:
     \ {\n        return {\n            m_front.empty() ? Fold::identity() : m_front.back(),\n\
     \            m_back.empty() ? Fold::identity() : m_back.back()\n        };\n \
     \   }\n\n    std::pair<std::optional<F>, std::optional<F>> get() const {\n   \
-    \     return {\n            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back().first},\n\
-    \            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back().first}\n\
+    \     return {\n            m_front.empty() ? std::nullopt : std::optional<F>{m_front.back()},\n\
+    \            m_back.empty() ? std::nullopt : std::optional<F>{m_back.back()}\n\
     \        };\n    }\n\n    F product() const requires concepts::Monoid<typename\
     \ S::Fold> {\n        auto [f, b] = get();\n        return Fold::operation(f,\
     \ b);\n    }\n\n    F product() const requires concepts::Semigroup<typename S::Fold>\
     \ {\n        assert(m_front.size() or m_back.size());\n        if (m_front.empty())\
-    \ return m_back.back().first;\n        if (m_back.empty()) return m_front.back().first;\n\
-    \        return S::Fold::operation(m_front.back().first, m_back.back().first);\n\
-    \    }\n    \nprivate:\n    std::vector<F> m_front{}, m_back{};\n    std::vector<V>\
-    \ m_raw{};\n\n    void move() {\n        if (m_front.size()) return;\n       \
-    \ while (m_back.size()) {\n            m_back.pop_back();\n            V v{m_raw.back()};\n\
-    \            m_raw.pop_back();\n            m_front.push_back(m_front.size() ?\
-    \ S::pushFront(m_front.back(), v) : S::convert(v));\n        }\n    }\n};\n\n\
-    } // namespace zawa\n"
+    \ return m_back.back();\n        if (m_back.empty()) return m_front.back();\n\
+    \        return S::Fold::operation(m_front.back(), m_back.back());\n    }\n  \
+    \  \nprivate:\n    std::vector<F> m_front{}, m_back{};\n    std::vector<V> m_raw{};\n\
+    \n    void move() {\n        if (m_front.size()) return;\n        while (m_back.size())\
+    \ {\n            m_back.pop_back();\n            V v{m_raw.back()};\n        \
+    \    m_raw.pop_back();\n            m_front.push_back(m_front.size() ? S::pushFront(m_front.back(),\
+    \ v) : S::convert(v));\n        }\n    }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -132,9 +133,10 @@ data:
   path: Src/DataStructure/SWAG/FoldableQueue.hpp
   requiredBy:
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
-  timestamp: '2025-04-17 21:24:54+09:00'
+  timestamp: '2026-02-09 20:31:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/awc001_e.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
   - Test/AOJ/3548.test.cpp
 documentation_of: Src/DataStructure/SWAG/FoldableQueue.hpp
