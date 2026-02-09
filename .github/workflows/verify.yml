@@ -13,13 +13,17 @@ jobs:
         fetch-depth: 0
 
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
 
     - name: Update Submodules
       run: git submodule update --remote
 
     - name: Install dependencies
-      run: pip3 install -U online-judge-verify-helper
+      run: |
+        python -m pip install -U pip "setuptools<81" wheel
+        python -m pip install -U online-judge-verify-helper
 
     - name: Run tests
       env:
