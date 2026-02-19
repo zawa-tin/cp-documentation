@@ -40,10 +40,10 @@ data:
   timestamp: '2023-10-01 23:08:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc346_g.test.cpp
-  - Test/AtCoder/abc292_h.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
+  - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
 documentation_of: Src/Algebra/Monoid/AdditionMonoid.hpp
 layout: document
 redirect_from:

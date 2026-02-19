@@ -35,8 +35,8 @@ data:
   timestamp: '2024-11-29 05:08:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/abc340_f.test.cpp
   - Test/AOJ/NTL_1_E.test.cpp
+  - Test/Manual/abc340_f.test.cpp
 documentation_of: Src/Number/ExtendGCD.hpp
 layout: document
 title: "\u62E1\u5F35\u30E6\u30FC\u30AF\u30EA\u30C3\u30C9\u306E\u4E92\u9664\u6CD5"

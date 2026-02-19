@@ -57,8 +57,8 @@ data:
   timestamp: '2025-10-17 20:47:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc137_f.test.cpp
   - Test/LC/polynomial_interpolation/quadratic.test.cpp
+  - Test/AtCoder/abc137_f.test.cpp
 documentation_of: Src/FPS/PolynomialInterpolation.hpp
 layout: document
 redirect_from:

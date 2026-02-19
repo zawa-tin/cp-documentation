@@ -2,17 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Flow/Dinic.hpp
-    title: "Dinic (\u6700\u5927\u6D41\u30FB\u6700\u5C0F\u30AB\u30C3\u30C8)"
+    path: Src/Graph/Matching/BipartiteMatching.hpp
+    title: Bipartite Matching
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  - icon: ':heavy_check_mark:'
-    path: Src/Utility/U32Pair.hpp
-    title: Src/Utility/U32Pair.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -33,124 +30,81 @@ data:
     \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
     \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
     \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Graph/Flow/Dinic.hpp\"\n\n#line 2 \"Src/Utility/U32Pair.hpp\"\
-    \n\n#line 4 \"Src/Utility/U32Pair.hpp\"\n\n#include <functional>\n#line 7 \"Src/Utility/U32Pair.hpp\"\
-    \n\nnamespace zawa {\n\nclass U32Pair {\nprivate:\n    static constexpr u32 SHIFT{32};\n\
-    \    static constexpr u32 MASK{static_cast<u32>((1LL << SHIFT) - 1)};\n    u64\
-    \ value_{};\npublic:\n    constexpr U32Pair() {}\n    constexpr U32Pair(u32 first,\
-    \ u32 second) {\n        value_ = (static_cast<u64>(first) << SHIFT) | second;\n\
-    \    }\n    constexpr u32 first() const noexcept {\n        return static_cast<u32>(value_\
-    \ >> SHIFT);\n    }\n    constexpr u32 second() const noexcept {\n        return\
-    \ static_cast<u32>(value_ & MASK);\n    }\n    constexpr u64 combined() const\
-    \ noexcept {\n        return value_;\n    }\n    constexpr U32Pair& operator=(const\
-    \ U32Pair& rhs) {\n        value_ = rhs.value_;\n        return *this;\n    }\n\
-    \    friend constexpr bool operator==(const U32Pair& lhs, const U32Pair& rhs)\
-    \ {\n        return lhs.value_ == rhs.value_;\n    }\n    friend constexpr bool\
-    \ operator!=(const U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_\
-    \ != rhs.value_;\n    }\n    friend constexpr bool operator<(const U32Pair& lhs,\
-    \ const U32Pair& rhs) {\n        return lhs.value_ < rhs.value_;\n    }\n    friend\
-    \ constexpr bool operator<=(const U32Pair& lhs, const U32Pair& rhs) {\n      \
-    \  return lhs.value_ <= rhs.value_;\n    }\n    friend constexpr bool operator>(const\
-    \ U32Pair& lhs, const U32Pair& rhs) {\n        return lhs.value_ > rhs.value_;\n\
-    \    }\n    friend constexpr bool operator>=(const U32Pair& lhs, const U32Pair&\
-    \ rhs) {\n        return lhs.value_ >= rhs.value_;\n    }\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const U32Pair& pair) {\n        os << '(' << pair.first()\
-    \ << ',' << pair.second() << ')';\n        return os;\n    }\n};\n\nstruct U32PairHash\
-    \ {\n    usize operator()(const U32Pair& pair) const noexcept {\n        return\
-    \ std::hash<u64>{}(pair.combined());\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 5 \"Src/Graph/Flow/Dinic.hpp\"\n\n#include <algorithm>\n#include <cassert>\n\
-    #include <limits>\n#include <type_traits>\n#include <vector>\n#include <queue>\n\
-    \nnamespace zawa {\n\ntemplate <class Cap> \nclass Dinic {\nprivate:\n    static_assert(std::is_signed_v<Cap>,\
-    \ \"Cap must be signed\");\n    usize n_{}, m_{};\n    static constexpr u32 invalid()\
-    \ noexcept {\n        return std::numeric_limits<u32>::max();\n    }\npublic:\n\
-    \    inline usize size() const noexcept {\n        return n_;\n    }\n    inline\
-    \ usize edgeNumber() const noexcept {\n        return m_;\n    }\nprivate:\n \
-    \   struct Edge {\n        u32 to{}, rev{};\n        Cap residual{};\n       \
-    \ Edge() = default;\n        Edge(u32 to, u32 rev, const Cap& residual) \n   \
-    \         : to{to}, rev{rev}, residual{residual} {}\n    };\n\n    std::vector<std::vector<Edge>>\
-    \ g_;\n    std::vector<U32Pair> edges_;\n    std::vector<u32> label_, cur_;\n\n\
-    \    bool dualStep(u32 s, u32 t) {\n        std::fill(label_.begin(), label_.end(),\
-    \ invalid());\n        label_[s] = 0;\n        std::queue<u32> queue{ { s } };\n\
-    \        while (queue.size()) {\n            u32 v{queue.front()};\n         \
-    \   queue.pop();\n            for (const Edge& e : g_[v]) if (e.residual > 0)\
-    \ {\n                if (label_[e.to] > label_[v] + 1) {\n                   \
-    \ label_[e.to] = label_[v] + 1;\n                    if (e.to == t) return true;\n\
-    \                    queue.emplace(e.to);\n                }\n            }\n\
-    \        }\n        return false;\n    }\n\n    bool admissible(u32 v, const Edge&\
-    \ e) const noexcept {\n        return e.residual > 0 and label_[v] + 1 == label_[e.to];\n\
-    \    }\n\n    inline void flow(Edge& e, Cap f) {\n        e.residual -= f;\n \
-    \       g_[e.to][e.rev].residual += f;\n    }\n\n    Cap dfs(u32 v, u32 t, Cap\
-    \ up) {\n        if (v == t) return up;\n        Cap res{};\n        for (u32&\
-    \ i{cur_[v]} ; i < g_[v].size() ; i++) {\n            if (!admissible(v, g_[v][i]))\
-    \ continue;\n            Cap f{dfs(g_[v][i].to, t, std::min(g_[v][i].residual,\
-    \ up - res))};\n            if (f == 0) continue;\n            flow(g_[v][i],\
-    \ f);\n            res += f;\n            if (res == up) return res;\n       \
-    \ }\n        return res;\n    }\n\n    Cap primalStep(u32 s, u32 t) {\n      \
-    \  std::fill(cur_.begin(), cur_.end(), 0u);\n        cur_[t] = g_[t].size();\n\
-    \        Cap res{};\n        while (true) {\n            Cap f{dfs(s, t, std::numeric_limits<Cap>::max())};\n\
-    \            if (f == 0) break;\n            res += f;\n        }\n        return\
-    \ res;\n    }\n\n    const Edge& edge(u32 i) const noexcept {\n        return\
-    \ g_[edges_[i].first()][edges_[i].second()];\n    }\n    const Edge& reverse(u32\
-    \ i) const noexcept {\n        const Edge& e{edge(i)};\n        return g_[e.to][e.rev];\n\
-    \    }\n\npublic:\n    Dinic() = default;\n    Dinic(u32 n, u32 m = 0u) \n   \
-    \     : n_{n}, m_{m}, g_(n), edges_{}, label_(n), cur_(n) {\n        g_.shrink_to_fit();\n\
-    \        label_.shrink_to_fit();\n        cur_.shrink_to_fit();\n        edges_.reserve(m);\n\
-    \    }\n\n    u32 addEdge(u32 u, u32 v, const Cap& cap) {\n        assert(u <\
-    \ size());\n        assert(v < size());\n        u32 id{static_cast<u32>(g_[u].size())};\n\
-    \        u32 revId{u == v ? id + 1 : static_cast<u32>(g_[v].size())};\n      \
-    \  u32 res{static_cast<u32>(edges_.size())};\n        edges_.emplace_back(u, id);\n\
-    \        g_[u].emplace_back(v, revId, cap);\n        g_[v].emplace_back(u, id,\
-    \ Cap{});\n        m_++;\n        return res;\n    }\n\n    const Cap& flowed(u32\
-    \ id) const noexcept {\n        assert(id < edgeNumber());\n        return reverse(id).residual;\n\
-    \    }\n    const Cap& residual(u32 id) const noexcept {\n        assert(id <\
-    \ edgeNumber());\n        return edge(id).residual;\n    }\n    const Cap& capacity(u32\
-    \ id) const noexcept {\n        assert(id < edgeNumber());\n        return edge(id).residual\
-    \ + reverse(id).residual;\n    }\n    const u32& from(u32 id) const noexcept {\n\
-    \        assert(id < edgeNumber());\n        return edges_[id].first();\n    }\n\
-    \    const u32& to(u32 id) const noexcept {\n        assert(id < edgeNumber());\n\
-    \        return edge(id).to;\n    }\n\n    Cap flow(u32 s, u32 t) {\n        assert(s\
-    \ < size());\n        assert(t < size()); \n        Cap res{};\n        while\
-    \ (dualStep(s, t)) {\n            res += primalStep(s, t);\n        }\n      \
-    \  return res;\n    }\n\n    std::vector<bool> cut(u32 s) {\n        std::vector<bool>\
-    \ res(size());\n        res[s] = true;\n        std::queue<u32> queue{ { s } };\n\
-    \        while (queue.size()) {\n            u32 v{queue.front()};\n         \
-    \   queue.pop();\n            for (const auto& e : g_[v]) if (e.residual > 0 and\
-    \ !res[e.to]) {\n                res[e.to] = true;\n                queue.emplace(e.to);\n\
-    \            }\n        }\n        return res;\n    }    \n};\n\n} // namespace\
-    \ zawa\n#line 5 \"Test/LC/bipartitematching.test.cpp\"\n\n#line 8 \"Test/LC/bipartitematching.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    SetFastIO();\n    int l, r, m;\
-    \ std::cin >> l >> r >> m;\n    Dinic<int> maxflow(l + r + 2, l + r + m);\n  \
-    \  for (int i{} ; i < l ; i++) {\n        maxflow.addEdge(l + r, i, 1);\n    }\n\
-    \    for (int i{} ; i < r ; i++) {\n        maxflow.addEdge(l + i, l + r + 1,\
-    \ 1);\n    }\n    std::vector<int> id(m);\n    std::vector<int> A(m), B(m);\n\
-    \    for (int i{} ; i < m ; i++) {\n        int a, b; std::cin >> a >> b;\n  \
-    \      A[i] = a;\n        B[i] = b;\n        id[i] = maxflow.addEdge(a, l + b,\
-    \ 1);\n    }\n    int ans{maxflow.flow(l + r, l + r + 1)};\n    std::cout << ans\
-    \ << '\\n';\n    for (int i{} ; i < m ; i++) {\n        if (maxflow.flowed(id[i]))\
-    \ {\n            std::cout << A[i] << ' ' << B[i] << '\\n';\n        }\n    }\n\
-    }\n"
+    \ zawa\n#line 2 \"Src/Graph/Matching/BipartiteMatching.hpp\"\n\n#line 4 \"Src/Graph/Matching/BipartiteMatching.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <utility>\n#include <optional>\n\
+    #include <vector>\n#include <ranges>\n\nnamespace zawa {\n\ntemplate <class V>\n\
+    std::vector<std::pair<V,V>> BipartiteMatching(usize N, usize M, std::vector<std::pair<V,V>>\
+    \ E) {\n    std::vector<std::vector<std::pair<V,usize>>> g(N+M);\n    for (usize\
+    \ i = 0 ; i < E.size() ; i++) {\n        auto [u, v] = E[i];\n        assert(0\
+    \ <= u and u < (V)N);\n        assert(0 <= v and v < (V)M);\n        g[u].push_back({N+v,i});\n\
+    \        g[N+v].push_back({u,i});\n    }\n    std::vector<bool> free(N+M,1), used(E.size()),\
+    \ cur(N+M);\n    std::vector<i32> dist(N+M,-1);\n    std::vector<V> match(N,(V)N),\
+    \ que;\n    while (1) {\n        std::ranges::fill(dist,-1);\n        fill(cur.begin(),cur.end(),0);\n\
+    \        que.clear();\n        for (usize i = 0 ; i < N ; i++)\n            if\
+    \ (free[i]) {\n                que.push_back(i);\n                dist[i] = 0;\n\
+    \            }\n        for (usize t = 0 ; t < que.size() ; t++) {\n         \
+    \   const V v = que[t];\n            for (auto [x, i] : g[v]) {\n            \
+    \    if (dist[x] != -1)\n                    continue;\n                if (v\
+    \ < (V)N and used[i])\n                    continue;\n                if (v >=\
+    \ (V)N and !used[i])\n                    continue;\n                dist[x] =\
+    \ dist[v] + 1;\n                que.push_back(x);\n            }\n        }\n\
+    \        const i32 minDist = [&]() {\n            i32 res = N + M;\n         \
+    \   for (usize i = N ; i < N + M ; i++)\n                if (free[i] and dist[i]\
+    \ != -1)\n                    res = std::min(res,dist[i]);\n            return\
+    \ res;\n        }();\n        if ((usize)minDist == N + M)\n            break;\n\
+    \        auto dfs = [&](auto dfs,V v) -> bool {\n            cur[v] = 1;\n   \
+    \         if (v >= (V)N and free[v]) {\n                free[v] = 0;\n       \
+    \         return 1;\n            }\n            if (dist[v] >= minDist)\n    \
+    \            return 0;\n            for (auto [x, i] : g[v]) {\n             \
+    \   if (cur[x])\n                    continue;\n                if (dist[v] +\
+    \ 1 != dist[x])\n                    continue;\n                if (v < (V)N and\
+    \ used[i])\n                    continue;\n                if (v >= (V)N and !used[i])\n\
+    \                    continue;\n                if (dfs(dfs,x)) {\n          \
+    \          free[v] = 0;\n                    used[i] = !used[i];\n           \
+    \         return 1;\n                }\n            }\n            return 0;\n\
+    \        };\n        for (usize i = 0 ; i < N ; i++)\n            if (free[i]\
+    \ and !cur[i])\n                dfs(dfs,i);\n    }\n    std::vector<std::pair<V,V>>\
+    \ res;\n    for (usize i = 0 ; i < E.size() ; i++)\n        if (used[i])\n   \
+    \         res.push_back(E[i]);\n    return res;\n}\n\ntemplate <class V>\nstd::optional<std::vector<std::pair<V,V>>>\
+    \ BipartiteMatching(usize N,std::vector<std::pair<usize,usize>> E) {\n    std::vector<std::vector<V>>\
+    \ g(N); \n    for (auto [u, v] : E) {\n        assert(0 <= u and u < N);\n   \
+    \     assert(0 <= v and v < N);\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
+    \    }\n    std::vector<i32> col(N,-1);\n    auto dfs = [&](auto dfs,V v,i32 c)\
+    \ -> bool {\n        col[v] = c;\n        for (V x : g[v]) {\n            if (col[x]\
+    \ == -1 and !dfs(dfs,x,c^1))\n                return false;\n            else\
+    \ if (col[v] == col[x])\n                return false;\n        }\n        return\
+    \ true;\n    };\n    for (usize i = 0 ; i < N ; i++)\n        if (col[i] == -1)\n\
+    \            if (!dfs(dfs,i,0))\n                return std::nullopt;\n    std::vector<V>\
+    \ id(N), L, R;\n    for (usize i = 0 ; i < N ; i++)\n        (col[i] == 0 ? L\
+    \ : R).push_back(i);\n    for (usize i = 0 ; i < L.size() ; i++)\n        id[L[i]]\
+    \ = i;\n    for (usize i = 0 ; i < R.size() ; i++)\n        id[R[i]] = L.size()\
+    \ + i;\n    for (auto& [u, v] : E) {\n        u = id[u];\n        v = id[v];\n\
+    \        if (u >= L.size())\n            std::swap(u,v);\n        v -= L.size();\n\
+    \    }\n    auto ans = BipartiteMatching(L.size(),R.size(),E);\n    for (auto&\
+    \ [u, v] : ans) {\n        u = L[u];\n        v = R[v];\n    }\n    return ans;\n\
+    }\n\n} // namespace zawa\n#line 5 \"Test/LC/bipartitematching.test.cpp\"\nusing\
+    \ namespace zawa;\n\n#line 9 \"Test/LC/bipartitematching.test.cpp\"\nusing namespace\
+    \ std;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int L,R,M;\n    cin >> L >> R >> M;\n    vector<pair<int,int>> E(M);\n  \
+    \  for (auto& [u,v] : E)\n        cin >> u >> v;\n    auto ans = BipartiteMatching(L,R,E);\n\
+    \    cout << ssize(ans) << '\\n';\n    for (auto [u,v] : ans)\n        cout <<\
+    \ u << ' ' << v << '\\n';\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bipartitematching\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Flow/Dinic.hpp\"\
-    \n\n#include <iostream>\n#include <vector>\n\nint main() {\n    using namespace\
-    \ zawa;\n    SetFastIO();\n    int l, r, m; std::cin >> l >> r >> m;\n    Dinic<int>\
-    \ maxflow(l + r + 2, l + r + m);\n    for (int i{} ; i < l ; i++) {\n        maxflow.addEdge(l\
-    \ + r, i, 1);\n    }\n    for (int i{} ; i < r ; i++) {\n        maxflow.addEdge(l\
-    \ + i, l + r + 1, 1);\n    }\n    std::vector<int> id(m);\n    std::vector<int>\
-    \ A(m), B(m);\n    for (int i{} ; i < m ; i++) {\n        int a, b; std::cin >>\
-    \ a >> b;\n        A[i] = a;\n        B[i] = b;\n        id[i] = maxflow.addEdge(a,\
-    \ l + b, 1);\n    }\n    int ans{maxflow.flow(l + r, l + r + 1)};\n    std::cout\
-    \ << ans << '\\n';\n    for (int i{} ; i < m ; i++) {\n        if (maxflow.flowed(id[i]))\
-    \ {\n            std::cout << A[i] << ' ' << B[i] << '\\n';\n        }\n    }\n\
-    }\n"
+    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Graph/Matching/BipartiteMatching.hpp\"\
+    \nusing namespace zawa;\n\n#include <iostream>\n#include <vector>\nusing namespace\
+    \ std;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int L,R,M;\n    cin >> L >> R >> M;\n    vector<pair<int,int>> E(M);\n  \
+    \  for (auto& [u,v] : E)\n        cin >> u >> v;\n    auto ans = BipartiteMatching(L,R,E);\n\
+    \    cout << ssize(ans) << '\\n';\n    for (auto [u,v] : ans)\n        cout <<\
+    \ u << ' ' << v << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/Graph/Flow/Dinic.hpp
-  - Src/Utility/U32Pair.hpp
+  - Src/Graph/Matching/BipartiteMatching.hpp
   isVerificationFile: true
   path: Test/LC/bipartitematching.test.cpp
   requiredBy: []
-  timestamp: '2023-12-28 22:17:54+09:00'
+  timestamp: '2026-02-19 21:14:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/bipartitematching.test.cpp
