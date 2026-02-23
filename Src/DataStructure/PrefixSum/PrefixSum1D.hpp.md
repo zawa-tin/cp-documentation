@@ -109,11 +109,11 @@ data:
   timestamp: '2025-11-30 16:55:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_range_sum.test.cpp
-  - Test/CF/EC162-D.test.cpp
-  - Test/AtCoder/abc229_d.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
+  - Test/AtCoder/abc229_d.test.cpp
+  - Test/LC/static_range_sum.test.cpp
+  - Test/CF/EC162-D.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/PrefixSum1D.hpp
 layout: document
 title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"

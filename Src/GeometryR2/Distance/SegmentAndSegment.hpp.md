@@ -211,9 +211,9 @@ data:
   timestamp: '2023-11-20 11:32:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/1157.test.cpp
-  - Test/AOJ/2827.test.cpp
 documentation_of: Src/GeometryR2/Distance/SegmentAndSegment.hpp
 layout: document
 redirect_from:

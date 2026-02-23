@@ -185,22 +185,22 @@ data:
   timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/division_of_polynomials.test.cpp
-  - Test/LC/product_of_polynomial_sequence.test.cpp
-  - Test/LC/inv_of_formal_power_series.test.cpp
-  - Test/LC/polynomial_taylor_shift.test.cpp
-  - Test/LC/pow_of_formal_power_series.test.cpp
-  - Test/LC/log_of_formal_power_series.test.cpp
-  - Test/LC/exp_of_formal_power_series.test.cpp
-  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - Test/yukicoder/3044.test.cpp
-  - Test/My/FPS/PowerProjection.test.cpp
-  - Test/AtCoder/abc345_g.test.cpp
-  - Test/AtCoder/abc439_g.test.cpp
-  - Test/AtCoder/tdpc_fibonacci.test.cpp
-  - Test/AtCoder/abc436_g.test.cpp
-  - Test/AtCoder/abc385_g.test.cpp
   - Test/AtCoder/abc215_g.test.cpp
+  - Test/AtCoder/abc345_g.test.cpp
+  - Test/AtCoder/tdpc_fibonacci.test.cpp
+  - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/abc436_g.test.cpp
+  - Test/AtCoder/abc439_g.test.cpp
+  - Test/LC/exp_of_formal_power_series.test.cpp
+  - Test/LC/log_of_formal_power_series.test.cpp
+  - Test/LC/pow_of_formal_power_series.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
+  - Test/LC/inv_of_formal_power_series.test.cpp
+  - Test/LC/product_of_polynomial_sequence.test.cpp
+  - Test/LC/polynomial_taylor_shift.test.cpp
+  - Test/My/FPS/PowerProjection.test.cpp
+  - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document
 redirect_from:

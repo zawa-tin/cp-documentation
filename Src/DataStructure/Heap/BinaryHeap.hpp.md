@@ -114,16 +114,16 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/Heap/BinaryHeap.hpp
   requiredBy:
-  - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   - Src/DataStructure/Heap/PartitionedProducts.hpp
+  - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/My/DataStructure/Heap/BinaryHeap.test.cpp
-  - Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
+  - Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
+  - Test/My/DataStructure/Heap/BinaryHeap.test.cpp
 documentation_of: Src/DataStructure/Heap/BinaryHeap.hpp
 layout: document
 title: "Binary Heap (\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\u30FC)"

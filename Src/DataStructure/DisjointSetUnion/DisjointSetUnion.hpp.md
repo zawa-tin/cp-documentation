@@ -82,12 +82,12 @@ data:
   timestamp: '2025-05-05 21:42:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/arc197_d.test.cpp
+  - Test/AtCoder/agc002_d.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/incremental_scc.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/CF/ECR167-F.test.cpp
-  - Test/AtCoder/agc002_d.test.cpp
-  - Test/AtCoder/arc197_d.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

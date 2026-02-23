@@ -62,9 +62,9 @@ data:
   timestamp: '2026-01-03 22:37:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/yukicoder/3044.test.cpp
-  - Test/AtCoder/tdpc_fibonacci.test.cpp
 documentation_of: Src/FPS/KthTerm.hpp
 layout: document
 title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\u308B"

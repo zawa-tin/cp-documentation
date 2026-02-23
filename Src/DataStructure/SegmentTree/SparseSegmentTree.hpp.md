@@ -131,9 +131,9 @@ data:
   timestamp: '2025-06-24 16:35:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc403_g.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
-  - Test/AtCoder/abc403_g.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
 layout: document
 title: "\u5358\u4F4D\u5143\u3067\u7121\u3044\u8981\u7D20\u304C\u758E\u306A\u30BB\u30B0\

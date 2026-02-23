@@ -84,8 +84,8 @@ data:
   timestamp: '2025-02-23 17:42:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/DSL_1_B.test.cpp
   - Test/AOJ/1330.test.cpp
+  - Test/AOJ/DSL_1_B.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
 layout: document
 redirect_from:

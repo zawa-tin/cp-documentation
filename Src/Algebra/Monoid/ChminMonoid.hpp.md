@@ -80,17 +80,17 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Monoid/ChminMonoid.hpp
   requiredBy:
-  - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Tree/AuxiliaryTree.hpp
   timestamp: '2025-12-23 16:17:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/CF/CF923-D.test.cpp
-  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
-  - Test/Manual/typical90_ai.test.cpp
+  - Test/LC/lca/LowestCommonAncestor.test.cpp
+  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/CF/CF923-D.test.cpp
 documentation_of: Src/Algebra/Monoid/ChminMonoid.hpp
 layout: document
 title: "chmin\u30E2\u30CE\u30A4\u30C9"

@@ -220,39 +220,39 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Relation.hpp
   requiredBy:
-  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-  - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/Polygon.hpp
-  - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Line.hpp
+  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - Src/GeometryZ2/Contain/LineContainsPoint.hpp
   - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   - Src/GeometryZ2/Segment.hpp
-  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
-  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - Src/GeometryZ2/ConvexHull.hpp
+  - Src/GeometryZ2/Polygon.hpp
+  - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Intersect/LineAndSegment.hpp
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc422_e.test.cpp
+  - Test/AtCoder/abc266_c.test.cpp
+  - Test/LC/furthest_pair.test.cpp
   - Test/LC/naive_count_points_in_triangle.test.cpp
   - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/furthest_pair.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
-  - Test/AOJ/CGL_4_B.test.cpp
-  - Test/AOJ/0388.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - Test/AOJ/0445.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
+  - Test/AOJ/CGL_3_A.test.cpp
   - Test/AOJ/1298.test.cpp
+  - Test/AOJ/CGL_4_B.test.cpp
+  - Test/AOJ/0445.test.cpp
+  - Test/AOJ/0388.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
-  - Test/AtCoder/abc422_e.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/AtCoder/abc250_f.test.cpp
-  - Test/AtCoder/abc266_c.test.cpp
 documentation_of: Src/GeometryZ2/Relation.hpp
 layout: document
 redirect_from:

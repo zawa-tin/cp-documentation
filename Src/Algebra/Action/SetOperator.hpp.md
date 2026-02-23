@@ -50,10 +50,10 @@ data:
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF1070-F.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
+  - Test/CF/CF1070-F.test.cpp
 documentation_of: Src/Algebra/Action/SetOperator.hpp
 layout: document
 title: Set Operator
