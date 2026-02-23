@@ -7,6 +7,7 @@
 #include <concepts>
 #include <cmath>
 #include <limits>
+#include <optional>
 #include <utility>
 #include <vector>
 
@@ -15,10 +16,6 @@ namespace zawa {
 template <std::integral V>
 class HeavyLightDecomposition {
 public:
-
-    static constexpr V Invalid() noexcept {
-        return INVALID;
-    }
 
     HeavyLightDecomposition() = default;
 
@@ -163,9 +160,9 @@ public:
         return v != INVALID;
     }
 
-    V levelAncestor(V v, usize step) const {
+    std::optional<V> levelAncestor(V v, usize step) const {
         assert(v < (V)size());
-        if (step > m_dep[v]) return INVALID;
+        if (step > m_dep[v]) return std::nullopt;
         while (true) {
             usize dist{m_dep[v] - m_dep[m_top[v]]};
             if (dist >= step) break;
@@ -176,7 +173,7 @@ public:
         return m_inv[m_idx[m_top[v]] + step];
     }
 
-    V jump(V s, V t, usize step) const {
+    std::optional<V> jump(V s, V t, usize step) const {
         assert(s < (V)size());
         assert(t < (V)size());
         V uu{INVALID}, vv{INVALID};
@@ -191,7 +188,7 @@ public:
             }
             step -= dist + 1;
         }
-        if (uu == INVALID) return INVALID;
+        if (uu == INVALID) return std::nullopt;
         if (m_dep[uu] <= m_dep[vv])
             return m_inv[m_idx[uu] + step];
         else
@@ -204,9 +201,9 @@ public:
         usize res{};
         for (auto [u, v] : decomp(s, t)) {
             if (m_dep[u] > m_dep[v]) std::swap(u, v);
-            res += m_dep[v] - m_dep[u];
+            res += m_dep[v] - m_dep[u] + 1;
         }
-        return res;
+        return --res;
     }
 
 private:
