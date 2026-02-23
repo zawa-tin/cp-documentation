@@ -32,10 +32,9 @@ data:
     \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
     \ zawa\n#line 2 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\n#line 4 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <concepts>\n#include <cmath>\n\
-    #include <limits>\n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\
-    \ntemplate <std::integral V>\nclass HeavyLightDecomposition {\npublic:\n\n   \
-    \ static constexpr V Invalid() noexcept {\n        return INVALID;\n    }\n\n\
-    \    HeavyLightDecomposition() = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>>\
+    #include <limits>\n#include <optional>\n#include <utility>\n#include <vector>\n\
+    \nnamespace zawa {\n\ntemplate <std::integral V>\nclass HeavyLightDecomposition\
+    \ {\npublic:\n\n    HeavyLightDecomposition() = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>>\
     \ T, V root = 0u) \n        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n),\
     \ \n        m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {\n\n\
     \            auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {\n       \
@@ -89,34 +88,34 @@ data:
     \ of v ?\n    bool isAncestor(V v, V p) const {\n        assert(v < size());\n\
     \        assert(p < size());\n        if (m_dep[v] < m_dep[p]) return false;\n\
     \        while (v != INVALID and m_top[v] != m_top[p]) {\n            v = m_par[m_top[v]];\n\
-    \        }\n        return v != INVALID;\n    }\n\n    V levelAncestor(V v, usize\
-    \ step) const {\n        assert(v < (V)size());\n        if (step > m_dep[v])\
-    \ return INVALID;\n        while (true) {\n            usize dist{m_dep[v] - m_dep[m_top[v]]};\n\
-    \            if (dist >= step) break;\n            step -= dist + 1;\n       \
-    \     v = m_par[m_top[v]];\n        }\n        step = (m_dep[v] - m_dep[m_top[v]])\
-    \ - step;\n        return m_inv[m_idx[m_top[v]] + step];\n    }\n\n    V jump(V\
-    \ s, V t, usize step) const {\n        assert(s < (V)size());\n        assert(t\
-    \ < (V)size());\n        V uu{INVALID}, vv{INVALID};\n        usize d{};\n   \
-    \     for (auto [u, v] : decomp(s, t)) {\n            usize dist{std::max(m_dep[u],\
-    \ m_dep[v]) - std::min(m_dep[u], m_dep[v])};\n            if (dist >= step) {\n\
-    \                uu = u;\n                vv = v;\n                d = dist;\n\
-    \                break;\n            }\n            step -= dist + 1;\n      \
-    \  }\n        if (uu == INVALID) return INVALID;\n        if (m_dep[uu] <= m_dep[vv])\n\
-    \            return m_inv[m_idx[uu] + step];\n        else\n            return\
-    \ m_inv[m_idx[vv] + (d - step)];\n    }\n\n    usize distance(V s, V t) const\
-    \ {\n        assert(s < (V)size());\n        assert(t < (V)size());\n        usize\
-    \ res{};\n        for (auto [u, v] : decomp(s, t)) {\n            if (m_dep[u]\
-    \ > m_dep[v]) std::swap(u, v);\n            res += m_dep[v] - m_dep[u];\n    \
-    \    }\n        return res;\n    }\n\nprivate:\n\n    static constexpr V INVALID{static_cast<V>(-1)};\n\
-    \n    usize m_n{};\n\n    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};\n\
-    \n    std::vector<usize> m_size{}, m_dep{};\n};\n\n} // namespace zawa\n#line\
-    \ 5 \"Test/LC/lca/HeavyLightDecomposition.test.cpp\"\n\nusing namespace zawa;\n\
-    \nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n   \
-    \ std::vector<std::vector<int>> T(N);\n    for (int i{1} ; i < N ; i++) {\n  \
-    \      int p;\n        std::cin >> p;\n        T[p].push_back(i);\n        T[i].push_back(p);\n\
-    \    }\n    HeavyLightDecomposition hld(T, 0);\n    while (Q--) {\n        int\
-    \ u, v;\n        std::cin >> u >> v;\n        std::cout << hld.lca(u, v) << '\\\
-    n';\n    }\n}\n"
+    \        }\n        return v != INVALID;\n    }\n\n    std::optional<V> levelAncestor(V\
+    \ v, usize step) const {\n        assert(v < (V)size());\n        if (step > m_dep[v])\
+    \ return std::nullopt;\n        while (true) {\n            usize dist{m_dep[v]\
+    \ - m_dep[m_top[v]]};\n            if (dist >= step) break;\n            step\
+    \ -= dist + 1;\n            v = m_par[m_top[v]];\n        }\n        step = (m_dep[v]\
+    \ - m_dep[m_top[v]]) - step;\n        return m_inv[m_idx[m_top[v]] + step];\n\
+    \    }\n\n    std::optional<V> jump(V s, V t, usize step) const {\n        assert(s\
+    \ < (V)size());\n        assert(t < (V)size());\n        V uu{INVALID}, vv{INVALID};\n\
+    \        usize d{};\n        for (auto [u, v] : decomp(s, t)) {\n            usize\
+    \ dist{std::max(m_dep[u], m_dep[v]) - std::min(m_dep[u], m_dep[v])};\n       \
+    \     if (dist >= step) {\n                uu = u;\n                vv = v;\n\
+    \                d = dist;\n                break;\n            }\n          \
+    \  step -= dist + 1;\n        }\n        if (uu == INVALID) return std::nullopt;\n\
+    \        if (m_dep[uu] <= m_dep[vv])\n            return m_inv[m_idx[uu] + step];\n\
+    \        else\n            return m_inv[m_idx[vv] + (d - step)];\n    }\n\n  \
+    \  usize distance(V s, V t) const {\n        assert(s < (V)size());\n        assert(t\
+    \ < (V)size());\n        usize res{};\n        for (auto [u, v] : decomp(s, t))\
+    \ {\n            if (m_dep[u] > m_dep[v]) std::swap(u, v);\n            res +=\
+    \ m_dep[v] - m_dep[u] + 1;\n        }\n        return --res;\n    }\n\nprivate:\n\
+    \n    static constexpr V INVALID{static_cast<V>(-1)};\n\n    usize m_n{};\n\n\
+    \    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};\n\n    std::vector<usize>\
+    \ m_size{}, m_dep{};\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/lca/HeavyLightDecomposition.test.cpp\"\
+    \n\nusing namespace zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n \
+    \   std::cin >> N >> Q;\n    std::vector<std::vector<int>> T(N);\n    for (int\
+    \ i{1} ; i < N ; i++) {\n        int p;\n        std::cin >> p;\n        T[p].push_back(i);\n\
+    \        T[i].push_back(p);\n    }\n    HeavyLightDecomposition hld(T, 0);\n \
+    \   while (Q--) {\n        int u, v;\n        std::cin >> u >> v;\n        std::cout\
+    \ << hld.lca(u, v) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n\n#include \"../../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../../Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\nusing namespace\
     \ zawa;\n\nint main() {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >>\
@@ -132,7 +131,7 @@ data:
   isVerificationFile: true
   path: Test/LC/lca/HeavyLightDecomposition.test.cpp
   requiredBy: []
-  timestamp: '2026-01-01 21:17:10+09:00'
+  timestamp: '2026-02-23 15:51:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/lca/HeavyLightDecomposition.test.cpp
