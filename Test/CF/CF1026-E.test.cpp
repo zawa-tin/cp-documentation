@@ -1,6 +1,11 @@
 // #define PROBLEM "https://codeforces.com/contest/2110/problem/E"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * Codeforces Round 1026 (Div. 2) E - Melody
+ * https://codeforces.com/contest/2110/submission/363989357
+ */
+
 #include "../../Src/Sequence/CompressedSequence.hpp"
 #include "../../Src/Graph/EulerianTrail.hpp"
 using namespace zawa;
@@ -25,15 +30,15 @@ void solve() {
         edge[i].first = comp[E[i].first];
         edge[i].second = comp.size() + comp[E[i].second];
     }
-    auto ans = EulerianTrail(2 * comp.size(), edge, false);
+    auto ans = EulerianTrail(2 * (int)comp.size(), edge, false);
     if (ans) {
         std::cout << "YES\n";
         auto es = std::move(ans->second);
-        for (int i = 0 ; i < N ; i++) std::cout << es[i] + 1 << (i + 1 == N ? '\n' : ' ');
+        for (int i = 0 ; i < N ; i++) 
+            std::cout << es[i] + 1 << (i + 1 == N ? '\n' : ' ');
     }
-    else {
+    else 
         std::cout << "NO\n";
-    }
 }
 
 int main() {
