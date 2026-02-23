@@ -11,28 +11,29 @@ void solve() {
     int N, M;
     std::cin >> N >> M;
     std::vector<std::pair<int, int>> E(M);
-    for (auto& [u, v] : E) std::cin >> u >> v;
+    for (auto& [u, v] : E) 
+        std::cin >> u >> v;
     auto ans = EulerianTrail(N, E, true);
     if (ans) {
         std::cout << "Yes\n";
         auto [vs, es] = std::move(*ans);
-        for (int i = 0 ; i < std::ssize(vs) ; i++) std::cout << vs[i] << (i + 1 == std::ssize(vs) ? "" : " ");
+        for (int i = 0 ; i < std::ssize(vs) ; i++) 
+            std::cout << vs[i] << (i + 1 == std::ssize(vs) ? "" : " ");
         std::cout << '\n';
-        for (int i = 0 ; i < std::ssize(es) ; i++) std::cout << es[i] << (i + 1 == std::ssize(es) ? "" : " ");
+        for (int i = 0 ; i < std::ssize(es) ; i++) 
+            std::cout << es[i] << (i + 1 == std::ssize(es) ? "" : " ");
         std::cout << '\n';
     }
-    else {
+    else
         std::cout << "No\n";
-    }
 }
 
 int main() {
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    std::cout.tie(0);
+    std::ios::sync_with_stdio(0);
     int T;
     std::cin >> T;
-    while (T--) {
+    while (T--)
         solve();
-    }
 }

@@ -26,10 +26,12 @@ documentation_of: //Src/Graph/EulerianTrail.hpp
 
 ```cpp
 temlplate <class T>
-std::optional<std::pair<std::vector<T>, std::vector<usize>>> EulerianTrail(usize n, const std::vector<std::pair<T, T>>& edges, bool directed)
+std::optional<std::pair<std::vector<T>, std::vector<usize>>> EulerianTrail(T n, const std::vector<std::pair<T, T>>& edges, bool directed, T start = -1)
 ```
 
 `n`は頂点数、`edges`は辺の列、`directed`は有向グラフなら`true`、無向グラフなら`false`を入れる。
+
+`start`は始点を固定する。たとえグラフがオイラーグラフであったとしても、`start`を始点としたオイラー路が無ければ`std::nullopt`を返す。
 
 返り値が`std::nullopt`のとき、入力に対してオイラー路は存在しない。
 
