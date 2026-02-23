@@ -43,16 +43,13 @@ int main() {
         int lca{(int)hld.lca(u, v)};
         assert(u != lca);
         if (v == lca) {
-            auto a{hld.levelAncestor(u, hld.depth(u) - hld.depth(v) - 1)};
-            assert(a != hld.Invalid());
+            auto a{hld.levelAncestor(u, hld.depth(u) - hld.depth(v) - 1).value()};
             mint ans{prod[u] * invprod[a]};
             std::cout << ans.val() << '\n';
         } 
         else {
-            auto a{hld.levelAncestor(u, hld.depth(u) - hld.depth(lca) - 1)};
-            auto b{hld.levelAncestor(v, hld.depth(v) - hld.depth(lca) - 1)};
-            assert(a != hld.Invalid());
-            assert(b != hld.Invalid());
+            auto a{hld.levelAncestor(u, hld.depth(u) - hld.depth(lca) - 1).value()};
+            auto b{hld.levelAncestor(v, hld.depth(v) - hld.depth(lca) - 1).value()};
             mint ans{1};
             ans *= prod[u] * invprod[a];
             ans *= mint{N - hld.size(a) - hld.size(b)};

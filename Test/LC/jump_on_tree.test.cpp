@@ -23,6 +23,6 @@ int main() {
         int s, t, i;
         std::cin >> s >> t >> i;
         auto ans{hld.jump(s, t, i)};
-        std::cout << (hld.Invalid() == ans ? -1 : (int)ans) << '\n';
+        std::cout << (ans ? *ans : -1) << '\n';
     }
 }
