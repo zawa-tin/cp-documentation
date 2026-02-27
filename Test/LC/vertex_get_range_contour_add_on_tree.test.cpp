@@ -1,7 +1,7 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/vertex_add_range_contour_sum_on_tree"
+#define PROBLEM "https://judge.yosupo.jp/problem/vertex_get_range_contour_add_on_tree"
 
 #include "../../Src/Graph/Tree/ContourAggregation.hpp"
-#include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
+#include "../../Src/DataStructure/FenwickTree/DualFenwickTree.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 using namespace zawa;
 
@@ -28,26 +28,25 @@ int main() {
     }
     ContourAggregation sol(move(G));
     cerr << "size=" << ssize(sol) << endl;
-    FenwickTree<AdditiveGroup<long long>> fen(ssize(sol));
+    DualFenwickTree<AdditiveGroup<long long>> fen(ssize(sol));
     for (int i = 0 ; i < N ; i++) 
-        for (int j : sol.point(i))
-            fen.operation(j,A[i]);
+        for (auto [L, R] : sol.contour(i,0))
+            fen.operation(L,R,A[i]);
     while (Q--) {
         int T;
         cin >> T;
         if (T == 0) {
-            int p, x;
-            cin >> p >> x;
-            for (int i : sol.point(p))
-                fen.operation(i,x);
+            int p, l, r, x;
+            cin >> p >> l >> r >> x;
+            for (auto [L, R] : sol.contour(p,l,r))
+                fen.operation(L,R,x);
         }
         else if (T == 1) {
-            int p, l, r;
-            cin >> p >> l >> r;
-            // cout << "query " << p << ' ' << l << ' ' << r << endl;
+            int p;
+            cin >> p;
             long long ans = 0;
-            for (auto [L, R] : sol.contour(p,l,r))
-                ans += fen.product(L,R);
+            for (auto i : sol.point(p))
+                ans += fen[i];
             cout << ans << '\n';
         }
         else

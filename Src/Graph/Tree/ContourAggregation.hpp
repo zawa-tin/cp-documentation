@@ -19,6 +19,7 @@ public:
 
     ContourAggregation(std::vector<std::vector<V>> G) : m_lca{G}, m_cent(1), m_par(1), m_ch(1), m_offset(1) {
         const usize N = G.size();
+        assert(N);
         m_inv.resize(N);
         m_pos.resize(N);
         m_ord.reserve(2 * N);
@@ -54,17 +55,17 @@ public:
         };
 
         // {node id, height, vertices}
-        auto dfs = [&](auto dfs, V v, bool root) -> std::tuple<usize,usize,std::vector<V>> {
+        auto dfs = [&](auto dfs, V v) -> std::tuple<usize,usize,std::vector<V>> {
             v = ce.rooting(v);
             std::vector<std::tuple<usize,usize,std::vector<V>>> ch;
             ce.remove(v);
             dist[v] = 0;
             for (V x : ce.adjlist(v)) {
-                auto ret = dfs(dfs,x,false);
+                auto ret = dfs(dfs,x);
                 for (V cur : std::get<2>(ret))
                     dist[cur] = m_lca.distance(v,cur);
                 m_cent[std::get<0>(ret)] = v;
-                ch.push_back(move(ret));
+                ch.push_back(std::move(ret));
             }
             for (auto& dat : ch)
                 std::ranges::sort(std::get<2>(dat),compDist);
@@ -100,19 +101,23 @@ public:
                 heap.push(ch.size()-1);
                 m_ch[nd] = {L,R};
             }
-            if (root)
-                createOffset(std::get<0>(ch[heap.top()]),std::get<2>(ch[heap.top()]));
             for (V x : std::get<2>(ch[heap.top()]))
                 dist[x] = -1;
             return ch[heap.top()];
         };
-        std::vector<bool> vis(N);
-        for (V i = 0 ; i < (V)N ; i++)
-            if (!vis[i]) {
-                const auto ret = std::get<2>(dfs(dfs,i,true));
-                for (V v : ret)
-                    vis[v] = 1;
-            }
+        if (N == 1) {
+            m_inv[0].push_back(0);
+            m_ord.push_back(0);
+        }
+        else {
+            std::vector<bool> vis(N);
+            for (V i = 0 ; i < (V)N ; i++)
+                if (!vis[i]) {
+                    const auto ret = std::get<2>(dfs(dfs,i));
+                    for (V v : ret)
+                        vis[v] = 1;
+                }
+        }
     }
 
     inline usize size() const {
@@ -144,6 +149,10 @@ public:
             res.push_back({m_offset[cur][L],m_offset[cur][R]});
         }
         return res;
+    }
+
+    std::vector<std::pair<usize,usize>> contour(V v, usize d) const {
+        return contour(v,d,d+1);
     }
 
 private:
