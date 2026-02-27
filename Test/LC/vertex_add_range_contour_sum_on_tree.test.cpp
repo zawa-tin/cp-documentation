@@ -43,9 +43,11 @@ int main() {
         else if (T == 1) {
             int p, l, r;
             cin >> p >> l >> r;
+            // cout << "query " << p << ' ' << l << ' ' << r << endl;
             long long ans = 0;
             for (auto [L, R] : sol.contour(p,l,r))
                 ans += fen.product(L,R);
+            cout << ans << '\n';
         }
         else
             assert(0);

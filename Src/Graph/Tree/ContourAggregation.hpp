@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./Centroid.hpp"
+#include "./LowestCommonAncestor.hpp"
 #include "../../DataStructure/Heap/BinaryHeap.hpp"
 
 #include <cassert>
@@ -9,7 +10,6 @@
 #include <tuple>
 #include <utility>
 #include <vector>
-#include <iostream>
 
 namespace zawa {
 
@@ -17,7 +17,7 @@ template <std::integral V>
 class ContourAggregation {
 public:
 
-    ContourAggregation(std::vector<std::vector<V>> G) : m_cent(1), m_par(1), m_ch(1) {
+    ContourAggregation(std::vector<std::vector<V>> G) : m_lca{G}, m_cent(1), m_par(1), m_ch(1), m_offset(1) {
         const usize N = G.size();
         m_inv.resize(N);
         m_pos.resize(N);
@@ -25,12 +25,16 @@ public:
         Centroid ce{std::move(G)};
         std::vector<i32> dist(N,-1);
 
-        auto makeNode = [&](std::vector<V> vs) -> usize {
-            assert(vs.size());
+        auto makeNode = [&]() -> usize {
             const usize res = m_cent.size();
-            this->m_cent.push_back(N);
-            this->m_par.push_back(0);
-            this->m_ch.emplace_back();
+            m_cent.push_back(N);
+            m_par.push_back(0);
+            m_ch.emplace_back();
+            m_offset.emplace_back();
+            return res;
+        };
+
+        auto createOffset = [&](usize nd,std::vector<V> vs) {
             std::vector<usize> offset{m_ord.size()};
             if (dist[vs[0]] == 1)
                 offset.push_back(m_ord.size());
@@ -42,8 +46,7 @@ public:
                 }
                 offset.push_back(m_ord.size());
             }
-            m_offset.push_back(std::move(offset));
-            return res;
+            m_offset[nd] = std::move(offset);
         };
 
         auto compDist = [&](usize i, usize j) -> bool {
@@ -51,36 +54,25 @@ public:
         };
 
         // {node id, height, vertices}
-        auto dfs = [&](auto dfs, V v) -> std::tuple<usize,usize,std::vector<V>> {
+        auto dfs = [&](auto dfs, V v, bool root) -> std::tuple<usize,usize,std::vector<V>> {
             v = ce.rooting(v);
             std::vector<std::tuple<usize,usize,std::vector<V>>> ch;
             ce.remove(v);
-            for (V x : ce.adjlist(v)) {
-                auto res = dfs(dfs,x);
-                m_cent[std::get<0>(res)] = v;
-                ch.push_back(std::move(res));
-            }
-            std::vector<V> que{v};
             dist[v] = 0;
-            for (usize t = 0 ; t < que.size() ; t++) {
-                const usize cur = que[t];
-                for (V x : ce.adjlist(cur))
-                    if (dist[x] == -1) {
-                        dist[x] = dist[cur] + 1;
-                        que.push_back(x);
-                    }
+            for (V x : ce.adjlist(v)) {
+                auto ret = dfs(dfs,x,false);
+                for (V cur : std::get<2>(ret))
+                    dist[cur] = m_lca.distance(v,cur);
+                m_cent[std::get<0>(ret)] = v;
+                ch.push_back(move(ret));
             }
             for (auto& dat : ch)
                 std::ranges::sort(std::get<2>(dat),compDist);
-            ch.emplace_back(m_pos[v] = makeNode({v}),0u,std::vector<V>{v});
-
-            std::cout << v << " build " << std::endl;
-            std::cout << "vertices=";
-            for (auto x : que)
-                std::cout << x << ' ';
-            std::cout << std::endl;
-            std::cout << "ch.size()=" << ch.size() << std::endl;
-
+            { // create single node of {v}
+                const usize nd = m_pos[v] = makeNode();
+                ch.emplace_back(nd,0u,std::vector<V>{v});
+                m_cent[nd] = v;
+            }
             auto comp = [&](usize i, usize j) -> bool {
                 return std::get<1>(ch[i]) < std::get<1>(ch[j]);
             };
@@ -94,31 +86,33 @@ public:
                 heap.pop();
                 const usize r = heap.top();
                 heap.pop();
+                const usize L = std::get<0>(ch[l]), R = std::get<0>(ch[r]);
+                createOffset(L,std::get<2>(ch[l]));
+                createOffset(R,std::get<2>(ch[r]));
                 // merge here
                 std::vector<V> vertices;
                 std::ranges::merge(std::move(std::get<2>(ch[l])),std::move(std::get<2>(ch[r])),std::back_inserter(vertices),compDist);
-                const usize nd = makeNode(vertices);
-                m_par[l] = m_par[r] = nd;
+                const usize nd = makeNode();
+                m_par[L] = m_par[R] = nd;
+                m_cent[L] = m_cent[R] = v;
                 const usize h = std::max(std::get<1>(ch[l]),std::get<1>(ch[r]))+1;
                 ch.emplace_back(nd,h,std::move(vertices));
                 heap.push(ch.size()-1);
-                m_ch[nd] = {l,r};
-                std::cout << l << " -> " << nd << " <- " << r << std::endl;
+                m_ch[nd] = {L,R};
             }
-            for (V v : que)
-                dist[v] = -1;
+            if (root)
+                createOffset(std::get<0>(ch[heap.top()]),std::get<2>(ch[heap.top()]));
+            for (V x : std::get<2>(ch[heap.top()]))
+                dist[x] = -1;
             return ch[heap.top()];
         };
         std::vector<bool> vis(N);
         for (V i = 0 ; i < (V)N ; i++)
-            if (!vis[i])
-                for (V v : std::get<2>(dfs(dfs,i)))
+            if (!vis[i]) {
+                const auto ret = std::get<2>(dfs(dfs,i,true));
+                for (V v : ret)
                     vis[v] = 1;
-
-        std::cout << "m_pos=";
-        for (auto v : m_pos)
-            std::cout << v << ' ';
-        std::cout << std::endl;
+            }
     }
 
     inline usize size() const {
@@ -131,21 +125,30 @@ public:
     }
 
     std::vector<std::pair<usize,usize>> contour(V v, usize l, usize r) const {
+        assert(V{0} <= v and v < (V)m_inv.size());
         std::vector<std::pair<usize,usize>> res;
+        if (l >= r)
+            return res;
         usize nd = m_pos[v];
         if (l == 0)
-            res.push_back({m_offset[nd][0],m_offset[nd][1]});
-        while (m_par[nd]) {
-            nd = m_par[v];
-            const usize cur = m_ch[nd].first == nd ? m_ch[nd].second : m_ch[nd].first;
-            if (l + 1 >= m_offset[cur].size())
+            res.push_back({m_inv[v][0],m_inv[v][0]+1});
+        for ( ; m_par[nd] ; nd = m_par[nd]) {
+            const usize cur = m_ch[m_par[nd]].first == nd ? m_ch[m_par[nd]].second : m_ch[m_par[nd]].first;
+            const usize sub = m_lca.distance(m_cent[cur],v);
+            if (sub >= r)
                 continue;
-            res.push_back({m_offset[cur][l],m_offset[cur][std::min(r,m_offset[cur].size()-1)]});
+            const usize L = sub >= l ? 0 : l - sub;
+            const usize R = std::min(r - sub,m_offset[cur].size()-1);
+            if (L >= R)
+                continue;
+            res.push_back({m_offset[cur][L],m_offset[cur][R]});
         }
         return res;
     }
 
 private:
+
+    LowestCommonAncestor<V> m_lca;
 
     std::vector<V> m_cent;
 
@@ -153,12 +156,14 @@ private:
 
     std::vector<std::pair<usize,usize>> m_ch;
 
+    std::vector<std::vector<usize>> m_offset;
+
     std::vector<V> m_ord;
 
     std::vector<usize> m_pos;
 
-    std::vector<std::vector<usize>> m_offset, m_inv;
-
+    std::vector<std::vector<usize>> m_inv;
+    
 };
 
 } // namespace zawa
