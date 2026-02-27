@@ -108,8 +108,8 @@ data:
   timestamp: '2026-02-22 16:34:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/eulerian_trail_undirected.test.cpp
   - Test/LC/eulerian_trail_directed.test.cpp
+  - Test/LC/eulerian_trail_undirected.test.cpp
   - Test/UC/4-17-K.test.cpp
   - Test/CF/CF1026-E.test.cpp
 documentation_of: Src/Graph/EulerianTrail.hpp

@@ -12,6 +12,9 @@ data:
     path: Src/DataStructure/Heap/PartitionedProducts.hpp
     title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
       \u7DCF\u7A4D\u3092\u7BA1\u7406"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/ContourAggregation.hpp
+    title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc306_e.test.cpp
@@ -22,6 +25,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc196_a.test.cpp
     title: Test/AtCoder/arc196_a.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+    title: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+    title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/My/DataStructure/Heap/BinaryHeap.test.cpp
     title: Test/My/DataStructure/Heap/BinaryHeap.test.cpp
@@ -114,16 +123,19 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/Heap/BinaryHeap.hpp
   requiredBy:
-  - Src/DataStructure/Heap/PartitionedProducts.hpp
+  - Src/Graph/Tree/ContourAggregation.hpp
   - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
+  - Src/DataStructure/Heap/PartitionedProducts.hpp
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/My/DataStructure/Heap/BinaryHeap.test.cpp
+  - Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
   - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
-  - Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
-  - Test/My/DataStructure/Heap/BinaryHeap.test.cpp
 documentation_of: Src/DataStructure/Heap/BinaryHeap.hpp
 layout: document
 title: "Binary Heap (\u512A\u5148\u5EA6\u4ED8\u304D\u30AD\u30E5\u30FC)"

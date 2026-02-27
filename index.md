@@ -594,6 +594,9 @@ data:
       path: Src/Graph/Tree/Centroid.hpp
       title: "\u6728\u306E\u91CD\u5FC3"
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/ContourAggregation.hpp
+      title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/DynamicTreeDP.hpp
       title: "Static Top Tree + \u6728DP"
     - icon: ':warning:'
@@ -1110,7 +1113,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC132-F Small Products
+      title: ABC223-H Xor Query
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
@@ -1666,8 +1669,14 @@ data:
       path: Test/LC/vertex_add_path_sum.test.cpp
       title: Test/LC/vertex_add_path_sum.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+      title: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/vertex_add_subtree_sum.test.cpp
       title: Test/LC/vertex_add_subtree_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+      title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   - name: Test/LC/lca
     pages:
     - icon: ':heavy_check_mark:'

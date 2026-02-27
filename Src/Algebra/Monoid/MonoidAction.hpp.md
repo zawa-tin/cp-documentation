@@ -50,8 +50,8 @@ data:
   timestamp: '2025-08-20 18:56:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
+  - Test/AtCoder/abc419_f.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidAction.hpp
 layout: document
 redirect_from:

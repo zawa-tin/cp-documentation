@@ -27,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+    title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -166,10 +169,11 @@ data:
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
-  - Test/AtCoder/arc088_e.test.cpp
-  - Test/AOJ/DSL_2_E.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
 layout: document
 title: Dual Fenwick Tree

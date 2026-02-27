@@ -182,9 +182,9 @@ data:
   timestamp: '2025-12-23 16:17:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
 documentation_of: Src/Graph/Tree/AuxiliaryTree.hpp
 layout: document
 title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\u306E\

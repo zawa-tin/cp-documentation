@@ -120,9 +120,9 @@ data:
   timestamp: '2026-01-12 16:27:35+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/My/FPS/PowerProjection.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
-  - Test/My/FPS/PowerProjection.test.cpp
 documentation_of: Src/FPS/PowerProjection.hpp
 layout: document
 title: FPS Power Projection

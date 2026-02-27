@@ -12,6 +12,9 @@ data:
       \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
       \u6728)"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/ContourAggregation.hpp
+    title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
   _extendedVerifiedWith:
@@ -36,6 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/SparseTable.test.cpp
     title: Test/LC/staticrmq/SparseTable.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+    title: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+    title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/Manual/typical90_ai.test.cpp
     title: Test/Manual/typical90_ai.test.cpp
@@ -97,20 +106,23 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/SparseTable.hpp
   requiredBy:
-  - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
+  - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Tree/ContourAggregation.hpp
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/typical90_ai.test.cpp
-  - Test/AtCoder/abc359_g.test.cpp
-  - Test/AtCoder/abc288_e.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
-  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
-  - Test/CF/EC162-D.test.cpp
+  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   - Test/CF/CF923-D.test.cpp
+  - Test/CF/EC162-D.test.cpp
+  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
+  - Test/AtCoder/abc340_g.test.cpp
+  - Test/AtCoder/abc288_e.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table
