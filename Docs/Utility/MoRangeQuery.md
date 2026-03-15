@@ -1,6 +1,6 @@
 ---
 title: Mo's algorithm
-documentation_of: //Src/DataStructure/Mo/Mo.hpp
+documentation_of: //Src/Sequence/MoRangeQuery.hpp
 ---
 
 ## 概要
@@ -11,23 +11,15 @@ Mo's Algorithm
 
 ```cpp
 template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
-std::vector<typename std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
+std::vector<typename std::invoke_result_t<Eval, usize>> Mo(const std::vector<std::pair<T,T>>& qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
 ```
 
 #### T
 
 クエリで与えられる区間の型
 
-- **符号なし整数型**のメンバ変数`l`、`r`をpublic下に持つクラスである必要がある
-- `l`が半開区間の左端、`r`が半開区間の右端を意味する
+- `first`が半開区間の左端、`secondr`が半開区間の右端を意味する
 
-`T`は基本的には以下をコピれば問題無いはず。
-
-```cpp
-struct query {
-    usize l, r;
-};
-```
 
 #### addL addR
 
@@ -65,3 +57,6 @@ $i$ 番目のクエリを処理する際の関数オブジェクト
 - [Mo's algorithm で解ける問題](https://37zigen.com/mos-algorithm-%E3%81%A7%E8%A7%A3%E3%81%91%E3%82%8B%E5%95%8F%E9%A1%8C/)
 - [Mo's algorithm](https://take44444.github.io/Algorithm-Book/range/mo/main.html)
 - [Mo's algorithm](https://ei1333.hateblo.jp/entry/2017/09/11/211011)
+- [定数倍が最適なMo's Algorithm](https://noshi91.hatenablog.com/entry/2023/04/13/224811)
+    - これを採用している。ABC448-Fでは距離の総和が最大ケースにおいて $\9\times 10^9$ 程度であるものが $7.5\times 10^9$ 程度に削減されていることを確認した。
+    - しかし、区間クエリに投げると前の実装(Hilbert Curve)より実測がかかっており厳しい気持ちに。思ったより`Mo`の順序の計算にネックがある可能性がある？

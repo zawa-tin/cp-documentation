@@ -1,23 +1,21 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/DataStructure/Mo/Mo.hpp"
+#include "../../Src/Sequence/MoRangeQuery.hpp"
 #include "../../Src/DataStructure/FenwickTree/FenwickTree.hpp"
 #include "../../Src/Sequence/CompressedSequence.hpp"
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 
 /*
  * AtCoder Beginner Contest 384 G - Abs Sum
- * https://atcoder.jp/contests/abc384/submissions/67045346
+ * https://atcoder.jp/contests/abc384/submissions/74152185
  */
 
 using namespace zawa;
+using namespace std;
 
 int N, K, A[100000], B[100000];
-struct query {
-    usize l, r;
-};
-query Q[10000];
+pair<int,int> Q[10000];
 
 void solve() {
     CompressedSequence a{std::vector(A, A + N)}, b{std::vector(B, B + N)};
@@ -64,7 +62,7 @@ void solve() {
         // std::cout << "eval " << i << std::endl;
         return ans;
     };
-    for (long long a : Mo(std::vector<query>(Q, Q + K), addA, addB, delA, delB, eval)) {
+    for (long long a : Mo(std::vector(Q, Q + K), addA, addB, delA, delB, eval)) {
         std::cout << -a << '\n';
     }
 }
@@ -77,7 +75,7 @@ int main() {
     for (int i = 0 ; i < N ; i++) std::cin >> B[i];
     std::cin >> K;
     for (int i = 0 ; i < K ; i++) {
-        std::cin >> Q[i].l >> Q[i].r;
+        std::cin >> Q[i].first >> Q[i].second;
     }
     solve();
 #else

@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/static_range_frequency"
 
 #include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/DataStructure/Mo/Mo.hpp"
+#include "../../Src/Sequence/MoRangeQuery.hpp"
 #include "../../Src/Sequence/CompressedSequence.hpp"
 
 #include <iostream>
@@ -10,9 +10,6 @@
 using namespace zawa;
 
 int N, Q, X[500050];
-struct query {
-    usize l, r;
-};
 int main() {
     SetFastIO();
 
@@ -20,7 +17,7 @@ int main() {
     std::vector<int> A(N);
     for (int& a : A) std::cin >> a;
     CompressedSequence comp{A};
-    std::vector<query> q(Q);
+    std::vector<std::pair<int,int>> q(Q);
     for (int i{} ; auto& [l, r] : q) {
         std::cin >> l >> r >> X[i];
         i++;

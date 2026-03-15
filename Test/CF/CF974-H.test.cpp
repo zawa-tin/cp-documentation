@@ -3,25 +3,22 @@
 
 /*
  * Codeforces Round 974 (Div. 3) H. Robin Hood Archery
- * https://codeforces.com/contest/2014/submission/315528073
+ * https://codeforces.com/contest/2014/submission/366821759
  */
 
-#include "../../Src/DataStructure/Mo/Mo.hpp"
+#include "../../Src/Sequence/MoRangeQuery.hpp"
 
 #include <iostream>
 #include <vector>
 int N, Q, A[200020], cnt[1000010];
-struct query {
-    unsigned l, r;
-};
 using namespace zawa;
 void solve() {
     std::cin >> N >> Q;
     for (int i = 0 ; i < N ; i++) std::cin >> A[i];
-    std::vector<query> q(Q);
+    std::vector<std::pair<int,int>> q(Q);
     for (int i = 0 ; i < Q ; i++) {
-        std::cin >> q[i].l >> q[i].r;
-        q[i].l--;
+        std::cin >> q[i].first >> q[i].second;
+        q[i].first--;
     }
     int odd = 0;
     auto op = [&](int i) {
