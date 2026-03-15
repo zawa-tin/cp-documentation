@@ -44,9 +44,6 @@ data:
     title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
       \u7DCF\u7A4D\u3092\u7BA1\u7406"
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/Mo/Mo.hpp
-    title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Mo/RollbackMo.hpp
     title: Rollback Mo
   - icon: ':heavy_check_mark:'
@@ -561,6 +558,9 @@ data:
     path: Src/Sequence/Manacher.hpp
     title: Manacher (Enumerate Palindromes)
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/MoRangeQuery.hpp
+    title: Mo's algorithm
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/OfflineRangeProduct.hpp
     title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
       \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
@@ -623,6 +623,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Utility/MisereNim.hpp
     title: Misere Nim
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/Mo.hpp
+    title: Src/Utility/Mo.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Utility/SeparatedFamilySet.hpp
     title: "2\u8981\u7D20\u306E\u5206\u96E2\u3092\u7DB2\u7F85\u3059\u308B\u30C6\u30AF\
@@ -1146,6 +1149,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc440_f.test.cpp
     title: Test/AtCoder/abc440_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc448_f.test.cpp
+    title: Test/AtCoder/abc448_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
@@ -1740,6 +1746,7 @@ data:
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/AhoCorasick.hpp
   - Src/Sequence/CartesianTree.hpp
+  - Src/Sequence/MoRangeQuery.hpp
   - Src/Sequence/Manacher.hpp
   - Src/Sequence/BitwiseOrConvolution.hpp
   - Src/Sequence/CompressedSequence.hpp
@@ -1827,6 +1834,7 @@ data:
   - Src/Utility/SeparatedFamilySet.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   - Src/Utility/MisereNim.hpp
+  - Src/Utility/Mo.hpp
   - Src/Number/SqrtHeuristicArithmetic.hpp
   - Src/Number/BinomalCoefficients.hpp
   - Src/Number/EnumeratePrimes.hpp
@@ -1862,7 +1870,6 @@ data:
   - Src/DataStructure/Heap/PartitionedProducts.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
-  - Src/DataStructure/Mo/Mo.hpp
   - Src/DataStructure/Mo/RollbackMo.hpp
   - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum/PrefixSum1D.hpp
@@ -2133,6 +2140,7 @@ data:
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
+  - Test/AtCoder/abc448_f.test.cpp
   - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp

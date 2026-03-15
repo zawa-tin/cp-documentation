@@ -126,9 +126,6 @@ data:
   - name: Src/DataStructure/Mo
     pages:
     - icon: ':heavy_check_mark:'
-      path: Src/DataStructure/Mo/Mo.hpp
-      title: Mo's algorithm
-    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Mo/RollbackMo.hpp
       title: Rollback Mo
   - name: Src/DataStructure/Other
@@ -743,6 +740,9 @@ data:
       path: Src/Sequence/Manacher.hpp
       title: Manacher (Enumerate Palindromes)
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/MoRangeQuery.hpp
+      title: Mo's algorithm
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/OfflineRangeProduct.hpp
       title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\
         \u30E9\u30A4\u30F3\u51E6\u7406\u3059\u308B"
@@ -826,6 +826,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Utility/MisereNim.hpp
       title: Misere Nim
+    - icon: ':heavy_check_mark:'
+      path: Src/Utility/Mo.hpp
+      title: Src/Utility/Mo.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Utility/ParallelBinarySearch.hpp
       title: "\u4E26\u5217\u4E8C\u5206\u63A2\u7D22"
@@ -1379,6 +1382,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc440_f.test.cpp
       title: Test/AtCoder/abc440_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc448_f.test.cpp
+      title: Test/AtCoder/abc448_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

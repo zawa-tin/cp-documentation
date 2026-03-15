@@ -2,17 +2,20 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/Mo/Mo.hpp
-    title: Mo's algorithm
-  - icon: ':heavy_check_mark:'
     path: Src/Sequence/CompressedSequence.hpp
     title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/MoRangeQuery.hpp
+    title: Mo's algorithm
   - icon: ':heavy_check_mark:'
     path: Src/Template/IOSetting.hpp
     title: "io\u307E\u308F\u308A\u306E\u8A2D\u5B9A"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/Mo.hpp
+    title: Src/Utility/Mo.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -33,36 +36,48 @@ data:
     \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
     \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
     \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/DataStructure/Mo/Mo.hpp\"\n\n#line 4 \"Src/DataStructure/Mo/Mo.hpp\"\
-    \n\n#include <algorithm>\n#include <bit>\n#include <cassert>\n#include <vector>\n\
-    #include <type_traits>\n\nnamespace zawa {\n\nnamespace internal {\n\n// reference:\
-    \ https://codeforces.com/blog/entry/61203?#comment-1064868\nu64 hilbertOrder(u64\
-    \ x, u64 y, usize dim) {\n    const u64 max{(1ull << dim) - 1};\n    assert(x\
-    \ <= max);\n    assert(y <= max);\n    u64 res{};\n    for (u64 s{1ull << (dim\
-    \ - 1)} ; s ; s >>= 1) {\n        bool rx{static_cast<bool>(x & s)}, ry{static_cast<bool>(y\
-    \ & s)};\n        res = (res << 2) | (rx ? ry ? 2 : 1 : ry ? 3 : 0);\n       \
-    \ if (!rx) {\n            if (ry) x ^= max, y ^= max;\n            std::swap(x,\
-    \ y);\n        }\n    }\n    return res;\n}\n\n} // namespace internal\n\ntemplate\
-    \ <class T, class AddL, class AddR, class DelL, class DelR, class Eval>\nstd::vector<typename\
-    \ std::invoke_result_t<Eval, usize>> Mo(std::vector<T> qs, AddL addL, AddR addR,\
-    \ DelL delL, DelR delR, Eval eval, bool reset = false) {\n    usize log{};\n \
-    \   for (const T& lr : qs) log = std::max<usize>(log, std::bit_width(lr.r));\n\
-    \    std::vector<std::pair<T, usize>> ord(qs.size());\n    std::vector<u64> h(qs.size());\n\
-    \    for (usize i{} ; i < qs.size() ; i++) {\n        ord[i] = {qs[i], i};\n \
-    \       h[i] = internal::hilbertOrder(qs[i].l, qs[i].r, log);\n    }\n    std::sort(ord.begin(),\
-    \ ord.end(), [&](const auto& L, const auto& R) -> bool {\n            return h[L.second]\
-    \ < h[R.second];\n            });\n    std::vector<typename std::invoke_result_t<Eval,\
-    \ usize>> res(qs.size());\n    usize L{}, R{};\n    for (const auto& [lr, id]\
-    \ : ord) {\n        while (R < lr.r) addR(R++);\n        while (L > lr.l) addL(--L);\n\
-    \        while (R > lr.r) delR(--R);\n        while (L < lr.l) delL(L++);\n  \
-    \      res[id] = eval(id);\n    }\n    if (reset) while (R > L) delR(--R);\n \
-    \   return res;\n}\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n#include <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class\
-    \ T>\nclass CompressedSequence {\npublic:\n\n    static constexpr u32 NotFound\
-    \ = std::numeric_limits<u32>::max();\n\n    CompressedSequence() = default;\n\n\
-    \    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
-    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ zawa\n#line 2 \"Src/Sequence/MoRangeQuery.hpp\"\n\n#include <algorithm>\n#include\
+    \ <ranges>\n\n#line 2 \"Src/Utility/Mo.hpp\"\n\n#line 4 \"Src/Utility/Mo.hpp\"\
+    \n\n#line 6 \"Src/Utility/Mo.hpp\"\n#include <cmath>\n#line 8 \"Src/Utility/Mo.hpp\"\
+    \n#include <utility>\n#include <numeric>\n#include <limits>\n#include <vector>\n\
+    \nnamespace zawa {\n\ntemplate <class T>\nstd::vector<usize> Mo(const std::vector<std::pair<T,T>>&\
+    \ P) {\n    if (P.empty())\n        return {};\n    T minY = std::numeric_limits<T>::max();\n\
+    \    const u64 W = [&]() {\n        T minX = std::numeric_limits<T>::max();\n\
+    \        T maxX = std::numeric_limits<T>::min(), maxY = std::numeric_limits<T>::min();\n\
+    \        for (auto [x,y] : P) {\n            minX = std::min(minX,x);\n      \
+    \      maxX = std::max(maxX,x);\n            minY = std::min(minY,y);\n      \
+    \      maxY = std::max(maxY,y);\n        }\n        return std::max<u64>({1,u64(maxX-minX),u64(maxY-minY)});\n\
+    \    }();\n    const usize B = [&]() {\n        u64 sq = std::max<u64>(1,sqrt(P.size()));\n\
+    \        return (W + sq - 1) / sq;\n    }();\n    std::vector<usize> ord1(P.size()),\
+    \ ord2(P.size());\n    std::iota(ord1.begin(),ord1.end(),0);\n    std::iota(ord2.begin(),ord2.end(),0);\n\
+    \    T sub = minY;\n    auto comp = [&](usize i, usize j) {\n                auto\
+    \ [xi,yi] = P[i];\n                auto [xj,yj] = P[j];\n                yi -=\
+    \ sub;\n                yj -= sub;\n                if (yi/B != yj/B)\n      \
+    \              return yi/B < yj/B;\n                else if ((yi/B)&1)\n     \
+    \               return xi>xj;\n                else\n                    return\
+    \ xi<xj;\n    };\n    std::ranges::sort(ord1,comp);\n    sub -= B / 2;\n    std::ranges::sort(ord2,comp);\n\
+    \    auto cost = [&](const std::vector<usize>& ord) {\n        u64 res = 0;\n\
+    \        for (usize i = 0 ; i + 1 < ord.size() ; i++) {\n            res += abs(P[ord[i+1]].first-P[ord[i]].first);\n\
+    \            res += abs(P[ord[i+1]].second-P[ord[i]].second);\n        }\n   \
+    \     return res;\n    };\n    return cost(ord1) <= cost(ord2) ? ord1 : ord2;\n\
+    }\n\n} // namespace zawa\n#line 7 \"Src/Sequence/MoRangeQuery.hpp\"\n\nnamespace\
+    \ zawa {\n\ntemplate <class T, class AddL, class AddR, class DelL, class DelR,\
+    \ class Eval>\nstd::vector<typename std::invoke_result_t<Eval, usize>> Mo(const\
+    \ std::vector<std::pair<T,T>>& qs, AddL addL, AddR addR, DelL delL, DelR delR,\
+    \ Eval eval, bool reset = false) {\n    auto ord = Mo(qs);\n    std::vector<typename\
+    \ std::invoke_result_t<Eval, usize>> res(qs.size());\n    T L = 0, R = 0;\n  \
+    \  for (usize i : ord) {\n        const auto [l, r] = qs[i];\n        while (R\
+    \ < r) \n            addR(R++);\n        while (L > l) \n            addL(--L);\n\
+    \        while (R > r) \n            delR(--R);\n        while (L < l) \n    \
+    \        delL(L++);\n        res[i] = eval(i);\n    }\n    if (reset) \n     \
+    \   while (R > L) \n            delR(--R);\n    return res;\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 7 \"Src/Sequence/CompressedSequence.hpp\"\n#include <cassert>\n#include\
+    \ <iterator>\n#line 10 \"Src/Sequence/CompressedSequence.hpp\"\n\nnamespace zawa\
+    \ {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\n    static constexpr\
+    \ u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
+    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
+    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
     \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
     \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
@@ -86,39 +101,39 @@ data:
     private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
     } // namespace zawa\n#line 6 \"Test/LC/static_range_frequency.test.cpp\"\n\n#line\
     \ 9 \"Test/LC/static_range_frequency.test.cpp\"\n\nusing namespace zawa;\n\nint\
-    \ N, Q, X[500050];\nstruct query {\n    usize l, r;\n};\nint main() {\n    SetFastIO();\n\
-    \n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (int& a : A) std::cin\
-    \ >> a;\n    CompressedSequence comp{A};\n    std::vector<query> q(Q);\n    for\
-    \ (int i{} ; auto& [l, r] : q) {\n        std::cin >> l >> r >> X[i];\n      \
-    \  i++;\n    }\n    std::vector<int> cnt(comp.size());\n    auto add{[&](int i)\
-    \ -> void {\n        cnt[comp.map(i)]++;\n    }};\n    auto del{[&](int i) ->\
-    \ void {\n        cnt[comp.map(i)]--;\n    }};\n    auto eval{[&](int i) -> int\
-    \ {\n        auto j = comp.find(X[i]);\n        if (j == decltype(comp)::NotFound)\
+    \ N, Q, X[500050];\nint main() {\n    SetFastIO();\n\n    std::cin >> N >> Q;\n\
+    \    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n    CompressedSequence\
+    \ comp{A};\n    std::vector<std::pair<int,int>> q(Q);\n    for (int i{} ; auto&\
+    \ [l, r] : q) {\n        std::cin >> l >> r >> X[i];\n        i++;\n    }\n  \
+    \  std::vector<int> cnt(comp.size());\n    auto add{[&](int i) -> void {\n   \
+    \     cnt[comp.map(i)]++;\n    }};\n    auto del{[&](int i) -> void {\n      \
+    \  cnt[comp.map(i)]--;\n    }};\n    auto eval{[&](int i) -> int {\n        auto\
+    \ j = comp.find(X[i]);\n        if (j == decltype(comp)::NotFound) return 0;\n\
+    \        else return cnt[j];\n    }};\n    for (int ans : Mo(q, add, add, del,\
+    \ del, eval)) std::cout << ans << '\\n';\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/MoRangeQuery.hpp\"\
+    \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n\n#include <iostream>\n\
+    #include <vector>\n\nusing namespace zawa;\n\nint N, Q, X[500050];\nint main()\
+    \ {\n    SetFastIO();\n\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n\
+    \    for (int& a : A) std::cin >> a;\n    CompressedSequence comp{A};\n    std::vector<std::pair<int,int>>\
+    \ q(Q);\n    for (int i{} ; auto& [l, r] : q) {\n        std::cin >> l >> r >>\
+    \ X[i];\n        i++;\n    }\n    std::vector<int> cnt(comp.size());\n    auto\
+    \ add{[&](int i) -> void {\n        cnt[comp.map(i)]++;\n    }};\n    auto del{[&](int\
+    \ i) -> void {\n        cnt[comp.map(i)]--;\n    }};\n    auto eval{[&](int i)\
+    \ -> int {\n        auto j = comp.find(X[i]);\n        if (j == decltype(comp)::NotFound)\
     \ return 0;\n        else return cnt[j];\n    }};\n    for (int ans : Mo(q, add,\
     \ add, del, del, eval)) std::cout << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_frequency\"\
-    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/Mo/Mo.hpp\"\
-    \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\n\n#include <iostream>\n\
-    #include <vector>\n\nusing namespace zawa;\n\nint N, Q, X[500050];\nstruct query\
-    \ {\n    usize l, r;\n};\nint main() {\n    SetFastIO();\n\n    std::cin >> N\
-    \ >> Q;\n    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n   \
-    \ CompressedSequence comp{A};\n    std::vector<query> q(Q);\n    for (int i{}\
-    \ ; auto& [l, r] : q) {\n        std::cin >> l >> r >> X[i];\n        i++;\n \
-    \   }\n    std::vector<int> cnt(comp.size());\n    auto add{[&](int i) -> void\
-    \ {\n        cnt[comp.map(i)]++;\n    }};\n    auto del{[&](int i) -> void {\n\
-    \        cnt[comp.map(i)]--;\n    }};\n    auto eval{[&](int i) -> int {\n   \
-    \     auto j = comp.find(X[i]);\n        if (j == decltype(comp)::NotFound) return\
-    \ 0;\n        else return cnt[j];\n    }};\n    for (int ans : Mo(q, add, add,\
-    \ del, del, eval)) std::cout << ans << '\\n';\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
-  - Src/DataStructure/Mo/Mo.hpp
+  - Src/Sequence/MoRangeQuery.hpp
+  - Src/Utility/Mo.hpp
   - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
   path: Test/LC/static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2025-04-14 13:20:45+09:00'
+  timestamp: '2026-03-15 23:24:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_frequency.test.cpp
