@@ -40,7 +40,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc384/submissions/74152185
+    - https://atcoder.jp/contests/abc384/submissions/74165504
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc384_g.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -52,45 +52,46 @@ data:
     #include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/MoRangeQuery.hpp\"\n\n#include\
-    \ <algorithm>\n#include <ranges>\n\n#line 2 \"Src/Utility/Mo.hpp\"\n\n#line 4\
-    \ \"Src/Utility/Mo.hpp\"\n\n#line 6 \"Src/Utility/Mo.hpp\"\n#include <cmath>\n\
-    #line 8 \"Src/Utility/Mo.hpp\"\n#include <utility>\n#include <numeric>\n#include\
-    \ <limits>\n#include <vector>\n\nnamespace zawa {\n\ntemplate <class T>\nstd::vector<usize>\
-    \ Mo(const std::vector<std::pair<T,T>>& P) {\n    if (P.empty())\n        return\
-    \ {};\n    T minY = std::numeric_limits<T>::max();\n    const u64 W = [&]() {\n\
-    \        T minX = std::numeric_limits<T>::max();\n        T maxX = std::numeric_limits<T>::min(),\
-    \ maxY = std::numeric_limits<T>::min();\n        for (auto [x,y] : P) {\n    \
-    \        minX = std::min(minX,x);\n            maxX = std::max(maxX,x);\n    \
-    \        minY = std::min(minY,y);\n            maxY = std::max(maxY,y);\n    \
-    \    }\n        return std::max<u64>({1,u64(maxX-minX),u64(maxY-minY)});\n   \
-    \ }();\n    const usize B = [&]() {\n        u64 sq = std::max<u64>(1,sqrt(P.size()));\n\
-    \        return (W + sq - 1) / sq;\n    }();\n    std::vector<usize> ord1(P.size()),\
-    \ ord2(P.size());\n    std::iota(ord1.begin(),ord1.end(),0);\n    std::iota(ord2.begin(),ord2.end(),0);\n\
-    \    T sub = minY;\n    auto comp = [&](usize i, usize j) {\n                auto\
-    \ [xi,yi] = P[i];\n                auto [xj,yj] = P[j];\n                yi -=\
-    \ sub;\n                yj -= sub;\n                if (yi/B != yj/B)\n      \
-    \              return yi/B < yj/B;\n                else if ((yi/B)&1)\n     \
-    \               return xi>xj;\n                else\n                    return\
-    \ xi<xj;\n    };\n    std::ranges::sort(ord1,comp);\n    sub -= B / 2;\n    std::ranges::sort(ord2,comp);\n\
-    \    auto cost = [&](const std::vector<usize>& ord) {\n        u64 res = 0;\n\
-    \        for (usize i = 0 ; i + 1 < ord.size() ; i++) {\n            res += abs(P[ord[i+1]].first-P[ord[i]].first);\n\
-    \            res += abs(P[ord[i+1]].second-P[ord[i]].second);\n        }\n   \
-    \     return res;\n    };\n    return cost(ord1) <= cost(ord2) ? ord1 : ord2;\n\
-    }\n\n} // namespace zawa\n#line 7 \"Src/Sequence/MoRangeQuery.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <class T, class AddL, class AddR, class DelL, class DelR,\
-    \ class Eval>\nstd::vector<typename std::invoke_result_t<Eval, usize>> Mo(const\
-    \ std::vector<std::pair<T,T>>& qs, AddL addL, AddR addR, DelL delL, DelR delR,\
-    \ Eval eval, bool reset = false) {\n    auto ord = Mo(qs);\n    std::vector<typename\
-    \ std::invoke_result_t<Eval, usize>> res(qs.size());\n    T L = 0, R = 0;\n  \
-    \  for (usize i : ord) {\n        const auto [l, r] = qs[i];\n        while (R\
-    \ < r) \n            addR(R++);\n        while (L > l) \n            addL(--L);\n\
-    \        while (R > r) \n            delR(--R);\n        while (L < l) \n    \
-    \        delL(L++);\n        res[i] = eval(i);\n    }\n    if (reset) \n     \
-    \   while (R > L) \n            delR(--R);\n    return res;\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n#line 2 \"\
-    Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
-    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ <algorithm>\n#include <concepts>\n#include <ranges>\n\n#line 2 \"Src/Utility/Mo.hpp\"\
+    \n\n#line 4 \"Src/Utility/Mo.hpp\"\n\n#line 6 \"Src/Utility/Mo.hpp\"\n#include\
+    \ <cmath>\n#line 9 \"Src/Utility/Mo.hpp\"\n#include <utility>\n#include <numeric>\n\
+    #include <limits>\n#include <vector>\n\nnamespace zawa {\n\ntemplate <std::signed_integral\
+    \ T>\nstd::vector<usize> Mo(const std::vector<std::pair<T,T>>& P) {\n    if (P.empty())\n\
+    \        return {};\n    T minY = std::numeric_limits<T>::max();\n    const u64\
+    \ W = [&]() {\n        T minX = std::numeric_limits<T>::max();\n        T maxX\
+    \ = std::numeric_limits<T>::min(), maxY = std::numeric_limits<T>::min();\n   \
+    \     for (auto [x,y] : P) {\n            minX = std::min(minX,x);\n         \
+    \   maxX = std::max(maxX,x);\n            minY = std::min(minY,y);\n         \
+    \   maxY = std::max(maxY,y);\n        }\n        return std::max<u64>({1,u64(maxX-minX),u64(maxY-minY)});\n\
+    \    }();\n    const usize B = [&]() {\n        u64 sq = std::max<u64>(1,sqrt(P.size()));\n\
+    \        return (W + sq - 1) / sq;\n    }();\n    T sub = minY;\n    auto makeRank\
+    \ = [&]() -> std::vector<std::pair<T,T>> {\n        std::vector<std::pair<T,T>>\
+    \ res(P.size());\n        for (usize i = 0 ; i < P.size() ; i++) {\n         \
+    \   res[i].first = (P[i].second - sub) / B;\n            res[i].second = (res[i].first\
+    \ & 1 ? -1 : 1) * P[i].first;\n        }\n        return res;\n    };\n    std::vector<usize>\
+    \ ord1(P.size()), ord2(P.size());\n    std::iota(ord1.begin(),ord1.end(),0);\n\
+    \    std::iota(ord2.begin(),ord2.end(),0);\n    auto rank = makeRank();\n    std::ranges::sort(ord1,[&](usize\
+    \ i, usize j) { return rank[i] < rank[j]; });\n    sub -= B / 2;\n    rank = makeRank();\n\
+    \    std::ranges::sort(ord2,[&](usize i, usize j) { return rank[i] < rank[j];\
+    \ });\n    auto cost = [&](const std::vector<usize>& ord) {\n        u64 res =\
+    \ 0;\n        for (usize i = 0 ; i + 1 < ord.size() ; i++) {\n            res\
+    \ += abs(P[ord[i+1]].first-P[ord[i]].first);\n            res += abs(P[ord[i+1]].second-P[ord[i]].second);\n\
+    \        }\n        return res;\n    };\n    return cost(ord1) <= cost(ord2) ?\
+    \ ord1 : ord2;\n}\n\n} // namespace zawa\n#line 8 \"Src/Sequence/MoRangeQuery.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <std::signed_integral T, class AddL, class AddR,\
+    \ class DelL, class DelR, class Eval>\nstd::vector<typename std::invoke_result_t<Eval,\
+    \ usize>> Mo(const std::vector<std::pair<T,T>>& qs, AddL addL, AddR addR, DelL\
+    \ delL, DelR delR, Eval eval, bool reset = false) {\n    auto ord = Mo(qs);\n\
+    \    std::vector<typename std::invoke_result_t<Eval, usize>> res(qs.size());\n\
+    \    T L = 0, R = 0;\n    for (usize i : ord) {\n        const auto [l, r] = qs[i];\n\
+    \        while (R < r) \n            addR(R++);\n        while (L > l) \n    \
+    \        addL(--L);\n        while (R > r) \n            delR(--R);\n        while\
+    \ (L < l) \n            delL(L++);\n        res[i] = eval(i);\n    }\n    if (reset)\
+    \ \n        while (R > L) \n            delR(--R);\n    return res;\n}\n\n} //\
+    \ namespace zawa\n#line 2 \"Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n\n\
+    #line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#line 4 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
     \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
     \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
@@ -194,7 +195,7 @@ data:
     \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
     \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
     \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/AtCoder/abc384_g.test.cpp\"\
-    \n\n/*\n * AtCoder Beginner Contest 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74152185\n\
+    \n\n/*\n * AtCoder Beginner Contest 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74165504\n\
     \ */\n\nusing namespace zawa;\nusing namespace std;\n\nint N, K, A[100000], B[100000];\n\
     pair<int,int> Q[10000];\n\nvoid solve() {\n    CompressedSequence a{std::vector(A,\
     \ A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>> ca(a.size()),\
@@ -231,7 +232,7 @@ data:
     \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/MoRangeQuery.hpp\"\
     \n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\n#include \"\
     ../../Src/Sequence/CompressedSequence.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
-    \n\n/*\n * AtCoder Beginner Contest 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74152185\n\
+    \n\n/*\n * AtCoder Beginner Contest 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74165504\n\
     \ */\n\nusing namespace zawa;\nusing namespace std;\n\nint N, K, A[100000], B[100000];\n\
     pair<int,int> Q[10000];\n\nvoid solve() {\n    CompressedSequence a{std::vector(A,\
     \ A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>> ca(a.size()),\
@@ -278,7 +279,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc384_g.test.cpp
   requiredBy: []
-  timestamp: '2026-03-15 23:24:20+09:00'
+  timestamp: '2026-03-16 19:40:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc384_g.test.cpp
