@@ -10,7 +10,7 @@ Mo's Algorithm
 ## ライブラリの使い方
 
 ```cpp
-template <class T, class AddL, class AddR, class DelL, class DelR, class Eval>
+template <std::signed_integral T, class AddL, class AddR, class DelL, class DelR, class Eval>
 std::vector<typename std::invoke_result_t<Eval, usize>> Mo(const std::vector<std::pair<T,T>>& qs, AddL addL, AddR addR, DelL delL, DelR delR, Eval eval, bool reset = false) {
 ```
 
@@ -19,6 +19,7 @@ std::vector<typename std::invoke_result_t<Eval, usize>> Mo(const std::vector<std
 クエリで与えられる区間の型
 
 - `first`が半開区間の左端、`secondr`が半開区間の右端を意味する
+- 内部の`Mo`アルゴリズムの都合上符号付整数である必要がある。区間クエリの用途に限らなければ、符号さえがついていれば浮動小数でもよいのだが、そういうコンセプトを知らなかったので整数になっている。
 
 
 #### addL addR

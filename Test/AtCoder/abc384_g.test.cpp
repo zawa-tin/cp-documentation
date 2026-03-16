@@ -8,7 +8,7 @@
 
 /*
  * AtCoder Beginner Contest 384 G - Abs Sum
- * https://atcoder.jp/contests/abc384/submissions/74152185
+ * https://atcoder.jp/contests/abc384/submissions/74165504
  */
 
 using namespace zawa;

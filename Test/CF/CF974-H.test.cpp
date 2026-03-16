@@ -3,7 +3,7 @@
 
 /*
  * Codeforces Round 974 (Div. 3) H. Robin Hood Archery
- * https://codeforces.com/contest/2014/submission/366821759
+ * https://codeforces.com/contest/2014/submission/366914124
  */
 
 #include "../../Src/Sequence/MoRangeQuery.hpp"

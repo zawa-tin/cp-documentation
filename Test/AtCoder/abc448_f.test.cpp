@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 448 - F Authentic Traveling Salesman Problem
- * https://atcoder.jp/contests/abc448/submissions/74151826
+ * https://atcoder.jp/contests/abc448/submissions/74165490
  */
 
 #include "../../Src/Utility/Mo.hpp"
