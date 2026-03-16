@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <concepts>
 #include <ranges>
 #include <utility>
 #include <numeric>
@@ -12,7 +13,7 @@
 
 namespace zawa {
 
-template <class T>
+template <std::signed_integral T>
 std::vector<usize> Mo(const std::vector<std::pair<T,T>>& P) {
     if (P.empty())
         return {};
@@ -32,25 +33,23 @@ std::vector<usize> Mo(const std::vector<std::pair<T,T>>& P) {
         u64 sq = std::max<u64>(1,sqrt(P.size()));
         return (W + sq - 1) / sq;
     }();
+    T sub = minY;
+    auto makeRank = [&]() -> std::vector<std::pair<T,T>> {
+        std::vector<std::pair<T,T>> res(P.size());
+        for (usize i = 0 ; i < P.size() ; i++) {
+            res[i].first = (P[i].second - sub) / B;
+            res[i].second = (res[i].first & 1 ? -1 : 1) * P[i].first;
+        }
+        return res;
+    };
     std::vector<usize> ord1(P.size()), ord2(P.size());
     std::iota(ord1.begin(),ord1.end(),0);
     std::iota(ord2.begin(),ord2.end(),0);
-    T sub = minY;
-    auto comp = [&](usize i, usize j) {
-                auto [xi,yi] = P[i];
-                auto [xj,yj] = P[j];
-                yi -= sub;
-                yj -= sub;
-                if (yi/B != yj/B)
-                    return yi/B < yj/B;
-                else if ((yi/B)&1)
-                    return xi>xj;
-                else
-                    return xi<xj;
-    };
-    std::ranges::sort(ord1,comp);
+    auto rank = makeRank();
+    std::ranges::sort(ord1,[&](usize i, usize j) { return rank[i] < rank[j]; });
     sub -= B / 2;
-    std::ranges::sort(ord2,comp);
+    rank = makeRank();
+    std::ranges::sort(ord2,[&](usize i, usize j) { return rank[i] < rank[j]; });
     auto cost = [&](const std::vector<usize>& ord) {
         u64 res = 0;
         for (usize i = 0 ; i + 1 < ord.size() ; i++) {
