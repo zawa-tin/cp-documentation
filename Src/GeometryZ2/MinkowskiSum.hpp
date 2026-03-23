@@ -37,6 +37,8 @@ Polygon operator+(const Polygon& P,const Polygon& Q) {
             res.popBack();
         res.pushBack(cur);
     }
+    if (res.size() >= 2 and res[0] == res[res.size()-1])
+        res.popBack();
     return res;
 }
 

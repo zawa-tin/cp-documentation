@@ -4,7 +4,7 @@
 
 /*
  * AtCoder Geginner Contest 139 F - Engines
- * https://atcoder.jp/contests/abc139/submissions/74362104
+ * https://atcoder.jp/contests/abc139/submissions/74363526
  */
 
 #include "../../Src/GeometryZ2/MinkowskiSum.hpp"
@@ -40,6 +40,13 @@ int main() {
     };
     auto prod = rec(rec,0,N);
     Zahlen ans = 0;
+    if (ssize(prod) == 2) 
+        assert(prod[0] != prod[1]);
+    else if (ssize(prod) == 3) {
+        assert(prod.isConvex());
+        for (int i = 0 ; i < ssize(prod) ; i++)
+            assert(prod[i] != prod[(i+1)%ssize(prod)]);
+    }
     for (int i = 0 ; i < ssize(prod) ; i++)
         ans = max(ans,prod[i].normSquare());
     cout << fixed << setprecision(12) << sqrtl(ans) << '\n';
