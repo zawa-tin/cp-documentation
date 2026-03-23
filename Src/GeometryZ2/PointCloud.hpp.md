@@ -40,9 +40,6 @@ data:
     path: Test/AOJ/CGL_5_A.test.cpp
     title: Test/AOJ/CGL_5_A.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc139_f.test.cpp
-    title: Test/AtCoder/abc139_f.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc225_e.test.cpp
     title: Test/AtCoder/abc225_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -190,7 +187,6 @@ data:
   - Test/AOJ/1298.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
 documentation_of: Src/GeometryZ2/PointCloud.hpp
 layout: document
 redirect_from:

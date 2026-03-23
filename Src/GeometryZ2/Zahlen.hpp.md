@@ -48,6 +48,9 @@ data:
     path: Src/GeometryZ2/Line.hpp
     title: Src/GeometryZ2/Line.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/MinkowskiSum.hpp
+    title: Src/GeometryZ2/MinkowskiSum.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
     title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -130,6 +133,9 @@ data:
     path: Test/Baekjoon/23249.test.cpp
     title: Test/Baekjoon/23249.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC150-F.test.cpp
+    title: Test/CF/EC150-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/closest_pair.test.cpp
     title: Test/LC/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
@@ -200,6 +206,7 @@ data:
   - Src/GeometryZ2/Polygon.hpp
   - Src/GeometryZ2/Relation.hpp
   - Src/GeometryZ2/Point.hpp
+  - Src/GeometryZ2/MinkowskiSum.hpp
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
@@ -236,6 +243,7 @@ data:
   - Test/AOJ/CGL_5_A.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
+  - Test/CF/EC150-F.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/AtCoder/abc422_e.test.cpp
   - Test/AtCoder/abc296_g.test.cpp

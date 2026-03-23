@@ -457,6 +457,9 @@ data:
       path: Src/GeometryZ2/Line.hpp
       title: Src/GeometryZ2/Line.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/MinkowskiSum.hpp
+      title: Src/GeometryZ2/MinkowskiSum.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Point.hpp
       title: Src/GeometryZ2/Point.hpp
     - icon: ':heavy_check_mark:'
@@ -1483,6 +1486,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF974-H.test.cpp
       title: Test/CF/CF974-H.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/EC150-F.test.cpp
+      title: Test/CF/EC150-F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC162-D.test.cpp
       title: Test/CF/EC162-D.test.cpp

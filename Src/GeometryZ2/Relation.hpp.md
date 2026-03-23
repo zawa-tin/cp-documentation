@@ -39,6 +39,9 @@ data:
     path: Src/GeometryZ2/Line.hpp
     title: Src/GeometryZ2/Line.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/MinkowskiSum.hpp
+    title: Src/GeometryZ2/MinkowskiSum.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
     title: Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - icon: ':heavy_check_mark:'
@@ -79,6 +82,9 @@ data:
     path: Test/AOJ/CGL_4_B.test.cpp
     title: Test/AOJ/CGL_4_B.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc139_f.test.cpp
+    title: Test/AtCoder/abc139_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc250_f.test.cpp
     title: Test/AtCoder/abc250_f.test.cpp
   - icon: ':heavy_check_mark:'
@@ -90,6 +96,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc422_e.test.cpp
     title: Test/AtCoder/abc422_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/EC150-F.test.cpp
+    title: Test/CF/EC150-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
@@ -223,6 +232,7 @@ data:
   - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
   - Src/GeometryZ2/ConvexHull.hpp
   - Src/GeometryZ2/Polygon.hpp
+  - Src/GeometryZ2/MinkowskiSum.hpp
   - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Line.hpp
   - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
@@ -248,9 +258,11 @@ data:
   - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
+  - Test/CF/EC150-F.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/AtCoder/abc422_e.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc139_f.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/abc266_c.test.cpp
 documentation_of: Src/GeometryZ2/Relation.hpp

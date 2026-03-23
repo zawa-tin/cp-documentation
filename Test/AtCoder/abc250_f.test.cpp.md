@@ -26,10 +26,12 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc250/tasks/abc250_f
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
     - https://atcoder.jp/contests/abc250/tasks/abc250_f
-  bundledCode: "#line 1 \"Test/AtCoder/abc250_f.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc250/tasks/abc250_f\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc250_f.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc250/tasks/abc250_f\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -144,52 +146,56 @@ data:
     \    /* member function */\n    void reserve(usize n) {\n        data_.reserve(n);\n\
     \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
     \ }\n    void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x,\
-    \ y);\n    }\n    template <class RandomAccessIterator>\n    void insert(usize\
-    \ n, RandomAccessIterator first, RandomAccessIterator last) {\n        assert(n\
-    \ <= size());\n        data_.insert(std::next(data_.begin(), n), first, last);\n\
-    \    }\n    void orderRotate(usize i) {\n        assert(i < size());\n       \
-    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    template\
-    \ <class F>\n    void normalForm(const F& func) {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end(), func))};\n        orderRotate(index);\n\
-    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
-    \    }\n    template <class F>\n    Polygon normalFormed(const F& func = [](const\
-    \ Point& a, const Point& b) -> bool { return a < b; }) const {\n        Polygon\
-    \ res{*this};\n        res.normalForm(func);\n        return res;\n    }\n   \
-    \ Polygon normalFormed() {\n        Polygon res{*this};\n        res.normalForm();\n\
-    \        return res;\n    }\n    bool isConvex() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        for (usize i{} ; i < size() ; i++) {\n \
-    \           if (Relation(data_[i], data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n\
-    \                    == CLOCKWISE) {\n                return false;\n        \
-    \    }\n        }\n        return true;\n    }\n    Zahlen areaTwice() const {\n\
-    \        assert(size() >= static_cast<usize>(3));\n        Zahlen res{};\n   \
-    \     for (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i]\
-    \ - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return\
-    \ res;\n    }\n    Polygon subtriangle(usize i, usize j, usize k) const {\n  \
-    \      assert(i < size());\n        assert(j < size());\n        assert(k < size());\n\
-    \        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};\n\
-    \    }\n};\n\n}\n\n} // namespace zawa\n#line 5 \"Test/AtCoder/abc250_f.test.cpp\"\
-    \n\n#line 7 \"Test/AtCoder/abc250_f.test.cpp\"\n\nint main() {\n    using namespace\
-    \ zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin\
-    \ >> n;\n    Polygon p(n);\n    std::cin >> p;\n    Zahlen a{p.areaTwice()};\n\
-    \    Zahlen b{};\n    Zahlen ans{4 * a};\n    int r{};\n    for (int l{} ; l <\
-    \ n ; l++) {\n        while (b < a) {\n            b += 4 * p.subtriangle(l, r,\
-    \ r+1==n?0:r+1).areaTwice();\n            r = (r+1==n?0:r+1);\n            ans\
-    \ = std::min(ans, std::abs(a - b));\n        }\n        if (l == r) r++;\n   \
-    \     else {\n            b -= 4 * p.subtriangle(l, l+1==n?0:l+1, r).areaTwice();\n\
-    \            ans = std::min(ans, std::abs(a - b));\n        }\n    }\n    std::cout\
-    \ << ans << '\\n';\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc250/tasks/abc250_f\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Polygon.hpp\"\
-    \n\n#include <iostream>\n\nint main() {\n    using namespace zawa;\n    using\
-    \ namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin >> n;\n    Polygon\
-    \ p(n);\n    std::cin >> p;\n    Zahlen a{p.areaTwice()};\n    Zahlen b{};\n \
-    \   Zahlen ans{4 * a};\n    int r{};\n    for (int l{} ; l < n ; l++) {\n    \
-    \    while (b < a) {\n            b += 4 * p.subtriangle(l, r, r+1==n?0:r+1).areaTwice();\n\
+    \ y);\n    }\n    void popBack() {\n        assert(data_.size());\n        data_.pop_back();\n\
+    \    }\n    bool empty() const {\n        return data_.empty();\n    }\n    template\
+    \ <class RandomAccessIterator>\n    void insert(usize n, RandomAccessIterator\
+    \ first, RandomAccessIterator last) {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ n), first, last);\n    }\n    void orderRotate(usize i) {\n        assert(i\
+    \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
+    \    }\n    template <class F>\n    void normalForm(const F& func) {\n       \
+    \ auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end(),\
+    \ func))};\n        orderRotate(index);\n    }\n    void normalForm() {\n    \
+    \    auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};\n\
+    \        orderRotate(index);\n    }\n    template <class F>\n    Polygon normalFormed(const\
+    \ F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) const\
+    \ {\n        Polygon res{*this};\n        res.normalForm(func);\n        return\
+    \ res;\n    }\n    Polygon normalFormed() {\n        Polygon res{*this};\n   \
+    \     res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
+    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
+    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
+    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
+    \              return false;\n            }\n        }\n        return true;\n\
+    \    }\n    Zahlen areaTwice() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \        Zahlen res{};\n        for (usize i{1} ; i < size() ; i++) {\n      \
+    \      res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
+    \        }\n        return res;\n    }\n    Polygon subtriangle(usize i, usize\
+    \ j, usize k) const {\n        assert(i < size());\n        assert(j < size());\n\
+    \        assert(k < size());\n        return Polygon{std::vector<Point>{ data_[i],\
+    \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc250_f.test.cpp\"\
+    \n\n#line 8 \"Test/AtCoder/abc250_f.test.cpp\"\n\nint main() {\n#ifdef ATCODER\n\
+    \    using namespace zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n\
+    \    int n; std::cin >> n;\n    Polygon p(n);\n    std::cin >> p;\n    Zahlen\
+    \ a{p.areaTwice()};\n    Zahlen b{};\n    Zahlen ans{4 * a};\n    int r{};\n \
+    \   for (int l{} ; l < n ; l++) {\n        while (b < a) {\n            b += 4\
+    \ * p.subtriangle(l, r, r+1==n?0:r+1).areaTwice();\n            r = (r+1==n?0:r+1);\n\
+    \            ans = std::min(ans, std::abs(a - b));\n        }\n        if (l ==\
+    \ r) r++;\n        else {\n            b -= 4 * p.subtriangle(l, l+1==n?0:l+1,\
+    \ r).areaTwice();\n            ans = std::min(ans, std::abs(a - b));\n       \
+    \ }\n    }\n    std::cout << ans << '\\n';\n#else\n    std::cout << \"Hello World\\\
+    n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc250/tasks/abc250_f\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Polygon.hpp\"\
+    \n\n#include <iostream>\n\nint main() {\n#ifdef ATCODER\n    using namespace zawa;\n\
+    \    using namespace geometryZ2;\n    SetFastIO();\n    int n; std::cin >> n;\n\
+    \    Polygon p(n);\n    std::cin >> p;\n    Zahlen a{p.areaTwice()};\n    Zahlen\
+    \ b{};\n    Zahlen ans{4 * a};\n    int r{};\n    for (int l{} ; l < n ; l++)\
+    \ {\n        while (b < a) {\n            b += 4 * p.subtriangle(l, r, r+1==n?0:r+1).areaTwice();\n\
     \            r = (r+1==n?0:r+1);\n            ans = std::min(ans, std::abs(a -\
     \ b));\n        }\n        if (l == r) r++;\n        else {\n            b -=\
     \ 4 * p.subtriangle(l, l+1==n?0:l+1, r).areaTwice();\n            ans = std::min(ans,\
-    \ std::abs(a - b));\n        }\n    }\n    std::cout << ans << '\\n';\n}\n"
+    \ std::abs(a - b));\n        }\n    }\n    std::cout << ans << '\\n';\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -200,7 +206,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc250_f.test.cpp
   requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  timestamp: '2026-03-24 01:33:58+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc250_f.test.cpp

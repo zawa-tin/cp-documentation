@@ -155,9 +155,11 @@ data:
     \" : \" \");\n        }\n        return os;\n    }\n\n    /* member function */\n\
     \    void reserve(usize n) {\n        data_.reserve(n);\n    }\n    void pushBack(const\
     \ Point& p) {\n        data_.push_back(p);\n    }\n    void emplaceBack(Zahlen\
-    \ x, Zahlen y) {\n        data_.emplace_back(x, y);\n    }\n    template <class\
-    \ RandomAccessIterator>\n    void insert(usize n, RandomAccessIterator first,\
-    \ RandomAccessIterator last) {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ x, Zahlen y) {\n        data_.emplace_back(x, y);\n    }\n    void popBack()\
+    \ {\n        assert(data_.size());\n        data_.pop_back();\n    }\n    bool\
+    \ empty() const {\n        return data_.empty();\n    }\n    template <class RandomAccessIterator>\n\
+    \    void insert(usize n, RandomAccessIterator first, RandomAccessIterator last)\
+    \ {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
     \ n), first, last);\n    }\n    void orderRotate(usize i) {\n        assert(i\
     \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
     \    }\n    template <class F>\n    void normalForm(const F& func) {\n       \
@@ -233,7 +235,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_convex_hull.test.cpp
   requiredBy: []
-  timestamp: '2024-06-26 18:12:18+09:00'
+  timestamp: '2026-03-24 01:20:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_convex_hull.test.cpp

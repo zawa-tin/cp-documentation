@@ -145,31 +145,32 @@ data:
     \    /* member function */\n    void reserve(usize n) {\n        data_.reserve(n);\n\
     \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
     \ }\n    void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x,\
-    \ y);\n    }\n    template <class RandomAccessIterator>\n    void insert(usize\
-    \ n, RandomAccessIterator first, RandomAccessIterator last) {\n        assert(n\
-    \ <= size());\n        data_.insert(std::next(data_.begin(), n), first, last);\n\
-    \    }\n    void orderRotate(usize i) {\n        assert(i < size());\n       \
-    \ std::rotate(data_.begin(), data_.begin() + i, data_.end());\n    }\n    template\
-    \ <class F>\n    void normalForm(const F& func) {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end(), func))};\n        orderRotate(index);\n\
-    \    }\n    void normalForm() {\n        auto index{std::distance(data_.begin(),\
-    \ std::min_element(data_.begin(), data_.end()))};\n        orderRotate(index);\n\
-    \    }\n    template <class F>\n    Polygon normalFormed(const F& func = [](const\
-    \ Point& a, const Point& b) -> bool { return a < b; }) const {\n        Polygon\
-    \ res{*this};\n        res.normalForm(func);\n        return res;\n    }\n   \
-    \ Polygon normalFormed() {\n        Polygon res{*this};\n        res.normalForm();\n\
-    \        return res;\n    }\n    bool isConvex() const {\n        assert(size()\
-    \ >= static_cast<usize>(3));\n        for (usize i{} ; i < size() ; i++) {\n \
-    \           if (Relation(data_[i], data_[i+1==size()?0:i+1], data_[i+2>=size()?i+2-size():i+2])\n\
-    \                    == CLOCKWISE) {\n                return false;\n        \
-    \    }\n        }\n        return true;\n    }\n    Zahlen areaTwice() const {\n\
-    \        assert(size() >= static_cast<usize>(3));\n        Zahlen res{};\n   \
-    \     for (usize i{1} ; i < size() ; i++) {\n            res += Cross(data_[i]\
-    \ - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n        }\n        return\
-    \ res;\n    }\n    Polygon subtriangle(usize i, usize j, usize k) const {\n  \
-    \      assert(i < size());\n        assert(j < size());\n        assert(k < size());\n\
-    \        return Polygon{std::vector<Point>{ data_[i], data_[j], data_[k] }};\n\
-    \    }\n};\n\n}\n\n} // namespace zawa\n#line 5 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\
+    \ y);\n    }\n    void popBack() {\n        assert(data_.size());\n        data_.pop_back();\n\
+    \    }\n    bool empty() const {\n        return data_.empty();\n    }\n    template\
+    \ <class RandomAccessIterator>\n    void insert(usize n, RandomAccessIterator\
+    \ first, RandomAccessIterator last) {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
+    \ n), first, last);\n    }\n    void orderRotate(usize i) {\n        assert(i\
+    \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
+    \    }\n    template <class F>\n    void normalForm(const F& func) {\n       \
+    \ auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end(),\
+    \ func))};\n        orderRotate(index);\n    }\n    void normalForm() {\n    \
+    \    auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};\n\
+    \        orderRotate(index);\n    }\n    template <class F>\n    Polygon normalFormed(const\
+    \ F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) const\
+    \ {\n        Polygon res{*this};\n        res.normalForm(func);\n        return\
+    \ res;\n    }\n    Polygon normalFormed() {\n        Polygon res{*this};\n   \
+    \     res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
+    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
+    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
+    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
+    \              return false;\n            }\n        }\n        return true;\n\
+    \    }\n    Zahlen areaTwice() const {\n        assert(size() >= static_cast<usize>(3));\n\
+    \        Zahlen res{};\n        for (usize i{1} ; i < size() ; i++) {\n      \
+    \      res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
+    \        }\n        return res;\n    }\n    Polygon subtriangle(usize i, usize\
+    \ j, usize k) const {\n        assert(i < size());\n        assert(j < size());\n\
+    \        assert(k < size());\n        return Polygon{std::vector<Point>{ data_[i],\
+    \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line 5 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\
     \n\n#line 7 \"Test/AOJ/CGL_3_B/GeometryZ2.test.cpp\"\n\nint main() {\n    using\
     \ namespace zawa;\n    using namespace geometryZ2;\n    SetFastIO();\n    int\
     \ n; std::cin >> n;\n    Polygon ps(n); \n    std::cin >> ps;\n    std::cout <<\
@@ -189,7 +190,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
   requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  timestamp: '2026-03-24 01:20:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
