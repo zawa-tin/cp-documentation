@@ -1,5 +1,10 @@
 #define PROBLEM "https://atcoder.jp/contests/abc296/tasks/abc296_g"
 
+/*
+ * AtCoder Beginner Contest 296 G - Polygon and Points
+ * https://atcoder.jp/contests/abc296/submissions/74358438
+ */
+
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryZ2/Point.hpp"
 #include "../../Src/GeometryZ2/Polygon.hpp"
