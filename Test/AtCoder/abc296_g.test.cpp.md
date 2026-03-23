@@ -35,11 +35,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://atcoder.jp/contests/abc296/tasks/abc296_g
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
+    - https://atcoder.jp/contests/abc296/submissions/74358438
     - https://atcoder.jp/contests/abc296/tasks/abc296_g
-  bundledCode: "#line 1 \"Test/AtCoder/abc296_g.test.cpp\"\n#define PROBLEM \"https://atcoder.jp/contests/abc296/tasks/abc296_g\"\
-    \n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/abc296_g.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc296/tasks/abc296_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 296 G - Polygon and Points\n * https://atcoder.jp/contests/abc296/submissions/74358438\n\
+    \ */\n\n#line 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
@@ -198,51 +202,43 @@ data:
     \    OUTSIDE         = 2\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
     #line 9 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\n#line 11\
     \ \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const\
-    \ Point& p0, const Point& p1, const Point& p2, const Point& p) {\n    Zahlen area{Abs(Cross(p1\
-    \ - p0, p2 - p0))};\n    Zahlen value{};\n    value += Abs(Cross(p0 - p, p1 -\
-    \ p));\n    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 -\
-    \ p, p0 - p));\n    return area == value;\n}\n\n} // namespace internal\n\n//\
-    \ note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\
-    \u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
-    \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
-    \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
-    \ p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0],\
-    \ polygon[n - 1], p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Zero(Cross(polygon[1]\
-    \ - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n    if (Zero(Cross(polygon[n\
-    \ - 1] - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n   \
-    \ if (!(Relation(polygon[0], polygon[1], p) == COUNTER_CLOCKWISE and Relation(polygon[0],\
-    \ p, polygon[n - 1]) == COUNTER_CLOCKWISE)) {\n        return OUTSIDE;\n    }\n\
-    \n    auto f{[&](usize i) -> bool {\n        return Relation(polygon[0], polygon[i],\
-    \ p) == COUNTER_CLOCKWISE;\n    }};\n\n    usize pos{BinarySearch(usize{0}, usize{n\
-    \ - 1}, f)};\n    if (p == polygon[pos]) return ONLINE;\n    if (p == polygon[pos\
-    \ + 1]) return ONLINE;\n    if (Relation(polygon[pos], polygon[pos + 1], p) ==\
-    \ ON_SEGMENT) return ONLINE;\n\n    if (internal::TriangleContainsPoint(polygon[0],\
-    \ polygon[pos], polygon[pos + 1], p)) {\n        return INSIDE;\n    }\n    else\
-    \ {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n#line 7 \"Test/AtCoder/abc296_g.test.cpp\"\n\n#line 10 \"Test/AtCoder/abc296_g.test.cpp\"\
-    \n\nint main() {\n    using namespace zawa;\n    using namespace zawa::geometryZ2;\n\
-    \    SetFastIO(); \n    int n; std::cin >> n;\n    Polygon ps(n);\n    std::cin\
-    \ >> ps;\n    ps.normalForm();\n    assert(ps.isConvex());\n    int q; std::cin\
-    \ >> q;\n    for (int _{} ; _ < q ; _++) {\n        Point p; std::cin >> p;\n\
-    \        auto ans{ConvexPolygonContainsPoint(ps, p)};\n        if (ans == INSIDE)\
-    \ {\n            std::cout << \"IN\\n\";\n        }\n        else if (ans == ONLINE)\
-    \ {\n            std::cout << \"ON\\n\";\n        }\n        else {\n        \
-    \    std::cout << \"OUT\\n\";\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://atcoder.jp/contests/abc296/tasks/abc296_g\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
+    \ {\n\nnamespace geometryZ2 {\n\n// note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\
+    \u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\
+    \n// note: normal form\u306B\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044\
+    \nContainState ConvexPolygonContainsPoint(const Polygon& S, const Point& p) {\n\
+    \    const usize n = S.size();\n    assert(n >= 3);\n    if (RELATION state =\
+    \ Relation(S[0],p,S[1]) ; state != CLOCKWISE)\n        return p == S[0] or p ==\
+    \ S[1] or state == ONLINE_FRONT ? ONLINE : OUTSIDE;\n    if (RELATION state =\
+    \ Relation(S[0],p,S[n-1]); state != COUNTER_CLOCKWISE)\n        return p == S[n-1]\
+    \ or state == ONLINE_FRONT ? ONLINE : OUTSIDE;\n    const usize i = BinarySearch<usize>(1,n-1,[&](usize\
+    \ x) { return Cross(S[x]-S[0],p-S[0]) >= 0; });\n    RELATION state = Relation(S[i],S[i+1],p);\n\
+    \    if (state == COUNTER_CLOCKWISE)\n        return INSIDE;\n    else if (S[i]\
+    \ == p or S[i+1] == p or state == ON_SEGMENT)\n        return ONLINE;\n    else\n\
+    \        return OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n\
+    #line 13 \"Test/AtCoder/abc296_g.test.cpp\"\n\n#line 16 \"Test/AtCoder/abc296_g.test.cpp\"\
+    \n\nint main() {\n#ifdef ATCODER\n    using namespace zawa;\n    using namespace\
+    \ zawa::geometryZ2;\n    SetFastIO(); \n    int n; std::cin >> n;\n    Polygon\
+    \ ps(n);\n    std::cin >> ps;\n    ps.normalForm();\n    assert(ps.isConvex());\n\
+    \    int q; std::cin >> q;\n    for (int _{} ; _ < q ; _++) {\n        Point p;\
+    \ std::cin >> p;\n        auto ans{ConvexPolygonContainsPoint(ps, p)};\n     \
+    \   if (ans == INSIDE) {\n            std::cout << \"IN\\n\";\n        }\n   \
+    \     else if (ans == ONLINE) {\n            std::cout << \"ON\\n\";\n       \
+    \ }\n        else {\n            std::cout << \"OUT\\n\";\n        }\n    }\n\
+    #else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc296/tasks/abc296_g\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Beginner Contest 296 G - Polygon and Points\n * https://atcoder.jp/contests/abc296/submissions/74358438\n\
+    \ */\n\n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/GeometryZ2/Point.hpp\"\
     \n#include \"../../Src/GeometryZ2/Polygon.hpp\"\n#include \"../../Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\
-    \n\n#include <cassert>\n#include <iostream>\n\nint main() {\n    using namespace\
-    \ zawa;\n    using namespace zawa::geometryZ2;\n    SetFastIO(); \n    int n;\
-    \ std::cin >> n;\n    Polygon ps(n);\n    std::cin >> ps;\n    ps.normalForm();\n\
+    \n\n#include <cassert>\n#include <iostream>\n\nint main() {\n#ifdef ATCODER\n\
+    \    using namespace zawa;\n    using namespace zawa::geometryZ2;\n    SetFastIO();\
+    \ \n    int n; std::cin >> n;\n    Polygon ps(n);\n    std::cin >> ps;\n    ps.normalForm();\n\
     \    assert(ps.isConvex());\n    int q; std::cin >> q;\n    for (int _{} ; _ <\
     \ q ; _++) {\n        Point p; std::cin >> p;\n        auto ans{ConvexPolygonContainsPoint(ps,\
     \ p)};\n        if (ans == INSIDE) {\n            std::cout << \"IN\\n\";\n  \
     \      }\n        else if (ans == ONLINE) {\n            std::cout << \"ON\\n\"\
     ;\n        }\n        else {\n            std::cout << \"OUT\\n\";\n        }\n\
-    \    }\n}\n"
+    \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Template/IOSetting.hpp
   - Src/Template/TypeAlias.hpp
@@ -256,7 +252,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc296_g.test.cpp
   requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  timestamp: '2026-03-23 22:01:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc296_g.test.cpp

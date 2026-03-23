@@ -191,59 +191,35 @@ data:
     \          = 0,\n    ONLINE          = 1,\n    OUTSIDE         = 2\n};\n\n} //\
     \ namespace geometryZ2\n\n} // namespace zawa\n#line 9 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\
     \n\n#line 11 \"Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp\"\n\nnamespace\
-    \ zawa {\n\nnamespace geometryZ2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const\
-    \ Point& p0, const Point& p1, const Point& p2, const Point& p) {\n    Zahlen area{Abs(Cross(p1\
-    \ - p0, p2 - p0))};\n    Zahlen value{};\n    value += Abs(Cross(p0 - p, p1 -\
-    \ p));\n    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 -\
-    \ p, p0 - p));\n    return area == value;\n}\n\n} // namespace internal\n\n//\
-    \ note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\
-    \u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
-    \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
-    \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
-    \ p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0],\
-    \ polygon[n - 1], p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Zero(Cross(polygon[1]\
-    \ - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n    if (Zero(Cross(polygon[n\
-    \ - 1] - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n   \
-    \ if (!(Relation(polygon[0], polygon[1], p) == COUNTER_CLOCKWISE and Relation(polygon[0],\
-    \ p, polygon[n - 1]) == COUNTER_CLOCKWISE)) {\n        return OUTSIDE;\n    }\n\
-    \n    auto f{[&](usize i) -> bool {\n        return Relation(polygon[0], polygon[i],\
-    \ p) == COUNTER_CLOCKWISE;\n    }};\n\n    usize pos{BinarySearch(usize{0}, usize{n\
-    \ - 1}, f)};\n    if (p == polygon[pos]) return ONLINE;\n    if (p == polygon[pos\
-    \ + 1]) return ONLINE;\n    if (Relation(polygon[pos], polygon[pos + 1], p) ==\
-    \ ON_SEGMENT) return ONLINE;\n\n    if (internal::TriangleContainsPoint(polygon[0],\
-    \ polygon[pos], polygon[pos + 1], p)) {\n        return INSIDE;\n    }\n    else\
-    \ {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n"
+    \ zawa {\n\nnamespace geometryZ2 {\n\n// note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\
+    \u308B\u3053\u3068\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\
+    \n// note: normal form\u306B\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044\
+    \nContainState ConvexPolygonContainsPoint(const Polygon& S, const Point& p) {\n\
+    \    const usize n = S.size();\n    assert(n >= 3);\n    if (RELATION state =\
+    \ Relation(S[0],p,S[1]) ; state != CLOCKWISE)\n        return p == S[0] or p ==\
+    \ S[1] or state == ONLINE_FRONT ? ONLINE : OUTSIDE;\n    if (RELATION state =\
+    \ Relation(S[0],p,S[n-1]); state != COUNTER_CLOCKWISE)\n        return p == S[n-1]\
+    \ or state == ONLINE_FRONT ? ONLINE : OUTSIDE;\n    const usize i = BinarySearch<usize>(1,n-1,[&](usize\
+    \ x) { return Cross(S[x]-S[0],p-S[0]) >= 0; });\n    RELATION state = Relation(S[i],S[i+1],p);\n\
+    \    if (state == COUNTER_CLOCKWISE)\n        return INSIDE;\n    else if (S[i]\
+    \ == p or S[i+1] == p or state == ON_SEGMENT)\n        return ONLINE;\n    else\n\
+    \        return OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Utility/BinarySearch.hpp\"\
     \n#include \"../Zahlen.hpp\"\n#include \"../Point.hpp\"\n#include \"../Polygon.hpp\"\
     \n#include \"./State.hpp\"\n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace\
-    \ geometryZ2 {\n\nnamespace internal {\n\nbool TriangleContainsPoint(const Point&\
-    \ p0, const Point& p1, const Point& p2, const Point& p) {\n    Zahlen area{Abs(Cross(p1\
-    \ - p0, p2 - p0))};\n    Zahlen value{};\n    value += Abs(Cross(p0 - p, p1 -\
-    \ p));\n    value += Abs(Cross(p1 - p, p2 - p));\n    value += Abs(Cross(p2 -\
-    \ p, p0 - p));\n    return area == value;\n}\n\n} // namespace internal\n\n//\
-    \ note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\u3092\u78BA\u8A8D\
-    \u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal form\u306B\u3057\u3066\
-    \u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState ConvexPolygonContainsPoint(const\
-    \ Polygon& polygon, const Point& p) {\n    usize n{polygon.size()};\n    assert(n\
-    \ >= static_cast<usize>(3));\n    if (polygon[0] == p or polygon[1] == p or polygon[n\
-    \ - 1] == p) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0], polygon[1],\
-    \ p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Relation(polygon[0],\
-    \ polygon[n - 1], p) == ON_SEGMENT) {\n        return ONLINE;\n    }\n    if (Zero(Cross(polygon[1]\
-    \ - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n    if (Zero(Cross(polygon[n\
-    \ - 1] - polygon[0], p - polygon[0]))) {\n        return OUTSIDE;\n    }\n   \
-    \ if (!(Relation(polygon[0], polygon[1], p) == COUNTER_CLOCKWISE and Relation(polygon[0],\
-    \ p, polygon[n - 1]) == COUNTER_CLOCKWISE)) {\n        return OUTSIDE;\n    }\n\
-    \n    auto f{[&](usize i) -> bool {\n        return Relation(polygon[0], polygon[i],\
-    \ p) == COUNTER_CLOCKWISE;\n    }};\n\n    usize pos{BinarySearch(usize{0}, usize{n\
-    \ - 1}, f)};\n    if (p == polygon[pos]) return ONLINE;\n    if (p == polygon[pos\
-    \ + 1]) return ONLINE;\n    if (Relation(polygon[pos], polygon[pos + 1], p) ==\
-    \ ON_SEGMENT) return ONLINE;\n\n    if (internal::TriangleContainsPoint(polygon[0],\
-    \ polygon[pos], polygon[pos + 1], p)) {\n        return INSIDE;\n    }\n    else\
-    \ {\n        return OUTSIDE;\n    }\n}\n\n} // namespace geometryZ2\n\n} // namespace\
-    \ zawa\n"
+    \ geometryZ2 {\n\n// note: \u51F8\u591A\u89D2\u5F62\u3067\u3042\u308B\u3053\u3068\
+    \u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002\n// note: normal\
+    \ form\u306B\u3057\u3066\u304A\u3044\u3066\u304F\u3060\u3055\u3044\nContainState\
+    \ ConvexPolygonContainsPoint(const Polygon& S, const Point& p) {\n    const usize\
+    \ n = S.size();\n    assert(n >= 3);\n    if (RELATION state = Relation(S[0],p,S[1])\
+    \ ; state != CLOCKWISE)\n        return p == S[0] or p == S[1] or state == ONLINE_FRONT\
+    \ ? ONLINE : OUTSIDE;\n    if (RELATION state = Relation(S[0],p,S[n-1]); state\
+    \ != COUNTER_CLOCKWISE)\n        return p == S[n-1] or state == ONLINE_FRONT ?\
+    \ ONLINE : OUTSIDE;\n    const usize i = BinarySearch<usize>(1,n-1,[&](usize x)\
+    \ { return Cross(S[x]-S[0],p-S[0]) >= 0; });\n    RELATION state = Relation(S[i],S[i+1],p);\n\
+    \    if (state == COUNTER_CLOCKWISE)\n        return INSIDE;\n    else if (S[i]\
+    \ == p or S[i+1] == p or state == ON_SEGMENT)\n        return ONLINE;\n    else\n\
+    \        return OUTSIDE;\n}\n\n} // namespace geometryZ2\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Utility/BinarySearch.hpp
@@ -255,7 +231,7 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
   requiredBy: []
-  timestamp: '2024-06-26 14:51:43+09:00'
+  timestamp: '2026-03-23 21:58:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1298.test.cpp
