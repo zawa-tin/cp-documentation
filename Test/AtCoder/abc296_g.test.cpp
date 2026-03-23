@@ -1,4 +1,10 @@
-#define PROBLEM "https://atcoder.jp/contests/abc296/tasks/abc296_g"
+// #define PROBLEM "https://atcoder.jp/contests/abc296/tasks/abc296_g"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
+
+/*
+ * AtCoder Beginner Contest 296 G - Polygon and Points
+ * https://atcoder.jp/contests/abc296/submissions/74358438
+ */
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryZ2/Point.hpp"
@@ -9,6 +15,7 @@
 #include <iostream>
 
 int main() {
+#ifdef ATCODER
     using namespace zawa;
     using namespace zawa::geometryZ2;
     SetFastIO(); 
@@ -31,4 +38,7 @@ int main() {
             std::cout << "OUT\n";
         }
     }
+#else
+    std::cout << "Hello World\n";
+#endif
 }
