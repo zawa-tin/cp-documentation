@@ -66,6 +66,13 @@ public:
     void emplaceBack(Zahlen x, Zahlen y) {
         data_.emplace_back(x, y);
     }
+    void popBack() {
+        assert(data_.size());
+        data_.pop_back();
+    }
+    bool empty() const {
+        return data_.empty();
+    }
     template <class RandomAccessIterator>
     void insert(usize n, RandomAccessIterator first, RandomAccessIterator last) {
         assert(n <= size());

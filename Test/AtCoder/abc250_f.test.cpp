@@ -1,4 +1,5 @@
-#define PROBLEM "https://atcoder.jp/contests/abc250/tasks/abc250_f"
+// #define PROBLEM "https://atcoder.jp/contests/abc250/tasks/abc250_f"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
 #include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/GeometryZ2/Polygon.hpp"
@@ -6,6 +7,7 @@
 #include <iostream>
 
 int main() {
+#ifdef ATCODER
     using namespace zawa;
     using namespace geometryZ2;
     SetFastIO();
@@ -29,4 +31,7 @@ int main() {
         }
     }
     std::cout << ans << '\n';
+#else
+    std::cout << "Hello World\n";
+#endif
 }
