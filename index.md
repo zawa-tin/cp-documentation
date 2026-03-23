@@ -1823,6 +1823,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
       title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - name: Test/My/GeometryZ2
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+      title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - name: Test/My/Graph/Tree
     pages:
     - icon: ':heavy_check_mark:'

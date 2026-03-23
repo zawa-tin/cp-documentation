@@ -24,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC150-F.test.cpp
     title: Test/CF/EC150-F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+    title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -180,8 +183,9 @@ data:
     \    res.pushBack(p[0].first+q[0].first);\n    for (const auto& [a,b] : ord) {\n\
     \        Vector cur = res[res.size()-1]+b-a;\n        while (res.size() >= 2 and\
     \ straight(res[res.size()-2],res[res.size()-1],cur))\n            res.popBack();\n\
-    \        res.pushBack(cur);\n    }\n    return res;\n}\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
+    \        res.pushBack(cur);\n    }\n    if (res.size() >= 2 and res[0] == res[res.size()-1])\n\
+    \        res.popBack();\n    return res;\n}\n\n} // namespace geometryZ2\n\n}\
+    \ // namespace zawa\n"
   code: "#pragma once\n\n#include \"./Polygon.hpp\"\n\n#include <algorithm>\n#include\
     \ <utility>\n#include <vector>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\
     \nPolygon operator+(const Polygon& P,const Polygon& Q) {\n    if (P.empty() or\
@@ -197,8 +201,9 @@ data:
     \    res.pushBack(p[0].first+q[0].first);\n    for (const auto& [a,b] : ord) {\n\
     \        Vector cur = res[res.size()-1]+b-a;\n        while (res.size() >= 2 and\
     \ straight(res[res.size()-2],res[res.size()-1],cur))\n            res.popBack();\n\
-    \        res.pushBack(cur);\n    }\n    return res;\n}\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n"
+    \        res.pushBack(cur);\n    }\n    if (res.size() >= 2 and res[0] == res[res.size()-1])\n\
+    \        res.popBack();\n    return res;\n}\n\n} // namespace geometryZ2\n\n}\
+    \ // namespace zawa\n"
   dependsOn:
   - Src/GeometryZ2/Polygon.hpp
   - Src/Template/TypeAlias.hpp
@@ -208,10 +213,11 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/MinkowskiSum.hpp
   requiredBy: []
-  timestamp: '2026-03-24 01:20:00+09:00'
+  timestamp: '2026-03-24 05:56:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC150-F.test.cpp
+  - Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
 documentation_of: Src/GeometryZ2/MinkowskiSum.hpp
 layout: document

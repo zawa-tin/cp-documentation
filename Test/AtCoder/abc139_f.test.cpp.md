@@ -28,13 +28,13 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc139/submissions/74362104
+    - https://atcoder.jp/contests/abc139/submissions/74363526
     - https://atcoder.jp/contests/abc139/tasks/abc139_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc139_f.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc139/tasks/abc139_f\"\n// #define ERROR 0.0000000001\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Geginner Contest 139 F - Engines\n * https://atcoder.jp/contests/abc139/submissions/74362104\n\
+    \n\n/*\n * AtCoder Geginner Contest 139 F - Engines\n * https://atcoder.jp/contests/abc139/submissions/74363526\n\
     \ */\n\n#line 2 \"Src/GeometryZ2/MinkowskiSum.hpp\"\n\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
@@ -186,9 +186,10 @@ data:
     \    res.pushBack(p[0].first+q[0].first);\n    for (const auto& [a,b] : ord) {\n\
     \        Vector cur = res[res.size()-1]+b-a;\n        while (res.size() >= 2 and\
     \ straight(res[res.size()-2],res[res.size()-1],cur))\n            res.popBack();\n\
-    \        res.pushBack(cur);\n    }\n    return res;\n}\n\n} // namespace geometryZ2\n\
-    \n} // namespace zawa\n#line 11 \"Test/AtCoder/abc139_f.test.cpp\"\n\n#line 14\
-    \ \"Test/AtCoder/abc139_f.test.cpp\"\n#include <cmath>\n#include <iomanip>\nusing\
+    \        res.pushBack(cur);\n    }\n    if (res.size() >= 2 and res[0] == res[res.size()-1])\n\
+    \        res.popBack();\n    return res;\n}\n\n} // namespace geometryZ2\n\n}\
+    \ // namespace zawa\n#line 11 \"Test/AtCoder/abc139_f.test.cpp\"\n\n#line 14 \"\
+    Test/AtCoder/abc139_f.test.cpp\"\n#include <cmath>\n#include <iomanip>\nusing\
     \ namespace std;\n\nint main() {\n#ifdef ATCODER\n    using namespace zawa;\n\
     \    using namespace geometryZ2;\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
     \    int N;\n    cin >> N;\n    vector<Polygon> P(N);\n    for (int i = 0 ; i\
@@ -196,13 +197,16 @@ data:
     \ cin >> p;\n        P[i].pushBack(p);\n    }\n    auto rec = [&](auto rec,int\
     \ l,int r) -> Polygon {\n        if (l >= r)\n            return Polygon(1);\n\
     \        if (l + 1 == r)\n            return P[l];\n        return rec(rec,l,(l+r)/2)+rec(rec,(l+r)/2,r);\n\
-    \    };\n    auto prod = rec(rec,0,N);\n    Zahlen ans = 0;\n    for (int i =\
-    \ 0 ; i < ssize(prod) ; i++)\n        ans = max(ans,prod[i].normSquare());\n \
-    \   cout << fixed << setprecision(12) << sqrtl(ans) << '\\n';\n#else\n    std::cout\
+    \    };\n    auto prod = rec(rec,0,N);\n    Zahlen ans = 0;\n    if (ssize(prod)\
+    \ == 2) \n        assert(prod[0] != prod[1]);\n    else if (ssize(prod) == 3)\
+    \ {\n        assert(prod.isConvex());\n        for (int i = 0 ; i < ssize(prod)\
+    \ ; i++)\n            assert(prod[i] != prod[(i+1)%ssize(prod)]);\n    }\n   \
+    \ for (int i = 0 ; i < ssize(prod) ; i++)\n        ans = max(ans,prod[i].normSquare());\n\
+    \    cout << fixed << setprecision(12) << sqrtl(ans) << '\\n';\n#else\n    std::cout\
     \ << \"Hello World\\n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc139/tasks/abc139_f\"\n\
     // #define ERROR 0.0000000001\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Geginner Contest 139 F - Engines\n * https://atcoder.jp/contests/abc139/submissions/74362104\n\
+    \n\n/*\n * AtCoder Geginner Contest 139 F - Engines\n * https://atcoder.jp/contests/abc139/submissions/74363526\n\
     \ */\n\n#include \"../../Src/GeometryZ2/MinkowskiSum.hpp\"\n\n#include <algorithm>\n\
     #include <iostream>\n#include <cmath>\n#include <iomanip>\nusing namespace std;\n\
     \nint main() {\n#ifdef ATCODER\n    using namespace zawa;\n    using namespace\
@@ -212,9 +216,12 @@ data:
     \ cin >> p;\n        P[i].pushBack(p);\n    }\n    auto rec = [&](auto rec,int\
     \ l,int r) -> Polygon {\n        if (l >= r)\n            return Polygon(1);\n\
     \        if (l + 1 == r)\n            return P[l];\n        return rec(rec,l,(l+r)/2)+rec(rec,(l+r)/2,r);\n\
-    \    };\n    auto prod = rec(rec,0,N);\n    Zahlen ans = 0;\n    for (int i =\
-    \ 0 ; i < ssize(prod) ; i++)\n        ans = max(ans,prod[i].normSquare());\n \
-    \   cout << fixed << setprecision(12) << sqrtl(ans) << '\\n';\n#else\n    std::cout\
+    \    };\n    auto prod = rec(rec,0,N);\n    Zahlen ans = 0;\n    if (ssize(prod)\
+    \ == 2) \n        assert(prod[0] != prod[1]);\n    else if (ssize(prod) == 3)\
+    \ {\n        assert(prod.isConvex());\n        for (int i = 0 ; i < ssize(prod)\
+    \ ; i++)\n            assert(prod[i] != prod[(i+1)%ssize(prod)]);\n    }\n   \
+    \ for (int i = 0 ; i < ssize(prod) ; i++)\n        ans = max(ans,prod[i].normSquare());\n\
+    \    cout << fixed << setprecision(12) << sqrtl(ans) << '\\n';\n#else\n    std::cout\
     \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/GeometryZ2/MinkowskiSum.hpp
@@ -226,7 +233,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc139_f.test.cpp
   requiredBy: []
-  timestamp: '2026-03-24 01:20:00+09:00'
+  timestamp: '2026-03-24 06:07:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc139_f.test.cpp

@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/MinkowskiSum.hpp
+    title: Src/GeometryZ2/MinkowskiSum.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Point.hpp
     title: Src/GeometryZ2/Point.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Polygon.hpp
+    title: Src/GeometryZ2/Polygon.hpp
   - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/Relation.hpp
     title: Src/GeometryZ2/Relation.hpp
@@ -13,92 +19,37 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-    title: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/ConvexHull.hpp
-    title: Src/GeometryZ2/ConvexHull.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-    title: Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-    title: Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/GeometryZ2/MinkowskiSum.hpp
-    title: Src/GeometryZ2/MinkowskiSum.hpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/0445.test.cpp
-    title: Test/AOJ/0445.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/1298.test.cpp
-    title: Test/AOJ/1298.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A.test.cpp
-    title: Test/AOJ/CGL_3_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-    title: Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_A.test.cpp
-    title: Test/AOJ/CGL_4_A.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AOJ/CGL_4_B.test.cpp
-    title: Test/AOJ/CGL_4_B.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc139_f.test.cpp
-    title: Test/AtCoder/abc139_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc250_f.test.cpp
-    title: Test/AtCoder/abc250_f.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc266_c.test.cpp
-    title: Test/AtCoder/abc266_c.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc296_g.test.cpp
-    title: Test/AtCoder/abc296_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/CF/EC150-F.test.cpp
-    title: Test/CF/EC150-F.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/furthest_pair.test.cpp
-    title: Test/LC/furthest_pair.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/static_convex_hull.test.cpp
-    title: Test/LC/static_convex_hull.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
-    title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    links: []
-  bundledCode: "#line 2 \"Src/GeometryZ2/Polygon.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
-    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
-    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
-    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
-    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
-    \n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
-    \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
-    \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
-    \ < 0) return internal::negative;\n    if (value > 0) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen value) {\n  \
-    \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
-    \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
-    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
-    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
-    #include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    links:
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/My/GeometryZ2/MinkowskiSum.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\n\n#line\
+    \ 2 \"Src/GeometryZ2/MinkowskiSum.hpp\"\n\n#line 2 \"Src/GeometryZ2/Polygon.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
+    \n\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
+    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
+    \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
+    \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
+    \ i32 Sign(Zahlen value) {\n    if (value < 0) return internal::negative;\n  \
+    \  if (value > 0) return internal::positive;\n    return internal::zero;\n}\n\n\
+    constexpr bool Positive(Zahlen value) {\n    return Sign(value) == internal::positive;\n\
+    }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
+    }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
+    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
+    \n\n#include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
     \n#include <limits>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point\
     \ {\nprivate:\n    Zahlen x_{}, y_{};\n    static constexpr i32 origin{0};\n \
     \   static constexpr i32 firstQuadrant{1};\n    static constexpr i32 secondQuadrant{2};\n\
@@ -215,89 +166,86 @@ data:
     \        }\n        return res;\n    }\n    Polygon subtriangle(usize i, usize\
     \ j, usize k) const {\n        assert(i < size());\n        assert(j < size());\n\
     \        assert(k < size());\n        return Polygon{std::vector<Point>{ data_[i],\
-    \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./Point.hpp\"\
-    \n#include \"./Relation.hpp\"\n\n#include <algorithm>\n#include <cassert>\n#include\
-    \ <iterator>\n#include <type_traits>\n#include <vector>\n\nnamespace zawa {\n\n\
-    namespace geometryZ2 {\n\nclass Polygon {\nprivate:\n    std::vector<Point> data_;\n\
-    public:\n    usize size() const {\n        return data_.size(); \n    }\n\n  \
-    \  /* constructor */\n    Polygon() = default;\n    Polygon(const Polygon& polygon)\
-    \ : data_{polygon.data_} {}\n    Polygon(const std::vector<Point>& data) : data_{data}\
-    \ {}\n    Polygon(usize n) : data_{n} {\n        assert(n >= static_cast<usize>(3));\n\
-    \    }\n\n    /* operator */\n    Polygon& operator=(const Polygon& polygon) {\n\
-    \        data_ = polygon.data_;\n        return *this;\n    }\n    Point& operator[](usize\
-    \ i) {\n        assert(i < size());\n        return data_[i];\n    }\n    const\
-    \ Point& operator[](usize i) const {\n        assert(i < size());\n        return\
-    \ data_[i];\n    }\n    friend std::istream& operator>>(std::istream& is, Polygon&\
-    \ polygon) {\n        for (size_t i{} ; i < polygon.size() ; i++) {\n        \
-    \    is >> polygon[i];\n        }\n        return is;\n    }\n    friend std::ostream&\
-    \ operator<<(std::ostream& os, const Polygon& polygon) {\n        for (usize i{}\
-    \ ; i < polygon.size() ; i++) {\n            std::cout << polygon[i] << (i + 1\
-    \ == polygon.size() ? \"\" : \" \");\n        }\n        return os;\n    }\n\n\
-    \    /* member function */\n    void reserve(usize n) {\n        data_.reserve(n);\n\
-    \    }\n    void pushBack(const Point& p) {\n        data_.push_back(p);\n   \
-    \ }\n    void emplaceBack(Zahlen x, Zahlen y) {\n        data_.emplace_back(x,\
-    \ y);\n    }\n    void popBack() {\n        assert(data_.size());\n        data_.pop_back();\n\
-    \    }\n    bool empty() const {\n        return data_.empty();\n    }\n    template\
-    \ <class RandomAccessIterator>\n    void insert(usize n, RandomAccessIterator\
-    \ first, RandomAccessIterator last) {\n        assert(n <= size());\n        data_.insert(std::next(data_.begin(),\
-    \ n), first, last);\n    }\n    void orderRotate(usize i) {\n        assert(i\
-    \ < size());\n        std::rotate(data_.begin(), data_.begin() + i, data_.end());\n\
-    \    }\n    template <class F>\n    void normalForm(const F& func) {\n       \
-    \ auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end(),\
-    \ func))};\n        orderRotate(index);\n    }\n    void normalForm() {\n    \
-    \    auto index{std::distance(data_.begin(), std::min_element(data_.begin(), data_.end()))};\n\
-    \        orderRotate(index);\n    }\n    template <class F>\n    Polygon normalFormed(const\
-    \ F& func = [](const Point& a, const Point& b) -> bool { return a < b; }) const\
-    \ {\n        Polygon res{*this};\n        res.normalForm(func);\n        return\
-    \ res;\n    }\n    Polygon normalFormed() {\n        Polygon res{*this};\n   \
-    \     res.normalForm();\n        return res;\n    }\n    bool isConvex() const\
-    \ {\n        assert(size() >= static_cast<usize>(3));\n        for (usize i{}\
-    \ ; i < size() ; i++) {\n            if (Relation(data_[i], data_[i+1==size()?0:i+1],\
-    \ data_[i+2>=size()?i+2-size():i+2])\n                    == CLOCKWISE) {\n  \
-    \              return false;\n            }\n        }\n        return true;\n\
-    \    }\n    Zahlen areaTwice() const {\n        assert(size() >= static_cast<usize>(3));\n\
-    \        Zahlen res{};\n        for (usize i{1} ; i < size() ; i++) {\n      \
-    \      res += Cross(data_[i] - data_[0], data_[i+1==size()?0:i+1] - data_[0]);\n\
-    \        }\n        return res;\n    }\n    Polygon subtriangle(usize i, usize\
-    \ j, usize k) const {\n        assert(i < size());\n        assert(j < size());\n\
-    \        assert(k < size());\n        return Polygon{std::vector<Point>{ data_[i],\
-    \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n"
+    \ data_[j], data_[k] }};\n    }\n};\n\n}\n\n} // namespace zawa\n#line 4 \"Src/GeometryZ2/MinkowskiSum.hpp\"\
+    \n\n#line 6 \"Src/GeometryZ2/MinkowskiSum.hpp\"\n#include <utility>\n#line 8 \"\
+    Src/GeometryZ2/MinkowskiSum.hpp\"\n\nnamespace zawa {\n\nnamespace geometryZ2\
+    \ {\n\nPolygon operator+(const Polygon& P,const Polygon& Q) {\n    if (P.empty()\
+    \ or Q.empty())\n        return Polygon{};\n    const usize N = P.size(),M = Q.size();\n\
+    \    std::vector<std::pair<Point,Point>> p(N),q(M),ord(N+M);\n    for (usize i\
+    \ = 0 ; i < N ; i++)\n        p[i] = std::pair{P[i],P[(i+1)%N]};\n    for (usize\
+    \ i = 0 ; i < M ; i++)\n        q[i] = std::pair{Q[i],Q[(i+1)%M]};\n    auto comp\
+    \ = [&](const auto& i,const auto& j) -> bool {\n        return Point::ArgComp(i.second-i.first,j.second-j.first);\n\
+    \    };\n    std::ranges::rotate(p,std::ranges::min_element(p,comp));\n    std::ranges::rotate(q,std::ranges::min_element(q,comp));\n\
+    \    std::ranges::merge(p,q,ord.begin(),comp);\n    auto straight = [&](const\
+    \ Point& p,const Point& q,const Point& r) -> bool {\n        return q == r or\
+    \ Relation(p,q,r) == ONLINE_FRONT;\n    };\n    Polygon res;\n    res.reserve(N+M);\n\
+    \    res.pushBack(p[0].first+q[0].first);\n    for (const auto& [a,b] : ord) {\n\
+    \        Vector cur = res[res.size()-1]+b-a;\n        while (res.size() >= 2 and\
+    \ straight(res[res.size()-2],res[res.size()-1],cur))\n            res.popBack();\n\
+    \        res.pushBack(cur);\n    }\n    if (res.size() >= 2 and res[0] == res[res.size()-1])\n\
+    \        res.popBack();\n    return res;\n}\n\n} // namespace geometryZ2\n\n}\
+    \ // namespace zawa\n#line 4 \"Test/My/GeometryZ2/MinkowskiSum.test.cpp\"\n\n\
+    #line 8 \"Test/My/GeometryZ2/MinkowskiSum.test.cpp\"\n#include <random>\nusing\
+    \ namespace std;\nusing namespace zawa::geometryZ2;\n\nint main() {\n    vector<Polygon>\
+    \ P(20);\n    for (int i = 0 ; i < 20 ; i++)\n        P[i].pushBack(Point{0,0});\n\
+    \    mt19937 mt{random_device{}()};\n    for (int i = 0 ; i < 100 ; i++) {\n \
+    \       if (mt() % 2 == 0) {\n            int j = mt() % 20;\n            Point\
+    \ a,b;\n            while (a == b) {\n                a.x() = mt() % 21 - 10;\n\
+    \                a.y() = mt() % 21 - 10;\n                b.x() = mt() % 21 -\
+    \ 10;\n                b.y() = mt() % 21 - 10;\n            }\n            Polygon\
+    \ cur;\n            cur.pushBack(a);\n            cur.pushBack(b);\n         \
+    \   P[j] = P[j] + cur;\n            if (ssize(P[j]) >= 3) {\n                bool\
+    \ ok = P[j].isConvex();\n                for (int k = 0 ; k < ssize(P[j]) ; k++)\n\
+    \                    ok &= P[j][k] != P[j][(k+1)%ssize(P[j])];\n             \
+    \   if (!ok) {\n                    cout << P[j] << endl;\n                  \
+    \  assert(0);\n                }\n            }\n        }\n        else {\n \
+    \           int j = mt() % 20, k = mt() % 20;\n            P[j] = P[j] + P[k];\n\
+    \            if (ssize(P[j]) >= 3) {\n                bool ok = P[j].isConvex();\n\
+    \                for (int k = 0 ; k < ssize(P[j]) ; k++)\n                   \
+    \ ok &= P[j][k] != P[j][(k+1)%ssize(P[j])];\n                if (!ok) {\n    \
+    \                cout << P[j] << endl;\n                    assert(0);\n     \
+    \           }\n            }\n        }\n    }\n    cout << \"Hello World\\n\"\
+    ;\n}\n"
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n#include \"../../../Src/GeometryZ2/MinkowskiSum.hpp\"\n\n#include <iostream>\n\
+    #include <cassert>\n#include <vector>\n#include <random>\nusing namespace std;\n\
+    using namespace zawa::geometryZ2;\n\nint main() {\n    vector<Polygon> P(20);\n\
+    \    for (int i = 0 ; i < 20 ; i++)\n        P[i].pushBack(Point{0,0});\n    mt19937\
+    \ mt{random_device{}()};\n    for (int i = 0 ; i < 100 ; i++) {\n        if (mt()\
+    \ % 2 == 0) {\n            int j = mt() % 20;\n            Point a,b;\n      \
+    \      while (a == b) {\n                a.x() = mt() % 21 - 10;\n           \
+    \     a.y() = mt() % 21 - 10;\n                b.x() = mt() % 21 - 10;\n     \
+    \           b.y() = mt() % 21 - 10;\n            }\n            Polygon cur;\n\
+    \            cur.pushBack(a);\n            cur.pushBack(b);\n            P[j]\
+    \ = P[j] + cur;\n            if (ssize(P[j]) >= 3) {\n                bool ok\
+    \ = P[j].isConvex();\n                for (int k = 0 ; k < ssize(P[j]) ; k++)\n\
+    \                    ok &= P[j][k] != P[j][(k+1)%ssize(P[j])];\n             \
+    \   if (!ok) {\n                    cout << P[j] << endl;\n                  \
+    \  assert(0);\n                }\n            }\n        }\n        else {\n \
+    \           int j = mt() % 20, k = mt() % 20;\n            P[j] = P[j] + P[k];\n\
+    \            if (ssize(P[j]) >= 3) {\n                bool ok = P[j].isConvex();\n\
+    \                for (int k = 0 ; k < ssize(P[j]) ; k++)\n                   \
+    \ ok &= P[j][k] != P[j][(k+1)%ssize(P[j])];\n                if (!ok) {\n    \
+    \                cout << P[j] << endl;\n                    assert(0);\n     \
+    \           }\n            }\n        }\n    }\n    cout << \"Hello World\\n\"\
+    ;\n}\n"
   dependsOn:
+  - Src/GeometryZ2/MinkowskiSum.hpp
+  - Src/GeometryZ2/Polygon.hpp
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Point.hpp
   - Src/GeometryZ2/Zahlen.hpp
   - Src/GeometryZ2/Relation.hpp
-  isVerificationFile: false
-  path: Src/GeometryZ2/Polygon.hpp
-  requiredBy:
-  - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-  - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/MinkowskiSum.hpp
-  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-  timestamp: '2026-03-24 01:20:00+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/furthest_pair.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
-  - Test/AOJ/CGL_4_B.test.cpp
-  - Test/AOJ/0445.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/1298.test.cpp
-  - Test/CF/EC150-F.test.cpp
-  - Test/My/GeometryZ2/MinkowskiSum.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
-  - Test/AtCoder/abc250_f.test.cpp
-  - Test/AtCoder/abc266_c.test.cpp
-documentation_of: Src/GeometryZ2/Polygon.hpp
+  isVerificationFile: true
+  path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+  requiredBy: []
+  timestamp: '2026-03-24 06:07:44+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/My/GeometryZ2/MinkowskiSum.test.cpp
 layout: document
 redirect_from:
-- /library/Src/GeometryZ2/Polygon.hpp
-- /library/Src/GeometryZ2/Polygon.hpp.html
-title: Src/GeometryZ2/Polygon.hpp
+- /verify/Test/My/GeometryZ2/MinkowskiSum.test.cpp
+- /verify/Test/My/GeometryZ2/MinkowskiSum.test.cpp.html
+title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
 ---

@@ -1559,6 +1559,9 @@ data:
     path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
     title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+    title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
     title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2080,6 +2083,7 @@ data:
   - Test/CF/ECR157-F.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/My/Utility/U32Pair.test.cpp
   - Test/My/Number/SqrtHeuristicArithmetic.test.cpp

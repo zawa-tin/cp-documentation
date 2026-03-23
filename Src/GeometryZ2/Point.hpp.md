@@ -157,6 +157,9 @@ data:
     path: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
     title: Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+    title: Test/My/GeometryZ2/MinkowskiSum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/UC/3-35-L.test.cpp
     title: Test/UC/3-35-L.test.cpp
   _isVerificationFailed: false
@@ -347,6 +350,7 @@ data:
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/CF/EC150-F.test.cpp
+  - Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/AtCoder/abc422_e.test.cpp
   - Test/AtCoder/abc296_g.test.cpp
