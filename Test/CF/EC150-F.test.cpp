@@ -3,7 +3,7 @@
 
 /*
  * Educational Codeforces Round 150 F. Monocarp and a Strategic Game
- * https://codeforces.com/contest/1841/submission/367920394
+ * https://codeforces.com/contest/1841/submission/367948884
  */
 
 #include "../../Src/GeometryZ2/MinkowskiSum.hpp"
