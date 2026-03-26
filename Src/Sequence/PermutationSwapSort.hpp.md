@@ -54,8 +54,8 @@ data:
   timestamp: '2025-04-06 19:32:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF1015-C.test.cpp
   - Test/AtCoder/abc350_c.test.cpp
+  - Test/CF/CF1015-C.test.cpp
 documentation_of: Src/Sequence/PermutationSwapSort.hpp
 layout: document
 title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\u30C8\

@@ -1,0 +1,162 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/AdditiveGroup.hpp
+    title: "\u52A0\u6CD5\u7FA4"
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+    title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+    links:
+    - https://atcoder.jp/contests/arc197/submissions/74416251
+    - https://atcoder.jp/contests/arc197/tasks/arc197_c
+    - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
+  bundledCode: "#line 1 \"Test/AtCoder/arc197_c.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/arc197/tasks/arc197_c\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Regular Contest 197 (Div. 2) C - Removal of Multiples\n * https://atcoder.jp/contests/arc197/submissions/74416251\n\
+    \ */\n\n#line 2 \"Src/DataStructure/Bucket/BucketRangeProduct.hpp\"\n\n#line 2\
+    \ \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\n\
+    namespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
+    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Group/GroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Inversible\
+    \ = requires {\n    typename T::Element;\n    { T::inverse(std::declval<typename\
+    \ T::Element>()) } -> std::same_as<typename T::Element>;\n};\n\ntemplate <class\
+    \ T>\nconcept Group = Monoid<T> and Inversible<T>;\n\n} // namespace Concept\n\
+    \n} // namespace zawa\n#line 5 \"Src/DataStructure/Bucket/BucketRangeProduct.hpp\"\
+    \n\n#include <algorithm>\n#include <cassert>\n#include <cmath>\n#include <limits>\n\
+    #include <vector>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid M>\nclass\
+    \ BucketRangeQuery {\npublic:\n\n    using V = typename M::Element;\n\n    inline\
+    \ usize size() const {\n        return m_n;\n    }\n\n    inline usize bucketSize()\
+    \ const {\n        return m_b;\n    }\n\n    BucketRangeQuery() = default;\n\n\
+    \    BucketRangeQuery(usize N,usize B = std::numeric_limits<usize>::max()) \n\
+    \        : m_n{N},m_b{BucketSize(N,B)}, m_data(N,M::identity()), m_bucket((m_n+m_b-1)/m_b,M::identity())\
+    \ {\n        for (usize i = 0 ; i < size() ; i++)\n            m_bucket[i/bucketSize()]\
+    \ = M::operation(m_bucket[i/bucketSize()],m_data[i]);\n    }\n\n    BucketRangeQuery(std::vector<V>\
+    \ A,usize B = std::numeric_limits<usize>::max())\n        : m_n{A.size()},m_b{BucketSize(A.size(),B)},m_data(std::move(A)),m_bucket((m_n+m_b-1)/m_b,M::identity())\
+    \ {\n        for (usize i = 0 ; i < size() ; i++)\n            m_bucket[i/bucketSize()]\
+    \ = M::operation(m_bucket[i/bucketSize()],m_data[i]);\n    }\n\n    V product(usize\
+    \ l,usize r) const {\n        assert(l <= r and r <= size());\n        V res =\
+    \ M::identity();\n        while (l < r and l % bucketSize())\n            res\
+    \ = M::operation(res,m_data[l++]);\n        while (l + bucketSize() <= r) {\n\
+    \            res = M::operation(res,m_bucket[l/bucketSize()]);\n            l\
+    \ += bucketSize();\n        }\n        while (l < r)\n            res = M::operation(res,m_data[l++]);\n\
+    \        return res;\n    }\n\n    V operator[](usize i) const {\n        assert(i\
+    \ < size());\n        return m_data[i];\n    }\n\n    V bucketValue(usize i) const\
+    \ {\n        assert(i < m_bucket.size());\n        return m_bucket[i];\n    }\n\
+    \n    void assign(usize i,V x) {\n        assert(i < size());\n        const usize\
+    \ idx = i/bucketSize();\n        if constexpr (concepts::Group<M>) {\n       \
+    \     m_bucket[idx] = M::operation(m_bucket[idx],M::inverse(m_data[i]));\n   \
+    \         m_data[i] = std::move(x);\n            m_bucket[idx] = M::operation(m_bucket[idx],m_data[i]);\n\
+    \        }\n        else {\n            m_data[i] = std::move(x);\n          \
+    \  m_bucket[idx] = M::identity();\n            const usize l = idx*bucketSize(),r\
+    \ = std::min(size(),(idx+1)*bucketSize());\n            for (usize j = l ; j <\
+    \ r ; j++)\n                m_bucket[idx] = M::operation(m_bucket[idx],m_data[j]);\n\
+    \        }\n    }\n\n    void operation(usize i,V x) {\n        assert(i < size());\n\
+    \        m_bucket[i/bucketSize()] = M::operation(m_bucket[i/bucketSize()],x);\n\
+    \        m_data[i] = M::operation(m_data[i],x);\n    }\n\n    template <class\
+    \ F>\n    requires std::predicate<F,V>\n    usize maxRight(usize i,F f) const\
+    \ {\n        assert(i <= size());\n        assert(f(M::identity()));\n       \
+    \ V pd = M::identity();\n        while (i < size() and i % bucketSize()) {\n \
+    \           V nxt = M::operation(pd,m_data[i]);\n            if (!f(nxt))\n  \
+    \              return i;\n            pd = std::move(nxt);\n            i++;\n\
+    \        }\n        while (i + bucketSize() <= size()) {\n            V nxt =\
+    \ M::operation(pd,m_bucket[i/bucketSize()]);\n            if (!f(nxt))\n     \
+    \           break;\n            pd = std::move(nxt);\n            i += bucketSize();\n\
+    \        }\n        while (i < size()) {\n            V nxt = M::operation(pd,m_data[i]);\n\
+    \            if (!f(nxt))\n                break;\n            pd = std::move(nxt);\n\
+    \            i++;\n        }\n        return i;\n    }\n\n    template <class\
+    \ F>\n    requires std::predicate<F,V>\n    usize minLeft(usize i,F f) const {\n\
+    \        assert(i <= size());\n        assert(f(M::identity()));\n        V pd\
+    \ = M::identity();\n        while (i % bucketSize()) {\n            V nxt = M::operation(m_data[i-1],pd);\n\
+    \            if (!f(nxt))\n                return i;\n            pd = std::move(nxt);\n\
+    \            i--;\n        }\n        while (i) {\n            V nxt = M::operation(m_bucket[i/bucketSize()-1],pd);\n\
+    \            if (!f(nxt))\n                break;\n            pd = std::move(nxt);\n\
+    \            i -= bucketSize();\n        }\n        while (i) {\n            V\
+    \ nxt = M::operation(m_data[i-1],pd);\n            if (!f(nxt))\n            \
+    \    break;\n            pd = std::move(nxt);\n            i--;\n        }\n \
+    \       return i;\n    }\n\nprivate:\n\n    usize m_n,m_b;\n\n    std::vector<V>\
+    \ m_data,m_bucket;\n\n    static usize BucketSize(usize N,usize B) {\n       \
+    \ return B == std::numeric_limits<usize>::max() ? std::max<usize>(1,sqrtl(N))\
+    \ : B;\n    }\n};\n\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
+    \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
+    \ return T{};\n    }\n    static constexpr T operation(const T& l, const T& r)\
+    \ noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(const\
+    \ T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line\
+    \ 11 \"Test/AtCoder/arc197_c.test.cpp\"\nusing namespace zawa;\n\n#include <iostream>\n\
+    using namespace std;\n\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
+    \    ios::sync_with_stdio(0);\n    int Q;\n    cin >> Q;\n    const int MAX =\
+    \ 3000000;\n    vector<bool> del(MAX);\n    const int B = 2500;\n    BucketRangeQuery<AdditiveGroup<int>>\
+    \ buc(vector<int>(MAX,1),B);\n    while (Q--) {\n        int A,B;\n        cin\
+    \ >> A >> B;\n        if (A < MAX and !del[A]) {\n            for (int i = 1 ;\
+    \ i * A < MAX ; i++)\n                if (!del[A*i]) {\n                    del[A*i]\
+    \ = 1;\n                    buc.operation(A*i,-1);\n                }\n      \
+    \  }\n        cout << buc.maxRight(1,[&](int v) { return v < B; }) << '\\n';\n\
+    \    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/arc197/tasks/arc197_c\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * AtCoder Regular Contest 197 (Div. 2) C - Removal of Multiples\n * https://atcoder.jp/contests/arc197/submissions/74416251\n\
+    \ */\n\n#include \"../../Src/DataStructure/Bucket/BucketRangeProduct.hpp\"\n#include\
+    \ \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\nusing namespace zawa;\n\n#include\
+    \ <iostream>\nusing namespace std;\n\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int Q;\n    cin >> Q;\n \
+    \   const int MAX = 3000000;\n    vector<bool> del(MAX);\n    const int B = 2500;\n\
+    \    BucketRangeQuery<AdditiveGroup<int>> buc(vector<int>(MAX,1),B);\n    while\
+    \ (Q--) {\n        int A,B;\n        cin >> A >> B;\n        if (A < MAX and !del[A])\
+    \ {\n            for (int i = 1 ; i * A < MAX ; i++)\n                if (!del[A*i])\
+    \ {\n                    del[A*i] = 1;\n                    buc.operation(A*i,-1);\n\
+    \                }\n        }\n        cout << buc.maxRight(1,[&](int v) { return\
+    \ v < B; }) << '\\n';\n    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n\
+    }\n"
+  dependsOn:
+  - Src/DataStructure/Bucket/BucketRangeProduct.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Group/AdditiveGroup.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/arc197_c.test.cpp
+  requiredBy: []
+  timestamp: '2026-03-26 22:26:11+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/arc197_c.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/AtCoder/arc197_c.test.cpp
+- /verify/Test/AtCoder/arc197_c.test.cpp.html
+title: Test/AtCoder/arc197_c.test.cpp
+---

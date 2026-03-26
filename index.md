@@ -89,6 +89,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Semigroup/SemigroupConcept.hpp
       title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - name: Src/DataStructure/Bucket
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+      title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -1119,7 +1124,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC223-H Xor Query
+      title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
@@ -1356,6 +1361,9 @@ data:
       path: Test/AtCoder/abc403_g.test.cpp
       title: Test/AtCoder/abc403_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc405.test.cpp
+      title: Test/AtCoder/abc405.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc417_f.test.cpp
       title: Test/AtCoder/abc417_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1426,11 +1434,17 @@ data:
       path: Test/AtCoder/arc196_a.test.cpp
       title: Test/AtCoder/arc196_a.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc197_c.test.cpp
+      title: Test/AtCoder/arc197_c.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc197_d.test.cpp
       title: Test/AtCoder/arc197_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/awc001_e.test.cpp
       title: Test/AtCoder/awc001_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/awc0032_e.test.cpp
+      title: Test/AtCoder/awc0032_e.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/joi2008ho_e.test.cpp
       title: Test/AtCoder/joi2008ho_e.test.cpp

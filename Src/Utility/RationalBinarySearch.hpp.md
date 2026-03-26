@@ -47,8 +47,8 @@ data:
   timestamp: '2025-07-23 20:10:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/rational_approximation.test.cpp
   - Test/AtCoder/abc333_g.test.cpp
+  - Test/LC/rational_approximation.test.cpp
 documentation_of: Src/Utility/RationalBinarySearch.hpp
 layout: document
 title: "\u6709\u7406\u6570\u3067\u4E8C\u5206\u63A2\u7D22"

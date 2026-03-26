@@ -250,8 +250,8 @@ data:
   timestamp: '2026-03-24 01:20:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_convex_hull.test.cpp
   - Test/LC/furthest_pair.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
   - Test/AOJ/CGL_4_B.test.cpp
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/1298.test.cpp
