@@ -10,7 +10,8 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
-    title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+    title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\
+      \u30A8\u30EA\u51E6\u7406"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/DualFenwickTree.hpp
     title: Dual Fenwick Tree
@@ -134,40 +135,40 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/GroupConcept.hpp
   requiredBy:
-  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
-  - Src/DataStructure/Bucket/BucketRangeProduct.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/Bucket/BucketRangeProduct.hpp
   - Src/DataStructure/PrefixSum/Imos2D.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc389_f.test.cpp
-  - Test/AtCoder/abc405.test.cpp
-  - Test/AtCoder/abc276_f.test.cpp
-  - Test/AtCoder/arc197_c.test.cpp
-  - Test/AtCoder/abc434_d.test.cpp
-  - Test/AtCoder/abc340_e.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/AtCoder/awc0032_e.test.cpp
-  - Test/AtCoder/arc088_e.test.cpp
-  - Test/AtCoder/joi2008ho_e.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
-  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
-  - Test/LC/vertex_add_path_sum.test.cpp
   - Test/UC/4-2-K.test.cpp
-  - Test/CF/EC2-E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/2426.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/2426.test.cpp
+  - Test/CF/EC2-E.test.cpp
+  - Test/AtCoder/arc088_e.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
+  - Test/AtCoder/abc405.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/abc276_f.test.cpp
+  - Test/AtCoder/abc340_e.test.cpp
+  - Test/AtCoder/abc434_d.test.cpp
+  - Test/AtCoder/arc197_c.test.cpp
+  - Test/AtCoder/awc0032_e.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp
 layout: document
 redirect_from:

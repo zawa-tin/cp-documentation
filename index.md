@@ -93,7 +93,8 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
-      title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+      title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\
+        \u30A8\u30EA\u51E6\u7406"
   - name: Src/DataStructure/DisjointSetUnion
     pages:
     - icon: ':heavy_check_mark:'
@@ -1124,7 +1125,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC132-F Small Products
+      title: ABC223-H Xor Query
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp

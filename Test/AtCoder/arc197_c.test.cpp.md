@@ -15,7 +15,8 @@ data:
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
-    title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+    title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\
+      \u30A8\u30EA\u51E6\u7406"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"

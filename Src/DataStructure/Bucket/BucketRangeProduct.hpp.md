@@ -177,8 +177,8 @@ data:
   - Test/AtCoder/awc0032_e.test.cpp
 documentation_of: Src/DataStructure/Bucket/BucketRangeProduct.hpp
 layout: document
-redirect_from:
-- /library/Src/DataStructure/Bucket/BucketRangeProduct.hpp
-- /library/Src/DataStructure/Bucket/BucketRangeProduct.hpp.html
-title: Src/DataStructure/Bucket/BucketRangeProduct.hpp
+title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\u30A8\
+  \u30EA\u51E6\u7406"
 ---
+
+minLeftだけverifyしていないです。

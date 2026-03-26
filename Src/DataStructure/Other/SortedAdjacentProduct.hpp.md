@@ -94,8 +94,8 @@ data:
   timestamp: '2024-07-27 05:40:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc308_g.test.cpp
   - Test/CF/CF956-F.test.cpp
+  - Test/AtCoder/abc308_g.test.cpp
 documentation_of: Src/DataStructure/Other/SortedAdjacentProduct.hpp
 layout: document
 title: "\u30BD\u30FC\u30C8\u5217\u306E\u96A3\u63A5\u4E8C\u9805\u9593\u306E\u7A4D\u3092\

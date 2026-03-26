@@ -252,9 +252,9 @@ data:
   timestamp: '2025-12-03 17:47:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc269_h.test.cpp
-  - Test/AtCoder/abc351_g.test.cpp
   - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
+  - Test/AtCoder/abc351_g.test.cpp
+  - Test/AtCoder/abc269_h.test.cpp
 documentation_of: Src/Graph/Tree/DynamicTreeDP.hpp
 layout: document
 title: "Static Top Tree + \u6728DP"
