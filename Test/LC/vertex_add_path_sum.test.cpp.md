@@ -172,7 +172,13 @@ data:
     \ t = m_par[t];\n            }\n        }\n        res.emplace_back(s, t);\n \
     \       std::reverse(ser.begin(), ser.end());\n        res.insert(res.end(), ser.begin(),\
     \ ser.end()); \n        return res;\n    }\n\n    std::vector<std::pair<V, V>>\
-    \ operator()(V s, V t) const {\n        return decomp(s, t);\n    }\n\n    V lca(V\
+    \ operator()(V s, V t) const {\n        return decomp(s, t);\n    }\n\n    //\
+    \ first > second\u306E\u3068\u304D\u306F\u9006\u5411\u304D\u306E\u30D1\u30B9\n\
+    \    // \u9006\u5411\u304D\u306B\u306A\u308B\u53EF\u80FD\u6027\u304C\u3042\u308B\
+    \u90FD\u5408\u4E0A\u3001\u9589\u533A\u9593\u3067\u8FD4\u3055\u308C\u308B\u3002\
+    \n    std::vector<std::pair<V,V>> pathQuery(V s, V t) const {\n        auto res\
+    \ = decomp(s,t);\n        for (auto& [u,v] : res) {\n            u = m_idx[u];\n\
+    \            v = m_idx[v];\n        }\n        return res;\n    }\n\n    V lca(V\
     \ u, V v) const {\n        assert(u < (V)size());\n        assert(v < (V)size());\n\
     \        while (m_top[u] != m_top[v]) {\n            if (m_dep[m_top[u]] >= m_dep[m_top[v]])\
     \ {\n                u = m_top[u];\n                if (m_par[u] != INVALID) u\
@@ -204,40 +210,40 @@ data:
     \n    static constexpr V INVALID{static_cast<V>(-1)};\n\n    usize m_n{};\n\n\
     \    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};\n\n    std::vector<usize>\
     \ m_size{}, m_dep{};\n};\n\n} // namespace zawa\n#line 7 \"Test/LC/vertex_add_path_sum.test.cpp\"\
-    \n\n#line 12 \"Test/LC/vertex_add_path_sum.test.cpp\"\n\nint main() {\n    using\
-    \ namespace zawa; \n    SetFastIO();\n\n    int N, Q;\n    std::cin >> N >> Q;\n\
-    \    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n    std::vector<std::vector<int>>\
+    \n\n#line 12 \"Test/LC/vertex_add_path_sum.test.cpp\"\nusing namespace std;\n\n\
+    int main() {\n    using namespace zawa; \n    cin.tie(0);\n    cout.tie(0);\n\
+    \    ios::sync_with_stdio(0);\n\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
+    \ A(N);\n    for (int& a : A) std::cin >> a;\n    std::vector<std::vector<int>>\
     \ T(N);\n    for (int _{} ; _ < N - 1 ; _++) {\n        int u, v;\n        std::cin\
-    \ >> u >> v;\n        T[u].push_back(v);\n        T[v].push_back(u);\n       \
-    \ // AddEdge(T, u, v);\n    }\n    HeavyLightDecomposition hld(T);\n    std::vector<long\
+    \ >> u >> v;\n        T[u].push_back(v);\n        T[v].push_back(u);\n    }\n\
+    \    HeavyLightDecomposition hld(T);\n    std::vector<long long> init(N);\n  \
+    \  for (int v{} ; v < N ; v++) {\n        init[hld[v]] = A[v];\n    }\n    FenwickTree<AdditiveGroup<long\
+    \ long>> fen{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n\
+    \        if (t == 0) {\n            int p, x;\n            std::cin >> p >> x;\n\
+    \            fen.operation(hld[p], x);\n        }\n        else if (t == 1) {\n\
+    \            int u, v;\n            std::cin >> u >> v;\n            long long\
+    \ ans{};\n            for (auto [u, v] : hld.pathQuery(u, v)) {\n            \
+    \    if (u > v) std::swap(u, v);\n                ans += fen.product(u, v + 1);\n\
+    \            }\n            std::cout << ans << '\\n';\n        }\n        else\
+    \ {\n            assert(false);\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
+    \n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
+    \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
+    \n\n#include <cassert>\n#include <iostream>\n#include <utility>\n#include <vector>\n\
+    using namespace std;\n\nint main() {\n    using namespace zawa; \n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n\n    int N, Q;\n    std::cin\
+    \ >> N >> Q;\n    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n\
+    \    std::vector<std::vector<int>> T(N);\n    for (int _{} ; _ < N - 1 ; _++)\
+    \ {\n        int u, v;\n        std::cin >> u >> v;\n        T[u].push_back(v);\n\
+    \        T[v].push_back(u);\n    }\n    HeavyLightDecomposition hld(T);\n    std::vector<long\
     \ long> init(N);\n    for (int v{} ; v < N ; v++) {\n        init[hld[v]] = A[v];\n\
     \    }\n    FenwickTree<AdditiveGroup<long long>> fen{init};\n    while (Q--)\
     \ {\n        int t;\n        std::cin >> t;\n        if (t == 0) {\n         \
     \   int p, x;\n            std::cin >> p >> x;\n            fen.operation(hld[p],\
     \ x);\n        }\n        else if (t == 1) {\n            int u, v;\n        \
     \    std::cin >> u >> v;\n            long long ans{};\n            for (auto\
-    \ [u, v] : hld(u, v)) {\n                u = hld[u];\n                v = hld[v];\n\
-    \                if (u > v) std::swap(u, v);\n                ans += fen.product(u,\
-    \ v + 1);\n            }\n            std::cout << ans << '\\n';\n        }\n\
-    \        else {\n            assert(false);\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/vertex_add_path_sum\"\n\
-    \n#include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/DataStructure/FenwickTree/FenwickTree.hpp\"\
-    \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
-    \n\n#include <cassert>\n#include <iostream>\n#include <utility>\n#include <vector>\n\
-    \nint main() {\n    using namespace zawa; \n    SetFastIO();\n\n    int N, Q;\n\
-    \    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (int& a : A) std::cin\
-    \ >> a;\n    std::vector<std::vector<int>> T(N);\n    for (int _{} ; _ < N - 1\
-    \ ; _++) {\n        int u, v;\n        std::cin >> u >> v;\n        T[u].push_back(v);\n\
-    \        T[v].push_back(u);\n        // AddEdge(T, u, v);\n    }\n    HeavyLightDecomposition\
-    \ hld(T);\n    std::vector<long long> init(N);\n    for (int v{} ; v < N ; v++)\
-    \ {\n        init[hld[v]] = A[v];\n    }\n    FenwickTree<AdditiveGroup<long long>>\
-    \ fen{init};\n    while (Q--) {\n        int t;\n        std::cin >> t;\n    \
-    \    if (t == 0) {\n            int p, x;\n            std::cin >> p >> x;\n \
-    \           fen.operation(hld[p], x);\n        }\n        else if (t == 1) {\n\
-    \            int u, v;\n            std::cin >> u >> v;\n            long long\
-    \ ans{};\n            for (auto [u, v] : hld(u, v)) {\n                u = hld[u];\n\
-    \                v = hld[v];\n                if (u > v) std::swap(u, v);\n  \
-    \              ans += fen.product(u, v + 1);\n            }\n            std::cout\
+    \ [u, v] : hld.pathQuery(u, v)) {\n                if (u > v) std::swap(u, v);\n\
+    \                ans += fen.product(u, v + 1);\n            }\n            std::cout\
     \ << ans << '\\n';\n        }\n        else {\n            assert(false);\n  \
     \      }\n    }\n}\n"
   dependsOn:
@@ -252,7 +258,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-02-23 15:51:14+09:00'
+  timestamp: '2026-03-27 22:58:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_add_path_sum.test.cpp

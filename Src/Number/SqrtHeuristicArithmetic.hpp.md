@@ -112,8 +112,8 @@ data:
   timestamp: '2025-10-27 16:11:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/My/Number/SqrtHeuristicArithmetic.test.cpp
   - Test/AtCoder/abc429_g.test.cpp
+  - Test/My/Number/SqrtHeuristicArithmetic.test.cpp
 documentation_of: Src/Number/SqrtHeuristicArithmetic.hpp
 layout: document
 title: "Mod of Linear \u3092sqrt(M)\u500B\u306E\u7B49\u5DEE\u6570\u5217\u306B\u5206\

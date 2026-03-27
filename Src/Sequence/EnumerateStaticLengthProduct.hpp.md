@@ -126,8 +126,8 @@ data:
   timestamp: '2026-02-09 20:31:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/3548.test.cpp
   - Test/AtCoder/awc001_e.test.cpp
+  - Test/AOJ/3548.test.cpp
 documentation_of: Src/Sequence/EnumerateStaticLengthProduct.hpp
 layout: document
 redirect_from:

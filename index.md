@@ -1125,7 +1125,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC223-H Xor Query
+      title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp

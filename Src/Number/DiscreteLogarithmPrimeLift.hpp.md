@@ -124,8 +124,8 @@ data:
   timestamp: '2026-02-02 16:16:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/UC/4-9-A.test.cpp
   - Test/My/Number/DiscreteLogarithmPrimeLifet.test.cpp
+  - Test/UC/4-9-A.test.cpp
 documentation_of: Src/Number/DiscreteLogarithmPrimeLift.hpp
 layout: document
 title: "$p^k$\u306B\u5BFE\u3059\u308B\u96E2\u6563\u5BFE\u6570\u554F\u984C"

@@ -78,7 +78,13 @@ data:
     \ t = m_par[t];\n            }\n        }\n        res.emplace_back(s, t);\n \
     \       std::reverse(ser.begin(), ser.end());\n        res.insert(res.end(), ser.begin(),\
     \ ser.end()); \n        return res;\n    }\n\n    std::vector<std::pair<V, V>>\
-    \ operator()(V s, V t) const {\n        return decomp(s, t);\n    }\n\n    V lca(V\
+    \ operator()(V s, V t) const {\n        return decomp(s, t);\n    }\n\n    //\
+    \ first > second\u306E\u3068\u304D\u306F\u9006\u5411\u304D\u306E\u30D1\u30B9\n\
+    \    // \u9006\u5411\u304D\u306B\u306A\u308B\u53EF\u80FD\u6027\u304C\u3042\u308B\
+    \u90FD\u5408\u4E0A\u3001\u9589\u533A\u9593\u3067\u8FD4\u3055\u308C\u308B\u3002\
+    \n    std::vector<std::pair<V,V>> pathQuery(V s, V t) const {\n        auto res\
+    \ = decomp(s,t);\n        for (auto& [u,v] : res) {\n            u = m_idx[u];\n\
+    \            v = m_idx[v];\n        }\n        return res;\n    }\n\n    V lca(V\
     \ u, V v) const {\n        assert(u < (V)size());\n        assert(v < (V)size());\n\
     \        while (m_top[u] != m_top[v]) {\n            if (m_dep[m_top[u]] >= m_dep[m_top[v]])\
     \ {\n                u = m_top[u];\n                if (m_par[u] != INVALID) u\
@@ -131,7 +137,7 @@ data:
   isVerificationFile: true
   path: Test/LC/lca/HeavyLightDecomposition.test.cpp
   requiredBy: []
-  timestamp: '2026-02-23 15:51:14+09:00'
+  timestamp: '2026-03-27 22:58:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/lca/HeavyLightDecomposition.test.cpp
