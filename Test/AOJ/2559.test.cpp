@@ -63,9 +63,7 @@ int main() {
     const int INF{MIN::identity()};
     DualSparseTable<MIN> spt{std::vector<int>(N + N - 1, INF)};
     for (auto [w, a, b, i] : E) if (id[i] == -1) {
-        for (auto [l, r] : hld(a, b)) {
-            l = hld[l];
-            r = hld[r];
+        for (auto [l, r] : hld.pathQuery(a, b)) {
             if (l > r) std::swap(l, r);
             spt.operation(l, r + 1, w);
         }

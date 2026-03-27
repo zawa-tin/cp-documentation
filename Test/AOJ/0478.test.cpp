@@ -32,9 +32,8 @@ int main() {
     }
     HeavyLightDecomposition hld{T};
     std::vector<RollingHashMonoidData> init(N);
-    for (int i{} ; i < N ; i++) {
+    for (int i{} ; i < N ; i++)
         init[hld[i]] = RollingHashMonoidData{K[i]};
-    }
     SegmentTree<RollingHashMonoid> seg{init};
     SegmentTree<ReverseOrder<RollingHashMonoid>> ges{init};
     int Q;
@@ -48,9 +47,7 @@ int main() {
             std::cin >> s >> t;
             s--; t--;
             RollingHashMonoidData res{};
-            for (auto [u, v] : hld(s, t)) {
-                u = hld[u];
-                v = hld[v];
+            for (auto [u, v] : hld.pathQuery(s, t)) {
                 if (u <= v) res = RollingHashMonoid::operation(res, seg.product(u, v + 1));
                 else res = RollingHashMonoid::operation(res, ges.product(v, u + 1));
             }

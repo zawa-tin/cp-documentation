@@ -9,10 +9,13 @@
 #include <iostream>
 #include <utility>
 #include <vector>
+using namespace std;
 
 int main() {
     using namespace zawa; 
-    SetFastIO();
+    cin.tie(0);
+    cout.tie(0);
+    ios::sync_with_stdio(0);
 
     int N, Q;
     std::cin >> N >> Q;
@@ -24,7 +27,6 @@ int main() {
         std::cin >> u >> v;
         T[u].push_back(v);
         T[v].push_back(u);
-        // AddEdge(T, u, v);
     }
     HeavyLightDecomposition hld(T);
     std::vector<long long> init(N);
@@ -44,9 +46,7 @@ int main() {
             int u, v;
             std::cin >> u >> v;
             long long ans{};
-            for (auto [u, v] : hld(u, v)) {
-                u = hld[u];
-                v = hld[v];
+            for (auto [u, v] : hld.pathQuery(u, v)) {
                 if (u > v) std::swap(u, v);
                 ans += fen.product(u, v + 1);
             }
