@@ -133,6 +133,17 @@ public:
         return decomp(s, t);
     }
 
+    // first > secondのときは逆向きのパス
+    // 逆向きになる可能性がある都合上、閉区間で返される。
+    std::vector<std::pair<V,V>> pathQuery(V s, V t) const {
+        auto res = decomp(s,t);
+        for (auto& [u,v] : res) {
+            u = m_idx[u];
+            v = m_idx[v];
+        }
+        return res;
+    }
+
     V lca(V u, V v) const {
         assert(u < (V)size());
         assert(v < (V)size());

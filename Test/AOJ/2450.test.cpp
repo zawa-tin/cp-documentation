@@ -40,9 +40,7 @@ int main() {
         cin >> a >> b >> c;
         a--; b--;
         if (T == 1) {
-            for (auto [s, t] : hld(a, b)) {
-                s = hld[s];
-                t = hld[t];
+            for (auto [s, t] : hld.pathQuery(a, b)) {
                 if (s > t) swap(s, t);
                 seg.assign(s, t + 1, M::convert(c));
                 ges.assign(s, t + 1, M::convert(c));
@@ -50,9 +48,7 @@ int main() {
         }
         else if (T == 2) {
             M::Element pd = M::identity();
-            for (auto [s, t] : hld(a, b)) {
-                s = hld[s];
-                t = hld[t];
+            for (auto [s, t] : hld.pathQuery(a, b)) {
                 if (s <= t) pd = M::operation(pd, seg.product(s, t + 1));
                 else pd = M::operation(pd, ges.product(t, s + 1));
             }
