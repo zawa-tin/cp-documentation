@@ -119,6 +119,9 @@ data:
     path: Src/DataStructure/SparseTable/SparseTable.hpp
     title: Sparse Table
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Trie/BinaryTrie.hpp
+    title: Binary Trie
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Undoable/UndoableVector.hpp
     title: Src/DataStructure/Undoable/UndoableVector.hpp
   - icon: ':heavy_check_mark:'
@@ -1163,6 +1166,9 @@ data:
     path: Test/AtCoder/abc448_f.test.cpp
     title: Test/AtCoder/abc448_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc451_g.test.cpp
+    title: Test/AtCoder/abc451_g.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1442,6 +1448,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/rooted_tree_isomorphism_classification.test.cpp
     title: Test/LC/rooted_tree_isomorphism_classification.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/set_xor_min.test.cpp
+    title: Test/LC/set_xor_min.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/shortest_path.test.cpp
     title: Test/LC/shortest_path.test.cpp
@@ -1734,6 +1743,7 @@ data:
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Bucket/BucketRangeProduct.hpp
+  - Src/DataStructure/Trie/BinaryTrie.hpp
   - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   - Src/DataStructure/Heap/BinaryHeap.hpp
   - Src/DataStructure/Heap/PartitionedProducts.hpp
@@ -1990,6 +2000,7 @@ data:
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc296_f.test.cpp
+  - Test/AtCoder/abc451_g.test.cpp
   - Test/AtCoder/abc127_f.test.cpp
   - Test/AtCoder/abc137_f.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
@@ -2051,6 +2062,7 @@ data:
   - Test/LC/bitwise_and_convolution.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/rooted_tree_isomorphism_classification.test.cpp
+  - Test/LC/set_xor_min.test.cpp
   - Test/LC/product_of_polynomial_sequence.test.cpp
   - Test/LC/biconnected_components.test.cpp
   - Test/LC/furthest_pair.test.cpp

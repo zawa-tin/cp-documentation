@@ -229,6 +229,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SparseTable/SparseTable.hpp
       title: Sparse Table
+  - name: Src/DataStructure/Trie
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Trie/BinaryTrie.hpp
+      title: Binary Trie
   - name: Src/DataStructure/Undoable
     pages:
     - icon: ':heavy_check_mark:'
@@ -1398,6 +1403,9 @@ data:
       path: Test/AtCoder/abc448_f.test.cpp
       title: Test/AtCoder/abc448_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc451_g.test.cpp
+      title: Test/AtCoder/abc451_g.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1665,6 +1673,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/rooted_tree_isomorphism_classification.test.cpp
       title: Test/LC/rooted_tree_isomorphism_classification.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/set_xor_min.test.cpp
+      title: Test/LC/set_xor_min.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/shortest_path.test.cpp
       title: Test/LC/shortest_path.test.cpp
