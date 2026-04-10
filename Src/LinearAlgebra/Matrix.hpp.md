@@ -165,8 +165,8 @@ data:
   timestamp: '2026-01-01 21:17:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/matrix_det.test.cpp
   - Test/CF/ECR157-F.test.cpp
+  - Test/LC/matrix_det.test.cpp
   - Test/Manual/aoj3369.test.cpp
 documentation_of: Src/LinearAlgebra/Matrix.hpp
 layout: document

@@ -114,8 +114,8 @@ data:
   timestamp: '2026-04-02 19:07:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc451_g.test.cpp
   - Test/LC/set_xor_min.test.cpp
+  - Test/AtCoder/abc451_g.test.cpp
 documentation_of: Src/DataStructure/Trie/BinaryTrie.hpp
 layout: document
 title: Binary Trie

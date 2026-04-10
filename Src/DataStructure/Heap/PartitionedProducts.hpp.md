@@ -220,8 +220,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/arc196_a.test.cpp
-  - Test/AtCoder/abc306_e.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
+  - Test/AtCoder/abc306_e.test.cpp
 documentation_of: Src/DataStructure/Heap/PartitionedProducts.hpp
 layout: document
 title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\

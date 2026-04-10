@@ -325,8 +325,8 @@ data:
   timestamp: '2026-02-27 21:59:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
 documentation_of: Src/Graph/Tree/ContourAggregation.hpp
 layout: document
 title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"

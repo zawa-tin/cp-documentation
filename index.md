@@ -101,6 +101,9 @@ data:
       path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
       title: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
+      title: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
       title: Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
     - icon: ':heavy_check_mark:'
@@ -1402,6 +1405,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc448_f.test.cpp
       title: Test/AtCoder/abc448_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc451_f.test.cpp
+      title: Test/AtCoder/abc451_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc451_g.test.cpp
       title: Test/AtCoder/abc451_g.test.cpp

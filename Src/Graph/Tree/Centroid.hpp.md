@@ -108,8 +108,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/frequency_table_of_tree_distance.test.cpp
-  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/Manual/yahoo_procon2018_final_c.test.cpp
   - Test/Manual/abc291_h.test.cpp
 documentation_of: Src/Graph/Tree/Centroid.hpp

@@ -90,8 +90,8 @@ data:
   timestamp: '2025-09-26 14:43:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/static_range_mode_query.test.cpp
   - Test/CF/CF1054-G.test.cpp
+  - Test/LC/static_range_mode_query.test.cpp
 documentation_of: Src/DataStructure/Mo/RollbackMo.hpp
 layout: document
 title: Rollback Mo

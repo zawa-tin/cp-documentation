@@ -4,11 +4,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
+    title: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2559.test.cpp
     title: Test/AOJ/2559.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc451_f.test.cpp
+    title: Test/AtCoder/abc451_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc451_g.test.cpp
     title: Test/AtCoder/abc451_g.test.cpp
@@ -81,17 +87,19 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
   timestamp: '2025-05-05 21:42:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc197_d.test.cpp
-  - Test/AtCoder/abc451_g.test.cpp
-  - Test/AtCoder/agc002_d.test.cpp
-  - Test/LC/unionfind.test.cpp
-  - Test/LC/incremental_scc.test.cpp
   - Test/CF/ECR167-F.test.cpp
+  - Test/LC/incremental_scc.test.cpp
+  - Test/LC/unionfind.test.cpp
   - Test/AOJ/2559.test.cpp
+  - Test/AtCoder/arc197_d.test.cpp
+  - Test/AtCoder/agc002_d.test.cpp
+  - Test/AtCoder/abc451_g.test.cpp
+  - Test/AtCoder/abc451_f.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:
