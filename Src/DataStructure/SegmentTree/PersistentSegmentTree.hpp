@@ -5,6 +5,7 @@
 
 #include <bit>
 #include <cassert>
+#include <concepts>
 #include <deque>
 #include <numeric>
 #include <vector>
@@ -34,14 +35,14 @@ public:
 
     PersistentSegmentTree() = default;
 
-    explicit PersistentSegmentTree(std::vector<V> a) : m_n{a.size()}, m_m{bit_ceil(a.size())}, m_dat{} {
+    explicit PersistentSegmentTree(std::vector<V> a) : m_n{a.size()}, m_m{std::bit_ceil(a.size())}, m_dat{} {
         // m_pool.reserve(2*innerSize());
-        m_dat.push_back(construct(std::move(a)));
+        construct(std::move(a));
     }
 
     explicit PersistentSegmentTree(usize n) : m_n{n}, m_m{std::bit_ceil(n)}, m_dat{} {
         // m_pool.reserve(2*innerSize());
-        m_dat.push_back(construct(std::vector(m_n,M::identity())));
+        construct(std::vector(m_n,M::identity()));
     }
 
     inline usize size() const {
@@ -98,6 +99,34 @@ public:
         return operation(m_dat.size()-1,i,std::move(v));
     }
 
+    Node* access(usize ver) const {
+        assert(ver < versionSize());
+        return m_dat[ver];
+    }
+
+    usize construct(std::vector<V> a) {
+        assert(a.size() == size());
+        a.resize(innerSize(),M::identity());
+        auto rec = [&](auto rec,usize l,usize r) -> Node* {
+            if (l + 1 == r)
+                return makeNode(a[l]);
+            const usize m = std::midpoint(l,r); 
+            return merge(rec(rec,l,m),rec(rec,m,r));
+        };
+        const usize res = m_dat.size();
+        m_dat.push_back(rec(rec,0u,innerSize()));
+        return res;
+    }
+
+    usize copy(usize from,usize to,usize l,usize r) {
+        assert(from < versionSize());
+        assert(to < versionSize());
+        assert(l <= r and r <= size());
+        const usize res = m_dat.size();
+        m_dat.push_back(copy(m_dat[from],m_dat[to],l,r,0u,innerSize()));
+        return res;
+    }
+
 private:
 
     usize m_n, m_m;
@@ -118,17 +147,6 @@ private:
     inline Node* merge(Node* l,Node* r) {
         m_pool.emplace_back(M::operation(l->value,r->value),l,r);
         return &m_pool.back();
-    }
-
-    Node* construct(std::vector<V> a) {
-        a.resize(innerSize(),M::identity());
-        auto rec = [&](auto rec,usize l,usize r) -> Node* {
-            if (l + 1 == r)
-                return makeNode(a[l]);
-            const usize m = std::midpoint(l,r); 
-            return merge(rec(rec,l,m),rec(rec,m,r));
-        };
-        return rec(rec,0u,innerSize());
     }
 
     V get(const Node* node,usize i,usize l,usize r) const {
@@ -168,6 +186,15 @@ private:
             return merge(operation(node->left,i,std::move(v),l,m),node->right);
         else
             return merge(node->left,operation(node->right,i,std::move(v),m,r));
+    }
+
+    Node* copy(Node* from,Node* to,usize l,usize r,usize nl,usize nr) {
+        if (nr <= l or r <= nl)
+            return to;
+        if (l <= nl and nr <= r)
+            return from;
+        const usize m = std::midpoint(nl,nr);
+        return merge(copy(from->left,to->left,l,r,nl,m),copy(from->right,to->right,l,r,m,nr));
     }
 };
 

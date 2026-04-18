@@ -1,6 +1,11 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc453/tasks/abc453_g"
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
+/*
+ * AtCoder Beginner Contest 453 G - Copy Query
+ * https://atcoder.jp/contests/abc453/submissions/75029259
+ */
+
 #include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 #include "../../Src/DataStructure/SegmentTree/PersistentSegmentTree.hpp"
 
