@@ -223,6 +223,9 @@ data:
     path: Test/AtCoder/agc005_b.test.cpp
     title: Test/AtCoder/agc005_b.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc082_d.test.cpp
+    title: Test/AtCoder/arc082_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -432,6 +435,7 @@ data:
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/arc082_d.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc287_g.test.cpp

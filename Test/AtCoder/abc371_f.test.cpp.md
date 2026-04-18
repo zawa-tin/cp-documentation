@@ -25,7 +25,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc371/submissions/67058774
+    - https://atcoder.jp/contests/abc371/submissions/75030981
     - https://atcoder.jp/contests/abc371/tasks/abc371_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc371_f.test.cpp\"\n// #define PROBLEM \"\
@@ -89,7 +89,7 @@ data:
     \ r, ranges, 1, 0, inner_size());\n        V prod = VM::identity();\n        for\
     \ (auto [nd, nl, nr] : ranges | std::views::reverse) {\n            if (!f(VM::operation(m_dat[nd],\
     \ prod))) {\n                return minLeft(f, prod, nd, nl, nr);\n          \
-    \  }\n            else {\n                prod = VM::operation(prod, m_dat[nd]);\n\
+    \  }\n            else {\n                prod = VM::operation(m_dat[nd],prod);\n\
     \            }\n        }\n        return 0;\n    }\n\nprivate:\n\n    usize m_n{},\
     \ m_sz{};\n\n    std::vector<V> m_dat;\n\n    std::vector<O> m_lazy;\n\n    inline\
     \ usize inner_size() const noexcept {\n        return m_sz;\n    }\n    \n   \
@@ -141,7 +141,7 @@ data:
     \ f(VM::operation(m_dat[rch], prod)) ? \n            minLeft(f, VM::operation(m_dat[rch],\
     \ prod), lch, nl, m) : minLeft(f, prod, rch, m, nr);\n    }\n};\n\n} // namespace\
     \ zawa\n#line 5 \"Test/AtCoder/abc371_f.test.cpp\"\n\n/*\n * AtCoder Beginner\
-    \ Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/67058774\n\
+    \ Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/75030981\n\
     \ */\n\n#include <iostream>\nconst int INF = (int)1e9;\nstruct VD {\n    long\
     \ long sum = 0;\n    int cnt = 0, min = INF, max = -INF;\n    VD() = default;\n\
     \    VD(int v) : sum{v}, cnt{1}, min{v}, max{v} {}\n    VD(int v, int c) : sum{(long\
@@ -174,7 +174,7 @@ data:
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc371/tasks/abc371_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n\n/*\n\
-    \ * AtCoder Beginner Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/67058774\n\
+    \ * AtCoder Beginner Contest 371 F - Takahashi in Narrow Road\n * https://atcoder.jp/contests/abc371/submissions/75030981\n\
     \ */\n\n#include <iostream>\nconst int INF = (int)1e9;\nstruct VD {\n    long\
     \ long sum = 0;\n    int cnt = 0, min = INF, max = -INF;\n    VD() = default;\n\
     \    VD(int v) : sum{v}, cnt{1}, min{v}, max{v} {}\n    VD(int v, int c) : sum{(long\
@@ -213,7 +213,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc371_f.test.cpp
   requiredBy: []
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2026-04-18 17:26:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc371_f.test.cpp

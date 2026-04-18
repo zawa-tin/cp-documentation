@@ -31,6 +31,9 @@ data:
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc082_d.test.cpp
+    title: Test/AtCoder/arc082_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
@@ -109,7 +112,7 @@ data:
     \ r, ranges, 1, 0, inner_size());\n        V prod = VM::identity();\n        for\
     \ (auto [nd, nl, nr] : ranges | std::views::reverse) {\n            if (!f(VM::operation(m_dat[nd],\
     \ prod))) {\n                return minLeft(f, prod, nd, nl, nr);\n          \
-    \  }\n            else {\n                prod = VM::operation(prod, m_dat[nd]);\n\
+    \  }\n            else {\n                prod = VM::operation(m_dat[nd],prod);\n\
     \            }\n        }\n        return 0;\n    }\n\nprivate:\n\n    usize m_n{},\
     \ m_sz{};\n\n    std::vector<V> m_dat;\n\n    std::vector<O> m_lazy;\n\n    inline\
     \ usize inner_size() const noexcept {\n        return m_sz;\n    }\n    \n   \
@@ -199,7 +202,7 @@ data:
     \ r, ranges, 1, 0, inner_size());\n        V prod = VM::identity();\n        for\
     \ (auto [nd, nl, nr] : ranges | std::views::reverse) {\n            if (!f(VM::operation(m_dat[nd],\
     \ prod))) {\n                return minLeft(f, prod, nd, nl, nr);\n          \
-    \  }\n            else {\n                prod = VM::operation(prod, m_dat[nd]);\n\
+    \  }\n            else {\n                prod = VM::operation(m_dat[nd],prod);\n\
     \            }\n        }\n        return 0;\n    }\n\nprivate:\n\n    usize m_n{},\
     \ m_sz{};\n\n    std::vector<V> m_dat;\n\n    std::vector<O> m_lazy;\n\n    inline\
     \ usize inner_size() const noexcept {\n        return m_sz;\n    }\n    \n   \
@@ -260,7 +263,7 @@ data:
   path: Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   requiredBy:
   - Src/Utility/AreaOfUnionOfRectangles.hpp
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2026-04-18 17:26:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF895-E.test.cpp
@@ -269,6 +272,7 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/arc082_d.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
@@ -303,6 +307,8 @@ title: Lazy Segment Tree
 
 2023/11/08: `operator[]`にWarningがでていたのを解消
 
-2025/6/25: 書き直した
+2025/06/25: 書き直した
 
-2025/9/29: CF1052-Eで`assign`をverify
+2025/09/29: CF1052-Eで`assign`をverify
+
+2026/04/18: `minLeft`のバグを修正(非可換で壊れていた)。ARC082-Fで`maxRight`、`minLeft`のverifyを追加。

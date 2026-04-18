@@ -74,7 +74,7 @@ data:
   isVerificationFile: true
   path: Test/LC/range_affine_range_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 00:22:56+09:00'
+  timestamp: '2026-04-18 17:26:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_affine_range_sum.test.cpp

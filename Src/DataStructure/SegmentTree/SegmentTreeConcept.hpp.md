@@ -34,6 +34,9 @@ data:
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc082_d.test.cpp
+    title: Test/AtCoder/arc082_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
@@ -95,6 +98,7 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/arc082_d.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/abc256_h.test.cpp
   - Test/AtCoder/practice2_l.test.cpp

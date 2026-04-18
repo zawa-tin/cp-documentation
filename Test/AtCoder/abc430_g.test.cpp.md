@@ -128,8 +128,8 @@ data:
     \  V prod = VM::identity();\n        for (auto [nd, nl, nr] : ranges | std::views::reverse)\
     \ {\n            if (!f(VM::operation(m_dat[nd], prod))) {\n                return\
     \ minLeft(f, prod, nd, nl, nr);\n            }\n            else {\n         \
-    \       prod = VM::operation(prod, m_dat[nd]);\n            }\n        }\n   \
-    \     return 0;\n    }\n\nprivate:\n\n    usize m_n{}, m_sz{};\n\n    std::vector<V>\
+    \       prod = VM::operation(m_dat[nd],prod);\n            }\n        }\n    \
+    \    return 0;\n    }\n\nprivate:\n\n    usize m_n{}, m_sz{};\n\n    std::vector<V>\
     \ m_dat;\n\n    std::vector<O> m_lazy;\n\n    inline usize inner_size() const\
     \ noexcept {\n        return m_sz;\n    }\n    \n    void recalc(usize nd) {\n\
     \        // assert(nd < inner_size());\n        m_dat[nd] = VM::operation(m_dat[nd\
@@ -245,7 +245,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc430_g.test.cpp
   requiredBy: []
-  timestamp: '2025-11-02 16:57:42+09:00'
+  timestamp: '2026-04-18 17:26:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc430_g.test.cpp
