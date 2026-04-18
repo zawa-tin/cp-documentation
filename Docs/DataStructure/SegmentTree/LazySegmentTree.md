@@ -29,6 +29,8 @@ documentation_of: //Src/DataStructure/SegmentTree/LazySegmentTree.hpp
 
 2023/11/08: `operator[]`にWarningがでていたのを解消
 
-2025/6/25: 書き直した
+2025/06/25: 書き直した
 
-2025/9/29: CF1052-Eで`assign`をverify
+2025/09/29: CF1052-Eで`assign`をverify
+
+2026/04/18: `minLeft`のバグを修正(非可換で壊れていた)。ARC082-Fで`maxRight`、`minLeft`のverifyを追加。

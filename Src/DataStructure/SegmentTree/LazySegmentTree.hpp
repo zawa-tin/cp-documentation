@@ -108,7 +108,7 @@ public:
                 return minLeft(f, prod, nd, nl, nr);
             }
             else {
-                prod = VM::operation(prod, m_dat[nd]);
+                prod = VM::operation(m_dat[nd],prod);
             }
         }
         return 0;
