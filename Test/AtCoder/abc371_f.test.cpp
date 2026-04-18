@@ -5,7 +5,7 @@
 
 /*
  * AtCoder Beginner Contest 371 F - Takahashi in Narrow Road
- * https://atcoder.jp/contests/abc371/submissions/67058774
+ * https://atcoder.jp/contests/abc371/submissions/75030981
  */
 
 #include <iostream>
