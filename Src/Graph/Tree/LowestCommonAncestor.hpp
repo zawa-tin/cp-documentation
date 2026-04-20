@@ -15,7 +15,7 @@ public:
 
     LowestCommonAncestor() = default;
 
-    LowestCommonAncestor(std::vector<std::vector<V>> g,V r = 0) 
+    LowestCommonAncestor(const std::vector<std::vector<V>>& g,V r = 0) 
         : m_n{g.size()}, m_inv{}, m_left(size()), m_right(size()), m_dep(size())
     {
         std::vector<u32> ord;

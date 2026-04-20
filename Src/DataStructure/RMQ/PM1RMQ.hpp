@@ -35,15 +35,15 @@ public:
     {
         std::vector<u32> minIndex(innerSize());
         std::vector<bool> registered(1u << (B-1));
-        for (usize i = 0,idx = 0 ; i < size() ; i += B,idx++) {
+        for (usize i = 0,idx = 0 ; i < size() ; idx++) {
             minIndex[idx] = i;
-            for (usize j = 1 ; j < B and i + j < size() ; j++) {
-                if (m_a[i+j] < m_a[minIndex[idx]])
-                    minIndex[idx] = i + j;
-                if (m_a[i+j] == m_a[i+j-1]+1)
+            for (u8 j = 1 ; ++i < size() and j < (u8)B ; j++) {
+                if (m_a[i] < m_a[minIndex[idx]])
+                    minIndex[idx] = i;
+                if (m_a[i] == m_a[i-1]+1)
                     ;
-                else if (m_a[i+j] == m_a[i+j-1]-1)
-                    m_look[idx] |= 1u << (j-1);
+                else if (m_a[i] == m_a[i-1]-1)
+                    m_look[idx] |= u8{1} << (j-1);
                 else
                     assert(!"init table does not satisfy |a_i-a_{i+1}| = 1");
             }
@@ -97,9 +97,9 @@ private:
     std::vector<T> m_a;
 
     // 0..+1,1..-1
-    std::vector<usize> m_look;
+    std::vector<u8> m_look;
 
-    std::array<u32,(1u << (B-1))*TRI> m_table;
+    std::array<u8,(1u << (B-1))*TRI> m_table;
 
     std::vector<std::vector<u32>> m_spt;
 
@@ -109,8 +109,8 @@ private:
 
     usize encode(usize l,usize r) const {
         // assert(l < r and r <= B);
-        static constexpr uint32_t ROW[8]{0,8,15,21,26,30,33,35};
-        return ROW[l]+(r-l-1);
+        static constexpr std::array<uint32_t,8> Row{0,8,15,21,26,30,33,35};
+        return Row[l]+(r-l-1);
     }
 
     void registerTable(usize info) {
@@ -124,9 +124,9 @@ private:
             else
                 val[i+1]++;
         }
-        for (u32 l = 0 ; l < B ; l++) {
-            u32 mn = l;
-            for (usize r = l ; r < B ; r++) {
+        for (u8 l = 0 ; l < B ; l++) {
+            u8 mn = l;
+            for (u8 r = l ; r < B ; r++) {
                 if (val[mn] > val[r])
                     mn = r;
                 m_table[offset+encode(l,r+1)] = mn;
