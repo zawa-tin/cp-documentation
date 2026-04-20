@@ -4,29 +4,11 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/AuxiliaryTree.hpp
-    title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\
-      \u306E\u6700\u5C0F\u5171\u901A\u7956\u5148\u95A2\u4FC2\u3092\u4FDD\u3063\u3066\
-      \u6728\u3092\u5727\u7E2E\u3057\u3066\u3067\u304D\u308B\u88DC\u52A9\u7684\u306A\
-      \u6728)"
-  - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/ContourAggregation.hpp
-    title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
-  - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/LowestCommonAncestor.hpp
-    title: Lowest Common Ancestor
+  _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_e.test.cpp
     title: ABC288-E Wish List
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc340_g.test.cpp
-    title: Test/AtCoder/abc340_g.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc359_g.test.cpp
-    title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF923-D.test.cpp
     title: Test/CF/CF923-D.test.cpp
@@ -34,23 +16,11 @@ data:
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/lca/LowestCommonAncestor.test.cpp
-    title: Test/LC/lca/LowestCommonAncestor.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/SparseTable.test.cpp
     title: Test/LC/staticrmq/SparseTable.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
-    title: Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
-    title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/typical90_ai.test.cpp
-    title: Test/Manual/typical90_ai.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
-    title: Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+    path: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
+    title: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -105,24 +75,15 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/SparseTable.hpp
-  requiredBy:
-  - Src/Graph/Tree/LowestCommonAncestor.hpp
-  - Src/Graph/Tree/AuxiliaryTree.hpp
-  - Src/Graph/Tree/ContourAggregation.hpp
+  requiredBy: []
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF923-D.test.cpp
   - Test/CF/EC162-D.test.cpp
-  - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
-  - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
-  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
-  - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
-  - Test/AtCoder/abc359_g.test.cpp
-  - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
+  - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document
 title: Sparse Table

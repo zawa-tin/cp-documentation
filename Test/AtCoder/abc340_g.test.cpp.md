@@ -2,11 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/ChminMonoid.hpp
-    title: "chmin\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
-    path: Src/DataStructure/SparseTable/SparseTable.hpp
-    title: Sparse Table
+    path: Src/DataStructure/RMQ/PM1RMQ.hpp
+    title: Src/DataStructure/RMQ/PM1RMQ.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/AuxiliaryTree.hpp
     title: "Auxiliary Tree (\u6307\u5B9A\u3055\u308C\u305F\u9802\u70B9\u305F\u3061\
@@ -69,12 +66,11 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
-  - Src/Algebra/Monoid/ChminMonoid.hpp
-  - Src/DataStructure/SparseTable/SparseTable.hpp
+  - Src/DataStructure/RMQ/PM1RMQ.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc340_g.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 16:28:57+09:00'
+  timestamp: '2026-04-20 16:41:41+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc340_g.test.cpp

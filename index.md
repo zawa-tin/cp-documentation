@@ -164,6 +164,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
+  - name: Src/DataStructure/RMQ
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RMQ/PM1RMQ.hpp
+      title: Src/DataStructure/RMQ/PM1RMQ.hpp
   - name: Src/DataStructure/RectangleSum
     pages:
     - icon: ':heavy_check_mark:'
@@ -1852,6 +1857,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
       title: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
+  - name: Test/My/DataStructure/RMQ
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
+      title: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
   - name: Test/My/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'

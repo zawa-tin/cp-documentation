@@ -70,6 +70,9 @@ data:
     path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RMQ/PM1RMQ.hpp
+    title: Src/DataStructure/RMQ/PM1RMQ.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
     title: Point Add Rectangle Sum
   - icon: ':heavy_check_mark:'
@@ -1590,6 +1593,9 @@ data:
     path: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
     title: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
+    title: Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1777,6 +1783,7 @@ data:
   - Src/DataStructure/PrefixSum/Imos2D.hpp
   - Src/DataStructure/PrefixSum/PrefixSum1D.hpp
   - Src/DataStructure/Bucket/BucketRangeProduct.hpp
+  - Src/DataStructure/RMQ/PM1RMQ.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
@@ -2258,6 +2265,7 @@ data:
   - Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
   - Test/My/DataStructure/Heap/BinaryHeap.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+  - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
   - Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
