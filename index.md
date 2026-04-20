@@ -1438,6 +1438,9 @@ data:
       path: Test/AtCoder/agc047_a.test.cpp
       title: AGC047-A Integer Product
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/arc039_d.test.cpp
+      title: Test/AtCoder/arc039_d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/arc070_e.test.cpp
       title: Test/AtCoder/arc070_e.test.cpp
     - icon: ':heavy_check_mark:'

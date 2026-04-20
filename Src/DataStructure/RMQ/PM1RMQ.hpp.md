@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/abc359_g.test.cpp
     title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc039_d.test.cpp
+    title: Test/AtCoder/arc039_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -171,6 +174,7 @@ data:
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
+  - Test/AtCoder/arc039_d.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp

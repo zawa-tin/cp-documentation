@@ -1199,6 +1199,9 @@ data:
     path: Test/AtCoder/agc047_a.test.cpp
     title: AGC047-A Integer Product
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc039_d.test.cpp
+    title: Test/AtCoder/arc039_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc070_e.test.cpp
     title: Test/AtCoder/arc070_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2215,6 +2218,7 @@ data:
   - Test/AtCoder/abc266_c.test.cpp
   - Test/AtCoder/abc351_g.test.cpp
   - Test/AtCoder/abc422_e.test.cpp
+  - Test/AtCoder/arc039_d.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/AtCoder/abc237_g.test.cpp

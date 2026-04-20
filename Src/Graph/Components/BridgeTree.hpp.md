@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc039_d.test.cpp
+    title: Test/AtCoder/arc039_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/two_edge_connected_components.test.cpp
     title: Test/LC/two_edge_connected_components.test.cpp
   _isVerificationFailed: false
@@ -20,82 +23,119 @@ data:
     \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Graph/Components/BridgeTree.hpp\"\n\n#include\
-    \ <concepts>\n#include <vector>\n#include <unordered_map>\n\nnamespace zawa {\n\
-    \ntemplate <std::integral T>\nclass BridgeTree {\npublic:\n\n    using V = usize;\n\
-    \n    BridgeTree() = default;\n\n    explicit BridgeTree(const std::vector<std::vector<T>>&\
-    \ g) : m_id(g.size()) {\n        const usize n = g.size();\n        std::vector<usize>\
-    \ low(n), ord(n);\n        std::vector<T> vs;\n        std::vector<std::pair<T,\
-    \ T>> bridge;\n        usize time = 1, id = 0;\n        auto dfs = [&](auto dfs,\
-    \ T v, T p) -> void {\n            low[v] = ord[v] = time++;\n            std::unordered_map<T,\
-    \ usize> cnt;\n            for (T x : g[v]) cnt[x]++;\n            for (auto [x,\
-    \ c] : cnt) if (x != p) {\n                if (ord[x]) {\n                   \
-    \ low[v] = std::min(low[v], ord[x]);\n                }\n                else\
-    \ {\n                    dfs(dfs, x, v);\n                    low[v] = std::min(low[v],\
-    \ low[x]);\n                    if (c == 1u and ord[v] < low[x]) {\n         \
-    \               std::vector<T> cur; \n                        while (vs.size()\
-    \ and low[x] <= low[vs.back()]) {\n                            cur.push_back(vs.back());\n\
-    \                            m_id[vs.back()] = m_comp.size();\n              \
-    \              vs.pop_back();\n                        }\n                   \
-    \     bridge.emplace_back(x, v);\n                        m_comp.push_back(std::move(cur));\n\
-    \                    }\n                }\n            }\n            vs.push_back(v);\n\
-    \        };\n        for (usize v = 0 ; v < n ; v++) if (!ord[v]) {\n        \
-    \    dfs(dfs, v, static_cast<T>(-1));\n            if (vs.size()) {\n        \
-    \        std::vector<T> cur;\n                while (vs.size()) {\n          \
-    \          m_id[vs.back()] = m_comp.size();\n                    cur.push_back(vs.back());\n\
-    \                    vs.pop_back();\n                }\n                m_comp.push_back(std::move(cur));\n\
-    \            }\n        }\n        m_g.resize(m_comp.size());\n        for (auto\
-    \ [u, v] : bridge) {\n            const V p = m_id[u], q = m_id[v];\n        \
-    \    m_g[p].push_back(q);\n            m_g[q].push_back(p);\n        }\n    }\n\
-    \n    inline usize size() const noexcept {\n        return m_g.size();\n    }\n\
-    \n    const std::vector<V>& operator[](V v) const {\n        assert(v < size());\n\
-    \        return m_g[v];\n    }\n\n    const std::vector<std::vector<T>>& components()\
-    \ const {\n        return m_comp;\n    }\n\n    const std::vector<T>& component(V\
-    \ v) const {\n        assert(v < size());\n        return m_comp[v];\n    }\n\n\
-    private:\n\n    std::vector<V> m_id;\n\n    std::vector<std::vector<T>> m_comp;\n\
-    \n    std::vector<std::vector<V>> m_g;\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <concepts>\n\
-    #include <vector>\n#include <unordered_map>\n\nnamespace zawa {\n\ntemplate <std::integral\
-    \ T>\nclass BridgeTree {\npublic:\n\n    using V = usize;\n\n    BridgeTree()\
-    \ = default;\n\n    explicit BridgeTree(const std::vector<std::vector<T>>& g)\
-    \ : m_id(g.size()) {\n        const usize n = g.size();\n        std::vector<usize>\
-    \ low(n), ord(n);\n        std::vector<T> vs;\n        std::vector<std::pair<T,\
-    \ T>> bridge;\n        usize time = 1, id = 0;\n        auto dfs = [&](auto dfs,\
-    \ T v, T p) -> void {\n            low[v] = ord[v] = time++;\n            std::unordered_map<T,\
-    \ usize> cnt;\n            for (T x : g[v]) cnt[x]++;\n            for (auto [x,\
-    \ c] : cnt) if (x != p) {\n                if (ord[x]) {\n                   \
-    \ low[v] = std::min(low[v], ord[x]);\n                }\n                else\
-    \ {\n                    dfs(dfs, x, v);\n                    low[v] = std::min(low[v],\
-    \ low[x]);\n                    if (c == 1u and ord[v] < low[x]) {\n         \
-    \               std::vector<T> cur; \n                        while (vs.size()\
-    \ and low[x] <= low[vs.back()]) {\n                            cur.push_back(vs.back());\n\
-    \                            m_id[vs.back()] = m_comp.size();\n              \
-    \              vs.pop_back();\n                        }\n                   \
-    \     bridge.emplace_back(x, v);\n                        m_comp.push_back(std::move(cur));\n\
-    \                    }\n                }\n            }\n            vs.push_back(v);\n\
-    \        };\n        for (usize v = 0 ; v < n ; v++) if (!ord[v]) {\n        \
-    \    dfs(dfs, v, static_cast<T>(-1));\n            if (vs.size()) {\n        \
-    \        std::vector<T> cur;\n                while (vs.size()) {\n          \
-    \          m_id[vs.back()] = m_comp.size();\n                    cur.push_back(vs.back());\n\
-    \                    vs.pop_back();\n                }\n                m_comp.push_back(std::move(cur));\n\
-    \            }\n        }\n        m_g.resize(m_comp.size());\n        for (auto\
-    \ [u, v] : bridge) {\n            const V p = m_id[u], q = m_id[v];\n        \
-    \    m_g[p].push_back(q);\n            m_g[q].push_back(p);\n        }\n    }\n\
-    \n    inline usize size() const noexcept {\n        return m_g.size();\n    }\n\
-    \n    const std::vector<V>& operator[](V v) const {\n        assert(v < size());\n\
-    \        return m_g[v];\n    }\n\n    const std::vector<std::vector<T>>& components()\
-    \ const {\n        return m_comp;\n    }\n\n    const std::vector<T>& component(V\
-    \ v) const {\n        assert(v < size());\n        return m_comp[v];\n    }\n\n\
-    private:\n\n    std::vector<V> m_id;\n\n    std::vector<std::vector<T>> m_comp;\n\
-    \n    std::vector<std::vector<V>> m_g;\n};\n\n} // namespace zawa\n"
+    \ <cassert>\n#include <concepts>\n#include <ranges>\n#include <vector>\n\nnamespace\
+    \ zawa {\n\ntemplate <std::integral T>\nclass BridgeTree {\n\n    class BridgeTreeResponse\
+    \ {\n    public:\n\n        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>&\
+    \ g,const std::vector<std::pair<T,T>>& edge) \n            : m_isBridge(edge.size()),\
+    \ m_id(g.size()), m_comps{}, m_g{} {\n            const usize n = g.size();\n\
+    \            const usize m = edge.size();\n            std::vector<u32> low(n),ord(n);\n\
+    \            std::vector<T> remain;\n            u32 time = 1;\n            auto\
+    \ dfs = [&](auto dfs,usize v,usize pe) -> void {\n                ord[v] = low[v]\
+    \ = time++;\n                for (auto [x,id] : g[v])\n                    if\
+    \ (pe != id) {\n                        if (ord[x]) {\n                      \
+    \      low[v] = std::min(low[v],ord[x]);\n                        }\n        \
+    \                else {\n                            dfs(dfs,x,id);\n        \
+    \                    low[v] = std::min(low[v],low[x]);\n                     \
+    \       if (ord[v] < low[x]) {\n                                m_isBridge[id]\
+    \ = 1;\n                                std::vector<T> cur;\n                \
+    \                const T id = static_cast<T>(m_comps.size());\n              \
+    \                  while (remain.size() and ord[v] < low[remain.back()]) {\n \
+    \                                   cur.push_back(remain.back());\n          \
+    \                          m_id[remain.back()] = id;\n                       \
+    \             remain.pop_back();\n                                }\n        \
+    \                        m_comps.push_back(std::move(cur));\n                \
+    \            }\n                        }\n                    }\n           \
+    \     remain.push_back(v);\n            };\n            for (usize i = 0 ; i <\
+    \ n ; i++)\n                if (!ord[i]) {\n                    remain.clear();\n\
+    \                    dfs(dfs,i,edge.size());\n                    for (T j : remain)\n\
+    \                        m_id[j] = static_cast<T>(m_comps.size());\n         \
+    \           m_comps.push_back(remain);\n                }\n            m_g.resize(m_comps.size());\n\
+    \            for (usize i = 0 ; i < m ; i++) \n                if (m_isBridge[i])\
+    \ {\n                    auto [u,v] = edge[i];\n                    m_g[m_id[u]].push_back({m_id[v],i});\n\
+    \                    m_g[m_id[v]].push_back({m_id[u],i});\n                }\n\
+    \        }\n\n        inline usize size() const {\n            return m_g.size();\n\
+    \        }\n\n        T id(T v) const {\n            assert(static_cast<usize>(v)\
+    \ < m_id.size());\n            return m_id[v];\n        }\n\n        bool isBridge(usize\
+    \ i) const {\n            assert(i < m_isBridge.size());\n            return m_isBridge[i];\n\
+    \        }\n\n        const std::vector<T>& component(T i) const {\n         \
+    \   assert(static_cast<usize>(i) < size());\n            return m_comps[i];\n\
+    \        }\n\n        const std::vector<std::vector<T>>& components() const {\n\
+    \            return m_comps;\n        }\n\n        const std::vector<std::pair<T,usize>>&\
+    \ operator[](T i) const {\n            assert(static_cast<usize>(i) < size());\n\
+    \            return m_g[i];\n        }\n\n    private:\n        \n        std::vector<bool>\
+    \ m_isBridge;\n\n        std::vector<T> m_id;\n        \n        std::vector<std::vector<T>>\
+    \ m_comps;\n\n        std::vector<std::vector<std::pair<T,usize>>> m_g;\n    };\n\
+    \npublic:\n\n    BridgeTree() = default;\n\n    explicit BridgeTree(usize n) :\
+    \ m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \    }\n\n    usize addEdge(T u,T v) {\n        assert(static_cast<usize>(u) <\
+    \ size());\n        assert(static_cast<usize>(v) < size());\n        usize res\
+    \ = m_edge.size();\n        m_g[u].push_back({v,res});\n        m_g[v].push_back({u,res});\n\
+    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    BridgeTreeResponse\
+    \ build() const {\n        return BridgeTreeResponse(m_g,m_edge);\n    }\n\nprivate:\n\
+    \n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>> m_g;\n\n\
+    \    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <cassert>\n\
+    #include <concepts>\n#include <ranges>\n#include <vector>\n\nnamespace zawa {\n\
+    \ntemplate <std::integral T>\nclass BridgeTree {\n\n    class BridgeTreeResponse\
+    \ {\n    public:\n\n        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>&\
+    \ g,const std::vector<std::pair<T,T>>& edge) \n            : m_isBridge(edge.size()),\
+    \ m_id(g.size()), m_comps{}, m_g{} {\n            const usize n = g.size();\n\
+    \            const usize m = edge.size();\n            std::vector<u32> low(n),ord(n);\n\
+    \            std::vector<T> remain;\n            u32 time = 1;\n            auto\
+    \ dfs = [&](auto dfs,usize v,usize pe) -> void {\n                ord[v] = low[v]\
+    \ = time++;\n                for (auto [x,id] : g[v])\n                    if\
+    \ (pe != id) {\n                        if (ord[x]) {\n                      \
+    \      low[v] = std::min(low[v],ord[x]);\n                        }\n        \
+    \                else {\n                            dfs(dfs,x,id);\n        \
+    \                    low[v] = std::min(low[v],low[x]);\n                     \
+    \       if (ord[v] < low[x]) {\n                                m_isBridge[id]\
+    \ = 1;\n                                std::vector<T> cur;\n                \
+    \                const T id = static_cast<T>(m_comps.size());\n              \
+    \                  while (remain.size() and ord[v] < low[remain.back()]) {\n \
+    \                                   cur.push_back(remain.back());\n          \
+    \                          m_id[remain.back()] = id;\n                       \
+    \             remain.pop_back();\n                                }\n        \
+    \                        m_comps.push_back(std::move(cur));\n                \
+    \            }\n                        }\n                    }\n           \
+    \     remain.push_back(v);\n            };\n            for (usize i = 0 ; i <\
+    \ n ; i++)\n                if (!ord[i]) {\n                    remain.clear();\n\
+    \                    dfs(dfs,i,edge.size());\n                    for (T j : remain)\n\
+    \                        m_id[j] = static_cast<T>(m_comps.size());\n         \
+    \           m_comps.push_back(remain);\n                }\n            m_g.resize(m_comps.size());\n\
+    \            for (usize i = 0 ; i < m ; i++) \n                if (m_isBridge[i])\
+    \ {\n                    auto [u,v] = edge[i];\n                    m_g[m_id[u]].push_back({m_id[v],i});\n\
+    \                    m_g[m_id[v]].push_back({m_id[u],i});\n                }\n\
+    \        }\n\n        inline usize size() const {\n            return m_g.size();\n\
+    \        }\n\n        T id(T v) const {\n            assert(static_cast<usize>(v)\
+    \ < m_id.size());\n            return m_id[v];\n        }\n\n        bool isBridge(usize\
+    \ i) const {\n            assert(i < m_isBridge.size());\n            return m_isBridge[i];\n\
+    \        }\n\n        const std::vector<T>& component(T i) const {\n         \
+    \   assert(static_cast<usize>(i) < size());\n            return m_comps[i];\n\
+    \        }\n\n        const std::vector<std::vector<T>>& components() const {\n\
+    \            return m_comps;\n        }\n\n        const std::vector<std::pair<T,usize>>&\
+    \ operator[](T i) const {\n            assert(static_cast<usize>(i) < size());\n\
+    \            return m_g[i];\n        }\n\n    private:\n        \n        std::vector<bool>\
+    \ m_isBridge;\n\n        std::vector<T> m_id;\n        \n        std::vector<std::vector<T>>\
+    \ m_comps;\n\n        std::vector<std::vector<std::pair<T,usize>>> m_g;\n    };\n\
+    \npublic:\n\n    BridgeTree() = default;\n\n    explicit BridgeTree(usize n) :\
+    \ m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \    }\n\n    usize addEdge(T u,T v) {\n        assert(static_cast<usize>(u) <\
+    \ size());\n        assert(static_cast<usize>(v) < size());\n        usize res\
+    \ = m_edge.size();\n        m_g[u].push_back({v,res});\n        m_g[v].push_back({u,res});\n\
+    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    BridgeTreeResponse\
+    \ build() const {\n        return BridgeTreeResponse(m_g,m_edge);\n    }\n\nprivate:\n\
+    \n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>> m_g;\n\n\
+    \    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Graph/Components/BridgeTree.hpp
   requiredBy: []
-  timestamp: '2025-06-12 16:53:31+09:00'
+  timestamp: '2026-04-20 22:08:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/two_edge_connected_components.test.cpp
+  - Test/AtCoder/arc039_d.test.cpp
 documentation_of: Src/Graph/Components/BridgeTree.hpp
 layout: document
 title: "Bridge tree (+ \u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3)"
@@ -105,51 +145,6 @@ title: "Bridge tree (+ \u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3)"
 
 二辺連結成分をまとめて一頂点にし、グラフを縮約します。このグラフは木であり、各辺は元のグラフでは橋です。
 
-## ライブラリ
+## 更新履歴
 
-### constructor
-
-```cpp
-BridgeTree() = default;
-explicit BridgeTree(const std::vector<std::vector<T>>& g)
-```
-
-無向グラフの隣接リストを与える。`T`は`std::integral<T>`が`true`である必要がある。
-
-### size
-
-```cpp
-inline usize size() const noexcept
-```
-
-縮約後の頂点数を返す
-
-### operator[]
-
-```
-const std::vector<V>& operator[](V v) const;
-```
-
-縮約後の頂点 $v$ の隣接する頂点の列を返す。ここで、`V = usize`である。
-
-### component
-
-```
-const std::vector<T>& component(V v) const
-```
-
-縮約後の頂点 $v$ に対応している元のグラフの頂点の列を返す。
-
-### components
-
-```
-const std::vector<std::vector<T>>& components() const
-```
-
-`component`の列である。すなわち二重辺連結成分分解した列を返す。
-
-## メモ
-
-内部で`unordered_map`を使って多重辺を処理しているので、ちょっとオーバヘッドがやばそう？
-
-LCでは133msで普通に良さそうだったけど。
+2026/04/20: 書き直した。

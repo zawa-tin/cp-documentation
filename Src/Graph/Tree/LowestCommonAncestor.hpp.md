@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/abc359_g.test.cpp
     title: ABC359-G Sum of Tree Distance
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc039_d.test.cpp
+    title: Test/AtCoder/arc039_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
@@ -178,6 +181,7 @@ data:
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/Manual/typical90_ai.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
+  - Test/AtCoder/arc039_d.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
 documentation_of: Src/Graph/Tree/LowestCommonAncestor.hpp
@@ -196,3 +200,7 @@ title: Lowest Common Ancestor
 ## ライブラリの使い方
 
 コンストラクタで `Tree` と根の頂点番号を与えること。頂点番号を指定しなかった場合は頂点 $0$ を根として構築する。
+
+## 更新履歴
+
+2026/04/20: 線形LCAを実装し、前のものと置き換えられた。
