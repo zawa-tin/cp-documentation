@@ -19,7 +19,7 @@ void test(int N,int Q) {
     cerr << "test: " << N << ' ' << Q << endl;
     vector<int> A(N);
     vector<MIN::Element> B(N);
-    A[0] = mt() % (int)1e9 + 1;
+    A[0] = mt() % (int)1e9+1 + 1;
     for (int i = 1 ; i < N ; i++)
         A[i] = A[i-1] + (mt() % 2 ? 1 : -1);
     for (int i = 0 ; i < N ; i++)
@@ -32,7 +32,9 @@ void test(int N,int Q) {
         if (l > r)
             swap(l,r);
         r++;
-        assert((int)RMQ(l,r) == spt.product(l,r).second);
+        int you = RMQ(l,r);
+        int ans = spt.product(l,r).second;
+        assert(you == ans);
     }
 }
 int main() {
