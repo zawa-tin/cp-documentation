@@ -4,8 +4,13 @@
 #include "../../../Src/Graph/Tree/LowestCommonAncestor.hpp"
 using namespace zawa;
 
+#include <iostream>
+using namespace std;
+
 int main() {
-    SetFastIO();
+    cin.tie(0);
+    cout.tie(0);
+    ios::sync_with_stdio(0);
     int N, Q;
     std::cin >> N >> Q;
     std::vector<std::vector<int>> T(N);
