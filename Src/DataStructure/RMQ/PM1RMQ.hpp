@@ -3,6 +3,7 @@
 #include "../../Template/TypeAlias.hpp"
 
 #include <algorithm>
+#include <array>
 #include <bit>
 #include <cassert>
 #include <concepts>
@@ -18,6 +19,8 @@ private:
 
     static constexpr usize B = 8;
 
+    static constexpr usize BMASK = 7;
+
     static constexpr usize LOGB = 3;
 
     static constexpr usize TRI = B*(B+1)/2;
@@ -28,7 +31,7 @@ public:
 
     PM1RMQ(std::vector<T> a) 
         : m_n{a.size()}, m_inner{(a.size()+B-1)>>LOGB},
-        m_a{std::move(a)}, m_look(innerSize()), m_table((1u << (B-1))*TRI), m_spt(std::bit_width(innerSize()))
+        m_a{std::move(a)}, m_look(innerSize()), m_table(), m_spt(std::bit_width(innerSize()))
     {
         std::vector<u32> minIndex(innerSize());
         std::vector<bool> registered(1u << (B-1));
@@ -53,7 +56,7 @@ public:
         for (usize i = 1,len = 2 ; i < m_spt.size() ; i++,len <<= 1) {
             m_spt[i].resize(innerSize()-len+1);
             for (usize j = 0 ; j < m_spt[i].size() ; j++) {
-                usize l = m_spt[i-1][j], r = m_spt[i-1][j+(len>>1)];
+                u32 l = m_spt[i-1][j], r = m_spt[i-1][j+(len>>1)];
                 m_spt[i][j] = m_a[r] < m_a[l] ? r : l;
             }
         }
@@ -69,18 +72,18 @@ public:
         assert(l < r and r <= size());
         usize L = l>>LOGB, R = (r-1)>>LOGB;
         if (L == R)
-            return accessTable(L,l-(L<<LOGB),r-(L<<LOGB));
-        usize res = accessTable(L,l-(L<<LOGB),B);
+            return accessTable(L,l&BMASK,r-(L<<LOGB));
+        u32 res = accessTable(L,l&BMASK,B);
         L++;
         if (L < R) {
-            auto pd = sptMin(L,R);
+            u32 pd = sptMin(L,R);
             if (m_a[pd] < m_a[res])
                 res = pd;
         }
-        usize rv = accessTable(R,0u,r-(R<<LOGB));
+        u32 rv = accessTable(R,0u,r-(R<<LOGB));
         if (m_a[rv] < m_a[res])
             res = rv;
-        return res;
+        return static_cast<usize>(res);
     }
 
     usize operator()(usize l,usize r) const {
@@ -96,7 +99,7 @@ private:
     // 0..+1,1..-1
     std::vector<usize> m_look;
 
-    std::vector<usize> m_table;
+    std::array<u32,(1u << (B-1))*TRI> m_table;
 
     std::vector<std::vector<u32>> m_spt;
 
@@ -121,8 +124,8 @@ private:
             else
                 val[i+1]++;
         }
-        for (usize l = 0 ; l < B ; l++) {
-            usize mn = l;
+        for (u32 l = 0 ; l < B ; l++) {
+            u32 mn = l;
             for (usize r = l ; r < B ; r++) {
                 if (val[mn] > val[r])
                     mn = r;
@@ -135,7 +138,7 @@ private:
         return (idx<<LOGB) + m_table[m_look[idx]*TRI+encode(l,r)];
     }
 
-    usize sptMin(usize l,usize r) const {
+    u32 sptMin(usize l,usize r) const {
         usize dep = std::bit_width(r-l)-1, i = m_spt[dep][l], j = m_spt[dep][r-(1u<<dep)];
         return m_a[j] < m_a[i] ? j : i;
     }
