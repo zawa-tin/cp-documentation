@@ -1478,6 +1478,9 @@ data:
       path: Test/AtCoder/awc0032_e.test.cpp
       title: Test/AtCoder/awc0032_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/awc0053_d.test.cpp
+      title: Test/AtCoder/awc0053_d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/joi2008ho_e.test.cpp
       title: Test/AtCoder/joi2008ho_e.test.cpp
     - icon: ':heavy_check_mark:'

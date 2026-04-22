@@ -32,12 +32,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc430/submissions/70642359
+    - https://atcoder.jp/contests/abc430/submissions/75170025
     - https://atcoder.jp/contests/abc430/tasks/abc430_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc430_g.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc430/tasks/abc430_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n    AtCoder Beginner Contest 430 G - Range Set Modifying Query\n    https://atcoder.jp/contests/abc430/submissions/70642359\n\
+    \n\n/*\n    AtCoder Beginner Contest 430 G - Range Set Modifying Query\n    https://atcoder.jp/contests/abc430/submissions/75170025\n\
     \ */\n\n#line 2 \"Src/DataStructure/Other/RangeAssigner.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <concepts>\n#include <utility>\n#include <map>\n\
     #include <vector>\n\nnamespace zawa {\n\ntemplate <std::integral Z, class T>\n\
@@ -47,19 +47,22 @@ data:
     \ {\n        assert(min <= max);\n        m_mp[m_min] = {max, init};\n    }\n\n\
     \    std::vector<std::tuple<Z, Z, T>> operator()(Z l, Z r) const {\n        assert(m_min\
     \ <= l and l <= r and r <= m_max);\n        std::vector<std::tuple<Z, Z, T>> res;\n\
-    \        for (auto it = prev(m_mp.upper_bound(l)) ; it != m_mp.end() and it->first\
-    \ < r ; it++)\n            res.emplace_back(std::max(it->first, l), std::min(it->second.first,\
-    \ r), it->second.second);\n        return res;\n    }\n\n    std::vector<std::tuple<Z,\
-    \ Z, T>> assign(Z l, Z r, T v) {\n        assert(m_min <= l and l <= r and r <=\
-    \ m_max);\n        std::vector<std::tuple<Z, Z, T>> res;\n        {\n        \
-    \    auto it = prev(m_mp.upper_bound(l));\n            const Z L = it->first,\
-    \ R = it->second.first;\n            const T V = it->second.second;\n        \
-    \    it->second.first = L;\n            m_mp.erase(it);\n            if (L < l)\n\
-    \                m_mp[L] = {l, V};\n            res.emplace_back(l, std::min(r,\
-    \ R), V);\n            if (r < R)\n                m_mp[r] = {R, V};\n       \
-    \     if (r <= R) {\n                m_mp[l] = {r, v};\n                return\
-    \ res;\n            }\n        }\n        auto it = m_mp.upper_bound(l);\n   \
-    \     for ( ; it != m_mp.end() and it->second.first <= r ; it = m_mp.erase(it))\n\
+    \        for (auto it = std::prev(m_mp.upper_bound(l)) ; it != m_mp.end() and\
+    \ it->first < r ; it++)\n            res.emplace_back(std::max(it->first, l),\
+    \ std::min(it->second.first, r), it->second.second);\n        return res;\n  \
+    \  }\n\n    T get(Z i) const {\n        assert(m_min <= i and i < m_max);\n  \
+    \      auto it = std::prev(m_mp.upper_bound(i));\n        return it->second.second;\n\
+    \    }\n\n    T operator[](Z i) const {\n        return get(i);\n    }\n\n   \
+    \ std::vector<std::tuple<Z, Z, T>> assign(Z l, Z r, T v) {\n        assert(m_min\
+    \ <= l and l <= r and r <= m_max);\n        std::vector<std::tuple<Z, Z, T>> res;\n\
+    \        {\n            auto it = std::prev(m_mp.upper_bound(l));\n          \
+    \  const Z L = it->first, R = it->second.first;\n            const T V = it->second.second;\n\
+    \            it->second.first = L;\n            m_mp.erase(it);\n            if\
+    \ (L < l)\n                m_mp[L] = {l, V};\n            res.emplace_back(l,\
+    \ std::min(r, R), V);\n            if (r < R)\n                m_mp[r] = {R, V};\n\
+    \            if (r <= R) {\n                m_mp[l] = {r, v};\n              \
+    \  return res;\n            }\n        }\n        auto it = m_mp.upper_bound(l);\n\
+    \        for ( ; it != m_mp.end() and it->second.first <= r ; it = m_mp.erase(it))\n\
     \            res.emplace_back(it->first, it->second.first, it->second.second);\n\
     \        if (it != m_mp.end() and r < it->second.first) {\n            const Z\
     \ L = it->first, R = it->second.first;\n            const T V = it->second.second;\n\
@@ -209,7 +212,7 @@ data:
     Hello World\\n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc430/tasks/abc430_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n    AtCoder Beginner Contest 430 G - Range Set Modifying Query\n    https://atcoder.jp/contests/abc430/submissions/70642359\n\
+    \n\n/*\n    AtCoder Beginner Contest 430 G - Range Set Modifying Query\n    https://atcoder.jp/contests/abc430/submissions/75170025\n\
     \ */\n\n#include \"../../Src/DataStructure/Other/RangeAssigner.hpp\"\n#include\
     \ \"../../Src/DataStructure/SegmentTree/LazySegmentTree.hpp\"\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\
     \nusing namespace zawa;\n#include <cassert>\n#include <iostream>\n#include <utility>\n\
@@ -245,7 +248,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc430_g.test.cpp
   requiredBy: []
-  timestamp: '2026-04-18 17:26:20+09:00'
+  timestamp: '2026-04-22 20:47:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc430_g.test.cpp
