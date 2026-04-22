@@ -3,7 +3,7 @@
 
 /*
     AtCoder Beginner Contest 430 G - Range Set Modifying Query
-    https://atcoder.jp/contests/abc430/submissions/70642359
+    https://atcoder.jp/contests/abc430/submissions/75170025
  */
 
 #include "../../Src/DataStructure/Other/RangeAssigner.hpp"

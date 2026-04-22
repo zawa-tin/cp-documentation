@@ -29,16 +29,26 @@ public:
     std::vector<std::tuple<Z, Z, T>> operator()(Z l, Z r) const {
         assert(m_min <= l and l <= r and r <= m_max);
         std::vector<std::tuple<Z, Z, T>> res;
-        for (auto it = prev(m_mp.upper_bound(l)) ; it != m_mp.end() and it->first < r ; it++)
+        for (auto it = std::prev(m_mp.upper_bound(l)) ; it != m_mp.end() and it->first < r ; it++)
             res.emplace_back(std::max(it->first, l), std::min(it->second.first, r), it->second.second);
         return res;
+    }
+
+    T get(Z i) const {
+        assert(m_min <= i and i < m_max);
+        auto it = std::prev(m_mp.upper_bound(i));
+        return it->second.second;
+    }
+
+    T operator[](Z i) const {
+        return get(i);
     }
 
     std::vector<std::tuple<Z, Z, T>> assign(Z l, Z r, T v) {
         assert(m_min <= l and l <= r and r <= m_max);
         std::vector<std::tuple<Z, Z, T>> res;
         {
-            auto it = prev(m_mp.upper_bound(l));
+            auto it = std::prev(m_mp.upper_bound(l));
             const Z L = it->first, R = it->second.first;
             const T V = it->second.second;
             it->second.first = L;
