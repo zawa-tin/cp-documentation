@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Regular Contest 039 D - 旅行会社高橋君
- * https://atcoder.jp/contests/arc039/submissions/75134174
+ * https://atcoder.jp/contests/arc039/submissions/75305818
  */
 
 #include "../../Src/Graph/Tree/LowestCommonAncestor.hpp"
@@ -22,16 +22,16 @@ int main() {
     ios::sync_with_stdio(0);
     int N,M;
     cin >> N >> M;
-    zawa::BridgeTree<int> BT(N);
+    zawa::BridgeTreeBuilder<int> builder(N);
     for (int i = 0 ; i < M ; i++) {
         int x,y;
         cin >> x >> y;
-        BT.addEdge(--x,--y);
+        builder.addEdge(--x,--y);
     }
-    auto twoedge = BT.build();
-    vector<std::vector<int>> g(twoedge.size());
+    auto BT = builder.build();
+    vector<vector<int>> g(BT.size());
     for (int i = 0 ; i < ssize(g) ; i++)
-        for (int j : twoedge[i] | views::keys)
+        for (int j : BT[i] | views::keys)
             g[i].push_back(j);
     zawa::LowestCommonAncestor lca(g); 
     int Q;
@@ -40,9 +40,9 @@ int main() {
         int a,b,c;
         cin >> a >> b >> c;
         a--; b--; c--;
-        a = twoedge.id(a);
-        b = twoedge.id(b);
-        c = twoedge.id(c);
+        a = BT.id(a);
+        b = BT.id(b);
+        c = BT.id(c);
         bool ans = lca.distance(a,b)+lca.distance(b,c)==lca.distance(a,c);
         cout << (ans ? "OK\n" : "NG\n");
     }
