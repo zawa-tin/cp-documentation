@@ -1509,6 +1509,9 @@ data:
       path: Test/CF/CF1026-E.test.cpp
       title: Test/CF/CF1026-E.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/CF/CF1043-F.test.cpp
+      title: CF1043(Div. 3)-F Rada and the Chamomile Valley
+    - icon: ':heavy_check_mark:'
       path: Test/CF/CF1052-E.test.cpp
       title: Test/CF/CF1052-E.test.cpp
     - icon: ':heavy_check_mark:'

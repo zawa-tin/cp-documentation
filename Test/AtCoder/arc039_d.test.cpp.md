@@ -22,13 +22,13 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://atcoder.jp/contests/arc039/submissions/75134174
+    - https://atcoder.jp/contests/arc039/submissions/75305818
     - https://atcoder.jp/contests/arc039/tasks/arc039_d
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"Test/AtCoder/arc039_d.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/arc039/tasks/arc039_d\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
     \n\n/*\n * AtCoder Regular Contest 039 D - \u65C5\u884C\u4F1A\u793E\u9AD8\u6A4B\
-    \u541B\n * https://atcoder.jp/contests/arc039/submissions/75134174\n */\n\n#line\
+    \u541B\n * https://atcoder.jp/contests/arc039/submissions/75305818\n */\n\n#line\
     \ 2 \"Src/Graph/Tree/LowestCommonAncestor.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -118,8 +118,8 @@ data:
     \ m_rmq;\n};\n\n} // namespace zawa\n#line 2 \"Src/Graph/Components/BridgeTree.hpp\"\
     \n\n#line 4 \"Src/Graph/Components/BridgeTree.hpp\"\n\n#line 7 \"Src/Graph/Components/BridgeTree.hpp\"\
     \n#include <ranges>\n#line 9 \"Src/Graph/Components/BridgeTree.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <std::integral T>\nclass BridgeTree {\n\n    class BridgeTreeResponse\
-    \ {\n    public:\n\n        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>&\
+    \ zawa {\n\ntemplate <std::integral T>\nclass BridgeTreeBuilder {\n\n    class\
+    \ BridgeTree {\n    public:\n\n        BridgeTree(const std::vector<std::vector<std::pair<T,usize>>>&\
     \ g,const std::vector<std::pair<T,T>>& edge) \n            : m_isBridge(edge.size()),\
     \ m_id(g.size()), m_comps{}, m_g{} {\n            const usize n = g.size();\n\
     \            const usize m = edge.size();\n            std::vector<u32> low(n),ord(n);\n\
@@ -159,43 +159,47 @@ data:
     \            return m_g[i];\n        }\n\n    private:\n        \n        std::vector<bool>\
     \ m_isBridge;\n\n        std::vector<T> m_id;\n        \n        std::vector<std::vector<T>>\
     \ m_comps;\n\n        std::vector<std::vector<std::pair<T,usize>>> m_g;\n    };\n\
-    \npublic:\n\n    BridgeTree() = default;\n\n    explicit BridgeTree(usize n) :\
-    \ m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \npublic:\n\n    BridgeTreeBuilder() = default;\n\n    explicit BridgeTreeBuilder(usize\
+    \ n) : m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \    }\n\n    inline usize edgeSize() const {\n        return m_edge.size();\n\
     \    }\n\n    usize addEdge(T u,T v) {\n        assert(static_cast<usize>(u) <\
     \ size());\n        assert(static_cast<usize>(v) < size());\n        usize res\
     \ = m_edge.size();\n        m_g[u].push_back({v,res});\n        m_g[v].push_back({u,res});\n\
-    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    BridgeTreeResponse\
-    \ build() const {\n        return BridgeTreeResponse(m_g,m_edge);\n    }\n\nprivate:\n\
-    \n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>> m_g;\n\n\
-    \    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n#line 11\
-    \ \"Test/AtCoder/arc039_d.test.cpp\"\n\n#include <iostream>\n#include <iterator>\n\
+    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    std::pair<T,T>\
+    \ getEdge(usize i) const {\n        assert(i < m_edge.size());\n        return\
+    \ m_edge[i];\n    }\n\n    BridgeTree build() const {\n        return BridgeTree{m_g,m_edge};\n\
+    \    }\n\nprivate:\n\n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>>\
+    \ m_g;\n\n    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n\
+    #line 11 \"Test/AtCoder/arc039_d.test.cpp\"\n\n#include <iostream>\n#include <iterator>\n\
     #line 16 \"Test/AtCoder/arc039_d.test.cpp\"\nusing namespace std;\n\nint main()\
     \ {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    int N,M;\n    cin >> N >> M;\n    zawa::BridgeTree<int> BT(N);\n    for (int\
-    \ i = 0 ; i < M ; i++) {\n        int x,y;\n        cin >> x >> y;\n        BT.addEdge(--x,--y);\n\
-    \    }\n    auto twoedge = BT.build();\n    vector<std::vector<int>> g(twoedge.size());\n\
-    \    for (int i = 0 ; i < ssize(g) ; i++)\n        for (int j : twoedge[i] | views::keys)\n\
-    \            g[i].push_back(j);\n    zawa::LowestCommonAncestor lca(g); \n   \
-    \ int Q;\n    cin >> Q;\n    while (Q--) {\n        int a,b,c;\n        cin >>\
-    \ a >> b >> c;\n        a--; b--; c--;\n        a = twoedge.id(a);\n        b\
-    \ = twoedge.id(b);\n        c = twoedge.id(c);\n        bool ans = lca.distance(a,b)+lca.distance(b,c)==lca.distance(a,c);\n\
+    \    int N,M;\n    cin >> N >> M;\n    zawa::BridgeTreeBuilder<int> builder(N);\n\
+    \    for (int i = 0 ; i < M ; i++) {\n        int x,y;\n        cin >> x >> y;\n\
+    \        builder.addEdge(--x,--y);\n    }\n    auto BT = builder.build();\n  \
+    \  vector<vector<int>> g(BT.size());\n    for (int i = 0 ; i < ssize(g) ; i++)\n\
+    \        for (int j : BT[i] | views::keys)\n            g[i].push_back(j);\n \
+    \   zawa::LowestCommonAncestor lca(g); \n    int Q;\n    cin >> Q;\n    while\
+    \ (Q--) {\n        int a,b,c;\n        cin >> a >> b >> c;\n        a--; b--;\
+    \ c--;\n        a = BT.id(a);\n        b = BT.id(b);\n        c = BT.id(c);\n\
+    \        bool ans = lca.distance(a,b)+lca.distance(b,c)==lca.distance(a,c);\n\
     \        cout << (ans ? \"OK\\n\" : \"NG\\n\");\n    }\n#else\n    int a,b;\n\
     \    cin >> a >> b;\n    cout << a + b << '\\n';\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/arc039/tasks/arc039_d\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n/*\n * AtCoder Regular\
-    \ Contest 039 D - \u65C5\u884C\u4F1A\u793E\u9AD8\u6A4B\u541B\n * https://atcoder.jp/contests/arc039/submissions/75134174\n\
+    \ Contest 039 D - \u65C5\u884C\u4F1A\u793E\u9AD8\u6A4B\u541B\n * https://atcoder.jp/contests/arc039/submissions/75305818\n\
     \ */\n\n#include \"../../Src/Graph/Tree/LowestCommonAncestor.hpp\"\n#include \"\
     ../../Src/Graph/Components/BridgeTree.hpp\"\n\n#include <iostream>\n#include <iterator>\n\
     #include <vector>\n#include <ranges>\nusing namespace std;\n\nint main() {\n#ifdef\
     \ ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n \
-    \   int N,M;\n    cin >> N >> M;\n    zawa::BridgeTree<int> BT(N);\n    for (int\
-    \ i = 0 ; i < M ; i++) {\n        int x,y;\n        cin >> x >> y;\n        BT.addEdge(--x,--y);\n\
-    \    }\n    auto twoedge = BT.build();\n    vector<std::vector<int>> g(twoedge.size());\n\
-    \    for (int i = 0 ; i < ssize(g) ; i++)\n        for (int j : twoedge[i] | views::keys)\n\
-    \            g[i].push_back(j);\n    zawa::LowestCommonAncestor lca(g); \n   \
-    \ int Q;\n    cin >> Q;\n    while (Q--) {\n        int a,b,c;\n        cin >>\
-    \ a >> b >> c;\n        a--; b--; c--;\n        a = twoedge.id(a);\n        b\
-    \ = twoedge.id(b);\n        c = twoedge.id(c);\n        bool ans = lca.distance(a,b)+lca.distance(b,c)==lca.distance(a,c);\n\
+    \   int N,M;\n    cin >> N >> M;\n    zawa::BridgeTreeBuilder<int> builder(N);\n\
+    \    for (int i = 0 ; i < M ; i++) {\n        int x,y;\n        cin >> x >> y;\n\
+    \        builder.addEdge(--x,--y);\n    }\n    auto BT = builder.build();\n  \
+    \  vector<vector<int>> g(BT.size());\n    for (int i = 0 ; i < ssize(g) ; i++)\n\
+    \        for (int j : BT[i] | views::keys)\n            g[i].push_back(j);\n \
+    \   zawa::LowestCommonAncestor lca(g); \n    int Q;\n    cin >> Q;\n    while\
+    \ (Q--) {\n        int a,b,c;\n        cin >> a >> b >> c;\n        a--; b--;\
+    \ c--;\n        a = BT.id(a);\n        b = BT.id(b);\n        c = BT.id(c);\n\
+    \        bool ans = lca.distance(a,b)+lca.distance(b,c)==lca.distance(a,c);\n\
     \        cout << (ans ? \"OK\\n\" : \"NG\\n\");\n    }\n#else\n    int a,b;\n\
     \    cin >> a >> b;\n    cout << a + b << '\\n';\n#endif\n}\n"
   dependsOn:
@@ -206,7 +210,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/arc039_d.test.cpp
   requiredBy: []
-  timestamp: '2026-04-20 22:08:46+09:00'
+  timestamp: '2026-04-27 14:04:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/arc039_d.test.cpp

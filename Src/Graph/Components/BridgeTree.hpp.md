@@ -10,6 +10,9 @@ data:
     path: Test/AtCoder/arc039_d.test.cpp
     title: Test/AtCoder/arc039_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/CF1043-F.test.cpp
+    title: CF1043(Div. 3)-F Rada and the Chamomile Valley
+  - icon: ':heavy_check_mark:'
     path: Test/LC/two_edge_connected_components.test.cpp
     title: Test/LC/two_edge_connected_components.test.cpp
   _isVerificationFailed: false
@@ -24,8 +27,8 @@ data:
     \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
     \n} // namespace zawa\n#line 4 \"Src/Graph/Components/BridgeTree.hpp\"\n\n#include\
     \ <cassert>\n#include <concepts>\n#include <ranges>\n#include <vector>\n\nnamespace\
-    \ zawa {\n\ntemplate <std::integral T>\nclass BridgeTree {\n\n    class BridgeTreeResponse\
-    \ {\n    public:\n\n        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>&\
+    \ zawa {\n\ntemplate <std::integral T>\nclass BridgeTreeBuilder {\n\n    class\
+    \ BridgeTree {\n    public:\n\n        BridgeTree(const std::vector<std::vector<std::pair<T,usize>>>&\
     \ g,const std::vector<std::pair<T,T>>& edge) \n            : m_isBridge(edge.size()),\
     \ m_id(g.size()), m_comps{}, m_g{} {\n            const usize n = g.size();\n\
     \            const usize m = edge.size();\n            std::vector<u32> low(n),ord(n);\n\
@@ -65,19 +68,21 @@ data:
     \            return m_g[i];\n        }\n\n    private:\n        \n        std::vector<bool>\
     \ m_isBridge;\n\n        std::vector<T> m_id;\n        \n        std::vector<std::vector<T>>\
     \ m_comps;\n\n        std::vector<std::vector<std::pair<T,usize>>> m_g;\n    };\n\
-    \npublic:\n\n    BridgeTree() = default;\n\n    explicit BridgeTree(usize n) :\
-    \ m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \npublic:\n\n    BridgeTreeBuilder() = default;\n\n    explicit BridgeTreeBuilder(usize\
+    \ n) : m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \    }\n\n    inline usize edgeSize() const {\n        return m_edge.size();\n\
     \    }\n\n    usize addEdge(T u,T v) {\n        assert(static_cast<usize>(u) <\
     \ size());\n        assert(static_cast<usize>(v) < size());\n        usize res\
     \ = m_edge.size();\n        m_g[u].push_back({v,res});\n        m_g[v].push_back({u,res});\n\
-    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    BridgeTreeResponse\
-    \ build() const {\n        return BridgeTreeResponse(m_g,m_edge);\n    }\n\nprivate:\n\
-    \n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>> m_g;\n\n\
-    \    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
+    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    std::pair<T,T>\
+    \ getEdge(usize i) const {\n        assert(i < m_edge.size());\n        return\
+    \ m_edge[i];\n    }\n\n    BridgeTree build() const {\n        return BridgeTree{m_g,m_edge};\n\
+    \    }\n\nprivate:\n\n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>>\
+    \ m_g;\n\n    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <cassert>\n\
     #include <concepts>\n#include <ranges>\n#include <vector>\n\nnamespace zawa {\n\
-    \ntemplate <std::integral T>\nclass BridgeTree {\n\n    class BridgeTreeResponse\
-    \ {\n    public:\n\n        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>&\
+    \ntemplate <std::integral T>\nclass BridgeTreeBuilder {\n\n    class BridgeTree\
+    \ {\n    public:\n\n        BridgeTree(const std::vector<std::vector<std::pair<T,usize>>>&\
     \ g,const std::vector<std::pair<T,T>>& edge) \n            : m_isBridge(edge.size()),\
     \ m_id(g.size()), m_comps{}, m_g{} {\n            const usize n = g.size();\n\
     \            const usize m = edge.size();\n            std::vector<u32> low(n),ord(n);\n\
@@ -117,23 +122,26 @@ data:
     \            return m_g[i];\n        }\n\n    private:\n        \n        std::vector<bool>\
     \ m_isBridge;\n\n        std::vector<T> m_id;\n        \n        std::vector<std::vector<T>>\
     \ m_comps;\n\n        std::vector<std::vector<std::pair<T,usize>>> m_g;\n    };\n\
-    \npublic:\n\n    BridgeTree() = default;\n\n    explicit BridgeTree(usize n) :\
-    \ m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \npublic:\n\n    BridgeTreeBuilder() = default;\n\n    explicit BridgeTreeBuilder(usize\
+    \ n) : m_n{n}, m_g(n) {}\n\n    inline usize size() const {\n        return m_n;\n\
+    \    }\n\n    inline usize edgeSize() const {\n        return m_edge.size();\n\
     \    }\n\n    usize addEdge(T u,T v) {\n        assert(static_cast<usize>(u) <\
     \ size());\n        assert(static_cast<usize>(v) < size());\n        usize res\
     \ = m_edge.size();\n        m_g[u].push_back({v,res});\n        m_g[v].push_back({u,res});\n\
-    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    BridgeTreeResponse\
-    \ build() const {\n        return BridgeTreeResponse(m_g,m_edge);\n    }\n\nprivate:\n\
-    \n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>> m_g;\n\n\
-    \    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
+    \        m_edge.push_back({u,v});\n        return res;\n    }\n\n    std::pair<T,T>\
+    \ getEdge(usize i) const {\n        assert(i < m_edge.size());\n        return\
+    \ m_edge[i];\n    }\n\n    BridgeTree build() const {\n        return BridgeTree{m_g,m_edge};\n\
+    \    }\n\nprivate:\n\n    usize m_n;\n\n    std::vector<std::vector<std::pair<T,usize>>>\
+    \ m_g;\n\n    std::vector<std::pair<T,T>> m_edge;\n\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Graph/Components/BridgeTree.hpp
   requiredBy: []
-  timestamp: '2026-04-20 22:08:46+09:00'
+  timestamp: '2026-04-27 14:04:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/CF/CF1043-F.test.cpp
   - Test/LC/two_edge_connected_components.test.cpp
   - Test/AtCoder/arc039_d.test.cpp
 documentation_of: Src/Graph/Components/BridgeTree.hpp
@@ -145,6 +153,26 @@ title: "Bridge tree (+ \u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3)"
 
 二辺連結成分をまとめて一頂点にし、グラフを縮約します。このグラフは木であり、各辺は元のグラフでは橋です。
 
+```cpp
+explicit BridgeTreeBuilder<T>(usize n);
+```
+
+で $n$ 頂点 $0$ 辺のグラフ (頂点のindexの型が`T`) を作って
+
+```cpp
+usize BridgeTreeBuilder<T>::addEdge(T u,T v)
+```
+
+で辺を追加して
+
+```cpp
+BridgeTreeBuilder<T>::BridgeTree BridgeTreeBuilder<T>::build()
+```
+
+でBridge Treeを返す
+
 ## 更新履歴
 
 2026/04/20: 書き直した。
+
+2026/04/27: クラス名を変更、`getEdge`を追加。CF1043-Fでverify
