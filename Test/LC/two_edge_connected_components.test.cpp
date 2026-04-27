@@ -13,7 +13,7 @@ int main() {
     ios::sync_with_stdio(false);
     int N, M;
     cin >> N >> M;
-    BridgeTree<int> g(N);
+    BridgeTreeBuilder<int> g(N);
     for (int i = 0 ; i < M ; i++) {
         int u, v;
         cin >> u >> v;

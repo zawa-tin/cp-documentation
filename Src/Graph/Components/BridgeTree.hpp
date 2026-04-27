@@ -10,12 +10,12 @@
 namespace zawa {
 
 template <std::integral T>
-class BridgeTree {
+class BridgeTreeBuilder {
 
-    class BridgeTreeResponse {
+    class BridgeTree {
     public:
 
-        BridgeTreeResponse(const std::vector<std::vector<std::pair<T,usize>>>& g,const std::vector<std::pair<T,T>>& edge) 
+        BridgeTree(const std::vector<std::vector<std::pair<T,usize>>>& g,const std::vector<std::pair<T,T>>& edge) 
             : m_isBridge(edge.size()), m_id(g.size()), m_comps{}, m_g{} {
             const usize n = g.size();
             const usize m = edge.size();
@@ -105,12 +105,16 @@ class BridgeTree {
 
 public:
 
-    BridgeTree() = default;
+    BridgeTreeBuilder() = default;
 
-    explicit BridgeTree(usize n) : m_n{n}, m_g(n) {}
+    explicit BridgeTreeBuilder(usize n) : m_n{n}, m_g(n) {}
 
     inline usize size() const {
         return m_n;
+    }
+
+    inline usize edgeSize() const {
+        return m_edge.size();
     }
 
     usize addEdge(T u,T v) {
@@ -123,8 +127,13 @@ public:
         return res;
     }
 
-    BridgeTreeResponse build() const {
-        return BridgeTreeResponse(m_g,m_edge);
+    std::pair<T,T> getEdge(usize i) const {
+        assert(i < m_edge.size());
+        return m_edge[i];
+    }
+
+    BridgeTree build() const {
+        return BridgeTree{m_g,m_edge};
     }
 
 private:
