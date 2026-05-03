@@ -568,6 +568,9 @@ data:
   - name: Src/Graph
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/CycleDetection.hpp
+      title: "\u30B0\u30E9\u30D5\u306E\u30B5\u30A4\u30AF\u30EB\u691C\u51FA"
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/EulerianTrail.hpp
       title: "Eulerian Trail (\u30AA\u30A4\u30E9\u30FC\u8DEF)"
   - name: Src/Graph/Flow
@@ -1423,6 +1426,9 @@ data:
       path: Test/AtCoder/abc453_g.test.cpp
       title: Test/AtCoder/abc453_g.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc456_e.test.cpp
+      title: Test/AtCoder/abc456_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1597,6 +1603,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/count_points_in_triangle.test.cpp
       title: Test/LC/count_points_in_triangle.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/cycle_detection.test.cpp
+      title: Test/LC/cycle_detection.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/cycle_detection_undirected.test.cpp
+      title: Test/LC/cycle_detection_undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/deque_operate_all_composite.test.cpp
       title: Test/LC/deque_operate_all_composite.test.cpp

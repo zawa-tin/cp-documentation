@@ -403,6 +403,9 @@ data:
     path: Src/Graph/Components/Lowlink.hpp
     title: "Lowlink (\u6A4B\u30FB\u95A2\u7BC0\u70B9)"
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/CycleDetection.hpp
+    title: "\u30B0\u30E9\u30D5\u306E\u30B5\u30A4\u30AF\u30EB\u691C\u51FA"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/EulerianTrail.hpp
     title: "Eulerian Trail (\u30AA\u30A4\u30E9\u30FC\u8DEF)"
   - icon: ':heavy_check_mark:'
@@ -1184,6 +1187,9 @@ data:
     path: Test/AtCoder/abc453_g.test.cpp
     title: Test/AtCoder/abc453_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc456_e.test.cpp
+    title: Test/AtCoder/abc456_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1349,6 +1355,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/count_points_in_triangle.test.cpp
     title: Test/LC/count_points_in_triangle.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/cycle_detection.test.cpp
+    title: Test/LC/cycle_detection.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/cycle_detection_undirected.test.cpp
+    title: Test/LC/cycle_detection_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/deque_operate_all_composite.test.cpp
     title: Test/LC/deque_operate_all_composite.test.cpp
@@ -1917,6 +1929,7 @@ data:
   - Src/Graph/Flow/BurnBury.hpp
   - Src/Graph/Flow/SuccessiveShortestPath.hpp
   - Src/Graph/Flow/Dinic.hpp
+  - Src/Graph/CycleDetection.hpp
   - Src/GeometryR3/Point.hpp
   - Src/GeometryR3/Segment.hpp
   - Src/GeometryR3/Sphere.hpp
@@ -2003,7 +2016,9 @@ data:
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/LC/cycle_detection.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
+  - Test/LC/cycle_detection_undirected.test.cpp
   - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   - Test/LC/aho_corasick.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
@@ -2158,6 +2173,7 @@ data:
   - Test/AtCoder/abc292_d.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
+  - Test/AtCoder/abc456_e.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
