@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 417 F - Random Gathering
- * https://atcoder.jp/contests/abc417/submissions/68182292
+ * https://atcoder.jp/contests/abc417/submissions/75499552
  */
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
@@ -22,7 +22,7 @@ struct S {
         return L + R;
     }
     static Element power(Element v, int exp) {
-        return v * mint{exp};
+        return v * mint::raw(exp);
     }
 };
 

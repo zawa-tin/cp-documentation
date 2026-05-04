@@ -32,7 +32,7 @@ struct M {
     }
     static Element operation(Element l, Element r) {
     }
-    static Element power(Element v, u64 exp) {
+    static Element power(Element v, usize exp) { // expはintなどでもok
     }
 };
 ```
@@ -101,6 +101,16 @@ $i$ 番目の要素を取得する。
 
 $O(\log N)$
 
+## メモ
+
+`power`が`assgin(l,r,v)`の引数の`v`でしか呼ばれない。また、`exp`は $N$ 以下
+
+- 例: `abl_e.test.cpp`では、`v`が1桁の非負整数だから、全部の`power`を前計算している。
+
 ## 参考
 
 - [\[Library Checker\] Range Set Range Composite](https://maspypy.com/library-checker-range-set-range-composite)
+
+## 更新履歴
+
+- 2026/05/04: `power`に関するコンセプトを別ファイルに移植、`power`の引数を`usize`に変更
