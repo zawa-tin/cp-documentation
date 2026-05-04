@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 237 G - Range Sort Query
- * https://atcoder.jp/contests/abc237/submissions/68181908
+ * https://atcoder.jp/contests/abc237/submissions/75499490
  */
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
@@ -18,8 +18,8 @@ struct M {
     static constexpr int operation(int l, int r) {
         return l + r;
     }
-    static constexpr int power(int v, u64 exp) {
-        return v * (int)exp;
+    static constexpr int power(int v, int exp) {
+        return v * exp;
     }
 };
 

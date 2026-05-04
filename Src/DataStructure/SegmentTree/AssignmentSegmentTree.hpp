@@ -2,6 +2,7 @@
 
 #include "../../Template/TypeAlias.hpp"
 #include "../../Algebra/Monoid/MonoidConcept.hpp"
+#include "../../Algebra/PowerableConcept.hpp"
 #include "./SegmentTree.hpp"
 
 #include <cassert>
@@ -12,20 +13,13 @@ namespace zawa {
 
 namespace concepts {
 
-template <class T, class U>
-concept Powerable = requires {
-    typename T::Element;
-    { T::power(std::declval<typename T::Element>(), std::declval<U>()) }
-        -> std::same_as<typename T::Element>;
-};
-
 template <class T>
 concept EqualCompare = requires(T a, T b) {
     { a == b } -> std::convertible_to<bool>;
 };
 
 template <class T>
-concept FastPowerableMonoid = Monoid<T> and Powerable<T, u64>;
+concept FastPowerableMonoid = Monoid<T> and Powerable<T, usize>;
 
 } // namespace concepts
 
@@ -120,11 +114,11 @@ private:
 
     std::set<usize> m_ls; 
 
-    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM> {
+    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM> {
         return VM::power(v, p);
     }
 
-    static V power(V v, u32 p) {
+    static V power(V v, usize p) {
         V res{VM::identity()};
         while (p) {
             if (p & 1) res = VM::operation(res, v);

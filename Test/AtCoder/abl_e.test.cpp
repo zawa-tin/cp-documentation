@@ -9,7 +9,7 @@
 
 /*
  * ACL Beginner Contest - E Replace Digits
- * https://atcoder.jp/contests/abl/submissions/67038204
+ * https://atcoder.jp/contests/abl/submissions/75499596
  */
 
 using namespace zawa;
@@ -26,8 +26,8 @@ struct M {
     static Element operation(const Element& l, const Element& r) {
         return {p10[r.second]*l.first+r.first, l.second+r.second};
     }
-    static Element power(Element v, u64 exp) {
-        return {rep[v.first.val()][exp], (int)exp};
+    static Element power(Element v, int exp) {
+        return {rep[v.first.val()][exp], exp};
     }
 };
 int main() {

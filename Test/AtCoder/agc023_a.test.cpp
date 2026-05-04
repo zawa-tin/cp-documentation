@@ -2,8 +2,8 @@
 // #define PROBLEM "https://atcoder.jp/contests/agc023/tasks/agc023_a"
 
 /*
- * AtCoder Grand Contest 023
- * https://atcoder.jp/contests/agc023/submissions/71354946
+ * AtCoder Grand Contest 023 A - Zero-Sum Ranges
+ * https://atcoder.jp/contests/agc023/submissions/75500001
  */
 
 #include "../../Src/Template/TypeAlias.hpp"
