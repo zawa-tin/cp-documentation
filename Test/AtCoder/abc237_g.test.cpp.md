@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/PowerableConcept.hpp
+    title: Src/Algebra/PowerableConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -25,12 +28,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc237/submissions/68181908
+    - https://atcoder.jp/contests/abc237/submissions/75499490
     - https://atcoder.jp/contests/abc237/tasks/abc237_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc237_g.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/68181908\n\
+    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/75499490\n\
     \ */\n\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\n\
     #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
@@ -46,7 +49,12 @@ data:
     \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
     \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
-    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/Algebra/PowerableConcept.hpp\"\
+    \n\n#line 4 \"Src/Algebra/PowerableConcept.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class T,class U>\nconcept Powerable = requires {\n \
+    \   typename T::Element;\n    { T::power(std::declval<typename T::Element>(),\
+    \ std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n};\n\n\
+    } // namespace concepts\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
     \nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass SegmentTree {\n\
@@ -102,18 +110,16 @@ data:
     \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
     \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
     \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
-    \ m_dat;\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 9 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
-    \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T, class\
-    \ U>\nconcept Powerable = requires {\n    typename T::Element;\n    { T::power(std::declval<typename\
-    \ T::Element>(), std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n\
-    };\n\ntemplate <class T>\nconcept EqualCompare = requires(T a, T b) {\n    { a\
-    \ == b } -> std::convertible_to<bool>;\n};\n\ntemplate <class T>\nconcept FastPowerableMonoid\
-    \ = Monoid<T> and Powerable<T, u64>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid\
-    \ Monoid>\nclass AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n\
-    \    using V = typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\
-    \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
-    \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n\n#line 10 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
+    \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept\
+    \ EqualCompare = requires(T a, T b) {\n    { a == b } -> std::convertible_to<bool>;\n\
+    };\n\ntemplate <class T>\nconcept FastPowerableMonoid = Monoid<T> and Powerable<T,\
+    \ usize>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid Monoid>\nclass\
+    \ AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V =\
+    \ typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\n    explicit\
+    \ AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{}\
+    \ {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
     \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
     \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
     \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
@@ -145,16 +151,16 @@ data:
     \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
     \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
     \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
-    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
-    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, usize p)\
     \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
     \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
     \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
     \ zawa\n#line 11 \"Test/AtCoder/abc237_g.test.cpp\"\nusing namespace zawa;\n\n\
     struct M {\n    using Element = int;\n    static constexpr int identity() {\n\
     \        return 0;\n    }\n    static constexpr int operation(int l, int r) {\n\
-    \        return l + r;\n    }\n    static constexpr int power(int v, u64 exp)\
-    \ {\n        return v * (int)exp;\n    }\n};\n\n#include <iostream>\n\nvoid solve()\
+    \        return l + r;\n    }\n    static constexpr int power(int v, int exp)\
+    \ {\n        return v * exp;\n    }\n};\n\n#include <iostream>\n\nvoid solve()\
     \ {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     \    int N, Q, X;\n    std::cin >> N >> Q >> X;\n    std::vector<int> init(N);\n\
     \    for (int i = 0 ; i < N ; i++) {\n        int P;\n        std::cin >> P;\n\
@@ -174,14 +180,14 @@ data:
     \    std::cout << \"Hello World\\n\";\n#endif    \n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc237/tasks/abc237_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/68181908\n\
+    \n\n/*\n * AtCoder Beginner Contest 237 G - Range Sort Query\n * https://atcoder.jp/contests/abc237/submissions/75499490\n\
     \ */\n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
     \n#include \"../../Src/Template/TypeAlias.hpp\"\nusing namespace zawa;\n\nstruct\
     \ M {\n    using Element = int;\n    static constexpr int identity() {\n     \
     \   return 0;\n    }\n    static constexpr int operation(int l, int r) {\n   \
-    \     return l + r;\n    }\n    static constexpr int power(int v, u64 exp) {\n\
-    \        return v * (int)exp;\n    }\n};\n\n#include <iostream>\n\nvoid solve()\
-    \ {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \     return l + r;\n    }\n    static constexpr int power(int v, int exp) {\n\
+    \        return v * exp;\n    }\n};\n\n#include <iostream>\n\nvoid solve() {\n\
+    \    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     \    int N, Q, X;\n    std::cin >> N >> Q >> X;\n    std::vector<int> init(N);\n\
     \    for (int i = 0 ; i < N ; i++) {\n        int P;\n        std::cin >> P;\n\
     \        init[i] = (P < X ? 0 : (P == X ? 1 : 2));\n    }\n    AssignmentSegmentTree<M>\
@@ -203,11 +209,12 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc237_g.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 23:53:21+09:00'
+  timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc237_g.test.cpp

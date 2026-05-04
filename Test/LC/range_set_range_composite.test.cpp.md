@@ -8,6 +8,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/PowerableConcept.hpp
+    title: Src/Algebra/PowerableConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -62,12 +65,13 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/range_set_range_composite.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 00:22:56+09:00'
+  timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/range_set_range_composite.test.cpp

@@ -113,19 +113,21 @@ data:
     \ : B;\n    }\n};\n\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
     \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
-    \ return T{};\n    }\n    static constexpr T operation(const T& l, const T& r)\
-    \ noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(const\
-    \ T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 11 \"Test/AtCoder/arc197_c.test.cpp\"\nusing namespace zawa;\n\n#include <iostream>\n\
-    using namespace std;\n\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
-    \    ios::sync_with_stdio(0);\n    int Q;\n    cin >> Q;\n    const int MAX =\
-    \ 3000000;\n    vector<bool> del(MAX);\n    const int B = 2500;\n    BucketRangeQuery<AdditiveGroup<int>>\
-    \ buc(vector<int>(MAX,1),B);\n    while (Q--) {\n        int A,B;\n        cin\
-    \ >> A >> B;\n        if (A < MAX and !del[A]) {\n            for (int i = 1 ;\
-    \ i * A < MAX ; i++)\n                if (!del[A*i]) {\n                    del[A*i]\
-    \ = 1;\n                    buc.operation(A*i,-1);\n                }\n      \
-    \  }\n        cout << buc.maxRight(1,[&](int v) { return v < B; }) << '\\n';\n\
-    \    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+    \ return T{};\n    }\n    static constexpr T operation(T l,T r) noexcept {\n \
+    \       return l + r;\n    }\n    static constexpr T inverse(T v) noexcept {\n\
+    \        return -v;\n    }\n    template <class U>\n    static constexpr T power(T\
+    \ v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n    }\n};\n\n\
+    } // namespace zawa\n#line 11 \"Test/AtCoder/arc197_c.test.cpp\"\nusing namespace\
+    \ zawa;\n\n#include <iostream>\nusing namespace std;\n\nint main() {\n#ifdef ATCODER\n\
+    \    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int Q;\n\
+    \    cin >> Q;\n    const int MAX = 3000000;\n    vector<bool> del(MAX);\n   \
+    \ const int B = 2500;\n    BucketRangeQuery<AdditiveGroup<int>> buc(vector<int>(MAX,1),B);\n\
+    \    while (Q--) {\n        int A,B;\n        cin >> A >> B;\n        if (A <\
+    \ MAX and !del[A]) {\n            for (int i = 1 ; i * A < MAX ; i++)\n      \
+    \          if (!del[A*i]) {\n                    del[A*i] = 1;\n             \
+    \       buc.operation(A*i,-1);\n                }\n        }\n        cout <<\
+    \ buc.maxRight(1,[&](int v) { return v < B; }) << '\\n';\n    }\n#else\n    cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/arc197/tasks/arc197_c\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n * AtCoder Regular Contest 197 (Div. 2) C - Removal of Multiples\n * https://atcoder.jp/contests/arc197/submissions/74416251\n\
@@ -151,7 +153,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/arc197_c.test.cpp
   requiredBy: []
-  timestamp: '2026-03-26 22:26:11+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/arc197_c.test.cpp

@@ -35,9 +35,11 @@ data:
     }\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\n\
     namespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using\
     \ Element = T;\n    static constexpr T identity() noexcept {\n        return T{};\n\
-    \    }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n\
-    \        return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
-    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp\"\
+    \    }\n    static constexpr T operation(T l,T r) noexcept {\n        return l\
+    \ + r;\n    }\n    static constexpr T inverse(T v) noexcept {\n        return\
+    \ -v;\n    }\n    template <class U>\n    static constexpr T power(T v,U exp)\
+    \ noexcept {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp\"\
     \n\n#line 4 \"Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n\
     \nnamespace zawa {\n\ntemplate <class Group>\nclass PotentializedDisjointSetUnion\
@@ -97,7 +99,7 @@ data:
   isVerificationFile: true
   path: Test/AOJ/DSL_1_B.test.cpp
   requiredBy: []
-  timestamp: '2025-02-23 17:42:37+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_1_B.test.cpp

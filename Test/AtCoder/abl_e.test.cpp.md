@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/PowerableConcept.hpp
+    title: Src/Algebra/PowerableConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -25,7 +28,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abl/submissions/67038204
+    - https://atcoder.jp/contests/abl/submissions/75499596
     - https://atcoder.jp/contests/abl/tasks/abl_e
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -44,14 +47,14 @@ data:
     \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
     \n#include \"atcoder/modint\"\n\n#include <iostream>\n#include <vector>\n\n/*\n\
-    \ * ACL Beginner Contest - E Replace Digits\n * https://atcoder.jp/contests/abl/submissions/67038204\n\
+    \ * ACL Beginner Contest - E Replace Digits\n * https://atcoder.jp/contests/abl/submissions/75499596\n\
     \ */\n\nusing namespace zawa;\nusing mint = atcoder::modint998244353;\nint N,\
     \ Q;\nmint p10[2*200020];\nmint rep[10][2*200020];\n\nstruct M {\n    using Element\
     \ = std::pair<mint, int>;\n    static Element identity() {\n        return {mint{},\
     \ 0};\n    }\n    static Element operation(const Element& l, const Element& r)\
     \ {\n        return {p10[r.second]*l.first+r.first, l.second+r.second};\n    }\n\
-    \    static Element power(Element v, u64 exp) {\n        return {rep[v.first.val()][exp],\
-    \ (int)exp};\n    }\n};\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
+    \    static Element power(Element v, int exp) {\n        return {rep[v.first.val()][exp],\
+    \ exp};\n    }\n};\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
     \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    std::cin\
     \ >> N >> Q; \n    p10[0] = mint::raw(1);\n    for (int i = 1 ; i <= N ; i++)\
     \ p10[i] = p10[i - 1] * mint::raw(10);\n    for (int i = 0 ; i < 10 ; i++) {\n\
@@ -66,11 +69,12 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   isVerificationFile: true
   path: Test/AtCoder/abl_e.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 23:53:21+09:00'
+  timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abl_e.test.cpp

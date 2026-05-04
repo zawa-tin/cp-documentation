@@ -36,9 +36,10 @@ data:
     \n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
-    \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
-    \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
-    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
+    \ T operation(T l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr\
+    \ T inverse(T v) noexcept {\n        return -v;\n    }\n    template <class U>\n\
+    \    static constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -90,7 +91,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   requiredBy: []
-  timestamp: '2025-11-30 16:55:06+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC162-D.test.cpp

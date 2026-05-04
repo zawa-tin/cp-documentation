@@ -128,15 +128,17 @@ data:
     \n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
     \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
     \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
-    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
-    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
-    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/Set/FenwickSet.hpp\"\
-    \n\n#include <bit>\n#line 11 \"Src/DataStructure/Set/FenwickSet.hpp\"\n#include\
-    \ <optional>\n\nnamespace zawa {\n\nclass FenwickSet {\npublic:\n\n    FenwickSet()\
-    \ = default;\n\n    explicit FenwickSet(usize n) \n        : m_n{n}, m_m{DivCeil<usize>(n,\
-    \ 64)}, m_dat(m_m), m_fen(m_m), m_all{} {}\n\n    constexpr usize maxValue() const\
-    \ {\n        return m_n;\n    }\n\n    usize size() const {\n        return m_all;\n\
-    \    }\n\n    void insert(i32 x) {\n        assert(0 <= x);\n        assert(static_cast<usize>(x)\
+    \  }\n    static constexpr T operation(T l,T r) noexcept {\n        return l +\
+    \ r;\n    }\n    static constexpr T inverse(T v) noexcept {\n        return -v;\n\
+    \    }\n    template <class U>\n    static constexpr T power(T v,U exp) noexcept\
+    \ {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace zawa\n\
+    #line 7 \"Src/DataStructure/Set/FenwickSet.hpp\"\n\n#include <bit>\n#line 11 \"\
+    Src/DataStructure/Set/FenwickSet.hpp\"\n#include <optional>\n\nnamespace zawa\
+    \ {\n\nclass FenwickSet {\npublic:\n\n    FenwickSet() = default;\n\n    explicit\
+    \ FenwickSet(usize n) \n        : m_n{n}, m_m{DivCeil<usize>(n, 64)}, m_dat(m_m),\
+    \ m_fen(m_m), m_all{} {}\n\n    constexpr usize maxValue() const {\n        return\
+    \ m_n;\n    }\n\n    usize size() const {\n        return m_all;\n    }\n\n  \
+    \  void insert(i32 x) {\n        assert(0 <= x);\n        assert(static_cast<usize>(x)\
     \ < maxValue());\n        if ((m_dat[x / 64] >> (x % 64)) & 1) \n            return;\n\
     \        m_dat[x / 64] |= u64{1} << (x % 64);\n        m_fen.operation(x / 64,\
     \ 1);\n        m_all++;\n    }\n\n    void erase(i32 x) {\n        assert(static_cast<usize>(x)\
@@ -229,7 +231,7 @@ data:
   path: Src/DataStructure/Set/FenwickSet.hpp
   requiredBy:
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
-  timestamp: '2025-10-14 12:56:31+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp

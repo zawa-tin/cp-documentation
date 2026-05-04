@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/CartesianProductGroup.hpp
+    title: Src/Algebra/Group/CartesianProductGroup.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Group/GroupConcept.hpp
     title: Src/Algebra/Group/GroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -30,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
+    title: Lazy Fenwick Tree
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
@@ -138,6 +144,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_G.test.cpp
+    title: Test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
@@ -373,6 +382,7 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
@@ -384,6 +394,7 @@ data:
   - Src/Algebra/Monoid/MonoidAction.hpp
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Group/CartesianProductGroup.hpp
   - Src/Utility/AreaOfUnionOfRectangles.hpp
   timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -423,6 +434,7 @@ data:
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/3111.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/AtCoder/abc384_g.test.cpp

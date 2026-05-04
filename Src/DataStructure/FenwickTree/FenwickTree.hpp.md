@@ -15,6 +15,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
+    title: Lazy Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
@@ -27,6 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_G.test.cpp
+    title: Test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
@@ -209,6 +215,7 @@ data:
   requiredBy:
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   timestamp: '2025-10-14 12:56:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -221,6 +228,7 @@ data:
   - Test/LC/vertex_add_subtree_sum.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp

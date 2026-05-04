@@ -2,8 +2,14 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/AdditiveGroup.hpp
+    title: "\u52A0\u6CD5\u7FA4"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/PowerableConcept.hpp
+    title: Src/Algebra/PowerableConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
@@ -25,7 +31,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc417/submissions/68182292
+    - https://atcoder.jp/contests/abc417/submissions/75499943
     - https://atcoder.jp/contests/abc417/tasks/abc417_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -42,31 +48,31 @@ data:
     \ line -1: no such header\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc417/tasks/abc417_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 417 F - Random Gathering\n * https://atcoder.jp/contests/abc417/submissions/68182292\n\
+    \n\n/*\n * AtCoder Beginner Contest 417 F - Random Gathering\n * https://atcoder.jp/contests/abc417/submissions/75499943\n\
     \ */\n\n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\n#include\
-    \ <iostream>\n#include <vector>\n\nstruct S {\n    using Element = mint;\n   \
-    \ static Element identity() {\n        return 0;\n    }\n    static Element operation(Element\
-    \ L, Element R) {\n        return L + R;\n    }\n    static Element power(Element\
-    \ v, int exp) {\n        return v * mint{exp};\n    }\n};\n\nusing namespace std;\n\
-    using namespace zawa;\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
-    \    ios::sync_with_stdio(0);\n    int N, M;\n    cin >> N >> M;\n    vector<mint>\
-    \ A(N);\n    for (int i = 0 ; i < N ; i++) {\n        int v;\n        cin >> v;\n\
-    \        A[i] = mint::raw(v);\n    }\n    AssignmentSegmentTree<S> seg{A};\n \
-    \   while (M--) {\n        int L, R;\n        cin >> L >> R;\n        L--;\n \
-    \       seg.assign(L, R, seg.product(L, R) / mint{R - L}); \n    }\n    for (int\
-    \ i = 0 ; i < N ; i++) cout << seg.product(i, i + 1).val() << (i + 1 == N ? '\\\
-    n' : ' ');\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+    \n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"atcoder/modint\"\
+    \nusing mint = atcoder::modint998244353;\n\n#include <iostream>\n#include <vector>\n\
+    \nusing namespace std;\nusing namespace zawa;\nint main() {\n#ifdef ATCODER\n\
+    \    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N, M;\n\
+    \    cin >> N >> M;\n    vector<mint> A(N);\n    for (int i = 0 ; i < N ; i++)\
+    \ {\n        int v;\n        cin >> v;\n        A[i] = mint::raw(v);\n    }\n\
+    \    AssignmentSegmentTree<AdditiveGroup<mint>> seg{A};\n    while (M--) {\n \
+    \       int L, R;\n        cin >> L >> R;\n        L--;\n        seg.assign(L,\
+    \ R, seg.product(L, R) / mint{R - L}); \n    }\n    for (int i = 0 ; i < N ; i++)\
+    \ cout << seg.product(i, i + 1).val() << (i + 1 == N ? '\\n' : ' ');\n#else\n\
+    \    cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc417_f.test.cpp
   requiredBy: []
-  timestamp: '2025-11-19 23:53:21+09:00'
+  timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc417_f.test.cpp

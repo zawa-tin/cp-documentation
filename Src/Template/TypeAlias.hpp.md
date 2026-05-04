@@ -38,6 +38,9 @@ data:
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
+    title: Lazy Fenwick Tree
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
   - icon: ':heavy_check_mark:'
@@ -873,6 +876,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_F.test.cpp
     title: Test/AOJ/DSL_2_F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_G.test.cpp
+    title: Test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
@@ -1807,6 +1813,7 @@ data:
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
@@ -2142,6 +2149,7 @@ data:
   - Test/AOJ/CGL_7_G.test.cpp
   - Test/AOJ/GRL_1_A.test.cpp
   - Test/AOJ/CGL_1_B.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/DPL_3_C.test.cpp
   - Test/AOJ/2706.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp

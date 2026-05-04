@@ -34,11 +34,13 @@ data:
     \ */\n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\n\
     template <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n \
     \   static constexpr T identity() noexcept {\n        return T{};\n    }\n   \
-    \ static constexpr T operation(const T& l, const T& r) noexcept {\n        return\
-    \ l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept {\n     \
-    \   return -v;\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/PersistentSegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ static constexpr T operation(T l,T r) noexcept {\n        return l + r;\n  \
+    \  }\n    static constexpr T inverse(T v) noexcept {\n        return -v;\n   \
+    \ }\n    template <class U>\n    static constexpr T power(T v,U exp) noexcept\
+    \ {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/DataStructure/SegmentTree/PersistentSegmentTree.hpp\"\n\n#line 2\
+    \ \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\n\
+    namespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
@@ -156,7 +158,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc453_g.test.cpp
   requiredBy: []
-  timestamp: '2026-04-18 16:38:51+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc453_g.test.cpp

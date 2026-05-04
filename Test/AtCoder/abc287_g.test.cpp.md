@@ -148,11 +148,13 @@ data:
     \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 2 \"\
     Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
     class AdditiveGroup {\npublic:\n    using Element = T;\n    static constexpr T\
-    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(const\
-    \ T& l, const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr\
-    \ T inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 7 \"Test/AtCoder/abc287_g.test.cpp\"\n\n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\
-    \n\n/*\n * AtCoder Beginner Contest 287 G - Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/67045318\n\
+    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(T\
+    \ l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(T\
+    \ v) noexcept {\n        return -v;\n    }\n    template <class U>\n    static\
+    \ constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 7 \"Test/AtCoder/abc287_g.test.cpp\"\n\
+    \n#line 11 \"Test/AtCoder/abc287_g.test.cpp\"\n\n/*\n * AtCoder Beginner Contest\
+    \ 287 G - Balance Update Query\n * https://atcoder.jp/contests/abc287/submissions/67045318\n\
     \ */\n\nvoid solve() {\n    using namespace zawa;\n    SetFastIO();\n    int n;\
     \ std::cin >> n;\n    std::vector<int> a(n), b(n);\n    for (int i{} ; i < n ;\
     \ i++) {\n        std::cin >> a[i] >> b[i];\n    }\n    int q; std::cin >> q;\n\
@@ -243,7 +245,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc287_g.test.cpp
   requiredBy: []
-  timestamp: '2025-10-14 12:56:31+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc287_g.test.cpp

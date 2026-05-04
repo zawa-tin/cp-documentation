@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/PowerableConcept.hpp
+    title: Src/Algebra/PowerableConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Semigroup/SemigroupConcept.hpp
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -59,7 +62,12 @@ data:
     \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
     \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
-    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/Algebra/PowerableConcept.hpp\"\
+    \n\n#line 4 \"Src/Algebra/PowerableConcept.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class T,class U>\nconcept Powerable = requires {\n \
+    \   typename T::Element;\n    { T::power(std::declval<typename T::Element>(),\
+    \ std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n};\n\n\
+    } // namespace concepts\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
     \n\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
     #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
     \nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass SegmentTree {\n\
@@ -115,18 +123,16 @@ data:
     \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
     \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
     \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
-    \ m_dat;\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 9 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
-    \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T, class\
-    \ U>\nconcept Powerable = requires {\n    typename T::Element;\n    { T::power(std::declval<typename\
-    \ T::Element>(), std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n\
-    };\n\ntemplate <class T>\nconcept EqualCompare = requires(T a, T b) {\n    { a\
-    \ == b } -> std::convertible_to<bool>;\n};\n\ntemplate <class T>\nconcept FastPowerableMonoid\
-    \ = Monoid<T> and Powerable<T, u64>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid\
-    \ Monoid>\nclass AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n\
-    \    using V = typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\
-    \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
-    \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n\n#line 10 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
+    \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept\
+    \ EqualCompare = requires(T a, T b) {\n    { a == b } -> std::convertible_to<bool>;\n\
+    };\n\ntemplate <class T>\nconcept FastPowerableMonoid = Monoid<T> and Powerable<T,\
+    \ usize>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid Monoid>\nclass\
+    \ AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V =\
+    \ typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\n    explicit\
+    \ AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{}\
+    \ {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
     \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
     \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
     \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
@@ -158,40 +164,39 @@ data:
     \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
     \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
     \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
-    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
-    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, usize p)\
     \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
     \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
     \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
     \ zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
-    \n#include \"./SegmentTree.hpp\"\n\n#include <cassert>\n#include <vector>\n#include\
-    \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T, class\
-    \ U>\nconcept Powerable = requires {\n    typename T::Element;\n    { T::power(std::declval<typename\
-    \ T::Element>(), std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n\
-    };\n\ntemplate <class T>\nconcept EqualCompare = requires(T a, T b) {\n    { a\
-    \ == b } -> std::convertible_to<bool>;\n};\n\ntemplate <class T>\nconcept FastPowerableMonoid\
-    \ = Monoid<T> and Powerable<T, u64>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid\
-    \ Monoid>\nclass AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n\
-    \    using V = typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\
-    \n    explicit AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()),\
-    \ m_ls{} {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
-    \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
-    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
-    \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
-    \ ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i] ==\
-    \ dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
-    \ j - i);\n                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity())\
-    \ ;\n            }\n        }\n        else {\n            for (usize i{} ; i\
-    \ < m_dat.size() ; i++) m_ls.insert(i);\n        }\n        m_ls.insert(dat.size());\n\
-    \        m_seg = decltype(m_seg){dat};\n    }\n\n    [[nodiscard]] inline usize\
-    \ size() const noexcept {\n        return m_dat.size();\n    }\n\n    [[nodiscard]]\
-    \ V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
-    \        if (l == r) return VM::identity();\n        const auto second_l = m_ls.upper_bound(l);\n\
-    \        const auto first_l = std::prev(second_l);\n        if (second_l != m_ls.end()\
-    \ and r <= *second_l)\n            return power(m_dat[*first_l], r - l);\n   \
-    \     const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n\
-    \                power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
+    \n#include \"../../Algebra/PowerableConcept.hpp\"\n#include \"./SegmentTree.hpp\"\
+    \n\n#include <cassert>\n#include <vector>\n#include <set>\n\nnamespace zawa {\n\
+    \nnamespace concepts {\n\ntemplate <class T>\nconcept EqualCompare = requires(T\
+    \ a, T b) {\n    { a == b } -> std::convertible_to<bool>;\n};\n\ntemplate <class\
+    \ T>\nconcept FastPowerableMonoid = Monoid<T> and Powerable<T, usize>;\n\n} //\
+    \ namespace concepts\n\ntemplate <concepts::Monoid Monoid>\nclass AssignmentSegmentTree\
+    \ {\npublic:\n\n    using VM = Monoid;\n\n    using V = typename VM::Element;\n\
+    \n    AssignmentSegmentTree() = default;\n\n    explicit AssignmentSegmentTree(usize\
+    \ n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{} {\n        m_dat.shrink_to_fit();\n\
+    \        assert(n);\n        m_ls.insert(0u);\n        m_ls.insert(n);\n    }\n\
+    \n    explicit AssignmentSegmentTree(std::vector<V> dat) : m_seg{}, m_dat{dat},\
+    \ m_ls{} {\n        m_dat.shrink_to_fit();\n        if constexpr (concepts::EqualCompare<V>)\
+    \ {\n            for (usize i{}, j{} ; i < m_dat.size() ; ) {\n              \
+    \  while (j < dat.size() and dat[i] == dat[j]) j++;\n                m_ls.insert(i);\n\
+    \                dat[i] = power(m_dat[i], j - i);\n                for ( ; ++i\
+    \ < j ; dat[i] = m_dat[i] = VM::identity()) ;\n            }\n        }\n    \
+    \    else {\n            for (usize i{} ; i < m_dat.size() ; i++) m_ls.insert(i);\n\
+    \        }\n        m_ls.insert(dat.size());\n        m_seg = decltype(m_seg){dat};\n\
+    \    }\n\n    [[nodiscard]] inline usize size() const noexcept {\n        return\
+    \ m_dat.size();\n    }\n\n    [[nodiscard]] V product(usize l, usize r) const\
+    \ {\n        assert(l <= r and r <= size());\n        if (l == r) return VM::identity();\n\
+    \        const auto second_l = m_ls.upper_bound(l);\n        const auto first_l\
+    \ = std::prev(second_l);\n        if (second_l != m_ls.end() and r <= *second_l)\n\
+    \            return power(m_dat[*first_l], r - l);\n        const auto last_l\
+    \ = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n        \
+    \        power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
     \ *last_l)\n                );\n        if (r == *last_l) return res;\n      \
     \  return VM::operation(res, power(m_dat[*last_l], r - *last_l));\n    }\n\n \
     \   void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= m_dat.size());\n\
@@ -207,8 +212,8 @@ data:
     \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
     \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
     \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
-    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) requires concepts::FastPowerableMonoid<VM>\
-    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, u32 p)\
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM>\
+    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, usize p)\
     \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
     \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
     \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
@@ -217,11 +222,12 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   requiredBy: []
-  timestamp: '2025-11-19 23:53:21+09:00'
+  timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_set_range_composite.test.cpp
@@ -266,7 +272,7 @@ struct M {
     }
     static Element operation(Element l, Element r) {
     }
-    static Element power(Element v, u64 exp) {
+    static Element power(Element v, usize exp) { // expはintなどでもok
     }
 };
 ```
@@ -335,6 +341,16 @@ $i$ 番目の要素を取得する。
 
 $O(\log N)$
 
+## メモ
+
+`power`が`assgin(l,r,v)`の引数の`v`でしか呼ばれない。また、`exp`は $N$ 以下
+
+- 例: `abl_e.test.cpp`では、`v`が1桁の非負整数だから、全部の`power`を前計算している。
+
 ## 参考
 
 - [\[Library Checker\] Range Set Range Composite](https://maspypy.com/library-checker-range-set-range-composite)
+
+## 更新履歴
+
+- 2026/05/04: `power`に関するコンセプトを別ファイルに移植、`power`の引数を`usize`に変更

@@ -342,9 +342,10 @@ data:
     #line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
-    \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
-    \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
-    \   }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/vertex_get_range_contour_add_on_tree.test.cpp\"\
+    \ T operation(T l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr\
+    \ T inverse(T v) noexcept {\n        return -v;\n    }\n    template <class U>\n\
+    \    static constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/vertex_get_range_contour_add_on_tree.test.cpp\"\
     \nusing namespace zawa;\n\n#line 9 \"Test/LC/vertex_get_range_contour_add_on_tree.test.cpp\"\
     \n#include <iostream>\n#line 11 \"Test/LC/vertex_get_range_contour_add_on_tree.test.cpp\"\
     \nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n  \
@@ -396,7 +397,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
   requiredBy: []
-  timestamp: '2026-04-20 16:41:41+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp

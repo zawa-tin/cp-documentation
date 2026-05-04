@@ -184,32 +184,34 @@ data:
     \ prod, rch, m, nr);\n    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
     \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
-    \ return T{};\n    }\n    static constexpr T operation(const T& l, const T& r)\
-    \ noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(const\
-    \ T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line\
-    \ 12 \"Test/AtCoder/abc430_g.test.cpp\"\nusing namespace zawa;\n#line 14 \"Test/AtCoder/abc430_g.test.cpp\"\
-    \n#include <iostream>\n#line 16 \"Test/AtCoder/abc430_g.test.cpp\"\nusing namespace\
-    \ std;\nstruct MAX {\n    using Element = pair<int, int>;\n    static Element\
-    \ identity() {\n        return {-1, 0};\n    }\n    static Element operation(Element\
-    \ L, Element R) {\n        if (L.first < R.first)\n            swap(L, R);\n \
-    \       if (L.first == R.first)\n            L.second += R.second;\n        return\
-    \ L;\n    }\n};\nstruct ACT {\n    using ValueMonoid = MAX;\n    using OperatorMonoid\
-    \ = AdditiveGroup<int>;\n    static ValueMonoid::Element mapping(ValueMonoid::Element\
-    \ v, OperatorMonoid::Element o) {\n        v.first += o;\n        return v;\n\
-    \    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
-    \    ios::sync_with_stdio(0);\n    int N, Q;\n    cin >> N >> Q;\n    vector rg(60,\
-    \ RangeAssigner<int, bool>(N, false));\n    LazySegmentTree<ACT> seg(vector<MAX::Element>(N,\
-    \ {0, 1}));\n    while (Q--) {\n        int T, L, R;\n        cin >> T >> L >>\
-    \ R;\n        L--;\n        if (T == 1) {\n            int x;\n            cin\
-    \ >> x;\n            for (auto [l, r, v] : rg[x - 1].assign(L, R, true)) {\n \
-    \               if (v == false)\n                    seg.operation(l, r, 1);\n\
-    \            }\n        }\n        else if (T == 2) {\n            int x;\n  \
-    \          cin >> x;\n            for (auto [l, r, v] : rg[x - 1].assign(L, R,\
-    \ false)) {\n                if (v == true)\n                    seg.operation(l,\
-    \ r, -1);\n            }\n        }\n        else if (T == 3) {\n            auto\
-    \ [x, y] = seg.product(L, R);\n            cout << x << ' ' << y << '\\n';\n \
-    \       }\n        else\n            assert(0);\n    }\n#else\n    cout << \"\
-    Hello World\\n\";\n#endif\n}\n"
+    \ return T{};\n    }\n    static constexpr T operation(T l,T r) noexcept {\n \
+    \       return l + r;\n    }\n    static constexpr T inverse(T v) noexcept {\n\
+    \        return -v;\n    }\n    template <class U>\n    static constexpr T power(T\
+    \ v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n    }\n};\n\n\
+    } // namespace zawa\n#line 12 \"Test/AtCoder/abc430_g.test.cpp\"\nusing namespace\
+    \ zawa;\n#line 14 \"Test/AtCoder/abc430_g.test.cpp\"\n#include <iostream>\n#line\
+    \ 16 \"Test/AtCoder/abc430_g.test.cpp\"\nusing namespace std;\nstruct MAX {\n\
+    \    using Element = pair<int, int>;\n    static Element identity() {\n      \
+    \  return {-1, 0};\n    }\n    static Element operation(Element L, Element R)\
+    \ {\n        if (L.first < R.first)\n            swap(L, R);\n        if (L.first\
+    \ == R.first)\n            L.second += R.second;\n        return L;\n    }\n};\n\
+    struct ACT {\n    using ValueMonoid = MAX;\n    using OperatorMonoid = AdditiveGroup<int>;\n\
+    \    static ValueMonoid::Element mapping(ValueMonoid::Element v, OperatorMonoid::Element\
+    \ o) {\n        v.first += o;\n        return v;\n    }\n};\nint main() {\n#ifdef\
+    \ ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n \
+    \   int N, Q;\n    cin >> N >> Q;\n    vector rg(60, RangeAssigner<int, bool>(N,\
+    \ false));\n    LazySegmentTree<ACT> seg(vector<MAX::Element>(N, {0, 1}));\n \
+    \   while (Q--) {\n        int T, L, R;\n        cin >> T >> L >> R;\n       \
+    \ L--;\n        if (T == 1) {\n            int x;\n            cin >> x;\n   \
+    \         for (auto [l, r, v] : rg[x - 1].assign(L, R, true)) {\n            \
+    \    if (v == false)\n                    seg.operation(l, r, 1);\n          \
+    \  }\n        }\n        else if (T == 2) {\n            int x;\n            cin\
+    \ >> x;\n            for (auto [l, r, v] : rg[x - 1].assign(L, R, false)) {\n\
+    \                if (v == true)\n                    seg.operation(l, r, -1);\n\
+    \            }\n        }\n        else if (T == 3) {\n            auto [x, y]\
+    \ = seg.product(L, R);\n            cout << x << ' ' << y << '\\n';\n        }\n\
+    \        else\n            assert(0);\n    }\n#else\n    cout << \"Hello World\\\
+    n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc430/tasks/abc430_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n/*\n    AtCoder Beginner Contest 430 G - Range Set Modifying Query\n    https://atcoder.jp/contests/abc430/submissions/75170025\n\
@@ -248,7 +250,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc430_g.test.cpp
   requiredBy: []
-  timestamp: '2026-04-22 20:47:47+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc430_g.test.cpp

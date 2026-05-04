@@ -192,10 +192,12 @@ data:
     } // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace\
     \ zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n    using Element\
     \ = T;\n    static constexpr T identity() noexcept {\n        return T{};\n  \
-    \  }\n    static constexpr T operation(const T& l, const T& r) noexcept {\n  \
-    \      return l + r;\n    }\n    static constexpr T inverse(const T& v) noexcept\
-    \ {\n        return -v;\n    }\n};\n\n} // namespace zawa\n#line 8 \"Test/AtCoder/abc384_g.test.cpp\"\
-    \n\n/*\n * AtCoder Beginner Contest 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74165504\n\
+    \  }\n    static constexpr T operation(T l,T r) noexcept {\n        return l +\
+    \ r;\n    }\n    static constexpr T inverse(T v) noexcept {\n        return -v;\n\
+    \    }\n    template <class U>\n    static constexpr T power(T v,U exp) noexcept\
+    \ {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace zawa\n\
+    #line 8 \"Test/AtCoder/abc384_g.test.cpp\"\n\n/*\n * AtCoder Beginner Contest\
+    \ 384 G - Abs Sum\n * https://atcoder.jp/contests/abc384/submissions/74165504\n\
     \ */\n\nusing namespace zawa;\nusing namespace std;\n\nint N, K, A[100000], B[100000];\n\
     pair<int,int> Q[10000];\n\nvoid solve() {\n    CompressedSequence a{std::vector(A,\
     \ A + N)}, b{std::vector(B, B + N)};\n    FenwickTree<AdditiveGroup<int>> ca(a.size()),\
@@ -279,7 +281,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc384_g.test.cpp
   requiredBy: []
-  timestamp: '2026-03-16 19:40:14+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc384_g.test.cpp

@@ -9,6 +9,9 @@ data:
     title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/CartesianProductGroup.hpp
+    title: Src/Algebra/Group/CartesianProductGroup.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
     title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\
       \u30A8\u30EA\u51E6\u7406"
@@ -18,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/FenwickTree.hpp
     title: Fenwick Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
+    title: Lazy Fenwick Tree
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
     title: Fenwick Tree 2D (Offline Query)
@@ -43,6 +49,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_E.test.cpp
     title: Test/AOJ/DSL_2_E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_2_G.test.cpp
+    title: Test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc276_f.test.cpp
     title: Test/AtCoder/abc276_f.test.cpp
@@ -140,9 +149,11 @@ data:
   - Src/DataStructure/Bucket/BucketRangeProduct.hpp
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/Algebra/Group/CartesianProductGroup.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -157,6 +168,7 @@ data:
   - Test/AOJ/2426.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc405.test.cpp
   - Test/AtCoder/arc088_e.test.cpp

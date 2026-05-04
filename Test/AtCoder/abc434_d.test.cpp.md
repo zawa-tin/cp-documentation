@@ -152,23 +152,25 @@ data:
     \ m_imos;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 2 \"\
     Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
     class AdditiveGroup {\npublic:\n    using Element = T;\n    static constexpr T\
-    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(const\
-    \ T& l, const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr\
-    \ T inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 12 \"Test/AtCoder/abc434_d.test.cpp\"\n\n#include <iostream>\n#line\
-    \ 15 \"Test/AtCoder/abc434_d.test.cpp\"\n#include <tuple>\nusing namespace std;\n\
-    using namespace zawa;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n   \
-    \ ios::sync_with_stdio(0);\n#ifdef ATCODER\n    const int MAX = 2000;\n    int\
-    \ N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX, MAX);\n    vector<tuple<int,\
-    \ int, int, int>> A(N);\n    for (auto& [l, r, d, u] : A) {\n        cin >> l\
-    \ >> r >> d >> u;\n        l--;\n        d--;\n        imos.operation(l, d, r,\
-    \ u, 1);\n    }\n    auto a = imos.build();\n    Ruisekiwa2D<AdditiveGroup<int>>\
-    \ sum(MAX, MAX);\n    int base = 0;\n    for (int i = 0 ; i < MAX ; i++)\n   \
-    \     for (int j = 0 ; j < MAX ; j++) {\n            if (a[i][j] == 0)\n     \
-    \           base++;\n            else if (a[i][j] == 1)\n                sum.operation(i,\
-    \ j, 1);\n        }\n    auto solver = sum.build();\n    for (auto [l, r, d, u]\
-    \ : A) {\n        int ans = base + solver.product(l, d, r, u);\n        cout <<\
-    \ ans << '\\n';\n    }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
+    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(T\
+    \ l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(T\
+    \ v) noexcept {\n        return -v;\n    }\n    template <class U>\n    static\
+    \ constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 12 \"Test/AtCoder/abc434_d.test.cpp\"\
+    \n\n#include <iostream>\n#line 15 \"Test/AtCoder/abc434_d.test.cpp\"\n#include\
+    \ <tuple>\nusing namespace std;\nusing namespace zawa;\n\nint main() {\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n#ifdef ATCODER\n    const int\
+    \ MAX = 2000;\n    int N;\n    cin >> N;\n    Imos2D<AdditiveGroup<int>> imos(MAX,\
+    \ MAX);\n    vector<tuple<int, int, int, int>> A(N);\n    for (auto& [l, r, d,\
+    \ u] : A) {\n        cin >> l >> r >> d >> u;\n        l--;\n        d--;\n  \
+    \      imos.operation(l, d, r, u, 1);\n    }\n    auto a = imos.build();\n   \
+    \ Ruisekiwa2D<AdditiveGroup<int>> sum(MAX, MAX);\n    int base = 0;\n    for (int\
+    \ i = 0 ; i < MAX ; i++)\n        for (int j = 0 ; j < MAX ; j++) {\n        \
+    \    if (a[i][j] == 0)\n                base++;\n            else if (a[i][j]\
+    \ == 1)\n                sum.operation(i, j, 1);\n        }\n    auto solver =\
+    \ sum.build();\n    for (auto [l, r, d, u] : A) {\n        int ans = base + solver.product(l,\
+    \ d, r, u);\n        cout << ans << '\\n';\n    }\n#else\n    cout << \"Hello\
+    \ World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc434/tasks/abc434_d\"\n\n\
     /*\n * AtCoder Beginner Contest 434 D - Clouds\n * https://atcoder.jp/contests/abc434/submissions/71932493\n\
@@ -198,7 +200,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc434_d.test.cpp
   requiredBy: []
-  timestamp: '2025-12-23 18:04:55+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc434_d.test.cpp

@@ -120,50 +120,51 @@ data:
     \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 2 \"\
     Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate <class T>\n\
     class AdditiveGroup {\npublic:\n    using Element = T;\n    static constexpr T\
-    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(const\
-    \ T& l, const T& r) noexcept {\n        return l + r;\n    }\n    static constexpr\
-    \ T inverse(const T& v) noexcept {\n        return -v;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\n#line 4 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
-    \n\n#include <algorithm>\n#line 8 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
-    \n#include <cmath>\n#include <limits>\n#include <optional>\n#include <utility>\n\
-    #line 13 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\nnamespace zawa {\n\n\
-    template <std::integral V>\nclass HeavyLightDecomposition {\npublic:\n\n    HeavyLightDecomposition()\
-    \ = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>> T, V root\
-    \ = 0u) \n        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n), \n    \
-    \    m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {\n\n     \
-    \       auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {\n            \
-    \    m_par[v] = p;\n                m_dep[v] = d;\n                if (p != INVALID)\
-    \ {\n                    for (usize i = 0 ; i + 1 < T[v].size() ; i++) \n    \
-    \                    if (T[v][i] == p) {\n                            std::swap(T[v][i],\
-    \ T[v].back());\n                            break;\n                        }\n\
-    \                    assert(T[v].back() == p);\n                    T[v].pop_back();\n\
-    \                }\n                for (V x : T[v])\n                    m_size[v]\
-    \ += dfs(dfs, x, v, d + 1);\n                for (usize i = 1 ; i < T[v].size()\
-    \ ; i++) \n                    if (m_size[T[v][0]] < m_size[T[v][i]])\n      \
-    \                  std::swap(T[v][0], T[v][i]);\n                return m_size[v];\n\
-    \            };\n\n            auto dfs2 = [&](auto dfs, V v, V idx, V top) ->\
-    \ V {\n                m_idx[v] = idx++;\n                m_inv[m_idx[v]] = v;\n\
-    \                m_top[v] = top;\n                if (T[v].size()) {\n       \
-    \             idx = dfs(dfs, T[v][0], idx, top);\n                    for (usize\
-    \ i = 1 ; i < T[v].size() ; i++)\n                        idx = dfs(dfs, T[v][i],\
-    \ idx, T[v][i]);\n                }\n                return idx;\n           \
-    \ };\n\n            dfs1(dfs1, root, INVALID, 0u);\n            dfs2(dfs2, root,\
-    \ 0u, root);\n\n            for (usize i = 0 ; i < m_n ; i++)\n              \
-    \  if (m_dep[m_bottom[m_top[i]]] < m_dep[i])\n                    m_bottom[m_top[i]]\
-    \ = i;\n        }\n\n    inline usize size() const noexcept {\n        return\
-    \ m_n;\n    }\n\n    usize size(V v) const noexcept {\n        assert(v < (V)size());\n\
-    \        return m_size[v];\n    }\n\n    usize depth(V v) const noexcept {\n \
-    \       assert(v < (V)size());\n        return m_dep[v];\n    }\n\n    V parent(V\
-    \ v) const noexcept {\n        assert(v < (V)size());\n        return m_par[v];\n\
-    \    }\n\n    V index(V v) const noexcept {\n        assert(v < (V)size());\n\
-    \        return m_idx[v];\n    }\n\n    V operator[](V v) const noexcept {\n \
-    \       assert(v < (V)size());\n        return m_idx[v];\n    }\n\n    V top(V\
-    \ v) const noexcept {\n        assert(v < (V)size());\n        return m_top[v];\n\
-    \    }\n\n    V bottom(V v) const noexcept {\n        assert(v < (V)size());\n\
-    \        return m_bottom[m_top[v]];\n    }\n\n    std::pair<V, V> heavyPath(V\
-    \ v) const {\n        assert(v < (V)size());\n        return {top(v), bottom(v)};\n\
-    \    }\n\n    std::vector<std::pair<V, V>> decomp(V s, V t) const {\n        assert(s\
-    \ < (V)size());\n        assert(t < (V)size());\n        std::vector<std::pair<V,\
+    \ identity() noexcept {\n        return T{};\n    }\n    static constexpr T operation(T\
+    \ l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr T inverse(T\
+    \ v) noexcept {\n        return -v;\n    }\n    template <class U>\n    static\
+    \ constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
+    \n\n#line 4 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n\n#include <algorithm>\n\
+    #line 8 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\n#include <cmath>\n#include\
+    \ <limits>\n#include <optional>\n#include <utility>\n#line 13 \"Src/Graph/Tree/HeavyLightDecomposition.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <std::integral V>\nclass HeavyLightDecomposition\
+    \ {\npublic:\n\n    HeavyLightDecomposition() = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>>\
+    \ T, V root = 0u) \n        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n),\
+    \ \n        m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {\n\n\
+    \            auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {\n       \
+    \         m_par[v] = p;\n                m_dep[v] = d;\n                if (p\
+    \ != INVALID) {\n                    for (usize i = 0 ; i + 1 < T[v].size() ;\
+    \ i++) \n                        if (T[v][i] == p) {\n                       \
+    \     std::swap(T[v][i], T[v].back());\n                            break;\n \
+    \                       }\n                    assert(T[v].back() == p);\n   \
+    \                 T[v].pop_back();\n                }\n                for (V\
+    \ x : T[v])\n                    m_size[v] += dfs(dfs, x, v, d + 1);\n       \
+    \         for (usize i = 1 ; i < T[v].size() ; i++) \n                    if (m_size[T[v][0]]\
+    \ < m_size[T[v][i]])\n                        std::swap(T[v][0], T[v][i]);\n \
+    \               return m_size[v];\n            };\n\n            auto dfs2 = [&](auto\
+    \ dfs, V v, V idx, V top) -> V {\n                m_idx[v] = idx++;\n        \
+    \        m_inv[m_idx[v]] = v;\n                m_top[v] = top;\n             \
+    \   if (T[v].size()) {\n                    idx = dfs(dfs, T[v][0], idx, top);\n\
+    \                    for (usize i = 1 ; i < T[v].size() ; i++)\n             \
+    \           idx = dfs(dfs, T[v][i], idx, T[v][i]);\n                }\n      \
+    \          return idx;\n            };\n\n            dfs1(dfs1, root, INVALID,\
+    \ 0u);\n            dfs2(dfs2, root, 0u, root);\n\n            for (usize i =\
+    \ 0 ; i < m_n ; i++)\n                if (m_dep[m_bottom[m_top[i]]] < m_dep[i])\n\
+    \                    m_bottom[m_top[i]] = i;\n        }\n\n    inline usize size()\
+    \ const noexcept {\n        return m_n;\n    }\n\n    usize size(V v) const noexcept\
+    \ {\n        assert(v < (V)size());\n        return m_size[v];\n    }\n\n    usize\
+    \ depth(V v) const noexcept {\n        assert(v < (V)size());\n        return\
+    \ m_dep[v];\n    }\n\n    V parent(V v) const noexcept {\n        assert(v < (V)size());\n\
+    \        return m_par[v];\n    }\n\n    V index(V v) const noexcept {\n      \
+    \  assert(v < (V)size());\n        return m_idx[v];\n    }\n\n    V operator[](V\
+    \ v) const noexcept {\n        assert(v < (V)size());\n        return m_idx[v];\n\
+    \    }\n\n    V top(V v) const noexcept {\n        assert(v < (V)size());\n  \
+    \      return m_top[v];\n    }\n\n    V bottom(V v) const noexcept {\n       \
+    \ assert(v < (V)size());\n        return m_bottom[m_top[v]];\n    }\n\n    std::pair<V,\
+    \ V> heavyPath(V v) const {\n        assert(v < (V)size());\n        return {top(v),\
+    \ bottom(v)};\n    }\n\n    std::vector<std::pair<V, V>> decomp(V s, V t) const\
+    \ {\n        assert(s < (V)size());\n        assert(t < (V)size());\n        std::vector<std::pair<V,\
     \ V>> res, ser;\n        while (m_top[s] != m_top[t]) {\n            if (m_dep[m_top[s]]\
     \ >= m_dep[m_top[t]]) {\n                res.emplace_back(s, m_top[s]);\n    \
     \            s = m_top[s];\n                if (m_par[s] != INVALID) s = m_par[s];\n\
@@ -258,7 +259,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-03-27 22:58:15+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_add_path_sum.test.cpp

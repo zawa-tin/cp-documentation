@@ -22,12 +22,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/agc023/submissions/71354946
+    - https://atcoder.jp/contests/agc023/submissions/75500001
     - https://atcoder.jp/contests/agc023/tasks/agc023_a
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/agc023_a.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/agc023/tasks/agc023_a\"\n\n\
-    /*\n * AtCoder Grand Contest 023\n * https://atcoder.jp/contests/agc023/submissions/71354946\n\
+    /*\n * AtCoder Grand Contest 023 A - Zero-Sum Ranges\n * https://atcoder.jp/contests/agc023/submissions/75500001\n\
     \ */\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include\
     \ <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\n\
     using i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
@@ -36,9 +36,10 @@ data:
     \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
     \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
     \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
-    \ T operation(const T& l, const T& r) noexcept {\n        return l + r;\n    }\n\
-    \    static constexpr T inverse(const T& v) noexcept {\n        return -v;\n \
-    \   }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
+    \ T operation(T l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr\
+    \ T inverse(T v) noexcept {\n        return -v;\n    }\n    template <class U>\n\
+    \    static constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\
     \n\n#line 4 \"Src/DataStructure/PrefixSum/PrefixSum1D.hpp\"\n\n#include <cmath>\n\
     #include <vector>\n#include <cassert>\n#include <algorithm>\n#include <type_traits>\n\
     #include <functional>\n\nnamespace zawa {\n\ntemplate <class Group>\nclass PrefixSum1D\
@@ -84,7 +85,7 @@ data:
     \ << \"Hello World\\n\";\n#endif\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/agc023/tasks/agc023_a\"\n\n\
-    /*\n * AtCoder Grand Contest 023\n * https://atcoder.jp/contests/agc023/submissions/71354946\n\
+    /*\n * AtCoder Grand Contest 023 A - Zero-Sum Ranges\n * https://atcoder.jp/contests/agc023/submissions/75500001\n\
     \ */\n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n#include <map>\n\nusing namespace\
     \ zawa;\n\ni32 main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
@@ -101,7 +102,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/agc023_a.test.cpp
   requiredBy: []
-  timestamp: '2025-11-30 16:55:06+09:00'
+  timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/agc023_a.test.cpp
