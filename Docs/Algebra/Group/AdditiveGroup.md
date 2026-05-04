@@ -22,3 +22,7 @@ documentation_of: //Src/Algebra/Group/AdditiveGroup.hpp
 - 加算の二項演算子`+`が定義されている。
 - 単項否定演算子`-`の`operator`が定義されていて、加法の逆元を返すものになっている。
 - 演算が群の条件を満たす。
+
+## 更新履歴
+
+- 2026/05/04: `power`を追加、謎のconst参照を削除

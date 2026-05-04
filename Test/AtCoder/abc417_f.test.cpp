@@ -3,28 +3,16 @@
 
 /*
  * AtCoder Beginner Contest 417 F - Random Gathering
- * https://atcoder.jp/contests/abc417/submissions/75499552
+ * https://atcoder.jp/contests/abc417/submissions/75499943
  */
 
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
+#include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 #include "atcoder/modint"
 using mint = atcoder::modint998244353;
 
 #include <iostream>
 #include <vector>
-
-struct S {
-    using Element = mint;
-    static Element identity() {
-        return 0;
-    }
-    static Element operation(Element L, Element R) {
-        return L + R;
-    }
-    static Element power(Element v, int exp) {
-        return v * mint::raw(exp);
-    }
-};
 
 using namespace std;
 using namespace zawa;
@@ -41,7 +29,7 @@ int main() {
         cin >> v;
         A[i] = mint::raw(v);
     }
-    AssignmentSegmentTree<S> seg{A};
+    AssignmentSegmentTree<AdditiveGroup<mint>> seg{A};
     while (M--) {
         int L, R;
         cin >> L >> R;

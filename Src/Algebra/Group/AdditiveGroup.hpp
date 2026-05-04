@@ -9,11 +9,15 @@ public:
     static constexpr T identity() noexcept {
         return T{};
     }
-    static constexpr T operation(const T& l, const T& r) noexcept {
+    static constexpr T operation(T l,T r) noexcept {
         return l + r;
     }
-    static constexpr T inverse(const T& v) noexcept {
+    static constexpr T inverse(T v) noexcept {
         return -v;
+    }
+    template <class U>
+    static constexpr T power(T v,U exp) noexcept {
+        return v * static_cast<T>(exp);
     }
 };
 
