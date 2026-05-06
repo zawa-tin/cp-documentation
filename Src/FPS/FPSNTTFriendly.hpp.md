@@ -15,6 +15,9 @@ data:
     path: Src/FPS/KthTerm.hpp
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/MultipointEvaluation.hpp
+    title: Src/FPS/MultipointEvaluation.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc215_g.test.cpp
@@ -31,6 +34,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc439_g.test.cpp
     title: Test/AtCoder/abc439_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps_24_p.test.cpp
+    title: Test/AtCoder/fps_24_p.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_fibonacci.test.cpp
     title: Test/AtCoder/tdpc_fibonacci.test.cpp
@@ -49,6 +55,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/log_of_formal_power_series.test.cpp
     title: Test/LC/log_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/multipoint_evaluation.test.cpp
+    title: Test/LC/multipoint_evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/polynomial_taylor_shift.test.cpp
     title: Test/LC/polynomial_taylor_shift.test.cpp
@@ -181,6 +190,7 @@ data:
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
   - Src/FPS/DivisionOfPolynomials.hpp
+  - Src/FPS/MultipointEvaluation.hpp
   - Src/FPS/KthTerm.hpp
   timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -192,6 +202,7 @@ data:
   - Test/LC/pow_of_formal_power_series.test.cpp
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
@@ -199,6 +210,7 @@ data:
   - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/fps_24_p.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp

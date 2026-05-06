@@ -154,6 +154,9 @@ data:
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/MultipointEvaluation.hpp
+    title: Src/FPS/MultipointEvaluation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialInterpolation.hpp
     title: Src/FPS/PolynomialInterpolation.hpp
   - icon: ':heavy_check_mark:'
@@ -1251,6 +1254,9 @@ data:
     path: Test/AtCoder/awc0032_e.test.cpp
     title: Test/AtCoder/awc0032_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps_24_p.test.cpp
+    title: Test/AtCoder/fps_24_p.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1436,6 +1442,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/matrix_det.test.cpp
     title: Test/LC/matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/multipoint_evaluation.test.cpp
+    title: Test/LC/multipoint_evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/naive_count_points_in_triangle.test.cpp
     title: Test/LC/naive_count_points_in_triangle.test.cpp
@@ -1956,6 +1965,7 @@ data:
   - Src/FPS/RationalSum.hpp
   - Src/FPS/BostanMori.hpp
   - Src/FPS/PolynomialInterpolation.hpp
+  - Src/FPS/MultipointEvaluation.hpp
   - Src/FPS/KthTerm.hpp
   - Src/FPS/PowerProjection.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
@@ -2065,6 +2075,7 @@ data:
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/deque_operate_all_composite.test.cpp
   - Test/LC/enumerate_quotients.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/LC/rectangle_sum.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -2278,6 +2289,7 @@ data:
   - Test/AtCoder/abc288_c.test.cpp
   - Test/AtCoder/soundhound2018_summer_final_e.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
+  - Test/AtCoder/fps_24_p.test.cpp
   - Test/AtCoder/abc349_f.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/joi2008ho_e.test.cpp

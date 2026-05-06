@@ -284,6 +284,9 @@ data:
       title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
         \u308B"
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/MultipointEvaluation.hpp
+      title: Src/FPS/MultipointEvaluation.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/PolynomialInterpolation.hpp
       title: Src/FPS/PolynomialInterpolation.hpp
     - icon: ':heavy_check_mark:'
@@ -1501,6 +1504,9 @@ data:
       path: Test/AtCoder/awc0053_d.test.cpp
       title: Test/AtCoder/awc0053_d.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/fps_24_p.test.cpp
+      title: Test/AtCoder/fps_24_p.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/joi2008ho_e.test.cpp
       title: Test/AtCoder/joi2008ho_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1686,6 +1692,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/matrix_det.test.cpp
       title: Test/LC/matrix_det.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/multipoint_evaluation.test.cpp
+      title: Test/LC/multipoint_evaluation.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/naive_count_points_in_triangle.test.cpp
       title: Test/LC/naive_count_points_in_triangle.test.cpp

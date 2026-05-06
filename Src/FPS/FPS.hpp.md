@@ -20,6 +20,9 @@ data:
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/MultipointEvaluation.hpp
+    title: Src/FPS/MultipointEvaluation.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialProducts.hpp
     title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
       \u308B\u591A\u9805\u5F0F\u306E\u5217\u306E\u7DCF\u7A4D"
@@ -50,6 +53,9 @@ data:
     path: Test/AtCoder/abc439_g.test.cpp
     title: Test/AtCoder/abc439_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps_24_p.test.cpp
+    title: Test/AtCoder/fps_24_p.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tdpc_fibonacci.test.cpp
     title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
@@ -67,6 +73,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/log_of_formal_power_series.test.cpp
     title: Test/LC/log_of_formal_power_series.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/multipoint_evaluation.test.cpp
+    title: Test/LC/multipoint_evaluation.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/polynomial_taylor_shift.test.cpp
     title: Test/LC/polynomial_taylor_shift.test.cpp
@@ -135,6 +144,7 @@ data:
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/RationalSum.hpp
   - Src/FPS/BostanMori.hpp
+  - Src/FPS/MultipointEvaluation.hpp
   - Src/FPS/KthTerm.hpp
   - Src/FPS/PowerProjection.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
@@ -149,6 +159,7 @@ data:
   - Test/LC/pow_of_formal_power_series.test.cpp
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
@@ -156,6 +167,7 @@ data:
   - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/fps_24_p.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPS.hpp
