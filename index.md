@@ -1504,6 +1504,9 @@ data:
       path: Test/AtCoder/joi2008ho_e.test.cpp
       title: Test/AtCoder/joi2008ho_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/ndpc2026_l.test.cpp
+      title: Test/AtCoder/ndpc2026_l.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/practice2_l.test.cpp
       title: Test/AtCoder/practice2_l.test.cpp
     - icon: ':heavy_check_mark:'

@@ -20,6 +20,9 @@ data:
     title: "ABC185-E Adjacent GCD (\u7D04\u6570\u30FB\u500D\u6570\u95A2\u4FC2\u306E\
       \u9AD8\u901F\u30BC\u30FC\u30BF\u30FB\u30E1\u30D3\u30A6\u30B9\u5909\u63DB)"
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_l.test.cpp
+    title: Test/AtCoder/ndpc2026_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1070-F.test.cpp
     title: Test/CF/CF1070-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -50,8 +53,8 @@ data:
     \ :\n            lhs.exponent() > rhs.exponent();\n    }\n};\n\n} // namespace\
     \ zawa\n#line 5 \"Src/Number/LinearSieve.hpp\"\n\n#include <concepts>\n#include\
     \ <vector>\n#include <utility>\n#include <cassert>\n\nnamespace zawa {\n\nclass\
-    \ LinearSieve {\npublic:\n\n    using V = u32;\n    using F = PrimeFactor<V>;\n\
-    \nprivate:\n\n    std::vector<V> primes_;\n    std::vector<V> lpf_;\n\npublic:\n\
+    \ LinearSieve {\npublic:\n\n    using V = u32;\n\n    using F = PrimeFactor<V>;\n\
+    \nprivate:\n\n    std::vector<V> primes_;\n\n    std::vector<V> lpf_;\n\npublic:\n\
     \n    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n        for (V i{2}\
     \ ; i <= n ; i++) {\n            if (!lpf_[i]) {\n                lpf_[i] = i;\n\
     \                primes_.emplace_back(i);\n            }\n            for (V p\
@@ -76,21 +79,26 @@ data:
     \          V factor{lpf_[x]};\n            u32 exponent{};\n            while\
     \ (lpf_[x] == factor) {\n                exponent++;\n                x /= lpf_[x];\n\
     \            }\n            res.emplace_back(factor, exponent);\n        }\n \
-    \       return res;\n    }\n\n    i32 mobius(V x) const {\n        assert(0u <\
-    \ x and x < lpf_.size());\n        i32 res = 1;\n        while (x > 1u) {\n  \
-    \          V factor = lpf_[x];\n            u32 exp = 0;\n            while (lpf_[x]\
-    \ == factor) {\n                x /= factor;\n                exp++;\n       \
-    \     }\n            if (exp >= 2u) return 0;\n            res *= -1;\n      \
-    \  }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+    \       return res;\n    }\n\n    template <std::integral T = V>\n    std::vector<T>\
+    \ primeFactors(V x) const {\n        assert(0u < x and x < lpf_.size());\n   \
+    \     std::vector<T> res;\n        while (x > 1) {\n            V factor = lpf_[x];\n\
+    \            while (lpf_[x] == factor)\n                x /= factor;\n       \
+    \     res.push_back(factor);\n        }\n        return res;\n    }\n\n    i32\
+    \ mobius(V x) const {\n        assert(0u < x and x < lpf_.size());\n        i32\
+    \ res = 1;\n        while (x > 1u) {\n            V factor = lpf_[x];\n      \
+    \      u32 exp = 0;\n            while (lpf_[x] == factor) {\n               \
+    \ x /= factor;\n                exp++;\n            }\n            if (exp >=\
+    \ 2u) return 0;\n            res *= -1;\n        }\n        return res;\n    }\n\
+    };\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n#include \"./PrimeFactor.hpp\"\
     \n\n#include <concepts>\n#include <vector>\n#include <utility>\n#include <cassert>\n\
-    \nnamespace zawa {\n\nclass LinearSieve {\npublic:\n\n    using V = u32;\n   \
-    \ using F = PrimeFactor<V>;\n\nprivate:\n\n    std::vector<V> primes_;\n    std::vector<V>\
-    \ lpf_;\n\npublic:\n\n    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n\
-    \        for (V i{2} ; i <= n ; i++) {\n            if (!lpf_[i]) {\n        \
-    \        lpf_[i] = i;\n                primes_.emplace_back(i);\n            }\n\
-    \            for (V p : primes_) {\n                if (static_cast<u64>(p) *\
-    \ i > n) break;\n                lpf_[p * i] = p;\n            }\n        }\n\
+    \nnamespace zawa {\n\nclass LinearSieve {\npublic:\n\n    using V = u32;\n\n \
+    \   using F = PrimeFactor<V>;\n\nprivate:\n\n    std::vector<V> primes_;\n\n \
+    \   std::vector<V> lpf_;\n\npublic:\n\n    explicit LinearSieve(V n) : primes_{},\
+    \ lpf_(n + 1) {\n        for (V i{2} ; i <= n ; i++) {\n            if (!lpf_[i])\
+    \ {\n                lpf_[i] = i;\n                primes_.emplace_back(i);\n\
+    \            }\n            for (V p : primes_) {\n                if (static_cast<u64>(p)\
+    \ * i > n) break;\n                lpf_[p * i] = p;\n            }\n        }\n\
     \    }\n\n    V size() const noexcept {\n        return static_cast<V>(lpf_.size())\
     \ - 1;\n    }\n\n    bool isPrime(V x) const noexcept {\n        assert(x < lpf_.size());\n\
     \        return lpf_[x] == x;\n    }\n\n    bool operator[](V x) const noexcept\
@@ -110,24 +118,30 @@ data:
     \          V factor{lpf_[x]};\n            u32 exponent{};\n            while\
     \ (lpf_[x] == factor) {\n                exponent++;\n                x /= lpf_[x];\n\
     \            }\n            res.emplace_back(factor, exponent);\n        }\n \
-    \       return res;\n    }\n\n    i32 mobius(V x) const {\n        assert(0u <\
-    \ x and x < lpf_.size());\n        i32 res = 1;\n        while (x > 1u) {\n  \
-    \          V factor = lpf_[x];\n            u32 exp = 0;\n            while (lpf_[x]\
-    \ == factor) {\n                x /= factor;\n                exp++;\n       \
-    \     }\n            if (exp >= 2u) return 0;\n            res *= -1;\n      \
-    \  }\n        return res;\n    }\n};\n\n} // namespace zawa\n"
+    \       return res;\n    }\n\n    template <std::integral T = V>\n    std::vector<T>\
+    \ primeFactors(V x) const {\n        assert(0u < x and x < lpf_.size());\n   \
+    \     std::vector<T> res;\n        while (x > 1) {\n            V factor = lpf_[x];\n\
+    \            while (lpf_[x] == factor)\n                x /= factor;\n       \
+    \     res.push_back(factor);\n        }\n        return res;\n    }\n\n    i32\
+    \ mobius(V x) const {\n        assert(0u < x and x < lpf_.size());\n        i32\
+    \ res = 1;\n        while (x > 1u) {\n            V factor = lpf_[x];\n      \
+    \      u32 exp = 0;\n            while (lpf_[x] == factor) {\n               \
+    \ x /= factor;\n                exp++;\n            }\n            if (exp >=\
+    \ 2u) return 0;\n            res *= -1;\n        }\n        return res;\n    }\n\
+    };\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Number/PrimeFactor.hpp
   isVerificationFile: false
   path: Src/Number/LinearSieve.hpp
   requiredBy: []
-  timestamp: '2025-05-29 15:37:34+09:00'
+  timestamp: '2026-05-06 18:05:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/CF902-B.test.cpp
   - Test/CF/CF1070-F.test.cpp
   - Test/AtCoder/abc177_e.test.cpp
+  - Test/AtCoder/ndpc2026_l.test.cpp
   - Test/AtCoder/arc185_e.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
 documentation_of: Src/Number/LinearSieve.hpp
@@ -216,7 +230,9 @@ $x$ の約数を列挙する。**ソートされていないことに注意**
 
 #### factorize
 
+```cpp
 std::vector<PrimeFactor> factorize(u32 x) const
+```
 
 $x$ を素因数分解したものを返す。
 
@@ -236,6 +252,20 @@ public:
 
 <br />
 
+#### primeFactors
+
+
+```cpp
+template <std::integral T>
+std::vector<T> primeFactors(u32 x) const
+```
+
+$x$ に含まれる素因数を値の昇順に`vector<T>`に押し込めて返す。
+
 ## 参考
 
 - [線形篩](https://37zigen.com/linear-sieve/)
+
+## 更新履歴
+
+- 2026/05/06: primeFactors()メンバを追加、NDPC-Lでverify

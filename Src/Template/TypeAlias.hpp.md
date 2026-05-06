@@ -1254,6 +1254,9 @@ data:
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_l.test.cpp
+    title: Test/AtCoder/ndpc2026_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2197,6 +2200,7 @@ data:
   - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc137_f.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
+  - Test/AtCoder/ndpc2026_l.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp

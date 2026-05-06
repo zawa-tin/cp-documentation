@@ -19,8 +19,8 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://codeforces.com/contest/1876/problem/B
-    - https://codeforces.com/contest/1876/submission/321867982
+    - https://atcoder.jp/contests/ndpc/submissions/75550273
+    - https://atcoder.jp/contests/ndpc/tasks/ndpc2026_l
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
@@ -34,41 +34,41 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "// #define PROBLEM \"https://codeforces.com/contest/1876/problem/B\"\n#define\
-    \ PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * CF902-B Effects of Anti Pimples\n * https://codeforces.com/contest/1876/submission/321867982\n\
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/ndpc/tasks/ndpc2026_l\"\n\
+    #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
+    \n\n/*\n * Next DP Contest L - \u6700\u5C0F\u516C\u500D\u6570\n * https://atcoder.jp/contests/ndpc/submissions/75550273\n\
     \ */\n\n#include \"../../Src/Number/LinearSieve.hpp\"\n#include \"atcoder/modint\"\
-    \n\n#include <iostream>\n#include <vector>\n#include <utility>\n#include <algorithm>\n\
-    #include <set>\nusing mint = atcoder::modint998244353;\n\nconst int N{ 100100\
-    \ };\nzawa::LinearSieve siv(N);\n\nvoid solve() {\n    int n; \n    std::cin >>\
-    \ n;\n    std::vector<int> a(n);\n    for (int i{} ; i < n ; i++) {\n        std::cin\
-    \ >> a[i];\n    }\n    std::vector<std::pair<int, int>> max(n);\n    for (int\
-    \ i{} ; i < n ; i++) {\n        for (int j{i} ; j < n ; j += (i + 1)) {\n    \
-    \        max[i].first = std::max(max[i].first, a[j]);\n        }\n        max[i].second\
-    \ = i + 1;\n    }\n    std::sort(max.begin(), max.end());\n    std::reverse(max.begin(),\
-    \ max.end());\n\n    std::vector<mint> p2(n + 1, mint{1});\n    for (int i{} ;\
-    \ i < n ; i++) p2[i + 1] = p2[i] * mint{2};\n\n\n    std::set<int> ng;\n    mint\
-    \ ans{};\n    for (int i{} ; i < n ; i++) {\n        auto [val, idx]{ max[i] };\n\
-    \        auto div{ siv.divisor(idx) };\n        int must{ (int)div.size() };\n\
-    \        for (auto d : div) if (ng.find(d) != ng.end()) must--;\n        int t{\
-    \ n - (int)ng.size() };\n        ans += (p2[t] - p2[t - must]) * mint{val};\n\
-    \        for (auto d : div) ng.emplace(d);\n    }\n    std::cout << ans.val()\
-    \ << std::endl;\n}\n\nint main() {\n#ifdef ONLINE_JUDGE\n    solve();\n#else\n\
-    \    std::cout << \"Hello World\" << std::endl;\n#endif\n}\n"
+    \nusing mint = atcoder::modint998244353;\n\n#include <algorithm>\n#include <iostream>\n\
+    #include <ranges>\n#include <vector>\nusing namespace std;\n\nint main() {\n#ifdef\
+    \ ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n \
+    \   int N;\n    cin >> N;\n    vector<int> A(N);\n    for (auto& x : A)\n    \
+    \    cin >> x;\n    zawa::LinearSieve siv(N);\n    vector<mint> table(N+1), inv(N+1);\n\
+    \    for (int i = 1 ; i <= N ; i++)\n        inv[i] = mint::raw(i).inv();\n  \
+    \  for (int d : siv.divisor<int>(A[0]))\n        table[d] = A[0];\n    for (int\
+    \ i = 1 ; i < N ; i++) {\n        vector<int> ds = siv.divisor<int>(A[i]), ps\
+    \ = siv.primeFactors<int>(A[i]);\n        ranges::sort(ds);\n        // mobius\n\
+    \        for (int p : ps)\n            for (int d : ds)\n                if (A[i]\
+    \ % (p*d) == 0)\n                    table[d] -= table[p*d];\n        mint ans\
+    \ = 0;\n        for (int d : ds)\n            ans += inv[d] * table[d];\n    \
+    \    ans *= mint::raw(A[i]);\n        cout << ans.val() << '\\n';\n        //\
+    \ zeta\n        for (int p : ps)\n            for (int d : ds | views::reverse)\n\
+    \                if (d % p == 0)\n                    table[d/p] += table[d];\n\
+    \        for (int d : ds)\n            table[d] += mint::raw(A[i]) * ans;\n  \
+    \  }\n#else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Number/LinearSieve.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Number/PrimeFactor.hpp
   isVerificationFile: true
-  path: Test/CF/CF902-B.test.cpp
+  path: Test/AtCoder/ndpc2026_l.test.cpp
   requiredBy: []
   timestamp: '2026-05-06 18:05:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/CF/CF902-B.test.cpp
+documentation_of: Test/AtCoder/ndpc2026_l.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/CF/CF902-B.test.cpp
-- /verify/Test/CF/CF902-B.test.cpp.html
-title: Test/CF/CF902-B.test.cpp
+- /verify/Test/AtCoder/ndpc2026_l.test.cpp
+- /verify/Test/AtCoder/ndpc2026_l.test.cpp.html
+title: Test/AtCoder/ndpc2026_l.test.cpp
 ---

@@ -45,8 +45,8 @@ data:
     \ :\n            lhs.exponent() > rhs.exponent();\n    }\n};\n\n} // namespace\
     \ zawa\n#line 5 \"Src/Number/LinearSieve.hpp\"\n\n#include <concepts>\n#include\
     \ <vector>\n#include <utility>\n#include <cassert>\n\nnamespace zawa {\n\nclass\
-    \ LinearSieve {\npublic:\n\n    using V = u32;\n    using F = PrimeFactor<V>;\n\
-    \nprivate:\n\n    std::vector<V> primes_;\n    std::vector<V> lpf_;\n\npublic:\n\
+    \ LinearSieve {\npublic:\n\n    using V = u32;\n\n    using F = PrimeFactor<V>;\n\
+    \nprivate:\n\n    std::vector<V> primes_;\n\n    std::vector<V> lpf_;\n\npublic:\n\
     \n    explicit LinearSieve(V n) : primes_{}, lpf_(n + 1) {\n        for (V i{2}\
     \ ; i <= n ; i++) {\n            if (!lpf_[i]) {\n                lpf_[i] = i;\n\
     \                primes_.emplace_back(i);\n            }\n            for (V p\
@@ -71,20 +71,25 @@ data:
     \          V factor{lpf_[x]};\n            u32 exponent{};\n            while\
     \ (lpf_[x] == factor) {\n                exponent++;\n                x /= lpf_[x];\n\
     \            }\n            res.emplace_back(factor, exponent);\n        }\n \
-    \       return res;\n    }\n\n    i32 mobius(V x) const {\n        assert(0u <\
-    \ x and x < lpf_.size());\n        i32 res = 1;\n        while (x > 1u) {\n  \
-    \          V factor = lpf_[x];\n            u32 exp = 0;\n            while (lpf_[x]\
-    \ == factor) {\n                x /= factor;\n                exp++;\n       \
-    \     }\n            if (exp >= 2u) return 0;\n            res *= -1;\n      \
-    \  }\n        return res;\n    }\n};\n\n} // namespace zawa\n#line 10 \"Test/AtCoder/abc177_e.test.cpp\"\
-    \n\n#include <iostream>\n#include <numeric>\n#include <unordered_set>\n\nconst\
-    \ int N{ 1000100 };\n\nint main() {\n#ifdef ATCODER\n    int n; std::cin >> n;\n\
-    \    zawa::LinearSieve siv(N);\n    int setGCD{};\n    std::unordered_set<int>\
-    \ divisors;\n    bool pairwise{true};\n    for (int _{} ; _ < n ; _++) {\n   \
-    \     int a; std::cin >> a;\n        setGCD = std::gcd(setGCD, a);\n        for\
-    \ (auto p : siv.factorize(a)) if (p.factor() > 1) {\n            pairwise &= divisors.find(p.factor())\
-    \ == divisors.end();\n            divisors.emplace(p.factor());\n        }\n \
-    \   }\n    if (pairwise) {\n        std::cout << \"pairwise coprime\" << std::endl;\n\
+    \       return res;\n    }\n\n    template <std::integral T = V>\n    std::vector<T>\
+    \ primeFactors(V x) const {\n        assert(0u < x and x < lpf_.size());\n   \
+    \     std::vector<T> res;\n        while (x > 1) {\n            V factor = lpf_[x];\n\
+    \            while (lpf_[x] == factor)\n                x /= factor;\n       \
+    \     res.push_back(factor);\n        }\n        return res;\n    }\n\n    i32\
+    \ mobius(V x) const {\n        assert(0u < x and x < lpf_.size());\n        i32\
+    \ res = 1;\n        while (x > 1u) {\n            V factor = lpf_[x];\n      \
+    \      u32 exp = 0;\n            while (lpf_[x] == factor) {\n               \
+    \ x /= factor;\n                exp++;\n            }\n            if (exp >=\
+    \ 2u) return 0;\n            res *= -1;\n        }\n        return res;\n    }\n\
+    };\n\n} // namespace zawa\n#line 10 \"Test/AtCoder/abc177_e.test.cpp\"\n\n#include\
+    \ <iostream>\n#include <numeric>\n#include <unordered_set>\n\nconst int N{ 1000100\
+    \ };\n\nint main() {\n#ifdef ATCODER\n    int n; std::cin >> n;\n    zawa::LinearSieve\
+    \ siv(N);\n    int setGCD{};\n    std::unordered_set<int> divisors;\n    bool\
+    \ pairwise{true};\n    for (int _{} ; _ < n ; _++) {\n        int a; std::cin\
+    \ >> a;\n        setGCD = std::gcd(setGCD, a);\n        for (auto p : siv.factorize(a))\
+    \ if (p.factor() > 1) {\n            pairwise &= divisors.find(p.factor()) ==\
+    \ divisors.end();\n            divisors.emplace(p.factor());\n        }\n    }\n\
+    \    if (pairwise) {\n        std::cout << \"pairwise coprime\" << std::endl;\n\
     \    }\n    else if (setGCD == 1) {\n        std::cout << \"setwise coprime\"\
     \ << std::endl;\n    }\n    else {\n        std::cout << \"not coprime\" << std::endl;\n\
     \    }\n#else\n    std::cout << \"Hello World\\n\";\n#endif\n}\n"
@@ -110,7 +115,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc177_e.test.cpp
   requiredBy: []
-  timestamp: '2025-05-29 15:37:34+09:00'
+  timestamp: '2026-05-06 18:05:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc177_e.test.cpp
