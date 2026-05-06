@@ -14,11 +14,13 @@ class LinearSieve {
 public:
 
     using V = u32;
+
     using F = PrimeFactor<V>;
 
 private:
 
     std::vector<V> primes_;
+
     std::vector<V> lpf_;
 
 public:
@@ -89,6 +91,19 @@ public:
                 x /= lpf_[x];
             }
             res.emplace_back(factor, exponent);
+        }
+        return res;
+    }
+
+    template <std::integral T = V>
+    std::vector<T> primeFactors(V x) const {
+        assert(0u < x and x < lpf_.size());
+        std::vector<T> res;
+        while (x > 1) {
+            V factor = lpf_[x];
+            while (lpf_[x] == factor)
+                x /= factor;
+            res.push_back(factor);
         }
         return res;
     }
