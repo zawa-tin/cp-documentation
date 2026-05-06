@@ -84,7 +84,9 @@ $x$ の約数を列挙する。**ソートされていないことに注意**
 
 #### factorize
 
+```cpp
 std::vector<PrimeFactor> factorize(u32 x) const
+```
 
 $x$ を素因数分解したものを返す。
 
@@ -104,6 +106,20 @@ public:
 
 <br />
 
+#### primeFactors
+
+
+```cpp
+template <std::integral T>
+std::vector<T> primeFactors(u32 x) const
+```
+
+$x$ に含まれる素因数を値の昇順に`vector<T>`に押し込めて返す。
+
 ## 参考
 
 - [線形篩](https://37zigen.com/linear-sieve/)
+
+## 更新履歴
+
+- 2026/05/06: primeFactors()メンバを追加、NDPC-Lでverify
