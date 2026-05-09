@@ -3,10 +3,11 @@
 
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
+#include "../../Src/Algebra/Monoid/MonoidAction.hpp"
 
 /*
  * AtCoder Beginner Contest 332 F - Random Update Query
- * https://atcoder.jp/contests/abc332/submissions/71071551
+ * https://atcoder.jp/contests/abc332/submissions/75680951
  */
 
 #include <iostream>
@@ -24,7 +25,7 @@ void solve() {
         std::cin >> A;
         init[i] = Affine{mint{}, mint{A}};
     }
-    DualSegmentTree<AffineMonoid<mint>> seg{init};
+    DualSegmentTree<AddSelfAction<AffineMonoid<mint>>,Affine<mint>> seg{init};
     while (M--) {
         int L, R, X;
         std::cin >> L >> R >> X;
