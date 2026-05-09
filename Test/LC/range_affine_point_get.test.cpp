@@ -2,16 +2,22 @@
 
 #include "../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp"
 #include "../../Src/Algebra/Monoid/AffineMonoid.hpp"
-
+using namespace zawa;
 
 #include "atcoder/modint"
+using mint = atcoder::modint998244353;
 
 #include <iostream>
 #include <cassert>
+using namespace std;
+
+struct M : public AffineMonoid<mint> {
+    static mint action(const M::Element& f,mint x) {
+        return f(x);
+    }
+};
 
 int main() {
-    using namespace zawa;
-    using mint = atcoder::modint998244353;
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
     std::ios::sync_with_stdio(false);
@@ -22,8 +28,8 @@ int main() {
         std::cin >> v;
         x = mint{v};
     }
-    DualSegmentTree<AffineMonoid<mint>> seg(n);
-    for (int _{} ; _ < q ; _++) {
+    DualSegmentTree<M,mint> seg(std::move(a));
+    while (q--) {
         int t; std::cin >> t;
         if (t == 0) {
             int l, r, b, c; 
@@ -32,7 +38,7 @@ int main() {
         }
         else if (t == 1) {
             int i; std::cin >> i;
-            std::cout << seg[i](a[i]).val() << '\n';
+            std::cout << seg[i].val() << '\n';
         }
         else {
             assert(false);
