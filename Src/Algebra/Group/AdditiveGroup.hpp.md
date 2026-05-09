@@ -79,6 +79,9 @@ data:
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -166,6 +169,7 @@ data:
   - Test/AOJ/DSL_2_G.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc229_d.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc172_c.test.cpp
   - Test/AtCoder/abc287_g.test.cpp

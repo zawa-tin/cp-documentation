@@ -19,6 +19,12 @@ data:
     path: Test/AtCoder/abc332_f.test.cpp
     title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc457_f.test.cpp
+    title: Test/AtCoder/abc457_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_affine_point_get.test.cpp
     title: Test/LC/range_affine_point_get.test.cpp
   _isVerificationFailed: false
@@ -49,93 +55,73 @@ data:
     \ G, class X>\nconcept Acted = requires {\n    typename G::Element;\n    { G::acted(std::declval<typename\
     \ G::Element>(), std::declval<X>()) } -> std::same_as<typename G::Element>;\n\
     };\n\n} // namespace concepts\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\
-    \n\n#include <bit>\n#include <cassert>\n#include <vector>\n#include <iterator>\n\
-    #include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\n\
-    class DualSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V = typename\
-    \ VM::Element;\n\n    DualSegmentTree() = default;\n\n    explicit DualSegmentTree(usize\
-    \ n) \n        : m_n{ n }, m_dat((n << 1), VM::identity()) {}\n\n    explicit\
-    \ DualSegmentTree(const std::vector<V>& dat) \n        : m_n{ dat.size() }, m_dat((m_n\
-    \ << 1), VM::identity()) {\n        initDat(dat.begin(), dat.end());\n    }\n\n\
-    \    template <class InputIterator>\n    DualSegmentTree(InputIterator first,\
-    \ InputIterator last)\n        : m_n{ static_cast<usize>(std::distance(first,\
-    \ last)) }, m_dat((m_n << 1), VM::identity()) {\n        initDat(first, last);\n\
-    \    }\n\n    [[nodiscard]] inline usize size() const noexcept {\n        return\
-    \ m_n;\n    }\n\n    template <class O>\n    requires concepts::Acted<Monoid,\
-    \ O>\n    void operation(usize l, usize r, const O& v) {\n        assert(l <=\
-    \ r and r <= size());\n        push(l);\n        if (l < r)\n            push(r\
-    \ - 1);\n        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r))\
-    \ {\n            if (l & 1) {\n                m_dat[l] = VM::acted(m_dat[l],\
-    \ v);\n                l++;\n            }\n            if (r & 1) {\n       \
-    \         r--;\n                m_dat[r] = VM::acted(m_dat[r], v);\n         \
-    \   }\n        }\n    }\n\n    template <class O>\n    requires concepts::Acted<Monoid,\
-    \ O>\n    void operation(usize i, const O& o) {\n        assert(i < size());\n\
-    \        push(i);\n        m_dat[i + size()] = VM::acted(m_dat[i + size()], o);\n\
-    \    }\n\n    void assign(usize i, const V& v) {\n        assert(i < size());\n\
-    \        push(i);\n        m_dat[i + size()] = v;\n    }\n\n    [[nodiscard]]\
-    \ V operator[](usize i) {\n        assert(i < size());\n        push(i);\n   \
-    \     V res{ VM::identity() };\n        for (i += size() ; i ; i = parent(i))\n\
-    \            res = VM::operation(res, m_dat[i]);\n        return res;\n    }\n\
-    \n    friend std::ostream& operator<<(std::ostream& os, const DualSegmentTree\
-    \ seg) {\n        usize size{ seg.m_dat.size() };\n        for (usize i{1} ; i\
-    \ < size ; i++) {\n            os << seg.m_dat[i] << (i + 1 == size ? \"\" : \"\
-    \ \");\n        }\n        return os;\n    }\n\nprotected:\n\n    static constexpr\
-    \ usize parent(usize v) noexcept {\n        return v >> 1;\n    }\n\n    static\
-    \ constexpr usize left(usize v) noexcept {\n        return v << 1;\n    }\n\n\
-    \    static constexpr usize right(usize v) noexcept {\n        return v << 1 |\
-    \ 1;\n    }\n\n    usize m_n;\n\n    std::vector<V> m_dat;\n\n    template <class\
-    \ InputIterator>\n    inline void initDat(InputIterator first, InputIterator last)\
-    \ {\n        for (auto it{ first } ; it != last ; it++) {\n            m_dat[size()\
-    \ + std::distance(first, it)] = *it;\n        }\n    }\n\n    void push(usize\
-    \ i) {\n        assert(i < size());\n        i += size();\n        usize height{\
-    \ 64u - std::countl_zero(i) };\n        for (usize h{ height } ; --h ; ) {\n \
-    \           usize v{ i >> h };\n            m_dat[left(v)] = VM::operation(m_dat[left(v)],\
-    \ m_dat[v]);\n            m_dat[right(v)] = VM::operation(m_dat[right(v)], m_dat[v]);\n\
-    \            m_dat[v] = VM::identity();\n        }\n    }\n\n};\n\n} // namespace\
-    \ zawa\n"
+    \n\n#include <bit>\n#include <cassert>\n#line 10 \"Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\
+    \n#include <vector>\n\nnamespace zawa {\n\ntemplate <class M,class T,bool Commutative\
+    \ = false>\nrequires concepts::Monoid<M> and concepts::Action<M,T>\nclass DualSegmentTree\
+    \ {\npublic:\n\n    using O = M::Element;\n\n    DualSegmentTree() = default;\n\
+    \n    explicit DualSegmentTree(usize n) : m_n{n}, m_a(n), m_seg(n<<1,M::identity())\
+    \ {}\n\n    explicit DualSegmentTree(usize n,T init) : m_n{n}, m_a(n,init), m_seg(n<<1,M::identity())\
+    \ {}\n\n    explicit DualSegmentTree(std::vector<T> a) : m_n{a.size()}, m_a{std::move(a)},\
+    \ m_seg(m_n<<1,M::identity()) {}\n\n    inline usize size() const {\n        return\
+    \ m_n;\n    }\n\n    void operation(usize l,usize r,O o) {\n        assert(l <=\
+    \ r and r <= size());\n        if constexpr (!Commutative) {\n            push(l);\n\
+    \            if (l < r)\n                push(r-1);\n        }\n        for (l\
+    \ += size(), r += size() ; l < r ; l >>= 1, r >>= 1) {\n            if (l & 1)\
+    \ {\n                m_seg[l] = M::operation(m_seg[l],o);\n                l++;\n\
+    \            }\n            if (r & 1) {\n                r--;\n             \
+    \   m_seg[r] = M::operation(m_seg[r],o);\n            }\n        }\n    }\n\n\
+    \    void operation(usize i,O o) {\n        assert(i < size());\n        if constexpr\
+    \ (!Commutative)\n            push(i);\n        m_seg[i+size()] = std::move(o);\n\
+    \    }\n\n    T get(usize i) const {\n        assert(i < size());\n        O prod\
+    \ = M::identity();\n        for (usize v = i+size() ; v ; v >>= 1)\n         \
+    \   prod = M::operation(prod,m_seg[v]);\n        return M::action(prod,m_a[i]);\n\
+    \    }\n\n    T operator[](usize i) const {\n        assert(i < size());\n   \
+    \     return get(i);\n    }\n\n    void assignOperator(usize i,O o) {\n      \
+    \  assert(i < size());\n        push(i);\n        m_seg[i+size()] = std::move(o);\n\
+    \    }\n\n    void assign(usize i,T x) {\n        assert(i < size());\n      \
+    \  assignOperator(i,M::identity());\n        m_a[i] = std::move(x);\n    }\n\n\
+    \    std::vector<T> container() const {\n        std::vector<T> res(size());\n\
+    \        for (usize i = 0 ; i < size() ; i++)\n            res[i] = get(i);\n\
+    \        return res;\n    }\n\nprivate:\n\n    void push(usize i) {\n        assert(i\
+    \ < size());\n        i += size();\n        for (usize j = std::bit_width(i) ;\
+    \ --j ; ) {\n            usize v = i >> j;\n            m_seg[v<<1|0] = M::operation(m_seg[v<<1|0],m_seg[v]);\n\
+    \            m_seg[v<<1|1] = M::operation(m_seg[v<<1|1],m_seg[v]);\n         \
+    \   m_seg[v] = M::identity();\n        }\n    }\n\n    usize m_n;\n\n    std::vector<T>\
+    \ m_a;\n\n    std::vector<O> m_seg;\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
     \n#include \"../../Algebra/Action/ActionConcept.hpp\"\n\n#include <bit>\n#include\
-    \ <cassert>\n#include <vector>\n#include <iterator>\n#include <ostream>\n\nnamespace\
-    \ zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass DualSegmentTree {\npublic:\n\
-    \n    using VM = Monoid;\n\n    using V = typename VM::Element;\n\n    DualSegmentTree()\
-    \ = default;\n\n    explicit DualSegmentTree(usize n) \n        : m_n{ n }, m_dat((n\
-    \ << 1), VM::identity()) {}\n\n    explicit DualSegmentTree(const std::vector<V>&\
-    \ dat) \n        : m_n{ dat.size() }, m_dat((m_n << 1), VM::identity()) {\n  \
-    \      initDat(dat.begin(), dat.end());\n    }\n\n    template <class InputIterator>\n\
-    \    DualSegmentTree(InputIterator first, InputIterator last)\n        : m_n{\
-    \ static_cast<usize>(std::distance(first, last)) }, m_dat((m_n << 1), VM::identity())\
-    \ {\n        initDat(first, last);\n    }\n\n    [[nodiscard]] inline usize size()\
-    \ const noexcept {\n        return m_n;\n    }\n\n    template <class O>\n   \
-    \ requires concepts::Acted<Monoid, O>\n    void operation(usize l, usize r, const\
-    \ O& v) {\n        assert(l <= r and r <= size());\n        push(l);\n       \
-    \ if (l < r)\n            push(r - 1);\n        for (l += size(), r += size()\
-    \ ; l < r ; l = parent(l), r = parent(r)) {\n            if (l & 1) {\n      \
-    \          m_dat[l] = VM::acted(m_dat[l], v);\n                l++;\n        \
-    \    }\n            if (r & 1) {\n                r--;\n                m_dat[r]\
-    \ = VM::acted(m_dat[r], v);\n            }\n        }\n    }\n\n    template <class\
-    \ O>\n    requires concepts::Acted<Monoid, O>\n    void operation(usize i, const\
-    \ O& o) {\n        assert(i < size());\n        push(i);\n        m_dat[i + size()]\
-    \ = VM::acted(m_dat[i + size()], o);\n    }\n\n    void assign(usize i, const\
-    \ V& v) {\n        assert(i < size());\n        push(i);\n        m_dat[i + size()]\
-    \ = v;\n    }\n\n    [[nodiscard]] V operator[](usize i) {\n        assert(i <\
-    \ size());\n        push(i);\n        V res{ VM::identity() };\n        for (i\
-    \ += size() ; i ; i = parent(i))\n            res = VM::operation(res, m_dat[i]);\n\
-    \        return res;\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
-    \ os, const DualSegmentTree seg) {\n        usize size{ seg.m_dat.size() };\n\
-    \        for (usize i{1} ; i < size ; i++) {\n            os << seg.m_dat[i] <<\
-    \ (i + 1 == size ? \"\" : \" \");\n        }\n        return os;\n    }\n\nprotected:\n\
-    \n    static constexpr usize parent(usize v) noexcept {\n        return v >> 1;\n\
-    \    }\n\n    static constexpr usize left(usize v) noexcept {\n        return\
-    \ v << 1;\n    }\n\n    static constexpr usize right(usize v) noexcept {\n   \
-    \     return v << 1 | 1;\n    }\n\n    usize m_n;\n\n    std::vector<V> m_dat;\n\
-    \n    template <class InputIterator>\n    inline void initDat(InputIterator first,\
-    \ InputIterator last) {\n        for (auto it{ first } ; it != last ; it++) {\n\
-    \            m_dat[size() + std::distance(first, it)] = *it;\n        }\n    }\n\
-    \n    void push(usize i) {\n        assert(i < size());\n        i += size();\n\
-    \        usize height{ 64u - std::countl_zero(i) };\n        for (usize h{ height\
-    \ } ; --h ; ) {\n            usize v{ i >> h };\n            m_dat[left(v)] =\
-    \ VM::operation(m_dat[left(v)], m_dat[v]);\n            m_dat[right(v)] = VM::operation(m_dat[right(v)],\
-    \ m_dat[v]);\n            m_dat[v] = VM::identity();\n        }\n    }\n\n};\n\
-    \n} // namespace zawa\n"
+    \ <cassert>\n#include <concepts>\n#include <vector>\n\nnamespace zawa {\n\ntemplate\
+    \ <class M,class T,bool Commutative = false>\nrequires concepts::Monoid<M> and\
+    \ concepts::Action<M,T>\nclass DualSegmentTree {\npublic:\n\n    using O = M::Element;\n\
+    \n    DualSegmentTree() = default;\n\n    explicit DualSegmentTree(usize n) :\
+    \ m_n{n}, m_a(n), m_seg(n<<1,M::identity()) {}\n\n    explicit DualSegmentTree(usize\
+    \ n,T init) : m_n{n}, m_a(n,init), m_seg(n<<1,M::identity()) {}\n\n    explicit\
+    \ DualSegmentTree(std::vector<T> a) : m_n{a.size()}, m_a{std::move(a)}, m_seg(m_n<<1,M::identity())\
+    \ {}\n\n    inline usize size() const {\n        return m_n;\n    }\n\n    void\
+    \ operation(usize l,usize r,O o) {\n        assert(l <= r and r <= size());\n\
+    \        if constexpr (!Commutative) {\n            push(l);\n            if (l\
+    \ < r)\n                push(r-1);\n        }\n        for (l += size(), r +=\
+    \ size() ; l < r ; l >>= 1, r >>= 1) {\n            if (l & 1) {\n           \
+    \     m_seg[l] = M::operation(m_seg[l],o);\n                l++;\n           \
+    \ }\n            if (r & 1) {\n                r--;\n                m_seg[r]\
+    \ = M::operation(m_seg[r],o);\n            }\n        }\n    }\n\n    void operation(usize\
+    \ i,O o) {\n        assert(i < size());\n        if constexpr (!Commutative)\n\
+    \            push(i);\n        m_seg[i+size()] = std::move(o);\n    }\n\n    T\
+    \ get(usize i) const {\n        assert(i < size());\n        O prod = M::identity();\n\
+    \        for (usize v = i+size() ; v ; v >>= 1)\n            prod = M::operation(prod,m_seg[v]);\n\
+    \        return M::action(prod,m_a[i]);\n    }\n\n    T operator[](usize i) const\
+    \ {\n        assert(i < size());\n        return get(i);\n    }\n\n    void assignOperator(usize\
+    \ i,O o) {\n        assert(i < size());\n        push(i);\n        m_seg[i+size()]\
+    \ = std::move(o);\n    }\n\n    void assign(usize i,T x) {\n        assert(i <\
+    \ size());\n        assignOperator(i,M::identity());\n        m_a[i] = std::move(x);\n\
+    \    }\n\n    std::vector<T> container() const {\n        std::vector<T> res(size());\n\
+    \        for (usize i = 0 ; i < size() ; i++)\n            res[i] = get(i);\n\
+    \        return res;\n    }\n\nprivate:\n\n    void push(usize i) {\n        assert(i\
+    \ < size());\n        i += size();\n        for (usize j = std::bit_width(i) ;\
+    \ --j ; ) {\n            usize v = i >> j;\n            m_seg[v<<1|0] = M::operation(m_seg[v<<1|0],m_seg[v]);\n\
+    \            m_seg[v<<1|1] = M::operation(m_seg[v<<1|1],m_seg[v]);\n         \
+    \   m_seg[v] = M::identity();\n        }\n    }\n\n    usize m_n;\n\n    std::vector<T>\
+    \ m_a;\n\n    std::vector<O> m_seg;\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -144,46 +130,81 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   requiredBy: []
-  timestamp: '2025-11-20 00:22:56+09:00'
+  timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/abc457_f.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 layout: document
 title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
 ---
 
-ドキュメントを書く気力が行方不明！
+## ライブラリの使い方
 
-[テンプレート引数](https://zawa-tin.github.io/cp-documentation/Docs/Appendix/Monoid.html)
+#### テンプレート
+
+```cpp
+template <class M,class T,bool Commutative = false>
+requires concepts::Monoid<M> and concepts::Action<M,T>
+```
+
+雛形
 
 ```cpp
 struct M {
     using Element = ;
     static Element identity() {
     }
-    static Element operation(Element L, Element R) {
+    static Element operation(Element L,Element R) {
     }
-    static Element acted(Element x, O o) {
+    static Element action(Element o,T x) {
     }
 };
+struct M : public HogeFuga {
+    static Element action(HogeFuga::Element o,T x) {
+    }
+}
 ```
 
-`CommutativeDualSegmentTree`より定数倍が若干悪い(?)。
+`action`が`operation`とまったく同じ場合、`Src/Algebra/Monoid/MonoidAction.hpp`内の`AddSelfAction`を用いることができる。
 
-`O = Monoid::Element`
+#### コンストラクタ
 
-`operation(u32 l, u32 r, const O& v)` 半開区間 $[l, r)$ に $v$ を作用
-- $O(\log n)$
 
-`operation(u32 i, const O& v)` 
-- $O(\log n)$
-- 未verify
+```
+DualSegmentTree() = default;
+explicit DualSegmentTree(usize n);
+explicit DualSegmentTree(usize n,T init);
+explicit DualSegmentTree(std::vector<T> a);
+```
 
-`assign(u32 i, const O& v)` $i$ 番目の要素に $v$ を「代入」
-- $O(\log n)$
+作用する値は全部単位元で初期化される
 
-`Operator operator[](u32 i)`
-- $i$ 番目の要素を取得
-- $O(\log n)$
+#### メンバ
+
+```cpp
+void operation(usize l,usize r,O o)
+void operation(usize i,O o)
+T get(usize i) const
+T operator[](usize i) const
+void assign(usize i,T x)
+void assignOperator(usize i,O o)
+std::vector<T> container() const
+```
+
+`operation`は $a_{i}$ に`o`を作用させる
+
+`assignOperator`は $a_{i}$ にこれまでの作用を全てリセットし、`o`を作用させる。
+
+- あまりこのメンバを使う機会はなさそう。`assign(i,get(i))`とすると事足りるケースが殆どだと思う。pakenのverifyで無理やり使った(本来`DualFenwickTree`で事足りる)
+
+`assign`は $a_{i}$ を完全に`x`に変更する。 $a_{i}$ に対する溜まっている作用はリセットさせる。
+
+- この操作は作用には該当しない。なのでこのあと`assignOperator`すると得られるのは`x`に`o`を作用させた値である
+
+## 更新履歴
+
+- 2026/05/10: 全部書き直した。設計変更

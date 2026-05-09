@@ -8,6 +8,9 @@ data:
     path: Src/Algebra/Monoid/AffineMonoid.hpp
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidAction.hpp
+    title: Src/Algebra/Monoid/MonoidAction.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -28,7 +31,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc332/submissions/71071551
+    - https://atcoder.jp/contests/abc332/submissions/75680951
     - https://atcoder.jp/contests/abc332/tasks/abc332_f
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -46,13 +49,13 @@ data:
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc332/tasks/abc332_f\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n\n/*\n * AtCoder Beginner Contest\
-    \ 332 F - Random Update Query\n * https://atcoder.jp/contests/abc332/submissions/71071551\n\
+    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Algebra/Monoid/MonoidAction.hpp\"\
+    \n\n/*\n * AtCoder Beginner Contest 332 F - Random Update Query\n * https://atcoder.jp/contests/abc332/submissions/75680951\n\
     \ */\n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n#include\
     \ \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\nvoid solve() {\n\
     \    int N, M;\n    std::cin >> N >> M;\n    std::vector<Affine<mint>> init(N);\n\
     \    for (int i = 0 ; i < N ; i++) {\n        int A;\n        std::cin >> A;\n\
-    \        init[i] = Affine{mint{}, mint{A}};\n    }\n    DualSegmentTree<AffineMonoid<mint>>\
+    \        init[i] = Affine{mint{}, mint{A}};\n    }\n    DualSegmentTree<AddSelfAction<AffineMonoid<mint>>,Affine<mint>>\
     \ seg{init};\n    while (M--) {\n        int L, R, X;\n        std::cin >> L >>\
     \ R >> X;\n        L--;\n        mint inv = mint::raw(R - L).inv();\n        seg.operation(L,\
     \ R, Affine{mint::raw(R-L-1)*inv, mint::raw(X)*inv});\n    }\n    for (int i =\
@@ -67,10 +70,11 @@ data:
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Action/ActionConcept.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
+  - Src/Algebra/Monoid/MonoidAction.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc332_f.test.cpp
   requiredBy: []
-  timestamp: '2025-11-20 00:22:56+09:00'
+  timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc332_f.test.cpp

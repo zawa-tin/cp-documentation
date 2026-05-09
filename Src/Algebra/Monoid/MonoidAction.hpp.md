@@ -13,8 +13,14 @@ data:
     path: Test/AtCoder/abc268_h.test.cpp
     title: Test/AtCoder/abc268_h.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc332_f.test.cpp
+    title: "ABC332-F Random Update Query (a <- ap + q\u306E\u51E6\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc419_f.test.cpp
     title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -32,26 +38,29 @@ data:
     \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
     \n} // namespace\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Monoid/MonoidAction.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <concepts::Monoid M>\nstruct AddSelfAction :\
-    \ public M {\n    static M::Element action(M::Element a, M::Element b) {\n   \
-    \     return M::operation(a, b);\n    }\n    static M::Element acted(M::Element\
-    \ a, M::Element b) {\n        return M::operation(a, b);\n    }\n};\n\n} // namespace\
-    \ zawa\n"
+    \ public M {\n    // b <- f(b,a)\n    static M::Element action(M::Element a, M::Element\
+    \ b) {\n        return M::operation(b,a);\n    }\n    // a <- f(a,b)\n    static\
+    \ M::Element acted(M::Element a, M::Element b) {\n        return M::operation(a,\
+    \ b);\n    }\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./MonoidConcept.hpp\"\n\nnamespace zawa {\n\n\
-    template <concepts::Monoid M>\nstruct AddSelfAction : public M {\n    static M::Element\
-    \ action(M::Element a, M::Element b) {\n        return M::operation(a, b);\n \
-    \   }\n    static M::Element acted(M::Element a, M::Element b) {\n        return\
-    \ M::operation(a, b);\n    }\n};\n\n} // namespace zawa\n"
+    template <concepts::Monoid M>\nstruct AddSelfAction : public M {\n    // b <-\
+    \ f(b,a)\n    static M::Element action(M::Element a, M::Element b) {\n       \
+    \ return M::operation(b,a);\n    }\n    // a <- f(a,b)\n    static M::Element\
+    \ acted(M::Element a, M::Element b) {\n        return M::operation(a, b);\n  \
+    \  }\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: false
   path: Src/Algebra/Monoid/MonoidAction.hpp
   requiredBy: []
-  timestamp: '2025-08-20 18:56:28+09:00'
+  timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
+  - Test/AtCoder/abc332_f.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidAction.hpp
 layout: document
 redirect_from:

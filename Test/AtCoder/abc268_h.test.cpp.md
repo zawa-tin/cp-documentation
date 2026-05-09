@@ -128,11 +128,12 @@ data:
     \ data};\n    }\n\nprivate:\n\n    std::vector<Container> m_seq;\n\n};\n\n} //\
     \ namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidAction.hpp\"\n\n#line 4 \"\
     Src/Algebra/Monoid/MonoidAction.hpp\"\n\nnamespace zawa {\n\ntemplate <concepts::Monoid\
-    \ M>\nstruct AddSelfAction : public M {\n    static M::Element action(M::Element\
-    \ a, M::Element b) {\n        return M::operation(a, b);\n    }\n    static M::Element\
-    \ acted(M::Element a, M::Element b) {\n        return M::operation(a, b);\n  \
-    \  }\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc268_h.test.cpp\"\n\n\
-    /*\n * AtCoder Beginner Contest 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68657548\n\
+    \ M>\nstruct AddSelfAction : public M {\n    // b <- f(b,a)\n    static M::Element\
+    \ action(M::Element a, M::Element b) {\n        return M::operation(b,a);\n  \
+    \  }\n    // a <- f(a,b)\n    static M::Element acted(M::Element a, M::Element\
+    \ b) {\n        return M::operation(a, b);\n    }\n};\n\n} // namespace zawa\n\
+    #line 6 \"Test/AtCoder/abc268_h.test.cpp\"\n\n/*\n * AtCoder Beginner Contest\
+    \ 268 Ex - Taboo\n * https://atcoder.jp/contests/abc268/submissions/68657548\n\
     \ */\n\n#include <iostream>\n#include <string>\n#line 15 \"Test/AtCoder/abc268_h.test.cpp\"\
     \nusing namespace std;\nusing namespace zawa;\nstruct Monoid {\n    using Element\
     \ = bool;\n    static Element identity() {\n        return false;\n    }\n   \
@@ -173,7 +174,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc268_h.test.cpp
   requiredBy: []
-  timestamp: '2025-08-20 19:47:23+09:00'
+  timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc268_h.test.cpp

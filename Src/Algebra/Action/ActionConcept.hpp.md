@@ -5,9 +5,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
-  - icon: ':warning:'
-    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -40,6 +37,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc419_f.test.cpp
     title: Test/AtCoder/abc419_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc457_f.test.cpp
+    title: Test/AtCoder/abc457_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aho_corasick.test.cpp
     title: Test/LC/aho_corasick.test.cpp
@@ -80,7 +83,6 @@ data:
   path: Src/Algebra/Action/ActionConcept.hpp
   requiredBy:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/Sequence/AhoCorasick.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
@@ -93,12 +95,14 @@ data:
   - Test/LC/aho_corasick.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/discrete_logarithm_mod.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc270_g.test.cpp
+  - Test/AtCoder/abc457_f.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document
 redirect_from:

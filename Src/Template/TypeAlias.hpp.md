@@ -90,9 +90,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
-  - icon: ':warning:'
-    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -1199,6 +1196,9 @@ data:
     path: Test/AtCoder/abc456_e.test.cpp
     title: Test/AtCoder/abc456_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc457_f.test.cpp
+    title: Test/AtCoder/abc457_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1262,6 +1262,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/ndpc2026_l.test.cpp
     title: Test/AtCoder/ndpc2026_l.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
@@ -1812,7 +1815,6 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
@@ -2207,6 +2209,7 @@ data:
   - Test/AtCoder/arc165_c.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
   - Test/AtCoder/abc299_c.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc293_b.test.cpp
   - Test/AtCoder/abc137_f.test.cpp
@@ -2284,6 +2287,7 @@ data:
   - Test/AtCoder/abc141_e.test.cpp
   - Test/AtCoder/abc429_g.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
+  - Test/AtCoder/abc457_f.test.cpp
   - Test/AtCoder/abc261_f.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/abc288_c.test.cpp

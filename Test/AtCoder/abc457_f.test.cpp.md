@@ -5,9 +5,6 @@ data:
     path: Src/Algebra/Action/ActionConcept.hpp
     title: Src/Algebra/Action/ActionConcept.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/AffineMonoid.hpp
-    title: Src/Algebra/Monoid/AffineMonoid.hpp
-  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -26,9 +23,11 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/range_affine_point_get
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://judge.yosupo.jp/problem/range_affine_point_get
+    - https://atcoder.jp/contests/abc457/submissions/75681374
+    - https://atcoder.jp/contests/abc457/tasks/abc457_f
+    - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
@@ -41,39 +40,45 @@ data:
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_affine_point_get\"\
-    \n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n#include\
-    \ \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\nusing namespace zawa;\n\n#include\
-    \ \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\n#include <iostream>\n\
-    #include <cassert>\nusing namespace std;\n\nstruct M : public AffineMonoid<mint>\
-    \ {\n    static mint action(const M::Element& f,mint x) {\n        return f(x);\n\
-    \    }\n};\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n    int n, q; std::cin >> n >> q;\n  \
-    \  std::vector<mint> a(n);\n    for (auto& x : a) {\n        int v;\n        std::cin\
-    \ >> v;\n        x = mint{v};\n    }\n    DualSegmentTree<M,mint> seg(std::move(a));\n\
-    \    while (q--) {\n        int t; std::cin >> t;\n        if (t == 0) {\n   \
-    \         int l, r, b, c; \n            std::cin >> l >> r >> b >> c;\n      \
-    \      seg.operation(l, r, Affine{ mint{b}, mint{c} });\n        }\n        else\
-    \ if (t == 1) {\n            int i; std::cin >> i;\n            std::cout << seg[i].val()\
-    \ << '\\n';\n        }\n        else {\n            assert(false);\n        }\n\
-    \    }\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc457/tasks/abc457_f\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n/*\n * AtCoder Beginner\
+    \ Contest 457 F - Second Gap\n * https://atcoder.jp/contests/abc457/submissions/75681374\n\
+    \ */\n\n#include \"../../Src/DataStructure/SegmentTree/DualSegmentTree.hpp\"\n\
+    using namespace zawa;\n\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
+    \n#include <iostream>\n#include <vector>\n#include <optional>\nusing namespace\
+    \ std;\nstruct M {\n    using Element = pair<optional<mint>,mint>;\n    static\
+    \ Element identity() {\n        return {nullopt,1};\n    }\n    static Element\
+    \ operation(Element L, Element R) {\n        if (R.first)\n            return\
+    \ R;\n        L.second *= R.second;\n        return L;\n    }\n    static mint\
+    \ action(Element o,mint x) {\n        if (o.first)\n            return o.first.value()\
+    \ * o.second;\n        else\n            return x * o.second;\n    }\n};\nint\
+    \ main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
+    \    int N;\n    cin >> N;\n    vector<int> D(N-1);\n    for (auto& x : D)\n \
+    \       cin >> x;\n    DualSegmentTree<M,mint> dp(N);\n    dp.assign(N-2,mint::raw(1));\n\
+    \    dp.assign(N-1,mint::raw(1));\n    int cnt = 2;\n    int pr = D[N-2];\n  \
+    \  for (int i = N - 3 ; i >= 0 ; i--) {\n        mint val = dp[i+D[i]];\n    \
+    \    if (pr == D[i])\n            dp.operation(i+1,N,{nullopt,cnt-1});\n     \
+    \   else\n            dp.operation(i+1,N,{0,1});\n        dp.assign(i,val);\n\
+    \        mint x = val + dp[i+D[i]];\n        dp.assign(i+D[i],x);\n        pr\
+    \ = D[i];\n        cnt++;\n    }\n    mint ans = 0;\n    for (auto i : dp.container())\n\
+    \        ans += i;\n    cout << ans.val() << '\\n';\n#else\n    int a,b;\n   \
+    \ cin >> a >> b;\n    cout << a+b << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Action/ActionConcept.hpp
-  - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
-  path: Test/LC/range_affine_point_get.test.cpp
+  path: Test/AtCoder/abc457_f.test.cpp
   requiredBy: []
-  timestamp: '2026-05-10 03:33:48+09:00'
+  timestamp: '2026-05-10 03:36:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/range_affine_point_get.test.cpp
+documentation_of: Test/AtCoder/abc457_f.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/range_affine_point_get.test.cpp
-- /verify/Test/LC/range_affine_point_get.test.cpp.html
-title: Test/LC/range_affine_point_get.test.cpp
+- /verify/Test/AtCoder/abc457_f.test.cpp
+- /verify/Test/AtCoder/abc457_f.test.cpp.html
+title: Test/AtCoder/abc457_f.test.cpp
 ---

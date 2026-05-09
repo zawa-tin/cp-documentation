@@ -204,9 +204,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
       title: Assignment Segment Tree
-    - icon: ':warning:'
-      path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-      title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
       title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -1446,6 +1443,9 @@ data:
       path: Test/AtCoder/abc456_e.test.cpp
       title: Test/AtCoder/abc456_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc457_f.test.cpp
+      title: Test/AtCoder/abc457_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1512,6 +1512,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/ndpc2026_l.test.cpp
       title: Test/AtCoder/ndpc2026_l.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+      title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/practice2_l.test.cpp
       title: Test/AtCoder/practice2_l.test.cpp

@@ -57,9 +57,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
-  - icon: ':warning:'
-    path: Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
-    title: "Dual Segment Tree (\u53EF\u63DB\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
@@ -226,6 +223,9 @@ data:
     path: Test/AtCoder/abc453_g.test.cpp
     title: Test/AtCoder/abc453_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc457_f.test.cpp
+    title: Test/AtCoder/abc457_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -249,6 +249,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+    title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/practice2_l.test.cpp
     title: Test/AtCoder/practice2_l.test.cpp
@@ -373,7 +376,6 @@ data:
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/LazySegmentTree.hpp
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
-  - Src/DataStructure/SegmentTree/CommutativeDualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/DataStructure/PrefixSum/Imos2D.hpp
@@ -442,6 +444,7 @@ data:
   - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc403_g.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc419_f.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
@@ -467,6 +470,7 @@ data:
   - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
   - Test/AtCoder/abc270_g.test.cpp
+  - Test/AtCoder/abc457_f.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
   - Test/AtCoder/soundhound2018_summer_final_e.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
