@@ -1,6 +1,6 @@
 ---
 title: スライド最小値
-documentation_of: //Src/DataStructure/SWAG/SlidingPriority.hpp
+documentation_of: //Src/DataStructure/SWAG/SlindingPriority.hpp
 ---
 
 ## ライブラリの使い方
