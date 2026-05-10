@@ -34,3 +34,7 @@ std::vector<T> StaticLengthPriority(const std::vector<T>& A,usize K) {
 `A`の長さ`K`の全ての連続部分列に対して`comp`が最も`true`になる要素を列挙する。 $K\le N$ が必要である。(assertにひっかかる)
 
 `comp`を指定しないバージョンは`std::less<T>`が指定される(=最小値)
+
+## 更新履歴
+
+- 2026/05/10: 作成
