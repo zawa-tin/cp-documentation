@@ -199,6 +199,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/SWAG/SWAGable.hpp
       title: Src/DataStructure/SWAG/SWAGable.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/SWAG/SlindingPriority.hpp
+      title: Src/DataStructure/SWAG/SlindingPriority.hpp
   - name: Src/DataStructure/SegmentTree
     pages:
     - icon: ':heavy_check_mark:'
@@ -1060,6 +1063,9 @@ data:
       path: Test/AOJ/CGL_7_I.test.cpp
       title: Test/AOJ/CGL_7_I.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DPL_1_G.test.cpp
+      title: Test/AOJ/DPL_1_G.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/DPL_3_C.test.cpp
       title: Test/AOJ/DPL_3_C.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1086,6 +1092,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/DSL_2_I.test.cpp
       title: Test/AOJ/DSL_2_I.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/DSL_3_D.test.cpp
+      title: Test/AOJ/DSL_3_D.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/GRL_1_A.test.cpp
       title: Test/AOJ/GRL_1_A.test.cpp
@@ -1264,6 +1273,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc268_h.test.cpp
       title: Test/AtCoder/abc268_h.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc269_g.test.cpp
+      title: Test/AtCoder/abc269_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc269_h.test.cpp
       title: Test/AtCoder/abc269_h.test.cpp

@@ -88,6 +88,9 @@ data:
     path: Src/DataStructure/SWAG/FoldableQueue.hpp
     title: Foldable Queue
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SWAG/SlindingPriority.hpp
+    title: Src/DataStructure/SWAG/SlindingPriority.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
   - icon: ':heavy_check_mark:'
@@ -856,6 +859,9 @@ data:
     path: Test/AOJ/CGL_7_I.test.cpp
     title: Test/AOJ/CGL_7_I.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DPL_1_G.test.cpp
+    title: Test/AOJ/DPL_1_G.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/DPL_3_C.test.cpp
     title: Test/AOJ/DPL_3_C.test.cpp
   - icon: ':heavy_check_mark:'
@@ -882,6 +888,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/DSL_3_D.test.cpp
+    title: Test/AOJ/DSL_3_D.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/GRL_1_A.test.cpp
     title: Test/AOJ/GRL_1_A.test.cpp
@@ -1020,6 +1029,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc268_h.test.cpp
     title: Test/AtCoder/abc268_h.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc269_g.test.cpp
+    title: Test/AtCoder/abc269_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc269_h.test.cpp
     title: Test/AtCoder/abc269_h.test.cpp
@@ -1802,6 +1814,7 @@ data:
   - Src/DataStructure/Heap/BinaryHeap.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/SWAG/FoldableDeque.hpp
+  - Src/DataStructure/SWAG/SlindingPriority.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
   - Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
@@ -2129,6 +2142,7 @@ data:
   - Test/AOJ/0465.test.cpp
   - Test/AOJ/CGL_7_B.test.cpp
   - Test/AOJ/CGL_7_I.test.cpp
+  - Test/AOJ/DPL_1_G.test.cpp
   - Test/AOJ/CGL_1_A.test.cpp
   - Test/AOJ/GRL_3_A.test.cpp
   - Test/AOJ/CGL_4_C.test.cpp
@@ -2149,6 +2163,7 @@ data:
   - Test/AOJ/CGL_5_B.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
+  - Test/AOJ/DSL_3_D.test.cpp
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/DSL_2_A.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
@@ -2256,6 +2271,7 @@ data:
   - Test/AtCoder/arc194_d.test.cpp
   - Test/AtCoder/abc307_e.test.cpp
   - Test/AtCoder/agc023_a.test.cpp
+  - Test/AtCoder/abc269_g.test.cpp
   - Test/AtCoder/arc197_c.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc429_e.test.cpp
