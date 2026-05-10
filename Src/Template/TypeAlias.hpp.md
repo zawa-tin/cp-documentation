@@ -89,7 +89,7 @@ data:
     title: Foldable Queue
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/SlindingPriority.hpp
-    title: Src/DataStructure/SWAG/SlindingPriority.hpp
+    title: "\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
