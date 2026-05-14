@@ -132,4 +132,10 @@ private:
     bool m_moved = false;
 };
 
+template <concepts::Group G>
+internal::StaticRectSumSolver<G> BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A) {
+    Ruisekiwa2D<G> builder(std::move(A));
+    return builder.inplaceBuild();
+}
+
 } // namespace zawa
