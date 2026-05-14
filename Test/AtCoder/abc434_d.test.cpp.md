@@ -18,7 +18,7 @@ data:
     title: Src/DataStructure/PrefixSum/Imos2D.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -108,18 +108,20 @@ data:
     \ == false and \"already destructed: Ruisekiwa2D::build\");\n        m_moved =\
     \ true;\n        return internal::StaticRectSumSolver<G>{std::move(m_a)};\n  \
     \  }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
-    \n\n#line 5 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n#line 9 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\n\
-    class StaticRectAddSolver {\npublic:\n    \n    using T = typename G::Element;\n\
-    \n    using const_iterator = typename std::vector<std::vector<T>>::const_iterator;\n\
-    \n    explicit StaticRectAddSolver(const std::vector<std::vector<T>>& imos) :\
-    \ m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a(imos) {\n        build();\n\
-    \    }\n\n    explicit StaticRectAddSolver(std::vector<std::vector<T>>&& imos)\
-    \ : m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a{std::move(imos)} {\n  \
-    \      build();\n    }\n\n    inline usize size() const {\n        return m_H;\n\
-    \    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\n  \
-    \  inline usize width() const {\n        return m_W;\n    }\n\n    const_iterator\
+    \ m_a;\n\n    bool m_moved = false;\n};\n\ntemplate <concepts::Group G>\ninternal::StaticRectSumSolver<G>\
+    \ BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A) {\n    Ruisekiwa2D<G>\
+    \ builder(std::move(A));\n    return builder.inplaceBuild();\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\n#line 5 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\
+    \n\n#line 9 \"Src/DataStructure/PrefixSum/Imos2D.hpp\"\n\nnamespace zawa {\n\n\
+    namespace internal {\n\ntemplate <concepts::Group G>\nclass StaticRectAddSolver\
+    \ {\npublic:\n    \n    using T = typename G::Element;\n\n    using const_iterator\
+    \ = typename std::vector<std::vector<T>>::const_iterator;\n\n    explicit StaticRectAddSolver(const\
+    \ std::vector<std::vector<T>>& imos) : m_H{imos.size() - 1}, m_W{imos[0].size()\
+    \ - 1}, m_a(imos) {\n        build();\n    }\n\n    explicit StaticRectAddSolver(std::vector<std::vector<T>>&&\
+    \ imos) : m_H{imos.size() - 1}, m_W{imos[0].size() - 1}, m_a{std::move(imos)}\
+    \ {\n        build();\n    }\n\n    inline usize size() const {\n        return\
+    \ m_H;\n    }\n\n    inline usize height() const {\n        return m_H;\n    }\n\
+    \n    inline usize width() const {\n        return m_W;\n    }\n\n    const_iterator\
     \ begin() const {\n        return m_a.begin();\n    }\n\n    const_iterator end()\
     \ const {\n        return m_a.end();\n    }\n\n    const std::vector<T>& operator[](usize\
     \ i) const {\n        assert(i < height() and \"invalid access m_sum[i]: StaticRectSumSolver::operator[]\"\
@@ -200,7 +202,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc434_d.test.cpp
   requiredBy: []
-  timestamp: '2026-05-04 13:04:46+09:00'
+  timestamp: '2026-05-14 20:01:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc434_d.test.cpp

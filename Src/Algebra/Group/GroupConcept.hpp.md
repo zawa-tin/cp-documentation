@@ -32,7 +32,7 @@ data:
     title: Src/DataStructure/PrefixSum/Imos2D.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Set/FenwickSet.hpp
     title: Src/DataStructure/Set/FenwickSet.hpp
@@ -85,6 +85,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/joi2008ho_e.test.cpp
     title: Test/AtCoder/joi2008ho_e.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/typical90_cc.test.cpp
+    title: Test/AtCoder/typical90_cc.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
@@ -172,6 +175,7 @@ data:
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc405.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
+  - Test/AtCoder/typical90_cc.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/awc0032_e.test.cpp

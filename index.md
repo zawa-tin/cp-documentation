@@ -171,7 +171,7 @@ data:
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-      title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
@@ -1539,6 +1539,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/tdpc_target.test.cpp
       title: Test/AtCoder/tdpc_target.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/typical90_cc.test.cpp
+      title: Test/AtCoder/typical90_cc.test.cpp
   - name: Test/Baekjoon
     pages:
     - icon: ':heavy_check_mark:'

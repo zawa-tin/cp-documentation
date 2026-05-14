@@ -68,7 +68,7 @@ data:
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
@@ -1290,6 +1290,9 @@ data:
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/typical90_cc.test.cpp
+    title: Test/AtCoder/typical90_cc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/Baekjoon/23249.test.cpp
     title: Test/Baekjoon/23249.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2242,6 +2245,7 @@ data:
   - Test/AtCoder/agc002_d.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
   - Test/AtCoder/abc293_d.test.cpp
+  - Test/AtCoder/typical90_cc.test.cpp
   - Test/AtCoder/abc236_e.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp

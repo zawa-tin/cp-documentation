@@ -44,7 +44,7 @@ data:
     title: Src/DataStructure/PrefixSum/Imos2D.hpp
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-    title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
@@ -262,6 +262,9 @@ data:
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/typical90_cc.test.cpp
+    title: Test/AtCoder/typical90_cc.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/CF1052-E.test.cpp
     title: Test/CF/CF1052-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -455,6 +458,7 @@ data:
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/typical90_cc.test.cpp
   - Test/AtCoder/arc082_d.test.cpp
   - Test/AtCoder/abc223_h.test.cpp
   - Test/AtCoder/abc332_f.test.cpp

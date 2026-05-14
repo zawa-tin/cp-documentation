@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc434_d.test.cpp
     title: Test/AtCoder/abc434_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/typical90_cc.test.cpp
+    title: Test/AtCoder/typical90_cc.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -97,7 +100,10 @@ data:
     \ == false and \"already destructed: Ruisekiwa2D::build\");\n        m_moved =\
     \ true;\n        return internal::StaticRectSumSolver<G>{std::move(m_a)};\n  \
     \  }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
+    \ m_a;\n\n    bool m_moved = false;\n};\n\ntemplate <concepts::Group G>\ninternal::StaticRectSumSolver<G>\
+    \ BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A) {\n    Ruisekiwa2D<G>\
+    \ builder(std::move(A));\n    return builder.inplaceBuild();\n}\n\n} // namespace\
+    \ zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Group/GroupConcept.hpp\"\
     \n\n#include <cassert>\n#include <utility>\n#include <vector>\n\nnamespace zawa\
     \ {\n\nnamespace internal {\n\ntemplate <concepts::Group G>\nclass StaticRectSumSolver\
@@ -149,7 +155,10 @@ data:
     \ == false and \"already destructed: Ruisekiwa2D::build\");\n        m_moved =\
     \ true;\n        return internal::StaticRectSumSolver<G>{std::move(m_a)};\n  \
     \  }\n\nprivate:\n\n    usize m_H = 0, m_W = 0;\n\n    std::vector<std::vector<T>>\
-    \ m_a;\n\n    bool m_moved = false;\n};\n\n} // namespace zawa\n"
+    \ m_a;\n\n    bool m_moved = false;\n};\n\ntemplate <concepts::Group G>\ninternal::StaticRectSumSolver<G>\
+    \ BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A) {\n    Ruisekiwa2D<G>\
+    \ builder(std::move(A));\n    return builder.inplaceBuild();\n}\n\n} // namespace\
+    \ zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Group/GroupConcept.hpp
@@ -158,15 +167,70 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   requiredBy: []
-  timestamp: '2025-12-23 18:04:55+09:00'
+  timestamp: '2026-05-14 20:01:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/2426.test.cpp
+  - Test/AtCoder/typical90_cc.test.cpp
   - Test/AtCoder/abc434_d.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
 layout: document
-redirect_from:
-- /library/Src/DataStructure/PrefixSum/PrefixSum2D.hpp
-- /library/Src/DataStructure/PrefixSum/PrefixSum2D.hpp.html
-title: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
+title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---
+
+## ライブラリの使い方
+
+```cpp
+Ruisekiwa2D(usize H, usize W);
+explicit Ruisekiwa2D(std::vector<std::vector<T>>&& a);
+explicit Ruisekiwa2D(const std::vector<std::vector<T>>& a);
+```
+
+がコンストラクタ
+
+```cpp
+inline usize height() const;
+inline usize width() const;
+```
+
+でサイズを取得できる
+
+```
+void operation(usize i, usize j, T v);
+const std::vector<T>& operator[](const usize i) const;
+```
+
+一点加算と一点取得
+
+```
+internal::StaticRectSumSolver<G> build() const;
+internal::StaticRectSumSolver<G> inplaceBuild();
+```
+
+で累積和を構築。`inplaceBuild`は一回までしか呼んではならない。
+
+`StaticRectSumSolver`では`height(),width(),operator[]`及び矩形和を取得する`produt(l,d,r,u)`が提供されている。
+
+`product`の引数の順番は
+
+1. 1次元目の下
+2. 2次元目の下
+3. 1次元目の上
+4. 2次元目の上
+
+である。いつも通り
+
+`const_iterator`を返す`begin(),end()`もあるが、使いどころわかんない。
+
+
+```cpp
+internal::StaticRectSumSolver<G> BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A)
+```
+
+という関数も提供していて、`A`から直接累積和を構築することもできる。
+
+## 更新履歴
+
+- 昔: 作った
+- 2026/05/14: `BuildRuisekiwa2D`メンバを追加、ドキュメントを書いた
+

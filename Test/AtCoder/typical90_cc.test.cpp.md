@@ -17,9 +17,6 @@ data:
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
-    path: Src/Sequence/CompressedSequence.hpp
-    title: "\u5EA7\u6A19\u5727\u7E2E"
-  - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
@@ -29,23 +26,29 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: http://onlinejudge.u-aizu.ac.jp/problems/2426
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - http://onlinejudge.u-aizu.ac.jp/problems/2426
-  bundledCode: "#line 1 \"Test/AOJ/2426.test.cpp\"\n#define PROBLEM \"http://onlinejudge.u-aizu.ac.jp/problems/2426\"\
-    \n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\ntemplate\
-    \ <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n    static\
-    \ constexpr T identity() noexcept {\n        return T{};\n    }\n    static constexpr\
-    \ T operation(T l,T r) noexcept {\n        return l + r;\n    }\n    static constexpr\
-    \ T inverse(T v) noexcept {\n        return -v;\n    }\n    template <class U>\n\
-    \    static constexpr T power(T v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n\
-    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    - https://atcoder.jp/contests/typical90/submissions/75777786
+    - https://atcoder.jp/contests/typical90/tasks/typical90_cc
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"Test/AtCoder/typical90_cc.test.cpp\"\n// #define PROBLEM\
+    \ \"https://atcoder.jp/contests/typical90/tasks/typical90_cc\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/aplusb\"\n\n/*\n * \u7AF6\u30D7\u30ED\u5178\
+    \u578B90\u554F 081 - Griendly Group\n * https://atcoder.jp/contests/typical90/submissions/75777786\n\
+    \ */\n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\n\
+    template <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n \
+    \   static constexpr T identity() noexcept {\n        return T{};\n    }\n   \
+    \ static constexpr T operation(T l,T r) noexcept {\n        return l + r;\n  \
+    \  }\n    static constexpr T inverse(T v) noexcept {\n        return -v;\n   \
+    \ }\n    template <class U>\n    static constexpr T power(T v,U exp) noexcept\
+    \ {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace zawa\n\
+    #line 2 \"Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/Algebra/Group/GroupConcept.hpp\"\n\n#line\
+    \ 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
     \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
@@ -113,56 +116,27 @@ data:
     \ m_a;\n\n    bool m_moved = false;\n};\n\ntemplate <concepts::Group G>\ninternal::StaticRectSumSolver<G>\
     \ BuildRuisekiwa2D(std::vector<std::vector<typename G::Element>> A) {\n    Ruisekiwa2D<G>\
     \ builder(std::move(A));\n    return builder.inplaceBuild();\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n\n#line 6 \"Src/Sequence/CompressedSequence.hpp\"\n#include <algorithm>\n#line\
-    \ 8 \"Src/Sequence/CompressedSequence.hpp\"\n#include <iterator>\n#include <limits>\n\
-    \nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\
-    \n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n   \
-    \ CompressedSequence() = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
-    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
-    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
-    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
-    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
-    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
-    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
-    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
-    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
-    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
-    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
-    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
-    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
-    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
-    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
-    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
-    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
-    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
-    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 6 \"Test/AOJ/2426.test.cpp\"\nusing namespace zawa;\n\
-    \n#include <iostream>\n#line 10 \"Test/AOJ/2426.test.cpp\"\nusing namespace std;\n\
-    \nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    int N, M;\n    cin >> N >> M;\n    vector<int> X(N), Y(N);\n    for (int\
-    \ i = 0 ; i < N ; i++)\n        cin >> X[i] >> Y[i];\n    CompressedSequence CX{X},\
-    \ CY{Y};\n    Ruisekiwa2D<AdditiveGroup<int>> a{CX.size(), CY.size()};\n    for\
-    \ (int i = 0 ; i < N ; i++) \n        a.operation(CX.map(i), CY.map(i), 1);\n\
-    \    auto sum = a.inplaceBuild();\n    while (M--) {\n        int x1, y1, x2,\
-    \ y2;\n        cin >> x1 >> y1 >> x2 >> y2;\n        cout << sum.product(CX[x1],\
-    \ CY[y1], CX[x2 + 1], CY[y2 + 1]) << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"http://onlinejudge.u-aizu.ac.jp/problems/2426\"\n\n#include\
-    \ \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\
-    \n#include \"../../Src/Sequence/CompressedSequence.hpp\"\nusing namespace zawa;\n\
-    \n#include <iostream>\n#include <vector>\nusing namespace std;\n\nint main() {\n\
-    \    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N, M;\n\
-    \    cin >> N >> M;\n    vector<int> X(N), Y(N);\n    for (int i = 0 ; i < N ;\
-    \ i++)\n        cin >> X[i] >> Y[i];\n    CompressedSequence CX{X}, CY{Y};\n \
-    \   Ruisekiwa2D<AdditiveGroup<int>> a{CX.size(), CY.size()};\n    for (int i =\
-    \ 0 ; i < N ; i++) \n        a.operation(CX.map(i), CY.map(i), 1);\n    auto sum\
-    \ = a.inplaceBuild();\n    while (M--) {\n        int x1, y1, x2, y2;\n      \
-    \  cin >> x1 >> y1 >> x2 >> y2;\n        cout << sum.product(CX[x1], CY[y1], CX[x2\
-    \ + 1], CY[y2 + 1]) << '\\n';\n    }\n}\n"
+    \ zawa\n#line 11 \"Test/AtCoder/typical90_cc.test.cpp\"\nusing namespace zawa;\n\
+    \n#include <iostream>\n#line 15 \"Test/AtCoder/typical90_cc.test.cpp\"\nusing\
+    \ namespace std;\n\nint main() {\n#ifdef ATCODER\n    int N,K;\n    cin >> N >>\
+    \ K;\n    vector A(5001,vector<int>(5001));\n    while (N--) {\n        int a,b;\n\
+    \        cin >> a >> b;\n        A[a][b]++;\n    }\n    auto sum = BuildRuisekiwa2D<AdditiveGroup<int>>(move(A));\n\
+    \    int ans = 0;\n    for (int i = 0 ; i + K + 1 <= 5001 ; i++)\n        for\
+    \ (int j = 0 ; j + K + 1 <= 5001 ; j++)\n            ans = max(ans,sum.product(i,j,i+K+1,j+K+1));\n\
+    \    cout << ans << '\\n';\n#else\n    int a,b;\n    cin >> a >> b;\n    cout\
+    \ << a+b << '\\n';\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/typical90/tasks/typical90_cc\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n\n/*\n * \u7AF6\u30D7\
+    \u30ED\u5178\u578B90\u554F 081 - Griendly Group\n * https://atcoder.jp/contests/typical90/submissions/75777786\n\
+    \ */\n\n#include \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\n#include \"../../Src/DataStructure/PrefixSum/PrefixSum2D.hpp\"\
+    \nusing namespace zawa;\n\n#include <iostream>\n#include <vector>\nusing namespace\
+    \ std;\n\nint main() {\n#ifdef ATCODER\n    int N,K;\n    cin >> N >> K;\n   \
+    \ vector A(5001,vector<int>(5001));\n    while (N--) {\n        int a,b;\n   \
+    \     cin >> a >> b;\n        A[a][b]++;\n    }\n    auto sum = BuildRuisekiwa2D<AdditiveGroup<int>>(move(A));\n\
+    \    int ans = 0;\n    for (int i = 0 ; i + K + 1 <= 5001 ; i++)\n        for\
+    \ (int j = 0 ; j + K + 1 <= 5001 ; j++)\n            ans = max(ans,sum.product(i,j,i+K+1,j+K+1));\n\
+    \    cout << ans << '\\n';\n#else\n    int a,b;\n    cin >> a >> b;\n    cout\
+    \ << a+b << '\\n';\n#endif\n}\n"
   dependsOn:
   - Src/Algebra/Group/AdditiveGroup.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
@@ -170,17 +144,16 @@ data:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
-  path: Test/AOJ/2426.test.cpp
+  path: Test/AtCoder/typical90_cc.test.cpp
   requiredBy: []
   timestamp: '2026-05-14 20:01:10+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/AOJ/2426.test.cpp
+documentation_of: Test/AtCoder/typical90_cc.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/AOJ/2426.test.cpp
-- /verify/Test/AOJ/2426.test.cpp.html
-title: Test/AOJ/2426.test.cpp
+- /verify/Test/AtCoder/typical90_cc.test.cpp
+- /verify/Test/AtCoder/typical90_cc.test.cpp.html
+title: Test/AtCoder/typical90_cc.test.cpp
 ---
