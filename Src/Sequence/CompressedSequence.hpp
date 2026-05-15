@@ -73,6 +73,18 @@ public:
         return comped_;
     }
 
+    template <std::integral Z>
+    std::vector<Z> mapped() const {
+        if constexpr (std::same_as<u32,Z>)
+            return f_;
+        else {
+            std::vector<Z> res(f_.size());
+            for (usize i = 0 ; i < f_.size() ; i++)
+                res[i] = static_cast<Z>(f_[i]);
+            return res;
+        }
+    }
+
 private:
 
     std::vector<T> comped_;

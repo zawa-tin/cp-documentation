@@ -57,7 +57,7 @@ void frequencyTest(std::vector<T> A,T MAXA) {
                 T u = mt() % (MAXA + 1);
                 if (d > u)
                     swap(d,u);
-                int v = wav.frequency(l,r,d,u);
+                int v = wav.frequency(l,d,r,u);
                 int x = 0;
                 for (int i = l ; i < r ; i++)
                     x += d <= A[i] and A[i] < u;
@@ -82,6 +82,11 @@ void frequencyTest(int MAXN,T MAXA) {
 
 int main() {
     cerr << "seed=" << seed << endl;
+    for (int t = 0 ; t < 100 ; t++) {
+        int n = mt() % 10 + 1;
+        int a = mt() % 10 + 1;
+        frequencyTest(n,a);
+    }
     frequencyTest<int>({0,6,0,2,5,6,5,3,1},9);
     frequencyTest<int>(100,8);
     frequencyTest<long long>(100,(long long)1e18);
