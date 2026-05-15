@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/range_kth_smallest"
 
-#include "../../Src/Template/IOSetting.hpp"
-#include "../../Src/Sequence/RangeKthSmallest.hpp"
+#include "../../../Src/Template/IOSetting.hpp"
+#include "../../../Src/Sequence/RangeKthSmallest.hpp"
 
 #include <iostream>
 #include <vector>
