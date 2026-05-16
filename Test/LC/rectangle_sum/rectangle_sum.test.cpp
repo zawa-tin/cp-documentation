@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/rectangle_sum"
 
-#include "../../Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp"
+#include "../../../Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp"
 
 #include <iostream>
 #include <vector>
