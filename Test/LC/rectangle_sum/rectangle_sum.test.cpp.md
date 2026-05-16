@@ -17,9 +17,9 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/rectangle_sum
     links:
     - https://judge.yosupo.jp/problem/rectangle_sum
-  bundledCode: "#line 1 \"Test/LC/rectangle_sum.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\
-    \n\n#line 2 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\n\n\
-    #line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+  bundledCode: "#line 1 \"Test/LC/rectangle_sum/rectangle_sum.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#line 2 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
@@ -56,8 +56,21 @@ data:
     \        if (idx < q) {\n            res[idx] += pref(qs[idx].l) - pref(qs[idx].r);\n\
     \        }\n        else {\n            idx -= q;\n            res[idx] += -pref(qs[idx].l)\
     \ + pref(qs[idx].r);\n        }\n    } \n    return res;\n}\n\n} // namespace\
-    \ zawa\n#line 4 \"Test/LC/rectangle_sum.test.cpp\"\n\n#include <iostream>\n#line\
-    \ 7 \"Test/LC/rectangle_sum.test.cpp\"\n\nusing namespace zawa;\n\nstruct Point\
+    \ zawa\n#line 4 \"Test/LC/rectangle_sum/rectangle_sum.test.cpp\"\n\n#include <iostream>\n\
+    #line 7 \"Test/LC/rectangle_sum/rectangle_sum.test.cpp\"\n\nusing namespace zawa;\n\
+    \nstruct Point {\n    using P = int;\n    using W = long long;\n    P x, y;\n\
+    \    W w;\n};\n\nstruct Rect {\n    using P = int;\n    int l, d, r, u;\n};\n\n\
+    int main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<Point> ps(N);\n    for\
+    \ (int i{} ; i < N ; i++) {\n        int x, y, w;\n        std::cin >> x >> y\
+    \ >> w;\n        ps[i] = {x, y, w};\n    }\n    std::vector<Rect> qs(Q);\n   \
+    \ for (int i{} ; i < Q ; i++) {\n        int l, d, r, u;\n        std::cin >>\
+    \ l >> d >> r >> u;\n        qs[i] = {l, d, r, u};\n    }\n    for (auto ans :\
+    \ RectangleSumOfPointCloud(ps, qs)) {\n        std::cout << ans << '\\n';\n  \
+    \  }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
+    \ \"../../../Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\n\n\
+    #include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nstruct Point\
     \ {\n    using P = int;\n    using W = long long;\n    P x, y;\n    W w;\n};\n\
     \nstruct Rect {\n    using P = int;\n    int l, d, r, u;\n};\n\nint main() {\n\
     \    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
@@ -68,31 +81,19 @@ data:
     \ l >> d >> r >> u;\n        qs[i] = {l, d, r, u};\n    }\n    for (auto ans :\
     \ RectangleSumOfPointCloud(ps, qs)) {\n        std::cout << ans << '\\n';\n  \
     \  }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/rectangle_sum\"\n\n#include\
-    \ \"../../Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\n\n#include\
-    \ <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nstruct Point {\n \
-    \   using P = int;\n    using W = long long;\n    P x, y;\n    W w;\n};\n\nstruct\
-    \ Rect {\n    using P = int;\n    int l, d, r, u;\n};\n\nint main() {\n    std::cin.tie(nullptr);\n\
-    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    int N,\
-    \ Q;\n    std::cin >> N >> Q;\n    std::vector<Point> ps(N);\n    for (int i{}\
-    \ ; i < N ; i++) {\n        int x, y, w;\n        std::cin >> x >> y >> w;\n \
-    \       ps[i] = {x, y, w};\n    }\n    std::vector<Rect> qs(Q);\n    for (int\
-    \ i{} ; i < Q ; i++) {\n        int l, d, r, u;\n        std::cin >> l >> d >>\
-    \ r >> u;\n        qs[i] = {l, d, r, u};\n    }\n    for (auto ans : RectangleSumOfPointCloud(ps,\
-    \ qs)) {\n        std::cout << ans << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: true
-  path: Test/LC/rectangle_sum.test.cpp
+  path: Test/LC/rectangle_sum/rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2025-04-25 15:47:36+09:00'
+  timestamp: '2026-05-16 15:41:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/rectangle_sum.test.cpp
+documentation_of: Test/LC/rectangle_sum/rectangle_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/rectangle_sum.test.cpp
-- /verify/Test/LC/rectangle_sum.test.cpp.html
-title: Test/LC/rectangle_sum.test.cpp
+- /verify/Test/LC/rectangle_sum/rectangle_sum.test.cpp
+- /verify/Test/LC/rectangle_sum/rectangle_sum.test.cpp.html
+title: Test/LC/rectangle_sum/rectangle_sum.test.cpp
 ---

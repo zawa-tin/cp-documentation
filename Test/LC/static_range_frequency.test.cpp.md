@@ -100,11 +100,15 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 6 \"Test/LC/static_range_frequency.test.cpp\"\n\n#line\
-    \ 9 \"Test/LC/static_range_frequency.test.cpp\"\n\nusing namespace zawa;\n\nint\
-    \ N, Q, X[500050];\nint main() {\n    SetFastIO();\n\n    std::cin >> N >> Q;\n\
-    \    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n    CompressedSequence\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 6 \"Test/LC/static_range_frequency.test.cpp\"\
+    \n\n#line 9 \"Test/LC/static_range_frequency.test.cpp\"\n\nusing namespace zawa;\n\
+    \nint N, Q, X[500050];\nint main() {\n    SetFastIO();\n\n    std::cin >> N >>\
+    \ Q;\n    std::vector<int> A(N);\n    for (int& a : A) std::cin >> a;\n    CompressedSequence\
     \ comp{A};\n    std::vector<std::pair<int,int>> q(Q);\n    for (int i{} ; auto&\
     \ [l, r] : q) {\n        std::cin >> l >> r >> X[i];\n        i++;\n    }\n  \
     \  std::vector<int> cnt(comp.size());\n    auto add{[&](int i) -> void {\n   \
@@ -135,7 +139,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_range_frequency.test.cpp
   requiredBy: []
-  timestamp: '2026-03-16 19:40:14+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_frequency.test.cpp

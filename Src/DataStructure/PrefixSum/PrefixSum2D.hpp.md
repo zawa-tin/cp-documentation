@@ -170,9 +170,9 @@ data:
   timestamp: '2026-05-14 20:01:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2426.test.cpp
   - Test/AtCoder/typical90_cc.test.cpp
   - Test/AtCoder/abc434_d.test.cpp
+  - Test/AOJ/2426.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
 layout: document
 title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"

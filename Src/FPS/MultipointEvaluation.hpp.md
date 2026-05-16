@@ -65,8 +65,8 @@ data:
   timestamp: '2026-05-06 19:26:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/multipoint_evaluation.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
 documentation_of: Src/FPS/MultipointEvaluation.hpp
 layout: document
 redirect_from:

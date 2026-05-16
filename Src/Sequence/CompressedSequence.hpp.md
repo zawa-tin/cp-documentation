@@ -15,6 +15,12 @@ data:
     path: Src/DataStructure/Set/OfflineOrderedSet.hpp
     title: Src/DataStructure/Set/OfflineOrderedSet.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Wavelet/RangeAggregation.hpp
+    title: Range Aggregation
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Wavelet/RectangleAggregation.hpp
+    title: Rectangle Aggregation
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/RangeKthSmallest.hpp
     title: Range Kth Smallest
   _extendedVerifiedWith:
@@ -22,11 +28,20 @@ data:
     path: Test/AOJ/2426.test.cpp
     title: Test/AOJ/2426.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3518.test.cpp
+    title: Test/AOJ/3518.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc213_c.test.cpp
     title: Test/AtCoder/abc213_c.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc266_h.test.cpp
+    title: Test/AtCoder/abc266_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc287_g.test.cpp
     title: Test/AtCoder/abc287_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc339_g.test.cpp
+    title: Test/AtCoder/abc339_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc384_g.test.cpp
     title: Test/AtCoder/abc384_g.test.cpp
@@ -58,8 +73,14 @@ data:
     path: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/range_kth_smallest.test.cpp
-    title: Test/LC/range_kth_smallest.test.cpp
+    path: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+    title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+    title: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+    title: Test/LC/rectangle_sum/RectangleAggregation.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_frequency.test.cpp
     title: Test/LC/static_range_frequency.test.cpp
@@ -105,8 +126,12 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n"
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Template/TypeAlias.hpp\"\n\n#include <vector>\n\
     #include <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\
     \nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\
@@ -133,36 +158,47 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n"
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
-  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
-  - Src/DataStructure/Set/OfflineOrderedSet.hpp
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/Sequence/RangeKthSmallest.hpp
-  timestamp: '2025-03-04 23:23:46+09:00'
+  - Src/DataStructure/Wavelet/RectangleAggregation.hpp
+  - Src/DataStructure/Wavelet/RangeAggregation.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/abc266_h.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/arc082_d.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc339_g.test.cpp
+  - Test/AOJ/2426.test.cpp
+  - Test/AOJ/3518.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/static_range_frequency.test.cpp
+  - Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/static_range_mode_query.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/CF/CF1054-G.test.cpp
   - Test/CF/CF1026-E.test.cpp
-  - Test/LC/static_range_frequency.test.cpp
-  - Test/LC/range_kth_smallest.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
-  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
-  - Test/LC/static_range_mode_query.test.cpp
-  - Test/AOJ/2426.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
-  - Test/AtCoder/arc082_d.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/AtCoder/abc389_f.test.cpp
-  - Test/AtCoder/tdpc_target.test.cpp
-  - Test/AtCoder/joi2008ho_e.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document

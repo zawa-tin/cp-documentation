@@ -216,8 +216,8 @@ data:
   timestamp: '2026-03-24 05:56:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/EC150-F.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
+  - Test/CF/EC150-F.test.cpp
   - Test/My/GeometryZ2/MinkowskiSum.test.cpp
 documentation_of: Src/GeometryZ2/MinkowskiSum.hpp
 layout: document

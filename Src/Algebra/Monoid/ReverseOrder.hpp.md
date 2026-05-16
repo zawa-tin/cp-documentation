@@ -50,8 +50,8 @@ data:
   timestamp: '2025-08-04 20:48:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2450.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/2450.test.cpp
 documentation_of: Src/Algebra/Monoid/ReverseOrder.hpp
 layout: document
 redirect_from:

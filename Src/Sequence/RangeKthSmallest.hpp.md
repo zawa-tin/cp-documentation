@@ -10,8 +10,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: Test/LC/range_kth_smallest.test.cpp
-    title: Test/LC/range_kth_smallest.test.cpp
+    path: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+    title: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,11 +48,15 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 7\
-    \ \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"Src/Sequence/RangeKthSmallest.hpp\"\
-    \n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <class T, class U>\nstd::vector<T> RangeKthSmallest(const\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\
+    \n\n#line 7 \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"\
+    Src/Sequence/RangeKthSmallest.hpp\"\n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T, class U>\nstd::vector<T> RangeKthSmallest(const\
     \ std::vector<T>& A, const std::vector<U>& Q) {\n    assert(A.size());\n    CompressedSequence\
     \ comp{A};\n    std::vector<std::vector<std::pair<usize, bool>>> event(A.size()\
     \ + 1);\n    for (usize i{} ; i < Q.size() ; i++) {\n        const U& q{Q[i]};\n\
@@ -96,10 +100,10 @@ data:
   isVerificationFile: false
   path: Src/Sequence/RangeKthSmallest.hpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_kth_smallest.test.cpp
+  - Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
 documentation_of: Src/Sequence/RangeKthSmallest.hpp
 layout: document
 title: Range Kth Smallest

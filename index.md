@@ -164,6 +164,9 @@ data:
   - name: Src/DataStructure/PrefixSum
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum/BitVector.hpp
+      title: Src/DataStructure/PrefixSum/BitVector.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum/Imos2D.hpp
       title: Src/DataStructure/PrefixSum/Imos2D.hpp
     - icon: ':heavy_check_mark:'
@@ -264,6 +267,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Undoable/UndoableVector.hpp
       title: Src/DataStructure/Undoable/UndoableVector.hpp
+  - name: Src/DataStructure/Wavelet
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Wavelet/RangeAggregation.hpp
+      title: Range Aggregation
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Wavelet/RectangleAggregation.hpp
+      title: Rectangle Aggregation
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/Wavelet/WaveletMatrix.hpp
+      title: Wavelet Matrix
   - name: Src/FPS
     pages:
     - icon: ':heavy_check_mark:'
@@ -731,7 +745,7 @@ data:
       title: Stern-Brocot Tree
   - name: Src/Random
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Src/Random/RandomArray.hpp
       title: Src/Random/RandomArray.hpp
     - icon: ':warning:'
@@ -987,6 +1001,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3168.test.cpp
       title: Test/AOJ/3168.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/3518.test.cpp
+      title: Test/AOJ/3518.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/3548.test.cpp
       title: AOJ3548 String Puzzle
@@ -1271,6 +1288,9 @@ data:
       path: Test/AtCoder/abc266_c.test.cpp
       title: Test/AtCoder/abc266_c.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc266_h.test.cpp
+      title: Test/AtCoder/abc266_h.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc268_h.test.cpp
       title: Test/AtCoder/abc268_h.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1361,6 +1381,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc334_g.test.cpp
       title: Test/AtCoder/abc334_g.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc339_g.test.cpp
+      title: Test/AtCoder/abc339_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc340_e.test.cpp
       title: Test/AtCoder/abc340_e.test.cpp
@@ -1747,17 +1770,11 @@ data:
       path: Test/LC/range_affine_range_sum.test.cpp
       title: Test/LC/range_affine_range_sum.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/LC/range_kth_smallest.test.cpp
-      title: Test/LC/range_kth_smallest.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/LC/range_set_range_composite.test.cpp
       title: Test/LC/range_set_range_composite.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/rational_approximation.test.cpp
       title: Test/LC/rational_approximation.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Test/LC/rectangle_sum.test.cpp
-      title: Test/LC/rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/rooted_tree_isomorphism_classification.test.cpp
       title: Test/LC/rooted_tree_isomorphism_classification.test.cpp
@@ -1827,11 +1844,30 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
       title: Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+      title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - name: Test/LC/polynomial_interpolation
     pages:
     - icon: ':heavy_check_mark:'
       path: Test/LC/polynomial_interpolation/quadratic.test.cpp
       title: Test/LC/polynomial_interpolation/quadratic.test.cpp
+  - name: Test/LC/range_kth_smallest
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_kth_smallest/WaveletMatrix.test.cpp
+      title: Test/LC/range_kth_smallest/WaveletMatrix.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+      title: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+  - name: Test/LC/rectangle_sum
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+      title: Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/rectangle_sum/rectangle_sum.test.cpp
+      title: Test/LC/rectangle_sum/rectangle_sum.test.cpp
   - name: Test/LC/staticrmq
     pages:
     - icon: ':heavy_check_mark:'
@@ -1922,6 +1958,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
       title: Test/My/DataStructure/Heap/BinaryHeapCompVector.test.cpp
+  - name: Test/My/DataStructure/PrefixSum
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/PrefixSum/BitVector.test.cpp
+      title: Test/My/DataStructure/PrefixSum/BitVector.test.cpp
   - name: Test/My/DataStructure/RMQ
     pages:
     - icon: ':heavy_check_mark:'
@@ -1932,6 +1973,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
       title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
+  - name: Test/My/DataStructure/Wavelet
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
+      title: Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
   - name: Test/My/FPS
     pages:
     - icon: ':heavy_check_mark:'

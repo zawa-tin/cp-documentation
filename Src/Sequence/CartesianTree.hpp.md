@@ -102,8 +102,8 @@ data:
   timestamp: '2024-11-14 17:39:23+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/cartesian_tree.test.cpp
   - Test/AOJ/DPL_3_C.test.cpp
+  - Test/LC/cartesian_tree.test.cpp
 documentation_of: Src/Sequence/CartesianTree.hpp
 layout: document
 title: Cartesian Tree

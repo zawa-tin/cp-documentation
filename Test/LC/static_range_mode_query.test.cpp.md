@@ -83,11 +83,15 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 5 \"Test/LC/static_range_mode_query.test.cpp\"\n\n\
-    #include <iostream>\n#line 9 \"Test/LC/static_range_mode_query.test.cpp\"\nusing\
-    \ namespace std;\nusing namespace zawa;\nstruct Query {\n    usize l, r;\n};\n\
-    struct Data {\n    int top = -1, last = -1;\n};\nint main() {\n    cin.tie(0);\n\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 5 \"Test/LC/static_range_mode_query.test.cpp\"\
+    \n\n#include <iostream>\n#line 9 \"Test/LC/static_range_mode_query.test.cpp\"\n\
+    using namespace std;\nusing namespace zawa;\nstruct Query {\n    usize l, r;\n\
+    };\nstruct Data {\n    int top = -1, last = -1;\n};\nint main() {\n    cin.tie(0);\n\
     \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N, Q;\n    cin >> N >>\
     \ Q;\n    vector<int> A(N);\n    for (int i = 0 ; i < N ; i++)\n        cin >>\
     \ A[i];\n    CompressedSequence<int> comp{A};\n    for (int i = 0 ; i < N ; i++)\n\
@@ -124,7 +128,7 @@ data:
   isVerificationFile: true
   path: Test/LC/static_range_mode_query.test.cpp
   requiredBy: []
-  timestamp: '2025-09-26 14:43:59+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/static_range_mode_query.test.cpp

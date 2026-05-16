@@ -52,9 +52,13 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\n\n/*\n * ABC213-C\
-    \ Reorder Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 6 \"Test/AtCoder/abc213_c.test.cpp\"\
+    \n\n/*\n * ABC213-C Reorder Cards\n * https://atcoder.jp/contests/abc213/submissions/63197885\n\
     \ */\n\n#include <iostream>\n#line 14 \"Test/AtCoder/abc213_c.test.cpp\"\n\nusing\
     \ namespace zawa;\n\ni32 main() {\n#ifdef ATCODER\n    usize H, W, N;\n    std::cin\
     \ >> H >> W >> N; \n    std::vector<u32> A(N), B(N);\n    for (u32 i = 0 ; i <\
@@ -81,7 +85,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc213_c.test.cpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc213_c.test.cpp

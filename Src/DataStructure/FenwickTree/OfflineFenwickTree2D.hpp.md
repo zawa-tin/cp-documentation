@@ -133,8 +133,12 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 7 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n\n#line 9 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\n#include\
     \ <utility>\n#line 11 \"Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp\"\
     \n#include <tuple>\n\nnamespace zawa {\n\nnamespace internal {\n\ntemplate <class\
@@ -214,7 +218,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   requiredBy: []
-  timestamp: '2025-10-14 12:56:31+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp

@@ -133,10 +133,10 @@ data:
   timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_affine_point_get.test.cpp
-  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc457_f.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+  - Test/LC/range_affine_point_get.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
 layout: document
 title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"

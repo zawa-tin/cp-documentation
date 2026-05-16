@@ -41,8 +41,8 @@ data:
   timestamp: '2024-11-05 03:06:10+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/AtCoder/abc346_g.test.cpp
+  - Test/LC/area_of_union_of_rectangles.test.cpp
 documentation_of: Src/Algebra/Monoid/MinCountMonoid.hpp
 layout: document
 redirect_from:

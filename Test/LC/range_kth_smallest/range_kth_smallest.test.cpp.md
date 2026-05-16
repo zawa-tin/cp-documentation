@@ -23,25 +23,25 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/range_kth_smallest
     links:
     - https://judge.yosupo.jp/problem/range_kth_smallest
-  bundledCode: "#line 1 \"Test/LC/range_kth_smallest.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#line 2 \"Src/Template/IOSetting.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Template/IOSetting.hpp\"\
-    \n\n#include <iostream>\n#include <iomanip>\n\nnamespace zawa {\n\nvoid SetFastIO()\
-    \ {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n}\n\nvoid SetPrecision(u32\
-    \ dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n}\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
-    \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#include <vector>\n#include\
-    \ <algorithm>\n#include <cassert>\n#include <iterator>\n#include <limits>\n\n\
-    namespace zawa {\n\ntemplate <class T>\nclass CompressedSequence {\npublic:\n\n\
-    \    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\n    CompressedSequence()\
-    \ = default;\n\n    template <class InputIterator>\n    CompressedSequence(InputIterator\
-    \ first, InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
-    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
-    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+  bundledCode: "#line 1 \"Test/LC/range_kth_smallest/range_kth_smallest.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n#line\
+    \ 2 \"Src/Template/IOSetting.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\
+    \n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 = std::int16_t;\n\
+    using i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128 = __int128_t;\n\
+    \nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing u32 = std::uint32_t;\n\
+    using u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\n} // namespace zawa\n\
+    #line 4 \"Src/Template/IOSetting.hpp\"\n\n#include <iostream>\n#include <iomanip>\n\
+    \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
+    }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
+    }\n\n} // namespace zawa\n#line 2 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line\
+    \ 2 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#include <vector>\n#include <algorithm>\n#include <cassert>\n#include <iterator>\n\
+    #include <limits>\n\nnamespace zawa {\n\ntemplate <class T>\nclass CompressedSequence\
+    \ {\npublic:\n\n    static constexpr u32 NotFound = std::numeric_limits<u32>::max();\n\
+    \n    CompressedSequence() = default;\n\n    template <class InputIterator>\n\
+    \    CompressedSequence(InputIterator first, InputIterator last) : comped_(first,\
+    \ last), f_{} {\n        std::sort(comped_.begin(), comped_.end());\n        comped_.erase(std::unique(comped_.begin(),\
+    \ comped_.end()), comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
     \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
     \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
     \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
@@ -60,11 +60,15 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\n\n#line 7\
-    \ \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"Src/Sequence/RangeKthSmallest.hpp\"\
-    \n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\n\nnamespace\
-    \ zawa {\n\ntemplate <class T, class U>\nstd::vector<T> RangeKthSmallest(const\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 5 \"Src/Sequence/RangeKthSmallest.hpp\"\
+    \n\n#line 7 \"Src/Sequence/RangeKthSmallest.hpp\"\n#include <bit>\n#line 9 \"\
+    Src/Sequence/RangeKthSmallest.hpp\"\n#include <utility>\n#line 11 \"Src/Sequence/RangeKthSmallest.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T, class U>\nstd::vector<T> RangeKthSmallest(const\
     \ std::vector<T>& A, const std::vector<U>& Q) {\n    assert(A.size());\n    CompressedSequence\
     \ comp{A};\n    std::vector<std::vector<std::pair<usize, bool>>> event(A.size()\
     \ + 1);\n    for (usize i{} ; i < Q.size() ; i++) {\n        const U& q{Q[i]};\n\
@@ -81,16 +85,16 @@ data:
     \      x[j] += 1 << i;\n                cnt[j] += add[j];\n            }\n   \
     \     }\n    } \n    std::vector<T> res(Q.size());\n    for (usize i{} ; i < Q.size()\
     \ ; i++) {\n        res[i] = comp.inverse(x[i]);\n    }\n    return res;\n}\n\n\
-    } // namespace zawa\n#line 5 \"Test/LC/range_kth_smallest.test.cpp\"\n\n#line\
-    \ 8 \"Test/LC/range_kth_smallest.test.cpp\"\n\nusing namespace zawa;\n\nstruct\
-    \ query {\n    usize k, l, r;\n};\n\nint main() {\n    SetFastIO();\n    int N,\
-    \ Q;\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (auto& a :\
-    \ A) std::cin >> a;\n    std::vector<query> q(Q);\n    for (int i{} ; i < Q ;\
-    \ i++) {\n        usize l, r, k;\n        std::cin >> l >> r >> k;\n        q[i]\
-    \ = { k, l, r };\n    }\n    for (auto ans : RangeKthSmallest(A, q)) {\n     \
-    \   std::cout << ans << '\\n';\n    }\n}\n"
+    } // namespace zawa\n#line 5 \"Test/LC/range_kth_smallest/range_kth_smallest.test.cpp\"\
+    \n\n#line 8 \"Test/LC/range_kth_smallest/range_kth_smallest.test.cpp\"\n\nusing\
+    \ namespace zawa;\n\nstruct query {\n    usize k, l, r;\n};\n\nint main() {\n\
+    \    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
+    \ A(N);\n    for (auto& a : A) std::cin >> a;\n    std::vector<query> q(Q);\n\
+    \    for (int i{} ; i < Q ; i++) {\n        usize l, r, k;\n        std::cin >>\
+    \ l >> r >> k;\n        q[i] = { k, l, r };\n    }\n    for (auto ans : RangeKthSmallest(A,\
+    \ q)) {\n        std::cout << ans << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/range_kth_smallest\"\n\n\
-    #include \"../../Src/Template/IOSetting.hpp\"\n#include \"../../Src/Sequence/RangeKthSmallest.hpp\"\
+    #include \"../../../Src/Template/IOSetting.hpp\"\n#include \"../../../Src/Sequence/RangeKthSmallest.hpp\"\
     \n\n#include <iostream>\n#include <vector>\n\nusing namespace zawa;\n\nstruct\
     \ query {\n    usize k, l, r;\n};\n\nint main() {\n    SetFastIO();\n    int N,\
     \ Q;\n    std::cin >> N >> Q;\n    std::vector<int> A(N);\n    for (auto& a :\
@@ -104,15 +108,15 @@ data:
   - Src/Sequence/RangeKthSmallest.hpp
   - Src/Sequence/CompressedSequence.hpp
   isVerificationFile: true
-  path: Test/LC/range_kth_smallest.test.cpp
+  path: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
   requiredBy: []
-  timestamp: '2025-03-04 23:23:46+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/range_kth_smallest.test.cpp
+documentation_of: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/range_kth_smallest.test.cpp
-- /verify/Test/LC/range_kth_smallest.test.cpp.html
-title: Test/LC/range_kth_smallest.test.cpp
+- /verify/Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+- /verify/Test/LC/range_kth_smallest/range_kth_smallest.test.cpp.html
+title: Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
 ---

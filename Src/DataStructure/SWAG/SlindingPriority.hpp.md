@@ -85,9 +85,9 @@ data:
   timestamp: '2026-05-10 18:29:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/abc269_g.test.cpp
   - Test/AOJ/DPL_1_G.test.cpp
   - Test/AOJ/DSL_3_D.test.cpp
-  - Test/AtCoder/abc269_g.test.cpp
 documentation_of: Src/DataStructure/SWAG/SlindingPriority.hpp
 layout: document
 title: "\u30B9\u30E9\u30A4\u30C9\u6700\u5C0F\u5024"

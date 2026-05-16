@@ -55,6 +55,9 @@ data:
     path: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
     title: Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+    title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -213,25 +216,26 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/FenwickTree.hpp
   requiredBy:
-  - Src/DataStructure/Set/FenwickSet.hpp
-  - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/Set/FenwickSet.hpp
   timestamp: '2025-10-14 12:56:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/EC2-E.test.cpp
-  - Test/LC/vertex_add_path_sum.test.cpp
-  - Test/LC/point_add_range_sum.test.cpp
-  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
-  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
-  - Test/LC/vertex_add_subtree_sum.test.cpp
-  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
-  - Test/AOJ/DSL_2_B.test.cpp
-  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc287_g.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
+  - Test/AOJ/DSL_2_B.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
+  - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
+  - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+  - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
+  - Test/LC/point_add_range_sum.test.cpp
+  - Test/CF/EC2-E.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/DataStructure/FenwickTree/FenwickTree.hpp
 layout: document

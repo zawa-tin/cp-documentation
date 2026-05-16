@@ -74,9 +74,13 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 2 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\
-    \n#line 2 \"Src/DataStructure/Set/FenwickSet.hpp\"\n\n#line 2 \"Src/Number/IntegerDivision.hpp\"\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\
+    \n\n#line 2 \"Src/DataStructure/Set/FenwickSet.hpp\"\n\n#line 2 \"Src/Number/IntegerDivision.hpp\"\
     \n\n#include <type_traits>\n#line 5 \"Src/Number/IntegerDivision.hpp\"\n\nnamespace\
     \ zawa {\n\ntemplate <class T>\nconstexpr T DivFloor(T a, T b) {\n    static_assert(std::is_integral_v<T>,\
     \ \"DivFloor argument must be Integer\");\n    assert(b != T{});\n    if constexpr\
@@ -280,7 +284,7 @@ data:
   isVerificationFile: true
   path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   requiredBy: []
-  timestamp: '2026-05-04 13:04:46+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/ordered_set/OfflineOrderedSet.test.cpp

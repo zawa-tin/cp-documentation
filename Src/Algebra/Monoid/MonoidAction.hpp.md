@@ -57,10 +57,10 @@ data:
   timestamp: '2026-05-10 03:33:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
-  - Test/AtCoder/abc419_f.test.cpp
-  - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/abc419_f.test.cpp
+  - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+  - Test/AtCoder/abc268_h.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidAction.hpp
 layout: document
 redirect_from:

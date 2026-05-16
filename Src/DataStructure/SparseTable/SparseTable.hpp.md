@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3518.test.cpp
+    title: Test/AOJ/3518.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc288_e.test.cpp
     title: ABC288-E Wish List
   - icon: ':heavy_check_mark:'
@@ -79,10 +82,11 @@ data:
   timestamp: '2023-11-01 12:01:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF923-D.test.cpp
-  - Test/CF/EC162-D.test.cpp
-  - Test/LC/staticrmq/SparseTable.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
+  - Test/AOJ/3518.test.cpp
+  - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/CF/EC162-D.test.cpp
+  - Test/CF/CF923-D.test.cpp
   - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
 documentation_of: Src/DataStructure/SparseTable/SparseTable.hpp
 layout: document

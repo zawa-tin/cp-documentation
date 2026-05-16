@@ -112,8 +112,8 @@ data:
   timestamp: '2023-12-14 22:36:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/abc271_d.test.cpp
   - Test/Manual/abc168_d.test.cpp
+  - Test/Manual/abc271_d.test.cpp
 documentation_of: Src/Graph/ShortestPath/ShortestPathTree.hpp
 layout: document
 redirect_from:

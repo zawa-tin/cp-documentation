@@ -66,9 +66,9 @@ data:
   timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/division_of_polynomials.test.cpp
-  - Test/LC/multipoint_evaluation.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
 documentation_of: Src/FPS/DivisionOfPolynomials.hpp
 layout: document
 redirect_from:

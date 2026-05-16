@@ -58,21 +58,21 @@ data:
   isVerificationFile: false
   path: Src/Algebra/PowerableConcept.hpp
   requiredBy:
-  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
+  - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
   timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/range_set_range_composite.test.cpp
+  - Test/AtCoder/abc237_g.test.cpp
+  - Test/AtCoder/abl_e.test.cpp
+  - Test/AtCoder/abc417_f.test.cpp
   - Test/AOJ/2450.test.cpp
-  - Test/AOJ/DSL_2_I.test.cpp
-  - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
-  - Test/AtCoder/abc237_g.test.cpp
-  - Test/AtCoder/abc417_f.test.cpp
-  - Test/AtCoder/abl_e.test.cpp
+  - Test/AOJ/DSL_2_I.test.cpp
+  - Test/AOJ/DSL_2_D.test.cpp
+  - Test/LC/range_set_range_composite.test.cpp
 documentation_of: Src/Algebra/PowerableConcept.hpp
 layout: document
 redirect_from:

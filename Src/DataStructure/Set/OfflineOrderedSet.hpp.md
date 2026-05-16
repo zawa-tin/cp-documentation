@@ -205,11 +205,15 @@ data:
     \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
     \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
     \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
-    private:\n\n    std::vector<T> comped_;\n\n    std::vector<u32> f_;\n\n};\n\n\
-    } // namespace zawa\n#line 5 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\
-    \n#line 8 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\nnamespace zawa {\n\
-    \ntemplate <std::totally_ordered T>\nclass OfflineOrderedSet {\nprivate:\n   \
-    \ class OfflineOrderedSetExecuter {\n    public:\n\n        explicit OfflineOrderedSetExecuter(std::vector<T>&&\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\
+    \n\n#line 8 \"Src/DataStructure/Set/OfflineOrderedSet.hpp\"\n\nnamespace zawa\
+    \ {\n\ntemplate <std::totally_ordered T>\nclass OfflineOrderedSet {\nprivate:\n\
+    \    class OfflineOrderedSetExecuter {\n    public:\n\n        explicit OfflineOrderedSetExecuter(std::vector<T>&&\
     \ app)\n            : m_comp(std::move(app)), m_set(m_comp.size()) {}\n\n    \
     \    usize size() const {\n            return m_set.size();\n        }\n\n   \
     \     void insert(T x) {\n            m_set.insert(m_comp.at(x));\n        }\n\
@@ -269,7 +273,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/Set/OfflineOrderedSet.hpp
   requiredBy: []
-  timestamp: '2026-05-04 13:04:46+09:00'
+  timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp

@@ -5,10 +5,13 @@ data:
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
+    title: Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 2 \"Src/Random/RandomArray.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
@@ -40,8 +43,9 @@ data:
   path: Src/Random/RandomArray.hpp
   requiredBy: []
   timestamp: '2025-09-06 12:13:55+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
 documentation_of: Src/Random/RandomArray.hpp
 layout: document
 redirect_from:

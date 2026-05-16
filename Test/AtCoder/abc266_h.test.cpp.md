@@ -1,0 +1,346 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/BitVector.hpp
+    title: Src/DataStructure/PrefixSum/BitVector.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SegmentTree.hpp
+    title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Wavelet/RangeAggregation.hpp
+    title: Range Aggregation
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Wavelet/RectangleAggregation.hpp
+    title: Rectangle Aggregation
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/Wavelet/WaveletMatrix.hpp
+    title: Wavelet Matrix
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/CompressedSequence.hpp
+    title: "\u5EA7\u6A19\u5727\u7E2E"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://atcoder.jp/contests/abc266/submissions/75815775
+    - https://atcoder.jp/contests/abc266/tasks/abc266_h
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"Test/AtCoder/abc266_h.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc266/tasks/abc266_h\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    \n/*\n * AtCoder Beginner Contest 266 Ex - Snuke Panic\n * https://atcoder.jp/contests/abc266/submissions/75815775\n\
+    \ */\n#line 2 \"Src/DataStructure/Wavelet/RectangleAggregation.hpp\"\n\n#line\
+    \ 2 \"Src/DataStructure/Wavelet/RangeAggregation.hpp\"\n\n#line 2 \"Src/DataStructure/Wavelet/WaveletMatrix.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/PrefixSum/BitVector.hpp\"\
+    \n\n#line 4 \"Src/DataStructure/PrefixSum/BitVector.hpp\"\n\n#include <array>\n\
+    #include <bit>\n#include <cassert>\n#include <concepts>\n#include <vector>\n\n\
+    namespace zawa {\n\nclass BitVector {\nprivate:\n\n    static constexpr u32 B\
+    \ = 64;\n\n    static constexpr u32 LOGB = 6;\n\n    static constexpr std::array<u64,B>\
+    \ MASK = []() {\n        std::array<u64,B> res;\n        res.fill(0);\n      \
+    \  for (usize i = 1 ; i < B ; i++)\n            res[i] = res[i-1]|(1ull<<(i-1));\n\
+    \        return res;\n    }();\n\npublic:\n\n    BitVector() = default;\n\n  \
+    \  template <class T>\n    BitVector(std::vector<T> a) : m_n{a.size()}, m_dat((m_n+B-1)>>LOGB),\
+    \ m_pref(m_dat.size()+1) {\n        for (usize i = 0 ; i < size() ; i++) {\n \
+    \           u64 v = a[i]>0;\n            m_dat[i>>LOGB] |= v << (i & (B-1));\n\
+    \            m_pref[(i>>LOGB)+1] += v;\n        }\n        for (usize i = 0 ;\
+    \ i < m_dat.size() ; i++)\n            m_pref[i+1] += m_pref[i];\n    }\n\n  \
+    \  inline usize size() const {\n        return m_n;\n    }\n\n    u32 rank1(usize\
+    \ l,usize r) const {\n        return pref(r)-pref(l);\n    }\n\n    u32 rank0(usize\
+    \ l,usize r) const {\n        return r-l-pref(r)+pref(l);\n    }\n\n    template<class\
+    \ T>\n    T access(usize i) const {\n        return (m_dat[i>>LOGB] >> (i&(B-1)))\
+    \ & 1;\n    }\n\nprivate:\n\n    usize m_n;\n\n    std::vector<u64> m_dat;\n\n\
+    \    std::vector<u32> m_pref;\n\n    u32 pref(usize r) const {\n        const\
+    \ usize q = r>>LOGB, b = r&(B-1);\n        return m_pref[q]+(b ? std::popcount<u64>(m_dat[q]&MASK[r&(B-1)])\
+    \ : 0u);\n    }\n\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/Wavelet/WaveletMatrix.hpp\"\
+    \n\n#include <algorithm>\n#line 10 \"Src/DataStructure/Wavelet/WaveletMatrix.hpp\"\
+    \n#include <tuple>\n#line 12 \"Src/DataStructure/Wavelet/WaveletMatrix.hpp\"\n\
+    \nnamespace zawa {\n\ntemplate <std::integral T>\nclass WaveletMatrix {\npublic:\n\
+    \n    WaveletMatrix() = default;\n\n    explicit WaveletMatrix(std::vector<T>\
+    \ A) : m_n{A.size()}, m_h{1} {\n        for (T a : A) {\n            assert(a\
+    \ >= 0);\n            m_h = std::max<usize>(m_h,std::bit_width<usize>(a));\n \
+    \       }\n        m_sum.resize(height());\n        for (usize i = height() ;\
+    \ i-- ; ) {\n            std::vector<T> left,right;\n            std::vector<u8>\
+    \ dat(size());\n            for (usize j = 0 ; j < size() ; j++) {\n         \
+    \       dat[j] = (A[j] >> i) & 1;\n                (dat[j] ? right : left).push_back(A[j]);\n\
+    \            }\n            m_sum[i] = BitVector(std::move(dat));\n          \
+    \  for (usize j = 0 ; T v : left)\n                A[j++] = v;\n            for\
+    \ (usize j = left.size() ; T v : right)\n                A[j++] = v;\n       \
+    \ }\n    }\n    \n    inline usize height() const {\n        return m_h;\n   \
+    \ }\n\n    inline usize size() const {\n        return m_n;\n    }\n\n    T access(usize\
+    \ i) const {\n        assert(i < size());\n        T res = 0;\n        for (usize\
+    \ h = height() ; h-- ; ) {\n            res |= m_sum[h].access<T>(i) << h;\n \
+    \           if (h) {\n                if (m_sum[h].access<bool>(i))\n        \
+    \            i = m_sum[h].rank0(0,size())+m_sum[h].rank1(0,i);\n             \
+    \   else\n                    i = m_sum[h].rank0(0,i);\n            }\n      \
+    \  }\n        return res;\n    }\n\n    T get(usize i) const {\n        assert(i\
+    \ < size());\n        return access(i);\n    }\n\n    T operator[](usize i) const\
+    \ {\n        assert(i < size());\n        return access(i);\n    }\n\n    T quantile(usize\
+    \ l,usize r,usize k) const {\n        assert(l <= r and r <= size());\n      \
+    \  assert(k < r - l);\n        T res = 0;\n        for (usize h = height() ; h--\
+    \ ; ) {\n            const u32 z = m_sum[h].rank0(l,r);\n            if (k < z)\
+    \ {\n                if (h) {\n                    l = m_sum[h].rank0(0,l);\n\
+    \                    r = l + z;\n                }\n            }\n          \
+    \  else {\n                res |= T{1} << h;\n                k -= z;\n      \
+    \          if (h) {\n                    usize ll = m_sum[h].rank0(0,size())+m_sum[h].rank1(0,l);\n\
+    \                    r = ll + r - l - z;\n                    l = ll;\n      \
+    \          }\n            }\n        }\n        return res;\n    }\n\n    T kthSmallest(usize\
+    \ l,usize r,usize k) const {\n        assert(l <= r and r <= size());\n      \
+    \  assert(k < r - l);\n        return quantile(l,r,k);\n    }\n\n    u32 frequency(usize\
+    \ l,T d,usize r,T u) const {\n        assert(l <= r and r <= size());\n      \
+    \  assert(0 <= d and d <= u);\n        return frequency(l,r,u)-frequency(l,r,d);\
+    \ \n    }\n\nprotected:\n\n   usize m_n, m_h; \n\n   std::vector<BitVector> m_sum;\n\
+    \n   u32 frequency(usize l,usize r,T d) const {\n        if (d >= (T{1} << height()))\n\
+    \            return r - l;\n        u32 res = 0;\n        for (usize h = height()\
+    \ ; h-- ; ) {\n            const u32 z = m_sum[h].rank0(l,r);\n            if\
+    \ ((d >> h) & 1) {\n                res += z;\n                if (h) {\n    \
+    \                usize ll = m_sum[h].rank0(0,size())+m_sum[h].rank1(0,l);\n  \
+    \                  r = ll+r-l-z;\n                    l = ll;\n              \
+    \  }\n            }\n            else if (h) {\n                l = m_sum[h].rank0(0,l);\n\
+    \                r = l + z;\n            }\n        }\n        return res;\n \
+    \  }\n\n};\n\n\n} // namespace zawa\n#line 2 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n\n#line 4 \"Src/Sequence/CompressedSequence.hpp\"\n\n#line 8 \"Src/Sequence/CompressedSequence.hpp\"\
+    \n#include <iterator>\n#include <limits>\n\nnamespace zawa {\n\ntemplate <class\
+    \ T>\nclass CompressedSequence {\npublic:\n\n    static constexpr u32 NotFound\
+    \ = std::numeric_limits<u32>::max();\n\n    CompressedSequence() = default;\n\n\
+    \    template <class InputIterator>\n    CompressedSequence(InputIterator first,\
+    \ InputIterator last) : comped_(first, last), f_{} {\n        std::sort(comped_.begin(),\
+    \ comped_.end());\n        comped_.erase(std::unique(comped_.begin(), comped_.end()),\
+    \ comped_.end());\n        comped_.shrink_to_fit();\n        f_.reserve(std::distance(first,\
+    \ last));\n        for (auto it{first} ; it != last ; it++) {\n            f_.emplace_back(std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), *it)));\n        }\n    }\n\
+    \n    CompressedSequence(const std::vector<T>& A) : CompressedSequence(A.begin(),\
+    \ A.end()) {}\n\n    inline usize size() const noexcept {\n        return comped_.size();\n\
+    \    }\n\n    u32 operator[](const T& v) const {\n        return std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n    }\n\n    u32 upper_bound(const\
+    \ T& v) const {\n        return std::distance(comped_.begin(), std::upper_bound(comped_.begin(),\
+    \ comped_.end(), v));\n    }\n\n    u32 find(const T& v) const {\n        u32\
+    \ i = std::distance(comped_.begin(), std::lower_bound(comped_.begin(), comped_.end(),\
+    \ v));\n        return i == comped_.size() or comped_[i] != v ? NotFound : i;\n\
+    \    }\n\n    bool contains(const T& v) const {\n        u32 i = std::distance(comped_.begin(),\
+    \ std::lower_bound(comped_.begin(), comped_.end(), v));\n        return i < comped_.size()\
+    \ and comped_[i] == v;\n    }\n\n    u32 at(const T& v) const {\n        u32 res\
+    \ = find(v);\n        assert(res != NotFound);\n        return res;\n    }\n\n\
+    \    inline u32 map(u32 i) const noexcept {\n        assert(i < f_.size());\n\
+    \        return f_[i];\n    }\n\n    inline T inverse(u32 i) const noexcept {\n\
+    \        assert(i < size());\n        return comped_[i];\n    }\n\n    inline\
+    \ std::vector<T> comped() const noexcept {\n        return comped_;\n    }\n\n\
+    \    template <std::integral Z>\n    std::vector<Z> mapped() const {\n       \
+    \ if constexpr (std::same_as<u32,Z>)\n            return f_;\n        else {\n\
+    \            std::vector<Z> res(f_.size());\n            for (usize i = 0 ; i\
+    \ < f_.size() ; i++)\n                res[i] = static_cast<Z>(f_[i]);\n      \
+    \      return res;\n        }\n    }\n\nprivate:\n\n    std::vector<T> comped_;\n\
+    \n    std::vector<u32> f_;\n\n};\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/Wavelet/RangeAggregation.hpp\"\
+    \n\n#line 7 \"Src/DataStructure/Wavelet/RangeAggregation.hpp\"\n#include <numeric>\n\
+    #include <ranges>\n#include <utility>\n\nnamespace zawa {\n\ntemplate <std::integral\
+    \ T>\nclass RangeAggregation : public WaveletMatrix<u32> {\nprivate:\n\n    using\
+    \ WaveletMatrix<u32>::m_sum;\n\npublic:\n\n    using WaveletMatrix<u32>::size;\n\
+    \    using WaveletMatrix<u32>::height;\n    using WaveletMatrix<u32>::access;\n\
+    \    using WaveletMatrix<u32>::quantile;\n    using WaveletMatrix<u32>::frequency;\n\
+    \n    RangeAggregation() = default;\n\n    explicit RangeAggregation(std::vector<T>\
+    \ A) : WaveletMatrix<u32>(compressed(A)), m_comp{std::move(A)} {}\n\n    std::vector<std::pair<usize,usize>>\
+    \ point(usize i) const {\n        std::vector<std::pair<usize,usize>> res(height());\n\
+    \        for (usize h = height() ; h-- ; ) {\n            if (m_sum[h].template\
+    \ access<bool>(i))\n                i = m_sum[h].rank0(0,size())+m_sum[h].rank1(0,i);\n\
+    \            else\n                i = m_sum[h].rank0(0,i);\n            res[h]\
+    \ = {h,i};\n        }\n        return res;\n    }\n\n    std::vector<std::tuple<usize,usize,usize>>\
+    \ rectangle(usize l,T d,usize r,T u) const {\n        assert(l <= r and r <= size());\n\
+    \        assert(d <= u);\n        std::vector<std::tuple<usize,usize,usize>> res;\
+    \       \n        dfs(height()-1,l,r,m_comp[d],m_comp[u],T{0},T{1}<<height(),res);\n\
+    \        return res;\n    }\n\n    u32 count(usize l,T d,usize r,T u) const {\n\
+    \        assert(l <= r and r <= size());\n        assert(d <= u);\n        return\
+    \ frequency(l,m_comp[d],r,m_comp[u]);\n    }\n\nprivate:\n\n    static std::vector<u32>\
+    \ compressed(std::vector<T> a) {\n        auto b = a;\n        std::ranges::sort(b);\n\
+    \        b.erase(std::unique(b.begin(),b.end()),b.end());\n        std::vector<u32>\
+    \ res(a.size());\n        for (usize i = 0 ; i < a.size() ; i++)\n           \
+    \ res[i] = std::ranges::lower_bound(b,a[i])-b.begin();\n        return res;\n\
+    \    }\n\n    CompressedSequence<T> m_comp;\n\n    void dfs(usize h,usize l,usize\
+    \ r,T d,T u,T D,T U,std::vector<std::tuple<usize,usize,usize>>& res) const {\n\
+    \        if (u <= D or U <= d or l == r)\n            return;\n        const T\
+    \ mid = D + (T{1} << h);\n        const u32 o = m_sum[h].rank1(l,r),z = r - l\
+    \ - o;\n        const usize zeroL = m_sum[h].rank0(0,l),zeroR = zeroL+z;\n   \
+    \     const usize oneL = m_sum[h].rank0(0,size())+m_sum[h].rank1(0,l),oneR = oneL+o;\n\
+    \        if (d <= D and mid <= u and zeroL < zeroR)\n            res.emplace_back(h,zeroL,zeroR);\n\
+    \        else if (h)\n            dfs(h-1,zeroL,zeroR,d,u,D,mid,res);\n      \
+    \  if (d <= mid and U <= u and oneL < oneR)\n            res.emplace_back(h,oneL,oneR);\n\
+    \        else if (h)\n            dfs(h-1,oneL,oneR,d,u,mid,U,res);\n    }\n\n\
+    };\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/Wavelet/RectangleAggregation.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nclass RectangleAggregation {\npublic:\n\
+    \n    explicit RectangleAggregation(std::vector<std::pair<T,T>> p) : m_points{p},m_comp{std::move(p)}\
+    \ {\n        std::vector<T> ys(m_comp.size());\n        for (usize i = 0 ; i <\
+    \ size() ; i++)\n            ys[m_comp.map(i)] = m_points[i].second;\n       \
+    \ m_solver = RangeAggregation<T>(std::move(ys));\n    }\n\n    inline usize size()\
+    \ const {\n        return m_points.size();\n    }\n\n    inline usize width()\
+    \ const {\n        return m_comp.size();\n    }\n\n    inline usize height() const\
+    \ {\n        return m_solver.height();\n    }\n\n    std::vector<std::pair<usize,usize>>\
+    \ point(usize i) const {\n        assert(i < size());\n        std::vector<std::pair<usize,usize>>\
+    \ res;\n        res.reserve(height());\n        return m_solver.point(m_comp.map(i));\n\
+    \    }\n\n    std::pair<T,T> operator[](usize i) const {\n        assert(i < size());\n\
+    \        return m_points[i];\n    }\n\n    std::vector<std::pair<usize,usize>>\
+    \ point(std::pair<T,T> p) const {\n        return m_solver.point(m_comp.at(p));\n\
+    \    }\n\n    std::vector<std::tuple<usize,usize,usize>> rectangle(T l,T d,T r,T\
+    \ u) const {\n        assert(l <= r and d <= u);     \n        if (l == r)\n \
+    \           return {};\n        return m_solver.rectangle(m_comp[{l,d}],d,m_comp[{r-1,u}],u);\n\
+    \    }\n\n    u32 count(T l,T d,T r,T u) const {\n        assert(l <= r and d\
+    \ <= u);     \n        if (l == r or d == u)\n            return 0;\n        return\
+    \ m_solver.count(m_comp[{l,d}],d,m_comp[{r-1,u}],u);\n    }\n\nprivate:\n\n  \
+    \  std::vector<std::pair<T,T>> m_points;\n\n    CompressedSequence<std::pair<T,T>>\
+    \ m_comp;\n\n    RangeAggregation<T> m_solver;\n};\n\n} // namespace zawa\n#line\
+    \ 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#line 4 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#line 8 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include <functional>\n\
+    #include <type_traits>\n#include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid\
+    \ Monoid>\nclass SegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using\
+    \ V = typename VM::Element;\n\n    using OM = Monoid;\n\n    using O = typename\
+    \ OM::Element;\n\n    SegmentTree() = default;\n\n    explicit SegmentTree(usize\
+    \ n) : m_n{ n }, m_dat(n << 1, VM::identity()) {}\n\n    explicit SegmentTree(const\
+    \ std::vector<V>& dat) : m_n{ dat.size() }, m_dat(dat.size() << 1, VM::identity())\
+    \ {\n        for (usize i{} ; i < m_n ; i++) {\n            m_dat[i + m_n] = dat[i];\n\
+    \        }\n        for (usize i{m_n} ; i-- ; ) {\n            m_dat[i] = VM::operation(m_dat[left(i)],\
+    \ m_dat[right(i)]);\n        }\n    }\n\n    [[nodiscard]] inline usize size()\
+    \ const noexcept {\n        return m_n;\n    }\n\n    [[nodiscard]] V get(usize\
+    \ i) const {\n        assert(i < size());\n        return m_dat[i + m_n];\n  \
+    \  }\n\n    [[nodiscard]] V operator[](usize i) const {\n        assert(i < size());\n\
+    \        return m_dat[i + m_n];\n    }\n\n    void operation(usize i, const O&\
+    \ value) {\n        assert(i < size());\n        i += size();\n        m_dat[i]\
+    \ = OM::operation(m_dat[i], value);\n        while (i = parent(i), i) {\n    \
+    \        m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n        }\n\
+    \    }\n\n    void assign(usize i, const V& value) {\n        assert(i < size());\n\
+    \        i += size();\n        m_dat[i] = value;\n        while (i = parent(i),\
+    \ i) {\n            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n\
+    \        }\n    }\n\n    [[nodiscard]] V product(u32 l, u32 r) const {\n     \
+    \   assert(l <= r and r <= size());\n        V L{ VM::identity() }, R{ VM::identity()\
+    \ };\n        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r))\
+    \ {\n            if (l & 1) {\n                L = VM::operation(L, m_dat[l++]);\n\
+    \            }\n            if (r & 1) {\n                R = VM::operation(m_dat[--r],\
+    \ R);\n            }\n        }\n        return VM::operation(L, R);\n    }\n\n\
+    \    template <class F>\n    requires std::predicate<F, V>\n    [[nodiscard]]\
+    \ usize maxRight(usize l, const F& f) {\n        assert(l < size());\n       \
+    \ static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, \"\
+    maxRight's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{l}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (l += size() ; res + width <= size() ; l = parent(l), width <<= 1) if (l & 1)\
+    \ {\n            if (not f(VM::operation(prod, m_dat[l]))) break; \n         \
+    \   res += width;\n            prod = VM::operation(prod, m_dat[l++]);\n     \
+    \   }\n        while (l = left(l), width >>= 1) {\n            if (res + width\
+    \ <= size() and f(VM::operation(prod, m_dat[l]))) {\n                res += width;\n\
+    \                prod = VM::operation(prod, m_dat[l++]);\n            } \n   \
+    \     }\n        return res;\n    }\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    [[nodiscard]] usize minLeft(usize r, const F& f) const {\n        assert(r\
+    \ <= size());\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{r}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (r += size() ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {\n   \
+    \         if (not f(VM::operation(m_dat[r - 1], prod))) break;\n            res\
+    \ -= width;\n            prod = VM::operation(prod, m_dat[--r]);\n        }\n\
+    \        while (r = left(r), width >>= 1) {\n            if (res >= width and\
+    \ f(VM::operation(m_dat[r - 1], prod))) {\n                res -= width;\n   \
+    \             prod = VM::operation(m_dat[--r], prod);\n            }\n       \
+    \ }\n        return res;\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const SegmentTree& st) {\n        for (usize i{1} ; i < 2 * st.size() ;\
+    \ i++) {\n            os << st.m_dat[i] << (i + 1 == 2 * st.size() ? \"\" : \"\
+    \ \");\n        }\n        return os;\n    }\n\nprivate:\n\n    constexpr u32\
+    \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
+    \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
+    \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 9 \"Test/AtCoder/abc266_h.test.cpp\"\
+    \nusing namespace zawa;\n#line 11 \"Test/AtCoder/abc266_h.test.cpp\"\n#include\
+    \ <iostream>\n#line 16 \"Test/AtCoder/abc266_h.test.cpp\"\nusing namespace std;\n\
+    struct MAX {\n    using Element = long long;\n    static Element identity() {\n\
+    \        return -1;\n    }\n    static Element operation(Element L,Element R)\
+    \ {\n        return max(L,R);\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n \
+    \   vector<int> T(N),X(N),Y(N),A(N);\n    for (int i = 0 ; i < N ; i++)\n    \
+    \    cin >> T[i] >> X[i] >> Y[i] >> A[i];\n    T.push_back(0);\n    X.push_back(0);\n\
+    \    Y.push_back(0);\n    vector<pair<long long,long long>> P(N+1);\n    for (int\
+    \ i = 0 ; i < N+1 ; i++)\n        P[i] = {(long long)X[i]+Y[i]-T[i],(long long)-X[i]+Y[i]-T[i]};\n\
+    \    RectangleAggregation RA{P};\n    vector<int> ord(N);\n    iota(ord.begin(),\
+    \ ord.end(), 0);\n    ranges::sort(ord, [&](int i, int j) -> bool {\n        if\
+    \ (Y[i] != Y[j])\n            return Y[i] < Y[j];\n        else\n            return\
+    \ T[i] < T[j];\n    });\n    vector<SegmentTree<MAX>> seg(RA.height());\n    for\
+    \ (int i = 0 ; i < (int)RA.height() ; i++)\n        seg[i] = SegmentTree<MAX>(RA.width());\n\
+    \    for (auto [x,y] : RA.point(N))\n        seg[x].assign(y,0);\n    long long\
+    \ ans = 0;\n    for (int i : ord) {\n        long long v = MAX::identity();\n\
+    \        for (auto [h,l,r] : RA.rectangle(P[i].first,P[i].second,(long long)1e18,(long\
+    \ long)1e18))\n            v = max(v,seg[h].product(l,r));\n        if (v == MAX::identity())\n\
+    \            continue;\n        v += A[i];\n        ans = max(ans,v);\n      \
+    \  for (auto [x,y] : RA.point(i))\n            seg[x].operation(y,v);\n    }\n\
+    \    cout << ans << '\\n';\n#else\n    int a,b;\n    cin >> a >> b;\n    cout\
+    \ << a+b << '\\n';\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc266/tasks/abc266_h\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n/*\n * AtCoder Beginner\
+    \ Contest 266 Ex - Snuke Panic\n * https://atcoder.jp/contests/abc266/submissions/75815775\n\
+    \ */\n#include \"../../Src/DataStructure/Wavelet/RectangleAggregation.hpp\"\n\
+    #include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\nusing namespace\
+    \ zawa;\n#include <algorithm>\n#include <iostream>\n#include <numeric>\n#include\
+    \ <utility>\n#include <ranges>\n#include <vector>\nusing namespace std;\nstruct\
+    \ MAX {\n    using Element = long long;\n    static Element identity() {\n   \
+    \     return -1;\n    }\n    static Element operation(Element L,Element R) {\n\
+    \        return max(L,R);\n    }\n};\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N;\n    cin >> N;\n \
+    \   vector<int> T(N),X(N),Y(N),A(N);\n    for (int i = 0 ; i < N ; i++)\n    \
+    \    cin >> T[i] >> X[i] >> Y[i] >> A[i];\n    T.push_back(0);\n    X.push_back(0);\n\
+    \    Y.push_back(0);\n    vector<pair<long long,long long>> P(N+1);\n    for (int\
+    \ i = 0 ; i < N+1 ; i++)\n        P[i] = {(long long)X[i]+Y[i]-T[i],(long long)-X[i]+Y[i]-T[i]};\n\
+    \    RectangleAggregation RA{P};\n    vector<int> ord(N);\n    iota(ord.begin(),\
+    \ ord.end(), 0);\n    ranges::sort(ord, [&](int i, int j) -> bool {\n        if\
+    \ (Y[i] != Y[j])\n            return Y[i] < Y[j];\n        else\n            return\
+    \ T[i] < T[j];\n    });\n    vector<SegmentTree<MAX>> seg(RA.height());\n    for\
+    \ (int i = 0 ; i < (int)RA.height() ; i++)\n        seg[i] = SegmentTree<MAX>(RA.width());\n\
+    \    for (auto [x,y] : RA.point(N))\n        seg[x].assign(y,0);\n    long long\
+    \ ans = 0;\n    for (int i : ord) {\n        long long v = MAX::identity();\n\
+    \        for (auto [h,l,r] : RA.rectangle(P[i].first,P[i].second,(long long)1e18,(long\
+    \ long)1e18))\n            v = max(v,seg[h].product(l,r));\n        if (v == MAX::identity())\n\
+    \            continue;\n        v += A[i];\n        ans = max(ans,v);\n      \
+    \  for (auto [x,y] : RA.point(i))\n            seg[x].operation(y,v);\n    }\n\
+    \    cout << ans << '\\n';\n#else\n    int a,b;\n    cin >> a >> b;\n    cout\
+    \ << a+b << '\\n';\n#endif\n}\n"
+  dependsOn:
+  - Src/DataStructure/Wavelet/RectangleAggregation.hpp
+  - Src/DataStructure/Wavelet/RangeAggregation.hpp
+  - Src/DataStructure/Wavelet/WaveletMatrix.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/PrefixSum/BitVector.hpp
+  - Src/Sequence/CompressedSequence.hpp
+  - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/abc266_h.test.cpp
+  requiredBy: []
+  timestamp: '2026-05-16 14:53:10+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/abc266_h.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/AtCoder/abc266_h.test.cpp
+- /verify/Test/AtCoder/abc266_h.test.cpp.html
+title: Test/AtCoder/abc266_h.test.cpp
+---

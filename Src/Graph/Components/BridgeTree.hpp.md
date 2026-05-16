@@ -141,9 +141,9 @@ data:
   timestamp: '2026-04-27 14:04:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF1043-F.test.cpp
-  - Test/LC/two_edge_connected_components.test.cpp
   - Test/AtCoder/arc039_d.test.cpp
+  - Test/LC/two_edge_connected_components.test.cpp
+  - Test/CF/CF1043-F.test.cpp
 documentation_of: Src/Graph/Components/BridgeTree.hpp
 layout: document
 title: "Bridge tree (+ \u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3)"
