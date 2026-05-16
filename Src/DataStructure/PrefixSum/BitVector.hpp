@@ -67,7 +67,7 @@ private:
 
     u32 pref(usize r) const {
         const usize q = r>>LOGB, b = r&(B-1);
-        return m_pref[r>>LOGB]+(b ? std::popcount<u64>(m_dat[r>>LOGB]&MASK[r&(B-1)]) : 0u);
+        return m_pref[q]+(b ? std::popcount<u64>(m_dat[q]&MASK[r&(B-1)]) : 0u);
     }
 
 };

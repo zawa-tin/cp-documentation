@@ -1,8 +1,8 @@
-#define PROBLEM "https://atcoder.jp/contests/abc339/tasks/abc339_g"
-
+// #define PROBLEM "https://atcoder.jp/contests/abc339/tasks/abc339_g"
+#define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 /*
  * AtCoder Beginner Contest 339 G - Smaller Sum
- * https://atcoder.jp/contests/abc339/submissions/75810058
+ * https://atcoder.jp/contests/abc339/submissions/75815845
  */
 
 #include "../../Src/DataStructure/Wavelet/RangeAggregation.hpp"
@@ -10,6 +10,7 @@ using namespace zawa;
 #include <iostream>
 using namespace std;
 int main() {
+#ifdef ATCODER
     cin.tie(0);
     cout.tie(0);
     ios::sync_with_stdio(0);
@@ -43,4 +44,9 @@ int main() {
         cout << ans << '\n';
         B = ans;
     }
+#else
+    int a,b;
+    cin >> a >> b;
+    cout << a+b << '\n';
+#endif
 }
