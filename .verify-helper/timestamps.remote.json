@@ -294,6 +294,7 @@
 "Test/LC/range_set_range_composite.test.cpp": "2026-05-04 14:21:38 +0900",
 "Test/LC/rational_approximation.test.cpp": "2025-07-23 20:10:46 +0900",
 "Test/LC/rectangle_sum/RectangleAggregation.test.cpp": "2026-05-16 14:53:10 +0900",
+"Test/LC/rectangle_sum/rectangle_sum.test.cpp": "2026-05-16 15:41:11 +0900",
 "Test/LC/rooted_tree_isomorphism_classification.test.cpp": "2025-04-09 18:54:17 +0900",
 "Test/LC/set_xor_min.test.cpp": "2026-04-02 19:07:23 +0900",
 "Test/LC/shortest_path.test.cpp": "2023-12-14 22:32:29 +0900",
