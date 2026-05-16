@@ -26,7 +26,7 @@ public:
 
     RangeAggregation() = default;
 
-    RangeAggregation(std::vector<T> A) : WaveletMatrix<u32>(compressed(A)), m_comp{std::move(A)} {}
+    explicit RangeAggregation(std::vector<T> A) : WaveletMatrix<u32>(compressed(A)), m_comp{std::move(A)} {}
 
     std::vector<std::pair<usize,usize>> point(usize i) const {
         std::vector<std::pair<usize,usize>> res(height());

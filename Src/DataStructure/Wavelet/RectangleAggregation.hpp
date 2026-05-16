@@ -9,7 +9,7 @@ template <class T>
 class RectangleAggregation {
 public:
 
-    RectangleAggregation(std::vector<std::pair<T,T>> p) : m_points{p},m_comp{std::move(p)} {
+    explicit RectangleAggregation(std::vector<std::pair<T,T>> p) : m_points{p},m_comp{std::move(p)} {
         std::vector<T> ys(m_comp.size());
         for (usize i = 0 ; i < size() ; i++)
             ys[m_comp.map(i)] = m_points[i].second;
