@@ -12,3 +12,7 @@ documentation_of: //Src/Graph/Tree/HeavyLightDecomposition.hpp
 - `min(idx[first], idx[second])...max(idx[first], idx[second])`にこのパスが列に並んでいる。
 
 他にもLCA, Level Ancestor, Jump on Treeなどを整備している。
+
+## 更新履歴
+
+- 2026/05/19: `subtreeQuery`メンバを追加、子から親方向への辺が無くてもassertにひっかからないように修正
