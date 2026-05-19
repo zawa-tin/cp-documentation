@@ -92,7 +92,7 @@ std::vector<std::pair<V,V>> BipartiteMatching(usize N, usize M, std::vector<std:
 }
 
 template <class V>
-std::optional<std::vector<std::pair<V,V>>> BipartiteMatching(usize N,std::vector<std::pair<usize,usize>> E) {
+std::optional<std::vector<std::pair<V,V>>> BipartiteMatching(usize N,std::vector<std::pair<V,V>> E) {
     std::vector<std::vector<V>> g(N); 
     for (auto [u, v] : E) {
         assert(0 <= u and u < N);
@@ -125,7 +125,7 @@ std::optional<std::vector<std::pair<V,V>>> BipartiteMatching(usize N,std::vector
     for (auto& [u, v] : E) {
         u = id[u];
         v = id[v];
-        if (u >= L.size())
+        if (u >= static_cast<V>(L.size()))
             std::swap(u,v);
         v -= L.size();
     }
