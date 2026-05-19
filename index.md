@@ -1539,6 +1539,9 @@ data:
       path: Test/AtCoder/awc0053_d.test.cpp
       title: Test/AtCoder/awc0053_d.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/awc0071_e.test.cpp
+      title: Test/AtCoder/awc0071_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/fps_24_p.test.cpp
       title: Test/AtCoder/fps_24_p.test.cpp
     - icon: ':heavy_check_mark:'

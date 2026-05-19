@@ -1287,6 +1287,9 @@ data:
     path: Test/AtCoder/awc0032_e.test.cpp
     title: Test/AtCoder/awc0032_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/awc0071_e.test.cpp
+    title: Test/AtCoder/awc0071_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2122,6 +2125,7 @@ data:
   - Test/AtCoder/abc451_f.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/abc318_g.test.cpp
+  - Test/AtCoder/awc0071_e.test.cpp
   - Test/AtCoder/arc197_c.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc269_h.test.cpp

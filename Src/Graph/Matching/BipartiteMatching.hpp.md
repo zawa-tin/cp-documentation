@@ -7,6 +7,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/awc0071_e.test.cpp
+    title: Test/AtCoder/awc0071_e.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/bipartitematching.test.cpp
     title: Test/LC/bipartitematching.test.cpp
   _isVerificationFailed: false
@@ -55,7 +58,7 @@ data:
     \ and !cur[i])\n                dfs(dfs,i);\n    }\n    std::vector<std::pair<V,V>>\
     \ res;\n    for (usize i = 0 ; i < E.size() ; i++)\n        if (used[i])\n   \
     \         res.push_back(E[i]);\n    return res;\n}\n\ntemplate <class V>\nstd::optional<std::vector<std::pair<V,V>>>\
-    \ BipartiteMatching(usize N,std::vector<std::pair<usize,usize>> E) {\n    std::vector<std::vector<V>>\
+    \ BipartiteMatching(usize N,std::vector<std::pair<V,V>> E) {\n    std::vector<std::vector<V>>\
     \ g(N); \n    for (auto [u, v] : E) {\n        assert(0 <= u and u < N);\n   \
     \     assert(0 <= v and v < N);\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
     \    }\n    std::vector<i32> col(N,-1);\n    auto dfs = [&](auto dfs,V v,i32 c)\
@@ -68,10 +71,10 @@ data:
     \ : R).push_back(i);\n    for (usize i = 0 ; i < L.size() ; i++)\n        id[L[i]]\
     \ = i;\n    for (usize i = 0 ; i < R.size() ; i++)\n        id[R[i]] = L.size()\
     \ + i;\n    for (auto& [u, v] : E) {\n        u = id[u];\n        v = id[v];\n\
-    \        if (u >= L.size())\n            std::swap(u,v);\n        v -= L.size();\n\
-    \    }\n    auto ans = BipartiteMatching(L.size(),R.size(),E);\n    for (auto&\
-    \ [u, v] : ans) {\n        u = L[u];\n        v = R[v];\n    }\n    return ans;\n\
-    }\n\n} // namespace zawa\n"
+    \        if (u >= static_cast<V>(L.size()))\n            std::swap(u,v);\n   \
+    \     v -= L.size();\n    }\n    auto ans = BipartiteMatching(L.size(),R.size(),E);\n\
+    \    for (auto& [u, v] : ans) {\n        u = L[u];\n        v = R[v];\n    }\n\
+    \    return ans;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <utility>\n#include <optional>\n#include <vector>\n\
     #include <ranges>\n\nnamespace zawa {\n\ntemplate <class V>\nstd::vector<std::pair<V,V>>\
@@ -108,7 +111,7 @@ data:
     \                dfs(dfs,i);\n    }\n    std::vector<std::pair<V,V>> res;\n  \
     \  for (usize i = 0 ; i < E.size() ; i++)\n        if (used[i])\n            res.push_back(E[i]);\n\
     \    return res;\n}\n\ntemplate <class V>\nstd::optional<std::vector<std::pair<V,V>>>\
-    \ BipartiteMatching(usize N,std::vector<std::pair<usize,usize>> E) {\n    std::vector<std::vector<V>>\
+    \ BipartiteMatching(usize N,std::vector<std::pair<V,V>> E) {\n    std::vector<std::vector<V>>\
     \ g(N); \n    for (auto [u, v] : E) {\n        assert(0 <= u and u < N);\n   \
     \     assert(0 <= v and v < N);\n        g[u].push_back(v);\n        g[v].push_back(u);\n\
     \    }\n    std::vector<i32> col(N,-1);\n    auto dfs = [&](auto dfs,V v,i32 c)\
@@ -121,18 +124,19 @@ data:
     \ : R).push_back(i);\n    for (usize i = 0 ; i < L.size() ; i++)\n        id[L[i]]\
     \ = i;\n    for (usize i = 0 ; i < R.size() ; i++)\n        id[R[i]] = L.size()\
     \ + i;\n    for (auto& [u, v] : E) {\n        u = id[u];\n        v = id[v];\n\
-    \        if (u >= L.size())\n            std::swap(u,v);\n        v -= L.size();\n\
-    \    }\n    auto ans = BipartiteMatching(L.size(),R.size(),E);\n    for (auto&\
-    \ [u, v] : ans) {\n        u = L[u];\n        v = R[v];\n    }\n    return ans;\n\
-    }\n\n} // namespace zawa\n"
+    \        if (u >= static_cast<V>(L.size()))\n            std::swap(u,v);\n   \
+    \     v -= L.size();\n    }\n    auto ans = BipartiteMatching(L.size(),R.size(),E);\n\
+    \    for (auto& [u, v] : ans) {\n        u = L[u];\n        v = R[v];\n    }\n\
+    \    return ans;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Graph/Matching/BipartiteMatching.hpp
   requiredBy: []
-  timestamp: '2026-02-19 21:14:19+09:00'
+  timestamp: '2026-05-20 08:09:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/awc0071_e.test.cpp
   - Test/LC/bipartitematching.test.cpp
 documentation_of: Src/Graph/Matching/BipartiteMatching.hpp
 layout: document
@@ -158,3 +162,7 @@ title: Bipartite Matching
 (頂点被覆は頂点集合であって、任意の辺の少なくとも一方の端点が含まれるもの。辺被覆と逆に覚えていて任意の資料が読めなかった時期があったなぁ)
 
 頂点被覆の補集合を取ると、独立集合になる。
+
+## 更新履歴
+
+- 2026/05/20: 二部彩色が求まっていない方の関数のCEを解消。AWC0071-Eでverify
