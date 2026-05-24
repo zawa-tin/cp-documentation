@@ -25,6 +25,9 @@ data:
     path: Test/AtCoder/abc339_g.test.cpp
     title: Test/AtCoder/abc339_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
     title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - icon: ':heavy_check_mark:'
@@ -106,6 +109,7 @@ data:
   - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - Test/LC/range_kth_smallest/WaveletMatrix.test.cpp
   - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/CF/EC190-E.test.cpp
   - Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
   - Test/My/DataStructure/PrefixSum/BitVector.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/BitVector.hpp

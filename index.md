@@ -183,6 +183,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/RMQ/PM1RMQ.hpp
       title: Src/DataStructure/RMQ/PM1RMQ.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RMQ/StaticRMQ.hpp
+      title: Static RMQ
   - name: Src/DataStructure/RectangleSum
     pages:
     - icon: ':heavy_check_mark:'
@@ -1624,6 +1627,9 @@ data:
       path: Test/CF/EC171-F.test.cpp
       title: Test/CF/EC171-F.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/CF/EC190-E.test.cpp
+      title: Test/CF/EC190-E.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/CF/EC2-E.test.cpp
       title: Test/CF/EC2-E.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1882,6 +1888,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/staticrmq/SparseTable.test.cpp
       title: Test/LC/staticrmq/SparseTable.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/staticrmq/StaticRMQ.test.cpp
+      title: Test/LC/staticrmq/StaticRMQ.test.cpp
   - name: Test/Manual
     pages:
     - icon: ':heavy_check_mark:'

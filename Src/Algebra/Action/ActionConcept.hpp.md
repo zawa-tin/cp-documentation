@@ -6,6 +6,9 @@ data:
     path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RMQ/StaticRMQ.hpp
+    title: Static RMQ
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/DualSegmentTree.hpp
     title: "Dual Segment Tree (\u975E\u53EF\u63DB\u5BFE\u5FDC)"
   - icon: ':heavy_check_mark:'
@@ -44,6 +47,9 @@ data:
     path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
     title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aho_corasick.test.cpp
     title: Test/LC/aho_corasick.test.cpp
   - icon: ':heavy_check_mark:'
@@ -58,6 +64,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/StaticRMQ.test.cpp
+    title: Test/LC/staticrmq/StaticRMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -84,6 +93,7 @@ data:
   requiredBy:
   - Src/Sequence/AhoCorasick.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
+  - Src/DataStructure/RMQ/StaticRMQ.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
@@ -100,9 +110,11 @@ data:
   - Test/AtCoder/abc268_h.test.cpp
   - Test/LC/discrete_logarithm_mod.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
+  - Test/LC/staticrmq/StaticRMQ.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/aho_corasick.test.cpp
+  - Test/CF/EC190-E.test.cpp
 documentation_of: Src/Algebra/Action/ActionConcept.hpp
 layout: document
 redirect_from:

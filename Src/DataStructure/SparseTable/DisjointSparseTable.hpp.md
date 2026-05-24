@@ -13,11 +13,20 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RMQ/StaticRMQ.hpp
+    title: Static RMQ
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/StaticRMQ.test.cpp
+    title: Test/LC/staticrmq/StaticRMQ.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -52,41 +61,7 @@ data:
     \ constexpr usize height(usize n) const {\n        return std::max(usize{1}, std::bit_width(n)\
     \ - (usize)std::has_single_bit(n));\n    }\n\n    constexpr usize msb(usize n)\
     \ const {\n        assert(n);\n        return std::bit_width(n) - 1;\n    }\n\n\
-    \    template <class S>\n    requires std::same_as<V, S> or concepts::Acted<M,\
-    \ S>\n    DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size()))\
-    \ {\n        assert(A.size());\n        for (usize i = 1, w = 2 ; i < m_table.size()\
-    \ ; i++, w <<= 1) {\n            m_table[i].resize(A.size());\n            for\
-    \ (usize j = 0, idx = 0 ; j < A.size() ; j += w, idx++) {\n                V prod\
-    \ = M::identity();\n                if (idx & 1) { // ->\n                   \
-    \ usize m = std::min(A.size() - j, w);\n                    for (usize k = 0 ;\
-    \ k < m ; k++) {\n                        if constexpr (std::same_as<V, S>)\n\
-    \                            prod = M::operation(prod, A[j + k]);\n          \
-    \              else\n                            prod = M::acted(prod, A[j + k]);\n\
-    \                        m_table[i][j + k] = prod;\n                    }\n  \
-    \              }\n                else { // <-\n                    usize m =\
-    \ std::min(A.size(), j + w);\n                    for (usize k = m ; k-- > j ;\
-    \ ) {\n                        if constexpr (std::same_as<V, S>)\n           \
-    \                 prod = M::operation(A[k], prod);\n                        else\n\
-    \                            prod = M::acted(prod, A[k]);\n                  \
-    \      m_table[i][k] = prod;\n                    }\n                }\n     \
-    \       }\n        }\n        m_table[0].resize(A.size());\n        for (usize\
-    \ i = 0 ; i < A.size() ; i++) {\n            if constexpr (std::same_as<V, S>)\n\
-    \                m_table[0][i] = A[i];\n            else\n                m_table[0][i]\
-    \ = M::acted(M::identity(), A[i]);\n        }\n    }\n\n    template <std::input_iterator\
-    \ It>\n    DisjointSparseTable(It first, It last) : DisjointSparseTable(std::vector(first,\
-    \ last)) {}\n\n    V product(usize l, usize r) const {\n        assert(l <= r\
-    \ and r <= m_table[0].size());\n        if (l == r) return M::identity();\n  \
-    \      if (l + 1 == r) return m_table[0][l];\n        usize y = msb(l xor --r);\n\
-    \        return M::operation(m_table[y][l], m_table[y][r]);\n    }\n\nprivate:\n\
-    \n    std::vector<std::vector<V>> m_table;\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
-    \n#include \"../../Algebra/Action/ActionConcept.hpp\"\n\n#include <bit>\n#include\
-    \ <cassert>\n#include <concepts>\n#include <vector>\n\nnamespace zawa {\n\ntemplate\
-    \ <concepts::Monoid M>\nclass DisjointSparseTable {\npublic:\n\n    using V =\
-    \ typename M::Element;\n\n    constexpr usize height(usize n) const {\n      \
-    \  return std::max(usize{1}, std::bit_width(n) - (usize)std::has_single_bit(n));\n\
-    \    }\n\n    constexpr usize msb(usize n) const {\n        assert(n);\n     \
-    \   return std::bit_width(n) - 1;\n    }\n\n    template <class S>\n    requires\
+    \    DisjointSparseTable() = default;\n\n    template <class S>\n    requires\
     \ std::same_as<V, S> or concepts::Acted<M, S>\n    DisjointSparseTable(const std::vector<S>&\
     \ A) : m_table(height(A.size())) {\n        assert(A.size());\n        for (usize\
     \ i = 1, w = 2 ; i < m_table.size() ; i++, w <<= 1) {\n            m_table[i].resize(A.size());\n\
@@ -113,6 +88,41 @@ data:
     \      if (l + 1 == r) return m_table[0][l];\n        usize y = msb(l xor --r);\n\
     \        return M::operation(m_table[y][l], m_table[y][r]);\n    }\n\nprivate:\n\
     \n    std::vector<std::vector<V>> m_table;\n};\n\n} // namespace zawa\n"
+  code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n#include \"../../Algebra/Monoid/MonoidConcept.hpp\"\
+    \n#include \"../../Algebra/Action/ActionConcept.hpp\"\n\n#include <bit>\n#include\
+    \ <cassert>\n#include <concepts>\n#include <vector>\n\nnamespace zawa {\n\ntemplate\
+    \ <concepts::Monoid M>\nclass DisjointSparseTable {\npublic:\n\n    using V =\
+    \ typename M::Element;\n\n    constexpr usize height(usize n) const {\n      \
+    \  return std::max(usize{1}, std::bit_width(n) - (usize)std::has_single_bit(n));\n\
+    \    }\n\n    constexpr usize msb(usize n) const {\n        assert(n);\n     \
+    \   return std::bit_width(n) - 1;\n    }\n\n    DisjointSparseTable() = default;\n\
+    \n    template <class S>\n    requires std::same_as<V, S> or concepts::Acted<M,\
+    \ S>\n    DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size()))\
+    \ {\n        assert(A.size());\n        for (usize i = 1, w = 2 ; i < m_table.size()\
+    \ ; i++, w <<= 1) {\n            m_table[i].resize(A.size());\n            for\
+    \ (usize j = 0, idx = 0 ; j < A.size() ; j += w, idx++) {\n                V prod\
+    \ = M::identity();\n                if (idx & 1) { // ->\n                   \
+    \ usize m = std::min(A.size() - j, w);\n                    for (usize k = 0 ;\
+    \ k < m ; k++) {\n                        if constexpr (std::same_as<V, S>)\n\
+    \                            prod = M::operation(prod, A[j + k]);\n          \
+    \              else\n                            prod = M::acted(prod, A[j + k]);\n\
+    \                        m_table[i][j + k] = prod;\n                    }\n  \
+    \              }\n                else { // <-\n                    usize m =\
+    \ std::min(A.size(), j + w);\n                    for (usize k = m ; k-- > j ;\
+    \ ) {\n                        if constexpr (std::same_as<V, S>)\n           \
+    \                 prod = M::operation(A[k], prod);\n                        else\n\
+    \                            prod = M::acted(prod, A[k]);\n                  \
+    \      m_table[i][k] = prod;\n                    }\n                }\n     \
+    \       }\n        }\n        m_table[0].resize(A.size());\n        for (usize\
+    \ i = 0 ; i < A.size() ; i++) {\n            if constexpr (std::same_as<V, S>)\n\
+    \                m_table[0][i] = A[i];\n            else\n                m_table[0][i]\
+    \ = M::acted(M::identity(), A[i]);\n        }\n    }\n\n    template <std::input_iterator\
+    \ It>\n    DisjointSparseTable(It first, It last) : DisjointSparseTable(std::vector(first,\
+    \ last)) {}\n\n    V product(usize l, usize r) const {\n        assert(l <= r\
+    \ and r <= m_table[0].size());\n        if (l == r) return M::identity();\n  \
+    \      if (l + 1 == r) return m_table[0][l];\n        usize y = msb(l xor --r);\n\
+    \        return M::operation(m_table[y][l], m_table[y][r]);\n    }\n\nprivate:\n\
+    \n    std::vector<std::vector<V>> m_table;\n};\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -120,11 +130,14 @@ data:
   - Src/Algebra/Action/ActionConcept.hpp
   isVerificationFile: false
   path: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
-  requiredBy: []
-  timestamp: '2026-01-21 16:17:25+09:00'
+  requiredBy:
+  - Src/DataStructure/RMQ/StaticRMQ.hpp
+  timestamp: '2026-05-23 16:47:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/staticrmq/StaticRMQ.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
+  - Test/CF/EC190-E.test.cpp
 documentation_of: Src/DataStructure/SparseTable/DisjointSparseTable.hpp
 layout: document
 title: Disjoint Sparse Table

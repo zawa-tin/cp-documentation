@@ -64,6 +64,9 @@ data:
     path: Test/CF/CF1054-G.test.cpp
     title: Test/CF/CF1054-G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - icon: ':heavy_check_mark:'
@@ -199,6 +202,7 @@ data:
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/CF/CF1054-G.test.cpp
   - Test/CF/CF1026-E.test.cpp
+  - Test/CF/EC190-E.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document

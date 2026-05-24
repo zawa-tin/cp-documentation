@@ -46,6 +46,9 @@ data:
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RMQ/StaticRMQ.hpp
+    title: Static RMQ
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
   - icon: ':heavy_check_mark:'
@@ -277,6 +280,9 @@ data:
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -331,6 +337,9 @@ data:
     path: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
     title: Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/StaticRMQ.test.cpp
+    title: Test/LC/staticrmq/StaticRMQ.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_add_path_sum.test.cpp
     title: Test/LC/vertex_add_path_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -380,6 +389,7 @@ data:
   - Src/DataStructure/SWAG/SWAGable.hpp
   - Src/DataStructure/SWAG/FoldableQueue.hpp
   - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
+  - Src/DataStructure/RMQ/StaticRMQ.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/FenwickTree/DualFenwickTree.hpp
@@ -477,6 +487,7 @@ data:
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/LC/point_set_range_composite_large_array.test.cpp
   - Test/LC/vertex_add_subtree_sum.test.cpp
+  - Test/LC/staticrmq/StaticRMQ.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -490,6 +501,7 @@ data:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/CF1052-E.test.cpp
   - Test/CF/CF895-E.test.cpp
+  - Test/CF/EC190-E.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp

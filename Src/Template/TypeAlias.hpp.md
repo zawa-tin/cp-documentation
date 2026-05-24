@@ -79,6 +79,9 @@ data:
     path: Src/DataStructure/RMQ/PM1RMQ.hpp
     title: Src/DataStructure/RMQ/PM1RMQ.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RMQ/StaticRMQ.hpp
+    title: Static RMQ
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
     title: Point Add Rectangle Sum
   - icon: ':heavy_check_mark:'
@@ -1368,6 +1371,9 @@ data:
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1586,6 +1592,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/SparseTable.test.cpp
     title: Test/LC/staticrmq/SparseTable.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/staticrmq/StaticRMQ.test.cpp
+    title: Test/LC/staticrmq/StaticRMQ.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/stern_brocot_tree.test.cpp
     title: Test/LC/stern_brocot_tree.test.cpp
@@ -1951,6 +1960,7 @@ data:
   - Src/DataStructure/DisjointSetUnion/UndoableDisjointSetUnion.hpp
   - Src/DataStructure/Trie/BinaryTrie.hpp
   - Src/DataStructure/RMQ/PM1RMQ.hpp
+  - Src/DataStructure/RMQ/StaticRMQ.hpp
   - Src/DataStructure/SparseTable/DisjointSparseTable.hpp
   - Src/DataStructure/SparseTable/DualSparseTable.hpp
   - Src/DataStructure/SparseTable/SparseTable.hpp
@@ -2352,6 +2362,7 @@ data:
   - Test/LC/bitwise_and_convolution.test.cpp
   - Test/LC/many_aplusb.test.cpp
   - Test/LC/staticrmq/SparseTable.test.cpp
+  - Test/LC/staticrmq/StaticRMQ.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
   - Test/LC/staticrmq/DisjointSparseTable.test.cpp
   - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -2382,6 +2393,7 @@ data:
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/CF1026-E.test.cpp
+  - Test/CF/EC190-E.test.cpp
   - Test/CF/CF923-F.test.cpp
   - Test/CF/CF974-H.test.cpp
   - Test/CF/ECR167-F.test.cpp

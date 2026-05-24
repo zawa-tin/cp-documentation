@@ -28,6 +28,9 @@ data:
     path: Test/AtCoder/abc339_g.test.cpp
     title: Test/AtCoder/abc339_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC190-E.test.cpp
+    title: Test/CF/EC190-E.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
     title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - icon: ':heavy_check_mark:'
@@ -229,6 +232,7 @@ data:
   - Test/AOJ/3518.test.cpp
   - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/CF/EC190-E.test.cpp
 documentation_of: Src/DataStructure/Wavelet/RangeAggregation.hpp
 layout: document
 title: Range Aggregation
