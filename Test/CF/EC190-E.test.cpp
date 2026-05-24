@@ -1,5 +1,9 @@
 #include "../../Src/DataStructure/Wavelet/RectangleAggregation.hpp"
 #include "../../Src/DataStructure/RMQ/StaticRMQ.hpp"
+/*
+ * Educational Codeforces Round 190 E - Minimum Influence
+ * https://codeforces.com/contest/2230/submission/375904806
+ */
 namespace zawa {}
 using namespace zawa;
 #include <algorithm>
@@ -17,9 +21,6 @@ ostream& operator<<(ostream& os, const vector<T>& v) {
         os << v[i] << (i + 1 == ssize(v) ? "" : " ");
     return os;
 }
-/*
- *
- */
 const int INF = (int)1e7;
 struct MIN {
     using Element = int;

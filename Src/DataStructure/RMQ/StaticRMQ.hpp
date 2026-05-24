@@ -29,7 +29,7 @@ public:
         buc.reserve(innerSize());
         for (usize i = 0 ; i < size() ; ) {
             m_pref[i] = m_a[i];
-            while (i < size() and (++i) & MASK)
+            while (++i < size() and i & MASK)
                 m_pref[i] = M::operation(m_pref[i-1],m_a[i]);
             buc.push_back(m_pref[i-1]);
         }
@@ -37,7 +37,7 @@ public:
             i--;
             m_suf[i] = m_a[i];
             for ( ; i & MASK ; i--)
-                m_suf[i-1] = M::operation(m_a[i],m_suf[i]);
+                m_suf[i-1] = M::operation(m_a[i-1],m_suf[i]);
         }
         m_spt = DisjointSparseTable<M>(std::move(buc));
     }
@@ -48,7 +48,9 @@ public:
 
     T product(usize L,usize R) const {
         assert(L <= R and R <= size());
-        const usize l = L >> LOG, r = R >> LOG;
+        if (L == R)
+            return M::identity();
+        const usize l = L >> LOG, r = (R-1) >> LOG;
         if (l == r) {
             T res = M::identity();
             while (L < R)
@@ -56,7 +58,7 @@ public:
             return res;
         }
         else
-            return M::operation(M::operation(m_suf[L],m_spt.product(l+1,r)),m_pref[R]);
+            return M::operation(M::operation(m_suf[L],m_spt.product(l+1,r)),m_pref[R-1]);
     }
 
     const T& operator[](usize i) const {
