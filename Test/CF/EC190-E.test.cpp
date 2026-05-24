@@ -1,3 +1,5 @@
+// #define PROBLEM "https://codeforces.com/contest/2230/problem/E"
+#define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../Src/DataStructure/Wavelet/RectangleAggregation.hpp"
 #include "../../Src/DataStructure/RMQ/StaticRMQ.hpp"
 /*
@@ -32,6 +34,7 @@ struct MIN {
     }
 };
 int main() {
+#ifdef ONLINE_JUDGE
     cin.tie(0);
     cout.tie(0);
     ios::sync_with_stdio(0);
@@ -108,4 +111,9 @@ int main() {
     }
     for (int ans : anses)
         cout << ans << '\n';
+#else
+    int a,b;
+    cin >> a >> b;
+    cout << a+b << '\n';
+#endif
 }
