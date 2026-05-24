@@ -26,6 +26,8 @@ public:
         return std::bit_width(n) - 1;
     }
 
+    DisjointSparseTable() = default;
+
     template <class S>
     requires std::same_as<V, S> or concepts::Acted<M, S>
     DisjointSparseTable(const std::vector<S>& A) : m_table(height(A.size())) {
