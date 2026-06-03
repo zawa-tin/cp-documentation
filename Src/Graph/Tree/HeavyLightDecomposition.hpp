@@ -20,7 +20,7 @@ public:
     HeavyLightDecomposition() = default;
 
     HeavyLightDecomposition(std::vector<std::vector<V>> T, V root = 0u) 
-        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n), 
+        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n), m_idxR(m_n),
         m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {
 
             auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {
@@ -32,8 +32,8 @@ public:
                             std::swap(T[v][i], T[v].back());
                             break;
                         }
-                    assert(T[v].back() == p);
-                    T[v].pop_back();
+                    if (T[v].size() and T[v].back() == p)
+                        T[v].pop_back();
                 }
                 for (V x : T[v])
                     m_size[v] += dfs(dfs, x, v, d + 1);
@@ -52,6 +52,7 @@ public:
                     for (usize i = 1 ; i < T[v].size() ; i++)
                         idx = dfs(dfs, T[v][i], idx, T[v][i]);
                 }
+                m_idxR[v] = idx;
                 return idx;
             };
 
@@ -130,12 +131,16 @@ public:
     }
 
     std::vector<std::pair<V, V>> operator()(V s, V t) const {
+        assert(s < (V)size());
+        assert(t < (V)size());
         return decomp(s, t);
     }
 
     // first > secondのときは逆向きのパス
     // 逆向きになる可能性がある都合上、閉区間で返される。
     std::vector<std::pair<V,V>> pathQuery(V s, V t) const {
+        assert(s < (V)size());
+        assert(t < (V)size());
         auto res = decomp(s,t);
         for (auto& [u,v] : res) {
             u = m_idx[u];
@@ -160,15 +165,23 @@ public:
         return (m_dep[u] <= m_dep[v] ? u : v);
     }
 
+    std::pair<V,V> subtreeQuery(V v) const {
+        assert(v < (V)size());
+        return {m_idx[v],m_idxR[v]};
+    }
+
+    template <class F>
+    void subtreeQuery(V v,F f) const {
+        assert(v < (V)size());
+        f(m_idx[v],m_idxR[v]);
+    }
+
     // is p ancestor of v ?
+    // isAncestor(v,v) = true
     bool isAncestor(V v, V p) const {
         assert(v < size());
         assert(p < size());
-        if (m_dep[v] < m_dep[p]) return false;
-        while (v != INVALID and m_top[v] != m_top[p]) {
-            v = m_par[m_top[v]];
-        }
-        return v != INVALID;
+        return m_idx[p] <= m_idx[v] and m_idxR[v] <= m_idxR[p];
     }
 
     std::optional<V> levelAncestor(V v, usize step) const {
@@ -223,7 +236,7 @@ private:
 
     usize m_n{};
 
-    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};
+    std::vector<V> m_par{}, m_top{}, m_idx{}, m_idxR{}, m_inv{}, m_bottom{};
 
     std::vector<usize> m_size{}, m_dep{};
 };
