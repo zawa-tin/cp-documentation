@@ -11,6 +11,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
     title: Assignment Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/TriangleProduct.hpp
+    title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
+      \u7DCF\u7A4D"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2450.test.cpp
@@ -37,6 +41,9 @@ data:
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+    title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/range_set_range_composite.test.cpp
     title: Test/LC/range_set_range_composite.test.cpp
   _isVerificationFailed: false
@@ -61,17 +68,19 @@ data:
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
+  - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2026-05-04 14:21:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc237_g.test.cpp
-  - Test/AtCoder/abl_e.test.cpp
-  - Test/AtCoder/abc417_f.test.cpp
-  - Test/AOJ/2450.test.cpp
-  - Test/AOJ/DSL_2_G.test.cpp
-  - Test/AOJ/DSL_2_F.test.cpp
-  - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
+  - Test/AOJ/DSL_2_F.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
+  - Test/AOJ/DSL_2_I.test.cpp
+  - Test/AOJ/2450.test.cpp
+  - Test/AtCoder/abc237_g.test.cpp
+  - Test/AtCoder/abc417_f.test.cpp
+  - Test/AtCoder/abl_e.test.cpp
+  - Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
 documentation_of: Src/Algebra/PowerableConcept.hpp
 layout: document

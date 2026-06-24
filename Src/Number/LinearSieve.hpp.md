@@ -140,8 +140,8 @@ data:
   verifiedWith:
   - Test/AtCoder/abc177_e.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
-  - Test/AtCoder/ndpc2026_l.test.cpp
   - Test/AtCoder/arc185_e.test.cpp
+  - Test/AtCoder/ndpc2026_l.test.cpp
   - Test/CF/CF902-B.test.cpp
   - Test/CF/CF1070-F.test.cpp
 documentation_of: Src/Number/LinearSieve.hpp

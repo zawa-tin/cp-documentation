@@ -550,6 +550,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/GeometryZ2/Contain/State.hpp
       title: Src/GeometryZ2/Contain/State.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/GeometryZ2/Contain/TriangleProduct.hpp
+      title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
+        \u7DCF\u7A4D"
   - name: Src/GeometryZ2/Distance
     pages:
     - icon: ':heavy_check_mark:'
@@ -1187,7 +1191,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC132-F Small Products
+      title: ABC223-H Xor Query
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
@@ -1674,9 +1678,6 @@ data:
       path: Test/LC/closest_pair.test.cpp
       title: Test/LC/closest_pair.test.cpp
     - icon: ':heavy_check_mark:'
-      path: Test/LC/count_points_in_triangle.test.cpp
-      title: Test/LC/count_points_in_triangle.test.cpp
-    - icon: ':heavy_check_mark:'
       path: Test/LC/cycle_detection.test.cpp
       title: Test/LC/cycle_detection.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1745,9 +1746,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/multipoint_evaluation.test.cpp
       title: Test/LC/multipoint_evaluation.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: Test/LC/naive_count_points_in_triangle.test.cpp
-      title: Test/LC/naive_count_points_in_triangle.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/point_add_range_sum.test.cpp
       title: Test/LC/point_add_range_sum.test.cpp
@@ -1829,6 +1827,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
       title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - name: Test/LC/count_points_in_triangle
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/count_points_in_triangle/CPIT.test.cpp
+      title: Test/LC/count_points_in_triangle/CPIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/count_points_in_triangle/NaiveCPIT.test.cpp
+      title: Test/LC/count_points_in_triangle/NaiveCPIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+      title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
   - name: Test/LC/lca
     pages:
     - icon: ':heavy_check_mark:'

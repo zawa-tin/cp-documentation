@@ -227,8 +227,8 @@ data:
   timestamp: '2024-01-26 17:02:26+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/Manual/typical90_an.test.cpp
   - Test/AtCoder/abc193_f.test.cpp
+  - Test/Manual/typical90_an.test.cpp
 documentation_of: Src/Graph/Flow/BurnBury.hpp
 layout: document
 redirect_from:

@@ -83,9 +83,9 @@ data:
   timestamp: '2026-01-03 22:37:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/yukicoder/3044.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/tdpc_fibonacci.test.cpp
+  - Test/yukicoder/3044.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
 documentation_of: Src/FPS/BostanMori.hpp
 layout: document

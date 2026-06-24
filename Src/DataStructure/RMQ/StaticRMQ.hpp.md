@@ -144,8 +144,8 @@ data:
   timestamp: '2026-05-24 17:12:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/staticrmq/StaticRMQ.test.cpp
   - Test/CF/EC190-E.test.cpp
+  - Test/LC/staticrmq/StaticRMQ.test.cpp
 documentation_of: Src/DataStructure/RMQ/StaticRMQ.hpp
 layout: document
 title: Static RMQ

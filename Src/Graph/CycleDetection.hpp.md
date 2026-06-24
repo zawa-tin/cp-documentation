@@ -106,8 +106,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc456_e.test.cpp
-  - Test/LC/cycle_detection.test.cpp
   - Test/LC/cycle_detection_undirected.test.cpp
+  - Test/LC/cycle_detection.test.cpp
 documentation_of: Src/Graph/CycleDetection.hpp
 layout: document
 title: "\u30B0\u30E9\u30D5\u306E\u30B5\u30A4\u30AF\u30EB\u691C\u51FA"

@@ -17,10 +17,17 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
     title: Lazy Fenwick Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/TriangleProduct.hpp
+    title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
+      \u7DCF\u7A4D"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_G.test.cpp
     title: Test/AOJ/DSL_2_G.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+    title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -48,25 +55,27 @@ data:
     \ T::Element;\n    { T::power(std::declval<typename T::Element>(), std::declval<U>())\
     \ }\n        -> std::same_as<typename T::Element>;\n};\n\n} // namespace concepts\n\
     \n} // namespace zawa\n#line 5 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\
-    \n\n#include <utility>\n\nnamespace zawa {\n\ntemplate <concepts::Group G>\nclass\
-    \ CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename G::Element,typename\
-    \ G::Element>;\n\n    static Element identity() {\n        return {G::identity(),G::identity()};\n\
-    \    }\n\n    static Element operation(const Element& l,const Element& r) {\n\
-    \        return {G::operation(l.first,r.first),G::operation(l.second,r.second)};\n\
-    \    }\n\n    static Element inverse(const Element& v) {\n        return {G::inverse(v.first),G::inverse(v.second)};\n\
+    \n\n#include <utility>\n\nnamespace zawa {\n\ntemplate <concepts::Group G1, concepts::Group\
+    \ G2 = G1>\nclass CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename\
+    \ G1::Element,typename G2::Element>;\n\n    static Element identity() {\n    \
+    \    return {G1::identity(),G2::identity()};\n    }\n\n    static Element operation(const\
+    \ Element& l,const Element& r) {\n        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};\n\
+    \    }\n\n    static Element inverse(const Element& v) {\n        return {G1::inverse(v.first),G2::inverse(v.second)};\n\
     \    }\n\n    template <class U>\n    static Element power(const Element& v,U\
-    \ exp) requires concepts::Powerable<G,U> {\n        return {G::power(v.first,exp),G::power(v.second,exp)};\n\
-    \    }\n};\n\n} // namespace zawa\n"
+    \ exp) requires (concepts::Powerable<G1,U> and concepts::Powerable<G2,U>) {\n\
+    \        return {G1::power(v.first,exp),G2::power(v.second,exp)};\n    }\n};\n\
+    \n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"./GroupConcept.hpp\"\n#include \"../PowerableConcept.hpp\"\
-    \n\n#include <utility>\n\nnamespace zawa {\n\ntemplate <concepts::Group G>\nclass\
-    \ CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename G::Element,typename\
-    \ G::Element>;\n\n    static Element identity() {\n        return {G::identity(),G::identity()};\n\
-    \    }\n\n    static Element operation(const Element& l,const Element& r) {\n\
-    \        return {G::operation(l.first,r.first),G::operation(l.second,r.second)};\n\
-    \    }\n\n    static Element inverse(const Element& v) {\n        return {G::inverse(v.first),G::inverse(v.second)};\n\
+    \n\n#include <utility>\n\nnamespace zawa {\n\ntemplate <concepts::Group G1, concepts::Group\
+    \ G2 = G1>\nclass CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename\
+    \ G1::Element,typename G2::Element>;\n\n    static Element identity() {\n    \
+    \    return {G1::identity(),G2::identity()};\n    }\n\n    static Element operation(const\
+    \ Element& l,const Element& r) {\n        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};\n\
+    \    }\n\n    static Element inverse(const Element& v) {\n        return {G1::inverse(v.first),G2::inverse(v.second)};\n\
     \    }\n\n    template <class U>\n    static Element power(const Element& v,U\
-    \ exp) requires concepts::Powerable<G,U> {\n        return {G::power(v.first,exp),G::power(v.second,exp)};\n\
-    \    }\n};\n\n} // namespace zawa\n"
+    \ exp) requires (concepts::Powerable<G1,U> and concepts::Powerable<G2,U>) {\n\
+    \        return {G1::power(v.first,exp),G2::power(v.second,exp)};\n    }\n};\n\
+    \n} // namespace zawa\n"
   dependsOn:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -76,10 +85,12 @@ data:
   path: Src/Algebra/Group/CartesianProductGroup.hpp
   requiredBy:
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
-  timestamp: '2026-05-04 14:21:38+09:00'
+  - Src/GeometryZ2/Contain/TriangleProduct.hpp
+  timestamp: '2026-06-24 18:50:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_G.test.cpp
+  - Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
 documentation_of: Src/Algebra/Group/CartesianProductGroup.hpp
 layout: document
 redirect_from:

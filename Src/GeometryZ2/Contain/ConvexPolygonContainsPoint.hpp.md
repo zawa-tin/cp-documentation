@@ -236,8 +236,8 @@ data:
   timestamp: '2026-03-24 01:20:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc296_g.test.cpp
   - Test/AOJ/1298.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
 documentation_of: Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
 layout: document
 redirect_from:

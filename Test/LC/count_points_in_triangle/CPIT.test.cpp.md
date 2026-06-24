@@ -26,27 +26,27 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/count_points_in_triangle
     links:
     - https://judge.yosupo.jp/problem/count_points_in_triangle
-  bundledCode: "#line 1 \"Test/LC/count_points_in_triangle.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/problem/count_points_in_triangle\"\n\n#line 2 \"Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\
-    \n\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\
-    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
-    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
-    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
-    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\
-    \n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#include <cassert>\n\nnamespace zawa\
-    \ {\n\nnamespace geometryZ2 {\n\nusing Zahlen = i64;\n\nnamespace internal {\n\
-    \nconstexpr i32 positive{1};\nconstexpr i32 zero{0};\nconstexpr i32 negative{-1};\n\
-    \n} // namespace internal\n\nconstexpr i32 Sign(Zahlen value) {\n    if (value\
-    \ < 0) return internal::negative;\n    if (value > 0) return internal::positive;\n\
-    \    return internal::zero;\n}\n\nconstexpr bool Positive(Zahlen value) {\n  \
-    \  return Sign(value) == internal::positive;\n}\n\nconstexpr bool Zero(Zahlen\
-    \ value) {\n    return Sign(value) == internal::zero;\n}\n\nconstexpr bool Negative(Zahlen\
-    \ value) {\n    return Sign(value) == internal::negative;\n}\n\nconstexpr Zahlen\
-    \ Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n}\n\nconstexpr\
-    \ Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n} // namespace\
-    \ geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\n\n\
-    #include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
+  bundledCode: "#line 1 \"Test/LC/count_points_in_triangle/CPIT.test.cpp\"\n#define\
+    \ PROBLEM \"https://judge.yosupo.jp/problem/count_points_in_triangle\"\n\n#line\
+    \ 2 \"Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\n#line 2 \"Src/GeometryZ2/PointCloud.hpp\"\
+    \n\n#line 2 \"Src/GeometryZ2/Point.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
+    \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
+    \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
+    \ = __int128_t;\n\nusing u8 = std::uint8_t;\nusing u16 = std::uint16_t;\nusing\
+    \ u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\nusing usize = std::size_t;\n\
+    \n} // namespace zawa\n#line 2 \"Src/GeometryZ2/Zahlen.hpp\"\n\n#line 4 \"Src/GeometryZ2/Zahlen.hpp\"\
+    \n\n#include <cassert>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nusing\
+    \ Zahlen = i64;\n\nnamespace internal {\n\nconstexpr i32 positive{1};\nconstexpr\
+    \ i32 zero{0};\nconstexpr i32 negative{-1};\n\n} // namespace internal\n\nconstexpr\
+    \ i32 Sign(Zahlen value) {\n    if (value < 0) return internal::negative;\n  \
+    \  if (value > 0) return internal::positive;\n    return internal::zero;\n}\n\n\
+    constexpr bool Positive(Zahlen value) {\n    return Sign(value) == internal::positive;\n\
+    }\n\nconstexpr bool Zero(Zahlen value) {\n    return Sign(value) == internal::zero;\n\
+    }\n\nconstexpr bool Negative(Zahlen value) {\n    return Sign(value) == internal::negative;\n\
+    }\n\nconstexpr Zahlen Abs(Zahlen value) {\n    return (value > 0 ? value : -value);\n\
+    }\n\nconstexpr Zahlen Square(Zahlen value) {\n    return value * value;\n}\n\n\
+    } // namespace geometryZ2\n\n} // namespace zawa\n#line 5 \"Src/GeometryZ2/Point.hpp\"\
+    \n\n#include <algorithm>\n#include <iostream>\n#line 9 \"Src/GeometryZ2/Point.hpp\"\
     \n#include <limits>\n\nnamespace zawa {\n\nnamespace geometryZ2 {\n\nclass Point\
     \ {\nprivate:\n    Zahlen x_{}, y_{};\n    static constexpr i32 origin{0};\n \
     \   static constexpr i32 firstQuadrant{1};\n    static constexpr i32 secondQuadrant{2};\n\
@@ -175,19 +175,19 @@ data:
     \ m_inv;\n\n    u32 cover(usize i, usize j) const {\n        if (i > j) std::swap(i,\
     \ j);\n        return m_cover[i][j - i];\n    }\n\n    u32 on(usize i, usize j)\
     \ const {\n        if (i > j) std::swap(i, j);\n        return m_on[i][j - i];\n\
-    \    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 4 \"Test/LC/count_points_in_triangle.test.cpp\"\
-    \n\n#line 6 \"Test/LC/count_points_in_triangle.test.cpp\"\nusing namespace zawa;\n\
-    using namespace geometryZ2;\n\nint main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
-    \    std::ios::sync_with_stdio(false);\n\n    int N;\n    std::cin >> N;\n   \
-    \ PointCloud A(N);\n    for (auto& a : A) std::cin >> a;\n    int M;\n    std::cin\
-    \ >> M;\n    PointCloud B(M);\n    for (auto& b : B) std::cin >> b;\n    CountPointsInTriangles\
-    \ sv(A, B);\n    int Q;\n    std::cin >> Q;\n    while (Q--) {\n        int a,\
-    \ b, c;\n        std::cin >> a >> b >> c;\n        std::cout << sv(a, b, c) <<\
-    \ '\\n';\n    }\n}\n"
+    \    }\n};\n\n} // namespace geometryZ2\n\n} // namespace zawa\n#line 4 \"Test/LC/count_points_in_triangle/CPIT.test.cpp\"\
+    \n\n#line 6 \"Test/LC/count_points_in_triangle/CPIT.test.cpp\"\nusing namespace\
+    \ zawa;\nusing namespace geometryZ2;\n\nint main() {\n    std::cin.tie(nullptr);\n\
+    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\n    int\
+    \ N;\n    std::cin >> N;\n    PointCloud A(N);\n    for (auto& a : A) std::cin\
+    \ >> a;\n    int M;\n    std::cin >> M;\n    PointCloud B(M);\n    for (auto&\
+    \ b : B) std::cin >> b;\n    CountPointsInTriangles sv(A, B);\n    int Q;\n  \
+    \  std::cin >> Q;\n    while (Q--) {\n        int a, b, c;\n        std::cin >>\
+    \ a >> b >> c;\n        std::cout << sv(a, b, c) << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/count_points_in_triangle\"\
-    \n\n#include \"../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\n#include\
-    \ <iostream>\nusing namespace zawa;\nusing namespace geometryZ2;\n\nint main()\
-    \ {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
+    \n\n#include \"../../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp\"\n\n\
+    #include <iostream>\nusing namespace zawa;\nusing namespace geometryZ2;\n\nint\
+    \ main() {\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n\
     \n    int N;\n    std::cin >> N;\n    PointCloud A(N);\n    for (auto& a : A)\
     \ std::cin >> a;\n    int M;\n    std::cin >> M;\n    PointCloud B(M);\n    for\
     \ (auto& b : B) std::cin >> b;\n    CountPointsInTriangles sv(A, B);\n    int\
@@ -200,15 +200,15 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/GeometryZ2/Zahlen.hpp
   isVerificationFile: true
-  path: Test/LC/count_points_in_triangle.test.cpp
+  path: Test/LC/count_points_in_triangle/CPIT.test.cpp
   requiredBy: []
-  timestamp: '2025-04-30 16:41:28+09:00'
+  timestamp: '2026-06-24 20:41:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: Test/LC/count_points_in_triangle.test.cpp
+documentation_of: Test/LC/count_points_in_triangle/CPIT.test.cpp
 layout: document
 redirect_from:
-- /verify/Test/LC/count_points_in_triangle.test.cpp
-- /verify/Test/LC/count_points_in_triangle.test.cpp.html
-title: Test/LC/count_points_in_triangle.test.cpp
+- /verify/Test/LC/count_points_in_triangle/CPIT.test.cpp
+- /verify/Test/LC/count_points_in_triangle/CPIT.test.cpp.html
+title: Test/LC/count_points_in_triangle/CPIT.test.cpp
 ---

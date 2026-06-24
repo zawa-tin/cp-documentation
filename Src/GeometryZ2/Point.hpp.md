@@ -27,6 +27,10 @@ data:
     path: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
     title: Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/GeometryZ2/Contain/TriangleProduct.hpp
+    title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
+      \u7DCF\u7A4D"
+  - icon: ':heavy_check_mark:'
     path: Src/GeometryZ2/ConvexHull.hpp
     title: Src/GeometryZ2/ConvexHull.hpp
   - icon: ':heavy_check_mark:'
@@ -139,14 +143,17 @@ data:
     path: Test/LC/closest_pair.test.cpp
     title: Test/LC/closest_pair.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/LC/count_points_in_triangle.test.cpp
-    title: Test/LC/count_points_in_triangle.test.cpp
+    path: Test/LC/count_points_in_triangle/CPIT.test.cpp
+    title: Test/LC/count_points_in_triangle/CPIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/count_points_in_triangle/NaiveCPIT.test.cpp
+    title: Test/LC/count_points_in_triangle/NaiveCPIT.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+    title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/furthest_pair.test.cpp
     title: Test/LC/furthest_pair.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/LC/naive_count_points_in_triangle.test.cpp
-    title: Test/LC/naive_count_points_in_triangle.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/sort_by_argument.test.cpp
     title: Test/LC/sort_by_argument.test.cpp
@@ -305,60 +312,62 @@ data:
   isVerificationFile: false
   path: Src/GeometryZ2/Point.hpp
   requiredBy:
-  - Src/GeometryZ2/PointCloud.hpp
-  - Src/GeometryZ2/Relation.hpp
-  - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   - Src/GeometryZ2/Line.hpp
-  - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Polygon.hpp
-  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
-  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
-  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
-  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
-  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
-  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
-  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
-  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryZ2/PointCloud.hpp
   - Src/GeometryZ2/Distance/FurthestPairOfPoints.hpp
-  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
   - Src/GeometryZ2/Distance/PointAndPoint.hpp
+  - Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
+  - Src/GeometryZ2/MinkowskiSum.hpp
   - Src/GeometryZ2/Circle.hpp
   - Src/GeometryZ2/ConvexHull.hpp
-  - Src/GeometryZ2/MinkowskiSum.hpp
+  - Src/GeometryZ2/Contain/NaiveCountPointsInTriangles.hpp
+  - Src/GeometryZ2/Contain/ConvexPolygonContainsPoint.hpp
+  - Src/GeometryZ2/Contain/LineContainsPoint.hpp
+  - Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
+  - Src/GeometryZ2/Contain/CircleContainsPoint.hpp
+  - Src/GeometryZ2/Contain/TriangleProduct.hpp
+  - Src/GeometryZ2/Intersect/SegmentAndSegment.hpp
+  - Src/GeometryZ2/Intersect/LineAndSegment.hpp
+  - Src/GeometryZ2/Intersect/PolygonAndPolygon.hpp
+  - Src/GeometryZ2/Segment.hpp
+  - Src/GeometryZ2/Relation.hpp
+  - Src/GeometryZ2/Parallel/SegmentAndSegment.hpp
   timestamp: '2024-06-26 14:51:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc266_c.test.cpp
-  - Test/AtCoder/abc422_e.test.cpp
-  - Test/AtCoder/abc296_g.test.cpp
-  - Test/AtCoder/abc139_f.test.cpp
-  - Test/AtCoder/abc191_d.test.cpp
-  - Test/AtCoder/abc250_f.test.cpp
-  - Test/AtCoder/abc225_e.test.cpp
-  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
-  - Test/AOJ/CGL_4_A.test.cpp
-  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
-  - Test/AOJ/0388.test.cpp
-  - Test/AOJ/CGL_3_A.test.cpp
-  - Test/AOJ/CGL_4_B.test.cpp
-  - Test/AOJ/1298.test.cpp
-  - Test/AOJ/CGL_5_A.test.cpp
-  - Test/AOJ/1379.test.cpp
-  - Test/AOJ/2609.test.cpp
-  - Test/AOJ/0445.test.cpp
-  - Test/Baekjoon/23249.test.cpp
-  - Test/LC/static_convex_hull.test.cpp
-  - Test/LC/sort_by_argument.test.cpp
-  - Test/LC/naive_count_points_in_triangle.test.cpp
-  - Test/LC/closest_pair.test.cpp
-  - Test/LC/count_points_in_triangle.test.cpp
-  - Test/LC/furthest_pair.test.cpp
-  - Test/CF/EC150-F.test.cpp
   - Test/My/GeometryZ2/MinkowskiSum.test.cpp
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - Test/AOJ/CGL_4_A.test.cpp
+  - Test/AOJ/2609.test.cpp
+  - Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_3_A.test.cpp
+  - Test/AOJ/CGL_4_B.test.cpp
+  - Test/AOJ/CGL_1_C/GeometryZ2.test.cpp
+  - Test/AOJ/CGL_5_A.test.cpp
+  - Test/AOJ/CGL_3_B/GeometryZ2.test.cpp
+  - Test/AOJ/0388.test.cpp
+  - Test/AOJ/CGL_3_A/GeometryZ2.test.cpp
+  - Test/AOJ/1379.test.cpp
+  - Test/AOJ/1298.test.cpp
+  - Test/AOJ/0445.test.cpp
+  - Test/AtCoder/abc422_e.test.cpp
+  - Test/AtCoder/abc250_f.test.cpp
+  - Test/AtCoder/abc139_f.test.cpp
+  - Test/AtCoder/abc296_g.test.cpp
+  - Test/AtCoder/abc191_d.test.cpp
+  - Test/AtCoder/abc266_c.test.cpp
+  - Test/AtCoder/abc225_e.test.cpp
+  - Test/CF/EC150-F.test.cpp
   - Test/UC/3-35-L.test.cpp
+  - Test/Baekjoon/23249.test.cpp
+  - Test/LC/closest_pair.test.cpp
+  - Test/LC/static_convex_hull.test.cpp
+  - Test/LC/count_points_in_triangle/CPIT.test.cpp
+  - Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+  - Test/LC/count_points_in_triangle/NaiveCPIT.test.cpp
+  - Test/LC/sort_by_argument.test.cpp
+  - Test/LC/furthest_pair.test.cpp
 documentation_of: Src/GeometryZ2/Point.hpp
 layout: document
 redirect_from:

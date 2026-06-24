@@ -116,15 +116,16 @@ data:
     \ T::Element>(), std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n\
     };\n\n} // namespace concepts\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\
     \n\n#line 5 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\n\n#include <utility>\n\
-    \nnamespace zawa {\n\ntemplate <concepts::Group G>\nclass CartesianProductGroup\
-    \ {\npublic:\n\n    using Element = std::pair<typename G::Element,typename G::Element>;\n\
-    \n    static Element identity() {\n        return {G::identity(),G::identity()};\n\
-    \    }\n\n    static Element operation(const Element& l,const Element& r) {\n\
-    \        return {G::operation(l.first,r.first),G::operation(l.second,r.second)};\n\
-    \    }\n\n    static Element inverse(const Element& v) {\n        return {G::inverse(v.first),G::inverse(v.second)};\n\
+    \nnamespace zawa {\n\ntemplate <concepts::Group G1, concepts::Group G2 = G1>\n\
+    class CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename\
+    \ G1::Element,typename G2::Element>;\n\n    static Element identity() {\n    \
+    \    return {G1::identity(),G2::identity()};\n    }\n\n    static Element operation(const\
+    \ Element& l,const Element& r) {\n        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};\n\
+    \    }\n\n    static Element inverse(const Element& v) {\n        return {G1::inverse(v.first),G2::inverse(v.second)};\n\
     \    }\n\n    template <class U>\n    static Element power(const Element& v,U\
-    \ exp) requires concepts::Powerable<G,U> {\n        return {G::power(v.first,exp),G::power(v.second,exp)};\n\
-    \    }\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/FenwickTree/LazyFenwickTree.hpp\"\
+    \ exp) requires (concepts::Powerable<G1,U> and concepts::Powerable<G2,U>) {\n\
+    \        return {G1::power(v.first,exp),G2::power(v.second,exp)};\n    }\n};\n\
+    \n} // namespace zawa\n#line 6 \"Src/DataStructure/FenwickTree/LazyFenwickTree.hpp\"\
     \n\n#line 8 \"Src/DataStructure/FenwickTree/LazyFenwickTree.hpp\"\n\nnamespace\
     \ zawa {\n\ntemplate <concepts::Group G>\nclass LazyFenwickTree {\npublic:\n\n\
     \    using T = typename G::Element;\n\n    explicit LazyFenwickTree(usize n) :\
@@ -191,7 +192,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   requiredBy: []
-  timestamp: '2026-05-04 14:21:38+09:00'
+  timestamp: '2026-06-24 18:50:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/DSL_2_G.test.cpp

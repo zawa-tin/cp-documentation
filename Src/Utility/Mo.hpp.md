@@ -94,10 +94,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc448_f.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc405.test.cpp
-  - Test/LC/static_range_frequency.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
   - Test/CF/CF974-H.test.cpp
+  - Test/LC/static_range_frequency.test.cpp
 documentation_of: Src/Utility/Mo.hpp
 layout: document
 redirect_from:

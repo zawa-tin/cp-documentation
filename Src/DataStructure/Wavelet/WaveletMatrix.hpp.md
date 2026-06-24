@@ -173,14 +173,14 @@ data:
   timestamp: '2026-05-16 14:10:24+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
+  - Test/AOJ/3518.test.cpp
   - Test/AtCoder/abc266_h.test.cpp
   - Test/AtCoder/abc339_g.test.cpp
-  - Test/AOJ/3518.test.cpp
-  - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
-  - Test/LC/range_kth_smallest/WaveletMatrix.test.cpp
-  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
   - Test/CF/EC190-E.test.cpp
-  - Test/My/DataStructure/Wavelet/WaveletMatrix.test.cpp
+  - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/range_kth_smallest/WaveletMatrix.test.cpp
 documentation_of: Src/DataStructure/Wavelet/WaveletMatrix.hpp
 layout: document
 title: Wavelet Matrix

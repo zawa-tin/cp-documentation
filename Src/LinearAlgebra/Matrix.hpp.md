@@ -166,8 +166,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/Manual/aoj3369.test.cpp
-  - Test/LC/matrix_det.test.cpp
   - Test/CF/ECR157-F.test.cpp
+  - Test/LC/matrix_det.test.cpp
 documentation_of: Src/LinearAlgebra/Matrix.hpp
 layout: document
 redirect_from:

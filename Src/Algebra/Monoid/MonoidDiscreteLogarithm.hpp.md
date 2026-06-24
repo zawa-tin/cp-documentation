@@ -118,8 +118,8 @@ data:
   timestamp: '2025-08-21 17:55:17+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc270_g.test.cpp
+  - Test/AtCoder/abc222_g.test.cpp
   - Test/LC/discrete_logarithm_mod.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
 layout: document

@@ -67,8 +67,8 @@ data:
   timestamp: '2024-06-30 19:07:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc349_f.test.cpp
   - Test/AOJ/2706.test.cpp
+  - Test/AtCoder/abc349_f.test.cpp
 documentation_of: Src/Number/PrimeFactorize.hpp
 layout: document
 redirect_from:
