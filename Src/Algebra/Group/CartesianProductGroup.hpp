@@ -7,27 +7,27 @@
 
 namespace zawa {
 
-template <concepts::Group G>
+template <concepts::Group G1, concepts::Group G2 = G1>
 class CartesianProductGroup {
 public:
 
-    using Element = std::pair<typename G::Element,typename G::Element>;
+    using Element = std::pair<typename G1::Element,typename G2::Element>;
 
     static Element identity() {
-        return {G::identity(),G::identity()};
+        return {G1::identity(),G2::identity()};
     }
 
     static Element operation(const Element& l,const Element& r) {
-        return {G::operation(l.first,r.first),G::operation(l.second,r.second)};
+        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};
     }
 
     static Element inverse(const Element& v) {
-        return {G::inverse(v.first),G::inverse(v.second)};
+        return {G1::inverse(v.first),G2::inverse(v.second)};
     }
 
     template <class U>
-    static Element power(const Element& v,U exp) requires concepts::Powerable<G,U> {
-        return {G::power(v.first,exp),G::power(v.second,exp)};
+    static Element power(const Element& v,U exp) requires (concepts::Powerable<G1,U> and concepts::Powerable<G2,U>) {
+        return {G1::power(v.first,exp),G2::power(v.second,exp)};
     }
 };
 
