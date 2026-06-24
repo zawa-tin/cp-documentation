@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/count_points_in_triangle"
 
-#include "../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp"
+#include "../../../Src/GeometryZ2/Contain/CountPointsInTriangles.hpp"
 
 #include <iostream>
 using namespace zawa;
