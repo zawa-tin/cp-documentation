@@ -35,6 +35,10 @@ data:
     path: Test/AOJ/1298.test.cpp
     title: Test/AOJ/1298.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3451.test.cpp
+    title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
+      \u306A\u3044\u51F8\u5305dp)"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/CGL_4_A.test.cpp
     title: Test/AOJ/CGL_4_A.test.cpp
   - icon: ':heavy_check_mark:'
@@ -185,6 +189,7 @@ data:
   - Test/AOJ/CGL_4_A.test.cpp
   - Test/AOJ/CGL_4_B.test.cpp
   - Test/AOJ/CGL_5_A.test.cpp
+  - Test/AOJ/3451.test.cpp
   - Test/AOJ/1298.test.cpp
   - Test/AtCoder/abc225_e.test.cpp
   - Test/UC/3-35-L.test.cpp

@@ -779,6 +779,10 @@ data:
     path: Test/AOJ/3168.test.cpp
     title: Test/AOJ/3168.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3451.test.cpp
+    title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
+      \u306A\u3044\u51F8\u5305dp)"
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/3518.test.cpp
     title: Test/AOJ/3518.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2146,6 +2150,7 @@ data:
   - Test/AOJ/CGL_2_D.test.cpp
   - Test/AOJ/CGL_2_C.test.cpp
   - Test/AOJ/GRL_7_A.test.cpp
+  - Test/AOJ/3451.test.cpp
   - Test/AOJ/ITP1_1_C.test.cpp
   - Test/AOJ/2827.test.cpp
   - Test/AOJ/CGL_4_C.test.cpp
