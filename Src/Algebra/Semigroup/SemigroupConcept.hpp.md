@@ -46,6 +46,9 @@ data:
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/PrefixSumND.hpp
+    title: "$N$ \u6B21\u5143\u7D2F\u7A4D\u548C"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RMQ/StaticRMQ.hpp
     title: Static RMQ
   - icon: ':heavy_check_mark:'
@@ -137,6 +140,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3548.test.cpp
     title: AOJ3548 String Puzzle
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/4077.test.cpp
+    title: Test/AOJ/4077.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_A.test.cpp
     title: Test/AOJ/DSL_2_A.test.cpp
@@ -239,6 +245,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc457_f.test.cpp
     title: Test/AtCoder/abc457_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc465_f.test.cpp
+    title: Test/AtCoder/abc465_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
@@ -414,6 +423,7 @@ data:
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
   - Src/DataStructure/SegmentTree/DualSegmentTree.hpp
   - Src/DataStructure/SegmentTree/SparseSegmentTree.hpp
+  - Src/DataStructure/PrefixSum/PrefixSumND.hpp
   - Src/DataStructure/PrefixSum/Imos2D.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/DataStructure/RMQ/StaticRMQ.hpp
@@ -445,6 +455,7 @@ data:
   - Test/AOJ/3548.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AOJ/3451.test.cpp
+  - Test/AOJ/4077.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
@@ -458,6 +469,7 @@ data:
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc371_f.test.cpp
+  - Test/AtCoder/abc465_f.test.cpp
   - Test/AtCoder/soundhound2018_summer_final_e.test.cpp
   - Test/AtCoder/arc082_d.test.cpp
   - Test/AtCoder/abc419_f.test.cpp

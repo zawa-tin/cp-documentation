@@ -34,6 +34,9 @@ data:
     path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/PrefixSum/PrefixSumND.hpp
+    title: "$N$ \u6B21\u5143\u7D2F\u7A4D\u548C"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Set/FenwickSet.hpp
     title: Src/DataStructure/Set/FenwickSet.hpp
   - icon: ':heavy_check_mark:'
@@ -51,6 +54,9 @@ data:
     path: Test/AOJ/3451.test.cpp
     title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
       \u306A\u3044\u51F8\u5305dp)"
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/4077.test.cpp
+    title: Test/AOJ/4077.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/DSL_2_B.test.cpp
     title: Test/AOJ/DSL_2_B.test.cpp
@@ -81,6 +87,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc434_d.test.cpp
     title: Test/AtCoder/abc434_d.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc465_f.test.cpp
+    title: Test/AtCoder/abc465_f.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc088_e.test.cpp
     title: Test/AtCoder/arc088_e.test.cpp
@@ -168,6 +177,7 @@ data:
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/FenwickTree/FenwickTree.hpp
   - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
+  - Src/DataStructure/PrefixSum/PrefixSumND.hpp
   - Src/DataStructure/PrefixSum/Imos2D.hpp
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
@@ -179,10 +189,12 @@ data:
   - Test/AOJ/2426.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
   - Test/AOJ/3451.test.cpp
+  - Test/AOJ/4077.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AtCoder/abc340_e.test.cpp
   - Test/AtCoder/abc405.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/abc465_f.test.cpp
   - Test/AtCoder/joi2008ho_e.test.cpp
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/arc088_e.test.cpp

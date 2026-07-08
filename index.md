@@ -176,6 +176,9 @@ data:
       path: Src/DataStructure/PrefixSum/PrefixSum2D.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/PrefixSum/PrefixSumND.hpp
+      title: "$N$ \u6B21\u5143\u7D2F\u7A4D\u548C"
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
       title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - name: Src/DataStructure/RMQ
@@ -1019,6 +1022,9 @@ data:
       path: Test/AOJ/3548.test.cpp
       title: AOJ3548 String Puzzle
     - icon: ':heavy_check_mark:'
+      path: Test/AOJ/4077.test.cpp
+      title: Test/AOJ/4077.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AOJ/ALDS1_11_D.test.cpp
       title: Test/AOJ/ALDS1_11_D.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1491,6 +1497,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc457_f.test.cpp
       title: Test/AtCoder/abc457_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc465_f.test.cpp
+      title: Test/AtCoder/abc465_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
