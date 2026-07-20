@@ -271,6 +271,7 @@
 "Test/LC/incremental_scc.test.cpp": "2025-05-05 21:42:21 +0900",
 "Test/LC/inv_of_formal_power_series.test.cpp": "2026-01-03 20:52:40 +0900",
 "Test/LC/jump_on_tree.test.cpp": "2026-03-27 22:58:15 +0900",
+"Test/LC/kth_root_integer.test.cpp": "2026-07-20 19:53:24 +0900",
 "Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp": "2026-01-03 22:37:32 +0900",
 "Test/LC/lca/HeavyLightDecomposition.test.cpp": "2026-03-27 22:58:15 +0900",
 "Test/LC/lca/LowestCommonAncestor.test.cpp": "2026-04-20 16:41:41 +0900",
