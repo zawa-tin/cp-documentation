@@ -39,8 +39,8 @@ data:
   timestamp: '2024-02-09 20:29:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc292_h.test.cpp
   - Test/AtCoder/abc288_e.test.cpp
+  - Test/AtCoder/abc292_h.test.cpp
 documentation_of: Src/Algebra/Monoid/MaxMonoid.hpp
 layout: document
 title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"

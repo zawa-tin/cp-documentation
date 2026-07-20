@@ -57,8 +57,8 @@ data:
   timestamp: '2025-04-09 18:50:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc194_d.test.cpp
   - Test/LC/rooted_tree_isomorphism_classification.test.cpp
+  - Test/AtCoder/arc194_d.test.cpp
 documentation_of: Src/Graph/Tree/SubtreesHash.hpp
 layout: document
 title: "\u6839\u4ED8\u304D\u6728\u306E\u5404\u90E8\u5206\u6728\u3092\u30CF\u30C3\u30B7\

@@ -136,8 +136,8 @@ data:
   timestamp: '2026-05-20 08:09:02+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/awc0071_e.test.cpp
   - Test/LC/bipartitematching.test.cpp
+  - Test/AtCoder/awc0071_e.test.cpp
 documentation_of: Src/Graph/Matching/BipartiteMatching.hpp
 layout: document
 title: Bipartite Matching

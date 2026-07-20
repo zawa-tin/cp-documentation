@@ -88,14 +88,14 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/CartesianProductGroup.hpp
   requiredBy:
-  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   timestamp: '2026-06-24 18:50:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
   - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/3451.test.cpp
-  - Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
 documentation_of: Src/Algebra/Group/CartesianProductGroup.hpp
 layout: document
 redirect_from:

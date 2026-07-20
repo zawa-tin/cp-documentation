@@ -723,6 +723,10 @@ data:
       title: "\u6574\u6570\u540C\u58EB\u306E\u5207\u308A\u6368\u3066/\u5207\u308A\u4E0A\
         \u3052\u9664\u7B97"
     - icon: ':heavy_check_mark:'
+      path: Src/Number/KthRoot.hpp
+      title: "$K$ \u4E57\u6839\u3092\u6574\u6570\u306B\u5207\u308A\u6368\u3066\u30FB\
+        \u5207\u308A\u4E0A\u3052"
+    - icon: ':heavy_check_mark:'
       path: Src/Number/LCMConvolution.hpp
       title: Src/Number/LCMConvolution.hpp
     - icon: ':heavy_check_mark:'
@@ -1201,7 +1205,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC223-H Xor Query
+      title: ABC132-F Small Products
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
@@ -1741,6 +1745,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/jump_on_tree.test.cpp
       title: Test/LC/jump_on_tree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/kth_root_integer.test.cpp
+      title: Test/LC/kth_root_integer.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
       title: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp

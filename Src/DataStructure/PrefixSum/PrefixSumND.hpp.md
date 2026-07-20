@@ -163,8 +163,8 @@ data:
   timestamp: '2026-07-08 14:06:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/4077.test.cpp
   - Test/AtCoder/abc465_f.test.cpp
+  - Test/AOJ/4077.test.cpp
 documentation_of: Src/DataStructure/PrefixSum/PrefixSumND.hpp
 layout: document
 title: "$N$ \u6B21\u5143\u7D2F\u7A4D\u548C"

@@ -163,21 +163,21 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/RMQ/PM1RMQ.hpp
   requiredBy:
-  - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/LowestCommonAncestor.hpp
+  - Src/Graph/Tree/AuxiliaryTree.hpp
   - Src/Graph/Tree/ContourAggregation.hpp
   timestamp: '2026-04-20 16:41:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
-  - Test/AtCoder/abc359_g.test.cpp
-  - Test/AtCoder/abc340_g.test.cpp
-  - Test/AtCoder/arc039_d.test.cpp
-  - Test/Manual/typical90_ai.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - Test/Manual/typical90_ai.test.cpp
+  - Test/AtCoder/abc359_g.test.cpp
+  - Test/AtCoder/abc340_g.test.cpp
+  - Test/AtCoder/arc039_d.test.cpp
 documentation_of: Src/DataStructure/RMQ/PM1RMQ.hpp
 layout: document
 redirect_from:

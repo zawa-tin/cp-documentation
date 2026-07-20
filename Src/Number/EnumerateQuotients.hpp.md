@@ -15,7 +15,7 @@ data:
     title: AOJ2957 MOD Rush
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc132_f.test.cpp
-    title: ABC223-H Xor Query
+    title: ABC132-F Small Products
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc230_e.test.cpp
     title: Test/AtCoder/abc230_e.test.cpp
@@ -141,10 +141,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/Number/EnumerateQuotients/ceilBuild.test.cpp
-  - Test/AOJ/2957.test.cpp
+  - Test/LC/enumerate_quotients.test.cpp
   - Test/AtCoder/abc230_e.test.cpp
   - Test/AtCoder/abc132_f.test.cpp
-  - Test/LC/enumerate_quotients.test.cpp
+  - Test/AOJ/2957.test.cpp
 documentation_of: Src/Number/EnumerateQuotients.hpp
 layout: document
 title: "\u5546\u5217\u6319"

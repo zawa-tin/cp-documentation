@@ -172,38 +172,38 @@ data:
   isVerificationFile: false
   path: Src/Sequence/CompressedSequence.hpp
   requiredBy:
+  - Src/Sequence/RangeKthSmallest.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
+  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/Wavelet/RectangleAggregation.hpp
   - Src/DataStructure/Wavelet/RangeAggregation.hpp
-  - Src/DataStructure/FenwickTree/OfflineFenwickTree2D.hpp
   - Src/DataStructure/SegmentTree/OfflineSegmentTree2D.hpp
-  - Src/Sequence/RangeKthSmallest.hpp
   timestamp: '2026-05-16 04:22:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/2426.test.cpp
-  - Test/AOJ/3518.test.cpp
-  - Test/AtCoder/abc389_f.test.cpp
-  - Test/AtCoder/arc082_d.test.cpp
-  - Test/AtCoder/joi2008ho_e.test.cpp
-  - Test/AtCoder/abc213_c.test.cpp
-  - Test/AtCoder/abc384_g.test.cpp
-  - Test/AtCoder/abc266_h.test.cpp
-  - Test/AtCoder/tdpc_target.test.cpp
-  - Test/AtCoder/abc339_g.test.cpp
-  - Test/AtCoder/abc287_g.test.cpp
-  - Test/CF/CF1054-G.test.cpp
-  - Test/CF/EC190-E.test.cpp
-  - Test/CF/CF1026-E.test.cpp
-  - Test/UC/4-2-K.test.cpp
-  - Test/LC/static_range_mode_query.test.cpp
-  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
   - Test/LC/static_range_frequency.test.cpp
+  - Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/ordered_set/OfflineOrderedSet.test.cpp
+  - Test/LC/static_range_mode_query.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineFenwickTree2D.test.cpp
   - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - Test/LC/point_add_rectangle_sum/OfflineSegmentTree2D.test.cpp
-  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
-  - Test/LC/range_kth_smallest/range_kth_smallest.test.cpp
+  - Test/AtCoder/abc287_g.test.cpp
+  - Test/AtCoder/abc384_g.test.cpp
+  - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/abc389_f.test.cpp
+  - Test/AtCoder/abc339_g.test.cpp
+  - Test/AtCoder/abc213_c.test.cpp
+  - Test/AtCoder/arc082_d.test.cpp
+  - Test/AtCoder/joi2008ho_e.test.cpp
+  - Test/AtCoder/abc266_h.test.cpp
+  - Test/UC/4-2-K.test.cpp
+  - Test/CF/CF1054-G.test.cpp
+  - Test/CF/EC190-E.test.cpp
+  - Test/CF/CF1026-E.test.cpp
+  - Test/AOJ/2426.test.cpp
+  - Test/AOJ/3518.test.cpp
 documentation_of: Src/Sequence/CompressedSequence.hpp
 layout: document
 title: "\u5EA7\u6A19\u5727\u7E2E"

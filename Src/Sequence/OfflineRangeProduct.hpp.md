@@ -129,8 +129,8 @@ data:
   timestamp: '2025-08-21 03:06:56+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc223_h.test.cpp
   - Test/LC/staticrmq/OfflineRangeProduct.test.cpp
+  - Test/AtCoder/abc223_h.test.cpp
 documentation_of: Src/Sequence/OfflineRangeProduct.hpp
 layout: document
 title: "\u9759\u7684\u5217\u306E\u533A\u9593\u30AF\u30A8\u30EA\u3092\u30AA\u30D5\u30E9\

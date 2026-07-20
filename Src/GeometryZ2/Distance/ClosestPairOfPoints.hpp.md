@@ -175,8 +175,8 @@ data:
   timestamp: '2025-07-02 20:11:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_5_A.test.cpp
   - Test/LC/closest_pair.test.cpp
+  - Test/AOJ/CGL_5_A.test.cpp
 documentation_of: Src/GeometryZ2/Distance/ClosestPairOfPoints.hpp
 layout: document
 redirect_from:

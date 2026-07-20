@@ -261,9 +261,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/GeometryZ2/Contain/CountingPointsInTrianglesStressTest.test.cpp
+  - Test/LC/count_points_in_triangle/CPIT.test.cpp
   - Test/UC/3-35-L.test.cpp
   - Test/Baekjoon/23249.test.cpp
-  - Test/LC/count_points_in_triangle/CPIT.test.cpp
 documentation_of: Src/GeometryZ2/Contain/CountPointsInTriangles.hpp
 layout: document
 title: Count Points in Triangles

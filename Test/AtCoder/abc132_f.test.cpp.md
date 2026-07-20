@@ -111,7 +111,7 @@ data:
   verifiedWith: []
 documentation_of: Test/AtCoder/abc132_f.test.cpp
 layout: document
-title: ABC223-H Xor Query
+title: ABC132-F Small Products
 ---
 
 `DP[i][j] := 条件を満たすように正の整数を前から順番に $i$ 個並べた、 最後の要素が $j$ であるような通り数。
