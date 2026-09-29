@@ -84,8 +84,8 @@ data:
   timestamp: '2026-04-22 20:47:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/awc0053_d.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
+  - Test/AtCoder/awc0053_d.test.cpp
 documentation_of: Src/DataStructure/Other/RangeAssigner.hpp
 layout: document
 title: "\u540C\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u6975\u5927\u306A\u533A\u9593\

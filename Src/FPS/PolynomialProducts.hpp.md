@@ -66,8 +66,8 @@ data:
   timestamp: '2026-01-12 19:02:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/product_of_polynomial_sequence.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
+  - Test/LC/product_of_polynomial_sequence.test.cpp
 documentation_of: Src/FPS/PolynomialProducts.hpp
 layout: document
 title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\u308B\
