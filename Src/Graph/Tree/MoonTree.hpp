@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../../Utility/Mo.hpp"
-#include "./LowestCommonAncestor.hpp"
+#include "./OfflineLowestCommonAncestor.hpp"
 
 #include <concepts>
 #include <utility>
@@ -30,11 +30,13 @@ std::vector<typename std::invoke_result_t<Eval, usize>> MoonTree(const std::vect
     dfs(dfs,static_cast<T>(0),static_cast<T>(-1));
     std::vector<std::pair<T,T>> path;
     path.reserve(qs.size());
-    LowestCommonAncestor lca{G,0};
     std::vector<T> extra;
     extra.reserve(qs.size());
-    for (auto [u,v] : qs) {
-        T l=lca(u,v);
+    std::vector<T> lcas = OfflineLowestCommonAncestor(G,qs);
+    // for (auto [u,v] : qs) {
+    for (u32 idx = 0 ; idx < qs.size() ; idx++) {
+        auto [u,v] = qs[idx];
+        T l=lcas[idx];
         T i=in[u],j=in[v];
         if (i>j) {
             std::swap(i,j);
