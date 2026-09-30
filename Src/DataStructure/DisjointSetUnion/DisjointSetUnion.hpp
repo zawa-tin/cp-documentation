@@ -7,11 +7,13 @@
 #include <numeric>
 #include <vector>
 #include <concepts>
+#include <optional>
 
 namespace zawa {
 
 class DisjointSetUnion {
 public:
+
     DisjointSetUnion() = default;
 
     DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1) {
@@ -37,6 +39,20 @@ public:
         data_[u] += data_[v];
         data_[v] = u;
         return true;
+    }
+
+    std::optional<u32> mergeAndLeader(u32 u,u32 v) {
+        assert(u < n_);
+        assert(v < n_);
+        u = leader(u);
+        v = leader(v);
+        if (u == v) 
+            return std::nullopt;
+        comps_--;
+        if (data_[u] > data_[v]) std::swap(u, v);
+        data_[u] += data_[v];
+        data_[v] = u;
+        return u;
     }
 
     inline usize size() const noexcept {
