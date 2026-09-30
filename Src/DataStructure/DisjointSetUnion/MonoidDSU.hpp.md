@@ -31,17 +31,22 @@ data:
     \ = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\n\
     using usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n\
-    #include <concepts>\n\nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n\
-    \    DisjointSetUnion() = default;\n\n    DisjointSetUnion(usize n) : n_{n}, comps_{n},\
-    \ data_(n, -1) {\n        data_.shrink_to_fit();\n    }\n    \n    u32 leader(u32\
-    \ v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v] = leader(data_[v]));\n\
-    \    }\n\n    bool same(u32 u, u32 v) {\n        return leader(u) == leader(v);\n\
-    \    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u < n_);\n        assert(v\
-    \ < n_);\n        u = leader(u);\n        v = leader(v);\n        if (u == v)\
-    \ return false;\n        comps_--;\n        if (data_[u] > data_[v]) std::swap(u,\
-    \ v);\n        data_[u] += data_[v];\n        data_[v] = u;\n        return true;\n\
-    \    }\n\n    inline usize size() const noexcept {\n        return n_;\n    }\n\
-    \n    usize size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
+    #include <concepts>\n#include <optional>\n\nnamespace zawa {\n\nclass DisjointSetUnion\
+    \ {\npublic:\n\n    DisjointSetUnion() = default;\n\n    DisjointSetUnion(usize\
+    \ n) : n_{n}, comps_{n}, data_(n, -1) {\n        data_.shrink_to_fit();\n    }\n\
+    \    \n    u32 leader(u32 v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v]\
+    \ = leader(data_[v]));\n    }\n\n    bool same(u32 u, u32 v) {\n        return\
+    \ leader(u) == leader(v);\n    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u\
+    \ < n_);\n        assert(v < n_);\n        u = leader(u);\n        v = leader(v);\n\
+    \        if (u == v) return false;\n        comps_--;\n        if (data_[u] >\
+    \ data_[v]) std::swap(u, v);\n        data_[u] += data_[v];\n        data_[v]\
+    \ = u;\n        return true;\n    }\n\n    std::optional<u32> mergeAndLeader(u32\
+    \ u,u32 v) {\n        assert(u < n_);\n        assert(v < n_);\n        u = leader(u);\n\
+    \        v = leader(v);\n        if (u == v) \n            return std::nullopt;\n\
+    \        comps_--;\n        if (data_[u] > data_[v]) std::swap(u, v);\n      \
+    \  data_[u] += data_[v];\n        data_[v] = u;\n        return u;\n    }\n\n\
+    \    inline usize size() const noexcept {\n        return n_;\n    }\n\n    usize\
+    \ size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
     \    }\n\n    inline usize components() const noexcept {\n        return comps_;\n\
     \    }\n\n    template <class T = usize>\n    std::vector<std::vector<T>> enumerate()\
     \ requires std::convertible_to<usize, T> {\n        std::vector<std::vector<T>>\
@@ -103,7 +108,7 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
   requiredBy: []
-  timestamp: '2026-04-10 14:03:39+09:00'
+  timestamp: '2026-09-30 13:13:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc451_f.test.cpp

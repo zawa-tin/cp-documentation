@@ -678,6 +678,9 @@ data:
       path: Src/Graph/Tree/MoonTree.hpp
       title: Src/Graph/Tree/MoonTree.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+      title: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Graph/Tree/Rerooting.hpp
       title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"
     - icon: ':heavy_check_mark:'
@@ -1872,6 +1875,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/lca/LowestCommonAncestor.test.cpp
       title: Test/LC/lca/LowestCommonAncestor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+      title: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
   - name: Test/LC/ordered_set
     pages:
     - icon: ':heavy_check_mark:'

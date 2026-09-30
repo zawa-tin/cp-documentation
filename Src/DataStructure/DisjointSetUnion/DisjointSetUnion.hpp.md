@@ -8,6 +8,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
     title: Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/MoonTree.hpp
+    title: Src/Graph/Tree/MoonTree.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+    title: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2559.test.cpp
@@ -18,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc451_g.test.cpp
     title: Test/AtCoder/abc451_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc477_g.test.cpp
+    title: Test/AtCoder/abc477_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/agc002_d.test.cpp
     title: Test/AtCoder/agc002_d.test.cpp
@@ -30,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/incremental_scc.test.cpp
     title: Test/LC/incremental_scc.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+    title: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/unionfind.test.cpp
     title: Test/LC/unionfind.test.cpp
@@ -45,17 +57,22 @@ data:
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
     \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp\"\
     \n\n#include <algorithm>\n#include <cassert>\n#include <numeric>\n#include <vector>\n\
-    #include <concepts>\n\nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n\
-    \    DisjointSetUnion() = default;\n\n    DisjointSetUnion(usize n) : n_{n}, comps_{n},\
-    \ data_(n, -1) {\n        data_.shrink_to_fit();\n    }\n    \n    u32 leader(u32\
-    \ v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v] = leader(data_[v]));\n\
-    \    }\n\n    bool same(u32 u, u32 v) {\n        return leader(u) == leader(v);\n\
-    \    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u < n_);\n        assert(v\
-    \ < n_);\n        u = leader(u);\n        v = leader(v);\n        if (u == v)\
-    \ return false;\n        comps_--;\n        if (data_[u] > data_[v]) std::swap(u,\
-    \ v);\n        data_[u] += data_[v];\n        data_[v] = u;\n        return true;\n\
-    \    }\n\n    inline usize size() const noexcept {\n        return n_;\n    }\n\
-    \n    usize size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
+    #include <concepts>\n#include <optional>\n\nnamespace zawa {\n\nclass DisjointSetUnion\
+    \ {\npublic:\n\n    DisjointSetUnion() = default;\n\n    DisjointSetUnion(usize\
+    \ n) : n_{n}, comps_{n}, data_(n, -1) {\n        data_.shrink_to_fit();\n    }\n\
+    \    \n    u32 leader(u32 v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v]\
+    \ = leader(data_[v]));\n    }\n\n    bool same(u32 u, u32 v) {\n        return\
+    \ leader(u) == leader(v);\n    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u\
+    \ < n_);\n        assert(v < n_);\n        u = leader(u);\n        v = leader(v);\n\
+    \        if (u == v) return false;\n        comps_--;\n        if (data_[u] >\
+    \ data_[v]) std::swap(u, v);\n        data_[u] += data_[v];\n        data_[v]\
+    \ = u;\n        return true;\n    }\n\n    std::optional<u32> mergeAndLeader(u32\
+    \ u,u32 v) {\n        assert(u < n_);\n        assert(v < n_);\n        u = leader(u);\n\
+    \        v = leader(v);\n        if (u == v) \n            return std::nullopt;\n\
+    \        comps_--;\n        if (data_[u] > data_[v]) std::swap(u, v);\n      \
+    \  data_[u] += data_[v];\n        data_[v] = u;\n        return u;\n    }\n\n\
+    \    inline usize size() const noexcept {\n        return n_;\n    }\n\n    usize\
+    \ size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
     \    }\n\n    inline usize components() const noexcept {\n        return comps_;\n\
     \    }\n\n    template <class T = usize>\n    std::vector<std::vector<T>> enumerate()\
     \ requires std::convertible_to<usize, T> {\n        std::vector<std::vector<T>>\
@@ -65,17 +82,22 @@ data:
     \ std::vector<i32> data_;\n};\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../../Template/TypeAlias.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <numeric>\n#include <vector>\n#include <concepts>\n\
-    \nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n    DisjointSetUnion()\
-    \ = default;\n\n    DisjointSetUnion(usize n) : n_{n}, comps_{n}, data_(n, -1)\
-    \ {\n        data_.shrink_to_fit();\n    }\n    \n    u32 leader(u32 v) {\n  \
-    \      return data_[v] < 0 ? v : static_cast<u32>(data_[v] = leader(data_[v]));\n\
-    \    }\n\n    bool same(u32 u, u32 v) {\n        return leader(u) == leader(v);\n\
-    \    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u < n_);\n        assert(v\
-    \ < n_);\n        u = leader(u);\n        v = leader(v);\n        if (u == v)\
-    \ return false;\n        comps_--;\n        if (data_[u] > data_[v]) std::swap(u,\
-    \ v);\n        data_[u] += data_[v];\n        data_[v] = u;\n        return true;\n\
-    \    }\n\n    inline usize size() const noexcept {\n        return n_;\n    }\n\
-    \n    usize size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
+    #include <optional>\n\nnamespace zawa {\n\nclass DisjointSetUnion {\npublic:\n\
+    \n    DisjointSetUnion() = default;\n\n    DisjointSetUnion(usize n) : n_{n},\
+    \ comps_{n}, data_(n, -1) {\n        data_.shrink_to_fit();\n    }\n    \n   \
+    \ u32 leader(u32 v) {\n        return data_[v] < 0 ? v : static_cast<u32>(data_[v]\
+    \ = leader(data_[v]));\n    }\n\n    bool same(u32 u, u32 v) {\n        return\
+    \ leader(u) == leader(v);\n    }\n\n    bool merge(u32 u, u32 v) {\n        assert(u\
+    \ < n_);\n        assert(v < n_);\n        u = leader(u);\n        v = leader(v);\n\
+    \        if (u == v) return false;\n        comps_--;\n        if (data_[u] >\
+    \ data_[v]) std::swap(u, v);\n        data_[u] += data_[v];\n        data_[v]\
+    \ = u;\n        return true;\n    }\n\n    std::optional<u32> mergeAndLeader(u32\
+    \ u,u32 v) {\n        assert(u < n_);\n        assert(v < n_);\n        u = leader(u);\n\
+    \        v = leader(v);\n        if (u == v) \n            return std::nullopt;\n\
+    \        comps_--;\n        if (data_[u] > data_[v]) std::swap(u, v);\n      \
+    \  data_[u] += data_[v];\n        data_[v] = u;\n        return u;\n    }\n\n\
+    \    inline usize size() const noexcept {\n        return n_;\n    }\n\n    usize\
+    \ size(u32 v) {\n        assert(v < n_);\n        return static_cast<usize>(-data_[leader(v)]);\n\
     \    }\n\n    inline usize components() const noexcept {\n        return comps_;\n\
     \    }\n\n    template <class T = usize>\n    std::vector<std::vector<T>> enumerate()\
     \ requires std::convertible_to<usize, T> {\n        std::vector<std::vector<T>>\
@@ -89,17 +111,21 @@ data:
   path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   requiredBy:
   - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
-  timestamp: '2025-05-05 21:42:21+09:00'
+  - Src/Graph/Tree/MoonTree.hpp
+  - Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+  timestamp: '2026-09-30 13:13:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/ECR167-F.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/AtCoder/arc197_d.test.cpp
   - Test/AtCoder/agc002_d.test.cpp
+  - Test/AtCoder/abc477_g.test.cpp
   - Test/AtCoder/abc451_g.test.cpp
   - Test/AtCoder/abc451_f.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/incremental_scc.test.cpp
+  - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

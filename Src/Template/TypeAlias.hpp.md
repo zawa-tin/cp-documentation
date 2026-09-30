@@ -495,6 +495,9 @@ data:
     path: Src/Graph/Tree/MoonTree.hpp
     title: Src/Graph/Tree/MoonTree.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+    title: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/Rerooting.hpp
     title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"
   - icon: ':heavy_check_mark:'
@@ -1508,6 +1511,9 @@ data:
     path: Test/LC/lca/LowestCommonAncestor.test.cpp
     title: Test/LC/lca/LowestCommonAncestor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+    title: Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/lcm_convolution.test.cpp
     title: Test/LC/lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2018,6 +2024,7 @@ data:
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/ContourAggregation.hpp
   - Src/Graph/Tree/MoonTree.hpp
+  - Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
   - Src/Graph/Tree/Sack.hpp
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Graph/Tree/Rerooting.hpp
@@ -2412,6 +2419,7 @@ data:
   - Test/LC/eulerian_trail_directed.test.cpp
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
+  - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/jump_on_tree.test.cpp
   - Test/LC/polynomial_interpolation/quadratic.test.cpp

@@ -17,9 +17,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/LowestCommonAncestor.hpp
     title: Lowest Common Ancestor
-  - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/MoonTree.hpp
-    title: Src/Graph/Tree/MoonTree.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc340_g.test.cpp
@@ -27,9 +24,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc359_g.test.cpp
     title: ABC359-G Sum of Tree Distance
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc477_g.test.cpp
-    title: Test/AtCoder/abc477_g.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc039_d.test.cpp
     title: Test/AtCoder/arc039_d.test.cpp
@@ -171,7 +165,6 @@ data:
   requiredBy:
   - Src/Graph/Tree/LowestCommonAncestor.hpp
   - Src/Graph/Tree/ContourAggregation.hpp
-  - Src/Graph/Tree/MoonTree.hpp
   - Src/Graph/Tree/AuxiliaryTree.hpp
   timestamp: '2026-04-20 16:41:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -179,7 +172,6 @@ data:
   - Test/My/DataStructure/RMQ/PM1RMQ.test.cpp
   - Test/My/Graph/Tree/LowestCommonAncestor.test.cpp
   - Test/AtCoder/abc340_g.test.cpp
-  - Test/AtCoder/abc477_g.test.cpp
   - Test/AtCoder/arc039_d.test.cpp
   - Test/AtCoder/abc359_g.test.cpp
   - Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
