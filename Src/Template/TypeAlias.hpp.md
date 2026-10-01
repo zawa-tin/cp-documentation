@@ -16,6 +16,10 @@ data:
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
+    title: "\u30B9\u30BF\u30FC\u30EA\u30F3\u30B0\u6570\u306B\u95A2\u3059\u308B\u30E1\
+      \u30E2"
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Bucket/BucketRangeProduct.hpp
     title: "\u30D0\u30B1\u30C3\u30C8\u5206\u5272\u306B\u3088\u308B\u533A\u9593\u30AF\
       \u30A8\u30EA\u51E6\u7406"
@@ -1631,6 +1635,9 @@ data:
     path: Test/LC/stern_brocot_tree.test.cpp
     title: Test/LC/stern_brocot_tree.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/stirling_number_of_the_second_kind.test.cpp
+    title: Test/LC/stirling_number_of_the_second_kind.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/two_edge_connected_components.test.cpp
     title: Test/LC/two_edge_connected_components.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1759,6 +1766,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/My/Utility/U32Pair.test.cpp
     title: Test/My/Utility/U32Pair.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/TUNA/HUPC2025-K.test.cpp
+    title: Test/TUNA/HUPC2025-K.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/UC/3-25-J.test.cpp
     title: Test/UC/3-25-J.test.cpp
@@ -2092,6 +2102,7 @@ data:
   - Src/FPS/PolynomialProducts.hpp
   - Src/FPS/KthTerm.hpp
   - Src/FPS/RationalSum.hpp
+  - Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -2368,6 +2379,7 @@ data:
   - Test/LC/stern_brocot_tree.test.cpp
   - Test/LC/two_edge_connected_components.test.cpp
   - Test/LC/eulerian_trail_undirected.test.cpp
+  - Test/LC/stirling_number_of_the_second_kind.test.cpp
   - Test/LC/gcd_convolution.test.cpp
   - Test/LC/sort_by_argument.test.cpp
   - Test/LC/bitwise_xor_convolution.test.cpp
@@ -2450,6 +2462,7 @@ data:
   - Test/Manual/aoj3369.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/abc272_g.test.cpp
+  - Test/TUNA/HUPC2025-K.test.cpp
   - Test/yukicoder/3090.test.cpp
   - Test/yukicoder/3044.test.cpp
   - Test/yukicoder/117.test.cpp

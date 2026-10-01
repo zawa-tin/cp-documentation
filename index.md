@@ -97,6 +97,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Semigroup/SemigroupConcept.hpp
       title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - name: Src/Combinatorics
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
+      title: "\u30B9\u30BF\u30FC\u30EA\u30F3\u30B0\u6570\u306B\u95A2\u3059\u308B\u30E1\
+        \u30E2"
   - name: Src/DataStructure/Bucket
     pages:
     - icon: ':heavy_check_mark:'
@@ -1839,6 +1845,9 @@ data:
       path: Test/LC/stern_brocot_tree.test.cpp
       title: Test/LC/stern_brocot_tree.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/stirling_number_of_the_second_kind.test.cpp
+      title: Test/LC/stirling_number_of_the_second_kind.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/two_edge_connected_components.test.cpp
       title: Test/LC/two_edge_connected_components.test.cpp
     - icon: ':heavy_check_mark:'
@@ -2072,6 +2081,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/My/Utility/U32Pair.test.cpp
       title: Test/My/Utility/U32Pair.test.cpp
+  - name: Test/TUNA
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/TUNA/HUPC2025-K.test.cpp
+      title: Test/TUNA/HUPC2025-K.test.cpp
   - name: Test/UC
     pages:
     - icon: ':heavy_check_mark:'
