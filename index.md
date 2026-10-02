@@ -201,8 +201,14 @@ data:
       path: Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
       title: Point Add Rectangle Sum
     - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+      title: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
       title: Rectangle Sum of PointCloud
+    - icon: ':heavy_check_mark:'
+      path: Src/DataStructure/RectangleSum/RectangleSumOfRectangles.hpp
+      title: Rectangle Sum of Rectangles
   - name: Src/DataStructure/SWAG
     pages:
     - icon: ':heavy_check_mark:'
@@ -1517,6 +1523,9 @@ data:
       path: Test/AtCoder/abc465_f.test.cpp
       title: Test/AtCoder/abc465_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc477_f.test.cpp
+      title: Test/AtCoder/abc477_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc477_g.test.cpp
       title: Test/AtCoder/abc477_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1841,6 +1850,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/static_range_sum.test.cpp
       title: Test/LC/static_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/static_rectangle_add_rectangle_sum.test.cpp
+      title: Test/LC/static_rectangle_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/stern_brocot_tree.test.cpp
       title: Test/LC/stern_brocot_tree.test.cpp

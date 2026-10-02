@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+    title: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
     title: Rectangle Sum of PointCloud
   - icon: ':heavy_check_mark:'
@@ -23,18 +26,25 @@ data:
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\
-    \n\n#include <algorithm>\n#include <concepts>\n#include <utility>\n#include <vector>\n\
-    #include <type_traits>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
-    \ <class T>\nconcept Point = requires (T p) {\n    typename T::P;\n    typename\
-    \ T::W;\n    { p.x } -> std::same_as<typename T::P&>;\n    { p.y } -> std::same_as<typename\
-    \ T::P&>;\n    { p.w } -> std::same_as<typename T::W&>;\n};\n\ntemplate <class\
-    \ T>\nconcept Rectangle = requires (T r) {\n    typename T::P;\n    { r.l } ->\
-    \ std::same_as<typename T::P&>;\n    { r.d } -> std::same_as<typename T::P&>;\n\
-    \    { r.r } -> std::same_as<typename T::P&>;\n    { r.u } -> std::same_as<typename\
-    \ T::P&>;\n};\n\ntemplate <class T, class U>\nconcept RSOPCQuery = Point<T> and\
-    \ Rectangle<U> and std::same_as<typename T::P, typename U::P>;\n\n} // namespace\
-    \ concepts\n\ntemplate <class T, class U>\nstd::vector<typename T::W> RectangleSumOfPointCloud(std::vector<T>\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp\"\
+    \n\n#include <concepts>\n#include <type_traits>\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class T>\nconcept Point = requires (T p) {\n    typename\
+    \ T::P;\n    typename T::W;\n    { p.x } -> std::same_as<typename T::P&>;\n  \
+    \  { p.y } -> std::same_as<typename T::P&>;\n    { p.w } -> std::same_as<typename\
+    \ T::W&>;\n};\n\ntemplate <class T>\nconcept RectangleAdd = requires (T r) {\n\
+    \    typename T::P;\n    typename T::W;\n    { r.l } -> std::same_as<typename\
+    \ T::P&>;\n    { r.d } -> std::same_as<typename T::P&>;\n    { r.r } -> std::same_as<typename\
+    \ T::P&>;\n    { r.u } -> std::same_as<typename T::P&>;\n    { r.w } -> std::same_as<typename\
+    \ T::W&>;\n};\n\ntemplate <class T>\nconcept Rectangle = requires (T r) {\n  \
+    \  typename T::P;\n    { r.l } -> std::same_as<typename T::P&>;\n    { r.d } ->\
+    \ std::same_as<typename T::P&>;\n    { r.r } -> std::same_as<typename T::P&>;\n\
+    \    { r.u } -> std::same_as<typename T::P&>;\n};\n\n} // namespace concepts\n\
+    \n\n} // namespace zawa\n#line 5 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\
+    \n\n#include <algorithm>\n#line 8 \"Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp\"\
+    \n#include <utility>\n#include <vector>\n\nnamespace zawa {\n\nnamespace concepts\
+    \ {\n\ntemplate <class T, class U>\nconcept RSOPCQuery = Point<T> and Rectangle<U>\
+    \ and std::same_as<typename T::P, typename U::P>;\n\n} // namespace concepts\n\
+    \ntemplate <class T, class U>\nstd::vector<typename T::W> RectangleSumOfPointCloud(std::vector<T>\
     \ ps, std::vector<U> qs) requires concepts::RSOPCQuery<T, U> {\n    using P =\
     \ typename T::P;\n    using W = typename T::W;\n    usize n{ps.size()}, q{qs.size()};\n\
     \    std::vector<P> xs(n);\n    for (usize i{} ; i < n ; i++) xs[i] = ps[i].x;\n\
@@ -84,10 +94,11 @@ data:
   dependsOn:
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
   isVerificationFile: true
   path: Test/LC/rectangle_sum/rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-05-16 15:41:11+09:00'
+  timestamp: '2026-10-02 17:24:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/rectangle_sum/rectangle_sum.test.cpp

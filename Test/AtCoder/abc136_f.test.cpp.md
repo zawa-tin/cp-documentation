@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+    title: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
     title: Rectangle Sum of PointCloud
   - icon: ':heavy_check_mark:'
@@ -61,10 +64,11 @@ data:
   dependsOn:
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc136_f.test.cpp
   requiredBy: []
-  timestamp: '2025-04-25 15:47:36+09:00'
+  timestamp: '2026-10-02 17:24:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc136_f.test.cpp

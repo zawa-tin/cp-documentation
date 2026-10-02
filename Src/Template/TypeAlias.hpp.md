@@ -95,6 +95,9 @@ data:
     path: Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
     title: Rectangle Sum of PointCloud
   - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/RectangleSum/RectangleSumOfRectangles.hpp
+    title: Rectangle Sum of Rectangles
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/SWAG/FoldableDeque.hpp
     title: Foldable Deque
   - icon: ':heavy_check_mark:'
@@ -1262,6 +1265,9 @@ data:
     path: Test/AtCoder/abc465_f.test.cpp
     title: Test/AtCoder/abc465_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc477_f.test.cpp
+    title: Test/AtCoder/abc477_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc477_g.test.cpp
     title: Test/AtCoder/abc477_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1619,6 +1625,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/static_range_sum.test.cpp
     title: Test/LC/static_range_sum.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/static_rectangle_add_rectangle_sum.test.cpp
+    title: Test/LC/static_rectangle_add_rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/staticrmq/DisjointSparseTable.test.cpp
     title: Test/LC/staticrmq/DisjointSparseTable.test.cpp
@@ -2013,6 +2022,7 @@ data:
   - Src/DataStructure/SWAG/FoldableDeque.hpp
   - Src/DataStructure/Bucket/BucketRangeProduct.hpp
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
+  - Src/DataStructure/RectangleSum/RectangleSumOfRectangles.hpp
   - Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
   - Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   - Src/DataStructure/DisjointSetUnion/PotentializedDisjointSetUnion.hpp
@@ -2295,6 +2305,7 @@ data:
   - Test/AtCoder/abc333_g.test.cpp
   - Test/AtCoder/abc238_c.test.cpp
   - Test/AtCoder/abc453_g.test.cpp
+  - Test/AtCoder/abc477_f.test.cpp
   - Test/AtCoder/abc284_f.test.cpp
   - Test/AtCoder/abc440_f.test.cpp
   - Test/AtCoder/arc196_a.test.cpp
@@ -2432,6 +2443,7 @@ data:
   - Test/LC/lca/LowestCommonAncestor.test.cpp
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+  - Test/LC/static_rectangle_add_rectangle_sum.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/jump_on_tree.test.cpp
   - Test/LC/polynomial_interpolation/quadratic.test.cpp
