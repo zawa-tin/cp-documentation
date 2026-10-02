@@ -1,34 +1,16 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
+#include "./RectangleSumConcepts.hpp"
 
 #include <algorithm>
 #include <concepts>
 #include <utility>
 #include <vector>
-#include <type_traits>
 
 namespace zawa {
 
 namespace concepts {
-
-template <class T>
-concept Point = requires (T p) {
-    typename T::P;
-    typename T::W;
-    { p.x } -> std::same_as<typename T::P&>;
-    { p.y } -> std::same_as<typename T::P&>;
-    { p.w } -> std::same_as<typename T::W&>;
-};
-
-template <class T>
-concept Rectangle = requires (T r) {
-    typename T::P;
-    { r.l } -> std::same_as<typename T::P&>;
-    { r.d } -> std::same_as<typename T::P&>;
-    { r.r } -> std::same_as<typename T::P&>;
-    { r.u } -> std::same_as<typename T::P&>;
-};
 
 template <class T, class U>
 concept RSOPCQuery = Point<T> and Rectangle<U> and std::same_as<typename T::P, typename U::P>;
