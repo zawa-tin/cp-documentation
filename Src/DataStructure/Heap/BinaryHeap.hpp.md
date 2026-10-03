@@ -12,6 +12,9 @@ data:
     path: Src/DataStructure/Heap/PartitionedProducts.hpp
     title: "\u8981\u7D20\u6607\u9806 $K$ \u500B\u3001\u964D\u9806 $N - K$ \u500B\u306E\
       \u7DCF\u7A4D\u3092\u7BA1\u7406"
+  - icon: ':warning:'
+    path: Src/Enumerate/EnumerateLabelledTree.hpp
+    title: Src/Enumerate/EnumerateLabelledTree.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/ContourAggregation.hpp
     title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
@@ -126,6 +129,7 @@ data:
   - Src/DataStructure/Heap/PartitionedProducts.hpp
   - Src/DataStructure/Heap/EraseablePriorityQueue.hpp
   - Src/Graph/Tree/ContourAggregation.hpp
+  - Src/Enumerate/EnumerateLabelledTree.hpp
   timestamp: '2026-01-14 16:33:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

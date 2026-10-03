@@ -161,6 +161,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/DataStructure/Wavelet/WaveletMatrix.hpp
     title: Wavelet Matrix
+  - icon: ':warning:'
+    path: Src/Enumerate/EnumerateLabelledTree.hpp
+    title: Src/Enumerate/EnumerateLabelledTree.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/BostanMori.hpp
     title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori\
@@ -2080,6 +2083,7 @@ data:
   - Src/Graph/ShortestPath/WeightedShortestPathTree.hpp
   - Src/Graph/ShortestPath/Dijkstra.hpp
   - Src/Graph/ShortestPath/ShortestPathTree.hpp
+  - Src/Enumerate/EnumerateLabelledTree.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp

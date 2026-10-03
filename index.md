@@ -296,6 +296,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/DataStructure/Wavelet/WaveletMatrix.hpp
       title: Wavelet Matrix
+  - name: Src/Enumerate
+    pages:
+    - icon: ':warning:'
+      path: Src/Enumerate/EnumerateLabelledTree.hpp
+      title: Src/Enumerate/EnumerateLabelledTree.hpp
   - name: Src/FPS
     pages:
     - icon: ':heavy_check_mark:'
