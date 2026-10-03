@@ -12,6 +12,9 @@ data:
     path: Src/FPS/KthTerm.hpp
     title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
       \u308B"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/BMBM.hpp
+    title: BMBM
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc436_g.test.cpp
@@ -25,6 +28,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3044.test.cpp
     title: Test/yukicoder/3044.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3228.test.cpp
+    title: Test/yukicoder/3228.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -79,6 +85,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/BostanMori.hpp
   requiredBy:
+  - Src/Sequence/BMBM.hpp
   - Src/FPS/KthTerm.hpp
   timestamp: '2026-01-03 22:37:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
@@ -87,6 +94,7 @@ data:
   - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/yukicoder/3044.test.cpp
+  - Test/yukicoder/3228.test.cpp
 documentation_of: Src/FPS/BostanMori.hpp
 layout: document
 title: "$[x^{N}]\\frac{P(x)}{Q(x)}$ \u306E\u9AD8\u901F\u8A08\u7B97 (Bostan-Mori \u30A2\

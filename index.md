@@ -801,6 +801,9 @@ data:
       path: Src/Sequence/AhoCorasick.hpp
       title: Aho-Corasick
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/BMBM.hpp
+      title: BMBM
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/BitwiseAndConvolution.hpp
       title: Src/Sequence/BitwiseAndConvolution.hpp
     - icon: ':heavy_check_mark:'
@@ -818,6 +821,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/EnumerateStaticLengthProduct.hpp
       title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Sequence/FindLinearRecurrence.hpp
+      title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u3092\u767A\u898B\u3059\u308B(Berlekamp-Massey)"
     - icon: ':heavy_check_mark:'
       path: Src/Sequence/InversionNumber.hpp
       title: Src/Sequence/InversionNumber.hpp
@@ -1752,6 +1758,9 @@ data:
       path: Test/LC/exp_of_formal_power_series.test.cpp
       title: Test/LC/exp_of_formal_power_series.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/find_linear_recurrence.test.cpp
+      title: Test/LC/find_linear_recurrence.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/frequency_table_of_tree_distance.test.cpp
       title: Test/LC/frequency_table_of_tree_distance.test.cpp
     - icon: ':heavy_check_mark:'
@@ -2135,5 +2144,8 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/yukicoder/3189.test.cpp
       title: Test/yukicoder/3189.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/yukicoder/3228.test.cpp
+      title: Test/yukicoder/3228.test.cpp
 layout: toppage
 ---

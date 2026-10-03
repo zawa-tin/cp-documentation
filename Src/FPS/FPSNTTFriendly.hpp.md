@@ -12,10 +12,6 @@ data:
     path: Src/FPS/DivisionOfPolynomials.hpp
     title: Src/FPS/DivisionOfPolynomials.hpp
   - icon: ':heavy_check_mark:'
-    path: Src/FPS/KthTerm.hpp
-    title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u306EK\u9805\u76EE\u3092\u8A08\u7B97\u3059\
-      \u308B"
-  - icon: ':heavy_check_mark:'
     path: Src/FPS/MultipointEvaluation.hpp
     title: Src/FPS/MultipointEvaluation.hpp
   _extendedVerifiedWith:
@@ -37,9 +33,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/tdpc_fibonacci.test.cpp
-    title: Test/AtCoder/tdpc_fibonacci.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/division_of_polynomials.test.cpp
     title: Test/LC/division_of_polynomials.test.cpp
@@ -191,7 +184,6 @@ data:
   requiredBy:
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/MultipointEvaluation.hpp
-  - Src/FPS/KthTerm.hpp
   timestamp: '2026-01-03 20:52:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -202,7 +194,6 @@ data:
   - Test/AtCoder/fps_24_p.test.cpp
   - Test/AtCoder/abc215_g.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
-  - Test/AtCoder/tdpc_fibonacci.test.cpp
   - Test/LC/product_of_polynomial_sequence.test.cpp
   - Test/LC/multipoint_evaluation.test.cpp
   - Test/LC/pow_of_formal_power_series.test.cpp

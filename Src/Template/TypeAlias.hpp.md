@@ -594,6 +594,9 @@ data:
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
+    path: Src/Sequence/BMBM.hpp
+    title: BMBM
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/BitwiseAndConvolution.hpp
     title: Src/Sequence/BitwiseAndConvolution.hpp
   - icon: ':heavy_check_mark:'
@@ -611,6 +614,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/EnumerateStaticLengthProduct.hpp
     title: Src/Sequence/EnumerateStaticLengthProduct.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/FindLinearRecurrence.hpp
+    title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u3092\u767A\u898B\u3059\u308B(Berlekamp-Massey)"
   - icon: ':heavy_check_mark:'
     path: Src/Sequence/InversionNumber.hpp
     title: Src/Sequence/InversionNumber.hpp
@@ -1494,6 +1500,9 @@ data:
     path: Test/LC/exp_of_formal_power_series.test.cpp
     title: Test/LC/exp_of_formal_power_series.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/LC/find_linear_recurrence.test.cpp
+    title: Test/LC/find_linear_recurrence.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/frequency_table_of_tree_distance.test.cpp
     title: Test/LC/frequency_table_of_tree_distance.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1811,6 +1820,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3189.test.cpp
     title: Test/yukicoder/3189.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3228.test.cpp
+    title: Test/yukicoder/3228.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -1915,6 +1927,7 @@ data:
   - Src/Sequence/Manacher.hpp
   - Src/Sequence/MoRangeQuery.hpp
   - Src/Sequence/OfflineRangeProduct.hpp
+  - Src/Sequence/FindLinearRecurrence.hpp
   - Src/Sequence/EnumerateStaticLengthProduct.hpp
   - Src/Sequence/BitwiseXORConvolution.hpp
   - Src/Sequence/AhoCorasick.hpp
@@ -1922,6 +1935,7 @@ data:
   - Src/Sequence/BitwiseOrConvolution.hpp
   - Src/Sequence/RunLengthEncoding.hpp
   - Src/Sequence/InversionNumber.hpp
+  - Src/Sequence/BMBM.hpp
   - Src/Sequence/RangeKthSmallest.hpp
   - Src/Sequence/PermutationSwapSort.hpp
   - Src/Sequence/MajorityVote.hpp
@@ -2425,6 +2439,7 @@ data:
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
+  - Test/LC/find_linear_recurrence.test.cpp
   - Test/LC/frequency_table_of_tree_distance.test.cpp
   - Test/LC/static_range_frequency.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
@@ -2479,6 +2494,7 @@ data:
   - Test/yukicoder/3044.test.cpp
   - Test/yukicoder/117.test.cpp
   - Test/yukicoder/3189.test.cpp
+  - Test/yukicoder/3228.test.cpp
   - Test/UC/3-37-M.test.cpp
   - Test/UC/4-9-A.test.cpp
   - Test/UC/3-36-F.test.cpp

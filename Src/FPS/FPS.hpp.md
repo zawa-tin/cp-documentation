@@ -36,6 +36,9 @@ data:
     path: Src/FPS/RationalSum.hpp
     title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
       \u308B\u6709\u7406\u5F0F\u306E\u7DCF\u548C"
+  - icon: ':heavy_check_mark:'
+    path: Src/Sequence/BMBM.hpp
+    title: BMBM
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc215_g.test.cpp
@@ -91,6 +94,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/yukicoder/3044.test.cpp
     title: Test/yukicoder/3044.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/yukicoder/3228.test.cpp
+    title: Test/yukicoder/3228.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -140,6 +146,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/FPS.hpp
   requiredBy:
+  - Src/Sequence/BMBM.hpp
   - Src/FPS/PowerProjection.hpp
   - Src/FPS/BostanMori.hpp
   - Src/FPS/FPSNTTFriendly.hpp
@@ -170,6 +177,7 @@ data:
   - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/yukicoder/3044.test.cpp
+  - Test/yukicoder/3228.test.cpp
 documentation_of: Src/FPS/FPS.hpp
 layout: document
 redirect_from:
