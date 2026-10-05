@@ -9,6 +9,9 @@ data:
     path: Src/Algebra/Monoid/MonoidPower.hpp
     title: Src/Algebra/Monoid/MonoidPower.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/ReverseOrder.hpp
+    title: Src/Algebra/Monoid/ReverseOrder.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
     title: Lazy Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -19,6 +22,9 @@ data:
     title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
       \u7DCF\u7A4D"
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/0478.test.cpp
+    title: Test/AOJ/0478.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2450.test.cpp
     title: Test/AOJ/2450.test.cpp
@@ -74,6 +80,7 @@ data:
   requiredBy:
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Algebra/Monoid/ReverseOrder.hpp
   - Src/Algebra/Monoid/MonoidPower.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
@@ -84,6 +91,7 @@ data:
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/DSL_2_G.test.cpp
+  - Test/AOJ/0478.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
   - Test/AtCoder/abl_e.test.cpp
