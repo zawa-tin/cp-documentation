@@ -16,8 +16,9 @@ documentation_of: //Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
 
 計算量は全て $O(\log n)$
 
-テンプレートで与えるクラスに`static Element power(Element,usize)`が定義されていると定数倍が早くなる。オーダーレベルで計算量が改善している分けでは無いので、誤った`power`を書くくらいなら書かない方がいいかも。
+テンプレートで与えるクラスに`static Element power(Element,std::unsigned_integral)`が定義されていると定数倍が早くなる。オーダーレベルで計算量が改善している分けでは無いので、誤った`power`を書くくらいなら書かない方がいいかも。
 
 ## 更新履歴
 
 - 2026/05/04: 作成
+- 2026/10/05: `MonoidPower`関数が追加された影響で、累乗に関する処理がラッパーを挟むだけになった。

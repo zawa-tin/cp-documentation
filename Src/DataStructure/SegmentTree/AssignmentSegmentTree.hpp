@@ -1,8 +1,7 @@
 #pragma once
 
 #include "../../Template/TypeAlias.hpp"
-#include "../../Algebra/Monoid/MonoidConcept.hpp"
-#include "../../Algebra/PowerableConcept.hpp"
+#include "../../Algebra/Monoid/MonoidPower.hpp"
 #include "./SegmentTree.hpp"
 
 #include <cassert>
@@ -17,9 +16,6 @@ template <class T>
 concept EqualCompare = requires(T a, T b) {
     { a == b } -> std::convertible_to<bool>;
 };
-
-template <class T>
-concept FastPowerableMonoid = Monoid<T> and Powerable<T, usize>;
 
 } // namespace concepts
 
@@ -114,18 +110,8 @@ private:
 
     std::set<usize> m_ls; 
 
-    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM> {
-        return VM::power(v, p);
-    }
-
-    static V power(V v, usize p) {
-        V res{VM::identity()};
-        while (p) {
-            if (p & 1) res = VM::operation(res, v);
-            v = VM::operation(v, v);
-            p >>= 1; 
-        }
-        return res;
+    static V power(V v, u32 p) {
+        return MonoidPower<VM,u32>(v,p);
     }
 };
 
