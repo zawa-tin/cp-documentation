@@ -3,28 +3,14 @@
 
 /*
  * AtCoder Beginner Contest 237 G - Range Sort Query
- * https://atcoder.jp/contests/abc237/submissions/75499490
+ * https://atcoder.jp/contests/abc237/submissions/79803398
  */
 
+#include "../../Src/Algebra/Group/AdditiveGroup.hpp"
 #include "../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp"
 #include "../../Src/Template/TypeAlias.hpp"
 using namespace zawa;
-
-struct M {
-    using Element = int;
-    static constexpr int identity() {
-        return 0;
-    }
-    static constexpr int operation(int l, int r) {
-        return l + r;
-    }
-    static constexpr int power(int v, int exp) {
-        return v * exp;
-    }
-};
-
 #include <iostream>
-
 void solve() {
     std::cin.tie(nullptr);
     std::cout.tie(nullptr);
@@ -37,7 +23,7 @@ void solve() {
         std::cin >> P;
         init[i] = (P < X ? 0 : (P == X ? 1 : 2));
     }
-    AssignmentSegmentTree<M> seg{init};
+    AssignmentSegmentTree<AdditiveGroup<int>> seg{init};
     int z = 0, o = 0, t = 0;
     auto prod = [&](int l, int r) -> void {
         int sum = seg.product(l, r);

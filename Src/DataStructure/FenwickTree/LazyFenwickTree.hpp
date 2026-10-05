@@ -1,7 +1,7 @@
 #pragma once
 
 #include "./FenwickTree.hpp"
-#include "../../Algebra/PowerableConcept.hpp"
+#include "../../Algebra/Monoid/MonoidPower.hpp"
 #include "../../Algebra/Group/CartesianProductGroup.hpp"
 
 #include <vector>
@@ -77,19 +77,8 @@ private:
 
     FenwickTree<CartesianProductGroup<G>> m_fen;
 
-    static T power(T v,usize exp) requires concepts::Powerable<G,usize> {
-        return G::power(v,exp);
-    }
-
-    static T power(T v,usize exp) {
-        T res = G::identity();
-        while (exp) {
-            if (exp & 1)
-                res = G::operation(res,v);
-            v = G::operation(v,v);
-            exp >>= 1;
-        }
-        return res;
+    static inline T power(const T& v,u32 exp) {
+        return MonoidPower<G,u32>(v,exp);
     }
 };
 

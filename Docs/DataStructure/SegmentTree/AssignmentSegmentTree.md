@@ -19,7 +19,7 @@ template <Concept::Monoid Monoid>
 
 普通のセグ木と同じものを使えば、コンパイルが通って問題なく使える。
 
-`Monoid::Element power(M::Element x, u64 p)`というstaticメンバを定義すると、定数倍や場合によっては計算量が改善する実装に分岐する。中身は $x$ を`operation`で $p$ 乗した値を返すようにする。
+`Monoid::Element power(M::Element x, std::unsigned_integral p)`というstaticメンバを定義すると、定数倍や場合によっては計算量が改善する実装に分岐する。中身は $x$ を`operation`で $p$ 乗した値を返すようにする。
 
 `power`が無い場合は二分累乗法によって計算する。
 
@@ -114,3 +114,4 @@ $O(\log N)$
 ## 更新履歴
 
 - 2026/05/04: `power`に関するコンセプトを別ファイルに移植、`power`の引数を`usize`に変更
+- 2026/10/05: `MonoidPower`関数が切り分けられた
