@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./MonoidConcept.hpp"
+#include "../PowerableConcept.hpp"
 
 namespace zawa {
 
@@ -15,6 +16,11 @@ struct ReverseOrder {
 
     static Element operation(const Element& L, const Element& R) {
         return M::operation(R, L);
+    }
+
+    template <class U>
+    static Element power(const Element& x,U exp) requires concepts::Powerable<M,U> {
+        return M::power(x,exp);
     }
 
 };
