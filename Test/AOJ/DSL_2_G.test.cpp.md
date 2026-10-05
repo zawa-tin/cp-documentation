@@ -14,6 +14,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidPower.hpp
+    title: Src/Algebra/Monoid/MonoidPower.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/PowerableConcept.hpp
     title: Src/Algebra/PowerableConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -117,17 +120,26 @@ data:
     \ <= i and i <= static_cast<i32>(m_n));\n        V res{ VM::identity() };\n  \
     \      for ( ; i > 0 ; i -= lsb(i)) {\n            res = VM::operation(res, m_dat[i]);\n\
     \        }\n        return res;\n    }\n\n};\n\n} // namespace zawa\n#line 2 \"\
-    Src/Algebra/PowerableConcept.hpp\"\n\n#line 4 \"Src/Algebra/PowerableConcept.hpp\"\
-    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T,class U>\nconcept\
-    \ Powerable = requires {\n    typename T::Element;\n    { T::power(std::declval<typename\
-    \ T::Element>(), std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n\
-    };\n\n} // namespace concepts\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\
-    \n\n#line 5 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\n\n#include <utility>\n\
-    \nnamespace zawa {\n\ntemplate <concepts::Group G1, concepts::Group G2 = G1>\n\
-    class CartesianProductGroup {\npublic:\n\n    using Element = std::pair<typename\
-    \ G1::Element,typename G2::Element>;\n\n    static Element identity() {\n    \
-    \    return {G1::identity(),G2::identity()};\n    }\n\n    static Element operation(const\
-    \ Element& l,const Element& r) {\n        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};\n\
+    Src/Algebra/Monoid/MonoidPower.hpp\"\n\n#line 2 \"Src/Algebra/PowerableConcept.hpp\"\
+    \n\n#line 4 \"Src/Algebra/PowerableConcept.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class T,class U>\nconcept Powerable = requires {\n \
+    \   typename T::Element;\n    { T::power(std::declval<typename T::Element>(),\
+    \ std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n};\n\n\
+    } // namespace concepts\n\n} // namespace zawa\n#line 5 \"Src/Algebra/Monoid/MonoidPower.hpp\"\
+    \n\n#line 7 \"Src/Algebra/Monoid/MonoidPower.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <concepts::Monoid M,std::unsigned_integral U>\ntypename M::Element MonoidPower(const\
+    \ typename M::Element& x,U exp) {\n    if constexpr (concepts::Powerable<M,U>)\
+    \ \n        return M::power(x,exp);\n    else {\n        auto a = x;\n       \
+    \ auto res = M::identity();\n        while (exp) {\n            if (exp & 1)\n\
+    \                res = M::operation(res,a);\n            a = M::operation(a,a);\n\
+    \            exp >>= 1;\n        }\n        return res;\n    }\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/Algebra/Group/CartesianProductGroup.hpp\"\n\n#line 5 \"\
+    Src/Algebra/Group/CartesianProductGroup.hpp\"\n\n#include <utility>\n\nnamespace\
+    \ zawa {\n\ntemplate <concepts::Group G1, concepts::Group G2 = G1>\nclass CartesianProductGroup\
+    \ {\npublic:\n\n    using Element = std::pair<typename G1::Element,typename G2::Element>;\n\
+    \n    static Element identity() {\n        return {G1::identity(),G2::identity()};\n\
+    \    }\n\n    static Element operation(const Element& l,const Element& r) {\n\
+    \        return {G1::operation(l.first,r.first),G2::operation(l.second,r.second)};\n\
     \    }\n\n    static Element inverse(const Element& v) {\n        return {G1::inverse(v.first),G2::inverse(v.second)};\n\
     \    }\n\n    template <class U>\n    static Element power(const Element& v,U\
     \ exp) requires (concepts::Powerable<G1,U> and concepts::Powerable<G2,U>) {\n\
@@ -154,25 +166,22 @@ data:
     \    }\n\n    std::vector<T> container() const {\n        std::vector<T> res(size());\n\
     \        for (usize i = 0 ; i < size() ; i++)\n            res[i] = get(i);\n\
     \        return res;\n    }\n\nprivate:\n\n    usize m_n;\n\n    FenwickTree<CartesianProductGroup<G>>\
-    \ m_fen;\n\n    static T power(T v,usize exp) requires concepts::Powerable<G,usize>\
-    \ {\n        return G::power(v,exp);\n    }\n\n    static T power(T v,usize exp)\
-    \ {\n        T res = G::identity();\n        while (exp) {\n            if (exp\
-    \ & 1)\n                res = G::operation(res,v);\n            v = G::operation(v,v);\n\
-    \            exp >>= 1;\n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\n\nnamespace zawa {\n\n\
-    template <class T>\nclass AdditiveGroup {\npublic:\n    using Element = T;\n \
-    \   static constexpr T identity() noexcept {\n        return T{};\n    }\n   \
-    \ static constexpr T operation(T l,T r) noexcept {\n        return l + r;\n  \
-    \  }\n    static constexpr T inverse(T v) noexcept {\n        return -v;\n   \
-    \ }\n    template <class U>\n    static constexpr T power(T v,U exp) noexcept\
-    \ {\n        return v * static_cast<T>(exp);\n    }\n};\n\n} // namespace zawa\n\
-    #line 5 \"Test/AOJ/DSL_2_G.test.cpp\"\nusing namespace zawa;\n\n#include <iostream>\n\
-    using namespace std;\n\nint main() {\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    int N,Q;\n    cin >> N >> Q;\n    LazyFenwickTree<AdditiveGroup<long long>>\
-    \ fen(N);\n    while (Q--) {\n        int type,l,r;\n        cin >> type >> l\
-    \ >> r;\n        l--;\n        if (type == 0) {\n            int x;\n        \
-    \    cin >> x;\n            fen.operation(l,r,x);\n        }\n        else if\
-    \ (type == 1)\n            cout << fen.product(l,r) << '\\n';\n    }\n}\n"
+    \ m_fen;\n\n    static inline T power(const T& v,u32 exp) {\n        return MonoidPower<G,u32>(v,exp);\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
+    \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
+    \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
+    \ return T{};\n    }\n    static constexpr T operation(T l,T r) noexcept {\n \
+    \       return l + r;\n    }\n    static constexpr T inverse(T v) noexcept {\n\
+    \        return -v;\n    }\n    template <class U>\n    static constexpr T power(T\
+    \ v,U exp) noexcept {\n        return v * static_cast<T>(exp);\n    }\n};\n\n\
+    } // namespace zawa\n#line 5 \"Test/AOJ/DSL_2_G.test.cpp\"\nusing namespace zawa;\n\
+    \n#include <iostream>\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N,Q;\n    cin >> N >>\
+    \ Q;\n    LazyFenwickTree<AdditiveGroup<long long>> fen(N);\n    while (Q--) {\n\
+    \        int type,l,r;\n        cin >> type >> l >> r;\n        l--;\n       \
+    \ if (type == 0) {\n            int x;\n            cin >> x;\n            fen.operation(l,r,x);\n\
+    \        }\n        else if (type == 1)\n            cout << fen.product(l,r)\
+    \ << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_G\"\
     \n\n#include \"../../Src/DataStructure/FenwickTree/LazyFenwickTree.hpp\"\n#include\
     \ \"../../Src/Algebra/Group/AdditiveGroup.hpp\"\nusing namespace zawa;\n\n#include\
@@ -189,13 +198,14 @@ data:
   - Src/Algebra/Group/GroupConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidPower.hpp
   - Src/Algebra/PowerableConcept.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/AOJ/DSL_2_G.test.cpp
   requiredBy: []
-  timestamp: '2026-06-24 18:50:20+09:00'
+  timestamp: '2026-10-05 23:17:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_G.test.cpp

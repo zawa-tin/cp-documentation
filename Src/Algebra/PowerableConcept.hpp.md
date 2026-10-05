@@ -6,6 +6,9 @@ data:
     path: Src/Algebra/Group/CartesianProductGroup.hpp
     title: Src/Algebra/Group/CartesianProductGroup.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidPower.hpp
+    title: Src/Algebra/Monoid/MonoidPower.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
     title: Lazy Fenwick Tree
   - icon: ':heavy_check_mark:'
@@ -71,6 +74,7 @@ data:
   requiredBy:
   - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Algebra/Monoid/MonoidPower.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2026-05-04 14:21:38+09:00'

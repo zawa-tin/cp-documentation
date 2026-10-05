@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidPower.hpp
+    title: Src/Algebra/Monoid/MonoidPower.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/PowerableConcept.hpp
     title: Src/Algebra/PowerableConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -42,23 +45,32 @@ data:
     \nnamespace zawa {\n\nvoid SetFastIO() {\n    std::cin.tie(nullptr)->sync_with_stdio(false);\n\
     }\n\nvoid SetPrecision(u32 dig) {\n    std::cout << std::fixed << std::setprecision(dig);\n\
     }\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidPower.hpp\"\n\n#line 2 \"Src/Algebra/PowerableConcept.hpp\"\
     \n\n#include <concepts>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate\
-    \ <class T>\nconcept Semigroup = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ <class T,class U>\nconcept Powerable = requires {\n    typename T::Element;\n\
+    \    { T::power(std::declval<typename T::Element>(), std::declval<U>()) }\n  \
+    \      -> std::same_as<typename T::Element>;\n};\n\n} // namespace concepts\n\n\
+    } // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line\
+    \ 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#line 4 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
     \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
     \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
     \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
     \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
     \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
     \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
-    \n} // namespace\n\n} // namespace zawa\n#line 2 \"Src/Algebra/PowerableConcept.hpp\"\
-    \n\n#line 4 \"Src/Algebra/PowerableConcept.hpp\"\n\nnamespace zawa {\n\nnamespace\
-    \ concepts {\n\ntemplate <class T,class U>\nconcept Powerable = requires {\n \
-    \   typename T::Element;\n    { T::power(std::declval<typename T::Element>(),\
-    \ std::declval<U>()) }\n        -> std::same_as<typename T::Element>;\n};\n\n\
-    } // namespace concepts\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
-    \n\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n\
-    #include <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/Algebra/Monoid/MonoidPower.hpp\"\
+    \n\n#line 7 \"Src/Algebra/Monoid/MonoidPower.hpp\"\n\nnamespace zawa {\n\ntemplate\
+    \ <concepts::Monoid M,std::unsigned_integral U>\ntypename M::Element MonoidPower(const\
+    \ typename M::Element& x,U exp) {\n    if constexpr (concepts::Powerable<M,U>)\
+    \ \n        return M::power(x,exp);\n    else {\n        auto a = x;\n       \
+    \ auto res = M::identity();\n        while (exp) {\n            if (exp & 1)\n\
+    \                res = M::operation(res,a);\n            a = M::operation(a,a);\n\
+    \            exp >>= 1;\n        }\n        return res;\n    }\n}\n\n} // namespace\
+    \ zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 5 \"\
+    Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#include <vector>\n#include\
+    \ <cassert>\n#include <functional>\n#include <type_traits>\n#include <ostream>\n\
     \nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\nclass SegmentTree {\n\
     public:\n\n    using VM = Monoid;\n\n    using V = typename VM::Element;\n\n \
     \   using OM = Monoid;\n\n    using O = typename OM::Element;\n\n    SegmentTree()\
@@ -112,32 +124,31 @@ data:
     \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
     \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
     \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
-    \ m_dat;\n};\n\n} // namespace zawa\n#line 7 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
-    \n\n#line 10 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 6 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\
+    \n\n#line 9 \"Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n#include\
     \ <set>\n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept\
     \ EqualCompare = requires(T a, T b) {\n    { a == b } -> std::convertible_to<bool>;\n\
-    };\n\ntemplate <class T>\nconcept FastPowerableMonoid = Monoid<T> and Powerable<T,\
-    \ usize>;\n\n} // namespace concepts\n\ntemplate <concepts::Monoid Monoid>\nclass\
-    \ AssignmentSegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V =\
-    \ typename VM::Element;\n\n    AssignmentSegmentTree() = default;\n\n    explicit\
-    \ AssignmentSegmentTree(usize n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{}\
-    \ {\n        m_dat.shrink_to_fit();\n        assert(n);\n        m_ls.insert(0u);\n\
-    \        m_ls.insert(n);\n    }\n\n    explicit AssignmentSegmentTree(std::vector<V>\
-    \ dat) : m_seg{}, m_dat{dat}, m_ls{} {\n        m_dat.shrink_to_fit();\n     \
-    \   if constexpr (concepts::EqualCompare<V>) {\n            for (usize i{}, j{}\
-    \ ; i < m_dat.size() ; ) {\n                while (j < dat.size() and dat[i] ==\
-    \ dat[j]) j++;\n                m_ls.insert(i);\n                dat[i] = power(m_dat[i],\
-    \ j - i);\n                for ( ; ++i < j ; dat[i] = m_dat[i] = VM::identity())\
-    \ ;\n            }\n        }\n        else {\n            for (usize i{} ; i\
-    \ < m_dat.size() ; i++) m_ls.insert(i);\n        }\n        m_ls.insert(dat.size());\n\
-    \        m_seg = decltype(m_seg){dat};\n    }\n\n    [[nodiscard]] inline usize\
-    \ size() const noexcept {\n        return m_dat.size();\n    }\n\n    [[nodiscard]]\
-    \ V product(usize l, usize r) const {\n        assert(l <= r and r <= size());\n\
-    \        if (l == r) return VM::identity();\n        const auto second_l = m_ls.upper_bound(l);\n\
-    \        const auto first_l = std::prev(second_l);\n        if (second_l != m_ls.end()\
-    \ and r <= *second_l)\n            return power(m_dat[*first_l], r - l);\n   \
-    \     const auto last_l = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n\
-    \                power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
+    };\n\n} // namespace concepts\n\ntemplate <concepts::Monoid Monoid>\nclass AssignmentSegmentTree\
+    \ {\npublic:\n\n    using VM = Monoid;\n\n    using V = typename VM::Element;\n\
+    \n    AssignmentSegmentTree() = default;\n\n    explicit AssignmentSegmentTree(usize\
+    \ n) : m_seg{n}, m_dat(n, VM::identity()), m_ls{} {\n        m_dat.shrink_to_fit();\n\
+    \        assert(n);\n        m_ls.insert(0u);\n        m_ls.insert(n);\n    }\n\
+    \n    explicit AssignmentSegmentTree(std::vector<V> dat) : m_seg{}, m_dat{dat},\
+    \ m_ls{} {\n        m_dat.shrink_to_fit();\n        if constexpr (concepts::EqualCompare<V>)\
+    \ {\n            for (usize i{}, j{} ; i < m_dat.size() ; ) {\n              \
+    \  while (j < dat.size() and dat[i] == dat[j]) j++;\n                m_ls.insert(i);\n\
+    \                dat[i] = power(m_dat[i], j - i);\n                for ( ; ++i\
+    \ < j ; dat[i] = m_dat[i] = VM::identity()) ;\n            }\n        }\n    \
+    \    else {\n            for (usize i{} ; i < m_dat.size() ; i++) m_ls.insert(i);\n\
+    \        }\n        m_ls.insert(dat.size());\n        m_seg = decltype(m_seg){dat};\n\
+    \    }\n\n    [[nodiscard]] inline usize size() const noexcept {\n        return\
+    \ m_dat.size();\n    }\n\n    [[nodiscard]] V product(usize l, usize r) const\
+    \ {\n        assert(l <= r and r <= size());\n        if (l == r) return VM::identity();\n\
+    \        const auto second_l = m_ls.upper_bound(l);\n        const auto first_l\
+    \ = std::prev(second_l);\n        if (second_l != m_ls.end() and r <= *second_l)\n\
+    \            return power(m_dat[*first_l], r - l);\n        const auto last_l\
+    \ = std::prev(m_ls.upper_bound(r));\n        V res = VM::operation(\n        \
+    \        power(m_dat[*first_l], *second_l - l),\n                m_seg.product(*second_l,\
     \ *last_l)\n                );\n        if (r == *last_l) return res;\n      \
     \  return VM::operation(res, power(m_dat[*last_l], r - *last_l));\n    }\n\n \
     \   void assign(usize l, usize r, V v) {\n        assert(l <= r and r <= m_dat.size());\n\
@@ -153,24 +164,20 @@ data:
     \ const {\n        assert(i < size());\n        return m_dat[*std::prev(m_ls.upper_bound(i))];\n\
     \    }\n\n    [[nodiscard]] V operator[](usize i) const {\n        return get(i);\n\
     \    }\n\nprivate:\n\n    SegmentTree<VM> m_seg;\n\n    std::vector<V> m_dat;\n\
-    \n    std::set<usize> m_ls; \n\n    static V power(V v, usize p) requires concepts::FastPowerableMonoid<VM>\
-    \ {\n        return VM::power(v, p);\n    }\n\n    static V power(V v, usize p)\
-    \ {\n        V res{VM::identity()};\n        while (p) {\n            if (p &\
-    \ 1) res = VM::operation(res, v);\n            v = VM::operation(v, v);\n    \
-    \        p >>= 1; \n        }\n        return res;\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 6 \"Test/AOJ/DSL_2_F.test.cpp\"\nusing namespace zawa;\n\n#line\
-    \ 10 \"Test/AOJ/DSL_2_F.test.cpp\"\n#include <algorithm>\n#include <limits>\n\n\
-    struct vM {\n    using Element = int;\n    static constexpr Element identity()\
-    \ {\n        return std::numeric_limits<Element>::max();\n    } \n    static constexpr\
-    \ Element operation(Element L, Element R) {\n        return std::min(L, R);\n\
-    \    }\n    static constexpr Element power(Element L, u32 op) {\n        return\
-    \ (op == 0 ? identity() : L);\n    }\n};\n\nint main() {\n    SetFastIO();\n \
-    \   int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM> seg(N);\n\
-    \    while (Q--) {\n        int t;\n        int l, r;\n        std::cin >> t >>\
-    \ l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n         \
-    \   std::cin >> x;\n            seg.assign(l, r, x);\n        }\n        else\
-    \ if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n      \
-    \  }\n        else assert(false);\n    }\n}\n"
+    \n    std::set<usize> m_ls; \n\n    static V power(V v, u32 p) {\n        return\
+    \ MonoidPower<VM,u32>(v,p);\n    }\n};\n\n} // namespace zawa\n#line 6 \"Test/AOJ/DSL_2_F.test.cpp\"\
+    \nusing namespace zawa;\n\n#line 10 \"Test/AOJ/DSL_2_F.test.cpp\"\n#include <algorithm>\n\
+    #include <limits>\n\nstruct vM {\n    using Element = int;\n    static constexpr\
+    \ Element identity() {\n        return std::numeric_limits<Element>::max();\n\
+    \    } \n    static constexpr Element operation(Element L, Element R) {\n    \
+    \    return std::min(L, R);\n    }\n    static constexpr Element power(Element\
+    \ L, u32 op) {\n        return (op == 0 ? identity() : L);\n    }\n};\n\nint main()\
+    \ {\n    SetFastIO();\n    int N, Q;\n    std::cin >> N >> Q;\n    AssignmentSegmentTree<vM>\
+    \ seg(N);\n    while (Q--) {\n        int t;\n        int l, r;\n        std::cin\
+    \ >> t >> l >> r;\n        r++;\n        if (t == 0) {\n            int x;\n \
+    \           std::cin >> x;\n            seg.assign(l, r, x);\n        }\n    \
+    \    else if (t == 1) {\n            std::cout << seg.product(l, r) << '\\n';\n\
+    \        }\n        else assert(false);\n    }\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/library/3/DSL/2/DSL_2_F\"\
     \n\n#include \"../../Src/Template/TypeAlias.hpp\"\n#include \"../../Src/Template/IOSetting.hpp\"\
     \n#include \"../../Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp\"\n\
@@ -190,14 +197,15 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Template/IOSetting.hpp
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
+  - Src/Algebra/Monoid/MonoidPower.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   isVerificationFile: true
   path: Test/AOJ/DSL_2_F.test.cpp
   requiredBy: []
-  timestamp: '2026-05-04 14:21:38+09:00'
+  timestamp: '2026-10-05 23:17:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AOJ/DSL_2_F.test.cpp

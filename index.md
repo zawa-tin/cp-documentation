@@ -59,6 +59,9 @@ data:
       path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
       title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/MonoidPower.hpp
+      title: Src/Algebra/Monoid/MonoidPower.hpp
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/PrefixProductMonoid.hpp
       title: "\u533A\u9593Prefix\u7DCF\u7A4D\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'

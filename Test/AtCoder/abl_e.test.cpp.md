@@ -5,6 +5,9 @@ data:
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidPower.hpp
+    title: Src/Algebra/Monoid/MonoidPower.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/PowerableConcept.hpp
     title: Src/Algebra/PowerableConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -67,14 +70,15 @@ data:
   dependsOn:
   - Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Monoid/MonoidPower.hpp
+  - Src/Algebra/PowerableConcept.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
-  - Src/Algebra/PowerableConcept.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   isVerificationFile: true
   path: Test/AtCoder/abl_e.test.cpp
   requiredBy: []
-  timestamp: '2026-05-04 14:21:38+09:00'
+  timestamp: '2026-10-05 23:17:34+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abl_e.test.cpp
