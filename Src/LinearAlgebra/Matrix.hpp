@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../Template/TypeAlias.hpp"
+#include "../Algebra/Group/GroupConcept.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -119,7 +120,7 @@ public:
         return res;
     }
 
-    E determinant() const {
+    E determinant() const requires concepts::Inversible<A> {
         assert(height() == width());
         usize n{height()};
         Matrix<Semiring> dat{*this};
@@ -150,7 +151,7 @@ public:
         }
         return res;
     }
-    E cofactor(usize r, usize c) const {
+    E cofactor(usize r, usize c) const requires concepts::Inversible<A> {
         assert(height() == width());
         usize n{height()};
         assert(n >= usize{2});
