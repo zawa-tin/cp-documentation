@@ -2,8 +2,17 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/GroupConcept.hpp
+    title: Src/Algebra/Group/GroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Ring/UsualRing.hpp
     title: Src/Algebra/Ring/UsualRing.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
   - icon: ':heavy_check_mark:'
     path: Src/LinearAlgebra/Matrix.hpp
     title: Src/LinearAlgebra/Matrix.hpp
@@ -57,10 +66,13 @@ data:
   - Src/Template/TypeAlias.hpp
   - Src/Algebra/Ring/UsualRing.hpp
   - Src/LinearAlgebra/Matrix.hpp
+  - Src/Algebra/Group/GroupConcept.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
   isVerificationFile: true
   path: Test/CF/ECR157-F.test.cpp
   requiredBy: []
-  timestamp: '2026-01-01 21:17:10+09:00'
+  timestamp: '2026-10-07 23:31:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/CF/ECR157-F.test.cpp

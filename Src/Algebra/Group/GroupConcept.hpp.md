@@ -46,6 +46,9 @@ data:
     path: Src/GeometryZ2/Contain/TriangleProduct.hpp
     title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
       \u7DCF\u7A4D"
+  - icon: ':heavy_check_mark:'
+    path: Src/LinearAlgebra/Matrix.hpp
+    title: Src/LinearAlgebra/Matrix.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2426.test.cpp
@@ -112,8 +115,14 @@ data:
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR157-F.test.cpp
+    title: Test/CF/ECR157-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
     title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/matrix_det.test.cpp
+    title: Test/LC/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -138,6 +147,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
     title: Test/LC/vertex_get_range_contour_add_on_tree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3369.test.cpp
+    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
     path: Test/UC/4-2-K.test.cpp
     title: Test/UC/4-2-K.test.cpp
@@ -184,11 +196,13 @@ data:
   - Src/DataStructure/PrefixSum/PrefixSum2D.hpp
   - Src/DataStructure/Bucket/BucketRangeProduct.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
+  - Src/LinearAlgebra/Matrix.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2025-04-17 19:44:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
+  - Test/CF/ECR157-F.test.cpp
   - Test/AOJ/4077.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/3451.test.cpp
@@ -218,6 +232,8 @@ data:
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/matrix_det.test.cpp
+  - Test/Manual/aoj3369.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Algebra/Group/GroupConcept.hpp
 layout: document

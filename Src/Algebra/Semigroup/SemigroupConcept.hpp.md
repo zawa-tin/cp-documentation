@@ -108,6 +108,9 @@ data:
     title: "\u4E09\u89D2\u5F62\u306B\u542B\u307E\u308C\u308B\u70B9\u91CD\u307F\u306E\
       \u7DCF\u7A4D"
   - icon: ':heavy_check_mark:'
+    path: Src/LinearAlgebra/Matrix.hpp
+    title: Src/LinearAlgebra/Matrix.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/Sequence/AhoCorasick.hpp
     title: Aho-Corasick
   - icon: ':heavy_check_mark:'
@@ -234,6 +237,9 @@ data:
     path: Test/AtCoder/abc419_f.test.cpp
     title: Test/AtCoder/abc419_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc429_f.test.cpp
+    title: Test/AtCoder/abc429_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -303,11 +309,17 @@ data:
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/EC172-F.test.cpp
+    title: Test/CF/EC172-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC190-E.test.cpp
     title: Test/CF/EC190-E.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR157-F.test.cpp
+    title: Test/CF/ECR157-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/aho_corasick.test.cpp
     title: Test/LC/aho_corasick.test.cpp
@@ -323,6 +335,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/discrete_logarithm_mod.test.cpp
     title: Test/LC/discrete_logarithm_mod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/matrix_det.test.cpp
+    title: Test/LC/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -380,6 +395,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/Manual/aoj3326.test.cpp
     title: Test/Manual/aoj3326.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/Manual/aoj3369.test.cpp
+    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   - icon: ':heavy_check_mark:'
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
@@ -445,14 +463,17 @@ data:
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/Algebra/Group/CartesianProductGroup.hpp
   - Src/Algebra/Group/GroupConcept.hpp
+  - Src/LinearAlgebra/Matrix.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2025-04-16 16:40:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/EC171-F.test.cpp
+  - Test/CF/ECR157-F.test.cpp
   - Test/CF/EC190-E.test.cpp
   - Test/CF/CF1052-E.test.cpp
+  - Test/CF/EC172-F.test.cpp
   - Test/CF/CF895-E.test.cpp
   - Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - Test/AOJ/4077.test.cpp
@@ -475,6 +496,7 @@ data:
   - Test/AtCoder/abc465_f.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
@@ -534,8 +556,10 @@ data:
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/matrix_det.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/Manual/aoj3326.test.cpp
+  - Test/Manual/aoj3369.test.cpp
   - Test/yukicoder/3189.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp

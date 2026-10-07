@@ -16,6 +16,9 @@ data:
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
+    title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
+  - icon: ':heavy_check_mark:'
     path: Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
     title: "\u30B9\u30BF\u30FC\u30EA\u30F3\u30B0\u6570\u306B\u95A2\u3059\u308B\u30E1\
       \u30E2"
@@ -1235,6 +1238,9 @@ data:
     path: Test/AtCoder/abc429_e.test.cpp
     title: Test/AtCoder/abc429_e.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc429_f.test.cpp
+    title: Test/AtCoder/abc429_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc429_g.test.cpp
     title: Test/AtCoder/abc429_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1415,6 +1421,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC171-F.test.cpp
     title: Test/CF/EC171-F.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/EC172-F.test.cpp
+    title: Test/CF/EC172-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC190-E.test.cpp
     title: Test/CF/EC190-E.test.cpp
@@ -2086,6 +2095,7 @@ data:
   - Src/Enumerate/EnumerateLabelledTree.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
+  - Src/Algebra/Monoid/StaticSquareMatrix.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
   - Src/LinearAlgebra/Matrix.hpp
@@ -2145,6 +2155,7 @@ data:
   - Test/CF/ECR157-F.test.cpp
   - Test/CF/EC190-E.test.cpp
   - Test/CF/CF1052-E.test.cpp
+  - Test/CF/EC172-F.test.cpp
   - Test/CF/CF1015-C.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/CF895-E.test.cpp
@@ -2268,6 +2279,7 @@ data:
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
+  - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/arc197_d.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/agc002_d.test.cpp

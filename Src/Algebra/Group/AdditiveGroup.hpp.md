@@ -3,6 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Ring/MaxPlusSemiring.hpp
+    title: Src/Algebra/Ring/MaxPlusSemiring.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Ring/MinPlusSemiring.hpp
+    title: Src/Algebra/Ring/MinPlusSemiring.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
@@ -69,6 +75,9 @@ data:
     path: Test/AtCoder/abc417_f.test.cpp
     title: Test/AtCoder/abc417_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc429_f.test.cpp
+    title: Test/AtCoder/abc429_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc430_g.test.cpp
     title: Test/AtCoder/abc430_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -107,6 +116,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/CF/EC172-F.test.cpp
+    title: Test/CF/EC172-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
@@ -175,12 +187,15 @@ data:
   - Src/DataStructure/Set/FenwickSet.hpp
   - Src/DataStructure/Set/OfflineOrderedSet.hpp
   - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
+  - Src/Algebra/Ring/MinPlusSemiring.hpp
+  - Src/Algebra/Ring/MaxPlusSemiring.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/CF/EC172-F.test.cpp
   - Test/AOJ/4077.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/3451.test.cpp
@@ -191,6 +206,7 @@ data:
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc465_f.test.cpp
+  - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - Test/AtCoder/abc430_g.test.cpp

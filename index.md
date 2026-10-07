@@ -79,6 +79,9 @@ data:
       path: Src/Algebra/Monoid/SemigroupMonoid.hpp
       title: Src/Algebra/Monoid/SemigroupMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
+      title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/SubarraySumMaxMonoid.hpp
       title: "\u9023\u7D9A\u90E8\u5206\u5217\u306E\u7DCF\u548C\u306E\u6700\u5927\u3092\
         \u7BA1\u7406\u3059\u308B"
@@ -92,6 +95,12 @@ data:
       title: Src/Algebra/PowerableConcept.hpp
   - name: Src/Algebra/Ring
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Ring/MaxPlusSemiring.hpp
+      title: Src/Algebra/Ring/MaxPlusSemiring.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Ring/MinPlusSemiring.hpp
+      title: Src/Algebra/Ring/MinPlusSemiring.hpp
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Ring/UsualRing.hpp
       title: Src/Algebra/Ring/UsualRing.hpp
@@ -1498,6 +1507,9 @@ data:
       path: Test/AtCoder/abc429_e.test.cpp
       title: Test/AtCoder/abc429_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc429_f.test.cpp
+      title: Test/AtCoder/abc429_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc429_g.test.cpp
       title: Test/AtCoder/abc429_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1685,6 +1697,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC171-F.test.cpp
       title: Test/CF/EC171-F.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/EC172-F.test.cpp
+      title: Test/CF/EC172-F.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/EC190-E.test.cpp
       title: Test/CF/EC190-E.test.cpp
