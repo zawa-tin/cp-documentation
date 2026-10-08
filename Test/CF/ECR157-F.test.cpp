@@ -1,6 +1,5 @@
 #define PROBLEM "https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A"
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/Algebra/Ring/UsualRing.hpp"
 #include "../../Src/LinearAlgebra/Matrix.hpp"
 #include "atcoder/modint.hpp"
@@ -13,7 +12,7 @@ using M = Matrix<UsualRing<mint>>;
 
 /*
  * ECR157-F Fancy Arrays
- * https://codeforces.com/contest/1895/submission/255171867
+ * https://codeforces.com/contest/1895/submission/393684305
  */
 
 mint solve() {
@@ -41,7 +40,9 @@ mint solve() {
 
 int main() {
 #ifdef ONLINE_JUDGE
-    SetFastIO();
+    std::cin.tie(0);
+    std::cout.tie(0);
+    std::ios::sync_with_stdio(0);
     int t; std::cin >> t;
     while (t--) {
         std::cout << solve().val() << '\n';
