@@ -2,10 +2,9 @@
 
 /*
  * AOJ3369 Namori Counting
- * https://onlinejudge.u-aizu.ac.jp/status/users/zawakasu/submissions/1/3369/judge/9369476/C++17
+ * https://onlinejudge.u-aizu.ac.jp/solutions/problem/3369/review/11732361/zawakasu/C++20
  */
 
-#include "../../Src/Template/IOSetting.hpp"
 #include "../../Src/LinearAlgebra/Matrix.hpp"
 #include "../../Src/Algebra/Ring/UsualRing.hpp"
 #include "atcoder/modint"
@@ -18,7 +17,9 @@ using Mat = Matrix<UsualRing<mint>>;
 
 int main() {
     std::cout << "Hello World" << '\n';
-    // SetFastIO();
+    // std::cin.tie(0);
+    // std::cout.tie(0);
+    // std::ios::sync_with_stdio(0);
     // int N, M;
     // std::cin >> N >> M;
     // Mat g(N, N);
