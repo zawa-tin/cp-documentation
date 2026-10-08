@@ -10,6 +10,9 @@ data:
     path: Test/AtCoder/abc429_f.test.cpp
     title: Test/AtCoder/abc429_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc445_f.test.cpp
+    title: Test/AtCoder/abc445_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC172-F.test.cpp
     title: Test/CF/EC172-F.test.cpp
   _isVerificationFailed: false
@@ -89,6 +92,7 @@ data:
   verifiedWith:
   - Test/CF/EC172-F.test.cpp
   - Test/AtCoder/abc429_f.test.cpp
+  - Test/AtCoder/abc445_f.test.cpp
 documentation_of: Src/Algebra/Monoid/StaticSquareMatrix.hpp
 layout: document
 title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"

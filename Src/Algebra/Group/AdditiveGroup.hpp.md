@@ -84,6 +84,9 @@ data:
     path: Test/AtCoder/abc434_d.test.cpp
     title: Test/AtCoder/abc434_d.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc445_f.test.cpp
+    title: Test/AtCoder/abc445_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc453_g.test.cpp
     title: Test/AtCoder/abc453_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -209,6 +212,7 @@ data:
   - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/pakencamp_2025_day1_l.test.cpp
+  - Test/AtCoder/abc445_f.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/arc197_c.test.cpp
   - Test/AtCoder/abc172_c.test.cpp

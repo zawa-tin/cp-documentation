@@ -40,6 +40,9 @@ data:
     path: Test/AtCoder/abc417_f.test.cpp
     title: Test/AtCoder/abc417_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc445_f.test.cpp
+    title: Test/AtCoder/abc445_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -99,6 +102,7 @@ data:
   - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
+  - Test/AtCoder/abc445_f.test.cpp
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc417_f.test.cpp

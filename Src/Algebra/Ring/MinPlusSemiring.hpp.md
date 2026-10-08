@@ -9,6 +9,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc429_f.test.cpp
     title: Test/AtCoder/abc429_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc445_f.test.cpp
+    title: Test/AtCoder/abc445_f.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,6 +50,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc429_f.test.cpp
+  - Test/AtCoder/abc445_f.test.cpp
 documentation_of: Src/Algebra/Ring/MinPlusSemiring.hpp
 layout: document
 redirect_from:
