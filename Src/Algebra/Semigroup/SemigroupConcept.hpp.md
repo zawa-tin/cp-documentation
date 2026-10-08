@@ -140,6 +140,9 @@ data:
     path: Test/AOJ/3111.test.cpp
     title: Test/AOJ/3111.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3369.test.cpp
+    title: Test/AOJ/3369.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/3451.test.cpp
     title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
       \u306A\u3044\u51F8\u5305dp)"
@@ -399,9 +402,6 @@ data:
     path: Test/Manual/aoj3326.test.cpp
     title: Test/Manual/aoj3326.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3369.test.cpp
-    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
-  - icon: ':heavy_check_mark:'
     path: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
     title: Test/My/DataStructure/SegmentTree/SparseSegmentTreeGetTest.test.cpp
   - icon: ':heavy_check_mark:'
@@ -482,6 +482,7 @@ data:
   - Test/AOJ/4077.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/3451.test.cpp
+  - Test/AOJ/3369.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/2426.test.cpp
   - Test/AOJ/3548.test.cpp
@@ -563,7 +564,6 @@ data:
   - Test/LC/matrix_det.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
   - Test/Manual/aoj3326.test.cpp
-  - Test/Manual/aoj3369.test.cpp
   - Test/yukicoder/3189.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Algebra/Semigroup/SemigroupConcept.hpp

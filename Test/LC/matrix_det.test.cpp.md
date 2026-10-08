@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/AdditiveGroup.hpp
+    title: "\u52A0\u6CD5\u7FA4"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Group/GroupConcept.hpp
     title: Src/Algebra/Group/GroupConcept.hpp
   - icon: ':heavy_check_mark:'
@@ -60,10 +63,11 @@ data:
   - Src/Algebra/Monoid/MonoidConcept.hpp
   - Src/Algebra/Semigroup/SemigroupConcept.hpp
   - Src/Algebra/Ring/UsualRing.hpp
+  - Src/Algebra/Group/AdditiveGroup.hpp
   isVerificationFile: true
   path: Test/LC/matrix_det.test.cpp
   requiredBy: []
-  timestamp: '2026-10-07 23:31:46+09:00'
+  timestamp: '2026-10-08 17:25:00+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/matrix_det.test.cpp

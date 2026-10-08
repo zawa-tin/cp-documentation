@@ -255,9 +255,6 @@ data:
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/CF/ECR157-F.test.cpp
-    title: Test/CF/ECR157-F.test.cpp
-  - icon: ':heavy_check_mark:'
     path: Test/CF/ECR167-F.test.cpp
     title: Test/CF/ECR167-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -357,9 +354,6 @@ data:
     path: Test/Manual/abc317_g.test.cpp
     title: ABC317-G Rearranging
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3369.test.cpp
-    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -420,7 +414,6 @@ data:
   verifiedWith:
   - Test/CF/EC162-D.test.cpp
   - Test/CF/CF316-D.test.cpp
-  - Test/CF/ECR157-F.test.cpp
   - Test/CF/CF923-D.test.cpp
   - Test/CF/ECR167-F.test.cpp
   - Test/CF/CF956-F.test.cpp
@@ -544,7 +537,6 @@ data:
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/practice2_e.test.cpp
   - Test/Manual/typical90_by.test.cpp
-  - Test/Manual/aoj3369.test.cpp
   - Test/yukicoder/117.test.cpp
 documentation_of: Src/Template/IOSetting.hpp
 layout: document

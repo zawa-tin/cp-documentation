@@ -9,6 +9,9 @@ data:
     path: Src/Algebra/Ring/MinPlusSemiring.hpp
     title: Src/Algebra/Ring/MinPlusSemiring.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Ring/UsualRing.hpp
+    title: Src/Algebra/Ring/UsualRing.hpp
+  - icon: ':heavy_check_mark:'
     path: Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
     title: "\u9759\u7684\u306A\u5217\u4E0A\u306E\u533A\u9593\u548C\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
@@ -28,6 +31,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2426.test.cpp
     title: Test/AOJ/2426.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3369.test.cpp
+    title: Test/AOJ/3369.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/3451.test.cpp
     title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
@@ -126,11 +132,17 @@ data:
     path: Test/CF/EC2-E.test.cpp
     title: Test/CF/EC2-E.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/CF/ECR157-F.test.cpp
+    title: Test/CF/ECR157-F.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/aplusb.test.cpp
     title: Test/LC/aplusb.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
     title: Test/LC/count_points_in_triangle/TriangleProduct.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/matrix_det.test.cpp
+    title: Test/LC/matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
     title: Test/LC/ordered_set/OfflineOrderedSet.test.cpp
@@ -192,16 +204,19 @@ data:
   - Src/DataStructure/PrefixSum/StaticRangeSumSolver.hpp
   - Src/Algebra/Ring/MinPlusSemiring.hpp
   - Src/Algebra/Ring/MaxPlusSemiring.hpp
+  - Src/Algebra/Ring/UsualRing.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
   timestamp: '2026-05-04 13:04:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/EC2-E.test.cpp
   - Test/CF/EC162-D.test.cpp
+  - Test/CF/ECR157-F.test.cpp
   - Test/CF/EC172-F.test.cpp
   - Test/AOJ/4077.test.cpp
   - Test/AOJ/DSL_2_B.test.cpp
   - Test/AOJ/3451.test.cpp
+  - Test/AOJ/3369.test.cpp
   - Test/AOJ/2426.test.cpp
   - Test/AOJ/1330.test.cpp
   - Test/AOJ/DSL_2_E.test.cpp
@@ -242,6 +257,7 @@ data:
   - Test/LC/vertex_add_range_contour_sum_on_tree.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/point_add_range_sum.test.cpp
+  - Test/LC/matrix_det.test.cpp
   - Test/UC/4-2-K.test.cpp
 documentation_of: Src/Algebra/Group/AdditiveGroup.hpp
 layout: document

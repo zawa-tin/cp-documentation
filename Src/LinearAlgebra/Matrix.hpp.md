@@ -16,14 +16,14 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3369.test.cpp
+    title: Test/AOJ/3369.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/matrix_det.test.cpp
     title: Test/LC/matrix_det.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3369.test.cpp
-    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -195,8 +195,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/ECR157-F.test.cpp
+  - Test/AOJ/3369.test.cpp
   - Test/LC/matrix_det.test.cpp
-  - Test/Manual/aoj3369.test.cpp
 documentation_of: Src/LinearAlgebra/Matrix.hpp
 layout: document
 redirect_from:

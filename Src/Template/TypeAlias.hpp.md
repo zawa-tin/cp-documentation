@@ -807,6 +807,9 @@ data:
     path: Test/AOJ/3168.test.cpp
     title: Test/AOJ/3168.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AOJ/3369.test.cpp
+    title: Test/AOJ/3369.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AOJ/3451.test.cpp
     title: "AOJ3451 \u6700\u9AD8\u306E\u30B1\u30FC\u30AD\u3092\u4F5C\u308D\u3046 (colinear\u3067\
       \u306A\u3044\u51F8\u5305dp)"
@@ -1722,9 +1725,6 @@ data:
     path: Test/Manual/aoj3326.test.cpp
     title: Test/Manual/aoj3326.test.cpp
   - icon: ':heavy_check_mark:'
-    path: Test/Manual/aoj3369.test.cpp
-    title: "AOJ3369 Namori Counting (\u884C\u5217\u6728\u5B9A\u7406)"
-  - icon: ':heavy_check_mark:'
     path: Test/Manual/dwango2016qual_e.test.cpp
     title: Test/Manual/dwango2016qual_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2203,6 +2203,7 @@ data:
   - Test/AOJ/1298.test.cpp
   - Test/AOJ/ALDS1_11_D.test.cpp
   - Test/AOJ/CGL_5_B.test.cpp
+  - Test/AOJ/3369.test.cpp
   - Test/AOJ/1379.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/CGL_2_B.test.cpp
@@ -2506,7 +2507,6 @@ data:
   - Test/Manual/abc317_g.test.cpp
   - Test/Manual/practice2_e.test.cpp
   - Test/Manual/typical90_by.test.cpp
-  - Test/Manual/aoj3369.test.cpp
   - Test/Manual/agc026_a.test.cpp
   - Test/Manual/abc272_g.test.cpp
   - Test/TUNA/HUPC2025-K.test.cpp
