@@ -7,11 +7,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/EnumeratePowerSums.hpp
+    title: "$(\\sum_{j=1}^{N} A_{j}^{i})$ \u3092 $i=0,1,\\dots,K$ \u306B\u3064\u3044\
+      \u3066\u5217\u6319\u3059\u308B"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc385_g.test.cpp
     title: Test/AtCoder/abc385_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps24_q.test.cpp
+    title: Test/AtCoder/fps24_q.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/product_of_polynomial_sequence.test.cpp
     title: Test/LC/product_of_polynomial_sequence.test.cpp
@@ -62,10 +69,12 @@ data:
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/FPS/PolynomialProducts.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/FPS/EnumeratePowerSums.hpp
   timestamp: '2026-01-12 19:02:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/fps24_q.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
   - Test/LC/product_of_polynomial_sequence.test.cpp
 documentation_of: Src/FPS/PolynomialProducts.hpp

@@ -62,7 +62,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/MultipointEvaluation.hpp
   requiredBy: []
-  timestamp: '2026-05-06 19:26:51+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/fps_24_p.test.cpp

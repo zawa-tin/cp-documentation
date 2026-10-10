@@ -55,7 +55,7 @@ data:
   isVerificationFile: true
   path: Test/LC/product_of_polynomial_sequence.test.cpp
   requiredBy: []
-  timestamp: '2026-01-12 19:02:30+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/product_of_polynomial_sequence.test.cpp

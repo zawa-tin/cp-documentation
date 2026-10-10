@@ -31,6 +31,9 @@ data:
     path: Test/AtCoder/abc439_g.test.cpp
     title: Test/AtCoder/abc439_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps24_q.test.cpp
+    title: Test/AtCoder/fps24_q.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
   - icon: ':heavy_check_mark:'
@@ -117,17 +120,17 @@ data:
     \     for (usize i = 0 ; i < this->size() ; i++) {\n            res[i + 1] = (*this)[i]\
     \ / V{i + 1};\n        }\n        return res;\n    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD>\
     \ log(usize n) const {\n        assert(this->size() and (*this)[0] == V{1});\n\
-    \        return FPSNTTFriendly<MOD>{differential() / (*this)}.resized(n - 1).integral();\n\
-    \    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD> log() const {\n        return\
-    \ log(this->size()); \n    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD> exp(usize\
-    \ n) const {\n        assert(this->size() and (*this)[0] == 0);    \n        FPSNTTFriendly<MOD>\
-    \ g{V{1}};\n        for (usize sz = 1 ; sz < n ; sz <<= 1) {\n            auto\
-    \ f = -g.resized(sz << 1).log() + (*this).resized(sz << 1);\n            f[0]\
-    \ += 1;\n            g = g * f;\n            g.resize(sz << 1);\n        }\n \
-    \       g.resize(n);\n        return g;\n    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD>\
-    \ exp() const {\n        return exp(this->size());\n    }\n\n    [[nodiscard]]\
-    \ FPSNTTFriendly<MOD> pow(u64 k, usize n) const {\n        if (k == 0) return\
-    \ FPSNTTFriendly<MOD>{V{1}}.resized(n);\n        auto it = std::ranges::find_if(*this,\
+    \        return FPSNTTFriendly<MOD>{differential() * this->inv(n)}.resized(n -\
+    \ 1).integral();\n    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD> log() const {\n\
+    \        return log(this->size()); \n    }\n\n    [[nodiscard]] FPSNTTFriendly<MOD>\
+    \ exp(usize n) const {\n        assert(this->size() and (*this)[0] == 0);    \n\
+    \        FPSNTTFriendly<MOD> g{V{1}};\n        for (usize sz = 1 ; sz < n ; sz\
+    \ <<= 1) {\n            auto f = -g.resized(sz << 1).log() + (*this).resized(sz\
+    \ << 1);\n            f[0] += 1;\n            g = g * f;\n            g.resize(sz\
+    \ << 1);\n        }\n        g.resize(n);\n        return g;\n    }\n\n    [[nodiscard]]\
+    \ FPSNTTFriendly<MOD> exp() const {\n        return exp(this->size());\n    }\n\
+    \n    [[nodiscard]] FPSNTTFriendly<MOD> pow(u64 k, usize n) const {\n        if\
+    \ (k == 0) return FPSNTTFriendly<MOD>{V{1}}.resized(n);\n        auto it = std::ranges::find_if(*this,\
     \ [&](const auto& v) { return v != V{0}; });\n        if (it == this->end()) return\
     \ FPSNTTFriendly<MOD>(n);\n        auto sh = it - this->begin();\n        if (sh\
     \ and k > n / sh) return FPSNTTFriendly<MOD>(n);\n        FPSNTTFriendly<MOD>\
@@ -184,11 +187,12 @@ data:
   requiredBy:
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/MultipointEvaluation.hpp
-  timestamp: '2026-01-03 20:52:40+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
+  - Test/AtCoder/fps24_q.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp

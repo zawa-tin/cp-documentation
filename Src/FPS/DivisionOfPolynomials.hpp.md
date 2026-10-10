@@ -63,7 +63,7 @@ data:
   path: Src/FPS/DivisionOfPolynomials.hpp
   requiredBy:
   - Src/FPS/MultipointEvaluation.hpp
-  timestamp: '2026-01-03 20:52:40+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/fps_24_p.test.cpp

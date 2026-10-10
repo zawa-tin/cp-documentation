@@ -60,7 +60,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc385_g.test.cpp
   requiredBy: []
-  timestamp: '2026-01-12 19:02:30+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc385_g.test.cpp

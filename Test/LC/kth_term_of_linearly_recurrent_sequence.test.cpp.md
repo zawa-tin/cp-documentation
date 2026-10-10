@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   requiredBy: []
-  timestamp: '2026-10-03 17:18:30+09:00'
+  timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp

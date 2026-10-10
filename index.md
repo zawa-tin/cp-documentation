@@ -323,6 +323,10 @@ data:
       path: Src/FPS/DivisionOfPolynomials.hpp
       title: Src/FPS/DivisionOfPolynomials.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/EnumeratePowerSums.hpp
+      title: "$(\\sum_{j=1}^{N} A_{j}^{i})$ \u3092 $i=0,1,\\dots,K$ \u306B\u3064\u3044\
+        \u3066\u5217\u6319\u3059\u308B"
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/FPS.hpp
       title: Src/FPS/FPS.hpp
     - icon: ':heavy_check_mark:'
@@ -1621,6 +1625,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/awc0071_e.test.cpp
       title: Test/AtCoder/awc0071_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/fps24_q.test.cpp
+      title: Test/AtCoder/fps24_q.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/fps_24_p.test.cpp
       title: Test/AtCoder/fps_24_p.test.cpp

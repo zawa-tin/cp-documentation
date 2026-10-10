@@ -13,6 +13,10 @@ data:
     path: Src/FPS/DivisionOfPolynomials.hpp
     title: Src/FPS/DivisionOfPolynomials.hpp
   - icon: ':heavy_check_mark:'
+    path: Src/FPS/EnumeratePowerSums.hpp
+    title: "$(\\sum_{j=1}^{N} A_{j}^{i})$ \u3092 $i=0,1,\\dots,K$ \u306B\u3064\u3044\
+      \u3066\u5217\u6319\u3059\u308B"
+  - icon: ':heavy_check_mark:'
     path: Src/FPS/FPSNTTFriendly.hpp
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
@@ -55,6 +59,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc439_g.test.cpp
     title: Test/AtCoder/abc439_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/fps24_q.test.cpp
+    title: Test/AtCoder/fps24_q.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
@@ -153,6 +160,7 @@ data:
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/MultipointEvaluation.hpp
+  - Src/FPS/EnumeratePowerSums.hpp
   - Src/FPS/PolynomialProducts.hpp
   - Src/FPS/KthTerm.hpp
   - Src/FPS/RationalSum.hpp
@@ -161,6 +169,7 @@ data:
   verifiedWith:
   - Test/My/FPS/PowerProjection.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
+  - Test/AtCoder/fps24_q.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
