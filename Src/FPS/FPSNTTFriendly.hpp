@@ -85,7 +85,7 @@ struct FPSNTTFriendly : public std::vector<atcoder::static_modint<MOD>> {
 
     [[nodiscard]] FPSNTTFriendly<MOD> log(usize n) const {
         assert(this->size() and (*this)[0] == V{1});
-        return FPSNTTFriendly<MOD>{differential() / (*this)}.resized(n - 1).integral();
+        return FPSNTTFriendly<MOD>{differential() * this->inv(n)}.resized(n - 1).integral();
     }
 
     [[nodiscard]] FPSNTTFriendly<MOD> log() const {
