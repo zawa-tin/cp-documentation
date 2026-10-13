@@ -14,12 +14,12 @@ template <class T,std::signed_integral U>
 std::vector<T> BinomialCoefficientPrefixSums(std::vector<std::pair<U,U>> P) {
     U maxN = 0;
     for (auto& [n,k] : P) {
-        assert(n >= 0 and k >= 0);
-        k = std::min(k,n);
+        assert(n >= 0);
+        k = std::clamp(k,U{-1},n);
         maxN = std::max(maxN,n);
     }
     auto ord = Mo(P);
-    std::vector<T> res(P.size()),fac(maxN+1),ifac(maxN+1);
+    std::vector<T> res(P.size(),T{0}),fac(maxN+1),ifac(maxN+1);
     fac[0] = 1;
     for (U i = 1 ; i <= maxN ; i++)
         fac[i] = fac[i-1] * T{i};
@@ -34,6 +34,8 @@ std::vector<T> BinomialCoefficientPrefixSums(std::vector<std::pair<U,U>> P) {
     T cur = T{1};
     for (auto idx : ord) {
         auto [N,K] = P[idx];
+        if (K == -1)
+            continue;
         while (n < N) {
             cur = T{2} * cur - comb(n,k);
             n++;
