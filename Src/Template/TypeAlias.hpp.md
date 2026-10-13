@@ -19,6 +19,9 @@ data:
     path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
     title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
+    title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"
+  - icon: ':heavy_check_mark:'
     path: Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
     title: "\u30B9\u30BF\u30FC\u30EA\u30F3\u30B0\u6570\u306B\u95A2\u3059\u308B\u30E1\
       \u30E2"
@@ -1381,6 +1384,9 @@ data:
     path: Test/AtCoder/tdpc_target.test.cpp
     title: Test/AtCoder/tdpc_target.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tenka1_2014_final_d.test.cpp
+    title: Test/AtCoder/tenka1_2014_final_d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/typical90_cc.test.cpp
     title: Test/AtCoder/typical90_cc.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2152,6 +2158,7 @@ data:
   - Src/FPS/KthTerm.hpp
   - Src/FPS/RationalSum.hpp
   - Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
+  - Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
   timestamp: '2023-06-01 19:19:31+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -2411,6 +2418,7 @@ data:
   - Test/AtCoder/ndpc2026_l.test.cpp
   - Test/AtCoder/abc334_g.test.cpp
   - Test/AtCoder/abc351_g.test.cpp
+  - Test/AtCoder/tenka1_2014_final_d.test.cpp
   - Test/AtCoder/abc389_f.test.cpp
   - Test/AtCoder/arc088_e.test.cpp
   - Test/AtCoder/abc396_g.test.cpp

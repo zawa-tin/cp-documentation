@@ -112,6 +112,9 @@ data:
   - name: Src/Combinatorics
     pages:
     - icon: ':heavy_check_mark:'
+      path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
+      title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"
+    - icon: ':heavy_check_mark:'
       path: Src/Combinatorics/StirlingNumberSecondKindFixedN.hpp
       title: "\u30B9\u30BF\u30FC\u30EA\u30F3\u30B0\u6570\u306B\u95A2\u3059\u308B\u30E1\
         \u30E2"
@@ -1652,6 +1655,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/tdpc_target.test.cpp
       title: Test/AtCoder/tdpc_target.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/tenka1_2014_final_d.test.cpp
+      title: Test/AtCoder/tenka1_2014_final_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/typical90_cc.test.cpp
       title: Test/AtCoder/typical90_cc.test.cpp

@@ -6,6 +6,9 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
+    title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/MoonTree.hpp
     title: Src/Graph/Tree/MoonTree.hpp
   - icon: ':heavy_check_mark:'
@@ -24,6 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc477_g.test.cpp
     title: Test/AtCoder/abc477_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/tenka1_2014_final_d.test.cpp
+    title: Test/AtCoder/tenka1_2014_final_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/CF/CF974-H.test.cpp
     title: Test/CF/CF974-H.test.cpp
@@ -97,6 +103,7 @@ data:
   requiredBy:
   - Src/Sequence/MoRangeQuery.hpp
   - Src/Graph/Tree/MoonTree.hpp
+  - Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
   timestamp: '2026-03-16 19:40:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
@@ -105,6 +112,7 @@ data:
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc405.test.cpp
   - Test/AtCoder/abc448_f.test.cpp
+  - Test/AtCoder/tenka1_2014_final_d.test.cpp
   - Test/LC/static_range_frequency.test.cpp
 documentation_of: Src/Utility/Mo.hpp
 layout: document
