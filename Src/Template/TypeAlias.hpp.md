@@ -9,15 +9,16 @@ data:
     path: Src/Algebra/Monoid/ChminMonoid.hpp
     title: "chmin\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/ConstantSquareMatrix.hpp
+    title: "\u5B9A\u6570\u30B5\u30A4\u30BA\u306E\u6B63\u65B9\u884C\u5217(\u30E2\u30CE\
+      \u30A4\u30C9\u7BA1\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
     title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/RollingHashMonoid.hpp
     title: "\u30ED\u30EA\u30CF\u3092\u30BB\u30B0\u6728\u306B\u306E\u305B\u308B\u6642\
       \u306E\u30E2\u30CE\u30A4\u30C9"
-  - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
-    title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
     title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"
@@ -988,6 +989,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/ITP2_4_A.test.cpp
     title: Test/AOJ/ITP2_4_A.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc127_f.test.cpp
     title: Test/AtCoder/abc127_f.test.cpp
@@ -2114,9 +2119,9 @@ data:
   - Src/Enumerate/EnumerateLabelledTree.hpp
   - Src/Algebra/Monoid/ChminMonoid.hpp
   - Src/Algebra/Monoid/RollingHashMonoid.hpp
-  - Src/Algebra/Monoid/StaticSquareMatrix.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
+  - Src/Algebra/Monoid/ConstantSquareMatrix.hpp
   - Src/LinearAlgebra/Matrix.hpp
   - Src/GeometryZ2/Segment.hpp
   - Src/GeometryZ2/Point.hpp
@@ -2301,6 +2306,7 @@ data:
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
   - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/arc197_d.test.cpp
   - Test/AtCoder/abc276_f.test.cpp

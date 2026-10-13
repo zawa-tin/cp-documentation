@@ -54,6 +54,10 @@ data:
     path: Test/AOJ/DSL_2_G.test.cpp
     title: Test/AOJ/DSL_2_G.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc172_c.test.cpp
     title: ABC172-C Tsundoku
   - icon: ':heavy_check_mark:'
@@ -224,6 +228,7 @@ data:
   - Test/AOJ/DSL_1_B.test.cpp
   - Test/AtCoder/abc434_d.test.cpp
   - Test/AtCoder/abc465_f.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
   - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/pakencamp_2025_day1_l.test.cpp

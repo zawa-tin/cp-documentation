@@ -174,6 +174,10 @@ data:
     path: Test/AOJ/DSL_2_I.test.cpp
     title: Test/AOJ/DSL_2_I.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc222_g.test.cpp
     title: Test/AtCoder/abc222_g.test.cpp
   - icon: ':heavy_check_mark:'
@@ -500,6 +504,7 @@ data:
   - Test/AtCoder/abc465_f.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
   - Test/AtCoder/abc332_f.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
   - Test/AtCoder/abc429_f.test.cpp
   - Test/AtCoder/abc276_f.test.cpp
   - Test/AtCoder/pakencamp_2025_day1_l.test.cpp

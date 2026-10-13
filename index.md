@@ -41,6 +41,10 @@ data:
       path: Src/Algebra/Monoid/ClampAddMonoid.hpp
       title: Src/Algebra/Monoid/ClampAddMonoid.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Monoid/ConstantSquareMatrix.hpp
+      title: "\u5B9A\u6570\u30B5\u30A4\u30BA\u306E\u6B63\u65B9\u884C\u5217(\u30E2\u30CE\
+        \u30A4\u30C9\u7BA1\u7406)"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/MaxMonoid.hpp
       title: "max\u6F14\u7B97\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
@@ -78,9 +82,6 @@ data:
     - icon: ':warning:'
       path: Src/Algebra/Monoid/SemigroupMonoid.hpp
       title: Src/Algebra/Monoid/SemigroupMonoid.hpp
-    - icon: ':heavy_check_mark:'
-      path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
-      title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
     - icon: ':heavy_check_mark:'
       path: Src/Algebra/Monoid/SubarraySumMaxMonoid.hpp
       title: "\u9023\u7D9A\u90E8\u5206\u5217\u306E\u7DCF\u548C\u306E\u6700\u5927\u3092\
@@ -1251,6 +1252,10 @@ data:
       title: Test/AOJ/CGL_7_A/GeometryZ2.test.cpp
   - name: Test/AtCoder
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/aalc001_o.test.cpp
+      title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+        \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc127_f.test.cpp
       title: Test/AtCoder/abc127_f.test.cpp

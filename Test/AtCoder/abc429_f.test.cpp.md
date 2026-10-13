@@ -5,11 +5,12 @@ data:
     path: Src/Algebra/Group/AdditiveGroup.hpp
     title: "\u52A0\u6CD5\u7FA4"
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/ConstantSquareMatrix.hpp
+    title: "\u5B9A\u6570\u30B5\u30A4\u30BA\u306E\u6B63\u65B9\u884C\u5217(\u30E2\u30CE\
+      \u30A4\u30C9\u7BA1\u7406)"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/MonoidConcept.hpp
     title: Src/Algebra/Monoid/MonoidConcept.hpp
-  - icon: ':heavy_check_mark:'
-    path: Src/Algebra/Monoid/StaticSquareMatrix.hpp
-    title: "\u6B63\u65B9\u884C\u5217\u306E\u884C\u5217\u7A4D\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
     path: Src/Algebra/Ring/MinPlusSemiring.hpp
     title: Src/Algebra/Ring/MinPlusSemiring.hpp
@@ -31,12 +32,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://atcoder.jp/contests/abc429/submissions/79844847
+    - https://atcoder.jp/contests/abc429/submissions/80016116
     - https://atcoder.jp/contests/abc429/tasks/abc429_f
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "#line 1 \"Test/AtCoder/abc429_f.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc429/tasks/abc429_f\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
-    \n/*\n * AtCoder Beginner Contest 429 F - Shortest Path Query\n * https://atcoder.jp/contests/abc429/submissions/79844847\n\
+    \n/*\n * AtCoder Beginner Contest 429 F - Shortest Path Query\n * https://atcoder.jp/contests/abc429/submissions/80016116\n\
     \ */\n#line 2 \"Src/Algebra/Ring/MinPlusSemiring.hpp\"\n\n#line 2 \"Src/Algebra/Group/AdditiveGroup.hpp\"\
     \n\nnamespace zawa {\n\ntemplate <class T>\nclass AdditiveGroup {\npublic:\n \
     \   using Element = T;\n    static constexpr T identity() noexcept {\n       \
@@ -52,22 +53,23 @@ data:
     \    }\n    \n};\n\n} // namespace internal\n\ntemplate <std::totally_ordered\
     \ T,T INF>\nstruct MinPlusSemiring {\n\n    using Element = T;\n\n    using Addition\
     \ = internal::Min<T,INF>;\n\n    using Multiplication = AdditiveGroup<T>;\n\n\
-    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/StaticSquareMatrix.hpp\"\
+    };\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/ConstantSquareMatrix.hpp\"\
     \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
     \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
     \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
     using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
-    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Monoid/StaticSquareMatrix.hpp\"\
-    \n\n#include <array>\n#include <cassert>\n#include <span>\n\nnamespace zawa {\n\
-    \ntemplate <class Semiring,usize N>\nclass SquareMatrix {\npublic:\n\n    using\
-    \ T = typename Semiring::Element;\n\n    using A = typename Semiring::Addition;\n\
-    \n    using M = typename Semiring::Multiplication;\n\n    using Element = SquareMatrix;\n\
-    \n    constexpr SquareMatrix() {\n        m_data.fill(A::identity());\n    }\n\
-    \n    constexpr explicit SquareMatrix(const std::array<T,N*N>& data) : m_data{data}\
-    \ {}\n\n    constexpr explicit SquareMatrix(const std::array<std::array<T,N>,N>&\
-    \ data) {\n        for (usize i = 0 ; i < N ; i++)\n            for (usize j =\
-    \ 0 ; j < N ; j++)\n                m_data[i*N+j] = data[i][j];\n    }\n\n   \
-    \ constexpr explicit SquareMatrix(std::initializer_list<std::initializer_list<T>>\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 4 \"Src/Algebra/Monoid/ConstantSquareMatrix.hpp\"\
+    \n\n#include <array>\n#include <cassert>\n#include <initializer_list>\n#include\
+    \ <span>\n\nnamespace zawa {\n\ntemplate <class Semiring,usize N>\nclass ConstantSquareMatrix\
+    \ {\n\n    static_assert(N > 0,\"ConstantSquareMatrix::N must be positive\");\n\
+    \npublic:\n\n    using T = typename Semiring::Element;\n\n    using A = typename\
+    \ Semiring::Addition;\n\n    using M = typename Semiring::Multiplication;\n\n\
+    \    using Element = ConstantSquareMatrix;\n\n    constexpr ConstantSquareMatrix()\
+    \ {\n        m_data.fill(A::identity());\n    }\n\n    constexpr explicit ConstantSquareMatrix(const\
+    \ std::array<T,N*N>& data) : m_data{data} {}\n\n    constexpr explicit ConstantSquareMatrix(const\
+    \ std::array<std::array<T,N>,N>& data) {\n        for (usize i = 0 ; i < N ; i++)\n\
+    \            for (usize j = 0 ; j < N ; j++)\n                m_data[i*N+j] =\
+    \ data[i][j];\n    }\n\n    constexpr explicit ConstantSquareMatrix(std::initializer_list<std::initializer_list<T>>\
     \ data) {\n        assert(data.size() == N);\n        for (usize i = 0 ; const\
     \ auto& row : data) {\n            assert(row.size() == N);\n            for (usize\
     \ j = 0 ; const auto& x : row)\n                m_data[i*N+j++]=x;\n         \
@@ -76,17 +78,21 @@ data:
     \ std::span<const T,N> operator[](usize i) const& {\n        return std::span<const\
     \ T,N>{m_data.data()+i*N,N};\n    }\n\n    constexpr usize size() const noexcept\
     \ {\n        return N;\n    }\n\n    static constexpr Element zero() {\n     \
-    \   return SquareMatrix();\n    }\n\n    static constexpr Element identity() {\n\
-    \        auto res = SquareMatrix();\n        for (usize i = 0 ; i < N ; i++)\n\
-    \            res[i][i] = M::identity();\n        return res;\n    }\n\n    static\
-    \ constexpr Element operation(const Element& lhs,const Element& rhs) {\n     \
-    \   auto res = zero();\n        for (usize i = 0 ; i < N ; i++)\n            for\
-    \ (usize k = 0 ; k < N ; k++) {\n                const T x = lhs[i][k];\n    \
-    \            for (usize j = 0 ; j < N ; j++)\n                    res[i][j] =\
-    \ A::operation(res[i][j],M::operation(x,rhs[k][j]));\n            }\n        return\
-    \ res;\n    }\n\nprivate:\n\n    std::array<T,N*N> m_data;\n};\n\n} // namespace\
-    \ zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n\n#line 2 \"\
-    Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
+    \   return ConstantSquareMatrix();\n    }\n\n    static constexpr Element identity()\
+    \ {\n        auto res = ConstantSquareMatrix();\n        for (usize i = 0 ; i\
+    \ < N ; i++)\n            res[i][i] = M::identity();\n        return res;\n  \
+    \  }\n\n    static constexpr Element operation(const Element& lhs,const Element&\
+    \ rhs) {\n        Element res = zero();\n        for (usize i = 0 ; i < N ; i++)\
+    \ {\n            for (usize k = 0 ; k < N ; k++) {\n                const T& x\
+    \ = lhs[i][k];\n                for (usize j = 0 ; j < N ; j++)\n            \
+    \        res[i][j] = A::operation(res[i][j],M::operation(x,rhs[k][j]));\n    \
+    \        }\n        }\n        return res;\n    }\n\n    static constexpr std::array<T,N>\
+    \ leftAction(const Element& mat,const std::array<T,N>& vec) {\n        std::array<T,N>\
+    \ res;\n        for (usize i = 0 ; i < N ; i++) {\n            res[i] = A::identity();\n\
+    \            for (usize j = 0 ; j < N ; j++)\n                res[i] = A::operation(res[i],M::operation(mat[i][j],vec[j]));\n\
+    \        }\n        return res;\n    }\n\nprivate:\n\n    std::array<T,N*N> m_data;\n\
+    };\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\
     \n\n#line 4 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\nnamespace zawa {\n\
     \nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup = requires {\n\
     \    typename T::Element;\n    { T::operation(std::declval<typename T::Element>(),\
@@ -154,7 +160,7 @@ data:
     \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
     \ m_dat;\n};\n\n} // namespace zawa\n#line 11 \"Test/AtCoder/abc429_f.test.cpp\"\
     \n#include <iostream>\n#include <string>\nusing namespace std;\nusing namespace\
-    \ zawa;\nconst int INF=(int)1e9;\nusing M = SquareMatrix<MinPlusSemiring<int,INF>,3>;\n\
+    \ zawa;\nconst int INF=(int)1e9;\nusing M = ConstantSquareMatrix<MinPlusSemiring<int,INF>,3>;\n\
     M convert(string S) {\n    assert(ssize(S)==3);\n    M res = M::zero();\n    res[0][0]=S[0]=='.'?0:INF;\n\
     \    res[1][1]=S[1]=='.'?0:INF;\n    res[2][2]=S[2]=='.'?0:INF;\n    res[0][1]=res[1][0]=(S[0]=='.'\
     \ and S[1]=='.')?1:INF;\n    res[1][2]=res[2][1]=(S[1]=='.' and S[2]=='.')?1:INF;\n\
@@ -171,11 +177,11 @@ data:
     \ >> a >> b;\n    cout << a+b << '\\n';\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc429/tasks/abc429_f\"\n\
     #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n/*\n * AtCoder Beginner\
-    \ Contest 429 F - Shortest Path Query\n * https://atcoder.jp/contests/abc429/submissions/79844847\n\
-    \ */\n#include \"../../Src/Algebra/Ring/MinPlusSemiring.hpp\"\n#include \"../../Src/Algebra/Monoid/StaticSquareMatrix.hpp\"\
+    \ Contest 429 F - Shortest Path Query\n * https://atcoder.jp/contests/abc429/submissions/80016116\n\
+    \ */\n#include \"../../Src/Algebra/Ring/MinPlusSemiring.hpp\"\n#include \"../../Src/Algebra/Monoid/ConstantSquareMatrix.hpp\"\
     \n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\n#include <cassert>\n\
     #include <iostream>\n#include <string>\nusing namespace std;\nusing namespace\
-    \ zawa;\nconst int INF=(int)1e9;\nusing M = SquareMatrix<MinPlusSemiring<int,INF>,3>;\n\
+    \ zawa;\nconst int INF=(int)1e9;\nusing M = ConstantSquareMatrix<MinPlusSemiring<int,INF>,3>;\n\
     M convert(string S) {\n    assert(ssize(S)==3);\n    M res = M::zero();\n    res[0][0]=S[0]=='.'?0:INF;\n\
     \    res[1][1]=S[1]=='.'?0:INF;\n    res[2][2]=S[2]=='.'?0:INF;\n    res[0][1]=res[1][0]=(S[0]=='.'\
     \ and S[1]=='.')?1:INF;\n    res[1][2]=res[2][1]=(S[1]=='.' and S[2]=='.')?1:INF;\n\
@@ -193,7 +199,7 @@ data:
   dependsOn:
   - Src/Algebra/Ring/MinPlusSemiring.hpp
   - Src/Algebra/Group/AdditiveGroup.hpp
-  - Src/Algebra/Monoid/StaticSquareMatrix.hpp
+  - Src/Algebra/Monoid/ConstantSquareMatrix.hpp
   - Src/Template/TypeAlias.hpp
   - Src/DataStructure/SegmentTree/SegmentTree.hpp
   - Src/Algebra/Monoid/MonoidConcept.hpp
@@ -201,7 +207,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc429_f.test.cpp
   requiredBy: []
-  timestamp: '2026-10-07 23:31:46+09:00'
+  timestamp: '2026-10-13 21:13:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc429_f.test.cpp

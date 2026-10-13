@@ -18,6 +18,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AOJ/2450.test.cpp
     title: Test/AOJ/2450.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -64,6 +68,7 @@ data:
   verifiedWith:
   - Test/AOJ/0478.test.cpp
   - Test/AOJ/2450.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
 documentation_of: Src/Algebra/Monoid/ReverseOrder.hpp
 layout: document
 redirect_from:

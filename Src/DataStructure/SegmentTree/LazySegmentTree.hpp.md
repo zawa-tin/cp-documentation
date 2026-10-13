@@ -19,6 +19,10 @@ data:
     title: Src/Utility/AreaOfUnionOfRectangles.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc322_f.test.cpp
     title: ABC322-F Vacation Query
   - icon: ':heavy_check_mark:'
@@ -269,6 +273,7 @@ data:
   - Test/CF/CF1052-E.test.cpp
   - Test/CF/CF895-E.test.cpp
   - Test/AtCoder/abc322_f.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
   - Test/AtCoder/practice2_l.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/arc082_d.test.cpp

@@ -10,6 +10,10 @@ data:
     path: Test/AOJ/3369.test.cpp
     title: Test/AOJ/3369.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_o.test.cpp
+    title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
+      \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
+  - icon: ':heavy_check_mark:'
     path: Test/CF/ECR157-F.test.cpp
     title: Test/CF/ECR157-F.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,6 +61,7 @@ data:
   verifiedWith:
   - Test/CF/ECR157-F.test.cpp
   - Test/AOJ/3369.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
   - Test/LC/matrix_det.test.cpp
 documentation_of: Src/Algebra/Ring/UsualRing.hpp
 layout: document
