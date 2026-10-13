@@ -1,10 +1,10 @@
 // #define PROBLEM "https://atcoder.jp/contests/abc445/tasks/abc445_f"
 /*
  * AtCoder Beginner Contest 445 F - Exactly K Steps 2
- * https://atcoder.jp/contests/abc445/submissions/79856158
+ * https://atcoder.jp/contests/abc445/submissions/80016157
  */
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
-#include "../../Src/Algebra/Monoid/StaticSquareMatrix.hpp"
+#include "../../Src/Algebra/Monoid/ConstantSquareMatrix.hpp"
 #include "../../Src/Algebra/Ring/MinPlusSemiring.hpp"
 #include "../../Src/Algebra/Monoid/MonoidPower.hpp"
 #include <iostream>
@@ -15,7 +15,7 @@ int main() {
 #ifdef ATCODER
     int N,K;
     cin >> N >> K;
-    using M=SquareMatrix<MinPlusSemiring<long long,(long long)1e18>,MAX>;
+    using M=ConstantSquareMatrix<MinPlusSemiring<long long,(long long)1e18>,MAX>;
     M C=M::zero();
     for (int i = 0 ; i < N ; i++)
         for (int j = 0 ; j < N ; j++)

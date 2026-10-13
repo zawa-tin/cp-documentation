@@ -1,11 +1,11 @@
 // #define PROBLEM "https://codeforces.com/contest/2042/problem/F"
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 #include "../../Src/Algebra/Ring/MaxPlusSemiring.hpp"
-#include "../../Src/Algebra/Monoid/StaticSquareMatrix.hpp"
+#include "../../Src/Algebra/Monoid/ConstantSquareMatrix.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 /*
  * Educational Codeforces Round 172 (Rated for Div. 2) F. Two Subarrays
- * https://codeforces.com/contest/2042/submission/393514797
+ * https://codeforces.com/contest/2042/submission/394387557
  */
 #include <cassert>
 #include <iostream>
@@ -13,7 +13,7 @@
 using namespace std;
 using namespace zawa;
 const long long INF=(long long)-1e18;
-using M=SquareMatrix<MaxPlusSemiring<long long,INF>,5>;
+using M=ConstantSquareMatrix<MaxPlusSemiring<long long,INF>,5>;
 M convert(int a,int b) {
     return M{
         {0,a+b,(long long)a+b+b,INF,INF},
