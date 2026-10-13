@@ -19,7 +19,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/aplusb
     links:
-    - https://atcoder.jp/contests/tenka1-2014-final/submissions/80010504
+    - https://atcoder.jp/contests/tenka1-2014-final/submissions/80011789
     - https://atcoder.jp/contests/tenka1-2014-final/tasks/tenka1_2014_final_d
     - https://judge.yosupo.jp/problem/aplusb
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -37,7 +37,7 @@ data:
   code: "// #define PROBLEM \"https://atcoder.jp/contests/tenka1-2014-final/tasks/tenka1_2014_final_d\"\
     \n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n/*\n * \u5929\u4E0B\
     \u4E00\u30D7\u30ED\u30B0\u30E9\u30DE\u30FC\u30B3\u30F3\u30C6\u30B9\u30C82014\u672C\
-    \u6226 D - \u9AD8\u6A4B\u541B\n * https://atcoder.jp/contests/tenka1-2014-final/submissions/80010504\n\
+    \u6226 D - \u9AD8\u6A4B\u541B\n * https://atcoder.jp/contests/tenka1-2014-final/submissions/80011789\n\
     \ */\n#include \"../../Src/Combinatorics/BinomialCoefficientPrefixSums.hpp\"\n\
     #include \"atcoder/modint\"\n#include <iostream>\n#include <utility>\n#include\
     \ <vector>\nusing mint=atcoder::modint1000000007;\nusing namespace std;\nint main()\
@@ -52,7 +52,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/tenka1_2014_final_d.test.cpp
   requiredBy: []
-  timestamp: '2026-10-13 17:04:22+09:00'
+  timestamp: '2026-10-13 17:51:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/tenka1_2014_final_d.test.cpp

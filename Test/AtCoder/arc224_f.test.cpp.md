@@ -1,0 +1,72 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
+    title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Utility/Mo.hpp
+    title: Src/Utility/Mo.hpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://atcoder.jp/contests/arc224/submissions/80011933
+    - https://atcoder.jp/contests/arc224/tasks/arc224_f
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+    , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
+    \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
+    \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
+    \  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
+    \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
+    \ File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
+    )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
+    \ line -1: no such header\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/arc224/tasks/arc224_f\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n/*\n * AtCoder Regular\
+    \ Contest --224 F - AND/OR\n * https://atcoder.jp/contests/arc224/submissions/80011933\n\
+    \ */\n#include \"../../Src/Combinatorics/BinomialCoefficientPrefixSums.hpp\"\n\
+    #include \"atcoder/modint\"\nusing mint=atcoder::modint998244353;\n#include <algorithm>\n\
+    #include <iostream>\n#include <utility>\n#include <vector>\nusing namespace std;\n\
+    using namespace zawa;\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n\
+    \    ios::sync_with_stdio(0);\n    int T;\n    cin >> T;\n    while (T--) {\n\
+    \        int N,K;\n        cin >> N >> K;\n        vector<long long> A(N);\n \
+    \       for (auto& x : A)\n            cin >> x;\n        ranges::reverse(A);\n\
+    \        long long M=0;\n        for (int i = 0 ; i < K ; i++)\n            M|=A[i];\n\
+    \        int use=0;\n        long long cur=0;\n        vector<pair<int,int>> query;\n\
+    \        for (int i = 0 ; i < N ; i++) {\n            if (((M^cur)&A[i])==(M^cur))\n\
+    \                query.push_back({N-i-1,K-use-1});\n            else {\n     \
+    \           cur|=A[i];\n                cur&=M;\n                use++;\n    \
+    \        }\n        }\n        mint ans=0;\n        if (cur==M)\n            ans++;\n\
+    \        for (auto val : BinomialCoefficientPrefixSums<mint>(query))\n       \
+    \     ans+=val;\n        cout << ans.val() << '\\n';\n    }\n#else\n    int a,b;\n\
+    \    cin >> a >> b;\n    cout << a+b << '\\n';\n#endif\n}\n"
+  dependsOn:
+  - Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
+  - Src/Utility/Mo.hpp
+  - Src/Template/TypeAlias.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/arc224_f.test.cpp
+  requiredBy: []
+  timestamp: '2026-10-13 17:51:11+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/arc224_f.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/AtCoder/arc224_f.test.cpp
+- /verify/Test/AtCoder/arc224_f.test.cpp.html
+title: Test/AtCoder/arc224_f.test.cpp
+---

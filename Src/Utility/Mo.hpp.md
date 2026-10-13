@@ -28,6 +28,9 @@ data:
     path: Test/AtCoder/abc477_g.test.cpp
     title: Test/AtCoder/abc477_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc224_f.test.cpp
+    title: Test/AtCoder/arc224_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tenka1_2014_final_d.test.cpp
     title: Test/AtCoder/tenka1_2014_final_d.test.cpp
   - icon: ':heavy_check_mark:'
@@ -112,6 +115,7 @@ data:
   - Test/AtCoder/abc384_g.test.cpp
   - Test/AtCoder/abc405.test.cpp
   - Test/AtCoder/abc448_f.test.cpp
+  - Test/AtCoder/arc224_f.test.cpp
   - Test/AtCoder/tenka1_2014_final_d.test.cpp
   - Test/LC/static_range_frequency.test.cpp
 documentation_of: Src/Utility/Mo.hpp

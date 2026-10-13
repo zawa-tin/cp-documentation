@@ -10,6 +10,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc224_f.test.cpp
+    title: Test/AtCoder/arc224_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/tenka1_2014_final_d.test.cpp
     title: Test/AtCoder/tenka1_2014_final_d.test.cpp
   _isVerificationFailed: false
@@ -52,49 +55,50 @@ data:
     \ <cassert>\n#line 10 \"Src/Combinatorics/BinomialCoefficientPrefixSums.hpp\"\n\
     \nnamespace zawa {\n\ntemplate <class T,std::signed_integral U>\nstd::vector<T>\
     \ BinomialCoefficientPrefixSums(std::vector<std::pair<U,U>> P) {\n    U maxN =\
-    \ 0;\n    for (auto& [n,k] : P) {\n        assert(n >= 0 and k >= 0);\n      \
-    \  k = std::min(k,n);\n        maxN = std::max(maxN,n);\n    }\n    auto ord =\
-    \ Mo(P);\n    std::vector<T> res(P.size()),fac(maxN+1),ifac(maxN+1);\n    fac[0]\
-    \ = 1;\n    for (U i = 1 ; i <= maxN ; i++)\n        fac[i] = fac[i-1] * T{i};\n\
-    \    ifac[maxN] = T{1} / fac[maxN];\n    for (U i = maxN ; i >= 1 ; i--)\n   \
-    \     ifac[i-1] = ifac[i] * T{i};\n    auto comb = [&](U n,U k) -> T {\n     \
-    \   return fac[n] * ifac[k] * ifac[n-k];\n    };\n    U n = 0, k = 0;\n    const\
-    \ T inv2 = T{1} / T{2};\n    T cur = T{1};\n    for (auto idx : ord) {\n     \
-    \   auto [N,K] = P[idx];\n        while (n < N) {\n            cur = T{2} * cur\
-    \ - comb(n,k);\n            n++;\n        }\n        while (k < K) {\n       \
-    \     cur += comb(n,k+1);\n            k++;\n        }\n        while (k > K)\
-    \ {\n            cur -= comb(n,k);\n            k--;\n        }\n        while\
-    \ (n > N) {\n            cur = inv2 * (cur + comb(n-1,k));\n            n--;\n\
-    \        }\n        res[idx] = cur;\n    }\n    return res;\n}\n\n} // namespace\
-    \ zawa\n"
+    \ 0;\n    for (auto& [n,k] : P) {\n        assert(n >= 0);\n        k = std::clamp(k,U{-1},n);\n\
+    \        maxN = std::max(maxN,n);\n    }\n    auto ord = Mo(P);\n    std::vector<T>\
+    \ res(P.size(),T{0}),fac(maxN+1),ifac(maxN+1);\n    fac[0] = 1;\n    for (U i\
+    \ = 1 ; i <= maxN ; i++)\n        fac[i] = fac[i-1] * T{i};\n    ifac[maxN] =\
+    \ T{1} / fac[maxN];\n    for (U i = maxN ; i >= 1 ; i--)\n        ifac[i-1] =\
+    \ ifac[i] * T{i};\n    auto comb = [&](U n,U k) -> T {\n        return fac[n]\
+    \ * ifac[k] * ifac[n-k];\n    };\n    U n = 0, k = 0;\n    const T inv2 = T{1}\
+    \ / T{2};\n    T cur = T{1};\n    for (auto idx : ord) {\n        auto [N,K] =\
+    \ P[idx];\n        if (K == -1)\n            continue;\n        while (n < N)\
+    \ {\n            cur = T{2} * cur - comb(n,k);\n            n++;\n        }\n\
+    \        while (k < K) {\n            cur += comb(n,k+1);\n            k++;\n\
+    \        }\n        while (k > K) {\n            cur -= comb(n,k);\n         \
+    \   k--;\n        }\n        while (n > N) {\n            cur = inv2 * (cur +\
+    \ comb(n-1,k));\n            n--;\n        }\n        res[idx] = cur;\n    }\n\
+    \    return res;\n}\n\n} // namespace zawa\n"
   code: "#pragma once\n\n#include \"../Utility/Mo.hpp\"\n\n#include <algorithm>\n\
     #include <cassert>\n#include <concepts>\n#include <utility>\n#include <vector>\n\
     \nnamespace zawa {\n\ntemplate <class T,std::signed_integral U>\nstd::vector<T>\
     \ BinomialCoefficientPrefixSums(std::vector<std::pair<U,U>> P) {\n    U maxN =\
-    \ 0;\n    for (auto& [n,k] : P) {\n        assert(n >= 0 and k >= 0);\n      \
-    \  k = std::min(k,n);\n        maxN = std::max(maxN,n);\n    }\n    auto ord =\
-    \ Mo(P);\n    std::vector<T> res(P.size()),fac(maxN+1),ifac(maxN+1);\n    fac[0]\
-    \ = 1;\n    for (U i = 1 ; i <= maxN ; i++)\n        fac[i] = fac[i-1] * T{i};\n\
-    \    ifac[maxN] = T{1} / fac[maxN];\n    for (U i = maxN ; i >= 1 ; i--)\n   \
-    \     ifac[i-1] = ifac[i] * T{i};\n    auto comb = [&](U n,U k) -> T {\n     \
-    \   return fac[n] * ifac[k] * ifac[n-k];\n    };\n    U n = 0, k = 0;\n    const\
-    \ T inv2 = T{1} / T{2};\n    T cur = T{1};\n    for (auto idx : ord) {\n     \
-    \   auto [N,K] = P[idx];\n        while (n < N) {\n            cur = T{2} * cur\
-    \ - comb(n,k);\n            n++;\n        }\n        while (k < K) {\n       \
-    \     cur += comb(n,k+1);\n            k++;\n        }\n        while (k > K)\
-    \ {\n            cur -= comb(n,k);\n            k--;\n        }\n        while\
-    \ (n > N) {\n            cur = inv2 * (cur + comb(n-1,k));\n            n--;\n\
-    \        }\n        res[idx] = cur;\n    }\n    return res;\n}\n\n} // namespace\
-    \ zawa\n"
+    \ 0;\n    for (auto& [n,k] : P) {\n        assert(n >= 0);\n        k = std::clamp(k,U{-1},n);\n\
+    \        maxN = std::max(maxN,n);\n    }\n    auto ord = Mo(P);\n    std::vector<T>\
+    \ res(P.size(),T{0}),fac(maxN+1),ifac(maxN+1);\n    fac[0] = 1;\n    for (U i\
+    \ = 1 ; i <= maxN ; i++)\n        fac[i] = fac[i-1] * T{i};\n    ifac[maxN] =\
+    \ T{1} / fac[maxN];\n    for (U i = maxN ; i >= 1 ; i--)\n        ifac[i-1] =\
+    \ ifac[i] * T{i};\n    auto comb = [&](U n,U k) -> T {\n        return fac[n]\
+    \ * ifac[k] * ifac[n-k];\n    };\n    U n = 0, k = 0;\n    const T inv2 = T{1}\
+    \ / T{2};\n    T cur = T{1};\n    for (auto idx : ord) {\n        auto [N,K] =\
+    \ P[idx];\n        if (K == -1)\n            continue;\n        while (n < N)\
+    \ {\n            cur = T{2} * cur - comb(n,k);\n            n++;\n        }\n\
+    \        while (k < K) {\n            cur += comb(n,k+1);\n            k++;\n\
+    \        }\n        while (k > K) {\n            cur -= comb(n,k);\n         \
+    \   k--;\n        }\n        while (n > N) {\n            cur = inv2 * (cur +\
+    \ comb(n-1,k));\n            n--;\n        }\n        res[idx] = cur;\n    }\n\
+    \    return res;\n}\n\n} // namespace zawa\n"
   dependsOn:
   - Src/Utility/Mo.hpp
   - Src/Template/TypeAlias.hpp
   isVerificationFile: false
   path: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
   requiredBy: []
-  timestamp: '2026-10-13 17:04:22+09:00'
+  timestamp: '2026-10-13 17:51:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/arc224_f.test.cpp
   - Test/AtCoder/tenka1_2014_final_d.test.cpp
 documentation_of: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
 layout: document
@@ -108,7 +112,7 @@ template <class T,std::signed_integral U>
 std::vector<T> BinomialCoefficientPrefixSums(std::vector<std::pair<U,U>> P)
 ```
 
-$Q$ クエリ与えられる。 $i$ 番目のクエリでは $\sum_{j=0}^{k_{i}}\binom{n_i}{j}$ を求めよ
+$Q$ クエリ与えられる。 $i$ 番目のクエリでは $\sum_{j=0}^{k_{i}}\binom{n_i}{j}$ を求めよ。ただし、 $k_i\lt 0$ のとき、このクエリの解は $0$ とみなす。
 
 という問題をMo's Algorithmでオフライン処理する。 クエリ $(n,k)$ に対する答えを $f(n,k)$ とすると...
 
@@ -127,8 +131,9 @@ $$
 
 `T`として基本的に $\mathbb{F}_{p}$ を用いることが暗黙に仮定されている。このときの`T`は $2,N!$ の乗法逆元が定義できることが必要であることに注意せよ。
 
-クエリで与える $n,k$ はどちらも非負であることを仮定している。なお、内部で用いるMo's Algorithmの都合上、 $n,k$ の型である`U`は符号付である必要がある。
+クエリで与える $n$ は非負であることを仮定している。なお、内部で用いるMo's Algorithmの都合上、 $n,k$ の型である`U`は符号付である必要がある。
 
 ## 更新履歴
 
 - 2026/10/13: 作成
+- 2026/10/13: $k$ が負の場合は $0$ を返すように修正
