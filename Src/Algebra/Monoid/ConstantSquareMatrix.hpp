@@ -4,12 +4,16 @@
 
 #include <array>
 #include <cassert>
+#include <initializer_list>
 #include <span>
 
 namespace zawa {
 
 template <class Semiring,usize N>
-class SquareMatrix {
+class ConstantSquareMatrix {
+
+    static_assert(N > 0,"ConstantSquareMatrix::N must be positive");
+
 public:
 
     using T = typename Semiring::Element;
@@ -18,21 +22,21 @@ public:
 
     using M = typename Semiring::Multiplication;
 
-    using Element = SquareMatrix;
+    using Element = ConstantSquareMatrix;
 
-    constexpr SquareMatrix() {
+    constexpr ConstantSquareMatrix() {
         m_data.fill(A::identity());
     }
 
-    constexpr explicit SquareMatrix(const std::array<T,N*N>& data) : m_data{data} {}
+    constexpr explicit ConstantSquareMatrix(const std::array<T,N*N>& data) : m_data{data} {}
 
-    constexpr explicit SquareMatrix(const std::array<std::array<T,N>,N>& data) {
+    constexpr explicit ConstantSquareMatrix(const std::array<std::array<T,N>,N>& data) {
         for (usize i = 0 ; i < N ; i++)
             for (usize j = 0 ; j < N ; j++)
                 m_data[i*N+j] = data[i][j];
     }
 
-    constexpr explicit SquareMatrix(std::initializer_list<std::initializer_list<T>> data) {
+    constexpr explicit ConstantSquareMatrix(std::initializer_list<std::initializer_list<T>> data) {
         assert(data.size() == N);
         for (usize i = 0 ; const auto& row : data) {
             assert(row.size() == N);
@@ -55,24 +59,35 @@ public:
     }
 
     static constexpr Element zero() {
-        return SquareMatrix();
+        return ConstantSquareMatrix();
     }
 
     static constexpr Element identity() {
-        auto res = SquareMatrix();
+        auto res = ConstantSquareMatrix();
         for (usize i = 0 ; i < N ; i++)
             res[i][i] = M::identity();
         return res;
     }
 
     static constexpr Element operation(const Element& lhs,const Element& rhs) {
-        auto res = zero();
-        for (usize i = 0 ; i < N ; i++)
+        Element res = zero();
+        for (usize i = 0 ; i < N ; i++) {
             for (usize k = 0 ; k < N ; k++) {
-                const T x = lhs[i][k];
+                const T& x = lhs[i][k];
                 for (usize j = 0 ; j < N ; j++)
                     res[i][j] = A::operation(res[i][j],M::operation(x,rhs[k][j]));
             }
+        }
+        return res;
+    }
+
+    static constexpr std::array<T,N> leftAction(const Element& mat,const std::array<T,N>& vec) {
+        std::array<T,N> res;
+        for (usize i = 0 ; i < N ; i++) {
+            res[i] = A::identity();
+            for (usize j = 0 ; j < N ; j++)
+                res[i] = A::operation(res[i],M::operation(mat[i][j],vec[j]));
+        }
         return res;
     }
 

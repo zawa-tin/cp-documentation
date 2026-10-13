@@ -2,10 +2,10 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/aplusb"
 /*
  * AtCoder Beginner Contest 429 F - Shortest Path Query
- * https://atcoder.jp/contests/abc429/submissions/79844847
+ * https://atcoder.jp/contests/abc429/submissions/80016116
  */
 #include "../../Src/Algebra/Ring/MinPlusSemiring.hpp"
-#include "../../Src/Algebra/Monoid/StaticSquareMatrix.hpp"
+#include "../../Src/Algebra/Monoid/ConstantSquareMatrix.hpp"
 #include "../../Src/DataStructure/SegmentTree/SegmentTree.hpp"
 #include <cassert>
 #include <iostream>
@@ -13,7 +13,7 @@
 using namespace std;
 using namespace zawa;
 const int INF=(int)1e9;
-using M = SquareMatrix<MinPlusSemiring<int,INF>,3>;
+using M = ConstantSquareMatrix<MinPlusSemiring<int,INF>,3>;
 M convert(string S) {
     assert(ssize(S)==3);
     M res = M::zero();
