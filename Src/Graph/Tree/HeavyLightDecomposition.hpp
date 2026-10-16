@@ -20,7 +20,7 @@ public:
     HeavyLightDecomposition() = default;
 
     HeavyLightDecomposition(std::vector<std::vector<V>> T, V root = 0u) 
-        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n), 
+        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n), m_out(m_n),
         m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {
 
             auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {
@@ -52,7 +52,7 @@ public:
                     for (usize i = 1 ; i < T[v].size() ; i++)
                         idx = dfs(dfs, T[v][i], idx, T[v][i]);
                 }
-                return idx;
+                return m_out[v] = idx;
             };
 
             dfs1(dfs1, root, INVALID, 0u);
@@ -144,6 +144,11 @@ public:
         return res;
     }
 
+    std::pair<V,V> subtreeQuery(V v) const {
+        assert(v < (V)size());
+        return {m_idx[v],m_out[v]};
+    }
+
     V lca(V u, V v) const {
         assert(u < (V)size());
         assert(v < (V)size());
@@ -162,13 +167,9 @@ public:
 
     // is p ancestor of v ?
     bool isAncestor(V v, V p) const {
-        assert(v < size());
-        assert(p < size());
-        if (m_dep[v] < m_dep[p]) return false;
-        while (v != INVALID and m_top[v] != m_top[p]) {
-            v = m_par[m_top[v]];
-        }
-        return v != INVALID;
+        assert(v < (V)size());
+        assert(p < (V)size());
+        return m_idx[p] <= m_idx[v] and m_out[v] <= m_out[p];
     }
 
     std::optional<V> levelAncestor(V v, usize step) const {
@@ -199,7 +200,8 @@ public:
             }
             step -= dist + 1;
         }
-        if (uu == INVALID) return std::nullopt;
+        if (uu == INVALID) 
+            return std::nullopt;
         if (m_dep[uu] <= m_dep[vv])
             return m_inv[m_idx[uu] + step];
         else
@@ -223,7 +225,7 @@ private:
 
     usize m_n{};
 
-    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};
+    std::vector<V> m_par{}, m_top{}, m_idx{}, m_out{}, m_inv{}, m_bottom{};
 
     std::vector<usize> m_size{}, m_dep{};
 };
