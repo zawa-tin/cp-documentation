@@ -131,14 +131,14 @@ data:
     \n\nnamespace zawa {\n\ntemplate <std::integral V>\nclass HeavyLightDecomposition\
     \ {\npublic:\n\n    HeavyLightDecomposition() = default;\n\n    HeavyLightDecomposition(std::vector<std::vector<V>>\
     \ T, V root = 0u) \n        : m_n{T.size()}, m_par(m_n), m_top(m_n), m_idx(m_n),\
-    \ \n        m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n) {\n\n\
-    \            auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {\n       \
-    \         m_par[v] = p;\n                m_dep[v] = d;\n                if (p\
-    \ != INVALID) {\n                    for (usize i = 0 ; i + 1 < T[v].size() ;\
-    \ i++) \n                        if (T[v][i] == p) {\n                       \
-    \     std::swap(T[v][i], T[v].back());\n                            break;\n \
-    \                       }\n                    assert(T[v].back() == p);\n   \
-    \                 T[v].pop_back();\n                }\n                for (V\
+    \ m_out(m_n),\n        m_inv(m_n), m_bottom(m_n),  m_size(m_n, usize{1}), m_dep(m_n)\
+    \ {\n\n            auto dfs1 = [&](auto dfs, V v, V p, usize d) -> usize {\n \
+    \               m_par[v] = p;\n                m_dep[v] = d;\n               \
+    \ if (p != INVALID) {\n                    for (usize i = 0 ; i + 1 < T[v].size()\
+    \ ; i++) \n                        if (T[v][i] == p) {\n                     \
+    \       std::swap(T[v][i], T[v].back());\n                            break;\n\
+    \                        }\n                    assert(T[v].back() == p);\n  \
+    \                  T[v].pop_back();\n                }\n                for (V\
     \ x : T[v])\n                    m_size[v] += dfs(dfs, x, v, d + 1);\n       \
     \         for (usize i = 1 ; i < T[v].size() ; i++) \n                    if (m_size[T[v][0]]\
     \ < m_size[T[v][i]])\n                        std::swap(T[v][0], T[v][i]);\n \
@@ -148,9 +148,9 @@ data:
     \   if (T[v].size()) {\n                    idx = dfs(dfs, T[v][0], idx, top);\n\
     \                    for (usize i = 1 ; i < T[v].size() ; i++)\n             \
     \           idx = dfs(dfs, T[v][i], idx, T[v][i]);\n                }\n      \
-    \          return idx;\n            };\n\n            dfs1(dfs1, root, INVALID,\
-    \ 0u);\n            dfs2(dfs2, root, 0u, root);\n\n            for (usize i =\
-    \ 0 ; i < m_n ; i++)\n                if (m_dep[m_bottom[m_top[i]]] < m_dep[i])\n\
+    \          return m_out[v] = idx;\n            };\n\n            dfs1(dfs1, root,\
+    \ INVALID, 0u);\n            dfs2(dfs2, root, 0u, root);\n\n            for (usize\
+    \ i = 0 ; i < m_n ; i++)\n                if (m_dep[m_bottom[m_top[i]]] < m_dep[i])\n\
     \                    m_bottom[m_top[i]] = i;\n        }\n\n    inline usize size()\
     \ const noexcept {\n        return m_n;\n    }\n\n    usize size(V v) const noexcept\
     \ {\n        assert(v < (V)size());\n        return m_size[v];\n    }\n\n    usize\
@@ -179,38 +179,39 @@ data:
     \u90FD\u5408\u4E0A\u3001\u9589\u533A\u9593\u3067\u8FD4\u3055\u308C\u308B\u3002\
     \n    std::vector<std::pair<V,V>> pathQuery(V s, V t) const {\n        auto res\
     \ = decomp(s,t);\n        for (auto& [u,v] : res) {\n            u = m_idx[u];\n\
-    \            v = m_idx[v];\n        }\n        return res;\n    }\n\n    V lca(V\
-    \ u, V v) const {\n        assert(u < (V)size());\n        assert(v < (V)size());\n\
-    \        while (m_top[u] != m_top[v]) {\n            if (m_dep[m_top[u]] >= m_dep[m_top[v]])\
-    \ {\n                u = m_top[u];\n                if (m_par[u] != INVALID) u\
-    \ = m_par[u];\n            }\n            else {\n                v = m_top[v];\n\
-    \                if (m_par[v] != INVALID) v = m_par[v];\n            }\n     \
-    \   }\n        return (m_dep[u] <= m_dep[v] ? u : v);\n    }\n\n    // is p ancestor\
-    \ of v ?\n    bool isAncestor(V v, V p) const {\n        assert(v < size());\n\
-    \        assert(p < size());\n        if (m_dep[v] < m_dep[p]) return false;\n\
-    \        while (v != INVALID and m_top[v] != m_top[p]) {\n            v = m_par[m_top[v]];\n\
-    \        }\n        return v != INVALID;\n    }\n\n    std::optional<V> levelAncestor(V\
-    \ v, usize step) const {\n        assert(v < (V)size());\n        if (step > m_dep[v])\
-    \ return std::nullopt;\n        while (true) {\n            usize dist{m_dep[v]\
-    \ - m_dep[m_top[v]]};\n            if (dist >= step) break;\n            step\
-    \ -= dist + 1;\n            v = m_par[m_top[v]];\n        }\n        step = (m_dep[v]\
-    \ - m_dep[m_top[v]]) - step;\n        return m_inv[m_idx[m_top[v]] + step];\n\
-    \    }\n\n    std::optional<V> jump(V s, V t, usize step) const {\n        assert(s\
-    \ < (V)size());\n        assert(t < (V)size());\n        V uu{INVALID}, vv{INVALID};\n\
-    \        usize d{};\n        for (auto [u, v] : decomp(s, t)) {\n            usize\
-    \ dist{std::max(m_dep[u], m_dep[v]) - std::min(m_dep[u], m_dep[v])};\n       \
-    \     if (dist >= step) {\n                uu = u;\n                vv = v;\n\
-    \                d = dist;\n                break;\n            }\n          \
-    \  step -= dist + 1;\n        }\n        if (uu == INVALID) return std::nullopt;\n\
-    \        if (m_dep[uu] <= m_dep[vv])\n            return m_inv[m_idx[uu] + step];\n\
-    \        else\n            return m_inv[m_idx[vv] + (d - step)];\n    }\n\n  \
-    \  usize distance(V s, V t) const {\n        assert(s < (V)size());\n        assert(t\
-    \ < (V)size());\n        usize res{};\n        for (auto [u, v] : decomp(s, t))\
-    \ {\n            if (m_dep[u] > m_dep[v]) std::swap(u, v);\n            res +=\
-    \ m_dep[v] - m_dep[u] + 1;\n        }\n        return --res;\n    }\n\nprivate:\n\
-    \n    static constexpr V INVALID{static_cast<V>(-1)};\n\n    usize m_n{};\n\n\
-    \    std::vector<V> m_par{}, m_top{}, m_idx{}, m_inv{}, m_bottom{};\n\n    std::vector<usize>\
-    \ m_size{}, m_dep{};\n};\n\n} // namespace zawa\n#line 7 \"Test/LC/vertex_add_path_sum.test.cpp\"\
+    \            v = m_idx[v];\n        }\n        return res;\n    }\n\n    std::pair<V,V>\
+    \ subtreeQuery(V v) const {\n        assert(v < (V)size());\n        return {m_idx[v],m_out[v]};\n\
+    \    }\n\n    V lca(V u, V v) const {\n        assert(u < (V)size());\n      \
+    \  assert(v < (V)size());\n        while (m_top[u] != m_top[v]) {\n          \
+    \  if (m_dep[m_top[u]] >= m_dep[m_top[v]]) {\n                u = m_top[u];\n\
+    \                if (m_par[u] != INVALID) u = m_par[u];\n            }\n     \
+    \       else {\n                v = m_top[v];\n                if (m_par[v] !=\
+    \ INVALID) v = m_par[v];\n            }\n        }\n        return (m_dep[u] <=\
+    \ m_dep[v] ? u : v);\n    }\n\n    // is p ancestor of v ?\n    bool isAncestor(V\
+    \ v, V p) const {\n        assert(v < (V)size());\n        assert(p < (V)size());\n\
+    \        return m_idx[p] <= m_idx[v] and m_out[v] <= m_out[p];\n    }\n\n    std::optional<V>\
+    \ levelAncestor(V v, usize step) const {\n        assert(v < (V)size());\n   \
+    \     if (step > m_dep[v]) return std::nullopt;\n        while (true) {\n    \
+    \        usize dist{m_dep[v] - m_dep[m_top[v]]};\n            if (dist >= step)\
+    \ break;\n            step -= dist + 1;\n            v = m_par[m_top[v]];\n  \
+    \      }\n        step = (m_dep[v] - m_dep[m_top[v]]) - step;\n        return\
+    \ m_inv[m_idx[m_top[v]] + step];\n    }\n\n    std::optional<V> jump(V s, V t,\
+    \ usize step) const {\n        assert(s < (V)size());\n        assert(t < (V)size());\n\
+    \        V uu{INVALID}, vv{INVALID};\n        usize d{};\n        for (auto [u,\
+    \ v] : decomp(s, t)) {\n            usize dist{std::max(m_dep[u], m_dep[v]) -\
+    \ std::min(m_dep[u], m_dep[v])};\n            if (dist >= step) {\n          \
+    \      uu = u;\n                vv = v;\n                d = dist;\n         \
+    \       break;\n            }\n            step -= dist + 1;\n        }\n    \
+    \    if (uu == INVALID) \n            return std::nullopt;\n        if (m_dep[uu]\
+    \ <= m_dep[vv])\n            return m_inv[m_idx[uu] + step];\n        else\n \
+    \           return m_inv[m_idx[vv] + (d - step)];\n    }\n\n    usize distance(V\
+    \ s, V t) const {\n        assert(s < (V)size());\n        assert(t < (V)size());\n\
+    \        usize res{};\n        for (auto [u, v] : decomp(s, t)) {\n          \
+    \  if (m_dep[u] > m_dep[v]) std::swap(u, v);\n            res += m_dep[v] - m_dep[u]\
+    \ + 1;\n        }\n        return --res;\n    }\n\nprivate:\n\n    static constexpr\
+    \ V INVALID{static_cast<V>(-1)};\n\n    usize m_n{};\n\n    std::vector<V> m_par{},\
+    \ m_top{}, m_idx{}, m_out{}, m_inv{}, m_bottom{};\n\n    std::vector<usize> m_size{},\
+    \ m_dep{};\n};\n\n} // namespace zawa\n#line 7 \"Test/LC/vertex_add_path_sum.test.cpp\"\
     \n\n#line 12 \"Test/LC/vertex_add_path_sum.test.cpp\"\nusing namespace std;\n\n\
     int main() {\n    using namespace zawa; \n    cin.tie(0);\n    cout.tie(0);\n\
     \    ios::sync_with_stdio(0);\n\n    int N, Q;\n    std::cin >> N >> Q;\n    std::vector<int>\
@@ -259,7 +260,7 @@ data:
   isVerificationFile: true
   path: Test/LC/vertex_add_path_sum.test.cpp
   requiredBy: []
-  timestamp: '2026-05-04 13:04:46+09:00'
+  timestamp: '2026-10-16 19:43:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/vertex_add_path_sum.test.cpp
