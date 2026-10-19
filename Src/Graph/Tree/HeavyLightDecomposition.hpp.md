@@ -19,6 +19,9 @@ data:
     path: Test/AOJ/2559.test.cpp
     title: Test/AOJ/2559.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc298_h.test.cpp
+    title: Test/AtCoder/abc298_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc479_e.test.cpp
     title: Test/AtCoder/abc479_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -230,6 +233,7 @@ data:
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/2559.test.cpp
   - Test/AtCoder/abc479_e.test.cpp
+  - Test/AtCoder/abc298_h.test.cpp
   - Test/LC/vertex_add_path_sum.test.cpp
   - Test/LC/lca/HeavyLightDecomposition.test.cpp
   - Test/LC/jump_on_tree.test.cpp

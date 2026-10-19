@@ -39,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/range_set_range_composite.test.cpp
     title: Test/LC/range_set_range_composite.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/tree_path_composite_sum.test.cpp
+    title: Test/LC/tree_path_composite_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -96,6 +99,7 @@ data:
   - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
   - Test/LC/range_affine_point_get.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
+  - Test/LC/tree_path_composite_sum.test.cpp
   - Test/LC/range_set_range_composite.test.cpp
   - Test/LC/range_affine_range_sum.test.cpp
 documentation_of: Src/Algebra/Monoid/AffineMonoid.hpp

@@ -1151,6 +1151,9 @@ data:
     path: Test/AtCoder/abc296_g.test.cpp
     title: Test/AtCoder/abc296_g.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc298_h.test.cpp
+    title: Test/AtCoder/abc298_h.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc299_c.test.cpp
     title: Test/AtCoder/abc299_c.test.cpp
   - icon: ':heavy_check_mark:'
@@ -1339,6 +1342,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc165_c.test.cpp
     title: Test/AtCoder/arc165_c.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/arc179_d.test.cpp
+    title: Test/AtCoder/arc179_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/arc185_e.test.cpp
     title: "ABC185-E Adjacent GCD (\u7D04\u6570\u30FB\u500D\u6570\u95A2\u4FC2\u306E\
@@ -1697,6 +1703,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/stirling_number_of_the_second_kind.test.cpp
     title: Test/LC/stirling_number_of_the_second_kind.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/tree_path_composite_sum.test.cpp
+    title: Test/LC/tree_path_composite_sum.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/two_edge_connected_components.test.cpp
     title: Test/LC/two_edge_connected_components.test.cpp
@@ -2325,6 +2334,7 @@ data:
   - Test/AtCoder/abc340_g.test.cpp
   - Test/AtCoder/abc457_f.test.cpp
   - Test/AtCoder/abc403_g.test.cpp
+  - Test/AtCoder/arc179_d.test.cpp
   - Test/AtCoder/abc151_f.test.cpp
   - Test/AtCoder/abc430_g.test.cpp
   - Test/AtCoder/abc191_d.test.cpp
@@ -2423,6 +2433,7 @@ data:
   - Test/AtCoder/abc296_g.test.cpp
   - Test/AtCoder/abc247_g.test.cpp
   - Test/AtCoder/abc263_g.test.cpp
+  - Test/AtCoder/abc298_h.test.cpp
   - Test/AtCoder/arc224_f.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/typical90_cc.test.cpp
@@ -2502,6 +2513,7 @@ data:
   - Test/LC/cycle_detection.test.cpp
   - Test/LC/point_set_range_composite.test.cpp
   - Test/LC/lcm_convolution.test.cpp
+  - Test/LC/tree_path_composite_sum.test.cpp
   - Test/LC/binomial_coefficient_prime_mod.test.cpp
   - Test/LC/area_of_union_of_rectangles.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
