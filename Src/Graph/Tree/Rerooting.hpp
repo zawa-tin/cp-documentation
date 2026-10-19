@@ -5,7 +5,6 @@
 #include <vector>
 #include <cassert>
 #include <concepts>
-#include <limits>
 
 namespace zawa {
 
@@ -25,97 +24,119 @@ concept TreeDP = requires {
 
 }
 
-template <concepts::TreeDP T>
-using TreeDPGraph = std::vector<std::vector<std::pair<usize, typename T::Edge>>>;
+template <concepts::TreeDP DP,std::integral T>
+class Rerooting {
+public:
 
-template <concepts::TreeDP T>
-std::vector<typename T::Tree> TreeDP(const TreeDPGraph<T>& g, const std::vector<typename T::Vertex>& vs, usize root) {
-    using Tree = typename T::Tree;
-    using Cluster = typename T::Cluster;
-    // using Edge = typename T::Edge;
-    // using Vertex = typename T::Vertex;
-    assert(g.size() == vs.size());
-    const usize n = g.size();
-    std::vector<Tree> res(n);
-    auto rec = [&](auto rec, usize v, usize p) -> Tree {
-        if (ssize(g[v]) == 1 and g[v][0].first == p)
-            return res[v] = T::Convert(vs[v]);
-        usize idx = g[v][0].first == p ? 1 : 0;
-        assert(idx < g[v].size());
-        Cluster cluster = T::AddEdge(rec(rec, g[v][idx].first, v), g[v][idx].second);
-        idx++;
-        for ( ; idx < g[v].size() ; idx++) {
-            Cluster cur = T::AddEdge(rec(rec, g[v][idx].first, v), g[v][idx].second);
-            cluster = T::Merge(cluster, cur);
-        }
-        return res[v] = T::AddVertex(cluster, vs[v]);
-    };
-    rec(rec, root, g.size());
-    return res;
-}
+    using Tree = DP::Tree;
 
-template <concepts::TreeDP T>
-std::vector<typename T::Tree> Rerooting(const TreeDPGraph<T>& g, const std::vector<typename T::Vertex>& vs) {
-    using Tree = typename T::Tree;
-    using Cluster = typename T::Cluster;
-    // using Edge = typename T::Edge;
-    // using Vertex = typename T::Vertex;
-    assert(g.size() == vs.size());
-    const usize n = g.size();
-    if (n <= 2) {
-        std::vector<Tree> res(n);
-        for (usize i = 0 ; i < n ; i++)
-            res[i] = TreeDP<T>(g, vs, i)[i];
-        return res;
-    }
-    std::vector<Cluster> dp(n);
-    auto rec1 = [&](auto rec, usize v, usize p) -> Tree {
-        if (ssize(g[v]) == 1 and g[v][0].first == p)
-            return T::Convert(vs[v]);
-        usize idx = g[v][0].first == p ? 1 : 0;
-        assert(idx < g[v].size());
-        dp[v] = T::AddEdge(rec(rec, g[v][idx].first, v), g[v][idx].second);
-        idx++;
-        for ( ; idx < g[v].size() ; idx++)
-            if (g[v][idx].first != p) {
-                Cluster cur = T::AddEdge(rec(rec, g[v][idx].first, v), g[v][idx].second);
-                dp[v] = T::Merge(dp[v], cur);
-            }
-        return T::AddVertex(dp[v], vs[v]);
-    };
-    usize root = 0;
-    while (root < g.size() and g[root].size() <= 1)
-        root++;
-    assert(root < g.size());
-    std::vector<Tree> res(n);
-    res[root] = rec1(rec1, root, g.size());
-    auto rec2 = [&](auto rec, usize v, usize p, Cluster pv) -> void {
-        if (ssize(g[v]) == 1) {
-            assert(g[v][0].first == p);
-            res[v] = T::AddVertex(pv, vs[v]);
+    using Cluster = DP::Cluster;
+
+    using Edge = DP::Edge;
+
+    using Vertex = DP::Vertex;
+
+    Rerooting(usize n,std::vector<std::pair<T,T>> ed,std::vector<Vertex> vs,std::vector<Edge> es) 
+    : m_n{n}, m_edges{std::move(ed)}, m_alls(n), m_sides(m_edges.size()) {
+        assert(m_edges.size()+1==n); 
+        assert(m_edges.size()==es.size());
+        assert(n==vs.size());
+        if (n==1) {
+            m_alls[0]=DP::Convert(vs[0]);
             return;
         }
-        assert(ssize(g[v]) >= 2);
-        std::vector<Cluster> pref(g[v].size()), suf(g[v].size());
-        pref[0] = g[v][0].first == p ? pv : T::AddEdge(dp[g[v][0].first], g[v][0].second);
-        for (usize i = 1 ; i < g[v].size() ; i++) {
-            Cluster cur = g[v][i].first == p ? pv : T::AddEdge(dp[g[v][i].first], g[v][i].second);
-            pref[i] = T::Merge(pref[i - 1], cur);
+        std::vector<std::vector<std::pair<T,u32>>> g(n);
+        for (usize i = 0 ; auto [u,v] : m_edges) {
+            g[u].push_back({v,i});
+            g[v].push_back({u,i});
+            i++;
         }
-        suf[g[v].size() - 1] = g[v].back().first == p ? pv : T::AddEdge(dp[g[v].back().first], g[v].back().second);
-        for (usize i = g[v].size() - 1 ; i-- ; ) {
-            Cluster cur = g[v][i].first == p ? pv : T::AddEdge(dp[g[v][i].first], g[v][i].second);
-            suf[i] = T::Merge(cur, suf[i + 1]);
-        }
-        res[v] = T::AddVertex(pref.back(), vs[v]);
-        for (usize i = 0 ; i < g[v].size() ; i++)
-            if (g[v][i].first != p) {
-                Cluster pc = i == 0 ? suf[1] : (i + 1 == g[v].size() ? pref[i - 1] : T::Merge(pref[i - 1], suf[i + 1]));
-                rec(rec, g[v][i].first, v, T::AddEdge(T::AddVertex(pc, vs[v]), g[v][i].second));
+        std::vector<Tree> dp(n);
+        auto dfs1=[&](auto dfs,T v,T p) -> Tree {
+            if (std::ssize(g[v])==1 and g[v][0].first==p)
+                return dp[v]=DP::Convert(vs[v]);
+            usize idx=g[v][0].first==p?1:0;
+            assignToSides(dfs(dfs,g[v][idx].first,v),g[v][idx].second,g[v][idx].first);
+            Cluster prod=DP::AddEdge(dp[g[v][idx].first],es[g[v][idx].second]);
+            for (idx++ ; idx<g[v].size() ; idx++) 
+                if (g[v][idx].first!=p) {
+                    assignToSides(dfs(dfs,g[v][idx].first,v),g[v][idx].second,g[v][idx].first);
+                    prod=DP::Merge(prod,DP::AddEdge(dp[g[v][idx].first],es[g[v][idx].second]));
+                }
+            return dp[v]=DP::AddVertex(std::move(prod),vs[v]);
+        };
+        dfs1(dfs1,0,static_cast<T>(0));
+        auto dfs2=[&](auto dfs,T v,T p,Tree t) -> void {
+            const usize k=g[v].size();
+            std::vector<Cluster> clusters(k);
+            for (usize i = 0 ; i < k ; i++) {
+                if (g[v][i].first==p) {
+                    assignToSides(t,g[v][i].second,p);
+                    clusters[i]=DP::AddEdge(t,es[g[v][i].second]);
+                }
+                else
+                    clusters[i]=DP::AddEdge(dp[g[v][i].first],es[g[v][i].second]);
             }
-    };
-    rec2(rec2, root, g.size(), Cluster{});
-    return res;
-}
+            if (k==1) {
+                m_alls[v]=DP::AddVertex(clusters[0],vs[v]);
+                if (g[v][0].first!=p) {
+                    assert(!v);
+                    dfs(dfs,g[v][0].first,v,DP::Convert(vs[v]));
+                }
+            }
+            else {
+                std::vector<Cluster> pref=clusters,suf=clusters;
+                for (usize i = 1 ; i < k ; i++) {
+                    pref[i]=DP::Merge(pref[i-1],clusters[i]);
+                    suf[k-i-1]=DP::Merge(clusters[k-i-1],suf[k-i]);
+                }
+                m_alls[v]=DP::AddVertex(pref[k-1],vs[v]);
+                for (usize i = 0 ; i < g[v].size() ; i++) 
+                    if (g[v][i].first!=p) {
+                        Cluster pc=i?(i+1<g[v].size()?DP::Merge(pref[i-1],suf[i+1]):pref[k-2]):suf[1];
+                        dfs(dfs,g[v][i].first,v,DP::AddVertex(pc,vs[v]));
+                    }
+            }
+        };
+        dfs2(dfs2,0,static_cast<T>(0),Tree{});
+    }
+
+    inline usize size() const noexcept {
+        return m_n;
+    }
+
+    const Tree& operator[](usize i) const noexcept {
+        assert(i < size());
+        return m_alls[i];
+    }
+
+    const Tree& side(usize i,T v) const {
+        assert(i < m_sides.size()); 
+        if (m_edges[i].first==v)
+            return m_sides[i].first;
+        else if (m_edges[i].second==v)
+            return m_sides[i].second;
+        assert(0);
+        return m_sides[i].first;
+    }
+
+private:
+
+    void assignToSides(Tree t,usize idx,T v) {
+        if (m_edges[idx].first==v)
+            m_sides[idx].first=std::move(t);
+        else
+            m_sides[idx].second=std::move(t);
+    }
+
+    usize m_n;
+
+    std::vector<std::pair<T,T>> m_edges;
+
+    std::vector<Tree> m_alls;
+
+    std::vector<std::pair<Tree,Tree>> m_sides;
+
+};
 
 } // namespace zawa

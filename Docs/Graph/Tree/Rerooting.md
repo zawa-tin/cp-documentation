@@ -5,8 +5,7 @@ documentation_of: //Src/Graph/Tree/Rerooting.hpp
 
 ## 概要
 
-流石に木DPは自分で書いた方が早いので、用途は主に全方位木dpになると思う。
-- 全方位木DPも自分で書いた方がマシかもしれないけど
+全方位木dp。 [ABC351-G 公式解説](https://atcoder.jp/contests/abc351/editorial/9868) の内容を参考に抽象化されたもの。
 
 ## テンプレートの雛形
 
@@ -29,38 +28,71 @@ struct DP {
 
 ![image](https://github.com/zawa-tin/cp-documentation/blob/main/Docs/Graph/Tree/Tree.jpg?raw=true)
 
-木dpでは
+上記の各staticメンバが木dpとどう対応しているのかというと...
 
 ```cpp
-    for (int x : g[v])
-        if (x != p)
-            chs.push_back(rec(rec, x));
-    dp[v] = prod(chs);
+if (v is leaf)
+    return Convert(v);
+Cluster prod=Cluster::identity();
+for (auto [x,e] : G[v])
+    if (x != p)
+        prod=Merge(prod,AddEdge(dp[x],e));
+return AddVertex(prod,v);
 ```
 
-みたいにやると思うんですけど、それとこの雛形がどう関係しているのかというと
+といった塩梅である。なお、説明のために`Cluster::identity()`を用いたが、本ライブラリでは要求されない。
 
-- Vertex: dpの計算に関する頂点の情報
-- Edge: dpの計算に関する辺が持つ情報
-- Cluster: prod(chs)のこと。ここでは木の根はvirtualなものと考える
-- Tree: prod(chs)に頂点vの情報をマージして、根をvirtualで無いようにしたもの
+`DP`に対する詳細な要求は以下の通りである
 
-みたいな感じ。
+- `Merge`は結合律を要求する。現在は辺のリストを順番に走査することで得られる隣接リストの前から順番にマージしていく設計となっている
+- `Tree`及び`Cluster`にはデフォルト構築・コピー構築・コピー代入ができることが必要である。なお、デフォルト構築は単位元を返す必要はない。
 
-任意の木dpで全部を毎回使うわけではなくて、例えば最遠点を求める場合はVertexはdpの計算に何もかかわってこない。こういうときは適当にゴミをいれておけばいいと思います。SOLID のI(だっけ?)違反なライブラリだけど、使う側が頑張る形でいきましょう
 
 ## ライブラリの使い方
 
-```cpp
-template <concepts::TreeDP T>
-using TreeDPGraph = std::vector<std::vector<std::pair<usize, typename T::Edge>>>;
+コンストラクタで全方位木DPが実行される。
 
-template <concepts::TreeDP T>
-std::vector<typename T::Tree> TreeDP(const TreeDPGraph<T>& g, const std::vector<typename T::Vertex>& vs, usize root) {
+```cpp
+template <concepts::TreeDP DP,std::integral T>
+Rerooting(usize n,std::vector<std::pair<T,T>> ed,std::vector<Vertex> vs,std::vector<Edge> es)
 ```
 
-上の雛形にあるエイリアスとメンバが全部そろっていると`cocepts::TreeDP`の要求は満たされる。
+`DP`及び`T`は`Rerooting`のテンプレート引数である。
 
-`g`はいつもの隣接リストで、firstに行先の頂点番号、secondにその辺の情報Edgeを納めます。必ず $u\rightarrow v, v\rightarrow u$ 両方入れること。
+- `DP`は上記の雛形を適切に埋めたクラスであればよい。
+- `T`は頂点番号の型。基本的に`int`、`unsigned`、`usize`のいずれかであることが推奨される。
 
-`vs`は頂点の情報の列
+$n$ は頂点数。 $n$ が $0$ のときはassertにひっかかる
+
+`ed`は辺のリスト。頂点番号が $0,1,\dots,n-1$ であることを仮定している。辺数が $n-1$ でないときはassertにひっかかる。当然だが、`ed`は木の辺集合であることを要求する。
+
+`vs`は頂点の情報を格納した要素数 $n$ の`vector`であり、`vs[v]`は頂点 $v$ の情報である必要がある。
+
+`es`は辺の情報を格納した要素数 $n-1$ の`vector`であり、`es[i]` は`ed[i]`の情報である必要がある。
+
+```
+inline usize size() const noexcept
+```
+
+頂点数 $n$ を`usize`で返す。
+
+```
+const Tree& operator[](usize i) const noexcept
+```
+
+で頂点 $i$ を根としてfoldしたときの`Tree`を得ることができる。
+
+```
+const Tree& side(usize i,T v) const
+```
+
+で $i$ 番目の辺でぶったぎって得られる二つの木に関して、頂点 $v$ 側の木の $v$ を根としたfoldを`Tree`として返す。なお、 $i$ 番目の辺の端点の一方が $v$ である必要がある。そうでない場合はassertにひっかかる。
+
+## 計算量
+
+`DP`の各種演算、コピーが $O(1)$ であると仮定すると、構築 $O(n)$ 、取得 $O(1)$ 、空間 $O(n)$ メモリとなっている。
+
+## 更新履歴
+
+- 2025/12/01: 作成
+- 2026/10/19: 木DPは使わないため削除。`Rerooting`をクラスにし、`side`メンバを追加した。

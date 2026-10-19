@@ -23,7 +23,6 @@ struct DP {
         return c;
     }
 };
-using G = TreeDPGraph<DP>;
 //#include <random>
 int main() {
     cin.tie(0);
@@ -31,15 +30,12 @@ int main() {
     ios::sync_with_stdio(0); 
     int N;
     cin >> N;
-    G g(N);
-    for (int i = 1 ; i < N ; i++) {
-        int u, v;
+    vector<pair<int,int>> E(N-1);
+    for (auto& [u,v] : E) {
         cin >> u >> v;
         u--; v--;
-        g[u].push_back({v, 0});
-        g[v].push_back({u, 0});
     }
-    auto far = Rerooting<DP>(g, vector<int>(N));
+    auto far = Rerooting<DP,int>(N,E,vector<int>(N),vector<int>(N-1));
     for (int i = 0 ; i < N ; i++)
         cout << 2 * (N - 1) - far[i] << '\n';
 }
