@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 396 - G Flip Row or Col
- * https://atcoder.jp/contests/abc396/submissions/66400307
+ * https://atcoder.jp/contests/abc396/submissions/80251299
  */
 
 #include "../../Src/Sequence/BitwiseXORConvolution.hpp"
