@@ -63,7 +63,59 @@ std::vector<T> BitwiseXORConvolution(std::vector<U> A, std::vector<U> B) {
     std::vector<T> a(A.size()), b(B.size());
     for (usize i = 0 ; i < A.size() ; i++) a[i] = static_cast<T>(std::move(A[i]));
     for (usize i = 0 ; i < B.size() ; i++) b[i] = static_cast<T>(std::move(B[i]));
-    return BitwiseXORConvolution<T>(a, b);
+    return BitwiseXORConvolution<T>(std::move(a), std::move(b));
+}
+
+template <class T>
+std::vector<T> BitwiseXORConvolutionPower(std::vector<T> A,usize K) {
+    FastWalshHadamardTransform(A);
+    auto mypow=[K](T x) -> T {
+        T res = 1;
+        for (usize k = K ; k ; k >>= 1) {
+            if (k & 1)
+                res *= x;
+            if (k > 1)
+                x *= x;
+        }
+        return res;
+    };
+    for (usize i = 0 ; i < A.size() ; i++)
+        A[i] = mypow(A[i]);
+    FastWalshHadamardTransform(A);
+    if (A.empty()) 
+        return A;
+    assert(std::has_single_bit(A.size()));
+    if constexpr (std::integral<T>) {
+        const usize d = std::bit_width(A.size()) - 1;
+        for (auto& a : A) 
+            a >>= d;
+    }
+    else {
+        const T d = [&]() {
+            assert(std::has_single_bit(A.size()));
+            usize exp = std::bit_width(A.size()) - 1;
+            T v = T{1} / T{2}, res = T{1};
+            while (exp) {
+                if (exp & 1) 
+                    res = res * v;
+                v = v * v;
+                exp >>= 1;
+            }
+            return res;
+        }();
+        for (T& a : A) 
+            a *= d;
+    }
+    return A;
+}
+
+template <class T,class U>
+requires (!std::same_as<T, U> and std::convertible_to<U, T>)
+std::vector<T> BitwiseXORConvolutionPower(std::vector<U> A,usize K) {
+    std::vector<T> a(A.size());
+    for (usize i = 0 ; i < A.size() ; i++)
+        a[i] = static_cast<T>(A[i]);
+    return BitwiseXORConvolutionPower(a,K);
 }
 
 } // namespace zawa
