@@ -46,7 +46,7 @@ data:
   isVerificationFile: true
   path: Test/LC/bitwise_xor_convolution.test.cpp
   requiredBy: []
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2026-10-22 16:38:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/bitwise_xor_convolution.test.cpp

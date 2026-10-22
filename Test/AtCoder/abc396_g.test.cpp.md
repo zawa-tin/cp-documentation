@@ -16,12 +16,12 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc396/submissions/66400307
+    - https://atcoder.jp/contests/abc396/submissions/80251299
     - https://atcoder.jp/contests/abc396/tasks/abc396_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "#line 1 \"Test/AtCoder/abc396_g.test.cpp\"\n// #define PROBLEM \"\
     https://atcoder.jp/contests/abc396/tasks/abc396_g\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 396 - G Flip Row or Col\n * https://atcoder.jp/contests/abc396/submissions/66400307\n\
+    \n\n/*\n * AtCoder Beginner Contest 396 - G Flip Row or Col\n * https://atcoder.jp/contests/abc396/submissions/80251299\n\
     \ */\n\n#line 2 \"Src/Sequence/BitwiseXORConvolution.hpp\"\n\n#line 2 \"Src/Template/TypeAlias.hpp\"\
     \n\n#include <cstdint>\n#include <cstddef>\n\nnamespace zawa {\n\nusing i16 =\
     \ std::int16_t;\nusing i32 = std::int32_t;\nusing i64 = std::int64_t;\nusing i128\
@@ -53,23 +53,41 @@ data:
     \ BitwiseXORConvolution(std::vector<U> A, std::vector<U> B) {\n    std::vector<T>\
     \ a(A.size()), b(B.size());\n    for (usize i = 0 ; i < A.size() ; i++) a[i] =\
     \ static_cast<T>(std::move(A[i]));\n    for (usize i = 0 ; i < B.size() ; i++)\
-    \ b[i] = static_cast<T>(std::move(B[i]));\n    return BitwiseXORConvolution<T>(a,\
-    \ b);\n}\n\n} // namespace zawa\n#line 10 \"Test/AtCoder/abc396_g.test.cpp\"\n\
-    \n#include <algorithm>\n#line 13 \"Test/AtCoder/abc396_g.test.cpp\"\n#include\
-    \ <iostream>\n#include <string>\n#line 16 \"Test/AtCoder/abc396_g.test.cpp\"\n\
-    #include <ranges>\n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
-    \    std::cout.tie(nullptr);\n    std::ios::sync_with_stdio(false);\n    int H,\
-    \ W;\n    std::cin >> H >> W;\n    std::vector<int> A(1 << W), B(1 << W);\n  \
-    \  for (int i = 0 ; i < H ; i++) {\n        std::string S;\n        std::cin >>\
-    \ S;\n        int v = 0;\n        for (int j = 0 ; j < W ; j++) if (S[j] == '1')\
-    \ v |= 1 << j;\n        A[v]++;\n    }\n    for (int i = 0 ; i < (1 << W) ; i++)\
-    \ {\n        const int cnt = std::popcount((unsigned)i);\n        B[i] = std::min(cnt,\
-    \ W - cnt);\n    }\n    auto C = zawa::BitwiseXORConvolution<long long>(A, B);\n\
-    \    std::cout << *std::ranges::min_element(C) << '\\n';\n#else\n    std::cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
+    \ b[i] = static_cast<T>(std::move(B[i]));\n    return BitwiseXORConvolution<T>(std::move(a),\
+    \ std::move(b));\n}\n\ntemplate <class T>\nstd::vector<T> BitwiseXORConvolutionPower(std::vector<T>\
+    \ A,usize K) {\n    FastWalshHadamardTransform(A);\n    auto mypow=[K](T x) ->\
+    \ T {\n        T res = 1;\n        for (usize k = K ; k ; k >>= 1) {\n       \
+    \     if (k & 1)\n                res *= x;\n            if (k > 1)\n        \
+    \        x *= x;\n        }\n        return res;\n    };\n    for (usize i = 0\
+    \ ; i < A.size() ; i++)\n        A[i] = mypow(A[i]);\n    FastWalshHadamardTransform(A);\n\
+    \    if (A.empty()) \n        return A;\n    assert(std::has_single_bit(A.size()));\n\
+    \    if constexpr (std::integral<T>) {\n        const usize d = std::bit_width(A.size())\
+    \ - 1;\n        for (auto& a : A) \n            a >>= d;\n    }\n    else {\n\
+    \        const T d = [&]() {\n            assert(std::has_single_bit(A.size()));\n\
+    \            usize exp = std::bit_width(A.size()) - 1;\n            T v = T{1}\
+    \ / T{2}, res = T{1};\n            while (exp) {\n                if (exp & 1)\
+    \ \n                    res = res * v;\n                v = v * v;\n         \
+    \       exp >>= 1;\n            }\n            return res;\n        }();\n   \
+    \     for (T& a : A) \n            a *= d;\n    }\n    return A;\n}\n\ntemplate\
+    \ <class T,class U>\nrequires (!std::same_as<T, U> and std::convertible_to<U,\
+    \ T>)\nstd::vector<T> BitwiseXORConvolutionPower(std::vector<U> A,usize K) {\n\
+    \    std::vector<T> a(A.size());\n    for (usize i = 0 ; i < A.size() ; i++)\n\
+    \        a[i] = static_cast<T>(A[i]);\n    return BitwiseXORConvolutionPower(a,K);\n\
+    }\n\n} // namespace zawa\n#line 10 \"Test/AtCoder/abc396_g.test.cpp\"\n\n#include\
+    \ <algorithm>\n#line 13 \"Test/AtCoder/abc396_g.test.cpp\"\n#include <iostream>\n\
+    #include <string>\n#line 16 \"Test/AtCoder/abc396_g.test.cpp\"\n#include <ranges>\n\
+    \nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n    std::cout.tie(nullptr);\n\
+    \    std::ios::sync_with_stdio(false);\n    int H, W;\n    std::cin >> H >> W;\n\
+    \    std::vector<int> A(1 << W), B(1 << W);\n    for (int i = 0 ; i < H ; i++)\
+    \ {\n        std::string S;\n        std::cin >> S;\n        int v = 0;\n    \
+    \    for (int j = 0 ; j < W ; j++) if (S[j] == '1') v |= 1 << j;\n        A[v]++;\n\
+    \    }\n    for (int i = 0 ; i < (1 << W) ; i++) {\n        const int cnt = std::popcount((unsigned)i);\n\
+    \        B[i] = std::min(cnt, W - cnt);\n    }\n    auto C = zawa::BitwiseXORConvolution<long\
+    \ long>(A, B);\n    std::cout << *std::ranges::min_element(C) << '\\n';\n#else\n\
+    \    std::cout << \"Hello World\\n\";\n#endif\n}\n"
   code: "// #define PROBLEM \"https://atcoder.jp/contests/abc396/tasks/abc396_g\"\n\
     #define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
-    \n\n/*\n * AtCoder Beginner Contest 396 - G Flip Row or Col\n * https://atcoder.jp/contests/abc396/submissions/66400307\n\
+    \n\n/*\n * AtCoder Beginner Contest 396 - G Flip Row or Col\n * https://atcoder.jp/contests/abc396/submissions/80251299\n\
     \ */\n\n#include \"../../Src/Sequence/BitwiseXORConvolution.hpp\"\n\n#include\
     \ <algorithm>\n#include <bit>\n#include <iostream>\n#include <string>\n#include\
     \ <vector>\n#include <ranges>\n\nint main() {\n#ifdef ATCODER\n    std::cin.tie(nullptr);\n\
@@ -88,7 +106,7 @@ data:
   isVerificationFile: true
   path: Test/AtCoder/abc396_g.test.cpp
   requiredBy: []
-  timestamp: '2025-10-17 20:47:26+09:00'
+  timestamp: '2026-10-22 16:38:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc396_g.test.cpp
