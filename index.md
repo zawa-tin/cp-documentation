@@ -886,6 +886,36 @@ data:
       path: Src/Sequence/SupersetTransform.hpp
       title: "Superset Zeta/Mobius Transform ( $\\emptyset$ \u306E\u65B9\u3078\u96C6\
         \u3081\u308B\u3084\u3064 )"
+  - name: Src/SparseFPS
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Differential.hpp
+      title: SparseFPS::Differential
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Divide.hpp
+      title: Src/SparseFPS/Divide.hpp
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Exp.hpp
+      title: SparseFPS::Exp
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Integral.hpp
+      title: SparseFPS::Integral
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Inverse.hpp
+      title: SparseFPS::Inv
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Log.hpp
+      title: SparseFPS::Log
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/Power.hpp
+      title: SparseFPS::Pow
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/PowerProduct.hpp
+      title: "\u758E\u306AFPS $f,g$ \u306E $f^ng^m$ \u306E\u4FC2\u6570\u5217\u6319"
+    - icon: ':heavy_check_mark:'
+      path: Src/SparseFPS/SparseFPS.hpp
+      title: "\u975E\u96F6\u306E\u4FC2\u6570\u306E\u500B\u6570\u304C\u5341\u5206\u5C11\
+        \u306A\u3044FPS"
   - name: Src/Template
     pages:
     - icon: ':heavy_check_mark:'
@@ -1389,6 +1419,9 @@ data:
       path: Test/AtCoder/abc276_f.test.cpp
       title: Test/AtCoder/abc276_f.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc276_g.test.cpp
+      title: ABC276-G Count Sequences
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc284_f.test.cpp
       title: Test/AtCoder/abc284_f.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1826,6 +1859,9 @@ data:
       path: Test/LC/exp_of_formal_power_series.test.cpp
       title: Test/LC/exp_of_formal_power_series.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/exp_of_formal_power_series_sparse.test.cpp
+      title: Test/LC/exp_of_formal_power_series_sparse.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/find_linear_recurrence.test.cpp
       title: Test/LC/find_linear_recurrence.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1844,6 +1880,9 @@ data:
       path: Test/LC/inv_of_formal_power_series.test.cpp
       title: Test/LC/inv_of_formal_power_series.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/LC/inv_of_formal_power_series_sparse.test.cpp
+      title: Test/LC/inv_of_formal_power_series_sparse.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/LC/jump_on_tree.test.cpp
       title: Test/LC/jump_on_tree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1858,6 +1897,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/log_of_formal_power_series.test.cpp
       title: Test/LC/log_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/log_of_formal_power_series_sparse.test.cpp
+      title: Test/LC/log_of_formal_power_series_sparse.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/many_aplusb.test.cpp
       title: Test/LC/many_aplusb.test.cpp
@@ -1885,6 +1927,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/pow_of_formal_power_series.test.cpp
       title: Test/LC/pow_of_formal_power_series.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/pow_of_formal_power_series_sparse.test.cpp
+      title: Test/LC/pow_of_formal_power_series_sparse.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/product_of_polynomial_sequence.test.cpp
       title: Test/LC/product_of_polynomial_sequence.test.cpp
