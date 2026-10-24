@@ -12,7 +12,7 @@ namespace SparseFPS {
 
 template <std::integral Degree,class Coef>
 std::vector<Coef> Inv(const Series<Degree,Coef>& f,usize n) {
-    assert(f.size() and f[0].degree==0 and f[0].coef!=Coef{0});
+    assert(f.size() and f[0].degree==0);
     std::vector<Coef> res(n);
     if (!n)
         return res;
