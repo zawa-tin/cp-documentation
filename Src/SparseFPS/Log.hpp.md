@@ -6,7 +6,7 @@ data:
     title: SparseFPS::Differential
   - icon: ':heavy_check_mark:'
     path: Src/SparseFPS/Divide.hpp
-    title: Src/SparseFPS/Divide.hpp
+    title: SparseFPS::Div
   - icon: ':heavy_check_mark:'
     path: Src/SparseFPS/Integral.hpp
     title: SparseFPS::Integral
@@ -123,6 +123,9 @@ $n=0$ の場合も、 $f$ の定数項に関する制約を満たす必要があ
 
 計算量は、 $f$ の要素数を $k$ として $O(nk)$ 。ただし、 $n=0$ の場合は $O(1)$ であり、係数の演算を $O(1)$ とする。
 
+乗法逆元の計算を $O(\log MOD)$ 、それ以外の係数の演算を $O(1)$ とする場合、 $n>0$ では全体で $O(n(k+\log MOD))$ かかる。ここで、 $MOD$ は係数の法である。微分と除算の処理に $O(nk)$ かかり、除算では $n\ge 2$ の場合に定数項の逆元を一度だけ計算する。さらに積分の処理で整数 $1,2,\dots,n-1$ の逆元をそれぞれ計算するため、逆元計算の合計は $O(n\log MOD)$ となる。 $n=0$ の場合は逆元を計算せず、 $O(1)$ である。
+
 ## 更新履歴
 
 - 2026/10/24: 作成
+- 2026/10/25: 乗法逆元の計算量を含む解析を追記

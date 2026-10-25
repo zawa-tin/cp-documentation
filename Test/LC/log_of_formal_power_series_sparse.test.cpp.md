@@ -6,7 +6,7 @@ data:
     title: SparseFPS::Differential
   - icon: ':heavy_check_mark:'
     path: Src/SparseFPS/Divide.hpp
-    title: Src/SparseFPS/Divide.hpp
+    title: SparseFPS::Div
   - icon: ':heavy_check_mark:'
     path: Src/SparseFPS/Integral.hpp
     title: SparseFPS::Integral

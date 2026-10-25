@@ -893,7 +893,7 @@ data:
       title: SparseFPS::Differential
     - icon: ':heavy_check_mark:'
       path: Src/SparseFPS/Divide.hpp
-      title: Src/SparseFPS/Divide.hpp
+      title: SparseFPS::Div
     - icon: ':heavy_check_mark:'
       path: Src/SparseFPS/Exp.hpp
       title: SparseFPS::Exp
