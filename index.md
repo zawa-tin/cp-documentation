@@ -347,6 +347,9 @@ data:
       path: Src/FPS/PolynomialInterpolation.hpp
       title: Src/FPS/PolynomialInterpolation.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/FPS/PolynomialInterpolationFast.hpp
+      title: "\u591A\u9805\u5F0F\u88DC\u9593 $O(N\\log^2N)$"
+    - icon: ':heavy_check_mark:'
       path: Src/FPS/PolynomialProducts.hpp
       title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
         \u308B\u591A\u9805\u5F0F\u306E\u5217\u306E\u7DCF\u7A4D"
@@ -2045,6 +2048,9 @@ data:
       title: Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
   - name: Test/LC/polynomial_interpolation
     pages:
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/polynomial_interpolation/fast.test.cpp
+      title: Test/LC/polynomial_interpolation/fast.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/polynomial_interpolation/quadratic.test.cpp
       title: Test/LC/polynomial_interpolation/quadratic.test.cpp

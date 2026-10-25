@@ -13,7 +13,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/PolynomialInterpolationFast.hpp
+    title: "\u591A\u9805\u5F0F\u88DC\u9593 $O(N\\log^2N)$"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/fps_24_p.test.cpp
@@ -21,6 +24,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/multipoint_evaluation.test.cpp
     title: Test/LC/multipoint_evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/polynomial_interpolation/fast.test.cpp
+    title: Test/LC/polynomial_interpolation/fast.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -61,12 +67,14 @@ data:
   - Src/FPS/DivisionOfPolynomials.hpp
   isVerificationFile: false
   path: Src/FPS/MultipointEvaluation.hpp
-  requiredBy: []
+  requiredBy:
+  - Src/FPS/PolynomialInterpolationFast.hpp
   timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/fps_24_p.test.cpp
   - Test/LC/multipoint_evaluation.test.cpp
+  - Test/LC/polynomial_interpolation/fast.test.cpp
 documentation_of: Src/FPS/MultipointEvaluation.hpp
 layout: document
 redirect_from:

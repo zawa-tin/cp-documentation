@@ -14,6 +14,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/FPS/MultipointEvaluation.hpp
     title: Src/FPS/MultipointEvaluation.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/PolynomialInterpolationFast.hpp
+    title: "\u591A\u9805\u5F0F\u88DC\u9593 $O(N\\log^2N)$"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc215_g.test.cpp
@@ -54,6 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/LC/multipoint_evaluation.test.cpp
     title: Test/LC/multipoint_evaluation.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/LC/polynomial_interpolation/fast.test.cpp
+    title: Test/LC/polynomial_interpolation/fast.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/polynomial_taylor_shift.test.cpp
     title: Test/LC/polynomial_taylor_shift.test.cpp
@@ -185,6 +191,7 @@ data:
   isVerificationFile: false
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
+  - Src/FPS/PolynomialInterpolationFast.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/MultipointEvaluation.hpp
   timestamp: '2026-10-10 14:28:36+09:00'
@@ -206,6 +213,7 @@ data:
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
+  - Test/LC/polynomial_interpolation/fast.test.cpp
   - Test/LC/polynomial_taylor_shift.test.cpp
   - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
