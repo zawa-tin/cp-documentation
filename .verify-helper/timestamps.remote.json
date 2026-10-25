@@ -311,6 +311,7 @@
 "Test/LC/point_set_range_composite.test.cpp": "2025-11-20 00:22:56 +0900",
 "Test/LC/point_set_range_composite_large_array.test.cpp": "2025-11-20 00:22:56 +0900",
 "Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp": "2025-12-03 17:47:01 +0900",
+"Test/LC/polynomial_interpolation/fast.test.cpp": "2026-10-25 23:06:40 +0900",
 "Test/LC/polynomial_interpolation/quadratic.test.cpp": "2025-10-17 20:47:26 +0900",
 "Test/LC/polynomial_taylor_shift.test.cpp": "2026-10-10 14:28:36 +0900",
 "Test/LC/pow_of_formal_power_series.test.cpp": "2026-10-10 14:28:36 +0900",
