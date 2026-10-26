@@ -29,3 +29,4 @@ FPSNTTFriendly<MOD> PolynomialInterpolationFast(const std::vector<typename FPSNT
 ## 更新履歴
 
 - 2026/10/25: 作成
+- 2026/10/26: SubproductTreeを切り出した実装に変更。LCで150msほど改善
