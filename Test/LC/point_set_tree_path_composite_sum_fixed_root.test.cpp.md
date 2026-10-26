@@ -6,7 +6,10 @@ data:
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/DynamicTreeDP.hpp
-    title: "Static Top Tree + \u6728DP"
+    title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTDPInterface.hpp
+    title: "STT\u4E0A\u306Edp\u306E\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/StaticTopTree.hpp
     title: Src/Graph/Tree/StaticTopTree.hpp
@@ -65,22 +68,23 @@ data:
     \        int a;\n        cin >> a;\n        vs[i] = a;\n    }\n    DynamicTreeDPGraph\
     \ g(N);\n    for (int i = 0 ; i < N - 1 ; i++) {\n        int u, v, b, c;\n  \
     \      cin >> u >> v >> b >> c;\n        g[u].push_back({v, i});\n        g[v].push_back({u,\
-    \ i});\n        es[i] = Affine<mint>{b, c};\n    }\n    DynamicTreeDP<DP> dp(g,\
-    \ 0, vs, es);\n    while (Q--) {\n        int t;\n        cin >> t;\n        if\
-    \ (t == 0) {\n            int w, x;\n            cin >> w >> x;\n            dp.assignVertex(w,\
-    \ x);\n        }\n        else if (t == 1) {\n            int e, y, z;\n     \
-    \       cin >> e >> y >> z;\n            dp.assignEdge(e, Affine<mint>{y, z});\n\
-    \        }\n        else\n            assert(0);\n        cout << dp().ans.val()\
-    \ << '\\n';\n    }\n}\n"
+    \ i});\n        es[i] = Affine<mint>{b, c};\n    }\n    DynamicTreeDP<DP> dp(move(g),\
+    \ 0, move(vs), move(es));\n    while (Q--) {\n        int t;\n        cin >> t;\n\
+    \        if (t == 0) {\n            int w, x;\n            cin >> w >> x;\n  \
+    \          dp.assignVertex(w, x);\n        }\n        else if (t == 1) {\n   \
+    \         int e, y, z;\n            cin >> e >> y >> z;\n            dp.assignEdge(e,\
+    \ Affine<mint>{y, z});\n        }\n        else\n            assert(0);\n    \
+    \    cout << dp().ans.val() << '\\n';\n    }\n}\n"
   dependsOn:
   - Src/Graph/Tree/DynamicTreeDP.hpp
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Graph/Tree/STTDPInterface.hpp
   - Src/Algebra/Monoid/AffineMonoid.hpp
   isVerificationFile: true
   path: Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
   requiredBy: []
-  timestamp: '2025-12-03 17:47:01+09:00'
+  timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp

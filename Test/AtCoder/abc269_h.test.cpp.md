@@ -2,8 +2,11 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Src/Graph/Tree/DynamicTreeDP.hpp
-    title: "Static Top Tree + \u6728DP"
+    path: Src/Graph/Tree/STTDPInterface.hpp
+    title: "STT\u4E0A\u306Edp\u306E\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTFold.hpp
+    title: "Static Top Tree\u4E0A\u306EDP"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/StaticTopTree.hpp
     title: Src/Graph/Tree/StaticTopTree.hpp
@@ -19,7 +22,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc269/submissions/71411446
+    - https://atcoder.jp/contests/abc269/submissions/80402072
     - https://atcoder.jp/contests/abc269/tasks/abc269_h
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -36,8 +39,8 @@ data:
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc269/tasks/abc269_h\"\n\n\
-    /*\n * AtCoder Beginner Contest 269 Ex - Antichain\n * https://atcoder.jp/contests/abc269/submissions/71411446\n\
-    \ */\n\n#include \"../../Src/Graph/Tree/DynamicTreeDP.hpp\"\n#include \"atcoder/modint\"\
+    /*\n * AtCoder Beginner Contest 269 Ex - Antichain\n * https://atcoder.jp/contests/abc269/submissions/80402072\n\
+    \ */\n\n#include \"../../Src/Graph/Tree/STTFold.hpp\"\n#include \"atcoder/modint\"\
     \n#include \"atcoder/convolution\"\nusing mint = atcoder::modint998244353;\n#include\
     \ <algorithm>\n#include <iostream>\n#include <utility>\n#include <vector>\nusing\
     \ namespace std;\nusing namespace zawa;\nvector<mint> operator+(vector<mint> a,\
@@ -61,21 +64,21 @@ data:
     \ operator()(int i, string name, int par, DP::PointCluster point) {\n        cout\
     \ << i << ' ' << name << ' ' << par << \" -> \" << point << endl;\n    }\n};\n\
     int main() {\n#ifdef ATCODER\n    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n\
-    \    int N;\n    cin >> N;\n    DynamicTreeDPGraph g(N);\n    for (int i = 1 ;\
-    \ i < N ; i++) {\n        int p;\n        cin >> p;\n        g[--p].push_back({i,\
-    \ i - 1});\n    }\n    DynamicTreeDP<DP> dp(g, 0, vector<DP::Vertex>(N), vector<DP::Edge>(N\
-    \ - 1));\n    //dp.visit(Printer{});\n    auto [p, q] = dp();\n    auto ans =\
-    \ p + q;\n    while (ssize(ans) <= N)\n        ans.push_back(0);\n    for (int\
-    \ i = 1 ; i <= N ; i++)\n        cout << ans[i].val() << '\\n';\n#else\n    cout\
-    \ << \"Hello World\\n\";\n#endif\n}\n"
+    \    int N;\n    cin >> N;\n    STTGraph g(N);\n    for (int i = 1 ; i < N ; i++)\
+    \ {\n        int p;\n        cin >> p;\n        g[--p].push_back({i, i - 1});\n\
+    \    }\n    auto [p, q] = STTFold<DP>(move(g),0,vector<DP::Vertex>(N),vector<DP::Edge>(N-1));\n\
+    \    auto ans = p + q;\n    while (ssize(ans) <= N)\n        ans.push_back(0);\n\
+    \    for (int i = 1 ; i <= N ; i++)\n        cout << ans[i].val() << '\\n';\n\
+    #else\n    cout << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
-  - Src/Graph/Tree/DynamicTreeDP.hpp
+  - Src/Graph/Tree/STTFold.hpp
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Graph/Tree/STTDPInterface.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc269_h.test.cpp
   requiredBy: []
-  timestamp: '2025-12-03 17:47:01+09:00'
+  timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc269_h.test.cpp

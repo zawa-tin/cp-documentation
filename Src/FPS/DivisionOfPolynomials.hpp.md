@@ -22,6 +22,9 @@ data:
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_t.test.cpp
+    title: Test/AtCoder/ndpc2026_t.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/division_of_polynomials.test.cpp
     title: Test/LC/division_of_polynomials.test.cpp
   - icon: ':heavy_check_mark:'
@@ -73,6 +76,7 @@ data:
   timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
   - Test/LC/multipoint_evaluation.test.cpp
   - Test/LC/division_of_polynomials.test.cpp

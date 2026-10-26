@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTDPInterface.hpp
+    title: "STT\u4E0A\u306Edp\u306E\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9"
+  - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/StaticTopTree.hpp
     title: Src/Graph/Tree/StaticTopTree.hpp
   - icon: ':heavy_check_mark:'
@@ -9,9 +12,6 @@ data:
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: Test/AtCoder/abc269_h.test.cpp
-    title: Test/AtCoder/abc269_h.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc351_g.test.cpp
     title: Test/AtCoder/abc351_g.test.cpp
@@ -117,9 +117,9 @@ data:
     \ Empty, nd, Empty, e, m_nodes[nd].height + 1};\n            const usize ch =\
     \ makeNode(std::move(cur));\n            chs.push_back(m_posEdge[e] = m_nodes[nd].par\
     \ = ch);\n        }\n        return rakeStrategy(v, chs);\n    }\n};\n\n} // namespace\
-    \ zawa\n#line 4 \"Src/Graph/Tree/DynamicTreeDP.hpp\"\n\n#include <concepts>\n\
-    #include <variant>\n// #include <iostream>\n\nnamespace zawa {\n\nnamespace concepts\
-    \ {\n\ntemplate <class T>\nconcept DynamicTreeDPInterface = requires {\n    typename\
+    \ zawa\n#line 2 \"Src/Graph/Tree/STTDPInterface.hpp\"\n\n#include <concepts>\n\
+    #line 5 \"Src/Graph/Tree/STTDPInterface.hpp\"\n\nnamespace zawa {\n\nnamespace\
+    \ concepts {\n\ntemplate <class T>\nconcept STTDPInterface = requires {\n    typename\
     \ T::Vertex;\n    typename T::Edge;\n    typename T::PathCluster;\n    typename\
     \ T::PointCluster;\n    { T::vertex(std::declval<typename T::Vertex>()) } -> std::same_as<typename\
     \ T::PathCluster>;\n    { T::addVertex(std::declval<typename T::PointCluster>(),\
@@ -130,19 +130,21 @@ data:
     \ T::PointCluster>;\n    { T::compress(std::declval<typename T::PathCluster>(),\
     \ std::declval<typename T::Edge>(), std::declval<typename T::PathCluster>()) }\
     \ -> std::same_as<typename T::PathCluster>;\n};\n\n} // namespace concepts\n\n\
-    using DynamicTreeDPGraph = STTGraph;\n\ntemplate <concepts::DynamicTreeDPInterface\
+    } // namespace zawa\n#line 5 \"Src/Graph/Tree/DynamicTreeDP.hpp\"\n\n#line 7 \"\
+    Src/Graph/Tree/DynamicTreeDP.hpp\"\n#include <variant>\n#line 9 \"Src/Graph/Tree/DynamicTreeDP.hpp\"\
+    \n\nnamespace zawa {\n\nusing DynamicTreeDPGraph = STTGraph;\n\ntemplate <concepts::STTDPInterface\
     \ T>\nclass DynamicTreeDP {\npublic:\n\n    using Vertex = typename T::Vertex;\n\
     \n    using Edge = typename T::Edge;\n\n    using Path = typename T::PathCluster;\n\
     \n    using Point = typename T::PointCluster;\n\nprivate:\n\n    using Item =\
     \ std::variant<Path, Point>;\n\n    static constexpr usize PathId = 0;\n\n   \
     \ static constexpr usize PointId = 1;\n\npublic:\n\n    DynamicTreeDP() = default;\n\
-    \n    DynamicTreeDP(const DynamicTreeDPGraph& g, usize root, std::vector<Vertex>\
-    \ vs, std::vector<Edge> es)\n        : m_n{g.size()}, m_vs{vs}, m_es{es}, m_stt{g,\
-    \ root}, m_dp(m_stt.size()) {\n        assert(g.size() == m_vs.size());\n    \
-    \    assert(g.empty() or g.size() == m_es.size() + 1);\n        for (usize i =\
-    \ 0 ; i < m_stt.size() ; i++)\n            if (i != StaticTopTree::Empty)\n  \
-    \              recalc(i);\n        //std::cerr << \"STT's Height is \" << m_stt[m_stt.root()].height\
-    \ << std::endl;\n    }\n\n    inline usize size() const {\n        return m_n;\n\
+    \n    DynamicTreeDP(DynamicTreeDPGraph g, usize root, std::vector<Vertex> vs,\
+    \ std::vector<Edge> es)\n        : m_n{g.size()}, m_vs{std::move(vs)}, m_es{std::move(es)},\
+    \ m_stt{std::move(g), root}, m_dp(m_stt.size()) {\n        assert(m_n == m_vs.size());\n\
+    \        assert(m_n == m_es.size() + 1);\n        for (usize i = 0 ; i < m_stt.size()\
+    \ ; i++)\n            if (i != StaticTopTree::Empty)\n                recalc(i);\n\
+    \        //std::cerr << \"STT's Height is \" << m_stt[m_stt.root()].height <<\
+    \ std::endl;\n    }\n\n    inline usize size() const {\n        return m_n;\n\
     \    }\n\n    Path operator()() const {\n        return std::get<PathId>(m_dp[m_stt.root()]);\n\
     \    }\n\n    const Vertex& getVertex(usize v) const {\n        assert(v < size());\n\
     \        return m_vs[v];\n    }\n\n    void assignVertex(usize v, Vertex val)\
@@ -180,32 +182,21 @@ data:
     \        }\n        default:\n            break;\n        }\n    }\n\n    void\
     \ recalcAncestor(usize i) {\n        for ( ; i != StaticTopTree::Empty ; i = m_stt[i].par)\n\
     \            recalc(i);\n    }\n\n};\n\n} // namespace zawa\n"
-  code: "#pragma once\n\n#include \"./StaticTopTree.hpp\"\n\n#include <concepts>\n\
-    #include <variant>\n// #include <iostream>\n\nnamespace zawa {\n\nnamespace concepts\
-    \ {\n\ntemplate <class T>\nconcept DynamicTreeDPInterface = requires {\n    typename\
-    \ T::Vertex;\n    typename T::Edge;\n    typename T::PathCluster;\n    typename\
-    \ T::PointCluster;\n    { T::vertex(std::declval<typename T::Vertex>()) } -> std::same_as<typename\
-    \ T::PathCluster>;\n    { T::addVertex(std::declval<typename T::PointCluster>(),\
-    \ std::declval<typename T::Vertex>()) } -> std::same_as<typename T::PathCluster>;\n\
-    \    { T::addEdge(std::declval<typename T::PathCluster>(), std::declval<typename\
-    \ T::Edge>()) } -> std::same_as<typename T::PointCluster>;\n    { T::rake(std::declval<typename\
-    \ T::PointCluster>(), std::declval<typename T::PointCluster>()) } -> std::same_as<typename\
-    \ T::PointCluster>;\n    { T::compress(std::declval<typename T::PathCluster>(),\
-    \ std::declval<typename T::Edge>(), std::declval<typename T::PathCluster>()) }\
-    \ -> std::same_as<typename T::PathCluster>;\n};\n\n} // namespace concepts\n\n\
-    using DynamicTreeDPGraph = STTGraph;\n\ntemplate <concepts::DynamicTreeDPInterface\
+  code: "#pragma once\n\n#include \"./StaticTopTree.hpp\"\n#include \"./STTDPInterface.hpp\"\
+    \n\n#include <concepts>\n#include <variant>\n#include <vector>\n\nnamespace zawa\
+    \ {\n\nusing DynamicTreeDPGraph = STTGraph;\n\ntemplate <concepts::STTDPInterface\
     \ T>\nclass DynamicTreeDP {\npublic:\n\n    using Vertex = typename T::Vertex;\n\
     \n    using Edge = typename T::Edge;\n\n    using Path = typename T::PathCluster;\n\
     \n    using Point = typename T::PointCluster;\n\nprivate:\n\n    using Item =\
     \ std::variant<Path, Point>;\n\n    static constexpr usize PathId = 0;\n\n   \
     \ static constexpr usize PointId = 1;\n\npublic:\n\n    DynamicTreeDP() = default;\n\
-    \n    DynamicTreeDP(const DynamicTreeDPGraph& g, usize root, std::vector<Vertex>\
-    \ vs, std::vector<Edge> es)\n        : m_n{g.size()}, m_vs{vs}, m_es{es}, m_stt{g,\
-    \ root}, m_dp(m_stt.size()) {\n        assert(g.size() == m_vs.size());\n    \
-    \    assert(g.empty() or g.size() == m_es.size() + 1);\n        for (usize i =\
-    \ 0 ; i < m_stt.size() ; i++)\n            if (i != StaticTopTree::Empty)\n  \
-    \              recalc(i);\n        //std::cerr << \"STT's Height is \" << m_stt[m_stt.root()].height\
-    \ << std::endl;\n    }\n\n    inline usize size() const {\n        return m_n;\n\
+    \n    DynamicTreeDP(DynamicTreeDPGraph g, usize root, std::vector<Vertex> vs,\
+    \ std::vector<Edge> es)\n        : m_n{g.size()}, m_vs{std::move(vs)}, m_es{std::move(es)},\
+    \ m_stt{std::move(g), root}, m_dp(m_stt.size()) {\n        assert(m_n == m_vs.size());\n\
+    \        assert(m_n == m_es.size() + 1);\n        for (usize i = 0 ; i < m_stt.size()\
+    \ ; i++)\n            if (i != StaticTopTree::Empty)\n                recalc(i);\n\
+    \        //std::cerr << \"STT's Height is \" << m_stt[m_stt.root()].height <<\
+    \ std::endl;\n    }\n\n    inline usize size() const {\n        return m_n;\n\
     \    }\n\n    Path operator()() const {\n        return std::get<PathId>(m_dp[m_stt.root()]);\n\
     \    }\n\n    const Vertex& getVertex(usize v) const {\n        assert(v < size());\n\
     \        return m_vs[v];\n    }\n\n    void assignVertex(usize v, Vertex val)\
@@ -246,18 +237,18 @@ data:
   dependsOn:
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Graph/Tree/STTDPInterface.hpp
   isVerificationFile: false
   path: Src/Graph/Tree/DynamicTreeDP.hpp
   requiredBy: []
-  timestamp: '2025-12-03 17:47:01+09:00'
+  timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc269_h.test.cpp
   - Test/AtCoder/abc351_g.test.cpp
   - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
 documentation_of: Src/Graph/Tree/DynamicTreeDP.hpp
 layout: document
-title: "Static Top Tree + \u6728DP"
+title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"
 ---
 
 ## 雛形
@@ -274,7 +265,7 @@ struct DP {
     }
     static PointCluster addEdge(const PathCluster&, const Edge&) {
     }
-    static PointCluster rake(const PointCluster, const PointCluster) {
+    static PointCluster rake(const PointCluster&, const PointCluster&) {
     }
     static PathCluster compress(const PathCluster& p, const Edge& e, const PathCluster& c) {
     }
@@ -294,11 +285,9 @@ struct Printer {
 
 この`operator()`を適切に定義し、`Printer`の実体を`visit`メンバに与えるとStatic Top Treeのすべてのノードを出力する。
 
+- `v`がSTT上での頂点番号、`par`が`v`の親頂点の番号、`type`が演算の種類である。
+
 ノード番号は1-indexであり、葉側にあるノードほど頂点番号が小さい。
-
-なので、`DynamicTreeDP`を使わず`StaticTopTree`を用いてそのまま木dpなどを書くときは再帰をせずに $1$ から昇順にループを回せばよい。
-
-- [Antichain](https://atcoder.jp/contests/abc269/tasks/abc269_h)などの子側のデータを保持しておく必要がない時にこのようなことをするかもしれない
 
 ## ライブラリの使い方
 
@@ -316,4 +305,10 @@ DynamicTreeDP(const DynamicTreeDPGraph& g, usize root, std::vector<Vertex> vs, s
 
 `es`は各辺に対応する情報
 
-他のメンバは実装見ればわかると思います。
+他のメンバはメンバ名から意図が容易に分かるため、説明を省略する。
+
+## 更新履歴
+
+- 2025/12/02: 作成。子ノードへのアクセス方法と初期化処理を修正し、デバッグ出力を無効化した。
+- 2025/12/03: visitを追加した。
+- 2026/10/26: DPのインターフェースをSTTDPInterface.hppに切り出した。コンストラクタでグラフ・頂点情報・辺情報をメンバへmoveするように変更した。

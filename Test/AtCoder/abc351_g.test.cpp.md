@@ -6,7 +6,10 @@ data:
     title: Src/Algebra/Monoid/AffineMonoid.hpp
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/DynamicTreeDP.hpp
-    title: "Static Top Tree + \u6728DP"
+    title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTDPInterface.hpp
+    title: "STT\u4E0A\u306Edp\u306E\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/StaticTopTree.hpp
     title: Src/Graph/Tree/StaticTopTree.hpp
@@ -22,7 +25,7 @@ data:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
     links:
-    - https://atcoder.jp/contests/abc351/submissions/71410674
+    - https://atcoder.jp/contests/abc351/submissions/80402023
     - https://atcoder.jp/contests/abc351/tasks/abc351_g
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A
   bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
@@ -39,7 +42,7 @@ data:
     \ line -1: no such header\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/2/ITP1/1/ITP1_1_A\"\
     \n// #define PROBLEM \"https://atcoder.jp/contests/abc351/tasks/abc351_g\"\n\n\
-    /*\n * AtCoder Beginner Contest 351 G - Hash on Tree\n * https://atcoder.jp/contests/abc351/submissions/71410674\n\
+    /*\n * AtCoder Beginner Contest 351 G - Hash on Tree\n * https://atcoder.jp/contests/abc351/submissions/80402023\n\
     \ */\n\n#include \"atcoder/modint\"\nusing mint = atcoder::modint998244353;\n\
     #include \"../../Src/Algebra/Monoid/AffineMonoid.hpp\"\n#include \"../../Src/Graph/Tree/DynamicTreeDP.hpp\"\
     \n\n#include <iostream>\nusing namespace std;\nusing namespace zawa;\nusing AM\
@@ -64,20 +67,21 @@ data:
     \ Q;\n    DynamicTreeDPGraph g(N);\n    for (int i = 1 ; i < N ; i++) {\n    \
     \    int p;\n        cin >> p;\n        g[--p].push_back({i, i - 1});\n    }\n\
     \    vector<DP::Vertex> A(N);\n    for (int i = 0 ; i < N ; i++) {\n        int\
-    \ a;\n        cin >> a;\n        A[i] = a;\n    }\n    DynamicTreeDP<DP> dp(g,\
-    \ 0, A, vector<DP::Edge>(N - 1));\n    //dp.visit(Printer{});\n    while (Q--)\
-    \ {\n        int v, x;\n        cin >> v >> x;\n        dp.assignVertex(--v, mint{x});\n\
-    \        cout << dp().ans.val() << '\\n';\n    }\n#else\n    cout << \"Hello World\\\
-    n\";\n#endif\n}\n"
+    \ a;\n        cin >> a;\n        A[i] = a;\n    }\n    DynamicTreeDP<DP> dp(move(g),\
+    \ 0, move(A), vector<DP::Edge>(N - 1));\n    //dp.visit(Printer{});\n    while\
+    \ (Q--) {\n        int v, x;\n        cin >> v >> x;\n        dp.assignVertex(--v,\
+    \ mint{x});\n        cout << dp().ans.val() << '\\n';\n    }\n#else\n    cout\
+    \ << \"Hello World\\n\";\n#endif\n}\n"
   dependsOn:
   - Src/Algebra/Monoid/AffineMonoid.hpp
   - Src/Graph/Tree/DynamicTreeDP.hpp
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Template/TypeAlias.hpp
+  - Src/Graph/Tree/STTDPInterface.hpp
   isVerificationFile: true
   path: Test/AtCoder/abc351_g.test.cpp
   requiredBy: []
-  timestamp: '2025-12-03 17:47:01+09:00'
+  timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: Test/AtCoder/abc351_g.test.cpp

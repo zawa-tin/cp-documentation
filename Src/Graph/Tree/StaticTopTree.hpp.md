@@ -7,7 +7,10 @@ data:
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/DynamicTreeDP.hpp
-    title: "Static Top Tree + \u6728DP"
+    title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTFold.hpp
+    title: "Static Top Tree\u4E0A\u306EDP"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc269_h.test.cpp
@@ -15,6 +18,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc351_g.test.cpp
     title: Test/AtCoder/abc351_g.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_t.test.cpp
+    title: Test/AtCoder/ndpc2026_t.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
     title: Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
@@ -213,11 +219,13 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/StaticTopTree.hpp
   requiredBy:
+  - Src/Graph/Tree/STTFold.hpp
   - Src/Graph/Tree/DynamicTreeDP.hpp
   timestamp: '2025-12-03 17:47:01+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AtCoder/abc269_h.test.cpp
+  - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/abc351_g.test.cpp
   - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
 documentation_of: Src/Graph/Tree/StaticTopTree.hpp

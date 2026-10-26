@@ -40,6 +40,9 @@ data:
     path: Test/AtCoder/fps_24_p.test.cpp
     title: Test/AtCoder/fps_24_p.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_t.test.cpp
+    title: Test/AtCoder/ndpc2026_t.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/LC/division_of_polynomials.test.cpp
     title: Test/LC/division_of_polynomials.test.cpp
   - icon: ':heavy_check_mark:'
@@ -201,6 +204,7 @@ data:
   - Test/AtCoder/abc436_g.test.cpp
   - Test/AtCoder/fps24_q.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
+  - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
   - Test/AtCoder/abc215_g.test.cpp

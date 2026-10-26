@@ -505,7 +505,7 @@ data:
     title: "\u6728\u4E0A\u306E\u7B49\u9AD8\u7DDA\u30AF\u30A8\u30EA"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/DynamicTreeDP.hpp
-    title: "Static Top Tree + \u6728DP"
+    title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"
   - icon: ':warning:'
     path: Src/Graph/Tree/EulerTour.hpp
     title: Src/Graph/Tree/EulerTour.hpp
@@ -527,6 +527,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/Rerooting.hpp
     title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"
+  - icon: ':heavy_check_mark:'
+    path: Src/Graph/Tree/STTFold.hpp
+    title: "Static Top Tree\u4E0A\u306EDP"
   - icon: ':heavy_check_mark:'
     path: Src/Graph/Tree/Sack.hpp
     title: Sack
@@ -1428,6 +1431,9 @@ data:
     path: Test/AtCoder/ndpc2026_l.test.cpp
     title: Test/AtCoder/ndpc2026_l.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/ndpc2026_t.test.cpp
+    title: Test/AtCoder/ndpc2026_t.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
     title: Test/AtCoder/pakencamp_2025_day1_l.test.cpp
   - icon: ':heavy_check_mark:'
@@ -2172,6 +2178,7 @@ data:
   - Src/Graph/Tree/ContourAggregation.hpp
   - Src/Graph/Tree/MoonTree.hpp
   - Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+  - Src/Graph/Tree/STTFold.hpp
   - Src/Graph/Tree/Sack.hpp
   - Src/Graph/Tree/StaticTopTree.hpp
   - Src/Graph/Tree/Rerooting.hpp
@@ -2458,6 +2465,7 @@ data:
   - Test/AtCoder/arc123_d.test.cpp
   - Test/AtCoder/abc250_f.test.cpp
   - Test/AtCoder/tdpc_target.test.cpp
+  - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/abc247_f.test.cpp
   - Test/AtCoder/awc001_e.test.cpp
   - Test/AtCoder/abc139_f.test.cpp
