@@ -12,11 +12,14 @@ data:
     title: Src/FPS/FPSNTTFriendly.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/MultipointEvaluation.hpp
-    title: Src/FPS/MultipointEvaluation.hpp
+    title: "\u591A\u70B9\u8A55\u4FA1(Multipoint Evaluation)"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialProducts.hpp
     title: "\u6B21\u6570\u306E\u7DCF\u548C\u304C\u6291\u3048\u3089\u308C\u3066\u3044\
       \u308B\u591A\u9805\u5F0F\u306E\u5217\u306E\u7DCF\u7A4D"
+  - icon: ':heavy_check_mark:'
+    path: Src/FPS/SubproductTree.hpp
+    title: Subproduct Tree
   - icon: ':heavy_check_mark:'
     path: Src/Template/TypeAlias.hpp
     title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
@@ -45,36 +48,34 @@ data:
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
   code: "#pragma once\n\n#include \"FPSNTTFriendly.hpp\"\n#include \"MultipointEvaluation.hpp\"\
-    \n#include \"PolynomialProducts.hpp\"\n\n#include <utility>\n#include <vector>\n\
-    \nnamespace zawa {\n\ntemplate <usize MOD = 998244353>\nFPSNTTFriendly<MOD> PolynomialInterpolationFast(const\
-    \ std::vector<typename FPSNTTFriendly<MOD>::V>& xs,const std::vector<typename\
-    \ FPSNTTFriendly<MOD>::V>& ys) {\n    assert(xs.size());\n    assert(xs.size()\
-    \ == ys.size());\n    using FPS=FPSNTTFriendly<MOD>;\n    using mint=typename\
-    \ FPS::V;\n    const usize n=xs.size();\n    std::vector<FPS> prodTree(4*n);\n\
-    \    auto rec=[&](auto rec,usize l,usize r,usize id)->const FPS&{\n        if\
-    \ (l+1==r) \n            return prodTree[id]={-xs[l],mint::raw(1)};\n        const\
-    \ usize m=(l+r)/2;\n        return prodTree[id]=rec(rec,l,m,id<<1|0)*rec(rec,m,r,id<<1|1);\n\
-    \    };\n    std::vector<mint> W=MultipointEvaluation(rec(rec,0,n,1).differential(),xs);\n\
+    \n#include \"SubproductTree.hpp\"\n#include \"PolynomialProducts.hpp\"\n\n#include\
+    \ <utility>\n#include <vector>\n\nnamespace zawa {\n\ntemplate <usize MOD = 998244353>\n\
+    FPSNTTFriendly<MOD> PolynomialInterpolationFast(const std::vector<typename FPSNTTFriendly<MOD>::V>&\
+    \ xs,const std::vector<typename FPSNTTFriendly<MOD>::V>& ys) {\n    assert(xs.size());\n\
+    \    assert(xs.size() == ys.size());\n    using fps=FPSNTTFriendly<MOD>;\n   \
+    \ using mint=typename fps::V;\n    const usize n=xs.size();\n    std::vector<fps>\
+    \ leafs(n);\n    for (usize i = 0 ; i < n ; i++)\n        leafs[i]={-xs[i],mint::raw(1)};\n\
+    \    SubproductTree tree(std::move(leafs));\n    std::vector<mint> W=internal::MultipointEvaluation(tree.root().differential(),tree);\n\
     \    std::vector<mint> prodW(n+1,mint::raw(1));\n    for (usize i = 0 ; i < n\
     \ ; i++)\n        prodW[i+1]=prodW[i]*W[i];\n    mint inv=prodW[n].inv();\n  \
     \  for (usize i = n ; i >= 1 ; i--) {\n        mint cur=W[i-1];\n        W[i-1]=inv*prodW[i-1];\n\
-    \        inv*=cur;\n    }\n    auto rec2=[&](auto rec,usize l,usize r,usize id)->FPS\
-    \ {\n        if (l+1==r) \n            return FPS{ys[l]*W[l]};\n        usize\
-    \ m=(l+r)/2;\n        auto lhs=rec(rec,l,m,id<<1|0);\n        auto rhs=rec(rec,m,r,id<<1|1);\n\
-    \        auto res=lhs*prodTree[id<<1|1];\n        res+=prodTree[id<<1|0]*rhs;\n\
-    \        return res;\n    };\n    return rec2(rec2,0,n,1);\n}\n\n} // namespace\
-    \ zawa\n"
+    \        inv*=cur;\n    }\n    std::vector<fps> res(tree.innerSize()<<1);\n  \
+    \  for (usize i = 0 ; i < n ; i++)\n        res[tree.innerSize()+i]=fps{ys[i]*W[i]};\n\
+    \    for (usize i = tree.innerSize() ; --i ; ) {\n        res[i]=std::move(res[i<<1|0])*tree[i<<1|1];\n\
+    \        res[i]+=tree[i<<1|0]*std::move(res[i<<1|1]);\n    }\n    return res[1];\n\
+    }\n\n} // namespace zawa\n"
   dependsOn:
   - Src/FPS/FPSNTTFriendly.hpp
   - Src/FPS/FPS.hpp
   - Src/Template/TypeAlias.hpp
   - Src/FPS/MultipointEvaluation.hpp
+  - Src/FPS/SubproductTree.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/PolynomialProducts.hpp
   isVerificationFile: false
   path: Src/FPS/PolynomialInterpolationFast.hpp
   requiredBy: []
-  timestamp: '2026-10-25 23:06:40+09:00'
+  timestamp: '2026-10-26 13:52:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/polynomial_interpolation/fast.test.cpp
@@ -109,3 +110,4 @@ FPSNTTFriendly<MOD> PolynomialInterpolationFast(const std::vector<typename FPSNT
 ## 更新履歴
 
 - 2026/10/25: 作成
+- 2026/10/26: SubproductTreeを切り出した実装に変更。LCで150msほど改善

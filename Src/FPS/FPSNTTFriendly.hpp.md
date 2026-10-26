@@ -13,7 +13,7 @@ data:
     title: Src/FPS/DivisionOfPolynomials.hpp
   - icon: ':heavy_check_mark:'
     path: Src/FPS/MultipointEvaluation.hpp
-    title: Src/FPS/MultipointEvaluation.hpp
+    title: "\u591A\u70B9\u8A55\u4FA1(Multipoint Evaluation)"
   - icon: ':heavy_check_mark:'
     path: Src/FPS/PolynomialInterpolationFast.hpp
     title: "\u591A\u9805\u5F0F\u88DC\u9593 $O(N\\log^2N)$"
