@@ -1,33 +1,17 @@
 #pragma once
 
 #include "./StaticTopTree.hpp"
+#include "./STTDPInterface.hpp"
 
 #include <concepts>
 #include <variant>
-// #include <iostream>
+#include <vector>
 
 namespace zawa {
 
-namespace concepts {
-
-template <class T>
-concept DynamicTreeDPInterface = requires {
-    typename T::Vertex;
-    typename T::Edge;
-    typename T::PathCluster;
-    typename T::PointCluster;
-    { T::vertex(std::declval<typename T::Vertex>()) } -> std::same_as<typename T::PathCluster>;
-    { T::addVertex(std::declval<typename T::PointCluster>(), std::declval<typename T::Vertex>()) } -> std::same_as<typename T::PathCluster>;
-    { T::addEdge(std::declval<typename T::PathCluster>(), std::declval<typename T::Edge>()) } -> std::same_as<typename T::PointCluster>;
-    { T::rake(std::declval<typename T::PointCluster>(), std::declval<typename T::PointCluster>()) } -> std::same_as<typename T::PointCluster>;
-    { T::compress(std::declval<typename T::PathCluster>(), std::declval<typename T::Edge>(), std::declval<typename T::PathCluster>()) } -> std::same_as<typename T::PathCluster>;
-};
-
-} // namespace concepts
-
 using DynamicTreeDPGraph = STTGraph;
 
-template <concepts::DynamicTreeDPInterface T>
+template <concepts::STTDPInterface T>
 class DynamicTreeDP {
 public:
 
@@ -51,10 +35,10 @@ public:
 
     DynamicTreeDP() = default;
 
-    DynamicTreeDP(const DynamicTreeDPGraph& g, usize root, std::vector<Vertex> vs, std::vector<Edge> es)
-        : m_n{g.size()}, m_vs{vs}, m_es{es}, m_stt{g, root}, m_dp(m_stt.size()) {
-        assert(g.size() == m_vs.size());
-        assert(g.empty() or g.size() == m_es.size() + 1);
+    DynamicTreeDP(DynamicTreeDPGraph g, usize root, std::vector<Vertex> vs, std::vector<Edge> es)
+        : m_n{g.size()}, m_vs{std::move(vs)}, m_es{std::move(es)}, m_stt{std::move(g), root}, m_dp(m_stt.size()) {
+        assert(m_n == m_vs.size());
+        assert(m_n == m_es.size() + 1);
         for (usize i = 0 ; i < m_stt.size() ; i++)
             if (i != StaticTopTree::Empty)
                 recalc(i);

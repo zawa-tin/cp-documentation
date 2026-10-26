@@ -3,10 +3,10 @@
 
 /*
  * AtCoder Beginner Contest 269 Ex - Antichain
- * https://atcoder.jp/contests/abc269/submissions/71411446
+ * https://atcoder.jp/contests/abc269/submissions/80402072
  */
 
-#include "../../Src/Graph/Tree/DynamicTreeDP.hpp"
+#include "../../Src/Graph/Tree/STTFold.hpp"
 #include "atcoder/modint"
 #include "atcoder/convolution"
 using mint = atcoder::modint998244353;
@@ -64,15 +64,13 @@ int main() {
     ios::sync_with_stdio(0);
     int N;
     cin >> N;
-    DynamicTreeDPGraph g(N);
+    STTGraph g(N);
     for (int i = 1 ; i < N ; i++) {
         int p;
         cin >> p;
         g[--p].push_back({i, i - 1});
     }
-    DynamicTreeDP<DP> dp(g, 0, vector<DP::Vertex>(N), vector<DP::Edge>(N - 1));
-    //dp.visit(Printer{});
-    auto [p, q] = dp();
+    auto [p, q] = STTFold<DP>(move(g),0,vector<DP::Vertex>(N),vector<DP::Edge>(N-1));
     auto ans = p + q;
     while (ssize(ans) <= N)
         ans.push_back(0);
