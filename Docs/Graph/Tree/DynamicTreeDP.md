@@ -1,5 +1,5 @@
 ---
-title: Static Top Tree + 木DP
+title: 1点更新付き木DP(根固定)
 documentation_of: //Src/Graph/Tree/DynamicTreeDP.hpp
 ---
 
@@ -17,7 +17,7 @@ struct DP {
     }
     static PointCluster addEdge(const PathCluster&, const Edge&) {
     }
-    static PointCluster rake(const PointCluster, const PointCluster) {
+    static PointCluster rake(const PointCluster&, const PointCluster&) {
     }
     static PathCluster compress(const PathCluster& p, const Edge& e, const PathCluster& c) {
     }
@@ -37,11 +37,9 @@ struct Printer {
 
 この`operator()`を適切に定義し、`Printer`の実体を`visit`メンバに与えるとStatic Top Treeのすべてのノードを出力する。
 
+- `v`がSTT上での頂点番号、`par`が`v`の親頂点の番号、`type`が演算の種類である。
+
 ノード番号は1-indexであり、葉側にあるノードほど頂点番号が小さい。
-
-なので、`DynamicTreeDP`を使わず`StaticTopTree`を用いてそのまま木dpなどを書くときは再帰をせずに $1$ から昇順にループを回せばよい。
-
-- [Antichain](https://atcoder.jp/contests/abc269/tasks/abc269_h)などの子側のデータを保持しておく必要がない時にこのようなことをするかもしれない
 
 ## ライブラリの使い方
 
@@ -59,4 +57,10 @@ DynamicTreeDP(const DynamicTreeDPGraph& g, usize root, std::vector<Vertex> vs, s
 
 `es`は各辺に対応する情報
 
-他のメンバは実装見ればわかると思います。
+他のメンバはメンバ名から意図が容易に分かるため、説明を省略する。
+
+## 更新履歴
+
+- 2025/12/02: 作成。子ノードへのアクセス方法と初期化処理を修正し、デバッグ出力を無効化した。
+- 2025/12/03: visitを追加した。
+- 2026/10/26: DPのインターフェースをSTTDPInterface.hppに切り出した。コンストラクタでグラフ・頂点情報・辺情報をメンバへmoveするように変更した。

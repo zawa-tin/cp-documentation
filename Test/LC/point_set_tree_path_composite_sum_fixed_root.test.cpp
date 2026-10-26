@@ -78,7 +78,7 @@ int main() {
         g[v].push_back({u, i});
         es[i] = Affine<mint>{b, c};
     }
-    DynamicTreeDP<DP> dp(g, 0, vs, es);
+    DynamicTreeDP<DP> dp(move(g), 0, move(vs), move(es));
     while (Q--) {
         int t;
         cin >> t;

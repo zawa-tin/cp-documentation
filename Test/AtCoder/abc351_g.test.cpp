@@ -3,7 +3,7 @@
 
 /*
  * AtCoder Beginner Contest 351 G - Hash on Tree
- * https://atcoder.jp/contests/abc351/submissions/71410674
+ * https://atcoder.jp/contests/abc351/submissions/80402023
  */
 
 #include "atcoder/modint"
@@ -69,7 +69,7 @@ int main() {
         cin >> a;
         A[i] = a;
     }
-    DynamicTreeDP<DP> dp(g, 0, A, vector<DP::Edge>(N - 1));
+    DynamicTreeDP<DP> dp(move(g), 0, move(A), vector<DP::Edge>(N - 1));
     //dp.visit(Printer{});
     while (Q--) {
         int v, x;
