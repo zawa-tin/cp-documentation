@@ -244,8 +244,8 @@ data:
   timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc351_g.test.cpp
   - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
+  - Test/AtCoder/abc351_g.test.cpp
 documentation_of: Src/Graph/Tree/DynamicTreeDP.hpp
 layout: document
 title: "1\u70B9\u66F4\u65B0\u4ED8\u304D\u6728DP(\u6839\u56FA\u5B9A)"

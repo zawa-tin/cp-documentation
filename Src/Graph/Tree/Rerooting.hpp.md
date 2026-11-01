@@ -149,9 +149,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/1595.test.cpp
+  - Test/LC/tree_path_composite_sum.test.cpp
   - Test/AtCoder/arc179_d.test.cpp
   - Test/AtCoder/abc298_h.test.cpp
-  - Test/LC/tree_path_composite_sum.test.cpp
 documentation_of: Src/Graph/Tree/Rerooting.hpp
 layout: document
 title: "\u6728DP/\u5168\u65B9\u4F4D\u6728DP"

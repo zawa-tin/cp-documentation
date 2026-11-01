@@ -134,10 +134,10 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/3568.test.cpp
+  - Test/LC/bitwise_xor_convolution.test.cpp
   - Test/AtCoder/abc212_h.test.cpp
   - Test/AtCoder/arc222_e.test.cpp
   - Test/AtCoder/abc396_g.test.cpp
-  - Test/LC/bitwise_xor_convolution.test.cpp
 documentation_of: Src/Sequence/BitwiseXORConvolution.hpp
 layout: document
 title: Bitwise XOR Convolution

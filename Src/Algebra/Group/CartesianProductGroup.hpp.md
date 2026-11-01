@@ -88,8 +88,8 @@ data:
   isVerificationFile: false
   path: Src/Algebra/Group/CartesianProductGroup.hpp
   requiredBy:
-  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   - Src/GeometryZ2/Contain/TriangleProduct.hpp
+  - Src/DataStructure/FenwickTree/LazyFenwickTree.hpp
   timestamp: '2026-06-24 18:50:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

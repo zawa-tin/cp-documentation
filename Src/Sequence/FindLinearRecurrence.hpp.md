@@ -60,8 +60,8 @@ data:
   timestamp: '2026-10-03 17:18:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/find_linear_recurrence.test.cpp
   - Test/yukicoder/3228.test.cpp
+  - Test/LC/find_linear_recurrence.test.cpp
 documentation_of: Src/Sequence/FindLinearRecurrence.hpp
 layout: document
 title: "\u7DDA\u5F62\u6F38\u5316\u5F0F\u3092\u767A\u898B\u3059\u308B(Berlekamp-Massey)"

@@ -137,8 +137,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/AOJ/3548.test.cpp
-  - Test/AtCoder/awc001_e.test.cpp
   - Test/LC/queue_operate_all_composite.test.cpp
+  - Test/AtCoder/awc001_e.test.cpp
 documentation_of: Src/DataStructure/SWAG/FoldableQueue.hpp
 layout: document
 title: Foldable Queue

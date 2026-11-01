@@ -121,8 +121,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/My/FPS/PowerProjection.test.cpp
-  - Test/AtCoder/abc439_g.test.cpp
   - Test/AtCoder/abc345_g.test.cpp
+  - Test/AtCoder/abc439_g.test.cpp
 documentation_of: Src/FPS/PowerProjection.hpp
 layout: document
 title: FPS Power Projection

@@ -235,10 +235,10 @@ data:
   - Test/AOJ/DSL_2_F.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
+  - Test/LC/range_set_range_composite.test.cpp
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
-  - Test/LC/range_set_range_composite.test.cpp
 documentation_of: Src/DataStructure/SegmentTree/AssignmentSegmentTree.hpp
 layout: document
 title: Assignment Segment Tree

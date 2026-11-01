@@ -76,11 +76,11 @@ data:
   timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/polynomial_interpolation/fast.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
   - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
-  - Test/LC/multipoint_evaluation.test.cpp
-  - Test/LC/division_of_polynomials.test.cpp
-  - Test/LC/polynomial_interpolation/fast.test.cpp
 documentation_of: Src/FPS/DivisionOfPolynomials.hpp
 layout: document
 redirect_from:

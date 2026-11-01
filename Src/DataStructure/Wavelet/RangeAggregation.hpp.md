@@ -229,10 +229,10 @@ data:
   verifiedWith:
   - Test/CF/EC190-E.test.cpp
   - Test/AOJ/3518.test.cpp
-  - Test/AtCoder/abc339_g.test.cpp
-  - Test/AtCoder/abc266_h.test.cpp
-  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
   - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/AtCoder/abc266_h.test.cpp
+  - Test/AtCoder/abc339_g.test.cpp
 documentation_of: Src/DataStructure/Wavelet/RangeAggregation.hpp
 layout: document
 title: Range Aggregation

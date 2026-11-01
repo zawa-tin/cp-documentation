@@ -61,8 +61,8 @@ data:
   verifiedWith:
   - Test/CF/ECR157-F.test.cpp
   - Test/AOJ/3369.test.cpp
-  - Test/AtCoder/aalc001_o.test.cpp
   - Test/LC/matrix_det.test.cpp
+  - Test/AtCoder/aalc001_o.test.cpp
 documentation_of: Src/Algebra/Ring/UsualRing.hpp
 layout: document
 redirect_from:

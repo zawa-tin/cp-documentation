@@ -64,16 +64,16 @@ data:
   path: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
   requiredBy:
   - Src/DataStructure/RectangleSum/RectangleSumOfPointCloud.hpp
-  - Src/DataStructure/RectangleSum/RectangleSumOfRectangles.hpp
   - Src/DataStructure/RectangleSum/PointAddRectangleSum.hpp
+  - Src/DataStructure/RectangleSum/RectangleSumOfRectangles.hpp
   timestamp: '2026-10-02 17:24:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc477_f.test.cpp
-  - Test/AtCoder/abc136_f.test.cpp
-  - Test/LC/rectangle_sum/rectangle_sum.test.cpp
   - Test/LC/point_add_rectangle_sum/PointAddRectangleSum.test.cpp
+  - Test/LC/rectangle_sum/rectangle_sum.test.cpp
   - Test/LC/static_rectangle_add_rectangle_sum.test.cpp
+  - Test/AtCoder/abc136_f.test.cpp
+  - Test/AtCoder/abc477_f.test.cpp
 documentation_of: Src/DataStructure/RectangleSum/RectangleSumConcepts.hpp
 layout: document
 redirect_from:

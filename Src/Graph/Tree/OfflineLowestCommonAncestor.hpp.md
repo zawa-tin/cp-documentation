@@ -102,8 +102,8 @@ data:
   timestamp: '2026-09-30 13:13:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc477_g.test.cpp
   - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+  - Test/AtCoder/abc477_g.test.cpp
 documentation_of: Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
 layout: document
 redirect_from:

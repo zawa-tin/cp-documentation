@@ -54,8 +54,8 @@ data:
   timestamp: '2025-09-23 17:35:06+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc304_f.test.cpp
   - Test/LC/lcm_convolution.test.cpp
+  - Test/AtCoder/abc304_f.test.cpp
 documentation_of: Src/Number/PrimeSubsetTransform.hpp
 layout: document
 redirect_from:

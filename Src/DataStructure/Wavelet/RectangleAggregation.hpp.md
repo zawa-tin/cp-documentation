@@ -234,9 +234,9 @@ data:
   verifiedWith:
   - Test/CF/EC190-E.test.cpp
   - Test/AOJ/3518.test.cpp
-  - Test/AtCoder/abc266_h.test.cpp
-  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
   - Test/LC/point_add_rectangle_sum/RectangleAggregation.test.cpp
+  - Test/LC/rectangle_sum/RectangleAggregation.test.cpp
+  - Test/AtCoder/abc266_h.test.cpp
 documentation_of: Src/DataStructure/Wavelet/RectangleAggregation.hpp
 layout: document
 title: Rectangle Aggregation

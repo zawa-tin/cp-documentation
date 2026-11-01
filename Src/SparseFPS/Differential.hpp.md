@@ -66,17 +66,17 @@ data:
   isVerificationFile: false
   path: Src/SparseFPS/Differential.hpp
   requiredBy:
-  - Src/SparseFPS/Log.hpp
-  - Src/SparseFPS/Power.hpp
   - Src/SparseFPS/PowerProduct.hpp
+  - Src/SparseFPS/Log.hpp
   - Src/SparseFPS/Exp.hpp
+  - Src/SparseFPS/Power.hpp
   timestamp: '2026-10-24 17:27:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc276_g.test.cpp
+  - Test/LC/log_of_formal_power_series_sparse.test.cpp
   - Test/LC/pow_of_formal_power_series_sparse.test.cpp
   - Test/LC/exp_of_formal_power_series_sparse.test.cpp
-  - Test/LC/log_of_formal_power_series_sparse.test.cpp
+  - Test/AtCoder/abc276_g.test.cpp
 documentation_of: Src/SparseFPS/Differential.hpp
 layout: document
 title: SparseFPS::Differential

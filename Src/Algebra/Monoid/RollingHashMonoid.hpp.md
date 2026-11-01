@@ -96,8 +96,8 @@ data:
   timestamp: '2024-12-06 16:40:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/3548.test.cpp
   - Test/AOJ/0478.test.cpp
+  - Test/AOJ/3548.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
 documentation_of: Src/Algebra/Monoid/RollingHashMonoid.hpp
 layout: document

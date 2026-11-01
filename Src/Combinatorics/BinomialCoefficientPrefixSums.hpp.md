@@ -98,8 +98,8 @@ data:
   timestamp: '2026-10-13 17:51:11+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/arc224_f.test.cpp
   - Test/AtCoder/tenka1_2014_final_d.test.cpp
+  - Test/AtCoder/arc224_f.test.cpp
 documentation_of: Src/Combinatorics/BinomialCoefficientPrefixSums.hpp
 layout: document
 title: "\u4E8C\u9805\u4FC2\u6570prefix sum $(\\sum_{i=0}^{k}\\binom{n}{i})$"

@@ -110,22 +110,22 @@ data:
   isVerificationFile: false
   path: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
   requiredBy:
-  - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
-  - Src/Graph/Tree/MoonTree.hpp
   - Src/Graph/Tree/OfflineLowestCommonAncestor.hpp
+  - Src/Graph/Tree/MoonTree.hpp
+  - Src/DataStructure/DisjointSetUnion/MonoidDSU.hpp
   timestamp: '2026-09-30 13:13:45+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/CF/ECR167-F.test.cpp
   - Test/AOJ/2559.test.cpp
-  - Test/AtCoder/arc197_d.test.cpp
-  - Test/AtCoder/agc002_d.test.cpp
-  - Test/AtCoder/abc477_g.test.cpp
-  - Test/AtCoder/abc451_g.test.cpp
-  - Test/AtCoder/abc451_f.test.cpp
+  - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
   - Test/LC/unionfind.test.cpp
   - Test/LC/incremental_scc.test.cpp
-  - Test/LC/lca/OfflineLowestCommonAncestor.test.cpp
+  - Test/AtCoder/abc451_f.test.cpp
+  - Test/AtCoder/abc451_g.test.cpp
+  - Test/AtCoder/agc002_d.test.cpp
+  - Test/AtCoder/abc477_g.test.cpp
+  - Test/AtCoder/arc197_d.test.cpp
 documentation_of: Src/DataStructure/DisjointSetUnion/DisjointSetUnion.hpp
 layout: document
 redirect_from:

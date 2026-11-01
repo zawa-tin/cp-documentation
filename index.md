@@ -742,6 +742,10 @@ data:
       path: Src/Graph/Tree/SubtreesHash.hpp
       title: "\u6839\u4ED8\u304D\u6728\u306E\u5404\u90E8\u5206\u6728\u3092\u30CF\u30C3\
         \u30B7\u30E5\u5024\u306B\u5909\u63DB\u3057\u305F\u5217"
+    - icon: ':heavy_check_mark:'
+      path: Src/Graph/Tree/TreeCenters.hpp
+      title: "\u6728\u306E\u76F4\u5F84\u306B\u307E\u3064\u308F\u308BUtility\u30AF\u30E9\
+        \u30B9"
   - name: Src/LinearAlgebra
     pages:
     - icon: ':heavy_check_mark:'
@@ -1362,6 +1366,9 @@ data:
       path: Test/AtCoder/abc217_h.test.cpp
       title: Test/AtCoder/abc217_h.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc221_f.test.cpp
+      title: Test/AtCoder/abc221_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc222_g.test.cpp
       title: Test/AtCoder/abc222_g.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1630,6 +1637,9 @@ data:
       path: Test/AtCoder/abc479_e.test.cpp
       title: Test/AtCoder/abc479_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc482_e.test.cpp
+      title: Test/AtCoder/abc482_e.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp
     - icon: ':heavy_check_mark:'
@@ -1751,6 +1761,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF1043-F.test.cpp
       title: CF1043(Div. 3)-F Rada and the Chamomile Valley
+    - icon: ':heavy_check_mark:'
+      path: Test/CF/CF1045-D.test.cpp
+      title: Test/CF/CF1045-D.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/CF/CF1052-E.test.cpp
       title: Test/CF/CF1052-E.test.cpp
@@ -1996,6 +2009,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/LC/stirling_number_of_the_second_kind.test.cpp
       title: Test/LC/stirling_number_of_the_second_kind.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/LC/tree_diameter.test.cpp
+      title: Test/LC/tree_diameter.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/LC/tree_path_composite_sum.test.cpp
       title: Test/LC/tree_path_composite_sum.test.cpp

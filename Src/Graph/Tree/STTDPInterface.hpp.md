@@ -56,15 +56,15 @@ data:
   isVerificationFile: false
   path: Src/Graph/Tree/STTDPInterface.hpp
   requiredBy:
-  - Src/Graph/Tree/STTFold.hpp
   - Src/Graph/Tree/DynamicTreeDP.hpp
+  - Src/Graph/Tree/STTFold.hpp
   timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
+  - Test/AtCoder/abc351_g.test.cpp
   - Test/AtCoder/abc269_h.test.cpp
   - Test/AtCoder/ndpc2026_t.test.cpp
-  - Test/AtCoder/abc351_g.test.cpp
-  - Test/LC/point_set_tree_path_composite_sum_fixed_root.test.cpp
 documentation_of: Src/Graph/Tree/STTDPInterface.hpp
 layout: document
 title: "STT\u4E0A\u306Edp\u306E\u30A4\u30F3\u30BF\u30FC\u30D5\u30A7\u30FC\u30B9"

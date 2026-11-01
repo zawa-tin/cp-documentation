@@ -85,10 +85,10 @@ data:
   timestamp: '2026-10-26 13:52:08+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/polynomial_interpolation/fast.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
   - Test/AtCoder/ndpc2026_t.test.cpp
   - Test/AtCoder/fps_24_p.test.cpp
-  - Test/LC/multipoint_evaluation.test.cpp
-  - Test/LC/polynomial_interpolation/fast.test.cpp
 documentation_of: Src/FPS/MultipointEvaluation.hpp
 layout: document
 title: "\u591A\u70B9\u8A55\u4FA1(Multipoint Evaluation)"

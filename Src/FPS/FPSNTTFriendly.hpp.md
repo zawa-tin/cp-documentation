@@ -195,31 +195,31 @@ data:
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
   - Src/FPS/PolynomialInterpolationFast.hpp
-  - Src/FPS/DivisionOfPolynomials.hpp
   - Src/FPS/MultipointEvaluation.hpp
+  - Src/FPS/DivisionOfPolynomials.hpp
   timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/yukicoder/3044.test.cpp
   - Test/My/FPS/PowerProjection.test.cpp
-  - Test/AtCoder/abc436_g.test.cpp
-  - Test/AtCoder/fps24_q.test.cpp
-  - Test/AtCoder/abc439_g.test.cpp
-  - Test/AtCoder/ndpc2026_t.test.cpp
-  - Test/AtCoder/abc345_g.test.cpp
-  - Test/AtCoder/fps_24_p.test.cpp
-  - Test/AtCoder/abc215_g.test.cpp
-  - Test/AtCoder/abc385_g.test.cpp
+  - Test/LC/polynomial_taylor_shift.test.cpp
+  - Test/LC/polynomial_interpolation/fast.test.cpp
   - Test/LC/product_of_polynomial_sequence.test.cpp
-  - Test/LC/multipoint_evaluation.test.cpp
-  - Test/LC/pow_of_formal_power_series.test.cpp
-  - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
   - Test/LC/division_of_polynomials.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
+  - Test/LC/multipoint_evaluation.test.cpp
+  - Test/LC/pow_of_formal_power_series.test.cpp
+  - Test/LC/log_of_formal_power_series.test.cpp
   - Test/LC/exp_of_formal_power_series.test.cpp
-  - Test/LC/polynomial_interpolation/fast.test.cpp
-  - Test/LC/polynomial_taylor_shift.test.cpp
-  - Test/yukicoder/3044.test.cpp
+  - Test/AtCoder/ndpc2026_t.test.cpp
+  - Test/AtCoder/fps_24_p.test.cpp
+  - Test/AtCoder/fps24_q.test.cpp
+  - Test/AtCoder/abc215_g.test.cpp
+  - Test/AtCoder/abc345_g.test.cpp
+  - Test/AtCoder/abc436_g.test.cpp
+  - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/abc439_g.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document
 redirect_from:
