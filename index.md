@@ -21,6 +21,9 @@ data:
       path: Src/Algebra/Group/GroupConcept.hpp
       title: Src/Algebra/Group/GroupConcept.hpp
     - icon: ':heavy_check_mark:'
+      path: Src/Algebra/Group/SymmetricGroup.hpp
+      title: "\u5BFE\u79F0\u7FA4"
+    - icon: ':heavy_check_mark:'
       path: Src/Algebra/Group/XorGroup.hpp
       title: Src/Algebra/Group/XorGroup.hpp
   - name: Src/Algebra/Monoid
@@ -1302,6 +1305,9 @@ data:
   - name: Test/AtCoder
     pages:
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/aalc001_l.test.cpp
+      title: Test/AtCoder/aalc001_l.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/aalc001_o.test.cpp
       title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
         \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
@@ -1627,6 +1633,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc465_f.test.cpp
       title: Test/AtCoder/abc465_f.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc470_d.test.cpp
+      title: Test/AtCoder/abc470_d.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc477_f.test.cpp
       title: Test/AtCoder/abc477_f.test.cpp

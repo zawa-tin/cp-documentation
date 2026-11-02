@@ -3,6 +3,9 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Group/SymmetricGroup.hpp
+    title: "\u5BFE\u79F0\u7FA4"
+  - icon: ':heavy_check_mark:'
     path: Src/Algebra/Monoid/ChmaxMonoid.hpp
     title: "chmax\u30E2\u30CE\u30A4\u30C9"
   - icon: ':heavy_check_mark:'
@@ -1030,6 +1033,9 @@ data:
     path: Test/AOJ/ITP2_4_A.test.cpp
     title: Test/AOJ/ITP2_4_A.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/aalc001_l.test.cpp
+    title: Test/AtCoder/aalc001_l.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/aalc001_o.test.cpp
     title: "\u30BB\u30B0\u6728\u30B3\u30F3 O - \u6700\u5C0F\u5024 (\u5C65\u6B74\u548C\
       \u306E\u30C6\u30AF\u30CB\u30C3\u30AF)"
@@ -1349,6 +1355,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc465_f.test.cpp
     title: Test/AtCoder/abc465_f.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc470_d.test.cpp
+    title: Test/AtCoder/abc470_d.test.cpp
   - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abc477_f.test.cpp
     title: Test/AtCoder/abc477_f.test.cpp
@@ -2265,6 +2274,7 @@ data:
   - Src/FPS/PolynomialTaylorShift.hpp
   - Src/FPS/KthTerm.hpp
   - Src/Enumerate/EnumerateLabelledTree.hpp
+  - Src/Algebra/Group/SymmetricGroup.hpp
   - Src/Algebra/Monoid/ConstantSquareMatrix.hpp
   - Src/Algebra/Monoid/ChmaxMonoid.hpp
   - Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
@@ -2586,6 +2596,7 @@ data:
   - Test/AtCoder/abc136_f.test.cpp
   - Test/AtCoder/abc215_g.test.cpp
   - Test/AtCoder/abc295_a.test.cpp
+  - Test/AtCoder/aalc001_l.test.cpp
   - Test/AtCoder/abc217_h.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/abc457_f.test.cpp
@@ -2648,6 +2659,7 @@ data:
   - Test/AtCoder/abc259_b.test.cpp
   - Test/AtCoder/abc268_h.test.cpp
   - Test/AtCoder/arc123_d.test.cpp
+  - Test/AtCoder/abc470_d.test.cpp
   - Test/AtCoder/abc213_c.test.cpp
   - Test/AtCoder/abc170_d.test.cpp
   - Test/AtCoder/abc288_c.test.cpp
