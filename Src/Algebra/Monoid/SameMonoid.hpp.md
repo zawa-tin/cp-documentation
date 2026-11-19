@@ -4,6 +4,9 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc484_f.test.cpp
+    title: Test/AtCoder/abc484_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/CF/EC162-D.test.cpp
     title: Test/CF/EC162-D.test.cpp
   - icon: ':heavy_check_mark:'
@@ -63,6 +66,7 @@ data:
   verifiedWith:
   - Test/CF/EC162-D.test.cpp
   - Test/Manual/aoj3326.test.cpp
+  - Test/AtCoder/abc484_f.test.cpp
 documentation_of: Src/Algebra/Monoid/SameMonoid.hpp
 layout: document
 title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\u304B\
@@ -133,3 +137,8 @@ T SameMonoidData<T>::value() const noexcept
 集合の代表元を返す。集合が空だったり単一要素から構成されていない場合は**実行時エラー**になる。
 
 <br />
+
+## 更新履歴
+
+- 2024/02/24: SameMonoid の実装とドキュメントを追加。
+- 2026/11/19: ABC484-Fでverify

@@ -1,0 +1,172 @@
+---
+data:
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/MonoidConcept.hpp
+    title: Src/Algebra/Monoid/MonoidConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Monoid/SameMonoid.hpp
+    title: "\u5358\u4E00\u8981\u7D20\u304B\u3089\u306A\u308B\u591A\u91CD\u96C6\u5408\
+      \u304B\u5224\u5B9A\u3059\u308B\u30E2\u30CE\u30A4\u30C9"
+  - icon: ':heavy_check_mark:'
+    path: Src/Algebra/Semigroup/SemigroupConcept.hpp
+    title: Src/Algebra/Semigroup/SemigroupConcept.hpp
+  - icon: ':heavy_check_mark:'
+    path: Src/DataStructure/SegmentTree/SegmentTree.hpp
+    title: Segment Tree
+  - icon: ':heavy_check_mark:'
+    path: Src/Template/TypeAlias.hpp
+    title: "\u6A19\u6E96\u30C7\u30FC\u30BF\u578B\u306E\u30A8\u30A4\u30EA\u30A2\u30B9"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':heavy_check_mark:'
+  attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/aplusb
+    links:
+    - https://atcoder.jp/contests/abc484/submissions/80933917
+    - https://atcoder.jp/contests/abc484/tasks/abc484_f
+    - https://judge.yosupo.jp/problem/aplusb
+  bundledCode: "#line 1 \"Test/AtCoder/abc484_f.test.cpp\"\n// #define PROBLEM \"\
+    https://atcoder.jp/contests/abc484/tasks/abc484_f\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\
+    \n/*\n * AtCoder Beginner Contest 484 F - Make them monochrome\n * https://atcoder.jp/contests/abc484/submissions/80933917\n\
+    \ */\n#line 2 \"Src/Algebra/Monoid/SameMonoid.hpp\"\n\n#include <optional>\n\n\
+    namespace zawa {\n\ntemplate <class T>\nclass SameMonoidData {\nprivate:\n   \
+    \ std::optional<T> element_{};\n    bool same_{true};\npublic:\n\n    static std::optional<T>\
+    \ merge(const std::optional<T>& l, const std::optional<T>& r) noexcept {\n   \
+    \     if (l and r) return (l.value() == r.value() ? l : std::nullopt);\n     \
+    \   if (l) return l;\n        if (r) return r;\n        return std::nullopt;\n\
+    \    }\n\n    SameMonoidData() = default;\n    SameMonoidData(const T& element)\
+    \ \n        : element_{element}, same_{true} {}\n    SameMonoidData(const std::optional<T>&\
+    \ element, bool same)\n        : element_{element}, same_{same} {}\n\n    bool\
+    \ empty() const noexcept {\n        return same_ and !element_.has_value();\n\
+    \    }\n    bool same() const noexcept {\n        return same_;\n    }\n    std::optional<T>\
+    \ element() const noexcept {\n        return element_;\n    }\n    T value() const\
+    \ noexcept {\n        return element_.value();\n    }\n};\n\ntemplate <class T>\n\
+    struct SameMonoid {\npublic:\n    using Element = SameMonoidData<T>;\n    static\
+    \ Element identity() noexcept {\n        return Element{}; \n    }\n    static\
+    \ Element operation(const Element& l, const Element& r) {\n        if (l.empty()\
+    \ and r.empty()) return identity();\n        if (l.empty()) return r;\n      \
+    \  if (r.empty()) return l;\n        std::optional<T> element{Element::merge(l.element(),\
+    \ r.element())};\n        return Element{element, l.same() and r.same() and element.has_value()};\n\
+    \    }\n};\n\n} // namespace zawa\n#line 2 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#line 2 \"Src/Template/TypeAlias.hpp\"\n\n#include <cstdint>\n#include <cstddef>\n\
+    \nnamespace zawa {\n\nusing i16 = std::int16_t;\nusing i32 = std::int32_t;\nusing\
+    \ i64 = std::int64_t;\nusing i128 = __int128_t;\n\nusing u8 = std::uint8_t;\n\
+    using u16 = std::uint16_t;\nusing u32 = std::uint32_t;\nusing u64 = std::uint64_t;\n\
+    \nusing usize = std::size_t;\n\n} // namespace zawa\n#line 2 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\n#line 2 \"Src/Algebra/Semigroup/SemigroupConcept.hpp\"\n\n#include <concepts>\n\
+    \nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Semigroup\
+    \ = requires {\n    typename T::Element;\n    { T::operation(std::declval<typename\
+    \ T::Element>(), std::declval<typename T::Element>()) } -> std::same_as<typename\
+    \ T::Element>;\n};\n\n} // namespace concepts\n\n} // namespace zawa\n#line 4\
+    \ \"Src/Algebra/Monoid/MonoidConcept.hpp\"\n\n#line 6 \"Src/Algebra/Monoid/MonoidConcept.hpp\"\
+    \n\nnamespace zawa {\n\nnamespace concepts {\n\ntemplate <class T>\nconcept Identitiable\
+    \ = requires {\n    typename T::Element;\n    { T::identity() } -> std::same_as<typename\
+    \ T::Element>;\n};\n\ntemplate <class T>\nconcept Monoid = Semigroup<T> and Identitiable<T>;\n\
+    \n} // namespace\n\n} // namespace zawa\n#line 5 \"Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \n\n#include <vector>\n#include <cassert>\n#include <functional>\n#include <type_traits>\n\
+    #include <ostream>\n\nnamespace zawa {\n\ntemplate <concepts::Monoid Monoid>\n\
+    class SegmentTree {\npublic:\n\n    using VM = Monoid;\n\n    using V = typename\
+    \ VM::Element;\n\n    using OM = Monoid;\n\n    using O = typename OM::Element;\n\
+    \n    SegmentTree() = default;\n\n    explicit SegmentTree(usize n) : m_n{ n },\
+    \ m_dat(n << 1, VM::identity()) {}\n\n    explicit SegmentTree(const std::vector<V>&\
+    \ dat) : m_n{ dat.size() }, m_dat(dat.size() << 1, VM::identity()) {\n       \
+    \ for (usize i{} ; i < m_n ; i++) {\n            m_dat[i + m_n] = dat[i];\n  \
+    \      }\n        for (usize i{m_n} ; i-- ; ) {\n            m_dat[i] = VM::operation(m_dat[left(i)],\
+    \ m_dat[right(i)]);\n        }\n    }\n\n    [[nodiscard]] inline usize size()\
+    \ const noexcept {\n        return m_n;\n    }\n\n    [[nodiscard]] V get(usize\
+    \ i) const {\n        assert(i < size());\n        return m_dat[i + m_n];\n  \
+    \  }\n\n    [[nodiscard]] V operator[](usize i) const {\n        assert(i < size());\n\
+    \        return m_dat[i + m_n];\n    }\n\n    void operation(usize i, const O&\
+    \ value) {\n        assert(i < size());\n        i += size();\n        m_dat[i]\
+    \ = OM::operation(m_dat[i], value);\n        while (i = parent(i), i) {\n    \
+    \        m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n        }\n\
+    \    }\n\n    void assign(usize i, const V& value) {\n        assert(i < size());\n\
+    \        i += size();\n        m_dat[i] = value;\n        while (i = parent(i),\
+    \ i) {\n            m_dat[i] = VM::operation(m_dat[left(i)], m_dat[right(i)]);\n\
+    \        }\n    }\n\n    [[nodiscard]] V product(u32 l, u32 r) const {\n     \
+    \   assert(l <= r and r <= size());\n        V L{ VM::identity() }, R{ VM::identity()\
+    \ };\n        for (l += size(), r += size() ; l < r ; l = parent(l), r = parent(r))\
+    \ {\n            if (l & 1) {\n                L = VM::operation(L, m_dat[l++]);\n\
+    \            }\n            if (r & 1) {\n                R = VM::operation(m_dat[--r],\
+    \ R);\n            }\n        }\n        return VM::operation(L, R);\n    }\n\n\
+    \    template <class F>\n    requires std::predicate<F, V>\n    [[nodiscard]]\
+    \ usize maxRight(usize l, const F& f) {\n        assert(l < size());\n       \
+    \ static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>, \"\
+    maxRight's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{l}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (l += size() ; res + width <= size() ; l = parent(l), width <<= 1) if (l & 1)\
+    \ {\n            if (not f(VM::operation(prod, m_dat[l]))) break; \n         \
+    \   res += width;\n            prod = VM::operation(prod, m_dat[l++]);\n     \
+    \   }\n        while (l = left(l), width >>= 1) {\n            if (res + width\
+    \ <= size() and f(VM::operation(prod, m_dat[l]))) {\n                res += width;\n\
+    \                prod = VM::operation(prod, m_dat[l++]);\n            } \n   \
+    \     }\n        return res;\n    }\n\n    template <class F>\n    requires std::predicate<F,\
+    \ V>\n    [[nodiscard]] usize minLeft(usize r, const F& f) const {\n        assert(r\
+    \ <= size());\n        static_assert(std::is_convertible_v<decltype(f), std::function<bool(V)>>,\
+    \ \"minLeft's argument f must be function bool(T)\");\n        assert(f(VM::identity()));\n\
+    \        usize res{r}, width{1};\n        V prod{ VM::identity() };\n        for\
+    \ (r += size() ; res >= width ; r = parent(r), width <<= 1) if (r & 1) {\n   \
+    \         if (not f(VM::operation(m_dat[r - 1], prod))) break;\n            res\
+    \ -= width;\n            prod = VM::operation(prod, m_dat[--r]);\n        }\n\
+    \        while (r = left(r), width >>= 1) {\n            if (res >= width and\
+    \ f(VM::operation(m_dat[r - 1], prod))) {\n                res -= width;\n   \
+    \             prod = VM::operation(m_dat[--r], prod);\n            }\n       \
+    \ }\n        return res;\n    }\n\n    friend std::ostream& operator<<(std::ostream&\
+    \ os, const SegmentTree& st) {\n        for (usize i{1} ; i < 2 * st.size() ;\
+    \ i++) {\n            os << st.m_dat[i] << (i + 1 == 2 * st.size() ? \"\" : \"\
+    \ \");\n        }\n        return os;\n    }\n\nprivate:\n\n    constexpr u32\
+    \ left(u32 v) const {\n        return v << 1;\n    }\n\n    constexpr u32 right(u32\
+    \ v) const {\n        return v << 1 | 1;\n    }\n\n    constexpr u32 parent(u32\
+    \ v) const {\n        return v >> 1;\n    }\n\n    usize m_n;\n\n    std::vector<V>\
+    \ m_dat;\n};\n\n} // namespace zawa\n#line 9 \"Test/AtCoder/abc484_f.test.cpp\"\
+    \nusing namespace zawa;\n#include <iostream>\n#line 12 \"Test/AtCoder/abc484_f.test.cpp\"\
+    \nusing namespace std;\nusing M=SameMonoid<int>;\nM::Element gen(int x) {\n  \
+    \  return x == -1 ? M::identity() : M::Element{x};\n}\nint main() {\n#ifdef ATCODER\n\
+    \    cin.tie(0);\n    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N,Q;\n\
+    \    cin >> N >> Q;\n    vector<M::Element> A(N);\n    for (auto& x : A) {\n \
+    \       int a;\n        cin >> a;\n        x=gen(a);\n    }\n    SegmentTree<M>\
+    \ seg(move(A));\n    while (Q--) {\n        int t;\n        cin >> t;\n      \
+    \  if (t == 1) {\n            int i,x;\n            cin >> i >> x;\n         \
+    \   seg.assign(--i,gen(x));\n        }\n        else if (t == 2) {\n         \
+    \   int l,r;\n            cin >> l >> r;\n            cout << (seg.product(--l,r).same()?\"\
+    Yes\\n\":\"No\\n\");\n        }\n        else \n            assert(0);\n    }\n\
+    #else\n    int a,b;\n    cin >> a >> b;\n    cout << a+b << '\\n';\n#endif\n}\n"
+  code: "// #define PROBLEM \"https://atcoder.jp/contests/abc484/tasks/abc484_f\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/aplusb\"\n/*\n * AtCoder Beginner\
+    \ Contest 484 F - Make them monochrome\n * https://atcoder.jp/contests/abc484/submissions/80933917\n\
+    \ */\n#include \"../../Src/Algebra/Monoid/SameMonoid.hpp\"\n#include \"../../Src/DataStructure/SegmentTree/SegmentTree.hpp\"\
+    \nusing namespace zawa;\n#include <iostream>\n#include <vector>\nusing namespace\
+    \ std;\nusing M=SameMonoid<int>;\nM::Element gen(int x) {\n    return x == -1\
+    \ ? M::identity() : M::Element{x};\n}\nint main() {\n#ifdef ATCODER\n    cin.tie(0);\n\
+    \    cout.tie(0);\n    ios::sync_with_stdio(0);\n    int N,Q;\n    cin >> N >>\
+    \ Q;\n    vector<M::Element> A(N);\n    for (auto& x : A) {\n        int a;\n\
+    \        cin >> a;\n        x=gen(a);\n    }\n    SegmentTree<M> seg(move(A));\n\
+    \    while (Q--) {\n        int t;\n        cin >> t;\n        if (t == 1) {\n\
+    \            int i,x;\n            cin >> i >> x;\n            seg.assign(--i,gen(x));\n\
+    \        }\n        else if (t == 2) {\n            int l,r;\n            cin\
+    \ >> l >> r;\n            cout << (seg.product(--l,r).same()?\"Yes\\n\":\"No\\\
+    n\");\n        }\n        else \n            assert(0);\n    }\n#else\n    int\
+    \ a,b;\n    cin >> a >> b;\n    cout << a+b << '\\n';\n#endif\n}\n"
+  dependsOn:
+  - Src/Algebra/Monoid/SameMonoid.hpp
+  - Src/DataStructure/SegmentTree/SegmentTree.hpp
+  - Src/Template/TypeAlias.hpp
+  - Src/Algebra/Monoid/MonoidConcept.hpp
+  - Src/Algebra/Semigroup/SemigroupConcept.hpp
+  isVerificationFile: true
+  path: Test/AtCoder/abc484_f.test.cpp
+  requiredBy: []
+  timestamp: '2026-11-19 16:56:51+09:00'
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: Test/AtCoder/abc484_f.test.cpp
+layout: document
+redirect_from:
+- /verify/Test/AtCoder/abc484_f.test.cpp
+- /verify/Test/AtCoder/abc484_f.test.cpp.html
+title: Test/AtCoder/abc484_f.test.cpp
+---

@@ -1655,6 +1655,9 @@ data:
       path: Test/AtCoder/abc482_e.test.cpp
       title: Test/AtCoder/abc482_e.test.cpp
     - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc484_f.test.cpp
+      title: Test/AtCoder/abc484_f.test.cpp
+    - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc484_g.test.cpp
       title: Test/AtCoder/abc484_g.test.cpp
     - icon: ':heavy_check_mark:'

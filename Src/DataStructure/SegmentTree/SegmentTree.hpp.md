@@ -58,6 +58,9 @@ data:
     path: Test/AtCoder/abc429_f.test.cpp
     title: Test/AtCoder/abc429_f.test.cpp
   - icon: ':heavy_check_mark:'
+    path: Test/AtCoder/abc484_f.test.cpp
+    title: Test/AtCoder/abc484_f.test.cpp
+  - icon: ':heavy_check_mark:'
     path: Test/AtCoder/abl_e.test.cpp
     title: Test/AtCoder/abl_e.test.cpp
   - icon: ':heavy_check_mark:'
@@ -245,6 +248,7 @@ data:
   - Test/AtCoder/abl_e.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
   - Test/AtCoder/abc292_h.test.cpp
+  - Test/AtCoder/abc484_f.test.cpp
   - Test/AtCoder/abc266_h.test.cpp
   - Test/AtCoder/abc331_f.test.cpp
   - Test/AtCoder/agc005_b.test.cpp
