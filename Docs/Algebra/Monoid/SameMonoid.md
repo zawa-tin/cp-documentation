@@ -67,3 +67,8 @@ T SameMonoidData<T>::value() const noexcept
 集合の代表元を返す。集合が空だったり単一要素から構成されていない場合は**実行時エラー**になる。
 
 <br />
+
+## 更新履歴
+
+- 2024/02/24: SameMonoid の実装とドキュメントを追加。
+- 2026/11/19: ABC484-Fでverify
