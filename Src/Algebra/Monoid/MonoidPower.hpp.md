@@ -97,15 +97,15 @@ data:
   timestamp: '2026-10-05 23:17:34+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/range_set_range_composite.test.cpp
+  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/DSL_2_D.test.cpp
   - Test/AOJ/DSL_2_F.test.cpp
-  - Test/AOJ/DSL_2_G.test.cpp
   - Test/AOJ/2450.test.cpp
   - Test/AOJ/DSL_2_I.test.cpp
-  - Test/LC/range_set_range_composite.test.cpp
   - Test/AtCoder/abl_e.test.cpp
-  - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc417_f.test.cpp
+  - Test/AtCoder/abc237_g.test.cpp
   - Test/AtCoder/abc445_f.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidPower.hpp
 layout: document

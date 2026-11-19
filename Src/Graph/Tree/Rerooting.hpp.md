@@ -148,8 +148,8 @@ data:
   timestamp: '2026-10-19 00:51:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/1595.test.cpp
   - Test/LC/tree_path_composite_sum.test.cpp
+  - Test/AOJ/1595.test.cpp
   - Test/AtCoder/arc179_d.test.cpp
   - Test/AtCoder/abc298_h.test.cpp
 documentation_of: Src/Graph/Tree/Rerooting.hpp

@@ -66,8 +66,8 @@ data:
   isVerificationFile: false
   path: Src/SparseFPS/Differential.hpp
   requiredBy:
-  - Src/SparseFPS/PowerProduct.hpp
   - Src/SparseFPS/Log.hpp
+  - Src/SparseFPS/PowerProduct.hpp
   - Src/SparseFPS/Exp.hpp
   - Src/SparseFPS/Power.hpp
   timestamp: '2026-10-24 17:27:37+09:00'

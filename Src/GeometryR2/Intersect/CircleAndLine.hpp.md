@@ -225,8 +225,8 @@ data:
   timestamp: '2025-07-03 21:45:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/CGL_7_D.test.cpp
   - Test/AOJ/1053.test.cpp
+  - Test/AOJ/CGL_7_D.test.cpp
 documentation_of: Src/GeometryR2/Intersect/CircleAndLine.hpp
 layout: document
 redirect_from:

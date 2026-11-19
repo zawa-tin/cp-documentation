@@ -105,8 +105,8 @@ data:
   timestamp: '2026-05-03 11:27:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/cycle_detection_undirected.test.cpp
   - Test/LC/cycle_detection.test.cpp
+  - Test/LC/cycle_detection_undirected.test.cpp
   - Test/AtCoder/abc456_e.test.cpp
 documentation_of: Src/Graph/CycleDetection.hpp
 layout: document

@@ -81,8 +81,8 @@ data:
   timestamp: '2026-01-12 19:02:30+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/LC/polynomial_interpolation/fast.test.cpp
   - Test/LC/product_of_polynomial_sequence.test.cpp
+  - Test/LC/polynomial_interpolation/fast.test.cpp
   - Test/AtCoder/fps24_q.test.cpp
   - Test/AtCoder/abc385_g.test.cpp
 documentation_of: Src/FPS/PolynomialProducts.hpp

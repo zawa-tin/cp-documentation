@@ -41,8 +41,8 @@ data:
   isVerificationFile: false
   path: Src/Random/RandomPermutation.hpp
   requiredBy:
-  - Src/Random/RandomConnectedGraph.hpp
   - Src/Random/RandomTree.hpp
+  - Src/Random/RandomConnectedGraph.hpp
   timestamp: '2025-09-06 12:13:55+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []

@@ -83,15 +83,15 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
+  bundledCode: "Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/onlinejudge_verify/documentation/build.py\"\
     , line 71, in _render_source_code_stat\n    bundled_code = language.bundle(stat.path,\
     \ basedir=basedir, options={'include_paths': [basedir]}).decode()\n          \
     \         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\
-    \  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
-    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    \  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus.py\"\
+    , line 187, in bundle\n    bundler.update(path)\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 401, in update\n    self.update(self._resolve(pathlib.Path(included), included_from=path))\n\
     \                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n \
-    \ File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
+    \ File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/onlinejudge_verify/languages/cplusplus_bundle.py\"\
     , line 260, in _resolve\n    raise BundleErrorAt(path, -1, \"no such header\"\
     )\nonlinejudge_verify.languages.cplusplus_bundle.BundleErrorAt: atcoder/modint:\
     \ line -1: no such header\n"
@@ -194,32 +194,32 @@ data:
   isVerificationFile: false
   path: Src/FPS/FPSNTTFriendly.hpp
   requiredBy:
-  - Src/FPS/PolynomialInterpolationFast.hpp
   - Src/FPS/MultipointEvaluation.hpp
+  - Src/FPS/PolynomialInterpolationFast.hpp
   - Src/FPS/DivisionOfPolynomials.hpp
   timestamp: '2026-10-10 14:28:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/yukicoder/3044.test.cpp
-  - Test/My/FPS/PowerProjection.test.cpp
-  - Test/LC/polynomial_taylor_shift.test.cpp
-  - Test/LC/polynomial_interpolation/fast.test.cpp
-  - Test/LC/product_of_polynomial_sequence.test.cpp
-  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
-  - Test/LC/division_of_polynomials.test.cpp
+  - Test/LC/exp_of_formal_power_series.test.cpp
   - Test/LC/inv_of_formal_power_series.test.cpp
   - Test/LC/multipoint_evaluation.test.cpp
-  - Test/LC/pow_of_formal_power_series.test.cpp
   - Test/LC/log_of_formal_power_series.test.cpp
-  - Test/LC/exp_of_formal_power_series.test.cpp
+  - Test/LC/polynomial_taylor_shift.test.cpp
+  - Test/LC/pow_of_formal_power_series.test.cpp
+  - Test/LC/kth_term_of_linearly_recurrent_sequence.test.cpp
+  - Test/LC/product_of_polynomial_sequence.test.cpp
+  - Test/LC/division_of_polynomials.test.cpp
+  - Test/LC/polynomial_interpolation/fast.test.cpp
+  - Test/My/FPS/PowerProjection.test.cpp
   - Test/AtCoder/ndpc2026_t.test.cpp
-  - Test/AtCoder/fps_24_p.test.cpp
   - Test/AtCoder/fps24_q.test.cpp
-  - Test/AtCoder/abc215_g.test.cpp
-  - Test/AtCoder/abc345_g.test.cpp
   - Test/AtCoder/abc436_g.test.cpp
-  - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/fps_24_p.test.cpp
   - Test/AtCoder/abc439_g.test.cpp
+  - Test/AtCoder/abc385_g.test.cpp
+  - Test/AtCoder/abc345_g.test.cpp
+  - Test/AtCoder/abc215_g.test.cpp
+  - Test/yukicoder/3044.test.cpp
 documentation_of: Src/FPS/FPSNTTFriendly.hpp
 layout: document
 redirect_from:

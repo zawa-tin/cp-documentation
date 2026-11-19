@@ -154,10 +154,10 @@ data:
   timestamp: '2026-11-01 20:19:15+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/CF/CF1045-D.test.cpp
   - Test/LC/tree_diameter.test.cpp
-  - Test/AtCoder/abc482_e.test.cpp
+  - Test/CF/CF1045-D.test.cpp
   - Test/AtCoder/abc221_f.test.cpp
+  - Test/AtCoder/abc482_e.test.cpp
 documentation_of: Src/Graph/Tree/TreeCenters.hpp
 layout: document
 title: "\u6728\u306E\u76F4\u5F84\u306B\u307E\u3064\u308F\u308BUtility\u30AF\u30E9\u30B9"

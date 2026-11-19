@@ -889,6 +889,9 @@ data:
       title: "Permutation\u3092 $N-1$ \u56DE\u4EE5\u4E0B\u306Eswap\u3067\u30BD\u30FC\
         \u30C8\u3059\u308B"
     - icon: ':heavy_check_mark:'
+      path: Src/Sequence/PowersetConstruction.hpp
+      title: "Powerset Construction (NFA\u3092DFA\u306B\u5909\u63DB\u3059\u308B)"
+    - icon: ':heavy_check_mark:'
       path: Src/Sequence/RangeKthSmallest.hpp
       title: Range Kth Smallest
     - icon: ':heavy_check_mark:'
@@ -1076,6 +1079,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2559.test.cpp
       title: Test/AOJ/2559.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AOJ/2587.test.cpp
+      title: Test/AOJ/2587.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AOJ/2609.test.cpp
       title: Test/AOJ/2609.test.cpp
@@ -1316,7 +1322,7 @@ data:
       title: Test/AtCoder/abc127_f.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc132_f.test.cpp
-      title: ABC132-F Small Products
+      title: ABC223-H Xor Query
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc136_f.test.cpp
       title: Test/AtCoder/abc136_f.test.cpp
@@ -1648,6 +1654,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abc482_e.test.cpp
       title: Test/AtCoder/abc482_e.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: Test/AtCoder/abc484_g.test.cpp
+      title: Test/AtCoder/abc484_g.test.cpp
     - icon: ':heavy_check_mark:'
       path: Test/AtCoder/abl_e.test.cpp
       title: Test/AtCoder/abl_e.test.cpp

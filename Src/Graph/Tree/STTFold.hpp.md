@@ -210,8 +210,8 @@ data:
   timestamp: '2026-10-26 15:58:42+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AtCoder/abc269_h.test.cpp
   - Test/AtCoder/ndpc2026_t.test.cpp
+  - Test/AtCoder/abc269_h.test.cpp
 documentation_of: Src/Graph/Tree/STTFold.hpp
 layout: document
 title: "Static Top Tree\u4E0A\u306EDP"

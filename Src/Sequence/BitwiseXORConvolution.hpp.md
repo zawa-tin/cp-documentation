@@ -133,11 +133,11 @@ data:
   timestamp: '2026-10-22 16:38:37+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - Test/AOJ/3568.test.cpp
   - Test/LC/bitwise_xor_convolution.test.cpp
-  - Test/AtCoder/abc212_h.test.cpp
+  - Test/AOJ/3568.test.cpp
   - Test/AtCoder/arc222_e.test.cpp
   - Test/AtCoder/abc396_g.test.cpp
+  - Test/AtCoder/abc212_h.test.cpp
 documentation_of: Src/Sequence/BitwiseXORConvolution.hpp
 layout: document
 title: Bitwise XOR Convolution

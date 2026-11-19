@@ -61,21 +61,21 @@ data:
   isVerificationFile: false
   path: Src/SparseFPS/SparseFPS.hpp
   requiredBy:
-  - Src/SparseFPS/PowerProduct.hpp
-  - Src/SparseFPS/Integral.hpp
   - Src/SparseFPS/Log.hpp
+  - Src/SparseFPS/PowerProduct.hpp
+  - Src/SparseFPS/Inverse.hpp
+  - Src/SparseFPS/Integral.hpp
+  - Src/SparseFPS/Divide.hpp
   - Src/SparseFPS/Exp.hpp
   - Src/SparseFPS/Differential.hpp
-  - Src/SparseFPS/Divide.hpp
-  - Src/SparseFPS/Inverse.hpp
   - Src/SparseFPS/Power.hpp
   timestamp: '2026-10-24 16:26:54+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/log_of_formal_power_series_sparse.test.cpp
   - Test/LC/pow_of_formal_power_series_sparse.test.cpp
-  - Test/LC/exp_of_formal_power_series_sparse.test.cpp
   - Test/LC/inv_of_formal_power_series_sparse.test.cpp
+  - Test/LC/exp_of_formal_power_series_sparse.test.cpp
   - Test/AtCoder/abc276_g.test.cpp
 documentation_of: Src/SparseFPS/SparseFPS.hpp
 layout: document

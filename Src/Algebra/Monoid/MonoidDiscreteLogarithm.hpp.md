@@ -119,8 +119,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - Test/LC/discrete_logarithm_mod.test.cpp
-  - Test/AtCoder/abc222_g.test.cpp
   - Test/AtCoder/abc270_g.test.cpp
+  - Test/AtCoder/abc222_g.test.cpp
 documentation_of: Src/Algebra/Monoid/MonoidDiscreteLogarithm.hpp
 layout: document
 title: "\u96E2\u6563\u5BFE\u6570\u554F\u984C(\u30E2\u30CE\u30A4\u30C9)"

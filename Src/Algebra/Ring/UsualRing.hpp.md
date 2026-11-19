@@ -59,9 +59,9 @@ data:
   timestamp: '2026-10-08 17:25:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - Test/LC/matrix_det.test.cpp
   - Test/CF/ECR157-F.test.cpp
   - Test/AOJ/3369.test.cpp
-  - Test/LC/matrix_det.test.cpp
   - Test/AtCoder/aalc001_o.test.cpp
 documentation_of: Src/Algebra/Ring/UsualRing.hpp
 layout: document
